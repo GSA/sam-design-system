@@ -191,7 +191,7 @@ Configurable.args = {
   model: {},
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 
 export const Size: Story = (args) => ({
@@ -200,10 +200,10 @@ export const Size: Story = (args) => ({
 });
 Size.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/search/search-size', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
   stackblitzLink: generateStackblitzLink('search', 'size'),
 };
@@ -214,10 +214,10 @@ export const Placeholder: Story = (args) => ({
 });
 Placeholder.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/search/search-placeholder', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
   stackblitzLink: generateStackblitzLink('search', 'placeholder'),
 };
@@ -228,10 +228,10 @@ export const Dropdown: Story = (args) => ({
 });
 Dropdown.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/search/search-dropdown', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
   stackblitzLink: generateStackblitzLink('search', 'dropdown'),
 };
@@ -248,11 +248,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];

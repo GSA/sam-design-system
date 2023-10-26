@@ -91,11 +91,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable = Template.bind({});
@@ -114,7 +114,7 @@ Configurable.args = {
   crossorigin: '',
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 
 export const Caption: Story = (args) => ({
@@ -125,10 +125,10 @@ export const Caption: Story = (args) => ({
 });
 Caption.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/video-player/video-player-caption',
     'VideoPlayerCaptionModule',
@@ -146,10 +146,10 @@ export const Debug: Story = (args) => ({
 });
 Debug.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/video-player/video-player-debug',
     'VideoPlayerDebugModule',
@@ -167,10 +167,10 @@ export const Description: Story = (args) => ({
 });
 Description.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/video-player/video-player-description',
     'VideoPlayerDescriptionModule',
@@ -188,10 +188,10 @@ export const PreLoad: Story = (args) => ({
 });
 PreLoad.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/video-player/video-player-preload',
     'VideoPlayerPreloadModule',
@@ -209,10 +209,10 @@ export const SeekInterval: Story = (args) => ({
 });
 SeekInterval.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/video-player/video-player-seek-interval',
     'VideoPlayerSeekIntervalModule',
@@ -230,10 +230,10 @@ export const CrossOrigin: Story = (args) => ({
 });
 CrossOrigin.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/video-player/video-player-cross-origin',
     'VideoPlayerCrossOriginModule',

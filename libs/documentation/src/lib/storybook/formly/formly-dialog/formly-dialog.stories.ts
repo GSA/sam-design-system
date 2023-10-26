@@ -61,10 +61,10 @@ export const Download: Story = (args) => ({
 });
 Download.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-dialog/formly-dialog-download',
     'FormlyDialogDownloadModule',
@@ -91,10 +91,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-dialog/formly-dialog-basic',
     'FormlyDialogBasicModule',

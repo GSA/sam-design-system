@@ -131,7 +131,7 @@ Configurable.args = {
   totalItems: 1,
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 
 export const DisplayMode: Story = (args) => ({
@@ -140,10 +140,10 @@ export const DisplayMode: Story = (args) => ({
 });
 DisplayMode.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/pagination/pagination-display-mode',
     'PaginationDisplayModeModule',
@@ -158,10 +158,10 @@ export const TotalItems: Story = (args) => ({
 });
 TotalItems.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/pagination/pagination-total-items',
     'PaginationTotalItemsModule',
@@ -176,10 +176,10 @@ export const Page: Story = (args) => ({
 });
 Page.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/pagination/pagination-page', 'PaginationPageModule', 'sds-pagination-page'),
   stackblitzLink: generateStackblitzLink('pagination', 'page'),
 };

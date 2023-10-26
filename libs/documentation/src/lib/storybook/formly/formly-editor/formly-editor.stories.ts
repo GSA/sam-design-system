@@ -55,10 +55,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-basic',
     'FormlyEditorBasicModule',
@@ -73,10 +73,10 @@ export const Regex: Story = (args) => ({
 });
 Regex.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-regex',
     'FormlyEditorRegexModule',
@@ -91,10 +91,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-label',
     'FormlyEditorLabelModule',
@@ -109,10 +109,10 @@ export const Updates: Story = (args) => ({
 });
 Updates.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-updates',
     'FormlyEditorUpdatesModule',

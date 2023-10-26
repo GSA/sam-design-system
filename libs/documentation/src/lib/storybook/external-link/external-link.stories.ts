@@ -50,8 +50,8 @@ Configurable.args = {
   hideIcon: false,
 };
 Configurable.parameters = {
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Target: Story = (args) => ({
@@ -60,10 +60,10 @@ export const Target: Story = (args) => ({
 });
 Target.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/external-link/external-link-target',
     'ButtonGroupBasicModule',
@@ -78,10 +78,10 @@ export const HideIcon: Story = (args) => ({
 });
 HideIcon.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/external-link/external-link-hide-icon',
     'ButtonGroupBasicModule',
@@ -97,11 +97,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Configurable', 'HideIcon', 'Target'];

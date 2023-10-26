@@ -85,8 +85,8 @@ Configurable.args = {
   sdsPopoverTitle: '',
 };
 Configurable.parameters = {
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Position: Story = (args) => ({
@@ -95,10 +95,10 @@ export const Position: Story = (args) => ({
 });
 Position.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/popover/popover-position', 'PopoverPositionModule', 'sds-popover-position'),
   stackblitzLink: generateStackblitzLink('popover', 'position'),
 };
@@ -109,10 +109,10 @@ export const Title: Story = (args) => ({
 });
 Title.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/popover/popover-title',
     'PopoverSdsPopoverTitleModule',
@@ -127,10 +127,10 @@ export const CloseOnContentClicked: Story = (args) => ({
 });
 CloseOnContentClicked.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/popover/popover-close-on-content-click',
     'PopoverCloseOnContentClickModule',
@@ -145,10 +145,10 @@ export const CloseOnClickOutside: Story = (args) => ({
 });
 CloseOnClickOutside.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/popover/popover-close-on-click-outside',
     'PopoverCloseOnClickOutsideModule',
@@ -163,11 +163,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = [

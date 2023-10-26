@@ -61,10 +61,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-basic',
     'FormlyAutocompleteBasicModule',
@@ -79,10 +79,10 @@ export const Disable: Story = (args) => ({
 });
 Disable.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-disable',
     'FormlyAutocompleteDisableModule',
@@ -97,10 +97,10 @@ export const Count: Story = (args) => ({
 });
 Count.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-count',
     'FormlyAutocompleteCountModule',
@@ -115,10 +115,10 @@ export const Freetext: Story = (args) => ({
 });
 Freetext.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-free-text',
     'FormlyAutocompleteFreetextModule',
@@ -133,10 +133,10 @@ export const Input: Story = (args) => ({
 });
 Input.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-input',
     'FormlyAutocompleteInputModule',
@@ -151,10 +151,10 @@ export const Tag: Story = (args) => ({
 });
 Tag.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-tag',
     'FormlyAutocompleteTagModule',
@@ -169,10 +169,10 @@ export const Validation: Story = (args) => ({
 });
 Validation.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-validation',
     'FormlyAutocompleteValidationModule',

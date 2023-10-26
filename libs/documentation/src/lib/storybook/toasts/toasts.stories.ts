@@ -52,11 +52,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable: Story = (args) => ({
@@ -81,8 +81,8 @@ Configurable.args = {
   preventDuplicates: false,
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 
 export const Message: Story = (args) => ({
@@ -96,10 +96,10 @@ export const Message: Story = (args) => ({
 });
 Message.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/toasts/toasts-message', 'ToastsMessageModule', 'sds-toasts-message'),
   stackblitzLink: generateStackblitzLink('toasts', 'message'),
 };
@@ -115,10 +115,10 @@ export const Type: Story = (args) => ({
 });
 Type.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/toasts/toasts-type', 'ToastsTypeModule', 'sds-toasts-type'),
   stackblitzLink: generateStackblitzLink('toasts', 'type'),
 };
@@ -134,10 +134,10 @@ export const Timeout: Story = (args) => ({
 });
 Timeout.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/toasts/toasts-timeout', 'ToastsTimeoutModule', 'sds-toasts-timeout'),
   stackblitzLink: generateStackblitzLink('toasts', 'timeout'),
 };
@@ -153,10 +153,10 @@ export const PreventDuplicates: Story = (args) => ({
 });
 PreventDuplicates.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/toasts/toasts-prevent-duplicates',
     'ToastsPreventDuplicatesModule',

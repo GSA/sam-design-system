@@ -61,10 +61,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-basic',
     'FormlyCheckboxBasicModule',
@@ -79,10 +79,10 @@ export const Nested: Story = (args) => ({
 });
 Nested.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-nested',
     'FormlyCheckboxNestedModule',
@@ -97,10 +97,10 @@ export const Template: Story = (args) => ({
 });
 Template.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-template',
     'FormlyCheckboxTemplateModule',
@@ -115,10 +115,10 @@ export const Required: Story = (args) => ({
 });
 Required.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-required',
     'FormlyCheckboxRequiredModule',
@@ -133,10 +133,10 @@ export const Tooltip: Story = (args) => ({
 });
 Tooltip.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-tooltip',
     'FormlyCheckboxTooltipModule',
@@ -151,10 +151,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-label',
     'FormlyCheckboxLabelModule',
@@ -169,10 +169,10 @@ export const Description: Story = (args) => ({
 });
 Description.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-description',
     'FormlyCheckboxDescriptionModule',
