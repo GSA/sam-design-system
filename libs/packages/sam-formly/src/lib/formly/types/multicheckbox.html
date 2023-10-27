@@ -19,7 +19,7 @@
                 type="checkbox"
                 [name]="id + '_name_' + i + j"
                 [disabled]="opt.disabled"
-                [value]="opt.value"
+                [value]="opt.key"
                 [formlyAttributes]="field"
                 (change)="onChange(opt.value, $event.target.checked)"
                 [checked]="isChecked(opt)"
@@ -32,7 +32,7 @@
                 >
                   {{option.value[j].tagText}}
                 </span>
-                <span [innerHtml]="opt.label"></span>
+                <span [innerHtml]="opt.value"></span>
               </label>
             </div>
             <div *ngIf="option.value[j].tooltipText" class="margin-left-1">

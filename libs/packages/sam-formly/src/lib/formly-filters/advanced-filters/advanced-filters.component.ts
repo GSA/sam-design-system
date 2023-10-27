@@ -225,7 +225,7 @@ export class AdvancedFiltersComponent implements OnInit {
                 const form = field.parent.formControl;
                 form
                   .get('selectAll')
-                  .valueChanges.pipe(
+                  .valueChanges?.pipe(
                     startWith(form.get('selectAll').value),
                     tap((selectAllValue) => {
                       this.onSelectAllChange(selectAllValue, form, isOnload, field);
@@ -233,6 +233,8 @@ export class AdvancedFiltersComponent implements OnInit {
                     })
                   )
                   .subscribe();
+          
+
               },
             },
           },
@@ -265,9 +267,10 @@ export class AdvancedFiltersComponent implements OnInit {
               onInit: (field) => {
                 let isOnload = true;
                 const form = field.parent.formControl;
+
                 form
                   .get('showInactive')
-                  .valueChanges.pipe(
+                  .valueChanges?.pipe(
                     startWith(form.get('showInactive').value),
                     tap((showInactiveValue) => {
                       this.showInactive = showInactiveValue;

@@ -181,7 +181,7 @@ export const DATE_FORMAT: MatDateFormats = {
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       extras: {
-        //checkExpressionOn: 'changeDetectionCheck',
+        checkExpressionOn: 'changeDetectionCheck',
         lazyRender: false,
         //resetFieldOnHide: false,
       },
