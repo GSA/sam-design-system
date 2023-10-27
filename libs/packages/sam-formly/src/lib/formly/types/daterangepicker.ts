@@ -36,8 +36,10 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
           "
         />
       </mat-date-range-input>
-      <mat-datepicker-toggle class="padding-top-3" matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker [startAt]="props.startDate" #picker></mat-date-range-picker>
+      <mat-datepicker-toggle class="padding-top-2 padding-left-1" matSuffix [for]="picker">
+        <usa-icon [icon]="'calendar'" matDatepickerToggleIcon [size]="'sm'"></usa-icon>
+      </mat-datepicker-toggle>
+      <mat-date-range-picker [startAt]="to.startDate" #picker></mat-date-range-picker>
     </div>
   `,
   styles: [

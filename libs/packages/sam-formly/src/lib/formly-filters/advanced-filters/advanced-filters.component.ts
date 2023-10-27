@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -12,6 +12,7 @@ import { tap, startWith } from 'rxjs/operators';
   selector: 'sds-advanced-filters',
   templateUrl: './advanced-filters.component.html',
   styleUrls: ['./advanced-filters.component.scss'],
+ // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdvancedFiltersComponent implements OnInit {
   /**
@@ -178,7 +179,9 @@ export class AdvancedFiltersComponent implements OnInit {
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
-        a.props && b.props ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy]) : 0
+        a.props && b.props
+          ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy])
+          : 0
       );
     }
     const filedGroup: FormlyFieldConfig[] = this.filedGroup;
