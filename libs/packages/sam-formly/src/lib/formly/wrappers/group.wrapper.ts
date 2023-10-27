@@ -98,8 +98,7 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
     //       this.accordion.collapse(this.accordionItem.id);
     //     }
     //   });
- this.resetAllSubscription = this.field.options.fieldChanges
-  .subscribe(({ type }) => {
+ this.resetAllSubscription = this.field.options?.fieldChanges?.subscribe(({ type }) => {
     if (type === 'resetAll' && this.accordionItem.expanded && !this.modelHasValue()) {
       this.accordion.collapse(this.accordionItem.id);
     }

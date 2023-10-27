@@ -12,7 +12,7 @@ import { tap, startWith } from 'rxjs/operators';
   selector: 'sds-advanced-filters',
   templateUrl: './advanced-filters.component.html',
   styleUrls: ['./advanced-filters.component.scss'],
- // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdvancedFiltersComponent implements OnInit {
   /**

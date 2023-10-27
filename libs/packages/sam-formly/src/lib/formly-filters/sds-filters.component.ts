@@ -249,7 +249,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       value: undefined,
     };
 
-    this.options.fieldChanges.next(fieldChangeEvent);
+    this.options?.fieldChanges?.next(fieldChangeEvent);
     this.resetClicked.emit();
   }
 
