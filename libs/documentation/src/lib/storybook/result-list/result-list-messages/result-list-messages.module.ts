@@ -5,7 +5,6 @@ import { SdsSearchResultListModule, SdsPageModule } from '@gsa-sam/components';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     SdsFormlyModule,
     FormsModule,
     FormlyModule.forRoot(),
-    NoopAnimationsModule,
   ],
   declarations: [ResultListMessagesComponent],
   bootstrap: [ResultListMessagesComponent],

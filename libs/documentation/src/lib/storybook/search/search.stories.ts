@@ -7,10 +7,8 @@ import { SearchPlaceholderModule } from './search-placeholder/search-placeholder
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { SearchDropdownModule } from './search-dropdown/search-dropdown.module';
 import { SearchIntroductionModule } from './search-introduction/search-introduction.module';
+import { SearchOverviewModule } from './search-overview/search-overview.module';
 
-declare var require: any;
-
-const overviewTemplate = require('!!raw-loader!./search-overview.html');
 
 const disable = {
   table: {
@@ -33,6 +31,7 @@ export default {
         SearchPlaceholderModule,
         SearchDropdownModule,
         SearchIntroductionModule,
+        SearchOverviewModule
       ],
     }),
   ],
@@ -236,8 +235,9 @@ Dropdown.parameters = {
   stackblitzLink: generateStackblitzLink('search', 'dropdown'),
 };
 
-export const Overview = () => ({
-  template: overviewTemplate,
+export const Overview: Story = (args) => ({
+  template: '<sds-search-overview></sds-search-overview>',
+  props: args,
 });
 Overview.parameters = { options: { showPanel: false } };
 

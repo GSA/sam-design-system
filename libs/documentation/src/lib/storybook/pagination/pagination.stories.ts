@@ -129,6 +129,7 @@ Configurable.args = {
   pageSize: 25,
   totalPages: 10,
   totalItems: 1,
+  displayMode: 'default'
 };
 Configurable.parameters = {
   preview: { disable: true },
