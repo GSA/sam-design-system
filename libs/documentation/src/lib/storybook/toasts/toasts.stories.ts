@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { SdsToastSettings } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { SdsToastModule, SdsToastSettings } from '@gsa-sam/components';
+import { moduleMetadata, Meta, Story, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ToastsConfigurableModule } from './toasts-configurable/toasts-configurable.module';
@@ -10,6 +10,7 @@ import { ToastsMessageModule } from './toasts-message/toasts-message.module';
 import { ToastsPreventDuplicatesModule } from './toasts-prevent-duplicates/toasts-prevent-duplicates.module';
 import { ToastsTimeoutModule } from './toasts-timeout/toasts-timeout.module';
 import { ToastsTypeModule } from './toasts-type/toasts-type.module';
+import { importProvidersFrom } from '@angular/core';
 
 export default {
   title: 'Components/Toasts',
@@ -17,6 +18,7 @@ export default {
     moduleMetadata({
       imports: [
         CommonModule,
+        SdsToastModule,
         ToastrModule.forRoot(SdsToastSettings),
         NoopAnimationsModule,
         ToastsConfigurableModule,
@@ -25,8 +27,14 @@ export default {
         ToastsTimeoutModule,
         ToastsTypeModule,
         ToastsPreventDuplicatesModule,
+
       ],
     }),
+    applicationConfig({
+      providers: [
+        importProvidersFrom(SdsToastModule),
+      ],
+    })
   ],
   argTypes: {
     toastType: {
