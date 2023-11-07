@@ -52,7 +52,7 @@ export class SdsAdvancedFiltersService {
             key: field.key,
             value: label,
             tagText: field.props.tagText,
-            tagClass: field.props.tagClass,        
+            tagClass: field.props.tagClass,
           };
           options.push(option);
           if (!origField.hide && !field.hide) {

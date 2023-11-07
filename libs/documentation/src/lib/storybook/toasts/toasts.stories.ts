@@ -27,14 +27,11 @@ export default {
         ToastsTimeoutModule,
         ToastsTypeModule,
         ToastsPreventDuplicatesModule,
-
       ],
     }),
     applicationConfig({
-      providers: [
-        importProvidersFrom(SdsToastModule),
-      ],
-    })
+      providers: [importProvidersFrom(SdsToastModule)],
+    }),
   ],
   argTypes: {
     toastType: {

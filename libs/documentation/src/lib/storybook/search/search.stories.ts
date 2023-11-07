@@ -9,7 +9,6 @@ import { SearchDropdownModule } from './search-dropdown/search-dropdown.module';
 import { SearchIntroductionModule } from './search-introduction/search-introduction.module';
 import { SearchOverviewModule } from './search-overview/search-overview.module';
 
-
 const disable = {
   table: {
     disable: true,
@@ -31,7 +30,7 @@ export default {
         SearchPlaceholderModule,
         SearchDropdownModule,
         SearchIntroductionModule,
-        SearchOverviewModule
+        SearchOverviewModule,
       ],
     }),
   ],
