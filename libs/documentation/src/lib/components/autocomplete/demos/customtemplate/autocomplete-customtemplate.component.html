@@ -6,15 +6,14 @@
     (ngModelChange)="changes($event)"
     [(ngModel)]="customTemplateModel"
     [configuration]="customTemplateSettings"
-    [suggestionTemplate]="temp"
-    [selectedItemTemplate]="temp"
   >
   </sds-autocomplete>
 </div>
-
-<ng-template #temp let-item>
+ 
+<pre>{{ customTemplateModel | json }}</pre>
+<!--ng-template #temp let-item>
   <span>
     <span>Template</span>
     {{ item['name'] + ': ' + item['subtext'] }}
   </span>
-</ng-template>
+</ng-template-->

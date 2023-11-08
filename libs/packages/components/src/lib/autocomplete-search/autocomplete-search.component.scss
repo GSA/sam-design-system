@@ -127,3 +127,33 @@ input::-ms-clear {
 span.icon-container {
   display: inline-block;
 }
+
+.sticky-button {
+  position: sticky;
+  top: 0; 
+  z-index: 1000; 
+  background-color: rgb(38, 114, 222);
+  padding: 10px; 
+  border: none;
+  border-bottom: 2px solid black;  
+  cursor: pointer;
+  width: 100%;  
+  text-align: center;  
+  color: white;  
+  display: block;  
+}
+
+.sds-autocomplete__checkbox {
+  padding: 1rem 1rem 1rem 2rem;
+  &--selected{
+    background-color: rgb(38, 114, 222);
+    color: white !important;  
+  }
+  &--group{
+    //border-bottom: 2px solid black; 
+  }
+}
+
+.usa-checkbox__label {
+  margin-top: -5px !important;
+}

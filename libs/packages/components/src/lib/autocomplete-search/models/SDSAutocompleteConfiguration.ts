@@ -101,4 +101,6 @@ export class SDSAutocompleteSearchConfiguration {
   public isSelectableGroup: boolean = true;
 
   public hideCloseIcon: boolean = false;
+
+  public useCheckBoxes: boolean = false;
 }

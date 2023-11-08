@@ -45,6 +45,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   @Input() itemTemplate: TemplateRef<any>;
 
+  // Access the container with ViewChild
+  @ViewChild('container') private container: ElementRef;
+  scrolled = false;
+
   /**
    * The data model that has the selected item
    */
@@ -199,7 +203,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   checkForFocus(event): void {
     this.focusRemoved();
-    this.showResults = false;
+    //this.showResults = false;
   }
 
   /**
@@ -311,7 +315,16 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     }
   }
-
+  onListScroll(event: any) {
+    // Depending on your layout you may need to adjust the threshold
+    // Here we're checking if the scrollTop is greater than 0 to determine if we've scrolled
+    this.scrolled = event.target.scrollTop > 10;
+    console.log('check');
+  }
+  scrollToTop() {
+    //this.resultsListElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.resultsListElement.nativeElement.scrollTop = 0;
+  }
   /**
    * selects the item adding it to the model and closes the results
    * @param item
@@ -327,6 +340,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else {
       filterItem = item;
     }
+    const isSelected = this.checkItemSelected(item);
     SDSSelectedItemModelHelper.addItem(
       filterItem,
       this.configuration.primaryKeyField,
@@ -336,7 +350,23 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
-    this.showResults = false;
+    if (this.configuration.useCheckBoxes) {
+      if (isSelected) {
+        this.unselectItem(item);
+      }
+      this.showResults = true;
+    } else {
+      this.showResults = false;
+    }
+  }
+
+  public unselectItem(item: any): void {
+    SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
+    this.propogateChange(this.model);
+  }
+
+  get itemCount(): number {
+    return this.model.items.length;
   }
 
   /**

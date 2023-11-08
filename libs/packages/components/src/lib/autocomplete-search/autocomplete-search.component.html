@@ -40,8 +40,51 @@
         role="listbox"
         class="usa-list usa-list--unstyled sds-autocomplete"
         (scroll)="onScroll()"
+        (scroll)="onListScroll($event)"
       >
-        <ng-container *ngIf="results && results.length">
+        <ng-container *ngIf="configuration.useCheckBoxes">
+          <button *ngIf="itemCount > 0 && scrolled" class="sticky-button" (click)="scrollToTop()">{{ itemCount }} SELECTED</button>
+            <div #container class="sds-autocomplete__checkbox--group">
+              <li *ngFor="let item of model.items" (click)="selectItem(item)">
+                <div class="usa-checkbox margin-left-1">
+                  <input class="usa-checkbox__input" type="checkbox" [checked]="checkItemSelected(item)" />
+                  <label
+                    class="usa-checkbox__label"
+                    [ngClass]="{
+                      'sds-autocomplete__checkbox': !configuration.isGroupingEnabled,
+                      'sds-autocomplete__checkbox--highlighted': item['highlighted'],
+                      'sds-autocomplete__checkbox--selected':
+                        checkItemSelected(item) && !configuration.isGroupingEnabled
+                    }"
+                  >
+                    <span>{{ getObjectValue(item, configuration.primaryTextField) }}</span>
+                  </label>
+                </div>
+              </li>
+            </div>
+          <div>
+            <li
+              [attr.id]="configuration.id + '-resultItem-' + i"
+              role="option"
+              *ngFor="let result of results; let i = index"
+              (click)="selectItem(result)"
+            >
+              <div class="usa-checkbox margin-left-1">
+                <input class="usa-checkbox__input" type="checkbox" [checked]="checkItemSelected(result)" />
+                <label
+                  class="usa-checkbox__label"
+                  [ngClass]="{
+                    'sds-autocomplete__checkbox': !configuration.isGroupingEnabled,
+                    'sds-autocomplete__checkbox--highlighted': result['highlighted']
+                  }"
+                >
+                  {{ getObjectValue(result, configuration.primaryTextField) }}
+                </label>
+              </div>
+            </li>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="results && results.length && !configuration.useCheckBoxes">
           <li
             [attr.id]="configuration.id + '-resultItem-' + i"
             role="option"
