@@ -1,85 +1,88 @@
 export const filterFields = [
-  {
-    key: 'simpleSearch',
-    type: 'input',
-    props: {
-      label: 'Keyword Search',
-      description:
-        'For more information on how to use our keyword search, visit our <a class="usa-link" aria-label="www.fsd.gov - opens in a new window" href="https://www.fsd.gov/gsafsd_sp?id=kb_article_view&sysparm_article=KB0045403" target="_blank"> help guide <span class="margin-left-1px usa-link--external font-body-md"></span></a>',
-      hideOptional: true,
-    },
-    fieldArray: {
-      fieldGroup: [
-        {
-          props: { tabHeader: 'Simple Search' },
-          fieldGroup: [
-            {
-              key: 'keywordRadio',
-              type: 'radio',
-              defaultValue: 'ALL',
-              props: {
-                options: [
-                  {
-                    label: 'Any Words',
-                    value: 'ANY',
-                    tooltipText: 'Search results will contain one, some, or all keywords entered.',
-                  },
-                  {
-                    label: 'All Words',
-                    value: 'ALL',
-                    tooltipText: 'Search results will contain all keywords entered.',
-                  },
-                  {
-                    label: 'Exact Phrase',
-                    value: 'EXACT',
-                    tooltipText: 'Search results will contain the EXACT PHRASE from the keyword search.',
-                  },
-                ],
-              },
-            },
-            {
-              key: 'keywordTags',
-              type: 'input',
-              props: {
-                configuration: {
-                  id: 'keyword',
-                  primaryKeyField: 'key',
-                  primaryTextField: 'value',
-                  labelText: 'Search Keyword',
-                  selectionMode: 1,
-                  autocompletePlaceHolderText: 'Placeholder text',
-                  isTagModeEnabled: true,
-                },
-              },
-            },
-          ],
-        },
-        {
-          props: { tabHeader: 'Search Editor', submitButtonId: 'booleanSearchSubmit' },
-          modelOptions: { updateOn: 'submit' },
-          fieldGroup: [
-            {
-              key: 'keywordEditorTextarea',
-              type: 'textarea',
-              defaultValue: '',
-              className: 'display-block padding-left-2 padding-right-2',
-              props: {
-                placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
-                required: true,
-                attributes: { 'aria-label': 'Search Editor' },
-              },
-            },
-            {
-              type: 'button',
-              id: 'booleanSearchSubmit',
-              className: 'usa-button margin-right-2 margin-left-2 margin-top-1',
-              props: { text: 'Search', type: 'submit' },
-            },
-          ],
-        },
-      ],
-    },
-  },
+
+
+  // {
+  //   key: 'simpleSearch',
+  //   type: 'input',
+  //   props: {
+  //     label: 'Keyword Search',
+  //     description:
+  //       'For more information on how to use our keyword search, visit our <a class="usa-link" aria-label="www.fsd.gov - opens in a new window" href="https://www.fsd.gov/gsafsd_sp?id=kb_article_view&sysparm_article=KB0045403" target="_blank"> help guide <span class="margin-left-1px usa-link--external font-body-md"></span></a>',
+  //     hideOptional: true,
+  //   },
+  //   fieldArray: {
+  //     fieldGroup: [
+  //       {
+  //         props: { tabHeader: 'Simple Search' },
+  //         fieldGroup: [
+  //           {
+  //             key: 'keywordRadio',
+  //             type: 'radio',
+  //             defaultValue: 'ALL',
+  //             props: {
+  //               options: [
+  //                 {
+  //                   label: 'Any Words',
+  //                   value: 'ANY',
+  //                   tooltipText: 'Search results will contain one, some, or all keywords entered.',
+  //                 },
+  //                 {
+  //                   label: 'All Words',
+  //                   value: 'ALL',
+  //                   tooltipText: 'Search results will contain all keywords entered.',
+  //                 },
+  //                 {
+  //                   label: 'Exact Phrase',
+  //                   value: 'EXACT',
+  //                   tooltipText: 'Search results will contain the EXACT PHRASE from the keyword search.',
+  //                 },
+  //               ],
+  //             },
+  //           },
+  //           {
+  //             key: 'keywordTags',
+  //             type: 'input',
+  //             props: {
+  //               configuration: {
+  //                 id: 'keyword',
+  //                 primaryKeyField: 'key',
+  //                 primaryTextField: 'value',
+  //                 labelText: 'Search Keyword',
+  //                 selectionMode: 1,
+  //                 autocompletePlaceHolderText: 'Placeholder text',
+  //                 isTagModeEnabled: true,
+  //               },
+  //             },
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         props: { tabHeader: 'Search Editor', submitButtonId: 'booleanSearchSubmit' },
+  //         modelOptions: { updateOn: 'submit' },
+  //         fieldGroup: [
+  //           {
+  //             key: 'keywordEditorTextarea',
+  //             type: 'textarea',
+  //             defaultValue: '',
+  //             className: 'display-block padding-left-2 padding-right-2',
+  //             props: {
+  //               placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
+  //               required: true,
+  //               attributes: { 'aria-label': 'Search Editor' },
+  //             },
+  //           },
+  //           {
+  //             type: 'button',
+  //             id: 'booleanSearchSubmit',
+  //             className: 'usa-button margin-right-2 margin-left-2 margin-top-1',
+  //             props: { text: 'Search', type: 'submit' },
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   },
+  // },
+
   {
     key: 'purchaser',
     props: { label: 'Purchaser', group: 'accordion' },

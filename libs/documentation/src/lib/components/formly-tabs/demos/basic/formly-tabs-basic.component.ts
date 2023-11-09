@@ -19,7 +19,7 @@ export class FormlyTabsBasicComponent {
         hideOptional: true,
         tabClass: 'sds-tabs--formly',
       },
-      fieldArray: {
+     // fieldArray: {
         fieldGroup: [
           // tab 1
           {
@@ -96,7 +96,7 @@ export class FormlyTabsBasicComponent {
             ],
           },
         ],
-      },
+     // },
     },
   ];
 }

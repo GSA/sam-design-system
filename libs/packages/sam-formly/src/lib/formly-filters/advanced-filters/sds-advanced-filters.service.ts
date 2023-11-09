@@ -111,7 +111,7 @@ export class SdsAdvancedFiltersService {
     originalfields: FormlyFieldConfig[]
   ) {
     if (selectedFields && (selectedFields.length || typeof selectedFields === 'boolean')) {
-      parentField.hide = false;
+      parentField['hide'] = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {
           const key = field.key;
@@ -123,7 +123,7 @@ export class SdsAdvancedFiltersService {
         });
       }
     } else {
-      parentField.hide = true;
+      parentField['hide'] = true;
       parentField.fieldGroup.forEach((field) => {
         this.updateSingleField(field, false, model, originalfields);
       });
@@ -132,15 +132,21 @@ export class SdsAdvancedFiltersService {
 
   updateSingleField(field: FormlyFieldConfig, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
     if (fieldSelected) {
+field['hide']= false;
       // field.expressions = {
       //   hide: 'false',
       // };
-      field.hide = false;
+      // field.hide = false;
+      // field = {
+      // ...field,
+      // hide : false
+      // }
     } else {
+field['hide']= true;
       // field.expressions = {
       //   hide: 'true',
       // },
-      field.hide = true;
+      //field.hide = true;
       field.props = {
         ...field.props,
         required: false,

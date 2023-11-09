@@ -10,6 +10,7 @@ import {
   SimpleChanges,
   ViewChild,
   TemplateRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { UntypedFormGroup } from '@angular/forms';
@@ -29,6 +30,7 @@ import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig'
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SdsFiltersComponent implements OnInit, OnChanges {
   @ViewChild('horizontalFiltersDialog')
@@ -247,7 +249,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       value: undefined,
     };
 
-    this.options.fieldChanges.next(fieldChangeEvent);
+    this.options?.fieldChanges?.next(fieldChangeEvent);
     this.resetClicked.emit();
   }
 
