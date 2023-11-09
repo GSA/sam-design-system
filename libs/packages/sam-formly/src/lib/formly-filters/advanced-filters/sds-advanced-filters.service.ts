@@ -132,7 +132,7 @@ export class SdsAdvancedFiltersService {
 
   updateSingleField(field: FormlyFieldConfig, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
     if (fieldSelected) {
-field['hide']= false;
+      field['hide'] = false;
       // field.expressions = {
       //   hide: 'false',
       // };
@@ -142,7 +142,7 @@ field['hide']= false;
       // hide : false
       // }
     } else {
-field['hide']= true;
+      field['hide'] = true;
       // field.expressions = {
       //   hide: 'true',
       // },

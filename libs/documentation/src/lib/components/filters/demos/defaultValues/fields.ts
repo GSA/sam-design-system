@@ -1,6 +1,4 @@
 export const filterFields = [
-
-
   // {
   //   key: 'simpleSearch',
   //   type: 'input',

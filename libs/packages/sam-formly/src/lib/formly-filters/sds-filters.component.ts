@@ -30,7 +30,7 @@ import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig'
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsFiltersComponent implements OnInit, OnChanges {
   @ViewChild('horizontalFiltersDialog')

@@ -14,22 +14,15 @@ import { Subscription } from 'rxjs';
           (preTabChange)="props.preTabChange ? props.preTabChange($event) : null"
           [(selectedTab)]="props.selectedTab"
         >
-          <sds-tab-panel
-            *ngFor="let fieldConfig of field.fieldGroup"
-            [tabHeader]="fieldConfig.props?.tabHeader"
-          >
-            <formly-form [fields]="[fieldConfig]" [model]="model">
-            </formly-form>
+          <sds-tab-panel *ngFor="let fieldConfig of field.fieldGroup" [tabHeader]="fieldConfig.props?.tabHeader">
+            <formly-form [fields]="[fieldConfig]" [model]="model"> </formly-form>
           </sds-tab-panel>
         </sds-tabs>
       </ng-container>
 
       <ng-template #singleField>
         <div class="padding-left-2 padding-right-2 padding-bottom-1">
-          <formly-form
-            [fields]="field.fieldGroup"
-            [model]="model"
-          ></formly-form>
+          <formly-form [fields]="field.fieldGroup" [model]="model"></formly-form>
         </div>
       </ng-template>
     </div>
@@ -46,7 +39,7 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
     //   throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property');
     // }
 
-     // this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
+    // this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
     if (this.field && this.field.fieldGroup) {
       this.field.fieldGroup.forEach((fieldConfig: FormlyFieldConfig) => {
         this.updateFieldConfig(fieldConfig);

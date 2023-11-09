@@ -52,17 +52,13 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
     //     }
     //   });
 
-
-
-this.resetAllSubscription = this.field.options.fieldChanges.subscribe(({ type }) => {
-  if (type === 'resetAll' && this.accordionItem.expanded) {
-    if (!this.modelHasValue()) {
-      this.accordion.collapse(this.accordionItem.id);
-    }
-  }
-});
-
-
+    this.resetAllSubscription = this.field.options.fieldChanges.subscribe(({ type }) => {
+      if (type === 'resetAll' && this.accordionItem.expanded) {
+        if (!this.modelHasValue()) {
+          this.accordion.collapse(this.accordionItem.id);
+        }
+      }
+    });
   }
 
   ngOnDestroy() {
