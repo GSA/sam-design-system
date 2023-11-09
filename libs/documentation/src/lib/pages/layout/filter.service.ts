@@ -20,27 +20,26 @@ export class FilterService {
   public keywordChangeSubject = new Subject();
 
   public fields: FormlyFieldConfig[] = [
-    {
+       {
       key: 'keyword',
       wrappers: ['tabs'],
       props: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
+        tabClass: 'sds-tabs--formly',
       },
-      fieldArray: {
+     // fieldArray: {
         fieldGroup: [
           // tab 1
           {
             props: {
               tabHeader: 'Simple Search',
             },
-            fieldGroupClassName: 'grid-row',
-            className: ' margin-top-0',
+            id: 'Tab1',
             fieldGroup: [
               {
                 key: 'keywordRadio',
-                className: 'grid-col-5 margin-top-0',
                 type: 'radio',
                 defaultValue: 'anyWords',
                 props: {
@@ -53,22 +52,16 @@ export class FilterService {
                       label: 'All Words',
                       value: 'allWords',
                     },
+                    {
+                      label: 'Exact Match',
+                      value: 'exactMatch',
+                    },
                   ],
-                },
-              },
-              {
-                className: 'grid-col-6 margin-top-auto margin-left-auto',
-                key: 'keywordExactPhrase',
-                type: 'checkbox',
-                props: {
-                  label: 'Exact Phrase',
-                  hideOptional: true,
                 },
               },
               {
                 key: 'keywordTags',
                 type: 'autocomplete',
-                className: 'grid-col-12',
                 props: {
                   expand: false,
                   configuration: {
@@ -79,10 +72,6 @@ export class FilterService {
                     selectionMode: SelectionMode.MULTIPLE,
                     autocompletePlaceHolderText: '',
                     isTagModeEnabled: true,
-                    // Bind context of this service so we have access to radio button value
-                    displayModifierFn: this.displayModifierFn.bind(this),
-                    // Add observable so that we can tell autocomplete to run change detection later when radio option changes
-                    registerChanges$: this.keywordChangeSubject.asObservable(),
                   },
                 },
               },
@@ -90,16 +79,16 @@ export class FilterService {
           },
           //tab 2
           {
+            id: 'Tab2',
             props: {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
             },
-            className: ' margin-top-0',
             fieldGroup: [
               {
                 key: 'keywordTextarea',
                 type: SdsFormlyTypes.TEXTAREA,
-                className: 'display-block padding-left-2 padding-right-2 ',
+                className: 'display-block padding-left-2 padding-right-2',
                 props: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
@@ -117,7 +106,7 @@ export class FilterService {
             ],
           },
         ],
-      },
+     // },
     },
     {
       key: 'searchEntity',

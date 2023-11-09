@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
     <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ props.label }}</label>
     <p [innerHTML]="props.description"></p>
     <div class="sds-filter-keywords">
-      <ng-container *ngIf="field.fieldArray['fieldGroup']?.length > 1; else singleField">
+      <ng-container *ngIf="field.fieldGroup?.length > 1; else singleField">
         <sds-tabs
           [tabClass]="props.tabClass ? props.tabClass : 'sds-tabs--formly'"
           [interceptTabChange]="props.interceptTabChange"
@@ -15,10 +15,10 @@ import { Subscription } from 'rxjs';
           [(selectedTab)]="props.selectedTab"
         >
           <sds-tab-panel
-            *ngFor="let fieldConfig of field.fieldArray['fieldGroup']"
+            *ngFor="let fieldConfig of field.fieldGroup"
             [tabHeader]="fieldConfig.props?.tabHeader"
           >
-            <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
+            <formly-form [fields]="[fieldConfig]" [model]="model">
             </formly-form>
           </sds-tab-panel>
         </sds-tabs>
@@ -27,15 +27,14 @@ import { Subscription } from 'rxjs';
       <ng-template #singleField>
         <div class="padding-left-2 padding-right-2 padding-bottom-1">
           <formly-form
-            [fields]="field.fieldArray['fieldGroup']"
-            [model]="_initialModel"
-            (modelChange)="onModelChange(field.fieldArray['fieldGroup'][0])"
+            [fields]="field.fieldGroup"
+            [model]="model"
           ></formly-form>
         </div>
       </ng-template>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, OnDestroy {
   _initialModel: any;
@@ -43,13 +42,13 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
   toDestroy: Subscription = new Subscription();
 
   ngOnInit() {
-    if (!this.field.fieldArray || !this.field.fieldArray['fieldGroup']) {
-      throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property');
-    }
+    // if (!this.field.fieldArray || !this.field.fieldArray['fieldGroup']) {
+    //   throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property');
+    // }
 
-    this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
-    if (this.field.fieldArray && this.field.fieldArray['fieldGroup']) {
-      this.field.fieldArray['fieldGroup'].forEach((fieldConfig: FormlyFieldConfig) => {
+     // this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
+    if (this.field && this.field.fieldGroup) {
+      this.field.fieldGroup.forEach((fieldConfig: FormlyFieldConfig) => {
         this.updateFieldConfig(fieldConfig);
       });
     }
@@ -110,7 +109,7 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
     });
   }
 
-  onModelChange(fieldConfig: FormlyFieldConfig) {
-    this.form.get(this.key as string).setValue(fieldConfig.form.value);
-  }
+  // onModelChange(fieldConfig: FormlyFieldConfig) {
+  //  this.form.get(this.key as string).setValue(fieldConfig.form.value);
+  // }
 }
