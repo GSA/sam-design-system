@@ -9,7 +9,12 @@ jobs:
     docker:
        - image: cimg/node:20.8.0-browsers
     steps:
+      - browser-tools/install-browser-tools
       - checkout
+      - run: |
+          node --version
+          java --version
+          google-chrome --version
       - run: npm install
       - run: npm run test:prettier
       - run: npm run test:components
