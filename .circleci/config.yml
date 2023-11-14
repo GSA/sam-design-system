@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: ~/project/sam-design-system
     docker:
-       - image: cimg/node:20.8.0
+       - image: cimg/node:20.8.0-browsers
     steps:
       - checkout
       - run: npm install
