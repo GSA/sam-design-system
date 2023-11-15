@@ -58,7 +58,7 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
       form: this.form,
       options: this.options,
       isHistoryEnabled: true,
-      advancedFilters: true
+      advancedFilters: true,
     };
   }
 
