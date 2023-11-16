@@ -35,6 +35,7 @@ export class FilterService {
         {
           props: {
             tabHeader: 'Simple Search',
+            label: 'Simple Search',
           },
           id: 'Tab1',
           fieldGroup: [
@@ -43,6 +44,7 @@ export class FilterService {
               type: 'radio',
               defaultValue: 'anyWords',
               props: {
+                label: 'Keyword Radio',
                 options: [
                   {
                     label: 'Any Words',
@@ -63,6 +65,7 @@ export class FilterService {
               key: 'keywordTags',
               type: 'autocomplete',
               props: {
+                label: 'Keyword Tags',
                 expand: false,
                 configuration: {
                   id: 'keyword',
@@ -82,6 +85,7 @@ export class FilterService {
           id: 'Tab2',
           props: {
             tabHeader: 'Search Editor',
+            label: 'Search Editor',
             submitButtonId: 'booleanSearchSubmit',
           },
           fieldGroup: [
@@ -90,6 +94,7 @@ export class FilterService {
               type: SdsFormlyTypes.TEXTAREA,
               className: 'display-block padding-left-2 padding-right-2',
               props: {
+                label: 'Keyword TextArea',
                 placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                 required: true,
               },
@@ -99,6 +104,7 @@ export class FilterService {
               id: 'booleanSearchSubmit',
               className: 'display-block margin-top-1 padding-left-2 padding-right-2',
               props: {
+                label: 'Submit Button',
                 text: 'Search',
                 type: 'submit',
               },
@@ -116,7 +122,6 @@ export class FilterService {
         {
           key: 'legalBusinessName',
           type: 'input',
-
           props: {
             type: 'text',
             hideOptional: true,
@@ -169,16 +174,16 @@ export class FilterService {
         group: 'accordion',
         options: [
           {
-            key: 'allawards',
-            value: 'All Awards',
+            value: 'allawards',
+            label: 'All Awards',
           },
           {
-            key: 'assistance-awards',
-            value: 'Federal Assistance Awards',
+            value: 'assistance-awards',
+            label: 'Federal Assistance Awards',
           },
           {
-            key: 'igt-awards',
-            value: 'Intragovernmental Transactions',
+            value: 'igt-awards',
+            label: 'Intragovernmental Transactions',
           },
         ],
       },
@@ -218,7 +223,6 @@ export class FilterService {
         {
           key: 'naicsCode',
           type: 'input',
-
           props: {
             type: 'text',
             hideOptional: true,
@@ -240,7 +244,6 @@ export class FilterService {
     {
       key: 'location',
       props: { label: 'Location', group: 'accordion' },
-
       fieldGroup: [
         {
           key: 'country',
@@ -295,20 +298,20 @@ export class FilterService {
     {
       key: 'status',
       props: { label: 'Status', group: 'accordion' },
-
       fieldGroup: [
         {
           key: 'registrationStatus',
           type: 'radio',
           props: {
+            label: 'Registration Status',
             options: [
               {
-                key: 'Active',
                 value: 'Active',
+                label: 'Active',
               },
               {
-                key: 'Inactive',
                 value: 'Inactive',
+                label: 'Inactive',
               },
             ],
           },
@@ -317,38 +320,36 @@ export class FilterService {
     },
     {
       key: 'status',
-
       props: { label: 'Entity Status', group: 'accordion' },
       fieldGroup: [
         {
           key: 'statusId',
           id: 'status',
           type: 'multicheckbox',
-
           props: {
             label: 'Entity Status',
             labelClass: 'usa-sr-only',
             hideOptional: true,
             options: [
               {
-                key: '1,2',
-                value: 'Work in Progress Registration',
+                value: '1,2',
+                label: 'Work in Progress Registration',
               },
               {
-                key: '3',
-                value: 'Submitted Registration',
+                value: '3',
+                label: 'Submitted Registration',
               },
               {
-                key: '4',
-                value: 'Active Registration',
+                value: '4',
+                label: 'Active Registration',
               },
               {
-                key: '7',
-                value: 'Inactive Registration',
+                value: '7',
+                label: 'Inactive Registration',
               },
               {
-                key: '12',
-                value: 'ID Assigned',
+                value: '12',
+                label: 'ID Assigned',
               },
             ],
           },
@@ -357,8 +358,7 @@ export class FilterService {
     },
     {
       key: 'requestTypesOptions',
-
-      props: { group: 'panel' },
+      props: { group: 'panel', label: 'Request Type Options' },
       fieldGroup: [
         {
           key: 'requestType',
@@ -395,7 +395,6 @@ export class FilterService {
           type: 'radio',
           props: {
             label: 'Expiration Date',
-
             labelClass: 'margin-bottom-1',
             hideOptional: true,
             defaultValue: null,

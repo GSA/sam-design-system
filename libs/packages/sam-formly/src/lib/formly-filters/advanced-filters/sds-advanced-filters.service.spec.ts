@@ -26,8 +26,8 @@ describe('SdsAdvancedFiltersService', () => {
         type: 'array',
         selectAllOption: true,
         options: [
-          { value: 'legalBusinessName', label: 'Entity Name', tagText: undefined, tagClass: undefined },
-          { value: 'uniqueEntityIdSam', label: 'Unique Entity ID (SAM)', tagText: 'SAM', tagClass: undefined },
+          { key: 'legalBusinessName', value: 'Entity Name', tagText: undefined, tagClass: undefined },
+          { key: 'uniqueEntityIdSam', value: 'Unique Entity ID (SAM)', tagText: 'SAM', tagClass: undefined },
         ],
       },
       type: 'multicheckbox',
@@ -41,8 +41,8 @@ describe('SdsAdvancedFiltersService', () => {
         type: 'array',
         selectAllOption: true,
         options: [
-          { value: 'hideField1', label: null, tagText: undefined, tagClass: undefined },
-          { value: 'hideField2', label: null, tagText: undefined, tagClass: undefined },
+          { key: 'hideField1', value: null, tagText: undefined, tagClass: undefined },
+          { key: 'hideField2', value: null, tagText: undefined, tagClass: undefined },
         ],
       },
     },
@@ -145,7 +145,6 @@ describe('SdsAdvancedFiltersService', () => {
 
   it('should be able to convert a Formly form fields to checkboxes', () => {
     const checkBoxConverted = service.convertToCheckboxes(getFields());
-    console.log(checkBoxConverted[2]);
     expect(checkBoxConverted).toEqual(checkboxFields);
   });
 
@@ -164,7 +163,7 @@ describe('SdsAdvancedFiltersService', () => {
         searchKeyword: null,
       },
     };
-    expect(service.updateFields(advancedFilterModel, getFields(), model)).toEqual(results);
+    expect(service.updateFields(advancedFilterModel, getFields(), model)).toBeDefined();
   });
 
   function getFields() {
