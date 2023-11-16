@@ -19,7 +19,7 @@
                 type="checkbox"
                 [name]="id + '_name_' + i + j"
                 [disabled]="opt.disabled"
-                [value]="opt.key"
+                [value]="opt.label"
                 [formlyAttributes]="field"
                 (change)="onChange(opt.value, $event.target.checked)"
                 [checked]="isChecked(opt)"
@@ -32,7 +32,7 @@
                 >
                   {{option.value[j].tagText}}
                 </span>
-                <span [innerHtml]="opt.value"></span>
+                <span [innerHtml]="opt.label"></span>
               </label>
             </div>
             <div *ngIf="option.value[j].tooltipText" class="margin-left-1">
@@ -107,9 +107,9 @@
             type="checkbox"
             [name]="id + '_name_' + i"
             [disabled]="option.disabled"
-            [value]="option.value"
+            [value]="option.label"
             [formlyAttributes]="field"
-            (change)="onMainOptionChange(option.key, $event.target.checked, props.options, id)"
+            (change)="onMainOptionChange(option.value, $event.target.checked, props.options, id)"
             [checked]="isChecked(option)"
           />
           <label class="usa-checkbox__label" [ngClass]="{'margin-top-0': i==0}" [for]="id + '_' + i">
@@ -120,7 +120,8 @@
             >
               {{option.tagText}}
             </span>
-            <span [innerHtml]="option.value"></span>
+
+            <span [innerHtml]="option.label"></span>
           </label>
         </div>
         <div *ngIf="option.tooltipText" class="margin-left-1">
@@ -146,7 +147,7 @@
               [value]="option.props.label"
               [checked]="checkSubOption(option.props.options, i)"
               [attr.aria-checked]="subOptionAriaChecked[i]"
-              (change)="onMainOptionChange(option.key, $event.target.checked, props.options, id)"
+              (change)="onMainOptionChange(option.value, $event.target.checked, props.options, id)"
             />
             <!-- setAllSubList($event, option, i)" /> -->
             <label class="usa-checkbox__label" [for]="id + '_' + i">
@@ -167,7 +168,7 @@
                 type="checkbox"
                 [name]="id + '_' + i + '_name_' + j"
                 [disabled]="subOption.disabled"
-                [value]="subOption.value"
+                [value]="subOption.label"
                 [formlyAttributes]="field"
                 (change)="onSubOptionChange(subOption, $event.target.checked, option.props.options, i)"
                 [checked]="isChecked(subOption)"
@@ -180,7 +181,7 @@
                 >
                   {{option.tagText}}
                 </span>
-                <span [innerHtml]="subOption.value"></span>
+                <span [innerHtml]="subOption.label"></span>
               </label>
             </div>
             <div *ngIf="subOption.tooltipText" class="margin-left-1">

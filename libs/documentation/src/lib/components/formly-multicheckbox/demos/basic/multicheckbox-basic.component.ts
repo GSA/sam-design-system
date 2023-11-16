@@ -25,17 +25,17 @@ export class MultiCheckboxBasic {
         required: true,
         options: [
           {
-            key: 'vet',
-            value: 'Veteran Owned',
+            value: 'vet',
+            label: 'Veteran Owned',
             tagText: 'Tag',
           },
           {
-            key: 'women',
-            value: 'Women Owned (<a href="javascript:void(0)">HTML content for label</a>)',
+            value: 'women',
+            label: 'Women Owned (<a href="javascript:void(0)">HTML content for label</a>)',
           },
           {
-            key: 'minority',
-            value: 'Minority Owned',
+            value: 'minority',
+            label: 'Minority Owned',
           },
         ],
       },

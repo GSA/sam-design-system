@@ -21,23 +21,23 @@ export class MultiCheckboxGroup {
         groupOptions: {
           'Contract Opportunities': [
             {
-              key: 'DE1',
-              value: 'Data entry',
+              value: 'DE1',
+              label: 'Data entry',
               tagText: 'Tag',
             },
             {
-              key: 'LD',
-              value: 'Listing Data',
+              value: 'LD',
+              label: 'Listing Data',
             },
           ],
           Entities: [
             {
-              key: 'POR',
-              value: 'Purpose of Registration',
+              value: 'POR',
+              label: 'Purpose of Registration',
             },
             {
-              key: 'LBN',
-              value: 'Legal Business Name',
+              value: 'LBN',
+              label: 'Legal Business Name',
               tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
             },
           ],

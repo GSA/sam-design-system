@@ -28,7 +28,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
   }
 
   checkSubOption(allSubOptions, index) {
-    let allKeys = allSubOptions.map((opt) => opt.key);
+    let allKeys = allSubOptions.map((opt) => opt.value);
     const uniqValues = {};
     if (this.formControl.value) {
       this.formControl.value.forEach((i) => (uniqValues[i] = true));
@@ -49,9 +49,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
     let index = this.getIndex(id);
     let allKeys: string[] = [];
     allSubOptions.map((opt) => {
-      allKeys.push(opt.key);
+      allKeys.push(opt.value);
       if (opt.props && opt.props.options) {
-        opt.props.options.map((subOpt) => allKeys.push(subOpt.key));
+        opt.props.options.map((subOpt) => allKeys.push(subOpt.value));
       }
     });
     let uniqValues = {};
@@ -73,7 +73,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
   }
 
   onSubOptionChange(subOption: any, checked: boolean, allSubOptions: any, index: number) {
-    this.onChange(subOption.key, checked);
+    this.onChange(subOption.value, checked);
     let checkedValues = [];
     allSubOptions.forEach((subOpt) => {
       checkedValues.push(this.isChecked(subOpt));
@@ -95,7 +95,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
         mainOpt.props.options.forEach((subOpt) => {
           checkedValues.push(this.isChecked(subOpt));
         });
-        if (mainOpt.key === value) this.setAllSubList(checked, mainOpt, i);
+        if (mainOpt.value === value) this.setAllSubList(checked, mainOpt, i);
       }
     });
     if (checkedValues.every((val, _i, arr) => val === arr[0])) {
@@ -129,11 +129,11 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
     }
 
     if (this.props.type === 'array') {
-      return this.formControl.value.includes(option.key) && option.value != 'false';
+      return this.formControl.value.includes(option.value) && option.value != 'false';
     } else if (this.props.groupOptions && this.formControl.value[option.value]) {
       return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
-    } else if (this.formControl.value[option.key]) {
-      return this.formControl.value[option.key] && this.formControl.value[option.key] != 'false';
+    } else if (this.formControl.value[option.value]) {
+      return this.formControl.value[option.value] && this.formControl.value[option.value] != 'false';
     }
   }
 
@@ -141,9 +141,9 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
     this.subOptionAriaChecked[index] = checked ? 'true' : 'false';
     if (Array.isArray(subList.props.options)) {
       this.field.props.options.forEach((subOption) => {
-        if (subOption['key'] === subList.key) {
+        if (subOption['value'] === subList.value) {
           subOption['props'].options.map((item) => {
-            this.onChange(item.key, checked);
+            this.onChange(item.value, checked);
           });
         }
       });
@@ -161,7 +161,7 @@ export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig
     if (Array.isArray(this.field.props.options)) {
       this.formControl.setValue([]);
       this.field.props.options.map((option, index) => {
-        this.onChange(option.key, ev.target.checked);
+        this.onChange(option.value, ev.target.checked);
         if (option.props) {
           this.setAllSubList(ev.target.checked, option, index);
         }
