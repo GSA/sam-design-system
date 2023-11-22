@@ -64,10 +64,10 @@ export function autocompleteRequired(control: UntypedFormControl): ValidationErr
         required: multiCheckboxRequired
       },
  */
-export function multiCheckboxRequired(control: UntypedFormControl): ValidationErrors {
-  const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
-  return hasTrueKeys ? { required: true } : null;
-}
+// export function multiCheckboxRequired(control: UntypedFormControl): ValidationErrors {
+//   const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
+//   return hasTrueKeys ? { required: true } : null;
+// }
 /**
  *
  * @param control

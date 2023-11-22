@@ -44,7 +44,6 @@ export class SdsAdvancedFiltersService {
     const options = [];
     if (origField.fieldGroup?.length) {
       origField.fieldGroup.forEach((field) => {
-        defaultValue = [];
         if (field.fieldGroup?.length) {
           options.push(this.createMulticheckbox(field, defaultValue));
         } else {
@@ -57,10 +56,12 @@ export class SdsAdvancedFiltersService {
           };
 
           options.push(option);
-          if (!origField.hide && !field.hide) {
-            defaultValue.push(field.key);
-            defaultValue.push(origField.key);
-          }
+          const item = {
+            key: origField.key,
+            value: field.key,
+          };
+          defaultValue.push(item);
+          // defaultValue.push(field.key);
         }
       });
     }
@@ -82,7 +83,14 @@ export class SdsAdvancedFiltersService {
         label: origField.props.label,
       };
     }
-    field.defaultValue = defaultValue;
+
+    const dlist = defaultValue.filter((x) => x.key === origField.key);
+    let list = [];
+    dlist.forEach((x) => {
+      list.push(x.value);
+    });
+
+    field.defaultValue = list;
     return field;
   }
 
@@ -132,22 +140,9 @@ export class SdsAdvancedFiltersService {
   updateSingleField(field: any, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
     let key = field.key;
     if (fieldSelected) {
-      // field['hide'] = false;
-      // field.expressions = {
-      //   hide: 'false',
-      // };
       field.hide = false;
-      // field = {
-      // ...field,
-      // hide : false
-      // }
     } else {
-      // field['hide'] = true;
       field.hide = true;
-      // field.expressions = {
-      //   hide: 'true',
-      // },
-      //field.hide = true;
       field.props = {
         ...field.props,
         required: false,

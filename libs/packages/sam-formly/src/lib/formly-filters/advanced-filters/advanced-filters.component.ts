@@ -82,6 +82,7 @@ export class AdvancedFiltersComponent implements OnInit {
   }
 
   onSelectAllChange(selectAllValue, selectedform, isOnload, selectAllField) {
+
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);
     const keys = Object.keys(selectedform.get(this.filtersFieldGroupKey).controls);
     if (!isOnload) {
@@ -99,15 +100,9 @@ export class AdvancedFiltersComponent implements OnInit {
                     array.push(option.value);
                   });
                 }
-              });
+              });   
 
-
-console.log(array, 'arrarradyfyf', selectedform.get(this.filtersFieldGroupKey).get(key).value, selectedform.get(this.filtersFieldGroupKey))
-   selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
-array.forEach(x => {
-selectedform.get(this.filtersFieldGroupKey).get("location").setValue(["city","zipCode", "state"]);
-})
-             
+             selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);          
             } else {
               if (this.enablePopover) {
                 selectedform.get(this.filtersFieldGroupKey).get(key).setValue(false);
@@ -154,38 +149,6 @@ selectedform.get(this.filtersFieldGroupKey).get("location").setValue(["city","zi
       fields: checkboxFieldConfigs,
       submit: 'Update',
       title: 'More Filters',
-// model: {
-//  "filterToggle": {
-//     "filters": {
-//       "searchEntity": [
-//         "legalBusinessName",
-//         "uniqueEntityIdDuns",
-//         "uniqueEntityIdSam",
-//         "cageCode"
-//       ],
-//       "purposeOfRegistration": true,
-//       "startDate": true,
-//       "entityType": true,
-//       "socioEconomicStatus": true,
-//       "serviceClassifications": {
-//         "naicsCode":true,
-//         "productServiceCode":false,
-//       },
-//       "location": {
-//         "country":true,
-//         "zipCode":true,
-//         "state":true,
-//         "city":true,
-//         "congressionalDistrict":false,
-//       },
-//       "status": [],
-//       "entityStatus": [],
-//       "requestTypesOptions": [],
-//       "expirationDate": []
-//     },
-//     "selectAll": false
-//   }
-// }
 
     };
 
