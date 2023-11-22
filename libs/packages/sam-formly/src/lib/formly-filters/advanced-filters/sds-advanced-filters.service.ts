@@ -44,16 +44,18 @@ export class SdsAdvancedFiltersService {
     const options = [];
     if (origField.fieldGroup?.length) {
       origField.fieldGroup.forEach((field) => {
+        defaultValue = [];
         if (field.fieldGroup?.length) {
           options.push(this.createMulticheckbox(field, defaultValue));
         } else {
           const label = field.props && field.props.label ? field.props.label : null;
           const option = {
-            key: field.key,
-            value: label,
+            value: field.key,
+            label: label,
             tagText: field.props.tagText,
             tagClass: field.props.tagClass,
           };
+
           options.push(option);
           if (!origField.hide && !field.hide) {
             defaultValue.push(field.key);
@@ -80,10 +82,7 @@ export class SdsAdvancedFiltersService {
         label: origField.props.label,
       };
     }
-
-    if (!origField.hide) {
-      field.defaultValue = defaultValue;
-    }
+    field.defaultValue = defaultValue;
     return field;
   }
 
@@ -111,7 +110,7 @@ export class SdsAdvancedFiltersService {
     originalfields: FormlyFieldConfig[]
   ) {
     if (selectedFields && (selectedFields.length || typeof selectedFields === 'boolean')) {
-      parentField['hide'] = false;
+      parentField.hide = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {
           const key = field.key;
@@ -123,26 +122,28 @@ export class SdsAdvancedFiltersService {
         });
       }
     } else {
-      parentField['hide'] = true;
+      parentField.hide = true;
       parentField.fieldGroup.forEach((field) => {
         this.updateSingleField(field, false, model, originalfields);
       });
     }
   }
 
-  updateSingleField(field: FormlyFieldConfig, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
+  updateSingleField(field: any, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
+    let key = field.key;
     if (fieldSelected) {
-      field['hide'] = false;
+      // field['hide'] = false;
       // field.expressions = {
       //   hide: 'false',
       // };
-      // field.hide = false;
+      field.hide = false;
       // field = {
       // ...field,
       // hide : false
       // }
     } else {
-      field['hide'] = true;
+      // field['hide'] = true;
+      field.hide = true;
       // field.expressions = {
       //   hide: 'true',
       // },
@@ -151,11 +152,11 @@ export class SdsAdvancedFiltersService {
         ...field.props,
         required: false,
       };
-      // if (field.formControl) {
-      //  // field.options.resetModel();
-      // } else {
-      //   model[field.key.toString()] = null;
-      // }
+      if (field.formControl) {
+        field.formControl.reset(null);
+      } else {
+        model[key] = null;
+      }
     }
   }
 }

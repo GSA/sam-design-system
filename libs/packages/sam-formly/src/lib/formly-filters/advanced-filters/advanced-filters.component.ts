@@ -72,7 +72,7 @@ export class AdvancedFiltersComponent implements OnInit {
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (!this.enablePopover) {
@@ -89,22 +89,25 @@ export class AdvancedFiltersComponent implements OnInit {
       keys.forEach((key) => {
         if (key !== 'selectAll' && key !== 'showInactive') {
           let currentField = modalFields.find((item) => item.key === key);
-          if (currentField.key === key && currentField.type === 'checkbox') {
-            selectedform.get(this.filtersFieldGroupKey).get(key).setValue(this.selectAll);
-          } else if (currentField.type === 'multicheckbox') {
+          if (currentField.type === 'multicheckbox') {
             const array = [];
             if (this.selectAll) {
               currentField.props.options.forEach((option: any) => {
-                array.push(option.key);
+                array.push(option.value);
                 if (option.type === 'multicheckbox') {
                   option.props.options.forEach((option: any) => {
-                    array.push(option.key);
+                    array.push(option.value);
                   });
                 }
               });
-              selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
 
-              this.cdr.detectChanges();
+
+console.log(array, 'arrarradyfyf', selectedform.get(this.filtersFieldGroupKey).get(key).value, selectedform.get(this.filtersFieldGroupKey))
+   selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
+array.forEach(x => {
+selectedform.get(this.filtersFieldGroupKey).get("location").setValue(["city","zipCode", "state"]);
+})
+             
             } else {
               if (this.enablePopover) {
                 selectedform.get(this.filtersFieldGroupKey).get(key).setValue(false);
@@ -112,6 +115,8 @@ export class AdvancedFiltersComponent implements OnInit {
                 selectedform.get(this.filtersFieldGroupKey).get(key).setValue([]);
               }
             }
+          } else if (currentField.key === key && currentField.type === 'checkbox') {
+            selectedform.get(this.filtersFieldGroupKey).get(key).setValue(this.selectAll);
           }
         }
       });
@@ -149,6 +154,39 @@ export class AdvancedFiltersComponent implements OnInit {
       fields: checkboxFieldConfigs,
       submit: 'Update',
       title: 'More Filters',
+// model: {
+//  "filterToggle": {
+//     "filters": {
+//       "searchEntity": [
+//         "legalBusinessName",
+//         "uniqueEntityIdDuns",
+//         "uniqueEntityIdSam",
+//         "cageCode"
+//       ],
+//       "purposeOfRegistration": true,
+//       "startDate": true,
+//       "entityType": true,
+//       "socioEconomicStatus": true,
+//       "serviceClassifications": {
+//         "naicsCode":true,
+//         "productServiceCode":false,
+//       },
+//       "location": {
+//         "country":true,
+//         "zipCode":true,
+//         "state":true,
+//         "city":true,
+//         "congressionalDistrict":false,
+//       },
+//       "status": [],
+//       "entityStatus": [],
+//       "requestTypesOptions": [],
+//       "expirationDate": []
+//     },
+//     "selectAll": false
+//   }
+// }
+
     };
 
     const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {

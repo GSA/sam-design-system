@@ -20,100 +20,105 @@ export class FilterService {
   public keywordChangeSubject = new Subject();
 
   public fields: FormlyFieldConfig[] = [
-    {
-      key: 'keyword',
-      wrappers: ['tabs'],
-      props: {
-        label: 'Keyword Search',
-        description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
-        hideOptional: true,
-        tabClass: 'sds-tabs--formly',
-      },
-      // fieldArray: {
-      fieldGroup: [
-        // tab 1
-        {
-          props: {
-            tabHeader: 'Simple Search',
-            label: 'Simple Search',
-          },
-          id: 'Tab1',
-          fieldGroup: [
-            {
-              key: 'keywordRadio',
-              type: 'radio',
-              defaultValue: 'anyWords',
-              props: {
-                label: 'Keyword Radio',
-                options: [
-                  {
-                    label: 'Any Words',
-                    value: 'anyWords',
-                  },
-                  {
-                    label: 'All Words',
-                    value: 'allWords',
-                  },
-                  {
-                    label: 'Exact Match',
-                    value: 'exactMatch',
-                  },
-                ],
-              },
-            },
-            {
-              key: 'keywordTags',
-              type: 'autocomplete',
-              props: {
-                label: 'Keyword Tags',
-                expand: false,
-                configuration: {
-                  id: 'keyword',
-                  primaryKeyField: 'key',
-                  primaryTextField: 'text',
-                  labelText: 'Search Keyword',
-                  selectionMode: SelectionMode.MULTIPLE,
-                  autocompletePlaceHolderText: '',
-                  isTagModeEnabled: true,
-                },
-              },
-            },
-          ],
-        },
-        //tab 2
-        {
-          id: 'Tab2',
-          props: {
-            tabHeader: 'Search Editor',
-            label: 'Search Editor',
-            submitButtonId: 'booleanSearchSubmit',
-          },
-          fieldGroup: [
-            {
-              key: 'keywordTextarea',
-              type: SdsFormlyTypes.TEXTAREA,
-              className: 'display-block padding-left-2 padding-right-2',
-              props: {
-                label: 'Keyword TextArea',
-                placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
-                required: true,
-              },
-            },
-            {
-              type: SdsFormlyTypes.BUTTON,
-              id: 'booleanSearchSubmit',
-              className: 'display-block margin-top-1 padding-left-2 padding-right-2',
-              props: {
-                label: 'Submit Button',
-                text: 'Search',
-                type: 'submit',
-              },
-            },
-          ],
-        },
-      ],
-      // },
-    },
+    // {
+    //   key: 'keyword',
+    //   wrappers: ['tabs'],
+    //   props: {
+    //     label: 'Keyword Search',
+    //     description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
+    //     hideOptional: true,
+    //     tabClass: 'sds-tabs--formly',
+    //   },
+    //   // fieldArray: {
+    //   fieldGroup: [
+    //     // tab 1
+    //     {
+    //       props: {
+    //         tabHeader: 'Simple Search',
+    //         label: 'Simple Search',
+    //         key: 'simpleSearch',
+    //       },
+    //       id: 'Tab1',
+    //       defaultValue: {},
+    //       fieldGroup: [
+    //         {
+    //           key: 'keywordRadio',
+    //           type: 'radio',
+    //           defaultValue: 'anyWords',
+    //           props: {
+    //             label: 'Keyword Radio',
+    //             options: [
+    //               {
+    //                 label: 'Any Words',
+    //                 value: 'anyWords',
+    //               },
+    //               {
+    //                 label: 'All Words',
+    //                 value: 'allWords',
+    //               },
+    //               {
+    //                 label: 'Exact Match',
+    //                 value: 'exactMatch',
+    //               },
+    //             ],
+    //           },
+    //         },
+    //         {
+    //           key: 'keywordTags',
+    //           type: 'autocomplete',
+    //           props: {
+    //             label: 'Keyword Tags',
+    //             expand: false,
+    //             configuration: {
+    //               id: 'keyword',
+    //               primaryKeyField: 'key',
+    //               primaryTextField: 'text',
+    //               labelText: 'Search Keyword',
+    //               selectionMode: SelectionMode.MULTIPLE,
+    //               autocompletePlaceHolderText: '',
+    //               isTagModeEnabled: true,
+    //             },
+    //           },
+    //         },
+    //       ],
+    //     },
+    //     //tab 2
+    //     {
+    //       id: 'Tab2',
+    //       defaultValue: {},
+    //       props: {
+    //         tabHeader: 'Search Editor',
+    //         key: 'searchEditor',
+    //         label: 'Search Editor',
+    //         submitButtonId: 'booleanSearchSubmit',
+    //       },
+    //       fieldGroup: [
+    //         {
+    //           key: 'keywordTextarea',
+    //           type: SdsFormlyTypes.TEXTAREA,
+    //           className: 'display-block padding-left-2 padding-right-2',
+    //           props: {
+    //             label: 'Keyword TextArea',
+    //             placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
+    //             required: true,
+    //           },
+    //         },
+    //         {
+    //           type: SdsFormlyTypes.BUTTON,
+    //           id: 'booleanSearchSubmit',
+    //           key: 'searchSubmit',
+    //           className: 'display-block margin-top-1 padding-left-2 padding-right-2',
+    //           props: {
+    //             label: 'Submit Button',
+    //             text: 'Search',
+    //             type: 'submit',
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   ],
+    //   // },
+    // },
     {
       key: 'searchEntity',
       className: 'margin-top-0',
@@ -319,7 +324,7 @@ export class FilterService {
       ],
     },
     {
-      key: 'status',
+      key: 'entityStatus',
       props: { label: 'Entity Status', group: 'accordion' },
       fieldGroup: [
         {
