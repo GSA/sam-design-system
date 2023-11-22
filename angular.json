@@ -170,6 +170,10 @@
                   "maximumError": "6mb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true
             }
           },
           "defaultConfiguration": ""
@@ -182,6 +186,9 @@
           "configurations": {
             "production": {
               "browserTarget": "sam-design-system-site:build:production"
+            },
+            "development": {
+              "browserTarget": "sam-design-system-site:build:development"
             }
           }
         },
