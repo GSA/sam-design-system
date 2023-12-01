@@ -14,7 +14,7 @@
       [ngTemplateOutletContext]="{
     $implicit: option,
     i: i,
-    to:to,
+    props:props,
     field: field,
     id: id,
     showError: showError,
@@ -93,7 +93,7 @@
   </div>
 </form>
 
-<ng-template let-option let-i="i" let-to="to" #defaultTemplate>
+<ng-template let-option let-i="i" let-props="props" #defaultTemplate>
   <div class="grid-row" [ngClass]="{'horizontal-option': props.horizontal ,'margin-top-1': props.description && i==0 }">
     <div>
       <input

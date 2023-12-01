@@ -10,7 +10,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         'usa-input--error': showError
       }"
       class="usa-input padding-right-3"
-      [placeholder]="to.placeholder"
+      [placeholder]="props.placeholder"
       name="input-success"
       [formlyAttributes]="field"
       [type]="props.inputType ? props.inputType : 'text'"

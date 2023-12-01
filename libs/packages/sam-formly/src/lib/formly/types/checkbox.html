@@ -4,7 +4,7 @@
       <ng-container
         [ngTemplateOutlet]="(props.template)"
         [ngTemplateOutletContext]="{
-        $implicit: to,
+        $implicit: props,
         showError: showError,
         formControl: formControl,
         field: field,
