@@ -244,7 +244,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   onResetClicked() {
     const fieldChangeEvent: FormlyValueChangeEvent = {
-      field: undefined,
+      field: {key:''},
       type: 'resetAll',
       value: undefined,
     };

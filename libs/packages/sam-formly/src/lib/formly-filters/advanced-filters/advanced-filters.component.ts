@@ -65,14 +65,14 @@ export class AdvancedFiltersComponent implements OnInit {
   showInactiveOnOpen = false;
   showInactive = false;
   popoverContent: FormlyFieldConfig[];
-
+  dialogModel = {};
   readonly filtersFieldGroupKey = 'filters';
 
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit() {
     if (!this.enablePopover) {
@@ -82,8 +82,9 @@ export class AdvancedFiltersComponent implements OnInit {
   }
 
   onSelectAllChange(selectAllValue, selectedform, isOnload, selectAllField) {
-
-    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);
+    this.dialogModel = {};
+    const res = this.advancedFiltersService.convertToCheckboxes(this.fields);
+    const modalFields: FormlyFieldConfig[] = res.fields;
     const keys = Object.keys(selectedform.get(this.filtersFieldGroupKey).controls);
     if (!isOnload) {
       this.selectAll = selectAllValue;
@@ -100,9 +101,11 @@ export class AdvancedFiltersComponent implements OnInit {
                     array.push(option.value);
                   });
                 }
-              });   
-
-             selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);          
+              });
+              //this.model[this.filtersFieldGroupKey][key] = array;
+              //this.cdr.detectChanges();
+              // selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array.includes(key));
+              //selectedform.get(this.filtersFieldGroupKey).get(key).setValue(array);
             } else {
               if (this.enablePopover) {
                 selectedform.get(this.filtersFieldGroupKey).get(key).setValue(false);
@@ -149,7 +152,7 @@ export class AdvancedFiltersComponent implements OnInit {
       fields: checkboxFieldConfigs,
       submit: 'Update',
       title: 'More Filters',
-
+      model: { filterToggle: { filters: this.dialogModel } },
     };
 
     const dialogRef: any = this.dialog.open(SdsFormlyDialogComponent, {
@@ -182,10 +185,10 @@ export class AdvancedFiltersComponent implements OnInit {
   }
 
   getCheckboxFieldConfigs(hideChildrenGroups = false) {
-    const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
-      this.fields,
-      hideChildrenGroups
-    );
+    const checkboxResponce = this.advancedFiltersService.convertToCheckboxes(this.fields, hideChildrenGroups);
+    const modalFields: FormlyFieldConfig[] = checkboxResponce.fields;
+    this.dialogModel = checkboxResponce.model;
+
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
         a.props && b.props ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy]) : 0

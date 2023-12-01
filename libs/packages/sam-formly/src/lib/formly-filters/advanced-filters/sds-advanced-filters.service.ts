@@ -6,8 +6,8 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class SdsAdvancedFiltersService {
   constructor() {}
-
-  convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
+  dialogModel = {};
+  convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): any {
     const fields: FormlyFieldConfig[] = [];
     const defaultValue = [];
     origFields.forEach((origField) => {
@@ -20,7 +20,7 @@ export class SdsAdvancedFiltersService {
           const field: FormlyFieldConfig = {
             type: 'checkbox',
             key: origField.key,
-            defaultValue: !origField.hide,
+            // defaultValue: !origField.hide,
             props: {
               hideOptional: true,
             },
@@ -33,10 +33,12 @@ export class SdsAdvancedFiltersService {
             };
           }
           fields.push(field);
+          this.dialogModel[origField.key.toString()] = !origField.hide;
         }
       }
     });
-    return fields;
+    // return fields;
+    return { model: this.dialogModel, fields: fields };
   }
 
   // TODO: Should be changed so option has label field instead of key but multicheckbox field type must be updated so default value still works
@@ -89,8 +91,8 @@ export class SdsAdvancedFiltersService {
     dlist.forEach((x) => {
       list.push(x.value);
     });
-
-    field.defaultValue = list;
+    this.dialogModel[origField.key.toString()] = list;
+    // field.defaultValue = list;
     return field;
   }
 

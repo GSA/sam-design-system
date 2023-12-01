@@ -4,6 +4,7 @@ import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { SdsFormlyDialogData } from './formly-dialog-data.model';
 import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';
+import { startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'sds-formly-dialog',
@@ -37,6 +38,7 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
     this.disableSubmitButton = this.data.disableSubmitButtonEnabled ? this.data.disableSubmitButtonEnabled : false;
+
   }
 
   onSubmit() {
@@ -46,9 +48,5 @@ export class SdsFormlyDialogComponent implements OnInit {
   onCancel() {
     this.options.resetModel();
     this.cancelFn.emit(this.model);
-  }
-
-  modelChange() {
-    this.cdr.detectChanges();
   }
 }

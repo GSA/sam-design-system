@@ -168,7 +168,6 @@ describe('The Sam Filters Component', () => {
         searchEntity: null,
       };
       const result = component.overwrite(component.form.getRawValue(), updateFormValue);
-      console.log(result);
       expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
     });
   });

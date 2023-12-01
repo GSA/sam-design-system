@@ -4,7 +4,6 @@
   <div sds-dialog-content class="padding-bottom-1">
     <formly-form [form]="form" [fields]="fields" [options]="options" [(model)]="model" ></formly-form>
   </div>
-<pre>{{model | json}}</pre>
   <div sds-dialog-actions>
     <button class="usa-button usa-button--base bg-base-lighter" (click)="onCancel()" type="button">
       {{ cancel }}
