@@ -23,7 +23,10 @@
   <button type="submit">Submit</button>
 </form>
 
-<ng-template #replacementTemplate let-fields="fields" let-form="form" let-model="model" let-modelChange="modelChange">
+<ng-template #replacementTemplate let-fields="fields" let-props="fields[0].props" let-form="form" let-model="model"
+  let-modelChange="modelChange">
   <p>Custom</p>
-  <formly-form [fields]="fields" [form]="form" (modelChange)="onModelChange($event)"></formly-form>
+  <div>
+    <pre>{{form.value |json}}</pre>
+  </div>
 </ng-template>
