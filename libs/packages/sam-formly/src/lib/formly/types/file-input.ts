@@ -34,9 +34,9 @@ export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements 
   }
 
   onSelectedFilesChange(ev) {
-    //this.form.setValue(ev);
-    // this.selectedFiles = ev;
+   this.modelChange.next(ev);
   }
+
   public ngOnInit(): void {
     if (this.field && this.props.tableColumns)
       this.displayedColumns = this.props.tableColumns.map((column) => column.columnName);
