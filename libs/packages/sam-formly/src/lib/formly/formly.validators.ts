@@ -54,7 +54,7 @@ export function autocompleteRequired(control: UntypedFormControl): ValidationErr
  *  Override the required validator to allow multicheckbox to behave more like required atleast one item is selected
  *  the other inputs regarding error messages
  *
- // In the formly config
+ In the formly config
  {
       type: 'multicheckbox',
       props: {
@@ -64,10 +64,10 @@ export function autocompleteRequired(control: UntypedFormControl): ValidationErr
         required: multiCheckboxRequired
       },
  */
-// export function multiCheckboxRequired(control: UntypedFormControl): ValidationErrors {
-//   const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
-//   return hasTrueKeys ? { required: true } : null;
-// }
+export function multiCheckboxRequired(control: UntypedFormControl): ValidationErrors {
+  const hasTrueKeys = Object.keys(control.value).some((k) => control.value[k]);
+  return hasTrueKeys ? { required: true } : null;
+}
 /**
  *
  * @param control
