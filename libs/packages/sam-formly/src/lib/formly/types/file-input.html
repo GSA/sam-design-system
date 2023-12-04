@@ -1,39 +1,59 @@
-<usa-file-input #fileInput [formControl]="formControl" [id]="id" 
-[acceptFileType]="props.acceptFileType"
-[multiple]="props.multiple" 
-[hint]="props.hint"
-[disabled]="props.disabled"
-[clearFilesOnAdd]="props.clearFilesOnAdd"
-[displayFileInfo]="props.displayFileInfo"
-[uploadRequest]="props.uploadRequest"
-(selectedFilesChange)="onSelectedFilesChange($event)">
+<usa-file-input
+  #fileInput
+  [formControl]="formControl"
+  [id]="id"
+  [acceptFileType]="props.acceptFileType"
+  [multiple]="props.multiple"
+  [hint]="props.hint"
+  [disabled]="props.disabled"
+  [clearFilesOnAdd]="props.clearFilesOnAdd"
+  [displayFileInfo]="props.displayFileInfo"
+  [uploadRequest]="props.uploadRequest"
+  (selectedFilesChange)="onSelectedFilesChange($event)"
+>
 </usa-file-input>
 
-<ng-container *ngIf="props.tableDisplay" [ngTemplateOutlet]="(props.template ? props.template : defaultTemplate)"
+<ng-container
+  *ngIf="props.tableDisplay"
+  [ngTemplateOutlet]="(props.template ? props.template : defaultTemplate)"
   [ngTemplateOutletContext]="{
         props: props,
         form: formControl,
         model: model,
         modelChange: modelChange
-      }">
+      }"
+>
 </ng-container>
 
-<ng-template let-props="props" let-data="data" let-form="form" let-model="model" let-modelChange="modelChange"
-  #defaultTemplate>
+<ng-template
+  let-props="props"
+  let-data="data"
+  let-form="form"
+  let-model="model"
+  let-modelChange="modelChange"
+  #defaultTemplate
+>
   <div class="margin-top-2"></div>
 
   <sds-table [data]="form.value" [tableName]="props.tableName" #fileTable>
     <sds-table-column *ngFor="let column of props.tableColumns" [sdsColumnName]="column.columnName">
       <ng-template #sdsHeaderCell>{{column.label}}</ng-template>
       <ng-template #sdsCell let-element="element">
-        <button class="usa-button usa-button--unstyled text-secondary-dark" *ngIf="column.onClick; else noClick"
-          (click)="column.onClick(element, field.parent)">
-          <ng-container [ngTemplateOutlet]="tableCellTemplates"
-            [ngTemplateOutletContext]="{$implicit: element, column: column}"></ng-container>
+        <button
+          class="usa-button usa-button--unstyled text-secondary-dark"
+          *ngIf="column.onClick; else noClick"
+          (click)="column.onClick(element, field.parent)"
+        >
+          <ng-container
+            [ngTemplateOutlet]="tableCellTemplates"
+            [ngTemplateOutletContext]="{$implicit: element, column: column}"
+          ></ng-container>
         </button>
         <ng-template #noClick>
-          <ng-container [ngTemplateOutlet]="tableCellTemplates"
-            [ngTemplateOutletContext]="{$implicit: element, column: column}"></ng-container>
+          <ng-container
+            [ngTemplateOutlet]="tableCellTemplates"
+            [ngTemplateOutletContext]="{$implicit: element, column: column}"
+          ></ng-container>
         </ng-template>
       </ng-template>
     </sds-table-column>

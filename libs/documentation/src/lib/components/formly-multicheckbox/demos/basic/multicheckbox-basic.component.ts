@@ -15,7 +15,7 @@ export class MultiCheckboxBasic {
     {
       key: 'entity.socioeconomic',
       type: 'multicheckbox',
-      
+
       props: {
         label: 'Socio-Economic Status',
         description: 'Select any socio-economic categories which reflect the current status of your entity',

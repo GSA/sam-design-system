@@ -23,10 +23,16 @@
   <button type="submit">Submit</button>
 </form>
 
-<ng-template #replacementTemplate let-fields="fields" let-props="fields[0].props" let-form="form" let-model="model"
-  let-modelChange="modelChange">
+<ng-template
+  #replacementTemplate
+  let-fields="fields"
+  let-props="fields[0].props"
+  let-form="form"
+  let-model="model"
+  let-modelChange="modelChange"
+>
   <p>Custom</p>
   <div>
-    <pre>{{form.value |json}}</pre>
+    <pre>{{ form.value | json }}</pre>
   </div>
 </ng-template>

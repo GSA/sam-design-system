@@ -34,7 +34,7 @@ export class FormlyFieldFileInputComponent extends AbstractSdsFormly implements 
   }
 
   onSelectedFilesChange(ev) {
-   this.modelChange.next(ev);
+    this.modelChange.next(ev);
   }
 
   public ngOnInit(): void {
