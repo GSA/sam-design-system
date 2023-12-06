@@ -46,8 +46,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   @Input() itemTemplate: TemplateRef<any>;
 
   // Access the container with ViewChild
-  @ViewChild('container') private container: ElementRef;
-  scrolled = false;
 
   /**
    * The data model that has the selected item
@@ -203,7 +201,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   checkForFocus(event): void {
     this.focusRemoved();
-    //this.showResults = false;
+    this.showResults = false;
   }
 
   /**
@@ -315,16 +313,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       }
     }
   }
-  onListScroll(event: any) {
-    // Depending on your layout you may need to adjust the threshold
-    // Here we're checking if the scrollTop is greater than 0 to determine if we've scrolled
-    this.scrolled = event.target.scrollTop > 10;
-    console.log('check');
-  }
-  scrollToTop() {
-    //this.resultsListElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    this.resultsListElement.nativeElement.scrollTop = 0;
-  }
   /**
    * selects the item adding it to the model and closes the results
    * @param item
@@ -341,20 +329,31 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       filterItem = item;
     }
     const isSelected = this.checkItemSelected(item);
-    SDSSelectedItemModelHelper.addItem(
-      filterItem,
-      this.configuration.primaryKeyField,
-      this.configuration.selectionMode,
-      this.model
-    );
-    this.propogateChange(this.model);
-    let message = this.getObjectValue(item, this.configuration.primaryTextField);
-    this.inputValue = message;
-    if (this.configuration.useCheckBoxes) {
-      if (isSelected) {
+    if (!isSelected) {
+      SDSSelectedItemModelHelper.addItem(
+        filterItem,
+        this.configuration.primaryKeyField,
+        this.configuration.selectionMode,
+        this.model
+      );
+      this.propogateChange(this.model);
+      let message = this.getObjectValue(item, this.configuration.primaryTextField);
+      this.inputValue = message;
+    }
+    if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
+      if (isSelected && this.configuration.useCheckBoxes) {
         this.unselectItem(item);
       }
       this.showResults = true;
+      this.inputValue = '';
+      this.input.nativeElement.focus();
+      const flat = this.getFlatElements();
+      const index = flat.findIndex(
+        (element) => element[this.configuration.primaryKeyField] === item[this.configuration.primaryKeyField]
+      );
+      this.highlightedIndex = index;
+      this.setHighlightedItem(flat[this.highlightedIndex]);
+      console.log('highlightedIndex', this.highlightedIndex);
     } else {
       this.showResults = false;
     }
@@ -363,10 +362,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   public unselectItem(item: any): void {
     SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
     this.propogateChange(this.model);
-  }
-
-  get itemCount(): number {
-    return this.model.items.length;
   }
 
   /**
@@ -405,7 +400,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.highlightedIndex >= 0) {
       this._changeDetectorRef.detectChanges();
       const dom = this.resultsListElement.nativeElement;
-      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+
+      let selectedClass = this.configuration.useCheckBoxes
+        ? '.sds-autocomplete__checkbox--highlighted'
+        : '.sds-autocomplete__item--highlighted';
+      const selectedChild = dom.querySelector(selectedClass);
+
       if (selectedChild) {
         // Manually set scroll top rather than invoke scroll functions for browser compatibility
         const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;
@@ -507,7 +507,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.showLoad = false;
             this.maxResults = result.totalItems;
 
-            this.highlightedIndex = this.configuration.isFreeTextEnabled || this.maxResults == 0 ? -1 : 0;
+            this.highlightedIndex =
+              this.configuration.isFreeTextEnabled || this.maxResults == 0
+                ? -1
+                : this.highlightedIndex >= 0
+                ? this.highlightedIndex
+                : 0;
             if (!this.configuration.isFreeTextEnabled) {
               this.setHighlightedItem(this.results[this.highlightedIndex]);
             }

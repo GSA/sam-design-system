@@ -128,32 +128,37 @@ span.icon-container {
   display: inline-block;
 }
 
-.sticky-button {
+.sds-selected__label {
   position: sticky;
   top: 0; 
   z-index: 1000; 
   background-color: rgb(38, 114, 222);
   padding: 10px; 
-  border: none;
-  border-bottom: 2px solid black;  
+  border: none; 
   cursor: pointer;
   width: 100%;  
   text-align: center;  
   color: white;  
   display: block;  
 }
-
-.sds-autocomplete__checkbox {
-  padding: 1rem 1rem 1rem 2rem;
-  &--selected{
-    background-color: rgb(38, 114, 222);
-    color: white !important;  
-  }
-  &--group{
-    //border-bottom: 2px solid black; 
-  }
+.sds-selected__label--disabled {
+  background-color: #c9c9c9;
 }
 
-.usa-checkbox__label {
-  margin-top: -5px !important;
+.sds-autocomplete__checkbox {
+  padding: 1rem;
+  margin-bottom: -4px;
+  cursor: pointer;
+  &--highlighted,
+  &:hover {
+    background-color: #EFF6FB !important; 
+  }
+  &--item {
+    font-weight: 600 !important;
+    display: inline;
+  }
+  &--secondary {
+    font-weight: 400 !important;
+    margin-left: 2rem;
+  }
 }

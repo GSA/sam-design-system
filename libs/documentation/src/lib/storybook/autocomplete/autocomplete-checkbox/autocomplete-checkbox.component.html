@@ -1,0 +1,11 @@
+<div class="margin-bottom-4">
+  <p>Autocomplete with Checkboxes</p>
+  <sds-autocomplete
+    [service]="service"
+    (ngModelChange)="changes($event)"
+    [(ngModel)]="model"
+    [configuration]="settings"
+  ></sds-autocomplete>
+</div>
+
+<pre>{{ model | json }}</pre>
