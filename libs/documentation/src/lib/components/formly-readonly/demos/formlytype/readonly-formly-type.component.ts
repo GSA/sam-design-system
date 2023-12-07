@@ -31,7 +31,7 @@ export class ReadonlyFormlyTypeComponent {
         label: 'Card Number',
         placeholder: '1234-5678-9012-3456',
         required: true,
-        maxlength: 16,
+        maxLength: 16,
       },
     },
     {
@@ -40,7 +40,7 @@ export class ReadonlyFormlyTypeComponent {
         label: 'Security Code',
         placeholder: '123',
         required: true,
-        maxlength: 4,
+        maxLength: 4,
       },
     },
     {
@@ -49,7 +49,7 @@ export class ReadonlyFormlyTypeComponent {
         label: 'Zip Code',
         placeholder: '12345',
         required: true,
-        maxlength: 5,
+        maxLength: 5,
       },
     },
   ];

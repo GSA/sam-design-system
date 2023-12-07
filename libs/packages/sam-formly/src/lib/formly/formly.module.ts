@@ -42,13 +42,13 @@ import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
-export function minlengthValidationMessage(err, field) {
-  return `Should have at least ${field.props.minlength} characters`;
+export function minLengthValidationMessage(err, field) {
+  return `Should have at least ${field.props.minLength} characters`;
 }
 
 // Validate the max length of the character
-export function maxlengthValidationMessage(err, field) {
-  return `This value should be less than ${field.props.maxlength} characters`;
+export function maxLengthValidationMessage(err, field) {
+  return `This value should be less than ${field.props.maxLength} characters`;
 }
 
 // Validate the min value of the character
@@ -188,8 +188,8 @@ export const DATE_FORMAT: MatDateFormats = {
 
       validationMessages: [
         { name: 'required', message: 'This field is required' },
-        { name: 'minlength', message: minlengthValidationMessage },
-        { name: 'maxlength', message: maxlengthValidationMessage },
+        { name: 'minLength', message: minLengthValidationMessage },
+        { name: 'maxLength', message: maxLengthValidationMessage },
         { name: 'min', message: minValidationMessage },
         { name: 'max', message: maxValidationMessage },
         { name: 'minDate', message: minDateValidationMessage },

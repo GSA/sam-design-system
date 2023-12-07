@@ -26,7 +26,7 @@ export class FormlyTextAreaConfigurableComponent {
         placeholder: 'eg: Acme Corporation is a federal contractor.',
         description: 'Enter the description for your entity.',
         required: true,
-        maxlength: 50,
+        maxLength: 50,
       },
     },
   ];

@@ -78,7 +78,7 @@ export class FormlyFormsComponent {
             required: true,
             type: 'number',
             label: 'ZIP Code (+ 4)',
-            maxlength: 5,
+            maxLength: 5,
             min: 0,
             pattern: '\\d{5}',
           },
@@ -96,7 +96,7 @@ export class FormlyFormsComponent {
           props: {
             required: true,
             label: 'Postal Code',
-            maxlength: 6,
+            maxLength: 6,
             min: 0,
             pattern: '\\d{5}',
           },

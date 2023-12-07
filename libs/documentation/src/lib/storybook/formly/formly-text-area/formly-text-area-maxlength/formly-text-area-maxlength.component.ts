@@ -16,7 +16,7 @@ export class FormlyTextAreaMaxlengthComponent {
       type: 'textarea',
       props: {
         label: 'Entity Description',
-        maxlength: 50,
+        maxLength: 50,
       },
     },
   ];

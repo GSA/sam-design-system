@@ -160,7 +160,7 @@ class StepperTestComponent {
     props: {
       label: 'Step 1',
       required: true,
-      minlength: 5,
+      minLength: 5,
     },
   };
 
