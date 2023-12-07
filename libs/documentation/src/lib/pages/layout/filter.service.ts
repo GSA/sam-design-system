@@ -216,6 +216,14 @@ export class FilterService {
       props: {
         label: 'Socio-Economic Status',
         group: 'accordion',
+ options: [
+          { label: 'Contract Opportunities', value: 'co' },
+          { label: 'Entity Information', value: 'ei' },
+          { label: 'Assistance Listings', value: 'al' },
+          { label: 'Contract Data', value: 'cd' },
+          { label: 'Federal Hierarchy', value: 'fh' },
+          { label: 'Wage Determination', value: 'wd' },
+        ],
       },
     },
     {
