@@ -216,7 +216,7 @@ export class FilterService {
       props: {
         label: 'Socio-Economic Status',
         group: 'accordion',
- options: [
+        options: [
           { label: 'Contract Opportunities', value: 'co' },
           { label: 'Entity Information', value: 'ei' },
           { label: 'Assistance Listings', value: 'al' },

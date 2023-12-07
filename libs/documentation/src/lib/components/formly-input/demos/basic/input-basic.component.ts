@@ -33,5 +33,36 @@ export class InputBasic {
           '<b>Corporate Entity,</b> Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes) ',
       },
     },
+
+    {
+      fieldGroupClassName: 'grid-row',
+      fieldGroup: [
+        {
+          className: 'grid-col-2',
+          key: 'dateOfIncorporation',
+          type: 'input',
+          props: {
+            label: 'Start Year',
+            placeholder: 'YYYY',
+            max: 2024,
+            minLength: 4,
+            maxLength: 4,
+            pattern: '^[0-9]{4}$',
+            required: true,
+
+            keydown: () => (this.options.formState.showError = true),
+          },
+          expressions: {
+            'props.show': 'formState.showError',
+          },
+          validation: {
+            messages: {
+              pattern: 'Invalid year provided.',
+              max: 'Invalid year provided. Cannot be a future year.',
+            },
+          },
+        },
+      ],
+    },
   ];
 }

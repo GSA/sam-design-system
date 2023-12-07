@@ -16,7 +16,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [type]="props.inputType ? props.inputType : 'text'"
       [formControl]="formControl"
     />
-    <ng-container *ngIf="field.formControl.value">
+    <ng-container *ngIf="field.formControl.value && !props.disabled">
       <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
         <span
           role="button"

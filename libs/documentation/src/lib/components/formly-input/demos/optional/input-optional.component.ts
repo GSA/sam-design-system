@@ -9,7 +9,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class InputOptional {
   form = new UntypedFormGroup({});
-  model: any = {};
+  model: any = { search: '1234' };
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
