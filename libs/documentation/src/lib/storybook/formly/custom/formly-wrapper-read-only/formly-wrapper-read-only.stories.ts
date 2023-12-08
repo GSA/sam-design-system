@@ -44,10 +44,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-basic',
     'FormlyWrapperReadOnlyBasicModule',
@@ -62,10 +62,10 @@ export const FormlyType: Story = (args) => ({
 });
 FormlyType.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-options',
     'FormlyWrapperReadOnlyOptionsModule',
@@ -79,10 +79,10 @@ export const CustomTemplate: Story = (args) => ({
 });
 CustomTemplate.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-custom-template',
     'FormlyWrapperReadOnlyCustomTemplateModule',
@@ -97,10 +97,10 @@ export const ContainerWithoutFormly: Story = (args) => ({
 });
 ContainerWithoutFormly.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-container',
     'FormlyWrapperReadOnlyContainerModule',

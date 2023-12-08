@@ -43,8 +43,8 @@ Configurable.args = {
   expires: 'Jan 5, 2099',
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 export const Expires: Story = (args) => ({
   template: `<expires-expires></expires-expires>`,
@@ -52,9 +52,9 @@ export const Expires: Story = (args) => ({
 });
 Expires.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/expires/expires-expires', 'ExpiresExpiresModule', 'expires-expires'),
   stackblitzLink: generateStackblitzLink('expires', 'expires'),
 };
@@ -66,11 +66,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Configurable', 'Expires'];

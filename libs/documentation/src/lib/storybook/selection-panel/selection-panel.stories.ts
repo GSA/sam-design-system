@@ -41,11 +41,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable: Story = (args) => ({
@@ -82,8 +82,8 @@ Configurable.args = {
   ],
 };
 Configurable.parameters = {
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Mode: Story = (args) => ({
@@ -94,10 +94,10 @@ export const Mode: Story = (args) => ({
 });
 Mode.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/selection-panel/selection-panel-mode',
     'SelectionPanelModeModule',
@@ -121,10 +121,10 @@ export const Children: Story = (args) => ({
 });
 Children.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/selection-panel/selection-panel-children',
     'SelectionPanelChildrenModule',
@@ -148,10 +148,10 @@ export const Selected: Story = (args) => ({
 });
 Selected.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/selection-panel/selection-panel-selected',
     'SelectionPanelSelectedModule',

@@ -58,10 +58,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-basic', 'TableBasicModule', 'sds-table-basic'),
   stackblitzLink: generateStackblitzLink('table', 'basic'),
 };
@@ -72,10 +72,10 @@ export const Sorting: Story = (args) => ({
 });
 Sorting.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-sorting', 'TableSortingModule', 'sds-table-sorting'),
   stackblitzLink: generateStackblitzLink('table', 'sorting'),
 };
@@ -86,10 +86,10 @@ export const Pagination: Story = (args) => ({
 });
 Pagination.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-pagination', 'TablePaginationModule', 'sds-table-pagination', [
     createCodePreviewTabData('storybook/table/table-pagination/data.ts', 'ts', false),
   ]),
@@ -102,10 +102,10 @@ export const StickyHeader: Story = (args) => ({
 });
 StickyHeader.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-sticky-header', 'TableStickyHeaderModule', 'sds-table-sticky-header'),
   stackblitzLink: generateStackblitzLink('table', 'sticky-header'),
 };
@@ -116,10 +116,10 @@ export const StickyFooter: Story = (args) => ({
 });
 StickyFooter.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-sticky-footer', 'TableStickyFooterModule', 'sds-table-sticky-footer'),
   stackblitzLink: generateStackblitzLink('table', 'sticky-footer'),
 };
@@ -130,10 +130,10 @@ export const StickyColumn: Story = (args) => ({
 });
 StickyColumn.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-sticky-column', 'TableStickyColumnModule', 'sds-table-sticky-column'),
   stackblitzLink: generateStackblitzLink('table', 'sticky-column'),
 };
@@ -144,10 +144,10 @@ export const Expansion: Story = (args) => ({
 });
 Expansion.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-expansion', 'TableExpansionModule', 'sds-table-expansion'),
   stackblitzLink: generateStackblitzLink('table', 'expansion'),
 };
@@ -158,10 +158,10 @@ export const CustomFooter: Story = (args) => ({
 });
 CustomFooter.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-custom-footer', 'TableCustomFooterModule', 'sds-table-custom-footer'),
   stackblitzLink: generateStackblitzLink('table', 'custom-footer'),
 };
@@ -172,10 +172,10 @@ export const UserInteraction: Story = (args) => ({
 });
 UserInteraction.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/table/table-user-interaction',
     'TableUserInteractionModule',
@@ -190,10 +190,10 @@ export const ChangeData: Story = (args) => ({
 });
 ChangeData.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-change-data', 'TableChangeDataModule', 'sds-table-change-data'),
   stackblitzLink: generateStackblitzLink('table', 'change-data'),
 };
@@ -204,10 +204,10 @@ export const HighlightRow: Story = (args) => ({
 });
 HighlightRow.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-highlight-row', 'TableHighlightRowModule', 'sds-table-highlight-row'),
   stackblitzLink: generateStackblitzLink('table', 'highlight-row'),
 };
@@ -218,10 +218,10 @@ export const RowClicked: Story = (args) => ({
 });
 RowClicked.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/table/table-row-clicked', 'TableRowClickedModule', 'sds-table-row-clicked'),
   stackblitzLink: generateStackblitzLink('table', 'row-clicked'),
 };
@@ -233,11 +233,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = [

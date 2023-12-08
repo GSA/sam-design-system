@@ -64,10 +64,10 @@ export const Intercept: Story = (args) => ({
 });
 Intercept.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-tabs/formly-tabs-intercept',
     'FormlyTabsInterceptModule',
@@ -82,10 +82,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-tabs/formly-tabs-basic',
     'FormlyTabsBasicModule',

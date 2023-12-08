@@ -55,10 +55,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-basic',
     'FormlyFileinputBasicModule',
@@ -73,10 +73,10 @@ export const Options: Story = (args) => ({
 });
 Options.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-options',
     'FormlyFileinputOptionsModule',
@@ -91,10 +91,10 @@ export const Table: Story = (args) => ({
 });
 Table.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-table',
     'FormlyFileinputTableModule',
@@ -109,10 +109,10 @@ export const Custom: Story = (args) => ({
 });
 Custom.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-custom',
     'FormlyFileinputCustomModule',

@@ -45,10 +45,10 @@ export const Coloring: Story = (args) => ({
 });
 Coloring.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-coloring', 'IconsColoringModule', 'usa-icon-coloring-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'coloring'),
 };
@@ -59,10 +59,10 @@ export const Rotating: Story = (args) => ({
 });
 Rotating.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-rotation', 'IconsRotationModule', 'usa-icon-rotation-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'rotation'),
 };
@@ -73,10 +73,10 @@ export const Sizing: Story = (args) => ({
 });
 Sizing.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-scaling', 'IconsScalingModule', 'usa-icon-scaling-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'scaling'),
 };
@@ -87,10 +87,10 @@ export const Skewing: Story = (args) => ({
 });
 Skewing.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-skewing', 'IconsSkewingModule', 'usa-icon-skewing-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'skewing'),
 };
@@ -101,10 +101,10 @@ export const Stacking: Story = (args) => ({
 });
 Stacking.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-stacking', 'IconsStackingModule', 'usa-icon-stacking-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'stacking'),
 };
@@ -115,10 +115,10 @@ export const Custom: Story = (args) => ({
 });
 Custom.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-basic', 'IconsBasicModule', 'sds-icons-basic-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'basic'),
 };
@@ -129,10 +129,10 @@ export const Bootstrap: Story = (args) => ({
 });
 Bootstrap.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/utilities/icons/icons-bootstrap',
     'IconsBootstrapModule',
@@ -147,10 +147,10 @@ export const Uswds: Story = (args) => ({
 });
 Uswds.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/utilities/icons/icons-uswds', 'IconsUswdsModule', 'usa-icon-icons-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'uswds'),
 };

@@ -46,8 +46,8 @@ Configurable.args = {
   today: Date.now(),
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 
 export const CurrentDay: Story = (args) => ({
@@ -56,9 +56,9 @@ export const CurrentDay: Story = (args) => ({
 });
 CurrentDay.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/date-pipe/date-pipe-current-day',
     'DatePipeCurrentDayModule',
@@ -72,9 +72,9 @@ export const CurrentYear: Story = (args) => ({
 });
 CurrentYear.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/date-pipe/date-pipe-current-year',
     'DatePipeCurrentYearModule',
@@ -88,9 +88,9 @@ export const NonCurrentYear: Story = (args) => ({
 });
 NonCurrentYear.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/date-pipe/date-pipe-non-current-year',
     'DatePipePreviousYearModule',
@@ -106,11 +106,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Configurable', 'CurrentDay', 'CurrentYear', 'NonCurrentYear'];

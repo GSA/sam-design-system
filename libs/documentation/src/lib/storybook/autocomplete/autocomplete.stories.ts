@@ -325,7 +325,7 @@ Configurable.args = {
   disabled: false,
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
   controls: { expanded: true },
 };
 
@@ -337,10 +337,10 @@ export const SelectionMode: Story = (args) => ({
 });
 SelectionMode.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-selection-mode',
     'AutocompleteSelectionModeModule',
@@ -357,10 +357,10 @@ export const Grouping: Story = (args) => ({
 });
 Grouping.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-grouping',
     'AutocompleteGroupModule',
@@ -377,10 +377,10 @@ export const FreeText: Story = (args) => ({
 });
 FreeText.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-free-text',
     'AutocompleteFreeTextModule',
@@ -396,11 +396,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Configurable', 'FreeText', 'Grouping', 'SelectionMode'];

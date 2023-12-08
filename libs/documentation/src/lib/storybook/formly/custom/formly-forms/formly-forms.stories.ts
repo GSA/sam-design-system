@@ -30,10 +30,10 @@ export const AddressForm: Story = (args) => ({
 });
 AddressForm.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/formly/custom/formly-forms', 'FormlyFormsModule', 'sds-formly-forms'),
 };
 

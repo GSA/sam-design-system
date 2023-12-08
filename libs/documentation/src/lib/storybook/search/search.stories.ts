@@ -7,10 +7,7 @@ import { SearchPlaceholderModule } from './search-placeholder/search-placeholder
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { SearchDropdownModule } from './search-dropdown/search-dropdown.module';
 import { SearchIntroductionModule } from './search-introduction/search-introduction.module';
-
-declare var require: any;
-
-const overviewTemplate = require('!!raw-loader!./search-overview.html');
+import { SearchOverviewModule } from './search-overview/search-overview.module';
 
 const disable = {
   table: {
@@ -33,6 +30,7 @@ export default {
         SearchPlaceholderModule,
         SearchDropdownModule,
         SearchIntroductionModule,
+        SearchOverviewModule,
       ],
     }),
   ],
@@ -191,7 +189,7 @@ Configurable.args = {
   model: {},
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 
 export const Size: Story = (args) => ({
@@ -200,10 +198,10 @@ export const Size: Story = (args) => ({
 });
 Size.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/search/search-size', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
   stackblitzLink: generateStackblitzLink('search', 'size'),
 };
@@ -214,10 +212,10 @@ export const Placeholder: Story = (args) => ({
 });
 Placeholder.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/search/search-placeholder', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
   stackblitzLink: generateStackblitzLink('search', 'placeholder'),
 };
@@ -228,16 +226,17 @@ export const Dropdown: Story = (args) => ({
 });
 Dropdown.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/search/search-dropdown', 'ButtonGroupBasicModule', 'sds-button-group-demo'),
   stackblitzLink: generateStackblitzLink('search', 'dropdown'),
 };
 
-export const Overview = () => ({
-  template: overviewTemplate,
+export const Overview: Story = (args) => ({
+  template: '<sds-search-overview></sds-search-overview>',
+  props: args,
 });
 Overview.parameters = { options: { showPanel: false } };
 
@@ -248,11 +247,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];
