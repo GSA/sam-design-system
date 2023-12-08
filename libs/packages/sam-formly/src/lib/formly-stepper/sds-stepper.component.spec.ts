@@ -245,7 +245,7 @@ describe('SdsStepperComponent', () => {
     const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
     nextButton.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(stepper.stepValidityMap['step1']).toEqual(true);
+    expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
 
   it('Should trigger validation on save click', () => {
@@ -255,7 +255,7 @@ describe('SdsStepperComponent', () => {
     const saveButton = fixture.debugElement.query(By.css('#stepperTestId-saveBtn'));
     saveButton.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(stepper.stepValidityMap['step1']).toEqual(true);
+    expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
 
   it(

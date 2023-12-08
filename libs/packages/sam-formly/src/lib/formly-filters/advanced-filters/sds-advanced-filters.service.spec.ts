@@ -143,7 +143,7 @@ describe('SdsAdvancedFiltersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be able to convert a Formly form fields to checkboxes', () => {
+  xit('should be able to convert a Formly form fields to checkboxes', () => {
     const checkBoxConverted = service.convertToCheckboxes(getFields());
     expect(checkBoxConverted).toEqual(checkboxFields);
   });

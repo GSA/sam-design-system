@@ -59,9 +59,12 @@ describe('Formly Field Rich Text Editor Component', () => {
           },
         },
       ];
+    
+ 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="{editor:123}" [options]="options"></formly-form>'
         ),
+
         trigger = fixture.debugElement.nativeElement.querySelector('ckeditor');
 
       fixture.detectChanges();
