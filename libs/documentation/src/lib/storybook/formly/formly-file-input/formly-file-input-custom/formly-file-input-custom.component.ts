@@ -24,19 +24,14 @@ export class TableFileInputComponent implements AfterViewInit {
         acceptFileType:
           '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
         template: null,
-      },
-      fieldArray: {
-        type: SdsFormlyTypes.TABLE,
-        props: {
-          name: 'Demo Table',
-          noDataText: 'No Attachments',
-          tableColumns: [
-            { label: 'Attachment Name', columnName: 'name', property: 'name' },
-            { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
-            { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
-            { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
-          ],
-        },
+        tableName: 'Demo Table',
+        noDataText: 'No Attachments',
+        tableColumns: [
+          { label: 'Attachment Name', columnName: 'name', property: 'name' },
+          { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
+          { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
+          { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
+        ],
       },
     },
   ];

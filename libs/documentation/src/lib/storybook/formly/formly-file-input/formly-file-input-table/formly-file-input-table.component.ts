@@ -21,6 +21,14 @@ export class TableFileInputComponent {
         tableDisplay: true,
         displayFileInfo: false,
         required: true,
+        tableName: 'Demo Table',
+        noDataText: 'No Attachments',
+        tableColumns: [
+          { label: 'Attachment Name', columnName: 'name', property: 'name' },
+          { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
+          { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
+          { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
+        ],
         acceptFileType:
           '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
       },
@@ -31,18 +39,6 @@ export class TableFileInputComponent {
       },
       validators: {
         fileSizeLimit: this.fileSizeLimitValidator,
-      },
-      fieldArray: {
-        props: {
-          name: 'Demo Table',
-          noDataText: 'No Attachments',
-          tableColumns: [
-            { label: 'Attachment Name', columnName: 'name', property: 'name' },
-            { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
-            { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
-            { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
-          ],
-        },
       },
     },
   ];
