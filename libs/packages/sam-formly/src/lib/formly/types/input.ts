@@ -16,13 +16,13 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [type]="props.inputType ? props.inputType : 'text'"
       [formControl]="formControl"
     />
-    <ng-container *ngIf="field.formControl.value && !props.disabled">
-      <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
+    <ng-container *ngIf="field.formControl.value">
+      <span class="position-absolute top-1 cursor-pointer bg-white" [style]="getPosition()">
         <span
           role="button"
           aria-label="Clear input"
-          (click)="field.formControl.reset()"
-          (keyup.enter)="field.formControl.reset()"
+          (click)="onClear()"
+          (keyup.enter)="onClear()"
           tabindex="0"
           class="icon-container"
         >
@@ -32,4 +32,15 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     </ng-container>
   </div>`,
 })
-export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {}
+export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
+  getPosition() {
+    let width = document.getElementById(this.field.id).offsetWidth;
+    width = width - 25;
+    return `left: ${width}px;`;
+  }
+
+  onClear() {
+    this.field.formControl.setValue('');
+   
+  }
+}
