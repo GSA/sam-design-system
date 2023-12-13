@@ -41,6 +41,5 @@ export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
 
   onClear() {
     this.field.formControl.setValue('');
-   
   }
 }
