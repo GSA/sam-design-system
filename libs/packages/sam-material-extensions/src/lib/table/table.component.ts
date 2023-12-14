@@ -28,6 +28,8 @@ import { BehaviorSubject } from 'rxjs';
 export interface SdsRowConfig {
   displayedColumns?: string[];
   expandOnClick?: boolean;
+  emitOnRowClick?: boolean;
+  // Remove below options
   highlightOnHover?: boolean;
   rowClickNavigate?: string;
 }
@@ -47,8 +49,11 @@ export interface SdsFooterRowConfig extends SdsRowConfig {
 export class SdsTableRowComponent {
   @Input() displayedColumns: Array<string>;
   @Input() expandOnClick = false;
-  @Input() highlightOnHover = false;
+  @Input() emitOnRowClick = false;
+
+  // Remove below inputs
   @Input() rowClickNavigate: string;
+  @Input() highlightOnHover = false;
 }
 
 @Component({
@@ -250,7 +255,6 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     this.rowConfig.displayedColumns = this.sdsTableRowComponent.displayedColumns;
     this.rowConfig.expandOnClick = this.sdsTableRowComponent.expandOnClick;
     this.rowConfig.highlightOnHover = this.sdsTableRowComponent.highlightOnHover;
-    this.rowConfig.rowClickNavigate = this.sdsTableRowComponent.rowClickNavigate;
 
     if (this.sdsTableHeaderRowComponent) {
       this.headerRowConfig.displayedColumns = this.sdsTableHeaderRowComponent.displayedColumns;
