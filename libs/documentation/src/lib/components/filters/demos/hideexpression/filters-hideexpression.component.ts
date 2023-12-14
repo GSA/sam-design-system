@@ -15,7 +15,7 @@ export class FiltersHideExpression {
     {
       key: 'location.country',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select Country',
         description: 'Select country.',
         required: true,
@@ -28,12 +28,12 @@ export class FiltersHideExpression {
           { label: 'Australia', value: 'AUS' },
         ],
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            Object.keys(form['controls'].location['controls']).forEach((key) => {
+            Object.keys(field.form['controls']['location']['controls']).forEach((key) => {
               if (key !== 'country') {
-                form['controls'].location['controls'][key].setValue('');
+                field.form['controls']['location']['controls'][key].setValue('');
               }
             });
           });
@@ -43,7 +43,7 @@ export class FiltersHideExpression {
     {
       key: 'location.province',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select province',
         description: 'Select province.',
         required: true,
@@ -71,7 +71,7 @@ export class FiltersHideExpression {
     {
       key: 'location.state',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'State',
         description: 'State',
         placeholder: 'Illinois',
@@ -86,7 +86,7 @@ export class FiltersHideExpression {
     {
       key: 'location.city',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'City',
         description: 'City',
         placeholder: 'Chicago',
@@ -103,7 +103,7 @@ export class FiltersHideExpression {
     {
       key: 'location.street',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Street',
         hideOptional: true,
         description: 'Street',

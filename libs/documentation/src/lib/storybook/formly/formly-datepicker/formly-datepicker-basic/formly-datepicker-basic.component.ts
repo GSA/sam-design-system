@@ -15,7 +15,7 @@ export class FormlyDatepickerBasicComponent {
     {
       key: 'expirationDateOpen',
       type: 'datepicker',
-      templateOptions: {
+      props: {
         label: 'Expiration Date (no validation)',
         placeholder:
           'eg: ' +

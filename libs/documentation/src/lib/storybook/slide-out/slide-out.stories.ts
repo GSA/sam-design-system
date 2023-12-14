@@ -35,11 +35,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Basic: Story = (args) => ({
@@ -50,10 +50,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/slide-out/slide-out-basic', 'SlideOutBasicModule', 'sds-slide-out-basic', [
     createCodePreviewTabData('storybook/slide-out/slide-out-basic/template.html', 'html', false),
     createCodePreviewTabData('storybook/slide-out/slide-out-basic/template.scss', 'scss', false),
@@ -69,10 +69,10 @@ export const CustomTemplate: Story = (args) => ({
 });
 CustomTemplate.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/slide-out/slide-out-custom-template',
     'SlideOutCustomTemplateModule',

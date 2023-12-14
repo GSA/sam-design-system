@@ -40,7 +40,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       key: 'input',
       type: SdsFormlyTypes.INPUT,
       defaultValue: 'Jane',
-      templateOptions: {
+      props: {
         label: 'Input Type',
         tagText: 'Tag',
         description: 'Enter text',
@@ -50,7 +50,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.inputType = !this.readonlyModes.inputType;
@@ -73,7 +73,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut \
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi \
       ut aliquip ex ea commodo consequat.',
-      templateOptions: {
+      props: {
         label: 'Textarea Type',
         description: 'Enter text',
         tagText: 'Purple Tag',
@@ -85,7 +85,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.textareaType = !this.readonlyModes.textareaType;
@@ -105,7 +105,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       key: 'checkboxDemo',
       type: SdsFormlyTypes.CHECKBOX,
       defaultValue: true,
-      templateOptions: {
+      props: {
         label: 'Checkbox',
         description: 'Toggle Checkbox',
         hideOptional: true,
@@ -114,7 +114,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.checkboxType = !this.readonlyModes.checkboxType;
@@ -134,7 +134,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       key: 'datepicker',
       type: SdsFormlyTypes.DATEPICKER,
       defaultValue: new Date(),
-      templateOptions: {
+      props: {
         label: 'Datepicker Type',
         description: 'Enter a date',
         hideOptional: true,
@@ -143,7 +143,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.datepickerType = !this.readonlyModes.datepickerType;
@@ -163,7 +163,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       key: 'daterangepicker',
       type: SdsFormlyTypes.DATERANGEPICKER,
       defaultValue: new Date(),
-      templateOptions: {
+      props: {
         label: 'Daterangepicker Type',
         description: 'Enter a date range',
         hideOptional: true,
@@ -172,7 +172,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.daterangepickerType = !this.readonlyModes.daterangepickerType;
@@ -191,7 +191,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       className: 'grid-col-7 display-inline-block',
       key: 'fileType',
       type: SdsFormlyTypes.FILEINFO,
-      templateOptions: {
+      props: {
         label: 'Select file type',
         hideOptional: true,
         options: [
@@ -205,7 +205,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.fileinfoType = !this.readonlyModes.fileinfoType;
@@ -224,22 +224,22 @@ export class FormlyWrapperReadOnlyBasicComponent {
       className: 'grid-col-7 display-inline-block',
       key: 'multicheckbox',
       type: SdsFormlyTypes.MULTICHECKBOX,
-      templateOptions: {
+      props: {
         label: 'Select From Multiple Checkboxes',
         description: 'Choose desired toppings',
         hideOptional: true,
         options: [
-          { key: 'tomato', value: 'Tomato' },
-          { key: 'onion', value: 'Onion' },
-          { key: 'pickles', value: 'Pickles' },
-          { key: 'lettuce', value: 'Lettuce' },
+          { value: 'tomato', label: 'Tomato' },
+          { value: 'onion', label: 'Onion' },
+          { value: 'pickles', label: 'Pickles' },
+          { value: 'lettuce', label: 'Lettuce' },
         ],
       },
     },
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.multicheckboxType = !this.readonlyModes.multicheckboxType;
@@ -258,21 +258,21 @@ export class FormlyWrapperReadOnlyBasicComponent {
       className: 'grid-col-7 display-inline-block',
       key: 'radioType',
       type: SdsFormlyTypes.RADIO,
-      templateOptions: {
+      props: {
         label: 'Select From Radio Options',
         description: 'Choose a radio option',
         hideOptional: true,
         options: [
-          { key: 'optiona', value: 'Option A' },
-          { key: 'optionb', value: 'Option B' },
-          { key: 'optionc', value: 'Option C' },
+          { value: 'optiona', label: 'Option A' },
+          { value: 'optionb', label: 'Option B' },
+          { value: 'optionc', label: 'Option C' },
         ],
       },
     },
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.radioType = !this.readonlyModes.radioType;
@@ -292,7 +292,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       key: 'selectType',
       type: SdsFormlyTypes.SELECT,
       defaultValue: 'Select',
-      templateOptions: {
+      props: {
         label: 'Select From Provided Options',
         description: 'Choose a state',
         hideOptional: true,
@@ -309,7 +309,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.selectType = !this.readonlyModes.selectType;
@@ -328,7 +328,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       className: 'grid-col-7 display-inline-block',
       key: 'autocompleteSingle',
       type: SdsFormlyTypes.AUTOCOMPLETE,
-      templateOptions: {
+      props: {
         label: 'Single Select Autocomplete',
         description: 'Select an item',
         hideOptional: true,
@@ -340,7 +340,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.autocompleteSingleSelectType = !this.readonlyModes.autocompleteSingleSelectType;
@@ -362,7 +362,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
       className: 'grid-col-7 display-inline-block',
       key: 'autocompleteMulti',
       type: SdsFormlyTypes.AUTOCOMPLETE,
-      templateOptions: {
+      props: {
         label: 'Multi Select Autocomplete',
         description: 'Select items',
         hideOptional: true,
@@ -374,7 +374,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
     {
       className: 'display-inline-flex margin-left-4',
       type: SdsFormlyTypes.BUTTON,
-      templateOptions: {
+      props: {
         text: 'Toggle Readonly',
         onClick: () => {
           this.readonlyModes.autocompleteMultiSelectType = !this.readonlyModes.autocompleteMultiSelectType;

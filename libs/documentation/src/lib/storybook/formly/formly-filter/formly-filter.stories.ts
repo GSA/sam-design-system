@@ -17,7 +17,7 @@ import { FormlyFilterHideExpressionModule } from './formly-filter-hideexpression
 import { FormlyFilterNestedModule } from './formly-filter-nested/formly-filter-nested.module';
 import { FormlyFilterHorizontalModule } from './formly-filter-horizontal/formly-filter-horizontal.module';
 
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -46,12 +46,12 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    placeholder: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
-    disabled: templateOptions,
-    tooltipText: templateOptions,
+    label: props,
+    placeholder: props,
+    description: props,
+    required: props,
+    disabled: props,
+    tooltipText: props,
   },
 } as Meta;
 
@@ -67,10 +67,10 @@ export const AccordionGroup: Story = (args) => ({
 });
 AccordionGroup.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-accordiongroup',
     'FormlyFilterAccordionGroupModule',
@@ -84,10 +84,10 @@ export const Horizontal: Story = (args) => ({
 });
 Horizontal.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-horizontal',
     'FormlyFilterHorizontalModule',
@@ -101,10 +101,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-basic',
     'FormlyFilterBasicModule',
@@ -119,10 +119,10 @@ export const Single: Story = (args) => ({
 });
 Single.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-single',
     'FormlyFilterSingleModule',
@@ -137,10 +137,10 @@ export const Nested: Story = (args) => ({
 });
 Nested.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-nested',
     'FormlyFilterNestedModule',
@@ -156,10 +156,10 @@ export const HideExpression: Story = (args) => ({
 });
 HideExpression.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-hideexpression',
     'FormlyFilterHideExpressionModule',

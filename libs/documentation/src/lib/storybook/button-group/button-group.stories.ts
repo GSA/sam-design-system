@@ -64,7 +64,7 @@ Configurable.args = {
   mode: 'checkbox',
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 
 export const Modes: Story = (args) => ({
@@ -73,10 +73,10 @@ export const Modes: Story = (args) => ({
 });
 Modes.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/button-group/button-group-modes',
     'ButtonGroupModesModule',
@@ -93,10 +93,10 @@ export const Checked: Story = (args) => ({
 });
 Checked.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/button-group/button-group-checked',
     'ButtonGroupBasicModule',
@@ -112,11 +112,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Configurable', 'Checked', 'Modes'];

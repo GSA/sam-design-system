@@ -57,7 +57,7 @@ describe('Formly Field Select Component', () => {
         {
           key: 'firstName',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search Test',
           },
         },

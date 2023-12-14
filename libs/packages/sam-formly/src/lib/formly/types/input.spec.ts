@@ -53,7 +53,7 @@ describe('Formly Field input Component', () => {
         {
           key: 'input-test',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Formly Input',
             required: true,
           },
@@ -63,11 +63,11 @@ describe('Formly Field input Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('usa-input');
-      const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
+      const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.props;
       fixture.detectChanges();
       const inputField = fixture.debugElement.query(By.css('.usa-input'));
       expect(inputField.nativeElement.type).toBe('text');
-      expect(inputField.componentInstance.field.templateOptions.required).toBe(true);
+      expect(inputField.componentInstance.field.props.required).toBe(true);
     });
 
     it('input type should be text', () => {
@@ -75,7 +75,7 @@ describe('Formly Field input Component', () => {
         {
           key: 'input-test',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Formly Input',
             required: true,
             inputType: 'text',
@@ -87,7 +87,7 @@ describe('Formly Field input Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('usa-input');
-      const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
+      const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.props;
       fixture.detectChanges();
       const inputField = fixture.debugElement.query(By.css('.usa-input'));
       expect(inputField.nativeElement.type).toBe('text');
@@ -98,7 +98,7 @@ describe('Formly Field input Component', () => {
         {
           key: 'input-test',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Formly Input',
             required: true,
             inputType: 'number',
@@ -110,7 +110,7 @@ describe('Formly Field input Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('usa-input');
-      const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.templateOptions;
+      const expectedValue = fixture.debugElement.query(By.css('.usa-input')).componentInstance.field.props;
       fixture.detectChanges();
       const inputField = fixture.debugElement.query(By.css('.usa-input'));
       expect(inputField.nativeElement.type).toBe('number');

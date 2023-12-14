@@ -14,7 +14,7 @@ export class FormlyCheckboxDescriptionComponent {
     {
       key: 'entity.userAgreement',
       type: 'checkbox',
-      templateOptions: {
+      props: {
         description: 'By checking the box below you agree to the terms and conditions of the site.',
       },
     },

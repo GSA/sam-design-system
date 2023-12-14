@@ -15,7 +15,7 @@ export class FormlyEditorRegexComponent {
     {
       key: 'searchkey',
       type: 'editor',
-      templateOptions: {
+      props: {
         regex: /hello/gm,
       },
     },

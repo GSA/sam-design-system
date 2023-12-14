@@ -15,7 +15,7 @@ export class FormlySearchAdvancedComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'advancedsearch',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -23,7 +23,7 @@ export class FormlySearchAdvancedComponent {
         {
           key: 'ddsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search with dropdown',
             hideLabel: true,
             description: '<a href="#" class="float-right usa-link">Advanced Search</a>',

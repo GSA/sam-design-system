@@ -12,7 +12,7 @@ export class BasicFileInputComponent {
     {
       key: 'basicFileInput',
       type: 'fileinput',
-      templateOptions: {
+      props: {
         label: 'Basic File Input',
         description: 'Accepts single file',
         hideOptional: true,
@@ -29,7 +29,7 @@ export class BasicFileInputComponent {
     {
       key: 'multipleFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
-      templateOptions: {
+      props: {
         label: 'Multiple File Input',
         description: 'Accepts Multiple Files',
         multiple: true,
@@ -39,7 +39,7 @@ export class BasicFileInputComponent {
     {
       key: 'limitFileType',
       type: SdsFormlyTypes.FILEINPUT,
-      templateOptions: {
+      props: {
         label: 'Enter Files Here',
         description: 'Only PDF, CSV, or any image format files are allowed',
         multiple: true,

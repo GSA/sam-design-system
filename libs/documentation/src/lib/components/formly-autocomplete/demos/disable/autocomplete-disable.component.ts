@@ -33,21 +33,21 @@ export class FormlyAutocompleteDisable {
     {
       key: 'filters',
       wrappers: ['filterwrapper'],
-      templateOptions: { label: 'Keyword' },
+      props: { label: 'Keyword' },
       fieldGroup: [
         {
           key: 'items1',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Generic Autocomplete',
             service: this.service,
             configuration: this.settings,
           },
-          lifecycle: {
-            onChanges: function (form: UntypedFormGroup, field) {
-              form.controls.items1.valueChanges.subscribe((value: any[]) => {
+          hooks: {
+            onChanges: (field) => {
+              field.form.controls['items1'].valueChanges.subscribe((value: any[]) => {
                 if (!value || !value.length) {
-                  form.controls.items2.reset();
+                  field.form.controls['items2'].reset();
                 }
               });
             },
@@ -57,19 +57,19 @@ export class FormlyAutocompleteDisable {
           key: 'items2',
           type: 'autocomplete',
 
-          templateOptions: {
+          props: {
             label: 'Auto Complete disabled using Expression properties until Previous Autocomplete is selected',
             service: this.service,
             configuration: this.settings2,
           },
           expressionProperties: {
-            'templateOptions.disabled': () => !this.model.filters.items1 || this.model.filters.items1.length === 0,
+            'props.disabled': () => !this.model.filters.items1 || this.model.filters.items1.length === 0,
           },
         },
         {
           key: 'agency',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete disable with multiple selection mode',
             disabled: true,
             service: this.service,

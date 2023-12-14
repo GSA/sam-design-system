@@ -10,7 +10,7 @@ import { SDSAutocompleteComponent } from '@gsa-sam/components';
 export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly {
   @ViewChild(SDSAutocompleteComponent, { static: true }) public template: SDSAutocompleteComponent;
   defaultOptions = {
-    templateOptions: {
+    props: {
       essentialModelFields: true,
     },
   };

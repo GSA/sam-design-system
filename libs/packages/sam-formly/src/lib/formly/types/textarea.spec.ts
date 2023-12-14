@@ -49,7 +49,7 @@ describe('Formly Input Component', () => {
       {
         key: 'text',
         type: 'textarea',
-        templateOptions: {
+        props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
         },
@@ -69,7 +69,7 @@ describe('Formly Input Component', () => {
         key: 'text',
         type: 'textarea',
         id: 'testCharacterCount',
-        templateOptions: {
+        props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
           maxLength: 50,
@@ -90,7 +90,7 @@ describe('Formly Input Component', () => {
         key: 'text',
         type: 'textarea',
         id: 'testCharacterCount',
-        templateOptions: {
+        props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
           maxLength: 50,
@@ -116,7 +116,7 @@ describe('Formly Input Component', () => {
         type: 'textarea',
         id: 'testCharacterCount',
         defaultValue: 'Hello World',
-        templateOptions: {
+        props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
           maxLength: 5,

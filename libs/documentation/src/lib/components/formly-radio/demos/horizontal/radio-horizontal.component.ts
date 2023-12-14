@@ -16,18 +16,18 @@ export class RadioHorizontalComponent {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         label: 'Are you registering an entity?',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
         required: true,
         options: [
           {
-            key: 'yes',
-            value: 'Yes',
+            value: 'yes',
+            label: 'Yes',
           },
           {
-            key: 'no',
-            value: 'No',
+            value: 'no',
+            label: 'No',
           },
         ],
         horizontal: true,
@@ -35,10 +35,10 @@ export class RadioHorizontalComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(field.form['controls']['entity']);
           });
         },
       },

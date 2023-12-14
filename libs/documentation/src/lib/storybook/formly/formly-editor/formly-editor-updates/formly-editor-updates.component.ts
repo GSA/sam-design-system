@@ -13,7 +13,7 @@ export class FormlyEditorUpdatesComponent {
     {
       key: 'searchText',
       type: 'editor',
-      templateOptions: {
+      props: {
         label: 'Search Text',
         hideOptional: true,
         placeholder: 'eg: type text..',

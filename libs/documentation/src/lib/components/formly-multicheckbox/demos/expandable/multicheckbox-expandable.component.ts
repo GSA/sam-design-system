@@ -15,7 +15,7 @@ export class MultiCheckboxExpandable {
     {
       key: 'entity.socioeconomic',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'States',
         description: 'Select any state',
         required: true,
@@ -24,79 +24,79 @@ export class MultiCheckboxExpandable {
         expandedOptions: this.isexpandedOptions,
         options: [
           {
-            key: 'AL',
-            value: 'Alabama',
+            value: 'AL',
+            label: 'Alabama',
             tagText: 'AL',
           },
           {
-            key: 'AK',
-            value: 'Alaska',
+            value: 'AK',
+            label: 'Alaska',
             tagText: 'AK',
           },
           {
-            key: 'AZ',
-            value: 'Arizona',
+            value: 'AZ',
+            label: 'Arizona',
             tagText: 'AZ',
           },
           {
-            key: 'AR',
-            value: 'Arkansas',
+            value: 'AR',
+            label: 'Arkansas',
             tagText: 'AR',
           },
           {
-            key: 'CA',
-            value: 'California',
+            value: 'CA',
+            label: 'California',
             tagText: 'CA',
           },
           {
-            key: 'CO',
-            value: 'Colorado',
+            value: 'CO',
+            label: 'Colorado',
             tagText: 'CO',
           },
           {
-            key: 'CT',
-            value: 'Connecticut',
+            value: 'CT',
+            label: 'Connecticut',
             tagText: 'CT',
           },
           {
-            key: 'DE',
-            value: 'Delaware',
+            value: 'DE',
+            label: 'Delaware',
             tagText: 'DE',
           },
           {
-            key: 'DC',
-            value: 'District Of Columbia',
+            value: 'DC',
+            label: 'District Of Columbia',
             tagText: 'DC',
             tagClass: 'sds-tag--info-purple',
           },
           {
-            key: 'FL',
-            value: 'Florida',
+            value: 'FL',
+            label: 'Florida',
             tagText: 'FL',
           },
           {
-            key: 'GA',
-            value: 'Georgia',
+            value: 'GA',
+            label: 'Georgia',
             tagText: 'GA',
           },
           {
-            key: 'HI',
-            value: 'Hawaii',
+            value: 'HI',
+            label: 'Hawaii',
             tagText: 'HI',
           },
           {
-            key: 'ID',
-            value: 'Idaho',
+            value: 'ID',
+            label: 'Idaho',
             tagText: 'ID',
           },
           {
-            key: 'IL',
-            value: 'Illinois',
+            value: 'IL',
+            label: 'Illinois',
             tagText: 'IL',
           },
           {
-            key: 'IN',
-            value: 'Indiana',
+            value: 'IN',
+            label: 'Indiana',
             tagText: 'IN',
           },
         ],
@@ -105,6 +105,6 @@ export class MultiCheckboxExpandable {
   ];
   onChange(ev) {
     this.isexpandedOptions = !this.isexpandedOptions;
-    this.fields[0].templateOptions.expandedOptions = this.isexpandedOptions;
+    this.fields[0].props.expandedOptions = this.isexpandedOptions;
   }
 }

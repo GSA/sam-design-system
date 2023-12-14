@@ -15,7 +15,7 @@ export class FormlyRadioGroupComponent {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         label: 'Tax Filing Structure',
         description: 'Select how your business or organization is defined by the IRS.',
         required: true,
@@ -58,10 +58,11 @@ export class FormlyRadioGroupComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(this.form['controls']['entity']);
           });
         },
       },

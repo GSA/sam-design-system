@@ -15,7 +15,7 @@ export class FormlyRadioHorizontalComponent {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         label: 'Are you registering an entity?',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
         required: true,
@@ -34,10 +34,10 @@ export class FormlyRadioHorizontalComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(this.form['controls']['entity']);
           });
         },
       },

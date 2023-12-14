@@ -12,7 +12,7 @@ export class TableFileInputComponent {
     {
       key: 'tableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
-      templateOptions: {
+      props: {
         label: 'Table File Input',
         description: 'Accepts multiple files and displays in table',
         multiple: true,
@@ -21,6 +21,14 @@ export class TableFileInputComponent {
         tableDisplay: true,
         displayFileInfo: false,
         required: true,
+        tableName: 'Demo Table',
+        noDataText: 'No Attachments',
+        tableColumns: [
+          { label: 'Attachment Name', columnName: 'name', property: 'name' },
+          { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
+          { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
+          { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
+        ],
         acceptFileType:
           '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
       },
@@ -32,18 +40,6 @@ export class TableFileInputComponent {
       validators: {
         fileSizeLimit: this.fileSizeLimitValidator,
       },
-      fieldArray: {
-        templateOptions: {
-          name: 'Demo Table',
-          noDataText: 'No Attachments',
-          tableColumns: [
-            { label: 'Attachment Name', columnName: 'name', property: 'name' },
-            { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
-            { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
-            { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
-          ],
-        },
-      },
     },
   ];
 
@@ -51,7 +47,7 @@ export class TableFileInputComponent {
 
   onModelChange($event: { tableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
-    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
+    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in props' tableColumns
     const newFiles = $event.tableFilesInput.filter((file) => !file['scan']);
     this.scanFiles(newFiles);
     console.log('model', $event);

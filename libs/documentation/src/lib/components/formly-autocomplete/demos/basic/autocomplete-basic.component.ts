@@ -23,12 +23,12 @@ export class FormlyAutocompleteBasic implements OnInit {
     {
       key: 'filters',
       wrappers: ['filterwrapper'],
-      templateOptions: { label: 'Keyword' },
+      props: { label: 'Keyword' },
       fieldGroup: [
         {
           key: 'firstName',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete',
             hideLabel: true,
             service: this.service,

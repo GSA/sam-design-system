@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
-
 import { SdsFormlyDialogData } from './formly-dialog-data.model';
 import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';
+import { startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'sds-formly-dialog',
@@ -25,6 +25,7 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
+    private cdr: ChangeDetectorRef,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData
   ) {}

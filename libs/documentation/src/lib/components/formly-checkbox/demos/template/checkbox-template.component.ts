@@ -18,7 +18,7 @@ export class CheckboxTemplate implements AfterViewInit {
     {
       key: 'entity.userAgreement',
       type: 'checkbox',
-      templateOptions: {
+      props: {
         label: 'I agree',
         required: true,
       },
@@ -26,6 +26,6 @@ export class CheckboxTemplate implements AfterViewInit {
   ];
 
   ngAfterViewInit() {
-    this.fields[0].templateOptions.template = this.checkboxTemplate;
+    this.fields[0].props.template = this.checkboxTemplate;
   }
 }

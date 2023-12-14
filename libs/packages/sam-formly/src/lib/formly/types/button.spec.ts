@@ -52,7 +52,7 @@ describe('Formly Field button Component', () => {
         {
           key: 'button-test',
           type: 'button',
-          templateOptions: {
+          props: {
             text: 'Show Extension',
             btnType: 'info',
             onClick: ($event) => {
@@ -78,7 +78,7 @@ describe('Formly Field button Component', () => {
         {
           key: 'button-test',
           type: 'button',
-          templateOptions: {
+          props: {
             text: 'Show Extension',
             btnType: 'info',
             onClick: ($event) => {

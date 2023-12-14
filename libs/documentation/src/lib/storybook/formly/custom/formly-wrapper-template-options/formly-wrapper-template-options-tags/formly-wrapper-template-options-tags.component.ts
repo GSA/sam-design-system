@@ -14,7 +14,7 @@ export class FormlyWrapperTemplateOptionsTagsComponent {
     {
       key: 'entity',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         tagText: 'SAM',
       },
@@ -25,7 +25,7 @@ export class FormlyWrapperTemplateOptionsTagsComponent {
     {
       key: 'entitytag',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         tagText: 'DUNS',
         tagClass: 'sds-tag--info-purple',

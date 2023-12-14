@@ -43,7 +43,7 @@ export class DialogAlert {
   fields: FormlyFieldConfig[] = [
     {
       key: 'alert',
-      templateOptions: {
+      props: {
         label: 'Alert',
       },
 
@@ -51,7 +51,7 @@ export class DialogAlert {
         {
           key: 'title',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Title',
             hideOptional: true,
             placeholder: 'type title here',
@@ -61,7 +61,7 @@ export class DialogAlert {
         {
           key: 'message',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Message',
             hideOptional: true,
             placeholder: 'type message',
@@ -71,7 +71,7 @@ export class DialogAlert {
         {
           key: 'type',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Alert Type',
             description: 'Select the entity type.',
             required: true,
@@ -86,7 +86,7 @@ export class DialogAlert {
         {
           key: 'size',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Alert modal size',
             description: 'Select the entity type.',
             required: true,

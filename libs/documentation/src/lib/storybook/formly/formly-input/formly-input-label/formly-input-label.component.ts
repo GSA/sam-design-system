@@ -14,7 +14,7 @@ export class FormlyInputLabelComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
       },
     },

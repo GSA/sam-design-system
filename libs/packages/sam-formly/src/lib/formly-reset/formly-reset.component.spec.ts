@@ -44,7 +44,7 @@ describe('SDS Formly Reset', () => {
     resetEl.click();
     fixture.detectChanges();
 
-    expect(testComp.model).toEqual({ flat: null, nested: { nestedInput: null } });
+    expect(testComp.model).toEqual({ flat: undefined, nested: { nestedInput: undefined } });
   });
 
   it('should reset fields with defaultValue provided to that defaultValue when clicked', () => {

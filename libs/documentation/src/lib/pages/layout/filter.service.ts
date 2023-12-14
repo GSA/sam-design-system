@@ -20,115 +20,268 @@ export class FilterService {
   public keywordChangeSubject = new Subject();
 
   public fields: FormlyFieldConfig[] = [
+    // {
+    //   key: 'keyword',
+    //   wrappers: ['tabs'],
+    //   props: {
+    //     label: 'Keyword Search',
+    //     description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
+    //     hideOptional: true,
+    //     tabClass: 'sds-tabs--formly',
+    //   },
+    //   fieldArray: {
+    //   fieldGroup: [
+    //     tab 1
+    //     {
+    //       props: {
+    //         tabHeader: 'Simple Search',
+    //         label: 'Simple Search',
+    //         key: 'simpleSearch',
+    //       },
+    //       id: 'Tab1',
+    //       defaultValue: {},
+    //       fieldGroup: [
+    //         {
+    //           key: 'keywordRadio',
+    //           type: 'radio',
+    //           defaultValue: 'anyWords',
+    //           props: {
+    //             label: 'Keyword Radio',
+    //             options: [
+    //               {
+    //                 label: 'Any Words',
+    //                 value: 'anyWords',
+    //               },
+    //               {
+    //                 label: 'All Words',
+    //                 value: 'allWords',
+    //               },
+    //               {
+    //                 label: 'Exact Match',
+    //                 value: 'exactMatch',
+    //               },
+    //             ],
+    //           },
+    //         },
+    //         {
+    //           key: 'keywordTags',
+    //           type: 'autocomplete',
+    //           props: {
+    //             label: 'Keyword Tags',
+    //             expand: false,
+    //             configuration: {
+    //               id: 'keyword',
+    //               primaryKeyField: 'key',
+    //               primaryTextField: 'text',
+    //               labelText: 'Search Keyword',
+    //               selectionMode: SelectionMode.MULTIPLE,
+    //               autocompletePlaceHolderText: '',
+    //               isTagModeEnabled: true,
+    //             },
+    //           },
+    //         },
+    //       ],
+    //     },
+    //     tab 2
+    //     {
+    //       id: 'Tab2',
+    //       defaultValue: {},
+    //       props: {
+    //         tabHeader: 'Search Editor',
+    //         key: 'searchEditor',
+    //         label: 'Search Editor',
+    //         submitButtonId: 'booleanSearchSubmit',
+    //       },
+    //       fieldGroup: [
+    //         {
+    //           key: 'keywordTextarea',
+    //           type: SdsFormlyTypes.TEXTAREA,
+    //           className: 'display-block padding-left-2 padding-right-2',
+    //           props: {
+    //             label: 'Keyword TextArea',
+    //             placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
+    //             required: true,
+    //           },
+    //         },
+    //         {
+    //           type: SdsFormlyTypes.BUTTON,
+    //           id: 'booleanSearchSubmit',
+    //           key: 'searchSubmit',
+    //           className: 'display-block margin-top-1 padding-left-2 padding-right-2',
+    //           props: {
+    //             label: 'Submit Button',
+    //             text: 'Search',
+    //             type: 'submit',
+    //           },
+    //         },
+    //       ],
+    //     },
+    //   ],
+    //   },
+    // },
+
     {
-      key: 'keyword',
-      wrappers: ['tabs'],
-      templateOptions: {
+      key: 'simpleSearch',
+      props: {
+        hideChildrenGroups: true,
         label: 'Keyword Search',
-        description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
+        description:
+          'For more information on how to use our keyword search, visit our <a class="usa-link" aria-label="www.fsd.gov - opens in a new window" href="https://www.fsd.gov/gsafsd_sp?id=kb_article_view&sysparm_article=KB0045403" target="_blank"> help guide <span class="margin-left-1px usa-link--external font-body-md"></span></a>',
         hideOptional: true,
+        interceptTabChange: true,
+        disabled: false,
+        placeholder: '',
       },
-      fieldArray: {
-        fieldGroup: [
-          // tab 1
-          {
-            templateOptions: {
-              tabHeader: 'Simple Search',
-            },
-            fieldGroupClassName: 'grid-row',
-            className: ' margin-top-0',
-            fieldGroup: [
-              {
-                key: 'keywordRadio',
-                className: 'grid-col-5 margin-top-0',
-                type: 'radio',
-                defaultValue: 'anyWords',
-                templateOptions: {
-                  options: [
-                    {
-                      label: 'Any Words',
-                      value: 'anyWords',
-                    },
-                    {
-                      label: 'All Words',
-                      value: 'allWords',
-                    },
-                  ],
-                },
-              },
-              {
-                className: 'grid-col-6 margin-top-auto margin-left-auto',
-                key: 'keywordExactPhrase',
-                type: 'checkbox',
-                templateOptions: {
-                  label: 'Exact Phrase',
-                  hideOptional: true,
-                },
-              },
-              {
-                key: 'keywordTags',
-                type: 'autocomplete',
-                className: 'grid-col-12',
-                templateOptions: {
-                  expand: false,
-                  configuration: {
-                    id: 'keyword',
-                    primaryKeyField: 'key',
-                    primaryTextField: 'text',
-                    labelText: 'Search Keyword',
-                    selectionMode: SelectionMode.MULTIPLE,
-                    autocompletePlaceHolderText: '',
-                    isTagModeEnabled: true,
-                    // Bind context of this service so we have access to radio button value
-                    displayModifierFn: this.displayModifierFn.bind(this),
-                    // Add observable so that we can tell autocomplete to run change detection later when radio option changes
-                    registerChanges$: this.keywordChangeSubject.asObservable(),
+      fieldGroup: [
+        {
+          props: {
+            key: 'simpleSearchHeader',
+            tabHeader: 'Simple Search',
+          },
+          fieldGroup: [
+            {
+              key: 'keywordRadio',
+              type: 'radio',
+              defaultValue: 'ALL',
+              props: {
+                options: [
+                  {
+                    label: 'Any Words',
+                    value: 'ANY',
+                    tooltipText: 'Search results will contain one, some, or all keywords entered.',
                   },
-                },
+                  {
+                    label: 'All Words',
+                    value: 'ALL',
+                    tooltipText: 'Search results will contain all keywords entered.',
+                  },
+                  {
+                    label: 'Exact Phrase',
+                    value: 'EXACT',
+                    tooltipText: 'Search results will contain the EXACT PHRASE from the keyword search.',
+                  },
+                ],
+                label: '',
+                placeholder: '',
+                disabled: false,
               },
-            ],
-          },
-          //tab 2
-          {
-            templateOptions: {
-              tabHeader: 'Search Editor',
-              submitButtonId: 'booleanSearchSubmit',
+              hide: false,
+              id: 'formly_47_radio_keywordRadio_0',
+              hooks: {},
+              modelOptions: {},
+              validation: {
+                messages: {},
+              },
+              wrappers: ['animation', 'group', 'readonly', 'label', 'description', 'validation'],
+              expressions: {},
+              expressionProperties: {},
             },
-            className: ' margin-top-0',
-            fieldGroup: [
-              {
-                key: 'keywordTextarea',
-                type: SdsFormlyTypes.TEXTAREA,
-                className: 'display-block padding-left-2 padding-right-2 ',
-                templateOptions: {
-                  placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
-                  required: true,
-                },
+            {
+              key: 'keywordTags',
+              type: 'input',
+              props: {
+                id: 'keyword',
+                labelText: 'Keyword Filter',
+                placeholder: 'e.g. W91QVN-17-R-008',
+                label: '',
+                disabled: false,
               },
-              {
-                type: SdsFormlyTypes.BUTTON,
-                id: 'booleanSearchSubmit',
-                className: 'display-block margin-top-1 padding-left-2 padding-right-2',
-                templateOptions: {
-                  text: 'Search',
-                  type: 'submit',
-                },
+
+              hooks: {},
+              modelOptions: {},
+              validation: {
+                messages: {},
               },
-            ],
+              wrappers: ['animation'],
+              expressions: {},
+              expressionProperties: {},
+            },
+          ],
+          id: 'formly_45___0',
+          hooks: {},
+          modelOptions: {},
+          validation: {
+            messages: {},
           },
-        ],
+          type: 'formly-group',
+          defaultValue: {},
+          wrappers: ['animation', 'group'],
+          expressions: {},
+          expressionProperties: {},
+        },
+        {
+          props: {
+            key: 'SearchEditorHeader',
+            tabHeader: 'Search Editor',
+          },
+          fieldGroup: [
+            {
+              key: 'keywordEditorTextarea',
+              type: 'textarea',
+              defaultValue: '',
+              className: 'display-block padding-left-2 padding-right-2 keyword-editor',
+              props: {
+                placeholder: 'e.g. ((rental AND property) OR (lease AND property)) AND NOT "short term"',
+                attributes: {
+                  'aria-label': 'Search Editor',
+                },
+                maxLength: 1024,
+                label: '',
+                disabled: false,
+                cols: 1,
+                rows: 1,
+              },
+              modelOptions: {
+                debounce: {
+                  default: 1000,
+                },
+              },
+              hide: false,
+              id: 'formly_48_textarea_keywordEditorTextarea_0',
+              hooks: {},
+              validation: {
+                messages: {},
+              },
+              wrappers: ['animation', 'group', 'readonly', 'label', 'description', 'validation'],
+              expressions: {},
+              expressionProperties: {},
+            },
+          ],
+          id: 'formly_47___1',
+          hooks: {},
+          modelOptions: {},
+          validation: {
+            messages: {},
+          },
+          type: 'formly-group',
+          defaultValue: {},
+          wrappers: ['animation', 'group'],
+          expressions: {},
+          expressionProperties: {},
+        },
+      ],
+      hide: false,
+
+      hooks: {},
+      modelOptions: {},
+      validation: {
+        messages: {},
       },
+      type: 'formly-group',
+      defaultValue: {},
+      expressions: {},
+      expressionProperties: {},
     },
+
     {
       key: 'searchEntity',
       className: 'margin-top-0',
-      templateOptions: { label: 'Entity', group: 'accordion' },
+      props: { label: 'Entity', group: 'accordion' },
       fieldGroup: [
         {
           key: 'legalBusinessName',
           type: 'input',
-
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Entity Name',
@@ -137,7 +290,7 @@ export class FilterService {
         {
           key: 'uniqueEntityIdDuns',
           type: 'input',
-          templateOptions: {
+          props: {
             tagText: 'DUNS',
             tagClass: 'sds-tag--info-purple',
             label: 'Unique Entity ID',
@@ -152,7 +305,7 @@ export class FilterService {
         {
           key: 'uniqueEntityIdSam',
           type: 'input',
-          templateOptions: {
+          props: {
             tagText: 'SAM',
             label: 'Unique Entity ID',
             hideOptional: true,
@@ -163,7 +316,7 @@ export class FilterService {
         {
           key: 'cageCode',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'CAGE / NCAGE',
@@ -175,21 +328,21 @@ export class FilterService {
       key: 'purposeOfRegistration',
       hide: true,
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         label: 'Purpose of Registration',
         group: 'accordion',
         options: [
           {
-            key: 'allawards',
-            value: 'All Awards',
+            value: 'allawards',
+            label: 'All Awards',
           },
           {
-            key: 'assistance-awards',
-            value: 'Federal Assistance Awards',
+            value: 'assistance-awards',
+            label: 'Federal Assistance Awards',
           },
           {
-            key: 'igt-awards',
-            value: 'Intragovernmental Transactions',
+            value: 'igt-awards',
+            label: 'Intragovernmental Transactions',
           },
         ],
       },
@@ -197,7 +350,7 @@ export class FilterService {
     {
       key: 'startDate',
       type: 'datepicker',
-      templateOptions: {
+      props: {
         group: 'panel',
         hideOptional: true,
         label: 'Date',
@@ -206,7 +359,7 @@ export class FilterService {
     {
       key: 'entityType',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Type',
         group: 'accordion',
       },
@@ -214,14 +367,22 @@ export class FilterService {
     {
       key: 'socioEconomicStatus',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Socio-Economic Status',
         group: 'accordion',
+        options: [
+          { label: 'Contract Opportunities', value: 'co' },
+          { label: 'Entity Information', value: 'ei' },
+          { label: 'Assistance Listings', value: 'al' },
+          { label: 'Contract Data', value: 'cd' },
+          { label: 'Federal Hierarchy', value: 'fh' },
+          { label: 'Wage Determination', value: 'wd' },
+        ],
       },
     },
     {
       key: 'serviceClassifications',
-      templateOptions: {
+      props: {
         label: 'NAICS and Product Service Codes',
         group: 'accordion',
       },
@@ -229,8 +390,7 @@ export class FilterService {
         {
           key: 'naicsCode',
           type: 'input',
-
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'NAICS Code',
@@ -240,7 +400,7 @@ export class FilterService {
         {
           key: 'productServiceCode',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Product Service Code',
             hideOptional: true,
             placeholder: 'Ex: 3320 or L019',
@@ -250,13 +410,12 @@ export class FilterService {
     },
     {
       key: 'location',
-      templateOptions: { label: 'Location', group: 'accordion' },
-
+      props: { label: 'Location', group: 'accordion' },
       fieldGroup: [
         {
           key: 'country',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Country',
@@ -265,7 +424,7 @@ export class FilterService {
         {
           key: 'zipCode',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Zip Code',
@@ -274,7 +433,7 @@ export class FilterService {
         {
           key: 'state',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'State / Province',
             hideOptional: true,
             service: this.service,
@@ -286,7 +445,7 @@ export class FilterService {
         {
           key: 'city',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'City',
@@ -295,7 +454,7 @@ export class FilterService {
         {
           key: 'congressionalDistrict',
           type: 'input',
-          templateOptions: {
+          props: {
             type: 'text',
             hideOptional: true,
             label: 'Congressional District',
@@ -305,21 +464,21 @@ export class FilterService {
     },
     {
       key: 'status',
-      templateOptions: { label: 'Status', group: 'accordion' },
-
+      props: { label: 'Status', group: 'accordion' },
       fieldGroup: [
         {
           key: 'registrationStatus',
           type: 'radio',
-          templateOptions: {
+          props: {
+            label: 'Registration Status',
             options: [
               {
-                key: 'Active',
                 value: 'Active',
+                label: 'Active',
               },
               {
-                key: 'Inactive',
                 value: 'Inactive',
+                label: 'Inactive',
               },
             ],
           },
@@ -327,39 +486,37 @@ export class FilterService {
       ],
     },
     {
-      key: 'status',
-
-      templateOptions: { label: 'Entity Status', group: 'accordion' },
+      key: 'entityStatus',
+      props: { label: 'Entity Status', group: 'accordion' },
       fieldGroup: [
         {
           key: 'statusId',
           id: 'status',
           type: 'multicheckbox',
-
-          templateOptions: {
+          props: {
             label: 'Entity Status',
             labelClass: 'usa-sr-only',
             hideOptional: true,
             options: [
               {
-                key: '1,2',
-                value: 'Work in Progress Registration',
+                value: '1,2',
+                label: 'Work in Progress Registration',
               },
               {
-                key: '3',
-                value: 'Submitted Registration',
+                value: '3',
+                label: 'Submitted Registration',
               },
               {
-                key: '4',
-                value: 'Active Registration',
+                value: '4',
+                label: 'Active Registration',
               },
               {
-                key: '7',
-                value: 'Inactive Registration',
+                value: '7',
+                label: 'Inactive Registration',
               },
               {
-                key: '12',
-                value: 'ID Assigned',
+                value: '12',
+                label: 'ID Assigned',
               },
             ],
           },
@@ -368,8 +525,7 @@ export class FilterService {
     },
     {
       key: 'requestTypesOptions',
-
-      templateOptions: { group: 'panel' },
+      props: { group: 'panel', label: 'Request Type Options' },
       fieldGroup: [
         {
           key: 'requestType',
@@ -377,7 +533,7 @@ export class FilterService {
           type: 'radio',
           className: 'margin-top-0',
           defaultValue: 'myexclusions',
-          templateOptions: {
+          props: {
             label: 'Exclusions Type',
             hideOptional: true,
             options: [
@@ -398,15 +554,14 @@ export class FilterService {
     },
     {
       key: 'expirationDate',
-      templateOptions: { label: 'Expiration Date', group: 'accordion' },
+      props: { label: 'Expiration Date', group: 'accordion' },
       fieldGroup: [
         {
           key: 'expirationDays',
           id: 'exp',
           type: 'radio',
-          templateOptions: {
+          props: {
             label: 'Expiration Date',
-
             labelClass: 'margin-bottom-1',
             hideOptional: true,
             defaultValue: null,

@@ -14,7 +14,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.country',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select Country',
         description: 'Select country.',
         required: true,
@@ -27,12 +27,12 @@ export class FormlyFilterHideExpressionComponent {
           { label: 'Australia', value: 'AUS' },
         ],
       },
-      lifecycle: {
-        onChanges: function (form, field) {
-          field.formControl.valueChanges.subscribe((v) => {
-            Object.keys(form['controls'].location['controls']).forEach((key) => {
+      hooks: {
+        onChanges: (field) => {
+          field.form.controls['items1'].valueChanges.subscribe((value: any[]) => {
+            Object.keys(this.form['controls']['location']['controls']).forEach((key) => {
               if (key !== 'country') {
-                form['controls'].location['controls'][key].setValue('');
+                this.form['controls']['location']['controls'][key].setValue('');
               }
             });
           });
@@ -42,7 +42,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.province',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Select province',
         description: 'Select province.',
         required: true,
@@ -70,7 +70,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.state',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'State',
         description: 'State',
         placeholder: 'Illinois',
@@ -85,7 +85,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.city',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'City',
         description: 'City',
         placeholder: 'Chicago',
@@ -102,7 +102,7 @@ export class FormlyFilterHideExpressionComponent {
     {
       key: 'location.street',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Street',
         hideOptional: true,
         description: 'Street',

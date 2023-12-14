@@ -54,11 +54,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable: Story = (args) => ({
@@ -69,8 +69,8 @@ Configurable.args = {
   sdsTooltip: 'tooltip content',
 };
 Configurable.parameters = {
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Position: Story = (args) => ({
@@ -79,10 +79,10 @@ export const Position: Story = (args) => ({
 });
 Position.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tooltip/tooltip-position', 'TooltipPositionModule', 'sds-tooltip-position'),
   stackblitzLink: generateStackblitzLink('tooltip', 'position'),
 };
@@ -93,10 +93,10 @@ export const SdsTooltip: Story = (args) => ({
 });
 SdsTooltip.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tooltip/tooltip-sdsTooltip', 'TooltipSdsTooltipModule', 'sds-tooltip-sdsTooltip'),
   stackblitzLink: generateStackblitzLink('tooltip', 'sdsTooltip'),
 };

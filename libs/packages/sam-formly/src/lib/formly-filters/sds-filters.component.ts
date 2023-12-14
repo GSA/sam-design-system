@@ -10,6 +10,7 @@ import {
   SimpleChanges,
   ViewChild,
   TemplateRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 import { UntypedFormGroup } from '@angular/forms';
@@ -24,10 +25,12 @@ import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-
 import { SdsFormlyTypes } from '../formly/models/formly-types';
 import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
-import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/components/formly.field.config';
+import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig';
+
 @Component({
   selector: 'sds-filters',
   templateUrl: './sds-filters.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsFiltersComponent implements OnInit, OnChanges {
   @ViewChild('horizontalFiltersDialog')
@@ -223,9 +226,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         matchingField = field;
       } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
-      } else if (field.fieldArray) {
-        matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
       }
+      // else if (field.fieldArray) {
+      //         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
+      //       }
 
       if (matchingField) {
         break;
@@ -241,7 +245,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   onResetClicked() {
     const fieldChangeEvent: FormlyValueChangeEvent = {
-      field: undefined,
+      field: { key: '' },
       type: 'resetAll',
       value: undefined,
     };
@@ -363,17 +367,17 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   private removePopoverGroup(fields: FormlyFieldConfig[]) {
     fields.forEach((field) => {
-      if (field.templateOptions && field.templateOptions.group === 'popover') {
-        field.templateOptions.group = 'accordion';
+      if (field.props && field.props.group === 'popover') {
+        field.props.group = 'accordion';
       }
 
       if (field.fieldGroup) {
         this.removePopoverGroup(field.fieldGroup);
       }
 
-      if (field.fieldArray) {
-        this.removePopoverGroup([field.fieldArray]);
-      }
+      // if (field.fieldArray) {
+      //   this.removePopoverGroup([field.fieldArray]);
+      // }
 
       field.hide = false;
     });

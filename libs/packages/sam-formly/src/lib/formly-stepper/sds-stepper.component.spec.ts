@@ -157,7 +157,7 @@ class StepperTestComponent {
   fieldConfigStep1: FormlyFieldConfig = {
     key: 'step1Input',
     type: 'input',
-    templateOptions: {
+    props: {
       label: 'Step 1',
       required: true,
       minLength: 5,
@@ -167,7 +167,7 @@ class StepperTestComponent {
   fieldConfigStep2Child1: FormlyFieldConfig = {
     key: 'step2Child1Input',
     type: 'input',
-    templateOptions: {
+    props: {
       label: 'Step 2 Child 1',
     },
   };
@@ -212,8 +212,8 @@ describe('SdsStepperComponent', () => {
 
   it('Should create with expected steps', () => {
     expect(stepper).toBeDefined();
-    expect(stepper.stepTemplates.toArray()[1].children.length).toEqual(0);
-    expect(stepper.flatSteps.length).toEqual(2);
+    expect(stepper.stepTemplates.toArray()[1].children.length).toEqual(1);
+    expect(stepper.flatSteps.length).toEqual(3);
     expect(stepper.currentStepId).toEqual('step1');
 
     const validSteps = fixture.debugElement.queryAll(By.css('.bi sds-check'));
@@ -262,7 +262,7 @@ describe('SdsStepperComponent', () => {
     'Should jump to step 1 when clicking from side navigation',
     waitForAsync(() => {
       const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
-      sidenavLinks[2]?.triggerEventHandler('click', null);
+      sidenavLinks[2].triggerEventHandler('click', null);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
         expect(stepper.currentStepId).toEqual('step1');

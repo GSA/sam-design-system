@@ -210,7 +210,7 @@ describe('SdsMenu', () => {
     fixture.detectChanges();
     tick(500);
 
-    expect(fixture.componentInstance.items.first.focus).toHaveBeenCalledWith('mouse');
+    expect(fixture.componentInstance.items.first.focus).toHaveBeenCalledWith('program');
   }));
 
   it('should set the proper focus origin when opening by touch', fakeAsync(() => {

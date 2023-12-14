@@ -18,7 +18,7 @@ export class FormlyRadioTemplateComponent implements AfterViewInit {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         required: true,
         options: [
           {
@@ -57,10 +57,10 @@ export class FormlyRadioTemplateComponent implements AfterViewInit {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(this.form['controls']['entity']);
           });
         },
       },
@@ -71,6 +71,6 @@ export class FormlyRadioTemplateComponent implements AfterViewInit {
     console.log($event);
   }
   ngAfterViewInit() {
-    this.fields[0].templateOptions.template = this.radioTemplate;
+    this.fields[0].props.template = this.radioTemplate;
   }
 }

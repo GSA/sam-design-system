@@ -146,11 +146,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable: Story = (args) => {
@@ -167,8 +167,8 @@ export const Configurable: Story = (args) => {
   };
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 Configurable.args = {
   results: [
@@ -187,10 +187,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/result-list/result-list-basic', 'ResultListBasicModule', 'sds-result-list-basic'),
   stackblitzLink: generateStackblitzLink('result-list', 'basic'),
 };
@@ -201,10 +201,10 @@ export const Messages: Story = (args) => ({
 });
 Messages.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/result-list/result-list-messages',
     'ResultListMessagesModule',
@@ -219,10 +219,10 @@ export const CustomTemplate: Story = (args) => ({
 });
 CustomTemplate.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/result-list/result-list-custom-template',
     'ResultListCustomTemplateModule',
@@ -237,10 +237,10 @@ export const CustomComponent: Story = (args) => ({
 });
 CustomComponent.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/result-list/result-list-custom-component',
     'ResultListCustomComponentModule',

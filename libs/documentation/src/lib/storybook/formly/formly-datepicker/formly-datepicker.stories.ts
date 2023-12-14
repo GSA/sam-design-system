@@ -44,10 +44,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-basic',
     'FormlyDatepickerBasicModule',
@@ -62,10 +62,10 @@ export const Options: Story = (args) => ({
 });
 Options.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-options',
     'FormlyDatepickerOptionsModule',
@@ -80,10 +80,10 @@ export const Validation: Story = (args) => ({
 });
 Validation.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-validation',
     'FormlyDatepickerValidationModule',
@@ -98,10 +98,10 @@ export const Range: Story = (args) => ({
 });
 Range.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-range',
     'FormlyDatepickerRangeModule',

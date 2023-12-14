@@ -22,7 +22,7 @@ export class UpdateOnInheritanceComponent {
             {
               key: 'parent1NoUpdateOn',
               type: 'input',
-              templateOptions: {
+              props: {
                 label: 'Parent 1 No UpdateOn Specified',
                 description: 'No updateOn specified, inherits from ancestors, will update onBlur',
                 required: true,
@@ -34,7 +34,7 @@ export class UpdateOnInheritanceComponent {
               modelOptions: {
                 updateOn: 'change',
               },
-              templateOptions: {
+              props: {
                 label: "updateOn: 'change'",
                 description: 'change specified as updateOn option, will ignore updateOn of ancestors',
                 required: true,
@@ -48,7 +48,7 @@ export class UpdateOnInheritanceComponent {
             {
               key: 'parent2NoUpdateOn',
               type: 'input',
-              templateOptions: {
+              props: {
                 label: 'Parent 2 No UpdateOn Specified',
                 description: 'No updateOn specified, inherits from ancestors, will update onBlur',
                 required: true,
@@ -60,7 +60,7 @@ export class UpdateOnInheritanceComponent {
               modelOptions: {
                 updateOn: 'submit',
               },
-              templateOptions: {
+              props: {
                 label: "updateOn: 'submit'",
                 description: 'submit specified as updateOn option, will ignore updateOn of ancestors',
                 required: true,

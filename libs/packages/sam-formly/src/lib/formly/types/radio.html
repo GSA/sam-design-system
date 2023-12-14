@@ -1,20 +1,20 @@
 <form
   class="usa-radio"
   [id]="id"
-  [attr.aria-label]="to.ariaLabel? to.ariaLabel : to.label"
-  [attr.aria-describedby]="to.description ? id + '_description' : undefined"
-  [ngClass]="{'horizontal': to.horizontal, 'grid-row': to.horizontal}"
+  [attr.aria-label]="props.ariaLabel? props.ariaLabel : props.label"
+  [attr.aria-describedby]="props.description ? id + '_description' : undefined"
+  [ngClass]="{'horizontal': props.horizontal, 'grid-row': props.horizontal}"
 >
-  <div *ngIf="to.options">
+  <div *ngIf="props.options">
     <ng-container
       *ngFor="
-  let option of to.options | formlySelectOptions: field | async;
+  let option of props.options | formlySelectOptions: field | async;
   let i = index"
-      [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
+      [ngTemplateOutlet]="(props.template ? props.template : defaultTemplate)"
       [ngTemplateOutletContext]="{
     $implicit: option,
     i: i,
-    to:to,
+    props:props,
     field: field,
     id: id,
     showError: showError,
@@ -24,9 +24,9 @@
     </ng-container>
   </div>
 
-  <div *ngIf="to.groupOptions">
+  <div *ngIf="props.groupOptions">
     <fieldset class="usa-fieldset">
-      <ng-container class="grid-row" *ngFor="let option of (to.groupOptions | keyvalue); let i = index">
+      <ng-container class="grid-row" *ngFor="let option of (props.groupOptions |  keyvalue); let i = index">
         <div>
           <legend>
             <span class="text-bold display-block margin-top-1 margin-bottom-05">{{option.key}}</span>
@@ -36,15 +36,15 @@
             class="grid-row"
             *ngFor="let opt of option.value | formlySelectOptions: field | async; let j = index"
           >
-            <div class="grid-row" [ngClass]="{'horizontal-option': to.horizontal}">
+            <div class="grid-row" [ngClass]="{'horizontal-option': props.horizontal}">
               <div>
                 <input
                   class="usa-radio__input"
-                  [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}"
+                  [ngClass]="{'usa-radio__input--tile': props.tile, 'usa-input--error': !showError}"
                   [formlyAttributes]="field"
                   [id]="id + '_' + i+ '_'+ j"
                   type="radio"
-                  [name]="option.key"
+                  [name]="option.value"
                   checked="checked"
                   [formControl]="formControl"
                   [value]="opt.value"
@@ -54,7 +54,7 @@
                   class="usa-radio__label"
                   [ngClass]="{
               'margin-top-0': j==0 ,
-'{{to.optionsClass}}': to.optionsClass}"
+'{{props.optionsClass}}': props.optionsClass}"
                   [for]="id + '_' + i+ '_'+ j"
                 >
                   <span [innerHtml]="opt.label"></span>
@@ -94,12 +94,12 @@
   </div>
 </form>
 
-<ng-template let-option let-i="i" let-to="to" #defaultTemplate>
-  <div class="grid-row" [ngClass]="{'horizontal-option': to.horizontal ,'margin-top-1': to.description && i==0 }">
+<ng-template let-option let-i="i" let-props="props" #defaultTemplate>
+  <div class="grid-row" [ngClass]="{'horizontal-option': props.horizontal ,'margin-top-1': props.description && i==0 }">
     <div>
       <input
         class="usa-radio__input"
-        [ngClass]="{'usa-radio__input--tile': to.tile, 'usa-input--error': !showError}"
+        [ngClass]="{'usa-radio__input--tile': props.tile, 'usa-input--error': !showError}"
         [formlyAttributes]="field"
         [id]="id + '_' + i"
         type="radio"
@@ -113,15 +113,15 @@
         class="usa-radio__label"
         [ngClass]="{
               'margin-top-0': i==0 ,
-'{{to.optionsClass}}': to.optionsClass}"
+'{{props.optionsClass}}': props.optionsClass}"
         [for]="id + '_' + i"
       >
         <span [innerHtml]="option.label"></span>
-        <ng-container *ngIf="to.options[i].description && to.options[i].description.length">
+        <ng-container *ngIf="props.options[i].description && props.options[i].description.length">
           <div class="usa-checkbox__label-description">
             <span
               class="display-block"
-              *ngFor="let description of to.options[i].description"
+              *ngFor="let description of props.options[i].description"
               [innerHtml]="description"
             ></span>
           </div>
@@ -129,13 +129,16 @@
       </label>
     </div>
 
-    <div class="margin-left-1" *ngIf="to.options[i].tooltipText">
-      <ng-template #tipContent>
-        <p [ngClass]="to.options[i].tooltipClass" class="margin-1" [innerHTML]="to.options[i].tooltipText"></p>
-      </ng-template>
+    <div class="margin-left-1" *ngIf="props.options[i].tooltipText">
+      <p
+        #tipContent
+        [ngClass]="props.options[i].tooltipClass"
+        class="margin-1"
+        [innerHTML]="props.options[i].tooltipText"
+      ></p>
       <usa-icon
         class="text-secondary"
-        [position]="to.options[i].tooltipPosition ? to.options[i].tooltipPosition :'right'"
+        [position]="props.options[i].tooltipPosition ? props.options[i].tooltipPosition :'right'"
         [sdsTooltip]="tipContent"
         [size]="'lg'"
         [icon]="'info-circle'"
