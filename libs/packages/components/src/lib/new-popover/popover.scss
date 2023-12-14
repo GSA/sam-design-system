@@ -1,4 +1,3 @@
-
 .popover {
   --sds-popover-zindex: 1070;
   --sds-popover-max-width: 276px;
@@ -52,9 +51,7 @@
 
 .bs-popover-top {
   > .popover-arrow {
-    bottom: calc(
-      -1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width)
-    );
+    bottom: calc(-1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width));
 
     &::before,
     &::after {
@@ -75,9 +72,7 @@
 
 .bs-popover-end {
   > .popover-arrow {
-    left: calc(
-      -1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width)
-    );
+    left: calc(-1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width));
     width: var(--sds-popover-arrow-height);
     height: var(--sds-popover-arrow-width);
 
@@ -101,9 +96,7 @@
 
 .bs-popover-bottom {
   > .popover-arrow {
-    top: calc(
-      -1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width)
-    );
+    top: calc(-1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width));
 
     &::before,
     &::after {
@@ -136,9 +129,7 @@
 
 .bs-popover-start {
   > .popover-arrow {
-    right: calc(
-      -1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width)
-    );
+    right: calc(-1 * (var(--sds-popover-arrow-height)) - var(--sds-popover-border-width));
     width: var(--sds-popover-arrow-height);
     height: var(--sds-popover-arrow-width);
 
@@ -159,7 +150,6 @@
     }
   }
 }
-
 
 .bs-popover-auto {
   &[data-popper-placement^='top'] {
