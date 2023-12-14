@@ -15,7 +15,7 @@ export class ValidationWrapperBasic {
       wrappers: ['validation'],
       key: 'Description',
       type: 'input',
-      templateOptions: {
+      props: {
         required: true,
         placeholder: 'eg: Acme Corporation',
       },

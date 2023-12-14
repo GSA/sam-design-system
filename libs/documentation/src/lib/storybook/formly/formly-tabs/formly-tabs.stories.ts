@@ -16,7 +16,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -43,12 +43,12 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    placeholder: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
-    disabled: templateOptions,
-    tooltipText: templateOptions,
+    label: props,
+    placeholder: props,
+    description: props,
+    required: props,
+    disabled: props,
+    tooltipText: props,
   },
 } as Meta;
 
@@ -64,10 +64,10 @@ export const Intercept: Story = (args) => ({
 });
 Intercept.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-tabs/formly-tabs-intercept',
     'FormlyTabsInterceptModule',
@@ -82,10 +82,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-tabs/formly-tabs-basic',
     'FormlyTabsBasicModule',

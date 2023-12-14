@@ -13,7 +13,7 @@ export class SearchOptional {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -21,7 +21,7 @@ export class SearchOptional {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             id: 'searchOptional',
             label: 'Big Search',
             searchSettings: {
@@ -35,7 +35,7 @@ export class SearchOptional {
         {
           key: 'ddsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Big Search with dropdown',
             searchSettings: {
               id: 'ddSearchOptional',
@@ -56,7 +56,7 @@ export class SearchOptional {
         {
           key: 'invsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Big Search with dropdown inverse',
             searchSettings: {
               placeholder: 'eg: Acme Corporation',

@@ -7,6 +7,7 @@ import { SdsDialogRef, SDS_DIALOG_DATA, SdsDialogService } from '@gsa-sam/compon
 import { SdsFormlyDialogComponent } from './formly-dialog.component';
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SdsFormlyDialogComponent', () => {
   let component: SdsFormlyDialogComponent;
@@ -20,7 +21,7 @@ describe('SdsFormlyDialogComponent', () => {
       const dialogSpy = jasmine.createSpyObj('SdsDialogRef', ['close']);
       TestBed.configureTestingModule({
         declarations: [SdsFormlyDialogComponent],
-        imports: [CommonModule, FormlyModule, SdsFormlyModule, ReactiveFormsModule],
+        imports: [CommonModule, FormlyModule, SdsFormlyModule, ReactiveFormsModule, BrowserAnimationsModule],
         providers: [
           { provide: SDS_DIALOG_DATA, useValue: {} },
           { provide: SdsDialogRef, useValue: dialogSpy },

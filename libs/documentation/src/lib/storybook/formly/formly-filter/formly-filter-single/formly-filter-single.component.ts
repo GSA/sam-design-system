@@ -14,7 +14,7 @@ export class FormlyFilterSingleComponent {
     {
       key: 'single.default.entity.title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         group: 'panel',
         placeholder: 'eg: Acme Corporation',

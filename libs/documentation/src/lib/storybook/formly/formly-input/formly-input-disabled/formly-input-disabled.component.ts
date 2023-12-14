@@ -14,7 +14,7 @@ export class FormlyInputDisabledComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         disabled: true,
       },

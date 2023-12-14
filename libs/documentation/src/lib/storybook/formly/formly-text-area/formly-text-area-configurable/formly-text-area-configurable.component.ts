@@ -10,7 +10,7 @@ export class FormlyTextAreaConfigurableComponent {
   @Input('config')
   set config(config: object) {
     const temp = this.fields[0];
-    temp['templateOptions'] = config;
+    temp['props'] = config;
     this.fields = [temp];
   }
 
@@ -21,7 +21,7 @@ export class FormlyTextAreaConfigurableComponent {
     {
       key: 'entity',
       type: 'textarea',
-      templateOptions: {
+      props: {
         label: 'Entity Description',
         placeholder: 'eg: Acme Corporation is a federal contractor.',
         description: 'Enter the description for your entity.',

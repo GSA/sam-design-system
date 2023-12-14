@@ -19,7 +19,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -47,11 +47,11 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    placeholder: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
-    maxLength: templateOptions,
+    label: props,
+    placeholder: props,
+    description: props,
+    required: props,
+    maxLength: props,
   },
 } as Meta;
 
@@ -97,8 +97,8 @@ Configurable.args = {
   maxLength: 50,
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 
 export const Description: Story = (args) => ({
@@ -107,10 +107,10 @@ export const Description: Story = (args) => ({
 });
 Description.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-description',
     'FormlyTextAreaDescriptionModule',
@@ -125,10 +125,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-label',
     'FormlyTextAreaLabelModule',
@@ -143,10 +143,10 @@ export const Placeholder: Story = (args) => ({
 });
 Placeholder.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-placeholder',
     'FormlyTextAreaPlaceholderModule',
@@ -161,10 +161,10 @@ export const Required: Story = (args) => ({
 });
 Required.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-required',
     'FormlyTextAreaRequiredModule',
@@ -179,10 +179,10 @@ export const MaxLength: Story = (args) => ({
 });
 MaxLength.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-maxlength',
     'FormlyTextAreaMaxlengthModule',

@@ -19,7 +19,7 @@ export class DownloadComponent {
     {
       key: 'download',
       type: 'radio',
-      templateOptions: {
+      props: {
         hideOptional: true,
         options: [
           {
@@ -37,7 +37,7 @@ export class DownloadComponent {
       key: 'mode',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         hideOptional: true,
         class: 'margin-left-2',
         options: [
@@ -54,7 +54,7 @@ export class DownloadComponent {
     {
       key: 'fileType',
       type: 'fileinfo',
-      templateOptions: {
+      props: {
         label: 'Select file type',
         hideOptional: true,
         options: [
@@ -68,7 +68,7 @@ export class DownloadComponent {
     {
       key: 'fileName',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Name',
         required: true,
       },
@@ -76,7 +76,7 @@ export class DownloadComponent {
     {
       key: 'additionalOptions',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         options: [
           {
             value: 'Add to my saved search',

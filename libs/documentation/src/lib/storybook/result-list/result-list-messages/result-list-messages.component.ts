@@ -39,7 +39,7 @@ export class ResultListMessagesComponent {
     {
       key: 'messageType',
       type: 'select',
-      templateOptions: {
+      props: {
         label: 'Message Type',
         required: true,
         options: [

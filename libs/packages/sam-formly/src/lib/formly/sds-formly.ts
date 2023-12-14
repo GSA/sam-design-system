@@ -1,13 +1,13 @@
 import { ChangeDetectorRef, Directive, OnInit } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Directive()
-export abstract class AbstractSdsFormly extends FieldType implements OnInit {
+export abstract class AbstractSdsFormly extends FieldType<FieldTypeConfig> implements OnInit {
   public cdr: ChangeDetectorRef;
   public template: any;
 
   public ngOnInit() {
-    this.setProperties(this.template, (<any>this).field.templateOptions);
+    this.setProperties(this.template, (<any>this).field.props);
   }
 
   public setProperties(component: any, configuration: any) {

@@ -20,7 +20,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -63,10 +63,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-basic',
     'FormlySearchBasicModule',
@@ -81,10 +81,10 @@ export const HandlingSubmit: Story = (args) => ({
 });
 HandlingSubmit.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-handling-submit',
     'FormlySearchHandlingSubmitModule',
@@ -99,10 +99,10 @@ export const Advanced: Story = (args) => ({
 });
 Advanced.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-advanced',
     'FormlySearchAdvancedModule',
@@ -117,10 +117,10 @@ export const Big: Story = (args) => ({
 });
 Big.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-big',
     'FormlySearchBigModule',
@@ -135,10 +135,10 @@ export const Optional: Story = (args) => ({
 });
 Optional.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-optional',
     'FormlySearchOptionalModule',
@@ -153,10 +153,10 @@ export const Dropdown: Story = (args) => ({
 });
 Dropdown.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-dropdown',
     'FormlySearchDropdownModule',
@@ -171,10 +171,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-label',
     'FormlySearchLabelModule',
@@ -189,10 +189,10 @@ export const Placeholder: Story = (args) => ({
 });
 Placeholder.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-placeholder',
     'FormlySearchPlaceholderModule',

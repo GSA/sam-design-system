@@ -31,9 +31,9 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/collapse/collapse-basic', 'CollapseBasicModule', 'sds-collapse-basic'),
   stackblitzLink: generateStackblitzLink('collapse', 'basic'),
 };
@@ -45,9 +45,9 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
 };
 
 export const __namedExportsOrder = ['Introduction', 'Basic'];

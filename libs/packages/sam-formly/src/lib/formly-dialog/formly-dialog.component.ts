@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
-
 import { SdsFormlyDialogData } from './formly-dialog-data.model';
 import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sds-advanced-filters.service';
+import { startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'sds-formly-dialog',
@@ -23,8 +23,11 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   @Output() cancelFn: EventEmitter<any> = new EventEmitter();
 
+  @Output() onChangeFn: EventEmitter<any> = new EventEmitter();
+
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
+    private cdr: ChangeDetectorRef,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData
   ) {}
@@ -37,6 +40,10 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
     this.disableSubmitButton = this.data.disableSubmitButtonEnabled ? this.data.disableSubmitButtonEnabled : false;
+  }
+
+  onModelChange() {
+    this.onChangeFn.emit(this.model);
   }
 
   onSubmit() {

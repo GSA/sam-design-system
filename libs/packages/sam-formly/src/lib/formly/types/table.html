@@ -1,5 +1,5 @@
-<sds-table [data]="form.value" [tableName]="to.name" #fileTable>
-  <sds-table-column *ngFor="let column of to.tableColumns" [sdsColumnName]="column.columnName">
+<sds-table [data]="form.value" [tableName]="props.name" #fileTable>
+  <sds-table-column *ngFor="let column of props.tableColumns" [sdsColumnName]="column.columnName">
     <ng-template #sdsHeaderCell>{{column.label}}</ng-template>
     <ng-template #sdsCell let-element="element">
       <button
@@ -24,7 +24,7 @@
   <sds-row [displayedColumns]="displayedColumns"></sds-row>
 </sds-table>
 <div *ngIf="!form.value || !form.value.length" class="border border-base-light text-center padding-1">
-  {{to.noDataText}}
+  {{props.noDataText}}
 </div>
 
 <ng-template #tableCellTemplates let-element let-column="column">

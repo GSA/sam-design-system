@@ -13,7 +13,7 @@ export class TableFileInputComponent implements AfterViewInit {
     {
       key: 'customTableFilesInput',
       type: SdsFormlyTypes.FILEINPUT, // Enum maps to 'fileinput' string
-      templateOptions: {
+      props: {
         label: 'Custom Table File Input',
         description: 'Accepts multiple files and displays in table',
         multiple: true,
@@ -24,19 +24,14 @@ export class TableFileInputComponent implements AfterViewInit {
         acceptFileType:
           '.bmp,.gif,.jpeg,.jpg,.tex,.xls,.xlsx,.doc,.docx,.docx,.odt,.txt,.pdf,.png,.pptx,.ppt,.rtf,.AVI,.mov,.mpg,.mpeg,.mp4,.wmv,.flv,.f4v',
         template: null,
-      },
-      fieldArray: {
-        type: SdsFormlyTypes.TABLE,
-        templateOptions: {
-          name: 'Demo Table',
-          noDataText: 'No Attachments',
-          tableColumns: [
-            { label: 'Attachment Name', columnName: 'name', property: 'name' },
-            { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
-            { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
-            { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
-          ],
-        },
+        tableName: 'Demo Table',
+        noDataText: 'No Attachments',
+        tableColumns: [
+          { label: 'Attachment Name', columnName: 'name', property: 'name' },
+          { label: 'File Size (kB)', columnName: 'size', textFn: (file: File) => file.size / 1000 },
+          { label: 'Virus Scan', columnName: 'scan', property: 'scan' },
+          { label: 'Action', columnName: 'action', text: 'Remove', onClick: this.removeFile.bind(this) },
+        ],
       },
     },
   ];
@@ -45,7 +40,7 @@ export class TableFileInputComponent implements AfterViewInit {
 
   onModelChange($event: { customTableFilesInput: File[] }) {
     // The 'scan' property here must match the property in
-    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in templateOptions' tableColumns
+    // {label: 'Virus Scan', columnName:'scan', property: 'scan'} in props' tableColumns
     const newFiles = $event.customTableFilesInput.filter((file) => !file['scan']);
     this.scanFiles(newFiles);
     console.log('model', $event);
@@ -97,6 +92,6 @@ export class TableFileInputComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.fields[0].templateOptions.template = this.replacementTemplate;
+    this.fields[0].props.template = this.replacementTemplate;
   }
 }

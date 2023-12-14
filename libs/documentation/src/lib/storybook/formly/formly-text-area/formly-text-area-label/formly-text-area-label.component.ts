@@ -14,7 +14,7 @@ export class FormlyTextAreaLabelComponent {
     {
       key: 'entity',
       type: 'textarea',
-      templateOptions: {
+      props: {
         label: 'Entity Description',
       },
     },

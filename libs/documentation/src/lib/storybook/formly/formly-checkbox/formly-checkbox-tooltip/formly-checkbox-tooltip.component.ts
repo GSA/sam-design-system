@@ -14,7 +14,7 @@ export class FormlyCheckboxTooltipComponent {
     {
       key: 'entity.userAgreement',
       type: 'checkbox',
-      templateOptions: {
+      props: {
         tooltipText: 'By checking the box you agree to the terms and conditions',
       },
     },

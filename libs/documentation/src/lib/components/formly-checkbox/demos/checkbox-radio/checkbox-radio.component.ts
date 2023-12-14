@@ -17,7 +17,7 @@ export class CheckboxRadio {
         {
           key: 'entity.downloadableLink',
           type: 'checkbox',
-          templateOptions: {
+          props: {
             label: 'Send me a link to a downloadable file with updated search results',
             required: true,
           },
@@ -26,7 +26,7 @@ export class CheckboxRadio {
           className: 'grid-row margin-left-4 margin-top-1',
           key: 'entity.linkOptions',
           type: 'radio',
-          templateOptions: {
+          props: {
             options: [
               {
                 value: 'CSV',

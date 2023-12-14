@@ -19,7 +19,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -50,12 +50,12 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    placeholder: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
-    disabled: templateOptions,
-    tooltipText: templateOptions,
+    label: props,
+    placeholder: props,
+    description: props,
+    required: props,
+    disabled: props,
+    tooltipText: props,
   },
 } as Meta;
 
@@ -104,7 +104,7 @@ Configurable.args = {
   tooltipText: '',
 };
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 
 export const Label: Story = (args) => ({
@@ -113,10 +113,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-label',
     'FormlyInputLabelModule',
@@ -130,10 +130,10 @@ export const TooltipText: Story = (args) => ({
 });
 TooltipText.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-tooltip-text',
     'FormlyInputTooltipTextModule',
@@ -147,10 +147,10 @@ export const Description: Story = (args) => ({
 });
 Description.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-description',
     'FormlyInputDescriptionModule',
@@ -165,10 +165,10 @@ export const Disabled: Story = (args) => ({
 });
 Disabled.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-disabled',
     'FormlyInputDisabledModule',
@@ -183,10 +183,10 @@ export const Required: Story = (args) => ({
 });
 Required.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-required',
     'FormlyInputRequiredModule',
@@ -201,10 +201,10 @@ export const Placeholder: Story = (args) => ({
 });
 Placeholder.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-placeholder',
     'FormlyInputPlaceholderModule',

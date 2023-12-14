@@ -14,7 +14,7 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
   fields: FormlyFieldConfig[] = [
     {
       type: SdsFormlyTypes.READONLY,
-      templateOptions: {
+      props: {
         readonlyTemplate: (field) => {
           return `
             <label class="usa-label">Phone Number</label>
@@ -35,7 +35,7 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
           className: 'grid-col-3',
           key: 'countryCode',
           type: SdsFormlyTypes.INPUT,
-          templateOptions: {
+          props: {
             label: 'Country Code',
             hideOptional: true,
           },
@@ -45,7 +45,7 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
           className: 'grid-col-5',
           key: 'phoneNumber',
           type: SdsFormlyTypes.INPUT,
-          templateOptions: {
+          props: {
             label: 'Phone',
             hideOptional: true,
           },
@@ -55,7 +55,7 @@ export class FormlyWrapperReadOnlyCustomTemplateComponent {
           className: 'grid-col-3',
           key: 'extension',
           type: SdsFormlyTypes.INPUT,
-          templateOptions: {
+          props: {
             label: 'Extension Number',
             hideOptional: true,
           },

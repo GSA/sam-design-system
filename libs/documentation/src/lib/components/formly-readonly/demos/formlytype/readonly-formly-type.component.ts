@@ -20,14 +20,14 @@ export class ReadonlyFormlyTypeComponent {
     {
       type: SdsFormlyTypes.READONLY,
       defaultValue: 'Credit',
-      templateOptions: {
+      props: {
         label: 'Payment Type',
         hideOptional: true,
       },
     },
     {
       type: SdsFormlyTypes.INPUT,
-      templateOptions: {
+      props: {
         label: 'Card Number',
         placeholder: '1234-5678-9012-3456',
         required: true,
@@ -36,7 +36,7 @@ export class ReadonlyFormlyTypeComponent {
     },
     {
       type: SdsFormlyTypes.INPUT,
-      templateOptions: {
+      props: {
         label: 'Security Code',
         placeholder: '123',
         required: true,
@@ -45,7 +45,7 @@ export class ReadonlyFormlyTypeComponent {
     },
     {
       type: SdsFormlyTypes.INPUT,
-      templateOptions: {
+      props: {
         label: 'Zip Code',
         placeholder: '12345',
         required: true,

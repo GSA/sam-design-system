@@ -47,10 +47,10 @@ export const Blur: Story = (args) => ({
 });
 Blur.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-blur',
     'FormlyWrapperTemplateOptionsBlurModule',
@@ -65,10 +65,10 @@ export const UpdateOn: Story = (args) => ({
 });
 UpdateOn.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-updateon',
     'FormlyWrapperTemplateOptionsUpdateonModule',
@@ -83,10 +83,10 @@ export const Hideoptional: Story = (args) => ({
 });
 Hideoptional.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-hideoptional',
     'FormlyWrapperTemplateOptionsHideoptionalModule',
@@ -101,10 +101,10 @@ export const AnnounceLabel: Story = (args) => ({
 });
 AnnounceLabel.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-announce-label',
     'FormlyWrapperTemplateOptionsAnnounceLabelModule',

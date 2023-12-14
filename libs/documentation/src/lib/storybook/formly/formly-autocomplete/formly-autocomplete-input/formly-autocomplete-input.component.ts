@@ -19,12 +19,12 @@ export class FormlyAutocompleteInputComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      templateOptions: { label: 'Keyword' },
+      props: { label: 'Keyword' },
       fieldGroup: [
         {
           key: 'firstName',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Auto Complete',
             hideLabel: true,
             service: this.service,

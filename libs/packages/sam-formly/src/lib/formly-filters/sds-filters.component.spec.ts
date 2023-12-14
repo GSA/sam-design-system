@@ -42,12 +42,12 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI' },
+          props: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
               type: 'input',
-              templateOptions: {
+              props: {
                 required: true,
                 label: 'Formly input type number',
                 placeholder: 'eg: Acme Corporation',
@@ -96,12 +96,12 @@ describe('The Sam Filters Component', () => {
         {
           key: 'filter',
           wrappers: ['filterwrapper'],
-          templateOptions: { label: 'Entity Types' },
+          props: { label: 'Entity Types' },
           fieldGroup: [
             {
               key: 'entityType',
               type: 'radio',
-              templateOptions: {
+              props: {
                 label: 'Expiration Date',
                 options: [
                   { label: '30 Days', value: '30' },
@@ -130,12 +130,12 @@ describe('The Sam Filters Component', () => {
         {
           key: 'filter',
           wrappers: ['filterwrapper'],
-          templateOptions: { label: 'Entity Types' },
+          props: { label: 'Entity Types' },
           fieldGroup: [
             {
               key: 'entityType',
               type: 'radio',
-              templateOptions: {
+              props: {
                 label: 'Expiration Date',
                 options: [
                   { label: '30 Days', value: '30' },
@@ -168,7 +168,6 @@ describe('The Sam Filters Component', () => {
         searchEntity: null,
       };
       const result = component.overwrite(component.form.getRawValue(), updateFormValue);
-      console.log(result);
       expect(JSON.stringify(result)).toEqual(JSON.stringify(expectedOutput));
     });
   });
@@ -193,13 +192,13 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI' },
+          props: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
               type: 'input',
 
-              templateOptions: {
+              props: {
                 required: true,
                 label: 'Formly input type number',
                 placeholder: 'eg: Acme Corporation',
@@ -241,13 +240,13 @@ describe('The Sam Filters Component', () => {
       component.fields = [
         {
           key: 'filters',
-          templateOptions: { label: 'Entity Name/UEI' },
+          props: { label: 'Entity Name/UEI' },
           fieldGroup: [
             {
               key: 'uniqueId',
               type: 'input',
               hide: true,
-              templateOptions: {
+              props: {
                 required: true,
                 label: 'Formly input type number',
                 placeholder: 'eg: Acme Corporation',
@@ -272,7 +271,7 @@ describe('The Sam Filters Component', () => {
           key: 'filters',
           type: 'input',
           hide: true,
-          templateOptions: {
+          props: {
             label: 'State',
             description: 'State',
           },
@@ -289,7 +288,7 @@ describe('The Sam Filters Component', () => {
           key: 'filters',
           type: 'input',
           hide: true,
-          templateOptions: {
+          props: {
             label: 'State',
             description: 'State',
           },
@@ -301,8 +300,8 @@ describe('The Sam Filters Component', () => {
 
       fixture.detectChanges();
 
-      const resetAllButton = fixture.debugElement.query(By.css('button'));
-      resetAllButton.triggerEventHandler('click', null);
+      const resetAllButton = fixture.nativeElement.querySelector('button');
+      resetAllButton.click();
       fixture.detectChanges();
       expect(component.model).toEqual({ filters: '67890' });
     });

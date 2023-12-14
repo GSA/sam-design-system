@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import {
   SDSAutocompletelConfiguration,
   SdsDialogService,
@@ -30,7 +29,7 @@ export class FormlyDialogDownloadComponent {
     {
       key: 'scheduleNotifications',
       type: 'autocomplete',
-      templateOptions: {
+      props: {
         label: 'Select how often you would like to receive notifications.',
         description: '<a href="#" class="usa-link">When do my saved searches run?</a>',
         service: this.service,
@@ -43,16 +42,16 @@ export class FormlyDialogDownloadComponent {
     {
       key: 'download',
       type: 'radio',
-      templateOptions: {
+      props: {
         hideOptional: true,
         options: [
           {
-            value: 'Single Details',
-            key: 'sd',
+            label: 'Single Details',
+            value: 'sd',
           },
           {
-            value: 'Contract Family Details',
-            key: 'cfd',
+            label: 'Contract Family Details',
+            value: 'cfd',
           },
         ],
       },
@@ -61,13 +60,13 @@ export class FormlyDialogDownloadComponent {
       key: 'mode',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         hideOptional: true,
         class: 'margin-left-2',
         options: [
           {
-            value: 'Modifications',
-            key: 'mod',
+            label: 'Modifications',
+            value: 'mod',
           },
         ],
       },
@@ -78,7 +77,7 @@ export class FormlyDialogDownloadComponent {
     {
       key: 'fileType',
       type: 'fileinfo',
-      templateOptions: {
+      props: {
         label: 'Select file type',
         hideOptional: true,
         options: [
@@ -92,7 +91,7 @@ export class FormlyDialogDownloadComponent {
     {
       key: 'fileName',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Name',
         required: true,
       },
@@ -100,11 +99,11 @@ export class FormlyDialogDownloadComponent {
     {
       key: 'additionalOptions',
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         options: [
           {
-            value: 'Add to my saved search',
-            key: 'saved',
+            label: 'Add to my saved search',
+            value: 'saved',
           },
         ],
       },
@@ -147,6 +146,10 @@ export class FormlyDialogDownloadComponent {
     dialogRef.componentInstance.submitFn.subscribe((res) => {
       this.updatedModel = res;
       dialogRef.close();
+    });
+
+    dialogRef.componentInstance.onChangeFn.subscribe((res) => {
+      dialogRef.componentInstance.disableSubmitButton = !res.additionalOptions.saved;
     });
 
     dialogRef.componentInstance.cancelFn.subscribe((res) => {

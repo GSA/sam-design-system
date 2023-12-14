@@ -14,7 +14,7 @@ export class SearchBasic {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -22,7 +22,7 @@ export class SearchBasic {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search',
             searchSettings: {
               placeholder: 'eg: Acme Corporation',
@@ -33,7 +33,7 @@ export class SearchBasic {
         {
           key: 'ddsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search with dropdown',
             searchSettings: {
               id: 'ddsearch',
@@ -53,7 +53,7 @@ export class SearchBasic {
         {
           key: 'invsearchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search with dropdown inverse',
             searchSettings: {
               id: 'invSearch',

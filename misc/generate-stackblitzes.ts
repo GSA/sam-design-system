@@ -16,9 +16,9 @@ let dependencies = packageJson.dependencies;
 // Locking version at 11.0.3 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
 const samDependencies = {
   '@gsa-sam/layouts': '12.0.0',
-  '@gsa-sam/components': '15.0.1',
-  '@gsa-sam/sam-formly': '15.0.1',
-  '@gsa-sam/sam-material-extensions': '15.0.1',
+  '@gsa-sam/components': '16.0.0',
+  '@gsa-sam/sam-formly': '16.0.0',
+  '@gsa-sam/sam-material-extensions': '16.0.0',
 };
 
 dependencies = { ...dependencies, ...samDependencies };

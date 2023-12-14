@@ -55,7 +55,7 @@ describe('Formly Field checkbox Component', () => {
         {
           key: 'textcheckbox',
           type: 'checkbox',
-          templateOptions: {
+          props: {
             label: 'Formly Checkbox',
             option: { label: 'Option A', value: 'a' },
           },
@@ -66,8 +66,8 @@ describe('Formly Field checkbox Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('usa-checkbox');
-      const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field.templateOptions
-        .option.value;
+      const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field.props.option
+        .value;
 
       fixture.detectChanges();
       expect(expectedValue).toBe('a');

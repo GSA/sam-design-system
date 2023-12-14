@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-datepicker',
@@ -12,19 +12,19 @@ import { FieldType } from '@ngx-formly/core';
         [formControl]="formControl"
         [formlyAttributes]="field"
         matInput
-        [min]="to.minDate"
-        [max]="to.maxDate"
+        [min]="props.minDate"
+        [max]="props.maxDate"
         [matDatepicker]="picker"
-        [placeholder]="to.placeholder ? to.placeholder : ''"
-        (ngModelChange)="to.change ? to.change(field) : ''"
+        [placeholder]="props.placeholder ? props.placeholder : ''"
+        (ngModelChange)="props.change ? props.change(field) : ''"
       />
       <mat-datepicker-toggle class="padding-left-1" matSuffix [for]="picker">
         <usa-icon [icon]="'calendar'" matDatepickerToggleIcon [size]="'sm'"></usa-icon>
       </mat-datepicker-toggle>
-      <mat-datepicker [startAt]="to.startDate" #picker></mat-datepicker>
+      <mat-datepicker [startAt]="props.startDate" #picker></mat-datepicker>
     </div>
   `,
   styles: ['table.mat-calendar-table td, table.mat-calendar-table th {border-style: none; background-color: unset; }'],
   encapsulation: ViewEncapsulation.None,
 })
-export class FormlyFieldDatePickerComponent extends FieldType {}
+export class FormlyFieldDatePickerComponent extends FieldType<FieldTypeConfig> {}

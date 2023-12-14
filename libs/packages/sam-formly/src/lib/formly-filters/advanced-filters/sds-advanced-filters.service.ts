@@ -11,7 +11,7 @@ export class SdsAdvancedFiltersService {
     const fields: FormlyFieldConfig[] = [];
     const defaultValue = [];
     origFields.forEach((origField) => {
-      if (origField.fieldGroup?.length && !hideChildrenGroups) {
+      if (origField.fieldGroup?.length && !hideChildrenGroups && !origField.props?.hideChildrenGroups) {
         const field = this.createMulticheckbox(origField, defaultValue);
         fields.push(field);
         // this.convertToCheckboxes(origField.fieldGroup, hideChildrenGroups);
@@ -21,13 +21,13 @@ export class SdsAdvancedFiltersService {
             type: 'checkbox',
             key: origField.key,
             defaultValue: !origField.hide,
-            templateOptions: {
+            props: {
               hideOptional: true,
             },
           };
 
-          if (origField.templateOptions && origField.templateOptions.label) {
-            field.templateOptions.label = origField.templateOptions.label;
+          if (origField.props && origField.props.label) {
+            field.props.label = origField.props.label;
           }
           fields.push(field);
         }
@@ -39,17 +39,17 @@ export class SdsAdvancedFiltersService {
   // TODO: Should be changed so option has label field instead of key but multicheckbox field type must be updated so default value still works
   createMulticheckbox(origField: FormlyFieldConfig, defaultValue: any[]): FormlyFieldConfig {
     const options = [];
-    if (origField.fieldGroup?.length) {
+    if (origField.fieldGroup?.length && origField.key) {
       origField.fieldGroup.forEach((field) => {
         if (field.fieldGroup?.length) {
           options.push(this.createMulticheckbox(field, defaultValue));
         } else {
-          const label = field.templateOptions && field.templateOptions.label ? field.templateOptions.label : null;
+          const label = field.props && field.props.label ? field.props.label : null;
           const option = {
-            key: field.key,
-            value: label,
-            tagText: field.templateOptions.tagText,
-            tagClass: field.templateOptions.tagClass,
+            value: field.key,
+            label: label,
+            tagText: field.props.tagText,
+            tagClass: field.props.tagClass,
           };
           options.push(option);
           if (!origField.hide && !field.hide) {
@@ -63,7 +63,7 @@ export class SdsAdvancedFiltersService {
     const field: FormlyFieldConfig = {
       key: origField.key,
       type: 'multicheckbox',
-      templateOptions: {
+      props: {
         hideOptional: true,
         selectAllOption: true,
         type: 'array',
@@ -71,8 +71,8 @@ export class SdsAdvancedFiltersService {
       },
     };
 
-    if (origField.templateOptions && origField.templateOptions.label) {
-      field.templateOptions.label = origField.templateOptions.label;
+    if (origField.props && origField.props.label) {
+      field.props.label = origField.props.label;
     }
 
     if (!origField.hide) {
@@ -84,12 +84,20 @@ export class SdsAdvancedFiltersService {
   updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field) => {
       const key = field.key as string;
-      const selectedField = selectedFields['filterToggle']['filters'][key];
+      let selectedField = selectedFields['filterToggle']['filters'][key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
         this.updateFieldGroup(field, selectedField, fieldModel);
       } else {
-        this.updateSingleField(field, selectedField, model);
+        if (Array.isArray(selectedField)) {
+          if (selectedField.length > 0) {
+            this.updateSingleField(field, true, model);
+          } else {
+            this.updateSingleField(field, false, model);
+          }
+        } else {
+          this.updateSingleField(field, selectedField, model);
+        }
       }
     });
     return {
@@ -124,7 +132,10 @@ export class SdsAdvancedFiltersService {
       field.hide = false;
     } else {
       field.hide = true;
-      field.templateOptions['required'] = false;
+      field.props = {
+        ...field.props,
+        required: false,
+      };
       if (field.formControl) {
         field.formControl.reset();
       } else {

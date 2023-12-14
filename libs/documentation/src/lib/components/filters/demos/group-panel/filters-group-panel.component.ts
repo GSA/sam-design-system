@@ -22,7 +22,7 @@ export class FiltersGroupPanel implements OnInit {
   sdsGroupDefaultMultipleControls: FormlyFieldConfig[] = [
     {
       key: 'filters',
-      templateOptions: {
+      props: {
         label: 'Entity Information',
         group: 'panel',
       },
@@ -30,7 +30,7 @@ export class FiltersGroupPanel implements OnInit {
         {
           key: 'entity.type',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Entity Type',
             description: 'Select the entity type.',
             required: true,
@@ -47,7 +47,7 @@ export class FiltersGroupPanel implements OnInit {
         {
           key: 'multiple.default.entity.title',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Entity Name',
             placeholder: 'eg: Acme Corporation',
             description: 'Enter the name of your entity.',
@@ -63,7 +63,7 @@ export class FiltersGroupPanel implements OnInit {
     {
       key: 'single.default.entity.title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         group: 'panel',
         placeholder: 'eg: Acme Corporation',

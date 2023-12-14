@@ -14,7 +14,7 @@ export class FormlySearchPlaceholderComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -22,7 +22,7 @@ export class FormlySearchPlaceholderComponent {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             searchSettings: {
               placeholder: 'eg: Acme Corporation',
             },

@@ -11,8 +11,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 
-import { of as observableOf } from 'rxjs';
-
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
 
@@ -61,7 +59,7 @@ describe('Formly Field Datepicker Component', () => {
         {
           key: 'entityDate',
           type: 'datepicker',
-          templateOptions: {
+          props: {
             label: 'Expiration Date',
             startDate: new Date(2019, 11, 25),
             minDate: new Date(2019, 8, 15),

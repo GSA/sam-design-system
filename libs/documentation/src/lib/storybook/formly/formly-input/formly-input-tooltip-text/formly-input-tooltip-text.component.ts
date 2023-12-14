@@ -14,7 +14,7 @@ export class FormlyInputTooltipTextComponent {
     {
       key: 'title',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity Name',
         tooltipText: 'Tooltip Text',
       },
