@@ -6,12 +6,12 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class SdsAdvancedFiltersService {
   constructor() {}
-  dialogModel = {};
-  convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): any {
+
+  convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
     const defaultValue = [];
     origFields.forEach((origField) => {
-      if (origField.fieldGroup?.length && !hideChildrenGroups) {
+      if (origField.fieldGroup?.length && !hideChildrenGroups && !origField.props?.hideChildrenGroups) {
         const field = this.createMulticheckbox(origField, defaultValue);
         fields.push(field);
         // this.convertToCheckboxes(origField.fieldGroup, hideChildrenGroups);
@@ -20,31 +20,26 @@ export class SdsAdvancedFiltersService {
           const field: FormlyFieldConfig = {
             type: 'checkbox',
             key: origField.key,
-            // defaultValue: !origField.hide,
+            defaultValue: !origField.hide,
             props: {
               hideOptional: true,
             },
           };
 
           if (origField.props && origField.props.label) {
-            field.props = {
-              ...field.props,
-              label: origField.props.label,
-            };
+            field.props.label = origField.props.label;
           }
           fields.push(field);
-          this.dialogModel[origField.key.toString()] = !origField.hide;
         }
       }
     });
-    // return fields;
-    return { model: this.dialogModel, fields: fields };
+    return fields;
   }
 
   // TODO: Should be changed so option has label field instead of key but multicheckbox field type must be updated so default value still works
   createMulticheckbox(origField: FormlyFieldConfig, defaultValue: any[]): FormlyFieldConfig {
     const options = [];
-    if (origField.fieldGroup?.length) {
+    if (origField.fieldGroup?.length && origField.key) {
       origField.fieldGroup.forEach((field) => {
         if (field.fieldGroup?.length) {
           options.push(this.createMulticheckbox(field, defaultValue));
@@ -56,14 +51,11 @@ export class SdsAdvancedFiltersService {
             tagText: field.props.tagText,
             tagClass: field.props.tagClass,
           };
-
           options.push(option);
-          const item = {
-            key: origField.key,
-            value: field.key,
-          };
-          defaultValue.push(item);
-          // defaultValue.push(field.key);
+          if (!origField.hide && !field.hide) {
+            defaultValue.push(field.key);
+            defaultValue.push(origField.key);
+          }
         }
       });
     }
@@ -80,31 +72,32 @@ export class SdsAdvancedFiltersService {
     };
 
     if (origField.props && origField.props.label) {
-      field.props = {
-        ...field.props,
-        label: origField.props.label,
-      };
+      field.props.label = origField.props.label;
     }
 
-    const dlist = defaultValue.filter((x) => x.key === origField.key);
-    let list = [];
-    dlist.forEach((x) => {
-      list.push(x.value);
-    });
-    this.dialogModel[origField.key.toString()] = list;
-    // field.defaultValue = list;
+    if (!origField.hide) {
+      field.defaultValue = defaultValue;
+    }
     return field;
   }
 
   updateFields(selectedFields: any, fields: FormlyFieldConfig[], model: any) {
     fields.forEach((field) => {
       const key = field.key as string;
-      const selectedField = selectedFields['filterToggle']['filters'][key];
+      let selectedField = selectedFields['filterToggle']['filters'][key];
       if (field.fieldGroup && field.fieldGroup.length > 1) {
         const fieldModel = model[key];
-        this.updateFieldGroup(field, selectedField, fieldModel, fields);
+        this.updateFieldGroup(field, selectedField, fieldModel);
       } else {
-        this.updateSingleField(field, selectedField, model, fields);
+        if (Array.isArray(selectedField)) {
+          if (selectedField.length > 0) {
+            this.updateSingleField(field, true, model);
+          } else {
+            this.updateSingleField(field, false, model);
+          }
+        } else {
+          this.updateSingleField(field, selectedField, model);
+        }
       }
     });
     return {
@@ -113,34 +106,28 @@ export class SdsAdvancedFiltersService {
     };
   }
 
-  updateFieldGroup(
-    parentField: FormlyFieldConfig,
-    selectedFields: any,
-    model: object,
-    originalfields: FormlyFieldConfig[]
-  ) {
+  updateFieldGroup(parentField: FormlyFieldConfig, selectedFields: any, model: object) {
     if (selectedFields && (selectedFields.length || typeof selectedFields === 'boolean')) {
       parentField.hide = false;
       if (selectedFields === true || selectedFields.length) {
         parentField.fieldGroup.forEach((field) => {
           const key = field.key;
           const fieldSelected = selectedFields.length ? selectedFields.includes(key) : field;
-          this.updateSingleField(field, fieldSelected, model, originalfields);
+          this.updateSingleField(field, fieldSelected, model);
           if (field.fieldGroup && field.fieldGroup.length > 1) {
-            this.updateFieldGroup(field, selectedFields, model, originalfields);
+            this.updateFieldGroup(field, selectedFields, model);
           }
         });
       }
     } else {
       parentField.hide = true;
       parentField.fieldGroup.forEach((field) => {
-        this.updateSingleField(field, false, model, originalfields);
+        this.updateSingleField(field, false, model);
       });
     }
   }
 
-  updateSingleField(field: any, fieldSelected: boolean, model: any, originalfields: FormlyFieldConfig[]) {
-    let key = field.key;
+  updateSingleField(field: any, fieldSelected: boolean, model: any) {
     if (fieldSelected) {
       field.hide = false;
     } else {
@@ -150,9 +137,9 @@ export class SdsAdvancedFiltersService {
         required: false,
       };
       if (field.formControl) {
-        field.formControl.reset(null);
+        field.formControl.reset();
       } else {
-        model[key] = null;
+        model[field.key] = null;
       }
     }
   }

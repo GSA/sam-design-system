@@ -226,9 +226,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         matchingField = field;
       } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
-      } else if (field.fieldArray) {
-        matchingField = this.findFieldInFieldGroup([field.fieldArray] as any, key);
-      }
+      } 
+// else if (field.fieldArray) {
+//         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
+//       }
 
       if (matchingField) {
         break;
@@ -249,7 +250,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       value: undefined,
     };
 
-    this.options?.fieldChanges?.next(fieldChangeEvent);
+    this.options.fieldChanges.next(fieldChangeEvent);
     this.resetClicked.emit();
   }
 
@@ -374,9 +375,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         this.removePopoverGroup(field.fieldGroup);
       }
 
-      if (field.fieldArray) {
-        this.removePopoverGroup([field.fieldArray] as any);
-      }
+      // if (field.fieldArray) {
+      //   this.removePopoverGroup([field.fieldArray]);
+      // }
 
       field.hide = false;
     });

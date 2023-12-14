@@ -29,9 +29,9 @@ export class FilterService {
     //     hideOptional: true,
     //     tabClass: 'sds-tabs--formly',
     //   },
-    //   // fieldArray: {
+    //   fieldArray: {
     //   fieldGroup: [
-    //     // tab 1
+    //     tab 1
     //     {
     //       props: {
     //         tabHeader: 'Simple Search',
@@ -82,7 +82,7 @@ export class FilterService {
     //         },
     //       ],
     //     },
-    //     //tab 2
+    //     tab 2
     //     {
     //       id: 'Tab2',
     //       defaultValue: {},
@@ -117,8 +117,162 @@ export class FilterService {
     //       ],
     //     },
     //   ],
-    //   // },
+    //   },
     // },
+
+    {
+      key: 'simpleSearch',
+      props: {
+        hideChildrenGroups: true,
+        label: 'Keyword Search',
+        description:
+          'For more information on how to use our keyword search, visit our <a class="usa-link" aria-label="www.fsd.gov - opens in a new window" href="https://www.fsd.gov/gsafsd_sp?id=kb_article_view&sysparm_article=KB0045403" target="_blank"> help guide <span class="margin-left-1px usa-link--external font-body-md"></span></a>',
+        hideOptional: true,
+        interceptTabChange: true,
+        disabled: false,
+        placeholder: '',
+      },
+      fieldGroup: [
+        {
+          props: {
+            key: 'simpleSearchHeader',
+            tabHeader: 'Simple Search',
+          },
+          fieldGroup: [
+            {
+              key: 'keywordRadio',
+              type: 'radio',
+              defaultValue: 'ALL',
+              props: {
+                options: [
+                  {
+                    label: 'Any Words',
+                    value: 'ANY',
+                    tooltipText: 'Search results will contain one, some, or all keywords entered.',
+                  },
+                  {
+                    label: 'All Words',
+                    value: 'ALL',
+                    tooltipText: 'Search results will contain all keywords entered.',
+                  },
+                  {
+                    label: 'Exact Phrase',
+                    value: 'EXACT',
+                    tooltipText: 'Search results will contain the EXACT PHRASE from the keyword search.',
+                  },
+                ],
+                label: '',
+                placeholder: '',
+                disabled: false,
+              },
+              hide: false,
+              id: 'formly_47_radio_keywordRadio_0',
+              hooks: {},
+              modelOptions: {},
+              validation: {
+                messages: {},
+              },
+              wrappers: ['animation', 'group', 'readonly', 'label', 'description', 'validation'],
+              expressions: {},
+              expressionProperties: {},
+            },
+            {
+              key: 'keywordTags',
+              type: 'input',
+              props: {
+                id: 'keyword',
+                labelText: 'Keyword Filter',
+                placeholder: 'e.g. W91QVN-17-R-008',
+                label: '',
+                disabled: false,
+              },
+
+              hooks: {},
+              modelOptions: {},
+              validation: {
+                messages: {},
+              },
+              wrappers: ['animation'],
+              expressions: {},
+              expressionProperties: {},
+            },
+          ],
+          id: 'formly_45___0',
+          hooks: {},
+          modelOptions: {},
+          validation: {
+            messages: {},
+          },
+          type: 'formly-group',
+          defaultValue: {},
+          wrappers: ['animation', 'group'],
+          expressions: {},
+          expressionProperties: {},
+        },
+        {
+          props: {
+            key: 'SearchEditorHeader',
+            tabHeader: 'Search Editor',
+          },
+          fieldGroup: [
+            {
+              key: 'keywordEditorTextarea',
+              type: 'textarea',
+              defaultValue: '',
+              className: 'display-block padding-left-2 padding-right-2 keyword-editor',
+              props: {
+                placeholder: 'e.g. ((rental AND property) OR (lease AND property)) AND NOT "short term"',
+                attributes: {
+                  'aria-label': 'Search Editor',
+                },
+                maxLength: 1024,
+                label: '',
+                disabled: false,
+                cols: 1,
+                rows: 1,
+              },
+              modelOptions: {
+                debounce: {
+                  default: 1000,
+                },
+              },
+              hide: false,
+              id: 'formly_48_textarea_keywordEditorTextarea_0',
+              hooks: {},
+              validation: {
+                messages: {},
+              },
+              wrappers: ['animation', 'group', 'readonly', 'label', 'description', 'validation'],
+              expressions: {},
+              expressionProperties: {},
+            },
+          ],
+          id: 'formly_47___1',
+          hooks: {},
+          modelOptions: {},
+          validation: {
+            messages: {},
+          },
+          type: 'formly-group',
+          defaultValue: {},
+          wrappers: ['animation', 'group'],
+          expressions: {},
+          expressionProperties: {},
+        },
+      ],
+      hide: false,
+
+      hooks: {},
+      modelOptions: {},
+      validation: {
+        messages: {},
+      },
+      type: 'formly-group',
+      defaultValue: {},
+      expressions: {},
+      expressionProperties: {},
+    },
+
     {
       key: 'searchEntity',
       className: 'margin-top-0',
