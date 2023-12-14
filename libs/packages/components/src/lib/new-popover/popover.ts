@@ -43,6 +43,7 @@ let nextId = 0;
   imports: [NgTemplateOutlet, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  styleUrls: ['popover.scss'],
   host: {
     '[class]': '"popover" + (popoverClass ? " " + popoverClass : "")',
     '[class.fade]': 'animation',
