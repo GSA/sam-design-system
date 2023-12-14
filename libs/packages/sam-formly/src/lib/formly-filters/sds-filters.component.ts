@@ -226,10 +226,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
         matchingField = field;
       } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
-      } 
-// else if (field.fieldArray) {
-//         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
-//       }
+      }
+      // else if (field.fieldArray) {
+      //         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
+      //       }
 
       if (matchingField) {
         break;

@@ -64,11 +64,13 @@ export class FormlyFieldTextAreaComponent extends FieldType<FieldTypeConfig> imp
       return;
     }
 
-    if (value.length > this.props.maxLength) {
-      const newValue = value.substring(0, this.props.maxLength);
-      this.formControl.setValue(newValue);
-    } else {
-      this.charactersRemaining = Math.max(0, this.props.maxLength - value.length);
+    if (value != null && value != undefined) {
+      if (value.length > this.props.maxLength) {
+        const newValue = value.substring(0, this.props.maxLength);
+        this.formControl.setValue(newValue);
+      } else {
+        this.charactersRemaining = Math.max(0, this.props.maxLength - value.length);
+      }
     }
   }
 }
