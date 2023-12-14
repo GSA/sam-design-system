@@ -15,43 +15,43 @@ export class RadioGroupComponent {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         label: 'Tax Filing Structure',
         description: 'Select how your business or organization is defined by the IRS.',
         required: true,
         groupOptions: {
           Entity: [
             {
-              key: 'ccorp',
+              value: 'ccorp',
               tooltipText:
                 'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
-              value: 'Corporate Entity, Not Tax Exempt ',
+              label: 'Corporate Entity, Not Tax Exempt ',
             },
             {
-              key: 'nonprofit',
-              value:
+              value: 'nonprofit',
+              label:
                 'Corporate Entity, Tax Exempt (Firm does not pay U.S. Federal Income Taxes nor U.S. Possession Income Taxes)',
             },
             {
-              key: 'partnerllc',
-              value: 'Partnership or Limited Liability Partnership',
+              value: 'partnerllc',
+              label: 'Partnership or Limited Liability Partnership',
             },
           ],
           Partner: [
             {
-              key: 'soleproprietorship',
-              value: 'Sole Proprietorship',
+              value: 'soleproprietorship',
+              label: 'Sole Proprietorship',
             },
             {
-              key: 'international',
-              value: 'International Organization',
+              value: 'international',
+              label: 'International Organization',
               tooltipText: 'International Organization',
             },
           ],
           Other: [
             {
-              key: 'other',
-              value: 'Other',
+              value: 'other',
+              label: 'Other',
             },
           ],
         },
@@ -59,10 +59,10 @@ export class RadioGroupComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(field.form['controls']['entity']);
           });
         },
       },

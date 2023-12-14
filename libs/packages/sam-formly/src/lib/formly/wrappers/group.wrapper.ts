@@ -6,21 +6,21 @@ import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { filter } from 'rxjs/operators';
 
 /**
- * @param string [to.group] used to set the wrapper tupe
- * @param string [to.announceLabel] For screenreader
- * @param string [to.label] Text to be shown for the label
- * @param string [to.hideLabel] Hide the label
+ * @param string [props.group] used to set the wrapper tupe
+ * @param string [props.announceLabel] For screenreader
+ * @param string [props.label] Text to be shown for the label
+ * @param string [props.hideLabel] Hide the label
  *
  */
 @Component({
   template: `
-    <ng-container *ngIf="!to.readonlyMode; else defaultTemplate">
-      <ng-container [ngSwitch]="to.group">
+    <ng-container *ngIf="!props.readonlyMode; else defaultTemplate">
+      <ng-container [ngSwitch]="props.group">
         <ng-container *ngSwitchCase="'accordion'">
           <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
             <usa-accordion-item [expanded]="modelHasValue()">
               <ng-template UsaAccordionHeader>
-                <span [attr.class]="to.labelClass">{{ to.label }}</span>
+                <span [attr.class]="props.labelClass">{{ props.label }}</span>
               </ng-template>
               <ng-template UsaAccordionContent>
                 <ng-container #fieldComponent></ng-container>
@@ -32,10 +32,10 @@ import { filter } from 'rxjs/operators';
           <div class="sds-panel" [ngClass]="{ 'sds-panel--multiple': field?.fieldGroup?.length }">
             <div
               class="sds-panel__header padding-top-1"
-              *ngIf="!to.hideLabel"
-              [attr.aria-hidden]="!to.announceLabel ? undefined : 'true'"
+              *ngIf="!props.hideLabel"
+              [attr.aria-hidden]="!props.announceLabel ? undefined : 'true'"
             >
-              <span [attr.class]="to.labelClass">{{ to.label }}</span>
+              <span [attr.class]="props.labelClass">{{ props.label }}</span>
             </div>
             <div class="sds-panel__body">
               <ng-container #fieldComponent></ng-container>
@@ -49,12 +49,12 @@ import { filter } from 'rxjs/operators';
           <div
             [sdsPopover]="popoverContent"
             [position]="'bottom'"
-            [closeOnContentClick]="to.closeOnContentClick != undefined ? to.closeOnContentClick : false"
-            [closeOnClickOutside]="to.closeOnClickOutside != undefined ? to.closeOnClickOutside : true"
+            [closeOnContentClick]="props.closeOnContentClick != undefined ? props.closeOnContentClick : false"
+            [closeOnClickOutside]="props.closeOnClickOutside != undefined ? props.closeOnClickOutside : true"
             tabindex="0"
-            [attr.aria-label]="to.label"
+            [attr.aria-label]="props.label"
           >
-            {{ to.label }}
+            {{ props.label }}
             <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
           </div>
         </ng-container>
@@ -83,21 +83,26 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
   }
 
   ngAfterViewInit() {
-    if (this.to.group === 'accordion' || this.to.group === 'panel' || this.field.fieldGroup) {
+    if (this.props.group === 'accordion' || this.props.group === 'panel' || this.field.fieldGroup) {
       this.field.className = this.field.className ? this.field.className : 'margin-top-0';
     }
 
-    if (this.to.group != 'accordion' || !this.accordion) {
+    if (this.props.group != 'accordion' || !this.accordion) {
       return;
     }
 
-    this.resetAllSubscription = this.field.options.fieldChanges
-      .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
-      .subscribe(() => {
-        if (!this.modelHasValue()) {
-          this.accordion.collapse(this.accordionItem.id);
-        }
-      });
+    // this.resetAllSubscription = this.field.options.fieldChanges
+    //   .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
+    //   .subscribe(() => {
+    //     if (!this.modelHasValue()) {
+    //       this.accordion.collapse(this.accordionItem.id);
+    //     }
+    //   });
+    this.resetAllSubscription = this.field.options?.fieldChanges?.subscribe(({ type }) => {
+      if (type === 'resetAll' && this.accordionItem.expanded && !this.modelHasValue()) {
+        this.accordion.collapse(this.accordionItem.id);
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -107,8 +112,8 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
   }
 
   modelHasValue() {
-    if (this.to.hasOwnProperty('expand')) {
-      return this.to.expand;
+    if (this.props.hasOwnProperty('expand')) {
+      return this.props.expand;
     } else {
       const hasValue =
         this.formControl.value instanceof Object

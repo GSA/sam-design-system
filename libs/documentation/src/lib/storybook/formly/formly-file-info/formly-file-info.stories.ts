@@ -14,7 +14,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -51,10 +51,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-file-info/formly-file-info-basic',
     'FormlyFileinfoBasicModule',
@@ -69,10 +69,10 @@ export const Options: Story = (args) => ({
 });
 Options.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-file-info/formly-file-info-options',
     'FormlyFileinfoOptionsModule',

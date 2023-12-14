@@ -17,7 +17,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -57,10 +57,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-basic',
     'FormlyRadioBasicModule',
@@ -75,10 +75,10 @@ export const Advanced: Story = (args) => ({
 });
 Advanced.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-advanced',
     'FormlyRadioAdvancedModule',
@@ -93,10 +93,10 @@ export const Template: Story = (args) => ({
 });
 Template.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-template',
     'FormlyRadioTemplateModule',
@@ -111,10 +111,10 @@ export const Group: Story = (args) => ({
 });
 Group.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-group',
     'FormlyRadioGroupModule',
@@ -129,10 +129,10 @@ export const Horizontal: Story = (args) => ({
 });
 Horizontal.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-horizontal',
     'FormlyRadioHorizontalModule',

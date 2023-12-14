@@ -55,7 +55,7 @@ describe('Formly Field Radio Component', () => {
         {
           key: 'radio-test',
           type: 'radio',
-          templateOptions: {
+          props: {
             label: 'Formly Radio button',
             options: [
               { label: 'Option A', value: 'a' },
@@ -75,7 +75,7 @@ describe('Formly Field Radio Component', () => {
       fixture.detectChanges();
       const expectedValue = fixture.debugElement.query(By.css('.usa-radio')).componentInstance.field;
 
-      expect(expectedValue.templateOptions.options.length).toEqual(4);
+      expect(expectedValue.props.options.length).toEqual(4);
     });
   });
 });

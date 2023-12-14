@@ -6,7 +6,7 @@ import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 import { filter } from 'rxjs/operators';
 
 /**
- * @param string [to.expand] to expand the accordion
+ * @param string [props.expand] to expand the accordion
  *
  */
 
@@ -16,7 +16,7 @@ import { filter } from 'rxjs/operators';
     <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
       <usa-accordion-item [expanded]="modelHasValue()" ]>
         <ng-template UsaAccordionHeader>
-          <span [attr.class]="to.labelClass">{{ to.label }}</span>
+          <span [attr.class]="props.labelClass">{{ props.label }}</span>
         </ng-template>
         <ng-template UsaAccordionContent>
           <ng-container #fieldComponent></ng-container>
@@ -40,17 +40,25 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
   }
 
   ngAfterViewInit() {
-    if (this.to.group != 'accordion' || !this.accordion) {
+    if (this.props.group != 'accordion' || !this.accordion) {
       return;
     }
 
-    this.resetAllSubscription = this.field.options.fieldChanges
-      .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
-      .subscribe(() => {
+    // this.resetAllSubscription = this.field.options.fieldChanges
+    //   .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
+    //   .subscribe(() => {
+    //     if (!this.modelHasValue()) {
+    //       this.accordion.collapse(this.accordionItem.id);
+    //     }
+    //   });
+
+    this.resetAllSubscription = this.field.options.fieldChanges.subscribe(({ type }) => {
+      if (type === 'resetAll' && this.accordionItem.expanded) {
         if (!this.modelHasValue()) {
           this.accordion.collapse(this.accordionItem.id);
         }
-      });
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -59,8 +67,8 @@ export class FormlyAccordianFormFieldComponent extends FieldWrapper implements A
     }
   }
   modelHasValue() {
-    if (this.to.hasOwnProperty('expand')) {
-      return this.to.expand;
+    if (this.props.hasOwnProperty('expand')) {
+      return this.props.expand;
     } else {
       const hasValue =
         this.formControl.value instanceof Object

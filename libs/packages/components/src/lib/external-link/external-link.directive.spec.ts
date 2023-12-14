@@ -34,7 +34,7 @@ describe('Sam External Link Directive', () => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, ExternalLinkDirective],
     }).overrideModule(BrowserDynamicTestingModule, {
-      set: { entryComponents: [] },
+      set: {},
     });
 
     fixture = TestBed.createComponent(TestComponent);

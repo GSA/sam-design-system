@@ -68,11 +68,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable: Story = (args) => ({
@@ -87,8 +87,8 @@ export const Configurable: Story = (args) => ({
   },
 });
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 
 export const Aria: Story = (args) => ({
@@ -99,10 +99,10 @@ export const Aria: Story = (args) => ({
 });
 Aria.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tabs/tabs-aria', 'TabsAriaModule', 'sds-tabs-aria'),
   stackblitzLink: generateStackblitzLink('tabs', 'aria'),
 };
@@ -115,10 +115,10 @@ export const AutomaticActivation: Story = (args) => ({
 });
 AutomaticActivation.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/tabs/tabs-automatic-activation',
     'TabsAutomaticActivationModule',
@@ -135,10 +135,10 @@ export const CustomHeader: Story = (args) => ({
 });
 CustomHeader.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tabs/tabs-custom-header', 'TabsCustomHeaderModule', 'sds-tabs-custom-header'),
   stackblitzLink: generateStackblitzLink('tabs', 'custom-header'),
 };
@@ -151,10 +151,10 @@ export const Disabled: Story = (args) => ({
 });
 Disabled.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tabs/tabs-disabled', 'TabsDisabledModule', 'sds-tabs-disabled'),
   stackblitzLink: generateStackblitzLink('tabs', 'disabled'),
 };
@@ -167,10 +167,10 @@ export const DynamicGeneration: Story = (args) => ({
 });
 DynamicGeneration.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/tabs/tabs-dynamic-generation',
     'TabsDynamicGenerationModule',
@@ -187,10 +187,10 @@ export const PreChangeEvent: Story = (args) => ({
 });
 PreChangeEvent.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/tabs/tabs-pre-change-event',
     'TabsPreChangeEventModule',
@@ -207,10 +207,10 @@ export const CustomClasses: Story = (args) => ({
 });
 CustomClasses.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tabs/tabs-custom-classes', 'TabsCustomClassesModule', 'sds-tabs-custom-classes'),
   stackblitzLink: generateStackblitzLink('tabs', 'custom-classes'),
 };
@@ -223,10 +223,10 @@ export const SelectedTab: Story = (args) => ({
 });
 SelectedTab.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/tabs/tabs-selected-tab', 'TabsSelectedTabModule', 'sds-tabs-selected-tab'),
   stackblitzLink: generateStackblitzLink('tabs', 'selected-tab'),
 };

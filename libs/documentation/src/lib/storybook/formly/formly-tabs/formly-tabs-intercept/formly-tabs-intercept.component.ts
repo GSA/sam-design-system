@@ -17,7 +17,7 @@ export class FormlyTabsInterceptComponent {
     {
       key: 'keyword',
       wrappers: ['tabs'],
-      templateOptions: {
+      props: {
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
@@ -30,7 +30,7 @@ export class FormlyTabsInterceptComponent {
         fieldGroup: [
           // tab 1
           {
-            templateOptions: {
+            props: {
               tabHeader: 'Simple Search',
             },
             id: 'Tab1',
@@ -39,7 +39,7 @@ export class FormlyTabsInterceptComponent {
                 key: 'keywordRadio',
                 type: 'radio',
                 defaultValue: 'anyWords',
-                templateOptions: {
+                props: {
                   options: [
                     {
                       label: 'Any Words',
@@ -59,7 +59,7 @@ export class FormlyTabsInterceptComponent {
               {
                 key: 'keywordTags',
                 type: 'autocomplete',
-                templateOptions: {
+                props: {
                   expand: false,
                   configuration: {
                     id: 'keyword',
@@ -77,7 +77,7 @@ export class FormlyTabsInterceptComponent {
           //tab 2
           {
             id: 'Tab2',
-            templateOptions: {
+            props: {
               tabHeader: 'Search Editor',
               submitButtonId: 'booleanSearchSubmit',
             },
@@ -86,7 +86,7 @@ export class FormlyTabsInterceptComponent {
                 key: 'keywordTextarea',
                 type: SdsFormlyTypes.TEXTAREA,
                 className: 'display-block padding-left-2 padding-right-2',
-                templateOptions: {
+                props: {
                   placeholder: 'e.g. ((rental AND property) OR (lease and property) AND NOT ( "short term"))',
                   required: true,
                 },
@@ -95,7 +95,7 @@ export class FormlyTabsInterceptComponent {
                 type: SdsFormlyTypes.BUTTON,
                 id: 'booleanSearchSubmit',
                 className: 'display-block margin-top-1 padding-left-2 padding-right-2',
-                templateOptions: {
+                props: {
                   text: 'Search',
                   type: 'submit',
                 },

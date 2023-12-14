@@ -40,10 +40,10 @@ export const Panel: Story = (args) => ({
 });
 Panel.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-panel',
     'FormlyWrapperGroupPanelModule',
@@ -58,10 +58,10 @@ export const Accordion: Story = (args) => ({
 });
 Accordion.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-accordion',
     'FormlyWrapperGroupAccordionModule',

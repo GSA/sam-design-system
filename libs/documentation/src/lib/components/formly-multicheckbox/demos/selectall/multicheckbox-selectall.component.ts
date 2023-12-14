@@ -15,7 +15,7 @@ export class MultiCheckboxSelectAll {
       key: 'domains',
       type: 'multicheckbox',
       defaultValue: { cfda: true, opp: true, fh: false },
-      templateOptions: {
+      props: {
         label: 'Domains',
         description: 'Select any socio-economic categories which reflect the current status of your entity',
         required: true,
@@ -23,28 +23,28 @@ export class MultiCheckboxSelectAll {
         selectTooltipText: ' you agree to the terms and conditions ',
         options: [
           {
-            key: 'cfda',
-            value: 'Assistance Listing',
+            value: 'cfda',
+            label: 'Assistance Listing',
             tooltipPosition: 'bottom',
             tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
           },
           {
-            key: 'opp',
-            value: 'Contract Opportunities',
+            value: 'opp',
+            label: 'Contract Opportunities',
             tooltipPosition: 'bottom',
             tooltipText: 'Contract Opportunities',
           },
           {
-            key: 'ei',
-            value: 'Entity Information',
+            value: 'ei',
+            label: 'Entity Information',
           },
           {
-            key: 'fh',
-            value: 'Federal Hierarchy',
+            value: 'fh',
+            label: 'Federal Hierarchy',
           },
           {
-            key: 'wd',
-            value: 'Wage Determinations',
+            value: 'wd',
+            label: 'Wage Determinations',
           },
         ],
       },

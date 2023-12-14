@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-file',
   template: `
     <div class="grid-row grid-gap margin-top-1">
-      <div *ngFor="let option of to.options | formlySelectOptions: field | async; let i = index">
+      <div *ngFor="let option of props.options | formlySelectOptions: field | async; let i = index">
         <div
           class="sds-card mobile-lg:grid-col"
           [ngClass]="{ 'sds-card-selected': formControl.value == option.value }"
@@ -46,11 +46,11 @@ import { FieldType } from '@ngx-formly/core';
     `,
   ],
 })
-export class FormlyFieldFileInfoComponent extends FieldType {
+export class FormlyFieldFileInfoComponent extends FieldType<FieldTypeConfig> {
   isSelected: boolean = false;
   description: string = '';
   defaultOptions = {
-    templateOptions: {
+    props: {
       options: [],
     },
   };

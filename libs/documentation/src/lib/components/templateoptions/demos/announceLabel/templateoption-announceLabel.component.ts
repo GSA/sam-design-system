@@ -13,7 +13,7 @@ export class TemplateOptionAnnounceLabel {
     {
       key: 'Keyword',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         announceLabel: true,
       },

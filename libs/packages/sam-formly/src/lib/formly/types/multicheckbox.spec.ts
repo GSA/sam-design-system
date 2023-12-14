@@ -58,7 +58,7 @@ describe('Formly Field multicheckbox Component', () => {
         {
           key: 'multi-checkbox',
           type: 'multicheckbox',
-          templateOptions: {
+          props: {
             label: 'Formly multi Select checkbox',
             options: [
               {
@@ -84,7 +84,7 @@ describe('Formly Field multicheckbox Component', () => {
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
       fixture.detectChanges();
-      expect(expectedValue.templateOptions.options.length).toBe(3);
+      expect(expectedValue.props.options.length).toBe(3);
     });
 
     it('on change with selectAllOption enabled', () => {
@@ -92,7 +92,7 @@ describe('Formly Field multicheckbox Component', () => {
         {
           key: 'multi-checkbox',
           type: 'multicheckbox',
-          templateOptions: {
+          props: {
             label: 'Formly multi Select checkbox',
             type: 'array',
             options: [
@@ -132,7 +132,7 @@ describe('Formly Field multicheckbox Component', () => {
         {
           key: 'multi-checkbox',
           type: 'multicheckbox',
-          templateOptions: {
+          props: {
             label: 'Formly multi Select checkbox',
             selectAllOption: true,
             options: [
@@ -172,7 +172,7 @@ describe('Formly Field multicheckbox Component', () => {
         {
           key: 'multi-checkbox',
           type: 'multicheckbox',
-          templateOptions: {
+          props: {
             label: 'Formly multi Select checkbox',
             selectAllOption: true,
             options: [

@@ -14,7 +14,7 @@ export interface ReadonlyDataType {
 export class FormlyUtilsService {
   /**
    * Set readonly mode of a formly field config list. Toggles all field config with defined
-   * templateOptions property's readonlyMode to given value
+   * props property's readonlyMode to given value
    * @param readonlyMode - if true, readonly mode will be turned on, if false, readonly mode will be turned off
    * @param fields - The list of fields to toggle readonly mode on
    */
@@ -27,7 +27,7 @@ export class FormlyUtilsService {
   /**
    * Parses a formly field config and returns a list of items that readonly container component would accept.
    * This is used when you have field configs and the model, but would like to use components for readonly display
-   * rather than formly. templateOptions must be defined for the field in order to convert.
+   * rather than formly. props must be defined for the field in order to convert.
    * @param fields - The list of fields to parse
    * @param model - Contains the values for given fields
    * @param options - Additional cofiguration options
@@ -55,8 +55,8 @@ export class FormlyUtilsService {
       });
     }
 
-    if (field.templateOptions && field.type && Object.values(SdsFormlyTypes).includes(field.type as any)) {
-      field.templateOptions.readonlyMode = readonlyMode;
+    if (field.props && field.type && Object.values(SdsFormlyTypes).includes(field.type as any)) {
+      field.props.readonlyMode = readonlyMode;
     }
   }
 
@@ -66,12 +66,12 @@ export class FormlyUtilsService {
     readonlyData: any[],
     options: { convertAll: boolean }
   ) {
-    if (field.templateOptions && (options.convertAll || Object.values(SdsReadonlyTypes).includes(field.type as any))) {
-      const label = field.templateOptions.label;
+    if (field.props && (options.convertAll || Object.values(SdsReadonlyTypes).includes(field.type as any))) {
+      const label = field.props.label;
       const value = model[field.key as string];
       const readonlyOptions: ReadonlyOptions = {
-        providedOptions: field.templateOptions.options as any,
-        autocompleteOptions: field.templateOptions.configuration,
+        providedOptions: field.props.options as any,
+        autocompleteOptions: field.props.configuration,
       };
 
       readonlyData.push({

@@ -88,7 +88,7 @@ export const Configurable: Story = (args) => ({
   props: args,
 });
 Configurable.parameters = {
-  preview: { disabled: true },
+  preview: { disable: true },
 };
 Configurable.args = {
   childrenLimit: 10,
@@ -105,7 +105,7 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
   preview: generateConfig('storybook/tree-table/tree-table-basic', 'TreeTableBasicModule', 'sds-tree-table-basic', [
@@ -120,10 +120,10 @@ export const ProgrammaticControl: Story = (args) => ({
 });
 ProgrammaticControl.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/tree-table/tree-table-programmatic-control',
     'TreeTableProgrammaticControlModule',

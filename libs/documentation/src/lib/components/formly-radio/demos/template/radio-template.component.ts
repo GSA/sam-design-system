@@ -18,12 +18,12 @@ export class RadioTemplateComponent implements AfterViewInit {
       key: 'entity.taxFilingStatus',
       type: 'radio',
 
-      templateOptions: {
+      props: {
         required: true,
         options: [
           {
-            key: 'ccorp',
-            value: 'Register for Financial Assistance Awards Only ',
+            value: 'ccorp',
+            label: 'Register for Financial Assistance Awards Only ',
             subText: [
               'To apply for grants and loans as described by 2 CFR 200.',
               'Includes getting a unique entity ID and entity registration.',
@@ -32,8 +32,8 @@ export class RadioTemplateComponent implements AfterViewInit {
             icon: 'uswds-attach-money',
           },
           {
-            key: 'nonprofit',
-            value: 'Register for All Awards',
+            value: 'nonprofit',
+            label: 'Register for All Awards',
             subText: [
               'To bid on federal contracts and other procurements, as described by the Federal Acquisition Regulation (FAR).',
               'To apply for grants and loans as described by 2 CFR 200.',
@@ -43,8 +43,8 @@ export class RadioTemplateComponent implements AfterViewInit {
             iconClass: 'text-secondary',
           },
           {
-            key: 'partnerllc',
-            value: 'Get a Unique Entity ID Only',
+            value: 'partnerllc',
+            label: 'Get a Unique Entity ID Only',
             subText: [
               'May be required to report subawards, such as federal subcontractors or sub-grants.',
               'You will get a unique entity ID. This is NOT an entity registration.',
@@ -57,10 +57,10 @@ export class RadioTemplateComponent implements AfterViewInit {
       modelOptions: {
         updateOn: 'blur',
       },
-      lifecycle: {
-        onChanges: function (form, field) {
+      hooks: {
+        onChanges: (field) => {
           field.formControl.valueChanges.subscribe((v) => {
-            console.log(form['controls']['entity']);
+            console.log(field.form['controls']['entity']);
           });
         },
       },
@@ -71,6 +71,6 @@ export class RadioTemplateComponent implements AfterViewInit {
     console.log($event);
   }
   ngAfterViewInit() {
-    this.fields[0].templateOptions.template = this.radioTemplate;
+    this.fields[0].props.template = this.radioTemplate;
   }
 }

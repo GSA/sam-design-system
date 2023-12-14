@@ -4,38 +4,30 @@ import { Subscription } from 'rxjs';
 
 @Component({
   template: `
-    <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ to.label }}</label>
-    <p [innerHTML]="to.description"></p>
+    <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ props.label }}</label>
+    <p [innerHTML]="props.description"></p>
     <div class="sds-filter-keywords">
-      <ng-container *ngIf="field.fieldArray?.fieldGroup?.length > 1; else singleField">
+      <ng-container *ngIf="field.fieldGroup?.length > 1; else singleField">
         <sds-tabs
-          [tabClass]="to.tabClass ? to.tabClass : 'sds-tabs--formly'"
-          [interceptTabChange]="to.interceptTabChange"
-          (preTabChange)="to.preTabChange ? to.preTabChange($event) : null"
-          [(selectedTab)]="to.selectedTab"
+          [tabClass]="props.tabClass ? props.tabClass : 'sds-tabs--formly'"
+          [interceptTabChange]="props.interceptTabChange"
+          (preTabChange)="props.preTabChange ? props.preTabChange($event) : null"
+          [(selectedTab)]="props.selectedTab"
         >
-          <sds-tab-panel
-            *ngFor="let fieldConfig of field.fieldArray.fieldGroup"
-            [tabHeader]="fieldConfig.templateOptions?.tabHeader"
-          >
-            <formly-form [fields]="[fieldConfig]" [model]="_initialModel" (modelChange)="onModelChange(fieldConfig)">
-            </formly-form>
+          <sds-tab-panel *ngFor="let fieldConfig of field.fieldGroup" [tabHeader]="fieldConfig.props?.tabHeader">
+            <formly-form [fields]="[fieldConfig]" [model]="model"> </formly-form>
           </sds-tab-panel>
         </sds-tabs>
       </ng-container>
 
       <ng-template #singleField>
         <div class="padding-left-2 padding-right-2 padding-bottom-1">
-          <formly-form
-            [fields]="field.fieldArray.fieldGroup"
-            [model]="_initialModel"
-            (modelChange)="onModelChange(field.fieldArray.fieldGroup[0])"
-          ></formly-form>
+          <formly-form [fields]="field.fieldGroup" [model]="model"></formly-form>
         </div>
       </ng-template>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, OnDestroy {
   _initialModel: any;
@@ -43,13 +35,13 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
   toDestroy: Subscription = new Subscription();
 
   ngOnInit() {
-    if (!this.field.fieldArray || !this.field.fieldArray.fieldGroup) {
-      throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property');
-    }
+    // if (!this.field.fieldArray || !this.field.fieldArray['fieldGroup']) {
+    //   throw new Error('Please define contents of keywords through a fieldGroup within the fieldArray property');
+    // }
 
-    this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
-    if (this.field.fieldArray && this.field.fieldArray.fieldGroup) {
-      this.field.fieldArray.fieldGroup.forEach((fieldConfig: FormlyFieldConfig) => {
+    // this._initialModel = this.model && this.model[this.key as string] ? { ...this.model[this.key as string] } : {};
+    if (this.field && this.field.fieldGroup) {
+      this.field.fieldGroup.forEach((fieldConfig: FormlyFieldConfig) => {
         this.updateFieldConfig(fieldConfig);
       });
     }
@@ -73,7 +65,7 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
    * @param fieldConfig - the FormlyFieldConfig to transform into an array
    */
   updateFieldConfig(fieldConfig: FormlyFieldConfig) {
-    const submitButtonId = fieldConfig.templateOptions?.submitButtonId;
+    const submitButtonId = fieldConfig.props?.submitButtonId;
     if (!submitButtonId) {
       return;
     }
@@ -81,8 +73,8 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
     // If submit button is present, manually add logic to update the form when the button is clicked
     fieldConfig.fieldGroup.forEach((field) => {
       if (field.id === submitButtonId) {
-        field.templateOptions = field.templateOptions ? field.templateOptions : {};
-        field.templateOptions.onClick = () => {
+        field.props = field.props ? field.props : {};
+        field.props.onClick = () => {
           this.updateFieldModel(fieldConfig);
         };
       }
@@ -110,7 +102,7 @@ export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, 
     });
   }
 
-  onModelChange(fieldConfig: FormlyFieldConfig) {
-    this.form.get(this.key as string).setValue(fieldConfig.form.value);
-  }
+  // onModelChange(fieldConfig: FormlyFieldConfig) {
+  //  this.form.get(this.key as string).setValue(fieldConfig.form.value);
+  // }
 }

@@ -24,12 +24,12 @@ export class FormlyCurvyDialog {
     {
       key: 'filters',
 
-      templateOptions: { label: 'Keyword' },
+      props: { label: 'Keyword' },
       fieldGroup: [
         {
           key: 'scheduleNotifications',
           type: 'autocomplete',
-          templateOptions: {
+          props: {
             label: 'Select how often you would like to receive notifications.',
             description: '<a href="#" class="usa-link">When do my saved searches run?</a>',
             service: this.service,

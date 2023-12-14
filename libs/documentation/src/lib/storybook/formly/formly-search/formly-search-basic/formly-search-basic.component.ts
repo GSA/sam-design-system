@@ -14,7 +14,7 @@ export class FormlySearchBasicComponent {
   fields: FormlyFieldConfig[] = [
     {
       key: 'filter',
-      templateOptions: {
+      props: {
         label: 'Keyword (with label)',
         ariaHidden: true,
       },
@@ -22,7 +22,7 @@ export class FormlySearchBasicComponent {
         {
           key: 'searchmodel',
           type: 'search',
-          templateOptions: {
+          props: {
             label: 'Search',
             searchSettings: {
               placeholder: 'eg: Acme Corporation',

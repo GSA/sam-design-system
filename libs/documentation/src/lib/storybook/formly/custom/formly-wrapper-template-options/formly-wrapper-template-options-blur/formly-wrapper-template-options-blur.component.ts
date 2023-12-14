@@ -17,7 +17,7 @@ export class FormlyWrapperTemplateOptionsBlurComponent {
       modelOptions: {
         updateOn: 'blur',
       },
-      templateOptions: {
+      props: {
         label: 'Keyword',
         placeholder: 'eg: Acme Corporation',
         description: 'Description',

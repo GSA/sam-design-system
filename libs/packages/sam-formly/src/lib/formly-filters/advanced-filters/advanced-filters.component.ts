@@ -1,4 +1,12 @@
-import { Component, Input, ChangeDetectorRef, Output, EventEmitter, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { SdsDialogService } from '@gsa-sam/components';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
@@ -12,6 +20,7 @@ import { tap, startWith } from 'rxjs/operators';
   selector: 'sds-advanced-filters',
   templateUrl: './advanced-filters.component.html',
   styleUrls: ['./advanced-filters.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvancedFiltersComponent implements OnInit {
   /**
@@ -85,11 +94,11 @@ export class AdvancedFiltersComponent implements OnInit {
           } else if (currentField.type === 'multicheckbox') {
             const array = [];
             if (this.selectAll) {
-              currentField.templateOptions.options.forEach((option: any) => {
-                array.push(option.key);
+              currentField.props.options.forEach((option: any) => {
+                array.push(option.value);
                 if (option.type === 'multicheckbox') {
-                  option.templateOptions.options.forEach((option: any) => {
-                    array.push(option.key);
+                  option.props.options.forEach((option: any) => {
+                    array.push(option.value);
                   });
                 }
               });
@@ -178,9 +187,7 @@ export class AdvancedFiltersComponent implements OnInit {
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
-        a.templateOptions && b.templateOptions
-          ? a.templateOptions[this.sortMoreFilterBy].localeCompare(b.templateOptions[this.sortMoreFilterBy])
-          : 0
+        a.props && b.props ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy]) : 0
       );
     }
     const filedGroup: FormlyFieldConfig[] = this.filedGroup;
@@ -208,12 +215,12 @@ export class AdvancedFiltersComponent implements OnInit {
   get filedGroup(): FormlyFieldConfig[] {
     return [
       {
-        templateOptions: { label: 'test' },
+        props: { label: 'test' },
         fieldGroup: [
           {
             key: 'selectAll',
             type: 'checkbox',
-            templateOptions: {
+            props: {
               label: 'Select All',
               hideOptional: true,
               id: 'moreFilterSelectAll',
@@ -254,7 +261,7 @@ export class AdvancedFiltersComponent implements OnInit {
             key: 'showInactive',
             type: 'checkbox',
             defaultValue: this.showInactive,
-            templateOptions: {
+            props: {
               label: 'Show Inactive Filter Values (Indicated by *)',
               hideOptional: true,
               id: 'moreFilterSelectAll',

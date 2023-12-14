@@ -1,10 +1,23 @@
-<usa-file-input #fileInput [formControl]="formControl" [id]="id"> </usa-file-input>
+<usa-file-input
+  #fileInput
+  [formControl]="formControl"
+  [id]="id"
+  [acceptFileType]="props.acceptFileType"
+  [multiple]="props.multiple"
+  [hint]="props.hint"
+  [disabled]="props.disabled"
+  [clearFilesOnAdd]="props.clearFilesOnAdd"
+  [displayFileInfo]="props.displayFileInfo"
+  [uploadRequest]="props.uploadRequest"
+  (selectedFilesChange)="onSelectedFilesChange($event)"
+>
+</usa-file-input>
 
 <ng-container
-  *ngIf="field.fieldArray"
-  [ngTemplateOutlet]="(to.template ? to.template : defaultTemplate)"
+  *ngIf="props.tableDisplay"
+  [ngTemplateOutlet]="(props.template ? props.template : defaultTemplate)"
   [ngTemplateOutletContext]="{
-        fields: [field.fieldArray],
+        props: props,
         form: formControl,
         model: model,
         modelChange: modelChange
@@ -12,16 +25,24 @@
 >
 </ng-container>
 
-<ng-template let-fields="fields[0]" let-form="form" let-model="model" let-modelChange="modelChange" #defaultTemplate>
+<ng-template
+  let-props="props"
+  let-data="data"
+  let-form="form"
+  let-model="model"
+  let-modelChange="modelChange"
+  #defaultTemplate
+>
   <div class="margin-top-2"></div>
-  <sds-table [data]="form.value" [tableName]="fields.templateOptions.name" #fileTable>
-    <sds-table-column *ngFor="let column of fields.templateOptions.tableColumns" [sdsColumnName]="column.columnName">
+
+  <sds-table [data]="form.value" [tableName]="props.tableName" #fileTable>
+    <sds-table-column *ngFor="let column of props.tableColumns" [sdsColumnName]="column.columnName">
       <ng-template #sdsHeaderCell>{{column.label}}</ng-template>
       <ng-template #sdsCell let-element="element">
         <button
           class="usa-button usa-button--unstyled text-secondary-dark"
           *ngIf="column.onClick; else noClick"
-          (click)="column.onClick(element, parentFieldConfig)"
+          (click)="column.onClick(element, field.parent)"
         >
           <ng-container
             [ngTemplateOutlet]="tableCellTemplates"
@@ -40,7 +61,7 @@
     <sds-row [displayedColumns]="displayedColumns"></sds-row>
   </sds-table>
   <div *ngIf="!form.value || !form.value.length" class="border border-base-light text-center padding-1">
-    {{fields.templateOptions.noDataText}}
+    {{props.noDataText}}
   </div>
 
   <ng-template #tableCellTemplates let-element let-column="column">

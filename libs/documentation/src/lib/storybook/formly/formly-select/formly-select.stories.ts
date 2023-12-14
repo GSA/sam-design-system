@@ -12,7 +12,7 @@ import { FormlySelectDescriptionModule } from './formly-select-description/forml
 import { FormlySelectRequiredModule } from './formly-select-required/formly-select-required.module';
 import { FormlySelectOptionsModule } from './formly-select-options/formly-select-options.module';
 
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -39,9 +39,9 @@ export default {
     }),
   ],
   argTypes: {
-    label: templateOptions,
-    description: templateOptions,
-    required: templateOptions,
+    label: props,
+    description: props,
+    required: props,
     options: { control: { type: 'array' }, table: { category: 'template-options' } },
   },
 } as Meta;
@@ -88,8 +88,8 @@ Configurable.args = {
   ],
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 
 export const Label: Story = (args) => ({
@@ -98,10 +98,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-label',
     'FormlySelectLabelModule',
@@ -116,10 +116,10 @@ export const Description: Story = (args) => ({
 });
 Description.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-description',
     'FormlySelectDescriptionModule',
@@ -134,10 +134,10 @@ export const Required: Story = (args) => ({
 });
 Required.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-required',
     'FormlySelectRequiredModule',
@@ -152,10 +152,10 @@ export const Options: Story = (args) => ({
 });
 Options.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-options',
     'FormlySelectOptionsModule',

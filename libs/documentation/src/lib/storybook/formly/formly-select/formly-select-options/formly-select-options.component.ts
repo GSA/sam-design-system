@@ -14,7 +14,7 @@ export class FormlySelectOptionsComponent {
     {
       key: 'entity.type',
       type: 'select',
-      templateOptions: {
+      props: {
         options: [
           { label: 'Contract Opportunities', value: 'co' },
           { label: 'Entity Information', value: 'ei' },

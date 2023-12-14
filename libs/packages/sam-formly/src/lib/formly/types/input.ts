@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-input',
   template: ` <div class="maxw-mobile-lg position-relative">
     <input
       [ngClass]="{
-        'usa-input--disabled': to.disabled,
+        'usa-input--disabled': props.disabled,
         'usa-input--error': showError
       }"
       class="usa-input padding-right-3"
-      [placeholder]="to.placeholder"
+      [placeholder]="props.placeholder"
       name="input-success"
       [formlyAttributes]="field"
-      [type]="to.inputType ? to.inputType : 'text'"
+      [type]="props.inputType ? props.inputType : 'text'"
       [formControl]="formControl"
     />
     <ng-container *ngIf="field.formControl.value">
-      <span class="position-absolute right-105 top-1 cursor-pointer bg-white">
+      <span class="position-absolute top-1 cursor-pointer bg-white" [style]="getPosition()">
         <span
           role="button"
           aria-label="Clear input"
-          (click)="field.formControl.reset()"
-          (keyup.enter)="field.formControl.reset()"
+          (click)="onClear()"
+          (keyup.enter)="onClear()"
           tabindex="0"
           class="icon-container"
         >
@@ -32,4 +32,14 @@ import { FieldType } from '@ngx-formly/core';
     </ng-container>
   </div>`,
 })
-export class FormlyFieldInputComponent extends FieldType {}
+export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
+  getPosition() {
+    let width = document.getElementById(this.field.id).offsetWidth;
+    width = width - 25;
+    return `left: ${width}px;`;
+  }
+
+  onClear() {
+    this.field.formControl.setValue('');
+  }
+}

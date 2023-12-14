@@ -41,12 +41,12 @@ export class UnevenStepsCustomStepperComponent extends SdsStepper implements Aft
       });
 
       if (incrementor === 1) {
-        this.stepLabels[mainStepIndex].completionPercent = startingStep.fieldConfig.templateOptions.completedValue ?? 0;
+        this.stepLabels[mainStepIndex].completionPercent = startingStep.fieldConfig.props.completedValue ?? 0;
       } else {
         // Need to get previous step to know what it's completedValue is.
         const currentFlatStepsIndex = this.flatSteps.findIndex((step) => step.id === this.selectedStep.id);
         this.stepLabels[mainStepIndex].completionPercent =
-          this.flatSteps[currentFlatStepsIndex - 1].fieldConfig.templateOptions.completedValue ?? 0;
+          this.flatSteps[currentFlatStepsIndex - 1].fieldConfig.props.completedValue ?? 0;
       }
       // If main step
     } else {

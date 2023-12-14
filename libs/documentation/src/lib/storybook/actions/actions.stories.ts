@@ -122,8 +122,8 @@ Configurable.args = {
   ],
 };
 Configurable.parameters = {
-  preview: { disabled: true },
-  actions: { disabled: true },
+  preview: { disable: true },
+  actions: { disable: true },
 };
 
 export const Size: Story = (args) => ({
@@ -132,10 +132,10 @@ export const Size: Story = (args) => ({
 });
 Size.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/actions/actions-size', 'ActionsSizeModule', 'sds-actions-size'),
   stackblitzLink: generateStackblitzLink('actions', 'size'),
 };
@@ -146,10 +146,10 @@ export const Label: Story = (args) => ({
 });
 Label.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/actions/actions-label', 'ActionsLabelModule', 'sds-actions-label'),
   stackblitzLink: generateStackblitzLink('actions', 'label'),
 };
@@ -160,10 +160,10 @@ export const ModelTrigger: Story = (args) => ({
 });
 ModelTrigger.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/actions/actions-model-trigger',
     'ActionsModelTriggerModule',

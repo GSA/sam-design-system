@@ -16,7 +16,7 @@ export class TemplateOptionsBasic {
       modelOptions: {
         updateOn: 'blur',
       },
-      templateOptions: {
+      props: {
         label: 'Keyword',
         placeholder: 'eg: Acme Corporation',
         description: 'Description',

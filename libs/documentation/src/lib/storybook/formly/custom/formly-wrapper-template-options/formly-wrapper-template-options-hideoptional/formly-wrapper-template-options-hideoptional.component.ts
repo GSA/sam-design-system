@@ -14,7 +14,7 @@ export class FormlyWrapperTemplateOptionsHideoptionalComponent {
     {
       key: 'Keyword',
       type: 'input',
-      templateOptions: {
+      props: {
         label: 'Entity',
         hideOptional: true,
       },

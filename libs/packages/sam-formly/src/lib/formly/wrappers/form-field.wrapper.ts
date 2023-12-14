@@ -2,14 +2,14 @@ import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 
 /**
- * @param string [to.tagClass] Class to be added to the tag (default: sds-tag--info-white)
- * @param string [to.tagText] Text to be shown inside the tag
- * @param string [to.labelClass] Class to be applied to the label
- * @param string [to.label] Text to be shown for the label
- * @param string [to.required] Makes the field required
- * @param string [to.description] Add a description below the label
- * @param string [to.hideOptional] Remove the optional text
- * @param string [to.hideLabel] Hide the label
+ * @param string [props.tagClass] Class to be added to the tag (default: sds-tag--info-white)
+ * @param string [props.tagText] Text to be shown inside the tag
+ * @param string [props.labelClass] Class to be applied to the label
+ * @param string [props.label] Text to be shown for the label
+ * @param string [props.required] Makes the field required
+ * @param string [props.description] Add a description below the label
+ * @param string [props.hideOptional] Remove the optional text
+ * @param string [props.hideLabel] Hide the label
  *
  */
 
@@ -17,15 +17,23 @@ import { FieldWrapper } from '@ngx-formly/core';
   selector: 'sds-formly-wrapper-form-field',
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
-      <label class="usa-label" *ngIf="to.label && to.hideLabel !== true" [attr.for]="id" [ngClass]="to.labelClass">
-        <span *ngIf="to.tagText" class="usa-tag" [ngClass]="to.tagClass ? to.tagClass : 'sds-tag--info-white'">{{
-          to.tagText
-        }}</span>
-        <span>{{ to.label }}</span>
-        <span *ngIf="!to.required && !to.hideOptional"> (Optional)</span>
+      <label
+        class="usa-label"
+        *ngIf="props.label && props.hideLabel !== true"
+        [attr.for]="id"
+        [ngClass]="props.labelClass"
+      >
+        <span
+          *ngIf="props.tagText"
+          class="usa-tag"
+          [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'"
+          >{{ props.tagText }}</span
+        >
+        <span>{{ props.label }}</span>
+        <span *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
       </label>
-      <div *ngIf="to.description" class="usa-label--description">
-        {{ to.description }}
+      <div *ngIf="props.description" class="usa-label--description">
+        {{ props.description }}
       </div>
       <ng-template #fieldComponent></ng-template>
       <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">

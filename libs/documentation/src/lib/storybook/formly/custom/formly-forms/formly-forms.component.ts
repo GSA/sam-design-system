@@ -28,7 +28,7 @@ export class FormlyFormsComponent {
           key: 'country',
           type: 'select',
           defaultValue: 'united_states',
-          templateOptions: {
+          props: {
             label: 'Country',
             required: true,
             options: [
@@ -46,7 +46,7 @@ export class FormlyFormsComponent {
           className: 'desktop:grid-col-12 tablet:grid-col-12',
           type: 'input',
           key: 'street1',
-          templateOptions: {
+          props: {
             required: true,
             label: 'Street Address 1',
           },
@@ -60,7 +60,7 @@ export class FormlyFormsComponent {
           className: 'grid-col-12 tablet:grid-col-12',
           type: 'input',
           key: 'street2',
-          templateOptions: {
+          props: {
             label: 'Street Address 2',
           },
         },
@@ -74,7 +74,7 @@ export class FormlyFormsComponent {
           type: 'input',
           key: 'zip',
           hideExpression: (model) => this.model.country === 'canada',
-          templateOptions: {
+          props: {
             required: true,
             type: 'number',
             label: 'ZIP Code (+ 4)',
@@ -93,7 +93,7 @@ export class FormlyFormsComponent {
           type: 'input',
           key: 'postal',
           hideExpression: (model) => this.model.country === 'united_states',
-          templateOptions: {
+          props: {
             required: true,
             label: 'Postal Code',
             maxLength: 6,
@@ -110,7 +110,7 @@ export class FormlyFormsComponent {
           className: 'grid-col-8',
           type: 'input',
           key: 'cityName',
-          templateOptions: {
+          props: {
             required: true,
             label: 'City',
           },
@@ -121,7 +121,7 @@ export class FormlyFormsComponent {
           type: 'select',
           defaultValue: 'None',
           hideExpression: (model) => this.model.country === 'canada',
-          templateOptions: {
+          props: {
             label: 'State',
             required: true,
             options: [
@@ -185,7 +185,7 @@ export class FormlyFormsComponent {
           type: 'select',
           key: 'province',
           hideExpression: (model) => this.model.country === 'united_states',
-          templateOptions: {
+          props: {
             label: 'State/Province',
             required: true,
             options: [
@@ -212,7 +212,7 @@ export class FormlyFormsComponent {
           type: 'input',
           key: 'congressional_district',
           hideExpression: (model) => this.model.country === 'canada',
-          templateOptions: {
+          props: {
             required: true,
             label: 'Congressional District',
           },
@@ -234,7 +234,7 @@ export class FormlyFormsComponent {
           className: 'grid-col-12 tablet:grid-col-4 desktop:grid-col-3',
           type: 'input',
           key: 'Code',
-          templateOptions: {
+          props: {
             label: 'Country Code',
             required: true,
             type: 'number',
@@ -246,7 +246,7 @@ export class FormlyFormsComponent {
           className: 'grid-col-12 tablet:grid-col-7 desktop:grid-col-5',
           type: 'input',
           key: 'phone',
-          templateOptions: {
+          props: {
             label: 'Phone',
             required: true,
             type: 'number',
@@ -258,7 +258,7 @@ export class FormlyFormsComponent {
           className: 'margin-bottom-0 grid-col-3 desktop:grid-col-4 display-none desktop:display-inline-block',
           type: 'input',
           key: 'extension',
-          templateOptions: {
+          props: {
             label: 'Extension',
             type: 'number',
             pattern: '\\d{3}',
@@ -271,7 +271,7 @@ export class FormlyFormsComponent {
       className: ' margin-top-(-1) grid-col-8 display-block desktop:display-none',
       type: 'button',
       hideExpression: (model) => this.model.showExtension,
-      templateOptions: {
+      props: {
         type: 'button',
         text: 'Show Extension',
         btnType: 'info',
@@ -287,7 +287,7 @@ export class FormlyFormsComponent {
       type: 'input',
       key: 'extension1',
       hideExpression: (model) => !this.model.showExtension,
-      templateOptions: {
+      props: {
         label: 'Extension',
         type: 'number',
         max: 99999,

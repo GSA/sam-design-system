@@ -1,21 +1,21 @@
 import { Component, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 /**
- * @param string [to.description] Add a description below the label
+ * @param string [props.description] Add a description below the label
  *
  */
 @Component({
   template: `
     <div>
-      <ng-container *ngIf="to.descriptionTemplate" [ngTemplateOutlet]="to.descriptionTemplate"> </ng-container>
-      <ng-container *ngIf="!to.descriptionTemplate">
+      <ng-container *ngIf="props.descriptionTemplate" [ngTemplateOutlet]="props.descriptionTemplate"> </ng-container>
+      <ng-container *ngIf="!props.descriptionTemplate">
         <div
-          *ngIf="to.description"
-          [attr.aria-label]="to.description ? to.description : undefined"
+          *ngIf="props.description"
+          [attr.aria-label]="props.description ? props.description : undefined"
           class="usa-label--description"
-          [attr.aria-label]="to.description"
+          [attr.aria-label]="props.description"
           [id]="id + '-description'"
-          [innerHtml]="to.description"
+          [innerHtml]="props.description"
         ></div>
       </ng-container>
       <ng-container #fieldComponent></ng-container>

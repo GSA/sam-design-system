@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, Story, applicationConfig } from '@storybook/angular';
 import { DialogAlertTypeModule } from './dialog-alert-type/dialog-alert-type.module';
 import { DialogWidthModule } from './dialog-width/dialog-width.module';
 import { DialogNestedModule } from './dialog-nested/dialog-nested.module';
@@ -12,6 +12,8 @@ import {
 import { DialogIntroductionModule } from './dialog-introduction/dialog-introduction.module';
 import { DialogConfigurableModule } from './dialog-configurable/dialog-configurable.module';
 import { DialogPolicyModule } from './dialog-policy/dialog-policy.module';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title: 'Components/Dialog',
@@ -29,6 +31,9 @@ export default {
         DialogPolicyModule,
       ],
     }),
+    applicationConfig({
+      providers: [importProvidersFrom(BrowserAnimationsModule)],
+    }),
   ],
   argTypes: {
     width: { control: 'select', options: ['small', 'medium', 'large'] },
@@ -42,9 +47,9 @@ export const AlertType: Story = (args) => ({
 });
 AlertType.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/dialog/dialog-alert-type', 'DialogAlertTypeModule', 'sds-dialog-alert-type', [
     createCodePreviewTabData('storybook/dialog/dialog-alert-type/dialog-template.component.ts', 'ts', false),
     createCodePreviewTabData('storybook/dialog/dialog-alert-type/dialog-template.component.html', 'html', false),
@@ -57,9 +62,9 @@ export const Nested: Story = (args) => ({
 });
 Nested.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/dialog/dialog-nested', 'DialogNestedModule', 'sds-dialog-nested', [
     createCodePreviewTabData('storybook/dialog/dialog-nested/dialog-template.component.ts', 'ts', false),
     createCodePreviewTabData('storybook/dialog/dialog-nested/dialog-template.component.html', 'html', false),
@@ -74,9 +79,9 @@ export const Width: Story = (args) => ({
 });
 Width.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/dialog/dialog-width', 'DialogWidthModule', 'sds-dialog-width', [
     createCodePreviewTabData('storybook/dialog/dialog-width/dialog-template.component.ts', 'ts', false),
     createCodePreviewTabData('storybook/dialog/dialog-width/dialog-template.component.html', 'html', false),
@@ -89,9 +94,9 @@ export const DataReturn: Story = (args) => ({
 });
 DataReturn.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/dialog/dialog-data-return', 'DialogDataReturnModule', 'sds-dialog-data-return', [
     createCodePreviewTabData('storybook/dialog/dialog-data-return/dialog-template.component.ts', 'ts', false),
     createCodePreviewTabData('storybook/dialog/dialog-data-return/dialog-template.component.html', 'html', false),
@@ -104,9 +109,9 @@ export const Policy: Story = (args) => ({
 });
 Policy.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig('storybook/dialog/dialog-policy', 'DialogDataReturnModule', 'sds-dialog-policy', [
     createCodePreviewTabData('storybook/dialog/dialog-policy/official-template.component.ts', 'ts', false),
     createCodePreviewTabData('storybook/dialog/dialog-policy/official-template.component.html', 'html', false),
@@ -122,11 +127,11 @@ export const Introduction: Story = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 export const Configurable: Story = (args) => ({
@@ -135,8 +140,8 @@ export const Configurable: Story = (args) => ({
 });
 
 Configurable.parameters = {
-  actions: { disabled: true },
-  preview: { disabled: true },
+  actions: { disable: true },
+  preview: { disable: true },
 };
 
 Configurable.args = {

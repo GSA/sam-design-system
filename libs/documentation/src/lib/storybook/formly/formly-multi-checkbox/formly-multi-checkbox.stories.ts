@@ -16,7 +16,7 @@ const disable = {
     disable: true,
   },
 };
-const templateOptions = {
+const props = {
   table: {
     category: 'template-options',
   },
@@ -55,10 +55,10 @@ export const Basic: Story = (args) => ({
 });
 Basic.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-basic',
     'FormlyMultiCheckboxBasicModule',
@@ -73,10 +73,10 @@ export const Nested: Story = (args) => ({
 });
 Nested.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-nested',
     'FormlyMultiCheckboxNestedModule',
@@ -91,10 +91,10 @@ export const Group: Story = (args) => ({
 });
 Group.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-group',
     'FormlyMultiCheckboxGroupModule',
@@ -109,10 +109,10 @@ export const Expand: Story = (args) => ({
 });
 Expand.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-expand',
     'FormlyMultiCheckboxExpandModule',
