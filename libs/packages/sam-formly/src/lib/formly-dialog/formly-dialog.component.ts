@@ -23,6 +23,8 @@ export class SdsFormlyDialogComponent implements OnInit {
 
   @Output() cancelFn: EventEmitter<any> = new EventEmitter();
 
+  @Output() onChangeFn: EventEmitter<any> = new EventEmitter();
+
   constructor(
     public advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef,
@@ -38,6 +40,10 @@ export class SdsFormlyDialogComponent implements OnInit {
     this.cancel = this.data.cancel ? this.data.cancel : 'Cancel';
     this.submit = this.data.submit ? this.data.submit : 'Submit';
     this.disableSubmitButton = this.data.disableSubmitButtonEnabled ? this.data.disableSubmitButtonEnabled : false;
+  }
+
+  onModelChange() {
+    this.onChangeFn.emit(this.model);
   }
 
   onSubmit() {
