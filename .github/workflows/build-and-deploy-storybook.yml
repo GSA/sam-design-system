@@ -2,7 +2,7 @@ name: Deploy to Github Pages
 on:
   push:
     branches:
-      - gh-pages-fix
+      - master
 jobs:
   Build-And-Deploy:
     runs-on: ubuntu-latest
@@ -15,6 +15,8 @@ jobs:
           node-version: '16.x'
       - name: Install Node Packages
         run: npm i
+      - name: Install Global NG CLI
+        run: npm install -g @angular/cli@16
       - name: Build Stackblitz HTMLs
         run: npm run demo:stackblitzes
       - name: Build Storybook Assets
