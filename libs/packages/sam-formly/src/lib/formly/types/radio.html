@@ -130,12 +130,9 @@
     </div>
 
     <div class="margin-left-1" *ngIf="props.options[i].tooltipText">
-      <p
-        #tipContent
-        [ngClass]="props.options[i].tooltipClass"
-        class="margin-1"
-        [innerHTML]="props.options[i].tooltipText"
-      ></p>
+      <ng-template #tipContent>
+        <p [ngClass]="props.options[i].tooltipClass" class="margin-1" [innerHTML]="props.options[i].tooltipText"></p>
+      </ng-template>
       <usa-icon
         class="text-secondary"
         [position]="props.options[i].tooltipPosition ? props.options[i].tooltipPosition :'right'"

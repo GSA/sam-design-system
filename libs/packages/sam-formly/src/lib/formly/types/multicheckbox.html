@@ -75,7 +75,9 @@
         </label>
       </div>
       <div *ngIf="props.selectTooltipText">
-        <p #tipContent1 [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.selectTooltipText"></p>
+        <ng-template #tipContent1>
+          <p [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.selectTooltipText"></p>
+        </ng-template>
         <usa-icon
           class="text-secondary"
           class="margin-left-1"
