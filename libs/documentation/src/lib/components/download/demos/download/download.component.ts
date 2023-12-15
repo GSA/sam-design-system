@@ -23,12 +23,12 @@ export class DownloadComponent {
         hideOptional: true,
         options: [
           {
-            value: 'Single Details',
-            key: 'sd',
+            label: 'Single Details',
+            value: 'sd',
           },
           {
-            value: 'Contract Family Details',
-            key: 'cfd',
+            label: 'Contract Family Details',
+            value: 'cfd',
           },
         ],
       },
@@ -42,8 +42,8 @@ export class DownloadComponent {
         class: 'margin-left-2',
         options: [
           {
-            value: 'Modifications',
-            key: 'mod',
+            label: 'Modifications',
+            value: 'mod',
           },
         ],
       },
@@ -58,10 +58,10 @@ export class DownloadComponent {
         label: 'Select file type',
         hideOptional: true,
         options: [
-          { value: 'Default', key: 'CSV', description: '-Limited to 5000' },
-          { value: 'Full', key: 'ZIP', description: '-Limited to 10,000' },
-          { value: 'Case', key: 'PDF', description: '-Limited to 8000' },
-          { value: 'All', key: 'XLS', description: '-Limited to 45000' },
+          { label: 'Default', value: 'CSV', description: '-Limited to 5000' },
+          { label: 'Full', value: 'ZIP', description: '-Limited to 10,000' },
+          { label: 'Case', value: 'PDF', description: '-Limited to 8000' },
+          { label: 'All', value: 'XLS', description: '-Limited to 45000' },
         ],
       },
     },
@@ -79,8 +79,8 @@ export class DownloadComponent {
       props: {
         options: [
           {
-            value: 'Add to my saved search',
-            key: 'saved',
+            label: 'Add to my saved search',
+            value: 'saved',
           },
         ],
       },
@@ -103,6 +103,11 @@ export class DownloadComponent {
       width: 'medium',
       data: data,
     });
+
+    dialogRef.componentInstance.onChangeFn.subscribe((res) => {
+      dialogRef.componentInstance.disableSubmitButton = !res.additionalOptions.saved;
+    });
+
 
     dialogRef.componentInstance.submitFn.subscribe((res) => {
       this.updatedModel = res;

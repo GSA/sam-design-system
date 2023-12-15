@@ -95,3 +95,6 @@ export * from './tree-table/tree-table.model';
 
 export * from './step-arrow/step-arrow.component';
 export * from './step-arrow/step-arrow.module';
+
+export * from './affix/affix.directive';
+export * from './affix/affix.module';
