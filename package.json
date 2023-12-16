@@ -121,6 +121,7 @@
     "prettier": "2.0.4",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-syntax-highlighter": "^15.5.0",
     "storybook": "^7.5.0",
     "storybook-addon-preview": "^2.3.0",
     "ts-node": "~7.0.0",
