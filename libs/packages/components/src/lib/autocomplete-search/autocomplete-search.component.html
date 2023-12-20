@@ -48,8 +48,12 @@
         (scroll)="onScroll()"
       >
         <ng-container *ngIf="configuration.useCheckBoxes">
-          <label class="sds-selected__label" [ngClass]="{ 'sds-selected__label--disabled': model.items.length <= 0 }"
-          [attr.aria-label]="model.items.length + 'Selected'">
+          <label
+            class="sds-selected__label"
+            [ngClass]="{ 'sds-selected__label--disabled': model.items.length <= 0 }"
+            [attr.aria-label]="model.items.length + 'Selected'"
+          >
+            <usa-icon [icon]="'check2-square'" size="1x" class="margin-right-1"> </usa-icon>
             {{ model.items.length }} SELECTED
           </label>
           <div>
@@ -58,13 +62,11 @@
               role="option"
               *ngFor="let result of results; let i = index"
               (click)="selectItem(result)"
+              [ngClass]="{
+                'sds-autocomplete__checkbox--highlighted': result['highlighted']
+              }"
             >
-              <div
-                class="usa-checkbox sds-autocomplete__checkbox"
-                [ngClass]="{
-                  'sds-autocomplete__checkbox--highlighted': result['highlighted']
-                }"
-              >
+              <div class="usa-checkbox sds-autocomplete__checkbox">
                 <input
                   class="usa-checkbox__input"
                   type="checkbox"

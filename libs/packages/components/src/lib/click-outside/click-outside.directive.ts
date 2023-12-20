@@ -19,7 +19,9 @@ export class SDSClickOutsideDirective {
   @HostListener('document:click', ['$event.target'])
   public onClick(targetElement) {
     const clickedInside = this._elementRef.nativeElement.contains(targetElement);
-    const clickedInsideAdditional = this.additionalElements?.some(elRef => elRef?.nativeElement?.contains(targetElement));
+    const clickedInsideAdditional = this.additionalElements?.some((elRef) =>
+      elRef?.nativeElement?.contains(targetElement)
+    );
     if (!clickedInside && !clickedInsideAdditional) {
       this.clickOutside.emit(undefined);
     }

@@ -31,9 +31,18 @@ export class AutocompleteCheckbox implements OnInit {
     this.settings.id = 'autocompleteBasic';
     this.settings.labelText = 'Autocomplete';
     this.settings.primaryTextField = 'name';
-    this.settings.secondaryTextField = 'subtext';
     this.settings.selectionMode = SelectionMode.MULTIPLE;
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
     this.settings.useCheckBoxes = true;
+    this.settings.isTagModeEnabled = false;
+
+    this.settings3.primaryKeyField = 'id';
+    this.settings3.id = 'autocompleteBasic3';
+    this.settings3.labelText = 'Autocomplete 3';
+    this.settings3.primaryTextField = 'name';
+    this.settings3.secondaryTextField = 'subtext';
+    this.settings3.selectionMode = SelectionMode.MULTIPLE;
+    this.settings3.autocompletePlaceHolderText = 'eg: Level 1';
+    this.settings3.useCheckBoxes = true;
   }
 }

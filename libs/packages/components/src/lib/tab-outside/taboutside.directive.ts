@@ -17,8 +17,10 @@ export class SDSTabOutsideDirective {
     if (event.key === 'Tab') {
       const targetElement = event.target as HTMLElement;
       const isInsideHost = this._elementRef.nativeElement.contains(targetElement);
-      const isInsideAdditional = this.additionalElements?.some(elRef => elRef?.nativeElement?.contains(targetElement));
-      
+      const isInsideAdditional = this.additionalElements?.some((elRef) =>
+        elRef?.nativeElement?.contains(targetElement)
+      );
+
       if (!isInsideHost && !isInsideAdditional) {
         this.tabOutside.emit(undefined);
       }

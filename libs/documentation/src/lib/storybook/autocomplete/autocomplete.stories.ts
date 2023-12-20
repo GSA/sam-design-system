@@ -425,4 +425,11 @@ Introduction.parameters = {
   preview: { disabled: true },
 };
 
-export const __namedExportsOrder = ['Introduction', 'CheckBox', 'Configurable' ,'FreeText', 'Grouping', 'SelectionMode'];
+export const __namedExportsOrder = [
+  'Introduction',
+  'Configurable',
+  'CheckBox',
+  'FreeText',
+  'Grouping',
+  'SelectionMode',
+];

@@ -329,21 +329,18 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       filterItem = item;
     }
     const isSelected = this.checkItemSelected(item);
-    if (!isSelected) {
-      SDSSelectedItemModelHelper.addItem(
-        filterItem,
-        this.configuration.primaryKeyField,
-        this.configuration.selectionMode,
-        this.model
-      );
-      this.propogateChange(this.model);
-      let message = this.getObjectValue(item, this.configuration.primaryTextField);
-      this.inputValue = message;
-    }
-    if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
-      if (isSelected && this.configuration.useCheckBoxes) {
+
+    if (this.configuration.useCheckBoxes) {
+      if (!isSelected) {
+        this.addItemToModel(filterItem);
+      } else if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
         this.unselectItem(item);
       }
+    } else {
+      this.addItemToModel(filterItem);
+    }
+
+    if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
       this.showResults = true;
       this.inputValue = '';
       this.input.nativeElement.focus();
@@ -357,6 +354,18 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else {
       this.showResults = false;
     }
+  }
+
+  private addItemToModel(item: object) {
+    SDSSelectedItemModelHelper.addItem(
+      item,
+      this.configuration.primaryKeyField,
+      this.configuration.selectionMode,
+      this.model
+    );
+    this.propogateChange(this.model);
+    let message = this.getObjectValue(item, this.configuration.primaryTextField);
+    this.inputValue = message;
   }
 
   public unselectItem(item: any): void {
