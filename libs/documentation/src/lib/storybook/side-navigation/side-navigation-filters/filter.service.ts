@@ -25,15 +25,15 @@ export class FilterService {
 
       wrappers: ['tabs'],
       props: {
-     hideChildrenGroups: true,
+        hideChildrenGroups: true,
         label: 'Keyword Search',
         description: `For more information on how to use our keyword search, visit our <a href="#"> help guide </a>`,
         hideOptional: true,
         tabClass: 'sds-tabs--formly',
       },
-     
+
       fieldGroup: [
-       // tab 1
+        // tab 1
         {
           props: {
             tabHeader: 'Simple Search',
@@ -119,7 +119,6 @@ export class FilterService {
           ],
         },
       ],
-      
     },
 
     // {

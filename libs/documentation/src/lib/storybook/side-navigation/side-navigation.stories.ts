@@ -15,12 +15,7 @@ export default {
   title: 'Components/Side Navigation',
   decorators: [
     moduleMetadata({
-      imports: [
-        CommonModule,
-        NoopAnimationsModule,
-        SideNavigationIntroductionModule,
-        SideNavigationFiltersModule,
-      ],
+      imports: [CommonModule, NoopAnimationsModule, SideNavigationIntroductionModule, SideNavigationFiltersModule],
     }),
   ],
   argTypes: {},
@@ -41,8 +36,6 @@ Introduction.parameters = {
   actions: { disable: true },
   preview: { disable: true },
 };
-
-
 
 export const Filters: Story = (args) => ({
   template: `<sds-side-navigation-filters></sds-side-navigation-filters>`,
@@ -70,7 +63,5 @@ Filters.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('sds-side-navigation', 'filters'),
 };
-
-
 
 export const __namedExportsOrder = ['Introduction', 'Filters'];
