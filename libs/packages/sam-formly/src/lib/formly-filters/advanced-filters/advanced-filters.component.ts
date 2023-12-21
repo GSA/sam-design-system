@@ -172,8 +172,10 @@ export class AdvancedFiltersComponent implements OnInit {
         const newModel = {};
         this.selectAll = result['filterToggle']['selectAll'];
         const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);
-        const keys = modalFields.map(function (el) { return el.key; });
-        keys.forEach((key:string) => {
+        const keys = modalFields.map(function (el) {
+          return el.key;
+        });
+        keys.forEach((key: string) => {
           if (key !== 'selectAll' && key !== 'showInactive') {
             let currentField = modalFields.find((item) => item.key === key);
             if (currentField.key === key && currentField.type === 'checkbox') {
