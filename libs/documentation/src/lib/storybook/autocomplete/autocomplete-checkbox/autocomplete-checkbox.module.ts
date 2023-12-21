@@ -8,7 +8,13 @@ import { add, IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
   declarations: [AutocompleteCheckbox],
-  imports: [CommonModule, FormsModule, SdsAutocompleteModule , IconModule, NgxBootstrapIconsModule.pick({square, add})],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SdsAutocompleteModule,
+    IconModule,
+    NgxBootstrapIconsModule.pick({ square, add }),
+  ],
   exports: [AutocompleteCheckbox],
   bootstrap: [AutocompleteCheckbox],
 })
