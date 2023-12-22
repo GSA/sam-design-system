@@ -53228,6 +53228,39 @@ through all possible variants
   cursor: auto;
 }
 
+.sds-selected__label {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-color: #2672de;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  display: block;
+}
+
+.sds-selected__label--disabled {
+  background-color: #757575;
+}
+
+.sds-autocomplete__checkbox {
+  padding: 1rem;
+  margin-bottom: -4px;
+  cursor: pointer;
+}
+.sds-autocomplete__checkbox--highlighted, .sds-autocomplete__checkbox:hover {
+  background-color: #EFF6FB !important;
+}
+.sds-autocomplete__checkbox--item {
+  font-weight: 600 !important;
+  display: inline;
+}
+.sds-autocomplete__checkbox--secondary {
+  font-weight: 400 !important;
+  margin-left: 2rem;
+}
+
 ul.sds-history {
   padding: 2em 0 0 2em;
   margin: 0;
