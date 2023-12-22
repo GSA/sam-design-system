@@ -9,8 +9,9 @@ export class SdsAdvancedFiltersService {
 
   convertToCheckboxes(origFields: FormlyFieldConfig[], hideChildrenGroups = false): FormlyFieldConfig[] {
     const fields: FormlyFieldConfig[] = [];
-    const defaultValue = [];
+
     origFields.forEach((origField) => {
+      const defaultValue = [];
       if (origField.fieldGroup?.length && !hideChildrenGroups && !origField.props?.hideChildrenGroups) {
         const field = this.createMulticheckbox(origField, defaultValue);
         fields.push(field);
@@ -54,7 +55,7 @@ export class SdsAdvancedFiltersService {
           options.push(option);
           if (!origField.hide && !field.hide) {
             defaultValue.push(field.key);
-            defaultValue.push(origField.key);
+            // defaultValue.push(origField.key);
           }
         }
       });
