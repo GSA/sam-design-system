@@ -22,27 +22,27 @@ export class FormlyMultiCheckboxNestedComponent {
         selectAllOption: true,
         options: [
           {
-            key: 'cfda',
-            value: 'Assistance Listing',
+            value: 'cfda',
+            label: 'Assistance Listing',
             tooltipPosition: 'bottom',
             tooltipText: '<b>Assistance Listing</b><u>Tool tip with style</u>',
           },
           {
-            key: 'opp',
-            value: 'Contract Opportunities',
+            value: 'opp',
+            label: 'Contract Opportunities',
             tooltipPosition: 'bottom',
           },
           {
-            key: 'ei',
-            value: 'Entity Information',
+            value: 'ei',
+            label: 'Entity Information',
           },
           {
-            key: 'fh',
-            value: 'Federal Hierarchy',
+            value: 'fh',
+            label: 'Federal Hierarchy',
           },
           {
-            key: 'wd',
-            value: 'Wage Determinations',
+            value: 'wd',
+            label: 'Wage Determinations',
           },
         ],
       },
