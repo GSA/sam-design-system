@@ -15,6 +15,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [formlyAttributes]="field"
       [type]="props.inputType ? props.inputType : 'text'"
       [formControl]="formControl"
+     [prefix]="to.prefix"
+     [suffix]="to.suffix"
     />
     <ng-container *ngIf="field.formControl.value && !props.disabled">
       <span class="position-absolute top-1 cursor-pointer bg-white" [style]="getPosition()">
@@ -30,7 +32,9 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         </span>
       </span>
     </ng-container>
-  </div>`,
+  </div>
+
+`,
 })
 export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
   getPosition() {

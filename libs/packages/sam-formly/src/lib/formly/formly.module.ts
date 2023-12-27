@@ -20,6 +20,7 @@ import {
   SdsPopoverModule,
   SdsRichTextModule,
   SdsStepArrowModule,
+  SdsAffixModule
 } from '@gsa-sam/components';
 
 import { FIELD_TYPE_COMPONENTS, FORMLY_CONFIG } from './formly.config';
@@ -156,6 +157,7 @@ export const DATE_FORMAT: MatDateFormats = {
     MatDatepickerModule,
     SdsTableModule,
     MatInputModule,
+    SdsAffixModule,
     IconModule,
     ReactiveFormsModule,
     FormlySelectModule,

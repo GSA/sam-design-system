@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -6,7 +6,8 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   selector: 'sds-formly-input-label',
   templateUrl: './formly-input-label.component.html',
 })
-export class FormlyInputLabelComponent {
+export class FormlyInputLabelComponent implements AfterViewInit {
+  @ViewChild('suffix') suffixtemp: TemplateRef<any>;
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -16,7 +17,12 @@ export class FormlyInputLabelComponent {
       type: 'input',
       props: {
         label: 'Entity Name',
+        prefix: '$',
+        suffix: '###',
       },
     },
   ];
+  ngAfterViewInit() {
+    this.fields[0].props.suffix = '###';
+  }
 }
