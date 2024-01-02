@@ -32,7 +32,6 @@ describe('The Sam Tab Outside directive', () => {
     TestBed.configureTestingModule({
       declarations: [SDSTabOutsideDirective, TestComponent],
     });
-
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
