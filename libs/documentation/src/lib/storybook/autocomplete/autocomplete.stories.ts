@@ -408,7 +408,7 @@ CheckBox.parameters = {
     'AutocompleteCheckboxModule',
     'sds-autocomplete-checkbox-demo'
   ),
-  stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
+  stackblitzLink: generateStackblitzLink('autocomplete', 'checkbox'),
 };
 
 export const Introduction: Story = (args) => ({

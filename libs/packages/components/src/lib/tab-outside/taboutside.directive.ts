@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[sds-tab-outside]',
@@ -14,20 +14,8 @@ export class SDSTabOutsideDirective {
   @HostListener('document:keyup', ['$event.target'])
   public hasFocusChanged(target) {
     const isInsideHost = this._elementRef.nativeElement.contains(target);
-    const isAutocomplete = this.hasClass(target, 'sds-autocomplete');
-
-    if (!isInsideHost && !isAutocomplete) {
+    if (!isInsideHost) {
       this.tabOutside.emit(undefined);
     }
-  }
-
-  private hasClass(element, className): boolean {
-    while (element) {
-      if (element.classList && element.classList.contains(className)) {
-        return true;
-      }
-      element = element.parentElement;
-    }
-    return false;
   }
 }

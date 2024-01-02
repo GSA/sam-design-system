@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 /**
  * The <sam-click-outside> directive can detect whether a click is made inside

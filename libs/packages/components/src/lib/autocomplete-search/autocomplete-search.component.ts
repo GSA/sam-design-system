@@ -349,7 +349,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       );
       this.highlightedIndex = index;
       this.setHighlightedItem(flat[this.highlightedIndex]);
-      console.log('highlightedIndex', this.highlightedIndex);
     } else {
       this.showResults = false;
     }
