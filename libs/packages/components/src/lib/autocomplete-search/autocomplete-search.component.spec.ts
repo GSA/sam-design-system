@@ -294,7 +294,7 @@ describe('SamAutocompleteComponent', () => {
     tick();
     fixture.detectChanges();
     const items = component.getFlatElements();
-    expect(items[1]['highlighted']).toBeTruthy();
+    expect(items[3]['highlighted']).toBeTruthy();
 
     const upEvent = {
       key: 'Up',

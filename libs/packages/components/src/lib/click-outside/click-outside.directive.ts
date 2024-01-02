@@ -12,18 +12,18 @@ export class SDSClickOutsideDirective {
    * Event emitted when clicked outside the target
    */
   @Output() clickOutside = new EventEmitter();
-  @Input() additionalElements: Array<ElementRef>;
 
   constructor(private _elementRef: ElementRef) {}
 
-  @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement) {
-    const clickedInside = this._elementRef.nativeElement.contains(targetElement);
-    const clickedInsideAdditional = this.additionalElements?.some((elRef) =>
-      elRef?.nativeElement?.contains(targetElement)
-    );
-    if (!clickedInside && !clickedInsideAdditional) {
+  @HostListener('document:click', ['$event'])
+  public onClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    const clickedInside = this.isInside(targetElement);
+    if (!clickedInside) {
       this.clickOutside.emit(undefined);
     }
+  }
+  private isInside(targetElement: HTMLElement): boolean {
+    return targetElement.closest('.sds-autocomplete') !== null;
   }
 }
