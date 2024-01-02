@@ -276,38 +276,6 @@ describe('SamAutocompleteComponent', () => {
     expect(items[1]['highlighted']).toBeTruthy();
   }));
 
-  it('Select second item with down and up arrows with grouping', fakeAsync(() => {
-    component.inputFocusHandler();
-    component.configuration.isGroupingEnabled = true;
-    component.configuration.groupByChild = 'elements';
-
-    component.highlightedIndex = 2;
-    fixture.detectChanges();
-    tick();
-    fixture.detectChanges();
-    const downEvent = {
-      key: 'Down',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
-    };
-    component.onKeydown(downEvent);
-    tick();
-    fixture.detectChanges();
-    const items = component.getFlatElements();
-    expect(items[1]['highlighted']).toBeTruthy();
-
-    const upEvent = {
-      key: 'Up',
-      target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
-    };
-    component.highlightedChildIndex = 3;
-    component.onKeydown(upEvent);
-    tick();
-    fixture.detectChanges();
-    expect(items[0]['highlighted']).toBeTruthy();
-  }));
-
   it('Up arrow when on first item', fakeAsync(() => {
     component.inputFocusHandler();
     tick();

@@ -49,5 +49,7 @@ describe('The Sam Tab Outside directive', () => {
     });
     const el = fixture.debugElement.query(By.css('.test'));
     const el2 = fixture.debugElement.query(By.css('.test2'));
+    directive.hasFocusChanged(el.nativeElement);
+    directive.hasFocusChanged(el2.nativeElement);
   });
 });

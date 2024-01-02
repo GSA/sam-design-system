@@ -1,10 +1,4 @@
-<div
-  sds-click-outside
-  (clickOutside)="checkForFocus($event)"
-  [additionalElements]="[resultsListElement]"
-  sds-tab-outside
-  (tabOutside)="checkForFocus($event)"
->
+<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
   <div class="maxw-mobile-lg position-relative">
     <div [attr.id]="configuration.id + '-container'">
       <input

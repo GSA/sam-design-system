@@ -1,29 +1,30 @@
-import { Directive, ElementRef, Output, EventEmitter, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[sds-tab-outside]',
 })
 export class SDSTabOutsideDirective {
-  /**
-   * Emitter for tabOutside event
-   */
   @Output() tabOutside: EventEmitter<any> = new EventEmitter();
-  @Input() additionalElements: Array<ElementRef>;
 
   constructor(private _elementRef: ElementRef) {}
 
-  @HostListener('document:keydown', ['$event'])
-  public handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Tab') {
-      const targetElement = event.target as HTMLElement;
-      const isInsideHost = this._elementRef.nativeElement.contains(targetElement);
-      const isInsideAdditional = this.additionalElements?.some((elRef) =>
-        elRef?.nativeElement?.contains(targetElement)
-      );
+  @HostListener('document:keyup', ['$event.target'])
+  public hasFocusChanged(target) {
+    const isInsideHost = this._elementRef.nativeElement.contains(target);
+    const isAutocomplete = this.hasClass(target, 'sds-autocomplete');
 
-      if (!isInsideHost && !isInsideAdditional) {
-        this.tabOutside.emit(undefined);
-      }
+    if (!isInsideHost && !isAutocomplete) {
+      this.tabOutside.emit(undefined);
     }
+  }
+
+  private hasClass(element, className): boolean {
+    while (element) {
+      if (element.classList && element.classList.contains(className)) {
+        return true;
+      }
+      element = element.parentElement;
+    }
+    return false;
   }
 }
