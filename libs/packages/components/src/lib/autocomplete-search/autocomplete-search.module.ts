@@ -5,7 +5,7 @@ import { SDSAutocompleteSearchComponent } from './autocomplete-search.component'
 import { SDSClickOutsideModule } from '../click-outside/click-outside.module';
 import { SdsTabOutsideModule } from '../tab-outside/taboutside.module';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, x, caretDownFill, caretUpFill, check2Square } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     SdsTabOutsideModule,
     OverlayModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({ x, caretDownFill, caretUpFill }),
+    NgxBootstrapIconsModule.pick({ x, caretDownFill, caretUpFill, check2Square }),
   ],
   declarations: [SDSAutocompleteSearchComponent],
   exports: [SDSAutocompleteSearchComponent],

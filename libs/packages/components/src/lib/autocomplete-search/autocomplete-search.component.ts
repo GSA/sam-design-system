@@ -327,8 +327,37 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else {
       filterItem = item;
     }
+    const isSelected = this.checkItemSelected(item);
+
+    if (this.configuration.useCheckBoxes) {
+      if (!isSelected) {
+        this.addItemToModel(filterItem);
+      } else if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
+        this.unselectItem(item);
+      }
+    } else {
+      this.addItemToModel(filterItem);
+    }
+
+    if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
+      this.showResults = true;
+      this.inputValue = '';
+      this.input.nativeElement.focus();
+      const flat = this.getFlatElements();
+      const index = flat.findIndex(
+        (element) => element[this.configuration.primaryKeyField] === item[this.configuration.primaryKeyField]
+      );
+      this.highlightedIndex = index;
+      this.setHighlightedItem(flat[this.highlightedIndex]);
+      console.log('highlightedIndex', this.highlightedIndex);
+    } else {
+      this.showResults = false;
+    }
+  }
+
+  private addItemToModel(item: object) {
     SDSSelectedItemModelHelper.addItem(
-      filterItem,
+      item,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
       this.model
@@ -336,9 +365,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
     this.inputValue = message;
-    this.showResults = false;
   }
 
+  public unselectItem(item: any): void {
+    SDSSelectedItemModelHelper.removeItem(item, this.configuration.primaryKeyField, this.model);
+    this.propogateChange(this.model);
+  }
   /**
    *  clears the results and closes result drop down
    */
@@ -375,7 +407,10 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.highlightedIndex >= 0) {
       this._changeDetectorRef.detectChanges();
       const dom = this.resultsListElement.nativeElement;
-      const selectedChild = dom.querySelector('.sds-autocomplete__item--highlighted');
+      let selectedClass = this.configuration.useCheckBoxes
+        ? '.sds-autocomplete__checkbox--highlighted'
+        : '.sds-autocomplete__item--highlighted';
+      const selectedChild = dom.querySelector(selectedClass);
       if (selectedChild) {
         // Manually set scroll top rather than invoke scroll functions for browser compatibility
         const containerCenter = this.resultsListElement.nativeElement.getBoundingClientRect().height / 2;
@@ -477,7 +512,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
             this.showLoad = false;
             this.maxResults = result.totalItems;
 
-            this.highlightedIndex = this.configuration.isFreeTextEnabled || this.maxResults == 0 ? -1 : 0;
+            this.highlightedIndex =
+              this.configuration.isFreeTextEnabled || this.maxResults == 0
+                ? -1
+                : this.highlightedIndex >= 0
+                ? this.highlightedIndex
+                : 0;
             if (!this.configuration.isFreeTextEnabled) {
               this.setHighlightedItem(this.results[this.highlightedIndex]);
             }
