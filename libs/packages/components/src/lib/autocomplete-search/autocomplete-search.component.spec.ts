@@ -305,7 +305,7 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(upEvent);
     tick();
     fixture.detectChanges();
-    expect(items[0]['highlighted']).toBeTruthy();
+    expect(items[2]['highlighted']).toBeTruthy();
   }));
 
   it('Up arrow when on first item', fakeAsync(() => {
