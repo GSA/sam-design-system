@@ -7,22 +7,23 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-input-label.component.html',
 })
 export class FormlyInputLabelComponent implements AfterViewInit {
-  @ViewChild('suffix') suffixtemp: TemplateRef<any>;
+  @ViewChild('mySuffixTemplate', { static: true }) mySuffixTemplate: TemplateRef<any>;
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = [
+  fields:FormlyFieldConfig[] = [
     {
       key: 'title',
       type: 'input',
       props: {
         label: 'Entity Name',
         prefix: '$',
-        suffix: '###',
+        // suffix: '#'
       },
     },
   ];
+
   ngAfterViewInit() {
-    this.fields[0].props.suffix = '###';
+    this.fields[0].props.suffix = this.mySuffixTemplate;
   }
 }

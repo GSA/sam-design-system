@@ -1,6 +1,7 @@
 <form [formGroup]="form">
   <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
 </form>
-<ng-template #suffix>
-<p>$$</p>
+<ng-template #mySuffixTemplate>
+$$
+ <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
 </ng-template>

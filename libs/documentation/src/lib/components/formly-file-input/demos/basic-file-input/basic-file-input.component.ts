@@ -16,6 +16,7 @@ export class BasicFileInputComponent {
         label: 'Basic File Input',
         description: 'Accepts single file',
         hideOptional: true,
+        displayFileInfo: true,
       },
       validation: {
         messages: {
@@ -34,6 +35,7 @@ export class BasicFileInputComponent {
         description: 'Accepts Multiple Files',
         multiple: true,
         hideOptional: true,
+        displayFileInfo: true,
       },
     },
     {
@@ -44,6 +46,7 @@ export class BasicFileInputComponent {
         description: 'Only PDF, CSV, or any image format files are allowed',
         multiple: true,
         hideOptional: true,
+        displayFileInfo: true,
         acceptFileType: '.pdf,.csv,image/*',
       },
     },
