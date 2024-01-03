@@ -9,7 +9,6 @@ import { AutocompleteSampleDataService } from '../services/autocomplete-sample.s
   providers: [AutocompleteSampleDataService],
 })
 export class AutocompleteCheckbox implements OnInit {
-  private data = SampleAutocompleteData;
   public settings = new SDSAutocompletelConfiguration();
   public settings3 = new SDSAutocompletelConfiguration();
 
