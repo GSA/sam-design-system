@@ -302,6 +302,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
         const val = this.createFreeTextItem();
         this.selectItem(val);
       }
+    } else if (
+      KeyHelper.is(KEYS.SPACE, event) &&
+      this.configuration.useCheckBoxes &&
+      this.highlightedIndex >= 0 &&
+      this.inputValue === ''
+    ) {
+      event.preventDefault();
+      this.selectItem(this.highlightedItem);
     } else if (KeyHelper.is(KEYS.ESC, event)) {
       if (this.showResults) {
         this.clearAndHideResults();
@@ -341,7 +349,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
     if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
       this.showResults = true;
-      this.inputValue = '';
       this.input.nativeElement.focus();
       const flat = this.getFlatElements();
       const index = flat.findIndex(
@@ -363,7 +370,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     );
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
-    this.inputValue = message;
+    if (this.configuration.selectionMode === SelectionMode.SINGLE) {
+      this.inputValue = message;
+    }
   }
 
   public unselectItem(item: any): void {
