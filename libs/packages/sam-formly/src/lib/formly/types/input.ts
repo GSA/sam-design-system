@@ -4,16 +4,34 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-input',
   template: `
+
+ <div class="usa-input-group usa-input-group--sm">
+
+    <input
+      id="example-input-suffix"
+      class="usa-input"
+      pattern="[0-9]*"
+      inputmode="numeric"
+    />
+    <div class="usa-input-suffix" aria-hidden="true">
+<span>{{}}</span>
+  <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
+<usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
+</div>
+  </div>
+
+
+
   <div style="display: flex; align-items: center;">
     <input #input [ngClass]="{
         'usa-input--disabled': props.disabled,
         'usa-input--error': showError
       }" class="usa-input" [placeholder]="props.placeholder" name="input-success" [formlyAttributes]="field"
-        [type]="props.inputType ? props.inputType : 'text'" [formControl]="formControl" [prefix]="props.prefix"
-        [suffix]="props.suffix" />
-    <div style="display: flex;">
+        [type]="props.inputType ? props.inputType : 'text'" [formControl]="formControl"  />
+
+    <div class="display-flex">
         <ng-container *ngIf="field.formControl.value && !props.disabled">
-            <span style="margin-left: -50px; margin-top: 10px;z-index: 1000;">
+            <span class="z-index-500 margin-top-105 margin-left-neg-6">
                 <span role="button" aria-label="Clear input" (click)="onClear()" (keyup.enter)="onClear()" tabindex="0"
                     class="icon-container">
                     <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>

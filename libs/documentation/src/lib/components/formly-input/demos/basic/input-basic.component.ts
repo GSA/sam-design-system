@@ -42,7 +42,7 @@ export class InputBasic {
           key: 'dateOfIncorporation',
           type: 'input',
           props: {
-            label: 'Start Year',
+            label: 'Start Year Firm does not pay U.S. Federal Income Taxes nor U.',
             placeholder: 'YYYY',
             max: 2024,
             minLength: 4,
