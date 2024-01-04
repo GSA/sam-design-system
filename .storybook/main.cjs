@@ -28,9 +28,10 @@ module.exports = {
   webpackFinal: async (config) => {
     if (process.env.GH_PAGES) {
         config.module.rules.push({
+            test: /.scss$/,
             loader: 'string-replace-loader',
             options: {
-                search: '/assets/',
+                search: /\/assets\//g,
                 replace: '/sam-design-system/assets/',
             },
         });
