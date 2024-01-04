@@ -1779,210 +1779,210 @@ template {
   font-style: normal;
   font-weight: 100;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-100.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-100.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-300.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-300.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-regular.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-regular.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 500;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-500.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-500.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-700.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-700.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 100;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-100italic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-100italic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-300italic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-300italic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-italic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-italic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 500;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-500italic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-500italic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-700italic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/roboto-mono/roboto-mono-v5-latin-700italic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 200;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-extralight-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-extralight-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-light-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-light-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 600;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-semibold-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-semibold-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-bold-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-bold-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 900;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-black-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-black-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 200;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-extralightitalic-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-extralightitalic-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-italic-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-italic-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 600;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-semibolditalic-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-semibolditalic-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 900;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/source-sans-pro/sourcesanspro-blackitalic-webfont.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/source-sans-pro/sourcesanspro-blackitalic-webfont.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-Light.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-Light.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-Regular.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-Regular.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-Bold.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-Bold.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 900;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-Black.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-Black.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-LightItalic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-LightItalic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-Italic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-Italic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-BoldItalic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-BoldItalic.woff2) format("woff2");
 }
 @font-face {
   font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 900;
   font-display: fallback;
-  src: url(/assets/uswds/fonts/merriweather/Latin-Merriweather-BlackItalic.woff2) format("woff2");
+  src: url(/sam-design-system/assets/uswds/fonts/merriweather/Latin-Merriweather-BlackItalic.woff2) format("woff2");
 }
 /* stylelint-enable */
 body {
@@ -2855,7 +2855,7 @@ dfn {
   content: "External, opens in a new tab.";
 }
 .usa-link--external::after {
-  background-image: url("/assets/uswds/img/usa-icons/launch.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/launch.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1.75ex 1.75ex;
@@ -2873,8 +2873,8 @@ dfn {
   .usa-link--external::after {
     background: none;
     background-color: currentColor;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -2899,7 +2899,7 @@ dfn {
   content: "External, opens in a new tab.";
 }
 .usa-link--external.usa-link--alt::after {
-  background-image: url("/assets/uswds/img/usa-icons-bg/launch--white.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons-bg/launch--white.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1.75ex 1.75ex;
@@ -2917,8 +2917,8 @@ dfn {
   .usa-link--external.usa-link--alt::after {
     background: none;
     background-color: currentColor;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -3668,7 +3668,7 @@ dfn {
   text-align: left;
   color: #2e2e2a;
   background-color: #f9f9f7;
-  background-image: url("/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-position: right 1.25rem center;
   background-size: 1.5rem;
@@ -3715,7 +3715,7 @@ dfn {
 .usa-accordion__button:hover {
   color: #2e2e2a;
   background-color: #f5f5f0;
-  background-image: url("/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   text-decoration: none;
 }
@@ -3725,7 +3725,7 @@ dfn {
     position: relative;
   }
   .usa-accordion__button::before {
-    background-image: url("/assets/uswds/img/usa-icons/remove.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1.5rem 1.5rem;
@@ -3742,8 +3742,8 @@ dfn {
     .usa-accordion__button::before {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -3755,17 +3755,17 @@ dfn {
 }
 
 .usa-accordion__button[aria-expanded=false] {
-  background-image: url("/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-size: 1.5rem;
 }
 .usa-accordion__button[aria-expanded=false]:hover {
-  background-image: url("/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
   .usa-accordion__button[aria-expanded=false]::before {
-    background-image: url("/assets/uswds/img/usa-icons/add.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1.5rem 1.5rem;
@@ -3781,8 +3781,8 @@ dfn {
     .usa-accordion__button[aria-expanded=false]::before {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -3853,7 +3853,7 @@ dfn {
   padding-left: 2.9166666667rem;
 }
 .usa-alert--success .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons/check_circle.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/check_circle.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -3870,8 +3870,8 @@ dfn {
   .usa-alert--success .usa-alert__body::before {
     background: none;
     background-color: #2e2e2a;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/check_circle.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/check_circle.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/check_circle.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/check_circle.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -3911,7 +3911,7 @@ dfn {
   padding-left: 2.9166666667rem;
 }
 .usa-alert--warning .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons/warning.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/warning.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -3928,8 +3928,8 @@ dfn {
   .usa-alert--warning .usa-alert__body::before {
     background: none;
     background-color: #2e2e2a;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/warning.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/warning.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/warning.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/warning.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -3969,7 +3969,7 @@ dfn {
   padding-left: 2.9166666667rem;
 }
 .usa-alert--error .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons/error.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -3986,8 +3986,8 @@ dfn {
   .usa-alert--error .usa-alert__body::before {
     background: none;
     background-color: #2e2e2a;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -4027,7 +4027,7 @@ dfn {
   padding-left: 2.9166666667rem;
 }
 .usa-alert--info .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons/info.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/info.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -4044,8 +4044,8 @@ dfn {
   .usa-alert--info .usa-alert__body::before {
     background: none;
     background-color: #2e2e2a;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -4085,7 +4085,7 @@ dfn {
   padding-left: 2.9166666667rem;
 }
 .usa-alert--emergency .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons-bg/error--white.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons-bg/error--white.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -4102,8 +4102,8 @@ dfn {
   .usa-alert--emergency .usa-alert__body::before {
     background: none;
     background-color: white;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -4338,7 +4338,7 @@ dfn {
   text-decoration: underline;
 }
 .usa-banner__header-action::after {
-  background-image: url("/assets/uswds/img/usa-icons/expand_more.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1rem 1rem;
@@ -4353,8 +4353,8 @@ dfn {
   .usa-banner__header-action::after {
     background: none;
     background-color: #3f57a6;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -4518,7 +4518,7 @@ dfn {
     position: relative;
   }
   .usa-banner__button::after {
-    background-image: url("/assets/uswds/img/usa-icons/expand_more.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1rem 1rem;
@@ -4533,8 +4533,8 @@ dfn {
     .usa-banner__button::after {
       background: none;
       background-color: #3f57a6;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -4580,7 +4580,7 @@ dfn {
 }
 @media all and (max-width: 39.99em) {
   .usa-banner__button[aria-expanded=true]::after {
-    background-image: url("/assets/uswds/img/usa-icons/close.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1.5rem 1.5rem;
@@ -4595,8 +4595,8 @@ dfn {
     .usa-banner__button[aria-expanded=true]::after {
       background: none;
       background-color: #005ea2;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -4632,7 +4632,7 @@ dfn {
     position: relative;
   }
   .usa-banner__button[aria-expanded=true]::after {
-    background-image: url("/assets/uswds/img/usa-icons/expand_less.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_less.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1rem 1rem;
@@ -4647,8 +4647,8 @@ dfn {
     .usa-banner__button[aria-expanded=true]::after {
       background: none;
       background-color: #3f57a6;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -4806,7 +4806,7 @@ dfn {
 }
 @media all and (max-width: 29.99em) {
   .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link::before {
-    background-image: url("/assets/uswds/img/usa-icons/arrow_back.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/arrow_back.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2ex 2ex;
@@ -4821,8 +4821,8 @@ dfn {
     .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link::before {
       background: none;
       background-color: #757575;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/arrow_back.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/arrow_back.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/arrow_back.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/arrow_back.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -4857,7 +4857,7 @@ dfn {
     position: static;
   }
   .usa-breadcrumb__list-item:not(:last-child)::after {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_next.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2ex 2ex;
@@ -4872,8 +4872,8 @@ dfn {
     .usa-breadcrumb__list-item:not(:last-child)::after {
       background: none;
       background-color: #757575;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -5771,7 +5771,7 @@ dfn {
   width: 2rem;
 }
 .usa-checklist__item.usa-checklist__item--checked::before {
-  background-image: url("/assets/uswds/img/usa-icons-bg/check--blue-60v.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons-bg/check--blue-60v.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1.5rem;
@@ -6141,7 +6141,7 @@ dfn {
   cursor: pointer;
 }
 .usa-footer__primary-link--button::before {
-  background-image: url("/assets/uswds/img/usa-icons/expand_more.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1.25rem 1.25rem;
@@ -6156,8 +6156,8 @@ dfn {
   .usa-footer__primary-link--button::before {
     background: none;
     background-color: currentColor;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -6191,7 +6191,7 @@ dfn {
   margin-bottom: 0.5rem;
 }
 .usa-footer__primary-link--button[aria-expanded=false]::before {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_next.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1.25rem 1.25rem;
@@ -6206,8 +6206,8 @@ dfn {
   .usa-footer__primary-link--button[aria-expanded=false]::before {
     background: none;
     background-color: currentColor;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -7144,7 +7144,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.3;
-  background-image: url("/assets/uswds/img/hero.jpg");
+  background-image: url("/sam-design-system/assets/uswds/img/hero.jpg");
   background-position: center;
   background-size: cover;
   color: white;
@@ -14571,7 +14571,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   }
 }
 .usa-nav__primary button[aria-expanded=false] span::after {
-  background-image: url("/assets/uswds/img/usa-icons/add.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1.25rem 1.25rem;
@@ -14586,8 +14586,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   .usa-nav__primary button[aria-expanded=false] span::after {
     background: none;
     background-color: ButtonText;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -14605,7 +14605,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
 }
 @media all and (min-width: 40em) {
   .usa-nav__primary button[aria-expanded=false] span::after {
-    background-image: url("/assets/uswds/img/usa-icons/expand_more.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1rem 1rem;
@@ -14620,8 +14620,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
     .usa-nav__primary button[aria-expanded=false] span::after {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -14645,7 +14645,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   }
 }
 .usa-nav__primary button[aria-expanded=true] span::after {
-  background-image: url("/assets/uswds/img/usa-icons/remove.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 1.25rem 1.25rem;
@@ -14660,8 +14660,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   .usa-nav__primary button[aria-expanded=true] span::after {
     background: none;
     background-color: ButtonText;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -14688,7 +14688,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
 }
 @media all and (min-width: 40em) and (min-width: 40em) {
   .usa-nav__primary button[aria-expanded=true] span::after {
-    background-image: url("/assets/uswds/img/usa-icons/expand_less.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_less.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1rem 1rem;
@@ -14703,8 +14703,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
     .usa-nav__primary button[aria-expanded=true] span::after {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_less.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -14937,7 +14937,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
 }
 @media (forced-colors: active) {
   .usa-nav__close::before {
-    background-image: url("/assets/uswds/img/usa-icons/close.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1.25rem 1.25rem;
@@ -14952,8 +14952,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
     .usa-nav__close::before {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -15282,7 +15282,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
 }
 @media (forced-colors: active) {
   .usa-search [type=submit]::before {
-    background-image: url("/assets/uswds/img/usa-icons/search.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/search.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1.5rem 1.5rem;
@@ -15297,8 +15297,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
     .usa-search [type=submit]::before {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/search.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/search.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/search.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/search.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -15606,7 +15606,7 @@ input[type=search] {
   padding-left: 2.9166666667rem;
 }
 .usa-site-alert--info .usa-alert .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons/info.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/info.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -15623,8 +15623,8 @@ input[type=search] {
   .usa-site-alert--info .usa-alert .usa-alert__body::before {
     background: none;
     background-color: #2e2e2a;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/info.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -15664,7 +15664,7 @@ input[type=search] {
   padding-left: 2.9166666667rem;
 }
 .usa-site-alert--emergency .usa-alert .usa-alert__body::before {
-  background-image: url("/assets/uswds/img/usa-icons-bg/error--white.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons-bg/error--white.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 2rem 2rem;
@@ -15681,8 +15681,8 @@ input[type=search] {
   .usa-site-alert--emergency .usa-alert .usa-alert__body::before {
     background: none;
     background-color: white;
-    -webkit-mask-image: url("/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
-            mask-image: url("/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
+            mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/error.svg"), linear-gradient(transparent, transparent);
     -webkit-mask-position: center center;
             mask-position: center center;
     -webkit-mask-repeat: no-repeat;
@@ -16915,12 +16915,12 @@ input[type=search] {
 }
 
 .usa-checkbox__input:checked + [class*=__label]::before, .usa-checkbox__input:checked:disabled + [class*=__label]::before, .usa-checkbox__input:checked[aria-disabled=true] + [class*=__label]::before {
-  background-image: url("/assets/uswds/img/correct8.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/correct8.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
   .usa-checkbox__input:checked + [class*=__label]::before, .usa-checkbox__input:checked:disabled + [class*=__label]::before, .usa-checkbox__input:checked[aria-disabled=true] + [class*=__label]::before {
-    background-image: url("/assets/uswds/img/correct8-alt.svg"), linear-gradient(transparent, transparent);
+    background-image: url("/sam-design-system/assets/uswds/img/correct8-alt.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
   }
 }
@@ -17019,7 +17019,7 @@ input[type=search] {
 }
 */
 .usa-select {
-  background-image: url("/assets/uswds/img/usa-icons/unfold_more.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/unfold_more.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   -webkit-appearance: none;
           appearance: none;
@@ -17097,7 +17097,7 @@ input[type=search] {
 }
 @media (forced-colors: active) {
   .usa-combo-box--pristine .usa-combo-box__clear-input {
-    background-image: url("/assets/uswds/img/usa-icons/close.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1rem 1rem;
@@ -17112,8 +17112,8 @@ input[type=search] {
     .usa-combo-box--pristine .usa-combo-box__clear-input {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17199,21 +17199,21 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-combo-box__clear-input {
-  background-image: url("/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/close.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   display: none;
   right: calc(2.5em + 3px);
 }
 
 .usa-combo-box__toggle-list {
-  background-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-size: auto 2rem;
   right: 1px;
 }
 @media (forced-colors: active) {
   .usa-combo-box__toggle-list {
-    background-image: url("/assets/uswds/img/usa-icons/expand_more.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1rem 1rem;
@@ -17227,8 +17227,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-combo-box__toggle-list {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17447,7 +17447,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__button {
-  background-image: url("/assets/uswds/img/usa-icons/calendar_today.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/calendar_today.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   align-self: stretch;
   background-color: transparent;
@@ -17458,7 +17458,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 @media (forced-colors: active) {
   .usa-date-picker__button {
-    background-image: url("/assets/uswds/img/usa-icons/calendar_today.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/calendar_today.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17473,8 +17473,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__button {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/calendar_today.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/calendar_today.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/calendar_today.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/calendar_today.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17561,12 +17561,12 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__calendar__previous-year:not([disabled]) {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
   .usa-date-picker__calendar__previous-year:not([disabled]) {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_far_before.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_before.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17579,8 +17579,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__calendar__previous-year:not([disabled]) {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17592,12 +17592,12 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__calendar__previous-month:not([disabled]) {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
   .usa-date-picker__calendar__previous-month:not([disabled]) {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_before.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17610,8 +17610,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__calendar__previous-month:not([disabled]) {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17623,12 +17623,12 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__calendar__next-year:not([disabled]) {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
   .usa-date-picker__calendar__next-year:not([disabled]) {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_far_next.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_next.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17641,8 +17641,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__calendar__next-year:not([disabled]) {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17654,12 +17654,12 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__calendar__next-month:not([disabled]) {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
   .usa-date-picker__calendar__next-month:not([disabled]) {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_next.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17672,8 +17672,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__calendar__next-month:not([disabled]) {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17869,7 +17869,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__calendar__previous-year-chunk:not([disabled]) {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
@@ -17877,7 +17877,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     background-image: none;
   }
   .usa-date-picker__calendar__previous-year-chunk:not([disabled])::after {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_before.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17892,8 +17892,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__calendar__previous-year-chunk:not([disabled])::after {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -17909,7 +17909,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-date-picker__calendar__next-year-chunk:not([disabled]) {
-  background-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
@@ -17917,7 +17917,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     background-image: none;
   }
   .usa-date-picker__calendar__next-year-chunk:not([disabled])::after {
-    background-image: url("/assets/uswds/img/usa-icons/navigate_next.svg");
+    background-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 2.5rem 2.5rem;
@@ -17932,8 +17932,8 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
     .usa-date-picker__calendar__next-year-chunk:not([disabled])::after {
       background: none;
       background-color: ButtonText;
-      -webkit-mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
-              mask-image: url("/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+      -webkit-mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
+              mask-image: url("/sam-design-system/assets/uswds/img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
       -webkit-mask-position: center center;
               mask-position: center center;
       -webkit-mask-repeat: no-repeat;
@@ -18134,7 +18134,7 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-file-input__preview-image.is-loading {
-  background-image: url("/assets/uswds/img/loader.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/loader.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-position: center center;
   background-repeat: no-repeat;
@@ -18152,27 +18152,27 @@ button.usa-combo-box__clear-input[aria-disabled=true] {
 }
 
 .usa-file-input__preview-image--pdf {
-  background-image: url("/assets/uswds/img/file-pdf.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/file-pdf.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 
 .usa-file-input__preview-image--generic {
-  background-image: url("/assets/uswds/img/file.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/file.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 
 .usa-file-input__preview-image--word {
-  background-image: url("/assets/uswds/img/file-word.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/file-word.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 
 .usa-file-input__preview-image--excel {
-  background-image: url("/assets/uswds/img/file-excel.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/file-excel.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 
 .usa-file-input__preview-image--video {
-  background-image: url("/assets/uswds/img/file-video.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/file-video.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
 }
 
@@ -52921,7 +52921,7 @@ through all possible variants
 }
 
 .usa-select {
-  background-image: url("/assets/uswds/img/arrow-down.svg"), linear-gradient(transparent, transparent);
+  background-image: url("/sam-design-system/assets/uswds/img/arrow-down.svg"), linear-gradient(transparent, transparent);
 }
 
 .usa-sidenav__item .usa-sidenav__item {
@@ -55835,12 +55835,12 @@ through all possible variants
 }
 
 .usa-banner__content .usa-banner__guidance:first-child .usa-banner__icon {
-  background-image: url("/assets/uswds/img/icon-dot-gov.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/icon-dot-gov.svg");
   background-size: contain;
 }
 
 .usa-banner__content .usa-banner__guidance:last-child .usa-banner__icon {
-  background-image: url("/assets/uswds/img/icon-https.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/icon-https.svg");
   background-size: contain;
 }
 
@@ -57727,7 +57727,7 @@ sds-filters usa-accordion formly-field:first-child {
 .usa-checkbox__input[aria-checked=mixed]:disabled + .usa-checkbox__label:before {
   background-color: #70e17b;
   box-shadow: 0 0 0 2px #70e17b;
-  background-image: url("/assets/uswds/img/minus-white.svg");
+  background-image: url("/sam-design-system/assets/uswds/img/minus-white.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 0.75rem auto;
@@ -60543,7 +60543,7 @@ through all possible variants
   }
 }
 .sds-hero--image {
-  background-image: url("/assets/uswds/img/landing-hero.png");
+  background-image: url("/sam-design-system/assets/uswds/img/landing-hero.png");
 }
 
 .sds-hero .sds-seal {
