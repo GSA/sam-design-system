@@ -22,7 +22,7 @@ jobs:
       - name: Build Storybook Assets
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
-        run: ng run sam-design-system-site:build-storybook
+        run: GH_PAGES=true ng run sam-design-system-site:build-storybook
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
       - name: Deploy 🚀

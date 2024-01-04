@@ -24,5 +24,17 @@ module.exports = {
 
   docs: {
     autodocs: false
-  }
+  },
+  webpackFinal: async (config) => {
+    if (process.env.GH_PAGES) {
+        config.module.rules.push({
+            loader: 'string-replace-loader',
+            options: {
+                search: '/assets/',
+                replace: '/sam-design-system/assets/',
+            },
+        });
+    }
+    return config;
+},
 };
