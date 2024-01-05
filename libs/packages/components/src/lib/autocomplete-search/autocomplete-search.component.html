@@ -1,4 +1,4 @@
-<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
+<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="tabOutside($event)">
   <div class="maxw-mobile-lg position-relative">
     <div [attr.id]="configuration.id + '-container'">
       <input
@@ -64,6 +64,7 @@
                 <input
                   class="usa-checkbox__input"
                   type="checkbox"
+                  (keydown.esc)="showResults = false"
                   [checked]="checkItemSelected(result)"
                   [attr.aria-label]="'Select ' + getObjectValue(result, configuration.primaryTextField)"
                 />

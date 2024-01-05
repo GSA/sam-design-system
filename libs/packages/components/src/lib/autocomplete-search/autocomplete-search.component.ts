@@ -201,6 +201,12 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     this.focusRemoved();
     this.showResults = false;
   }
+  tabOutside(event): void {
+    if (!this.configuration.useCheckBoxes) {
+      this.focusRemoved();
+      this.showResults = false;
+    }
+  }
 
   /**
    *
