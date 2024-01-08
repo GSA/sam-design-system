@@ -293,9 +293,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     } else if (KeyHelper.is(KEYS.DOWN, event)) {
       event.preventDefault();
       this.onArrowGroupDown();
-      /*if (this.configuration.useCheckBoxes) {
-        this.input.nativeElement.blur();
-      }*/
     } else if (KeyHelper.is(KEYS.UP, event)) {
       event.preventDefault();
       this.onArrowGroupUp();
