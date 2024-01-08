@@ -99,7 +99,7 @@
               [ngTemplateOutletContext]="{ $implicit: result }"
             >
             </ng-container>
-            <ng-container *ngIf="results && results.length && !configuration.useCheckBoxes">
+            <ng-container *ngIf="!itemTemplate && !configuration.useCheckBoxes">
               <div
                 [ngClass]="{
                   'sds-autocomplete__item': configuration.isGroupingEnabled,

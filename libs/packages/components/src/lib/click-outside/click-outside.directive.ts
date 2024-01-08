@@ -24,6 +24,6 @@ export class SDSClickOutsideDirective {
     }
   }
   private isInside(targetElement: HTMLElement): boolean {
-    return targetElement.closest('.sds-autocomplete') !== null;
+    return targetElement.closest('.sds-autocomplete, .usa-input') !== null;
   }
 }
