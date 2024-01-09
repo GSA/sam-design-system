@@ -53234,7 +53234,6 @@ through all possible variants
   z-index: 99999;
   background-color: #2672de;
   padding: 10px;
-  cursor: pointer;
   text-align: center;
   color: white;
   display: block;
@@ -61476,227 +61475,227 @@ Navigation close button
   margin-top: 0.5rem;
 }
 
-.min-height-4 ::ng-deep .ck-editor__editable_inline {
+.min-height-4 .ck-editor__editable_inline {
   min-height: 4rem;
 }
 
-.max-height-4 ::ng-deep .ck-editor__editable_inline {
+.max-height-4 .ck-editor__editable_inline {
   max-height: 4rem;
 }
 
-.min-height-5 ::ng-deep .ck-editor__editable_inline {
+.min-height-5 .ck-editor__editable_inline {
   min-height: 5rem;
 }
 
-.max-height-5 ::ng-deep .ck-editor__editable_inline {
+.max-height-5 .ck-editor__editable_inline {
   max-height: 5rem;
 }
 
-.min-height-6 ::ng-deep .ck-editor__editable_inline {
+.min-height-6 .ck-editor__editable_inline {
   min-height: 6rem;
 }
 
-.max-height-6 ::ng-deep .ck-editor__editable_inline {
+.max-height-6 .ck-editor__editable_inline {
   max-height: 6rem;
 }
 
-.min-height-7 ::ng-deep .ck-editor__editable_inline {
+.min-height-7 .ck-editor__editable_inline {
   min-height: 7rem;
 }
 
-.max-height-7 ::ng-deep .ck-editor__editable_inline {
+.max-height-7 .ck-editor__editable_inline {
   max-height: 7rem;
 }
 
-.min-height-8 ::ng-deep .ck-editor__editable_inline {
+.min-height-8 .ck-editor__editable_inline {
   min-height: 8rem;
 }
 
-.max-height-8 ::ng-deep .ck-editor__editable_inline {
+.max-height-8 .ck-editor__editable_inline {
   max-height: 8rem;
 }
 
-.min-height-9 ::ng-deep .ck-editor__editable_inline {
+.min-height-9 .ck-editor__editable_inline {
   min-height: 9rem;
 }
 
-.max-height-9 ::ng-deep .ck-editor__editable_inline {
+.max-height-9 .ck-editor__editable_inline {
   max-height: 9rem;
 }
 
-.min-height-10 ::ng-deep .ck-editor__editable_inline {
+.min-height-10 .ck-editor__editable_inline {
   min-height: 10rem;
 }
 
-.max-height-10 ::ng-deep .ck-editor__editable_inline {
+.max-height-10 .ck-editor__editable_inline {
   max-height: 10rem;
 }
 
-.min-height-11 ::ng-deep .ck-editor__editable_inline {
+.min-height-11 .ck-editor__editable_inline {
   min-height: 11rem;
 }
 
-.max-height-11 ::ng-deep .ck-editor__editable_inline {
+.max-height-11 .ck-editor__editable_inline {
   max-height: 11rem;
 }
 
-.min-height-12 ::ng-deep .ck-editor__editable_inline {
+.min-height-12 .ck-editor__editable_inline {
   min-height: 12rem;
 }
 
-.max-height-12 ::ng-deep .ck-editor__editable_inline {
+.max-height-12 .ck-editor__editable_inline {
   max-height: 12rem;
 }
 
-.min-height-13 ::ng-deep .ck-editor__editable_inline {
+.min-height-13 .ck-editor__editable_inline {
   min-height: 13rem;
 }
 
-.max-height-13 ::ng-deep .ck-editor__editable_inline {
+.max-height-13 .ck-editor__editable_inline {
   max-height: 13rem;
 }
 
-.min-height-14 ::ng-deep .ck-editor__editable_inline {
+.min-height-14 .ck-editor__editable_inline {
   min-height: 14rem;
 }
 
-.max-height-14 ::ng-deep .ck-editor__editable_inline {
+.max-height-14 .ck-editor__editable_inline {
   max-height: 14rem;
 }
 
-.min-height-15 ::ng-deep .ck-editor__editable_inline {
+.min-height-15 .ck-editor__editable_inline {
   min-height: 15rem;
 }
 
-.max-height-15 ::ng-deep .ck-editor__editable_inline {
+.max-height-15 .ck-editor__editable_inline {
   max-height: 15rem;
 }
 
-.min-height-16 ::ng-deep .ck-editor__editable_inline {
+.min-height-16 .ck-editor__editable_inline {
   min-height: 16rem;
 }
 
-.max-height-16 ::ng-deep .ck-editor__editable_inline {
+.max-height-16 .ck-editor__editable_inline {
   max-height: 16rem;
 }
 
-.min-height-17 ::ng-deep .ck-editor__editable_inline {
+.min-height-17 .ck-editor__editable_inline {
   min-height: 17rem;
 }
 
-.max-height-17 ::ng-deep .ck-editor__editable_inline {
+.max-height-17 .ck-editor__editable_inline {
   max-height: 17rem;
 }
 
-.min-height-18 ::ng-deep .ck-editor__editable_inline {
+.min-height-18 .ck-editor__editable_inline {
   min-height: 18rem;
 }
 
-.max-height-18 ::ng-deep .ck-editor__editable_inline {
+.max-height-18 .ck-editor__editable_inline {
   max-height: 18rem;
 }
 
-.min-height-19 ::ng-deep .ck-editor__editable_inline {
+.min-height-19 .ck-editor__editable_inline {
   min-height: 19rem;
 }
 
-.max-height-19 ::ng-deep .ck-editor__editable_inline {
+.max-height-19 .ck-editor__editable_inline {
   max-height: 19rem;
 }
 
-.min-height-20 ::ng-deep .ck-editor__editable_inline {
+.min-height-20 .ck-editor__editable_inline {
   min-height: 20rem;
 }
 
-.max-height-20 ::ng-deep .ck-editor__editable_inline {
+.max-height-20 .ck-editor__editable_inline {
   max-height: 20rem;
 }
 
-.min-height-21 ::ng-deep .ck-editor__editable_inline {
+.min-height-21 .ck-editor__editable_inline {
   min-height: 21rem;
 }
 
-.max-height-21 ::ng-deep .ck-editor__editable_inline {
+.max-height-21 .ck-editor__editable_inline {
   max-height: 21rem;
 }
 
-.min-height-22 ::ng-deep .ck-editor__editable_inline {
+.min-height-22 .ck-editor__editable_inline {
   min-height: 22rem;
 }
 
-.max-height-22 ::ng-deep .ck-editor__editable_inline {
+.max-height-22 .ck-editor__editable_inline {
   max-height: 22rem;
 }
 
-.min-height-23 ::ng-deep .ck-editor__editable_inline {
+.min-height-23 .ck-editor__editable_inline {
   min-height: 23rem;
 }
 
-.max-height-23 ::ng-deep .ck-editor__editable_inline {
+.max-height-23 .ck-editor__editable_inline {
   max-height: 23rem;
 }
 
-.min-height-24 ::ng-deep .ck-editor__editable_inline {
+.min-height-24 .ck-editor__editable_inline {
   min-height: 24rem;
 }
 
-.max-height-24 ::ng-deep .ck-editor__editable_inline {
+.max-height-24 .ck-editor__editable_inline {
   max-height: 24rem;
 }
 
-.min-height-25 ::ng-deep .ck-editor__editable_inline {
+.min-height-25 .ck-editor__editable_inline {
   min-height: 25rem;
 }
 
-.max-height-25 ::ng-deep .ck-editor__editable_inline {
+.max-height-25 .ck-editor__editable_inline {
   max-height: 25rem;
 }
 
-.min-height-26 ::ng-deep .ck-editor__editable_inline {
+.min-height-26 .ck-editor__editable_inline {
   min-height: 26rem;
 }
 
-.max-height-26 ::ng-deep .ck-editor__editable_inline {
+.max-height-26 .ck-editor__editable_inline {
   max-height: 26rem;
 }
 
-.min-height-27 ::ng-deep .ck-editor__editable_inline {
+.min-height-27 .ck-editor__editable_inline {
   min-height: 27rem;
 }
 
-.max-height-27 ::ng-deep .ck-editor__editable_inline {
+.max-height-27 .ck-editor__editable_inline {
   max-height: 27rem;
 }
 
-.min-height-28 ::ng-deep .ck-editor__editable_inline {
+.min-height-28 .ck-editor__editable_inline {
   min-height: 28rem;
 }
 
-.max-height-28 ::ng-deep .ck-editor__editable_inline {
+.max-height-28 .ck-editor__editable_inline {
   max-height: 28rem;
 }
 
-.min-height-29 ::ng-deep .ck-editor__editable_inline {
+.min-height-29 .ck-editor__editable_inline {
   min-height: 29rem;
 }
 
-.max-height-29 ::ng-deep .ck-editor__editable_inline {
+.max-height-29 .ck-editor__editable_inline {
   max-height: 29rem;
 }
 
-.min-height-30 ::ng-deep .ck-editor__editable_inline {
+.min-height-30 .ck-editor__editable_inline {
   min-height: 30rem;
 }
 
-.max-height-30 ::ng-deep .ck-editor__editable_inline {
+.max-height-30 .ck-editor__editable_inline {
   max-height: 30rem;
 }
 
-.min-height-31 ::ng-deep .ck-editor__editable_inline {
+.min-height-31 .ck-editor__editable_inline {
   min-height: 31rem;
 }
 
-.max-height-31 ::ng-deep .ck-editor__editable_inline {
+.max-height-31 .ck-editor__editable_inline {
   max-height: 31rem;
 }
 
