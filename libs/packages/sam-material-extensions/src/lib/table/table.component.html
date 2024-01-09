@@ -98,7 +98,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: rowConfig.displayedColumns; let i = dataIndex"
-      class="sds-table__row"
+      class="sds-table__row {{ row['classesToApply'] }}"
       [ngClass]="{ 'cursor-pointer': rowConfig.expandOnClick, 'sds-table__row--expanded': expandedElement == row }"
       (click)="
         rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false; rowClicked.emit(i)

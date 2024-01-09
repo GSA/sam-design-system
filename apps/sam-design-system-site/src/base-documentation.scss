@@ -30,6 +30,12 @@ $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
   margin: 0;
 }
 
+.sds-table__row--error {
+  td {
+    background-color: #fdb8ae !important;
+  }
+}
+
 code::before,
 code::after {
   content: '';
