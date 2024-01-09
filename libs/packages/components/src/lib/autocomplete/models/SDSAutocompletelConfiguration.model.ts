@@ -126,4 +126,6 @@ export class SDSAutocompletelConfiguration
   public registerChanges$: Observable<void>;
 
   public hideCloseIcon: boolean = false;
+
+  public useCheckBoxes: boolean = false;
 }

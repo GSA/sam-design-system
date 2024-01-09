@@ -1,4 +1,4 @@
-<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="checkForFocus($event)">
+<div sds-click-outside (clickOutside)="checkForFocus($event)" sds-tab-outside (tabOutside)="tabOutside($event)">
   <div class="maxw-mobile-lg position-relative">
     <div [attr.id]="configuration.id + '-container'">
       <input
@@ -41,7 +41,46 @@
         class="usa-list usa-list--unstyled sds-autocomplete"
         (scroll)="onScroll()"
       >
-        <ng-container *ngIf="results && results.length">
+        <ng-container *ngIf="configuration.useCheckBoxes">
+          <label
+            class="sds-selected__label"
+            [ngClass]="{ 'sds-selected__label--disabled': model.items.length <= 0 }"
+            [attr.aria-label]="model.items.length + 'Selected'"
+          >
+            <usa-icon [icon]="'check2-square'" size="1x" class="margin-right-1"> </usa-icon>
+            {{ model.items.length }} SELECTED
+          </label>
+          <div>
+            <li
+              [attr.id]="configuration.id + '-resultItem-' + i"
+              role="option"
+              *ngFor="let result of results; let i = index"
+              (click)="selectItem(result)"
+              [ngClass]="{
+                'sds-autocomplete__checkbox--highlighted': result['highlighted']
+              }"
+            >
+              <div class="usa-checkbox sds-autocomplete__checkbox">
+                <input
+                  class="usa-checkbox__input"
+                  type="checkbox"
+                  (keydown.esc)="showResults = false"
+                  [checked]="checkItemSelected(result)"
+                  [attr.aria-label]="'Select ' + getObjectValue(result, configuration.primaryTextField)"
+                />
+                <label class="usa-checkbox__label sds-autocomplete__checkbox--item">
+                  {{ getObjectValue(result, configuration.primaryTextField) }}
+                  <ng-container *ngIf="configuration.secondaryTextField && result[configuration.secondaryTextField]">
+                    <div class="sds-autocomplete__checkbox--secondary">
+                      {{ result[configuration.secondaryTextField] }}
+                    </div>
+                  </ng-container>
+                </label>
+              </div>
+            </li>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="results && results.length && !configuration.useCheckBoxes">
           <li
             [attr.id]="configuration.id + '-resultItem-' + i"
             role="option"
@@ -60,7 +99,7 @@
               [ngTemplateOutletContext]="{ $implicit: result }"
             >
             </ng-container>
-            <ng-container *ngIf="!itemTemplate">
+            <ng-container *ngIf="!itemTemplate && !configuration.useCheckBoxes">
               <div
                 [ngClass]="{
                   'sds-autocomplete__item': configuration.isGroupingEnabled,

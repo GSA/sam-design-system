@@ -7,6 +7,7 @@ import {
 } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { AutocompleteCheckboxModule } from './autocomplete-checkbox/autocomplete-checkbox.module';
 import { AutocompleteConfigurableModule } from './autocomplete-configurable/autocomplete-configurable.module';
 import { AutocompleteFreeTextModule } from './autocomplete-free-text/autocomplete-free-text.module';
 import { AutocompleteGroupingModule } from './autocomplete-grouping/autocomplete-grouping.module';
@@ -32,6 +33,7 @@ export default {
         AutocompleteSelectionModeModule,
         AutocompleteConfigurableModule,
         AutocompleteIntroductionModule,
+        AutocompleteCheckboxModule,
       ],
     }),
   ],
@@ -389,6 +391,26 @@ FreeText.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
 
+export const CheckBox: Story = (args) => ({
+  template: `<sds-autocomplete-checkbox-demo></sds-autocomplete-checkbox-demo>`,
+  props: {
+    ...args,
+  },
+});
+CheckBox.parameters = {
+  controls: {
+    disabled: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disabled: true },
+  preview: generateConfig(
+    'storybook/autocomplete/autocomplete-checkbox',
+    'AutocompleteCheckboxModule',
+    'sds-autocomplete-checkbox-demo'
+  ),
+  stackblitzLink: generateStackblitzLink('autocomplete', 'checkbox'),
+};
+
 export const Introduction: Story = (args) => ({
   template: '<sds-autocomplete-introduction></sds-autocomplete-introduction>',
   props: args,
@@ -403,4 +425,11 @@ Introduction.parameters = {
   preview: { disable: true },
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'FreeText', 'Grouping', 'SelectionMode'];
+export const __namedExportsOrder = [
+  'Introduction',
+  'Configurable',
+  'CheckBox',
+  'FreeText',
+  'Grouping',
+  'SelectionMode',
+];
