@@ -64680,6 +64680,10 @@ input.mat-input-element {
   margin: 0;
 }
 
+.sds-table__row--error td {
+  background-color: #fdb8ae !important;
+}
+
 code::before,
 code::after {
   content: "";
