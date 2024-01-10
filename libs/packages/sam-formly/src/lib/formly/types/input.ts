@@ -3,7 +3,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-input',
-  template: ` <div class="maxw-mobile-lg position-relative">
+  template: ` <div class="usa-input-group maxw-mobile-lg position-relative">
     <input
       [ngClass]="{
         'usa-input--disabled': props.disabled,
@@ -16,9 +16,17 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [type]="props.inputType ? props.inputType : 'text'"
       [formControl]="formControl"
     />
-    <ng-container *ngIf="field.formControl.value && !props.disabled">
-      <span class="position-absolute top-1 cursor-pointer bg-white" [style]="getPosition()">
+    <ng-container>
+      <div class="usa-input-prefix" aria-hidden="true">
+        <span *ngIf="props.prefix">{{ props.prefix }}</span>
+        <span *ngIf="props.prefixIcon">
+          <usa-icon [icon]="props.prefixIcon" size="lg" class="font-sans-xs"></usa-icon>
+        </span>
+      </div>
+
+      <div class="usa-input-suffix" aria-hidden="true">
         <span
+          *ngIf="field.formControl.value && !props.disabled"
           role="button"
           aria-label="Clear input"
           (click)="onClear()"
@@ -28,17 +36,15 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         >
           <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
         </span>
-      </span>
+        <span *ngIf="props.suffix">{{ props.suffix }}</span>
+        <span *ngIf="props.suffixIcon">
+          <usa-icon [icon]="props.suffixIcon" size="lg" class="font-sans-xs"></usa-icon>
+        </span>
+      </div>
     </ng-container>
   </div>`,
 })
 export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
-  getPosition() {
-    let width = document.getElementById(this.field.id).offsetWidth;
-    width = width - 25;
-    return `left: ${width}px;`;
-  }
-
   onClear() {
     this.field.formControl.setValue('');
   }
