@@ -11,19 +11,17 @@ export class FormlyInputAffixComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  fields:FormlyFieldConfig[] = [
+  fields: FormlyFieldConfig[] = [
     {
-
       key: 'title',
       type: 'input',
       props: {
         label: 'Entity Name',
-        prefix: '$',
-size: 'small',
-suffixIcon: 'calender',
+       // prefix: '$',
+        size: 'small',
+        suffixIcon: 'calender',
 
       },
     },
   ];
-
 }
