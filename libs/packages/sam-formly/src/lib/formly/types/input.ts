@@ -18,8 +18,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     />
     <ng-container>
       <div class="usa-input-prefix" aria-hidden="true">
-        <span *ngIf="props.prefix">{{ props.prefix }}</span>
-        <span *ngIf="props.prefixIcon">
+        <span *ngIf="props.prefix && !props.prefixIcon">{{ props.prefix }}</span>
+        <span *ngIf="props.prefixIcon && !props.prefix">
           <usa-icon [icon]="props.prefixIcon" size="lg" class="font-sans-xs"></usa-icon>
         </span>
       </div>
@@ -36,8 +36,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         >
           <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
         </span>
-        <span *ngIf="props.suffix">{{ props.suffix }}</span>
-        <span *ngIf="props.suffixIcon">
+        <span *ngIf="props.suffix && !props.suffixIcon">{{ props.suffix }}</span>
+        <span *ngIf="props.suffixIcon && !props.suffix">
           <usa-icon [icon]="props.suffixIcon" size="lg" class="font-sans-xs"></usa-icon>
         </span>
       </div>

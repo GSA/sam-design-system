@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormlyModule, FormlyFieldConfig, ConfigOption } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import * as _ from 'lodash-es';
 
 import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,19 +28,11 @@ import { maxDateValidator, minDateValidator, dateRangeValidator } from './formly
 import { AnimationWrapperComponent } from './wrappers/form-field.animation';
 import { SdsReadonlyModule } from './readonly/readonly.module';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {
-  NgxBootstrapIconsModule,
-  caretDownFill,
-  caretUpFill,
-  filter,
-  arrowClockwise,
-  chevronDown,
-  infoCircleFill,
-  calendar,
-  x,
-} from 'ngx-bootstrap-icons';
+
+import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { IconModule, allIcons as sdsAllIcons, uswdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
+
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 // Validate the min length of the character
 export function minLengthValidationMessage(err, field) {
@@ -140,6 +133,13 @@ export const DATE_FORMAT: MatDateFormats = {
   },
 };
 
+export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: string): { [key: string]: string } => {
+  const prefixedIconsObject = {};
+  Object.keys(iconsObject).forEach((key) => {
+    prefixedIconsObject[`${prefix}${_.upperFirst(key)}`] = iconsObject[key];
+  });
+  return prefixedIconsObject;
+};
 @NgModule({
   declarations: [FIELD_TYPE_COMPONENTS, AnimationWrapperComponent],
   imports: [
@@ -168,16 +168,9 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsPopoverModule,
     SdsRichTextModule,
     SdsStepArrowModule,
-    NgxBootstrapIconsModule.pick({
-      caretDownFill,
-      caretUpFill,
-      filter,
-      arrowClockwise,
-      chevronDown,
-      infoCircleFill,
-      calendar,
-      x,
-    }),
+     NgxBootstrapIconsModule.pick(
+      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'), _.cloneDeep(uswdsAllIcons))
+    ),
     FormlyModule.forChild(FORMLY_CONFIG),
     FormlyModule.forRoot({
       extras: {
