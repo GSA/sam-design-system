@@ -96,7 +96,7 @@ jobs:
             mkdir -p -- $branch
             mv ../branches/$i/* ./$branch
 
-            echo "<li><a href=\"./CV/${branch}\">${branch}</a></li>" >> index.html
+            echo "<li><a href=\"./${branch}\">${branch}</a></li>" >> index.html
 
             i=$((i+1))
           done
