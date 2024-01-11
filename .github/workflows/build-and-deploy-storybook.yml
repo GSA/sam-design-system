@@ -25,8 +25,12 @@ jobs:
         run: GH_PAGES=true ng run sam-design-system-site:build-storybook
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+      - name: 'upload'
+        uses: actions/upload-pages-artifact@v2
+        with: 
+          path: ${{ inputs.path }}
+      - id: deploy
+        name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v3
         with:
-          branch: gh-pages
-          folder: storybook-static
+          token: ${{ github.token }}
