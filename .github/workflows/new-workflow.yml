@@ -93,6 +93,8 @@ jobs:
           i=0
           for branch in ${branches}
           do
+            echo "Make branch ${branch}"
+            echo "I: ${i}"
             mkdir -p -- $branch
             mv ../branches/$i/* ./$branch
 
