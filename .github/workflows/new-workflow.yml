@@ -1,0 +1,106 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - "**"
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build_matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      json_branches: ${{ steps.generate-matrix.outputs.json_branches }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate Matrix
+        id: generate-matrix
+        run: |
+          branches=($(git branch -r | cut -c 3- | sed 's/origin\///g'))
+          json_branches=$(printf '%s\n' "${branches[@]}" | jq -R . | jq -s -c .)
+          echo "json_branches=${json_branches}" >> $GITHUB_OUTPUT
+
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    needs:
+      - build_matrix
+    strategy:
+      matrix:
+        branch: ${{ fromJSON(needs.build_matrix.outputs.json_branches) }}
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: Install Node Packages
+        run: npm i
+      - name: Build Stackblitz HTMLs
+        run: npm run demo:stackblitzes
+      - name: Build Storybook Assets
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: npm run build-storybook-ng
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ strategy.job-index }}
+          path: storybook-static
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs:
+      - build_matrix
+      - build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - run: gh run download ${{ vars.GITHUB_RUN_ID }} --dir branches
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # In root of repo
+      - name: Create public folder
+        run: |
+          mkdir public
+          mv .github/workflows/index.html ./public/index.html
+          cd public
+          branches=$(echo '${{ needs.build_matrix.outputs.json_branches }}' | jq -r '.[]')
+          i=0
+          for branch in ${branches}
+          do
+            mkdir -p -- $branch
+            mv ../branches/$i/* ./$branch
+
+            echo "<li><a href=\"./CV/${branch}\">${branch}</a></li>" >> index.html
+
+            i=$((i+1))
+          done
+          ls -lR
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./public/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
