@@ -44,6 +44,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.branch }}
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
