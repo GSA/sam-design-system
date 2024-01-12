@@ -27,6 +27,7 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     if (process.env.GH_PAGES) {
+      console.log(`\n\n\n\n\n\nABCDEFGH\n\n\n\n\n\n\n\n\n/sam-design-system/${process.env.BRANCH}/assets/\n\n\n\n\n\n\n\n\n\n\n\n\n`)
         config.module.rules.push({
             test: /.scss$/,
             loader: 'string-replace-loader',

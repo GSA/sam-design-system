@@ -43,11 +43,11 @@ jobs:
         branch: ${{ fromJSON(needs.build_matrix.outputs.json_branches) }}
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: '16.x'
       - name: Install Node Packages
