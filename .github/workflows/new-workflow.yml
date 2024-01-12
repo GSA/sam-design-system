@@ -59,7 +59,7 @@ jobs:
       - name: Build Storybook Assets
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
-        run: GH_PAGES=true ng run sam-design-system-site:build-storybook
+        run: GH_PAGES=true BRANCH=${{matrix.branch}} ng run sam-design-system-site:build-storybook
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ strategy.job-index }}

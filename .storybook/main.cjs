@@ -32,7 +32,7 @@ module.exports = {
             loader: 'string-replace-loader',
             options: {
                 search: /\/assets\//g,
-                replace: '/sam-design-system/assets/',
+                replace: `/sam-design-system/${process.env.BRANCH}/assets/`,
             },
         });
     }
