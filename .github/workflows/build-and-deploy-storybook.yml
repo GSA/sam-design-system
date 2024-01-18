@@ -1,11 +1,8 @@
 name: Deploy to Github Pages
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+  push:
+    branches:
+      - master
 
 concurrency: preview-${{ github.ref }}
 jobs:
