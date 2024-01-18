@@ -38,6 +38,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
           branch: gh-pages
-          folder: storybook-static
+          folder: .
           clean-exclude: pr-preview/
           force: false
