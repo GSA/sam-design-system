@@ -33,4 +33,4 @@ jobs:
           branch: gh-pages
           folder: storybook-static
           clean-exclude: pr-preview/
-          force: true
+          force: false
