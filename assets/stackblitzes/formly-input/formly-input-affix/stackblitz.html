@@ -388,7 +388,10 @@ export class FormlyInputAffixComponent {
       type: &#39;input&#39;,
       props: {
         label: &#39;Entity Name with suffix Icon&#39;,
-
+        onSuffixClick: (ev) =&gt; {
+          this.fields[3].props.suffixIcon = &#39;calendar&#39;;
+          console.log(ev, &#39;test&#39;);
+        },
         suffixIcon: &#39;arrow-repeat&#39;,
       },
     },
