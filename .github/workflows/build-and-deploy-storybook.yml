@@ -1,14 +1,19 @@
 name: Deploy to Github Pages
 on:
-  push:
-    branches:
-      - master-12
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+concurrency: preview-${{ github.ref }}
 jobs:
   Build-And-Deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -25,11 +30,14 @@ jobs:
         run: GH_PAGES=true ng run sam-design-system-site:build-storybook
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
-      - name: test
-        run: echo ${{ steps.deployment.outputs.page_url }}
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./storybook-static/
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
           branch: gh-pages
           folder: storybook-static
-          target-folder: test
+          clean-exclude: pr-preview/
+          force: false
