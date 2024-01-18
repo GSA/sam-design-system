@@ -1,9 +1,9 @@
 name: Continuous Deployment
 
-on:
-  push:
-    branches:
-      - "**"
+# on:
+#   push:
+#     branches:
+#       - "**"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -60,7 +60,9 @@ jobs:
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
         run: GH_PAGES=true BRANCH=${{matrix.branch}} ng run sam-design-system-site:build-storybook
-      - uses: actions/upload-artifact@v3
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
-          name: ${{ strategy.job-index }}
-          path: storybook-static
+          branch: gh-pages
+          folder: storybook-static
+          target-folder: ${{matrix.branch}}
