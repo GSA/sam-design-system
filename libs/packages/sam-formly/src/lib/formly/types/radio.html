@@ -59,7 +59,7 @@
                 >
                   <span [innerHtml]="opt.label"></span>
                   <ng-container *ngIf="option.value[j].description && option.value[j].description.length">
-                    <div class="usa-checkbox__label_description">
+                    <div class="usa-checkbox__label-description">
                       <span
                         class="display-block"
                         *ngFor="let description of option.value[j].description"
@@ -117,7 +117,7 @@
       >
         <span [innerHtml]="option.label"></span>
         <ng-container *ngIf="props.options[i].description && props.options[i].description.length">
-          <div class="usa-checkbox__label_description">
+          <div class="usa-checkbox__label-description">
             <span
               class="display-block"
               *ngFor="let description of props.options[i].description"
