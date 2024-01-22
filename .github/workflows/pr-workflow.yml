@@ -34,10 +34,10 @@ jobs:
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./storybook-static/
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
-        with:
-          branch: gh-pages
-          folder: storybook-static
-          clean-exclude: pr-preview/
-          force: false
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     branch: gh-pages
+      #     folder: storybook-static
+      #     clean-exclude: pr-preview/
+      #     force: false
