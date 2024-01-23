@@ -27,13 +27,13 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     if (process.env.GH_PAGES) {
-      console.log(`\n\n\n\n\n\nABCDEFGH\n\n\n\n\n\n\n\n\n/sam-design-system/${process.env.BRANCH}/assets/\n\n\n\n\n\n\n\n\n\n\n\n\n`)
+      console.log(`\n\n\n\n\n\nABCDEFGH\n\n\n\n\n\n\n\n\n/sam-design-system/${process.env.pr}/assets/\n\n\n\n\n\n\n\n\n\n\n\n\n`)
         config.module.rules.push({
             test: /.scss$/,
             loader: 'string-replace-loader',
             options: {
                 search: /\/assets\//g,
-                replace: `/sam-design-system/${process.env.BRANCH}/assets/`,
+                replace: `/sam-design-system/pr-preview/pr-${process.env.pr}/assets/`,
             },
         });
     }
