@@ -27,17 +27,11 @@ jobs:
       - name: Build Storybook Assets
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
-        run: GH_PAGES=true ng run sam-design-system-site:build-storybook
+          pr: ${{ github.event.number }}
+        run: GH_PAGES=true PR=$pr ng run sam-design-system-site:build-storybook
       - name: Add .nojekyll file to allow for node_modules to be included in bundle
         run: touch storybook-static/.nojekyll
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./storybook-static/
-      # - name: Deploy 🚀
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     branch: gh-pages
-      #     folder: storybook-static
-      #     clean-exclude: pr-preview/
-      #     force: false
