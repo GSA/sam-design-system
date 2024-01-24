@@ -12,7 +12,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         </span>
       </div>
       <input
-         [id]="id"
+        [id]="id"
         class="usa-input"
         [ngClass]="{
           'usa-input--disabled': props.disabled,
