@@ -4,7 +4,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-textarea',
   template: `
-    {{ props | json }}
     <div [ngClass]="{ 'usa-character-count': props.maxLength }">
       <textarea
         #textarea
