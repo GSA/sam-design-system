@@ -353,7 +353,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.addItemToModel(filterItem);
     }
 
-    if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
+    if (this.configuration.selectionMode === SelectionMode.MULTIPLE && !this.configuration.isTagModeEnabled) {
       this.showResults = true;
       this.input.nativeElement.focus();
       const flat = this.getFlatElements();
