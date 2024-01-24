@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
@@ -6,6 +6,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   template: `
     <div [ngClass]="{ 'usa-character-count': props.maxLength }">
       <textarea
+        #textarea
         [formControl]="formControl"
         [cols]="props.cols"
         [rows]="props.rows"
@@ -13,7 +14,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [class.usa-input--error]="showError"
         [placeholder]="props.placeholder"
         [formlyAttributes]="field"
-        [maxLength]="props.maxLength"
         (ngModelChange)="valueChange($event)"
       >
       </textarea>
@@ -28,6 +28,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
 })
 export class FormlyFieldTextAreaComponent extends FieldType<FieldTypeConfig> implements OnInit {
+  @ViewChild('textarea', { static: true }) textareaRef: ElementRef;
+
   defaultOptions = {
     props: {
       cols: 1,
@@ -40,6 +42,9 @@ export class FormlyFieldTextAreaComponent extends FieldType<FieldTypeConfig> imp
   ngOnInit() {
     if (!this.props.maxLength) {
       return;
+    }
+    if (this.props.maxLength) {
+      this.textareaRef.nativeElement.setAttribute('maxLength', this.props.maxLength);
     }
     const initialValue: string = this.field.formControl.value;
 
