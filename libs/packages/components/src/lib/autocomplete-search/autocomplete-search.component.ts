@@ -398,6 +398,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   openOptions() {
     this.input.nativeElement.focus();
+    this.inputFocusHandler();
   }
 
   public getFlatElements() {
