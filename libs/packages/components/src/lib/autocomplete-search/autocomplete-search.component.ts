@@ -186,6 +186,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
     if (this.configuration.selectionMode === SelectionMode.SINGLE) {
       if (this.model.items.length > 0) {
         SDSSelectedItemModelHelper.clearItems(this.model.items);
+        this.input.nativeElement.focus();
         this.propogateChange(this.model);
       }
     }
@@ -364,6 +365,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.setHighlightedItem(flat[this.highlightedIndex]);
     } else {
       this.showResults = false;
+      this.input.nativeElement.focus();
     }
   }
 
@@ -396,6 +398,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
 
   openOptions() {
     this.input.nativeElement.focus();
+    this.inputFocusHandler();
   }
 
   public getFlatElements() {
