@@ -2,7 +2,7 @@
   class="usa-radio"
   [id]="id"
   [attr.aria-label]="props.ariaLabel? props.ariaLabel : props.label"
-  [attr.aria-describedby]="props.description ? id + '_description' : undefined"
+  [attr.aria-describedby]="props.description ? id + '-description' : undefined"
   [ngClass]="{'horizontal': props.horizontal, 'grid-row': props.horizontal}"
 >
   <div *ngIf="props.options">
@@ -106,6 +106,7 @@
         checked="checked"
         [formControl]="formControl"
         [value]="option.value"
+        tabindex="0"
       />
 
       <label
