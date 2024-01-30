@@ -13,6 +13,7 @@ import { FormlyAutocompleteFreetextModule } from './formly-autocomplete-free-tex
 import { FormlyAutocompleteInputModule } from './formly-autocomplete-input/formly-autocomplete-input.module';
 import { FormlyAutocompleteTagModule } from './formly-autocomplete-tag/formly-autocomplete-tag.module';
 import { FormlyAutocompleteValidationModule } from './formly-autocomplete-validation/formly-autocomplete-validation.module';
+import { FormlyAutocompleteIdModule } from './formly-autocomplete-id/formly-autocomplete-id.module';
 
 const disable = {
   table: {
@@ -44,6 +45,7 @@ export default {
         FormlyAutocompleteInputModule,
         FormlyAutocompleteTagModule,
         FormlyAutocompleteValidationModule,
+        FormlyAutocompleteIdModule
       ],
     }),
   ],
@@ -181,12 +183,31 @@ Validation.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'validation'),
 };
 
+export const ID: Story = (args) => ({
+  template: '<sds-formly-autocomplete-id></sds-formly-autocomplete-id>',
+  props: args,
+});
+ID.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig(
+    'storybook/formly/formly-autocomplete/formly-autocomplete-id',
+    'FormlyAutocompleteIdModule',
+    'sds-formly-autocomplete-id'
+  ),
+  stackblitzLink: generateStackblitzLink('formly-autocomplete', 'id'),
+};
+
 export const __namedExportsOrder = [
   'Introduction',
   'Basic',
   'Count',
   'Disable',
   'Freetext',
+  'ID',
   'Input',
   'Tag',
   'Validation',
