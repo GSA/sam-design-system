@@ -27,6 +27,7 @@ export class FormlyAutocompleteCountComponent {
           id: 'autocompleteMinchar',
           props: {
             label: 'Auto Complete',
+            hideLabel: true,
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel,
