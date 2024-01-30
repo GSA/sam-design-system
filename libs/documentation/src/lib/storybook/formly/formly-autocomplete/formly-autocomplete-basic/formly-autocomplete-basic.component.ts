@@ -28,7 +28,6 @@ export class FormlyAutocompleteBasicComponent implements OnInit {
           type: 'autocomplete',
           props: {
             label: 'Auto Complete',
-            hideLabel: true,
             service: this.service,
             configuration: this.settings,
             model: this.autocompleteModel,
@@ -49,6 +48,7 @@ export class FormlyAutocompleteBasicComponent implements OnInit {
 
   setup() {
     this.settings.id = 'autocompleteBasic';
+    this.fields[0].fieldGroup[0].id = this.settings.id;
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
