@@ -19,6 +19,11 @@ export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implemen
     this.cdr = _cdr;
   }
   ngAfterViewInit(): void {
+    if (this.template.configuration.id !== undefined && this.template.configuration.id !== this.id) {
+      console.warn(
+        `Formly Autocomplete ID mismatch: Formly Autocomplete ID(${this.id}) does not match Autocomplete Configuration ID (${this.template.configuration.id})`
+      );
+    }
     if (!this.template.configuration.id) {
       this.template.configuration.id = this.id;
     }
