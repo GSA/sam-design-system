@@ -6,6 +6,7 @@ import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { FormlyInputAffixModule } from './formly-input-affix/formly-input-affix.module';
 import { FormlyInputConfigurableModule } from './formly-input-configurable/formly-input-configurable.module';
 import { FormlyInputDescriptionModule } from './formly-input-description/formly-input-description.module';
 import { FormlyInputDisabledModule } from './formly-input-disabled/formly-input-disabled.module';
@@ -46,6 +47,7 @@ export default {
         FormlyInputRequiredModule,
         FormlyInputPlaceholderModule,
         FormlyInputIntroductionModule,
+        FormlyInputAffixModule,
       ],
     }),
   ],
@@ -213,9 +215,28 @@ Placeholder.parameters = {
   stackblitzLink: generateStackblitzLink('formly-input', 'placeholder'),
 };
 
+export const Affix: Story = (args) => ({
+  template: '<sds-formly-input-affix></sds-formly-input-affix>',
+  props: args,
+});
+Affix.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig(
+    'storybook/formly/formly-input/formly-input-affix',
+    'FormlyInputAffixModule',
+    'sds-formly-input-affix'
+  ),
+  stackblitzLink: generateStackblitzLink('formly-input', 'affix'),
+};
+
 export const __namedExportsOrder = [
   'Introduction',
   'Configurable',
+  'Affix',
   'Description',
   'Disabled',
   'Label',

@@ -25,9 +25,10 @@
     <button
       *ngIf="button.mode !== actionModes.HIDDEN"
       [disabled]="button.mode === actionModes.DISABLED"
-      [ngClass]="{ 'usa-button--disabled': button.mode === actionModes.DISABLED }"
+      [ngClass]="{ 'usa-button--disabled usa-button--unstyled': button.mode === actionModes.DISABLED }"
       (click)="clicks.emit(button.id)"
       sds-menu-item
+      tabindex="0"
     >
       {{ button.text }}
     </button>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import {
   SDSAutocompletelConfiguration,
   SdsDialogService,
@@ -47,12 +46,12 @@ export class FormlyDialogDownloadComponent {
         hideOptional: true,
         options: [
           {
-            value: 'Single Details',
-            key: 'sd',
+            label: 'Single Details',
+            value: 'sd',
           },
           {
-            value: 'Contract Family Details',
-            key: 'cfd',
+            label: 'Contract Family Details',
+            value: 'cfd',
           },
         ],
       },
@@ -66,8 +65,8 @@ export class FormlyDialogDownloadComponent {
         class: 'margin-left-2',
         options: [
           {
-            value: 'Modifications',
-            key: 'mod',
+            label: 'Modifications',
+            value: 'mod',
           },
         ],
       },
@@ -103,8 +102,8 @@ export class FormlyDialogDownloadComponent {
       props: {
         options: [
           {
-            value: 'Add to my saved search',
-            key: 'saved',
+            label: 'Add to my saved search',
+            value: 'saved',
           },
         ],
       },
@@ -147,6 +146,10 @@ export class FormlyDialogDownloadComponent {
     dialogRef.componentInstance.submitFn.subscribe((res) => {
       this.updatedModel = res;
       dialogRef.close();
+    });
+
+    dialogRef.componentInstance.onChangeFn.subscribe((res) => {
+      dialogRef.componentInstance.disableSubmitButton = !res.additionalOptions.saved;
     });
 
     dialogRef.componentInstance.cancelFn.subscribe((res) => {

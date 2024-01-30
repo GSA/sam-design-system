@@ -163,6 +163,53 @@ export class AdvancedFiltersComponent implements OnInit {
       dialogRef.close();
     });
 
+    dialogRef.componentInstance.onChangeFn.subscribe((result) => {
+      if (
+        result &&
+        dialogRef.componentInstance.model['filterToggle']['selectAll'] !== undefined &&
+        this.selectAll != result['filterToggle']['selectAll']
+      ) {
+        const newModel = {};
+        this.selectAll = result['filterToggle']['selectAll'];
+        const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(this.fields);
+        const keys = modalFields.map(function (el) {
+          return el.key;
+        });
+        keys.forEach((key: string) => {
+          if (key !== 'selectAll' && key !== 'showInactive') {
+            let currentField = modalFields.find((item) => item.key === key);
+            if (currentField.key === key && currentField.type === 'checkbox') {
+              newModel[key] = this.selectAll;
+            } else if (currentField.type === 'multicheckbox') {
+              const array = [];
+              if (this.selectAll) {
+                currentField.props.options.forEach((option: any) => {
+                  array.push(option.value);
+                  if (option.type === 'multicheckbox') {
+                    option.props.options.forEach((option: any) => {
+                      array.push(option.value);
+                    });
+                  }
+                });
+                newModel[key] = array;
+              } else {
+                if (this.enablePopover) {
+                  newModel[key] = false;
+                } else {
+                  newModel[key] = [];
+                }
+              }
+            }
+          }
+        });
+
+        const newFModel = { filterToggle: { filters: newModel, selectAll: result['filterToggle']['selectAll'] } };
+        dialogRef.componentInstance.model = { ...dialogRef.componentInstance.model, ...newFModel };
+
+        this.cdr.detectChanges();
+      }
+    });
+
     dialogRef.componentInstance.cancelFn.subscribe(() => {
       dialogRef.close();
     });
@@ -224,22 +271,6 @@ export class AdvancedFiltersComponent implements OnInit {
               label: 'Select All',
               hideOptional: true,
               id: 'moreFilterSelectAll',
-            },
-            hooks: {
-              onInit: (field) => {
-                let isOnload = true;
-                const form = field.parent.formControl;
-                form
-                  .get('selectAll')
-                  .valueChanges.pipe(
-                    startWith(form.get('selectAll').value),
-                    tap((selectAllValue) => {
-                      this.onSelectAllChange(selectAllValue, form, isOnload, field);
-                      isOnload = false;
-                    })
-                  )
-                  .subscribe();
-              },
             },
           },
           {

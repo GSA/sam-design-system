@@ -3,22 +3,36 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'sds-formly-field-input',
-  template: ` <div class="maxw-mobile-lg position-relative">
-    <input
-      [ngClass]="{
-        'usa-input--disabled': props.disabled,
-        'usa-input--error': showError
-      }"
-      class="usa-input padding-right-3"
-      [placeholder]="props.placeholder"
-      name="input-success"
-      [formlyAttributes]="field"
-      [type]="props.inputType ? props.inputType : 'text'"
-      [formControl]="formControl"
-    />
-    <ng-container *ngIf="field.formControl.value">
-      <span class="position-absolute top-1 cursor-pointer bg-white" [style]="getPosition()">
+  template: `
+    <div class="usa-input-group maxw-mobile-lg">
+      <div *ngIf="props.prefix || props.prefixIcon" class="usa-input-prefix" aria-hidden="true">
+        <span *ngIf="props.prefix && !props.prefixIcon" (click)="onPrefixClick($event)">{{ props.prefix }}</span>
+        <span *ngIf="props.prefixIcon && !props.prefix" (click)="onPrefixClick($event)">
+          <usa-icon [icon]="props.prefixIcon" size="lg" class="font-sans-xs"></usa-icon>
+        </span>
+      </div>
+      <input
+        [id]="id"
+        class="usa-input"
+        [ngClass]="{
+          'usa-input--disabled': props.disabled,
+          'usa-input--error': showError
+        }"
+        [formlyAttributes]="field"
+        [type]="props.inputType ? props.inputType : 'text'"
+        [formControl]="formControl"
+      />
+      <div
+        *ngIf="props.suffix || props.suffixIcon || field.formControl.value"
+        class="usa-input-suffix"
+        aria-hidden="true"
+      >
+        <span *ngIf="props.suffix && !props.suffixIcon" (click)="onSuffixClick($event)">{{ props.suffix }}</span>
+        <span *ngIf="props.suffixIcon && !props.suffix" (click)="onSuffixClick($event)">
+          <usa-icon [icon]="props.suffixIcon" size="lg" class="font-sans-xs"></usa-icon>
+        </span>
         <span
+          *ngIf="field.formControl.value && !props.disabled"
           role="button"
           aria-label="Clear input"
           (click)="onClear()"
@@ -28,18 +42,25 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         >
           <usa-icon [icon]="'x'" size="lg" class="font-sans-xs"></usa-icon>
         </span>
-      </span>
-    </ng-container>
-  </div>`,
+      </div>
+    </div>
+  `,
 })
 export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
-  getPosition() {
-    let width = document.getElementById(this.field.id).offsetWidth;
-    width = width - 25;
-    return `left: ${width}px;`;
-  }
-
   onClear() {
     this.field.formControl.setValue('');
+    this.field.focus = true;
+  }
+
+  onSuffixClick(ev) {
+    if (this.props.onSuffixClick) {
+      this.props.onSuffixClick(ev);
+    }
+  }
+
+  onPrefixClick(ev) {
+    if (this.props.onPrefixClick) {
+      this.props.onPrefixClick(ev);
+    }
   }
 }

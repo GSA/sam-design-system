@@ -22,6 +22,7 @@ import { TableChangeDataModule } from './table-change-data/table-change-data.mod
 import { TableHighlightRowModule } from './table-highlight-row/table-highlight-row.module';
 import { TableRowClickedModule } from './table-row-clicked/table-row-clicked.module';
 import { TableIntroductionModule } from './table-introduction/table-introduction.module';
+import { TableCustomClassesModule } from './table-custom-classes/table-custom-classes.module';
 
 export default {
   title: 'Components/Table',
@@ -46,6 +47,7 @@ export default {
         TableHighlightRowModule,
         TableRowClickedModule,
         TableIntroductionModule,
+        TableCustomClassesModule,
       ],
     }),
   ],
@@ -226,6 +228,24 @@ RowClicked.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'row-clicked'),
 };
 
+export const CustomClasses: Story = (args) => ({
+  template: `<sds-table-custom-classes></sds-table-custom-classes>`,
+  props: args,
+});
+CustomClasses.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig(
+    'storybook/table/table-custom-classes',
+    'TableCustomClassesModule',
+    'sds-table-custom-classes'
+  ),
+  stackblitzLink: generateStackblitzLink('table', 'custom-classes'),
+};
+
 export const Introduction: Story = (args) => ({
   template: `<sds-table-introduction></sds-table-introduction>`,
   props: args,
@@ -244,6 +264,7 @@ export const __namedExportsOrder = [
   'Introduction',
   'Basic',
   'ChangeData',
+  'CustomClasses',
   'CustomFooter',
   'Expansion',
   'HighlightRow',
