@@ -6,15 +6,9 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SdsFormlyModule,
-    FormsModule,
-    FormlyModule.forRoot()
-  ],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
   declarations: [FormlyAutocompleteIdComponent],
   exports: [FormlyAutocompleteIdComponent],
   bootstrap: [FormlyAutocompleteIdComponent],
 })
-export class FormlyAutocompleteIdModule { }
+export class FormlyAutocompleteIdModule {}

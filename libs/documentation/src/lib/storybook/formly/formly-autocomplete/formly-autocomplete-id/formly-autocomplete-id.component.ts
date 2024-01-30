@@ -11,13 +11,12 @@ import { BehaviorSubject } from 'rxjs';
   providers: [AutocompleteSampleDataService],
 })
 export class FormlyAutocompleteIdComponent implements OnInit {
-
   results: any;
   form = new UntypedFormGroup({});
   model: any = {
     firstName: {},
     middleName: {},
-    lastName: {}
+    lastName: {},
   };
   options: FormlyFormOptions = {};
 
@@ -68,7 +67,7 @@ export class FormlyAutocompleteIdComponent implements OnInit {
             model: this.lastNameModel,
             modelChange: this.changes,
           },
-        }
+        },
       ],
     },
   ];
@@ -82,10 +81,9 @@ export class FormlyAutocompleteIdComponent implements OnInit {
   }
 
   setup() {
+    // Set first name autocomplete to connect label and input
     this.firstNameSettings.id = 'firstNameAutocomplete';
     this.fields[0].fieldGroup[0].id = this.firstNameSettings.id;
-
-
 
     this.firstNameSettings.primaryKeyField = 'id';
     this.firstNameSettings.primaryTextField = 'name';
@@ -174,5 +172,4 @@ export class FormlyAutocompleteIdComponent implements OnInit {
     const newObjModel = new SDSSelectedItemModel(newModel);
     this.form.get('filters.firstName').patchValue(newObjModel.items);
   }
-
 }

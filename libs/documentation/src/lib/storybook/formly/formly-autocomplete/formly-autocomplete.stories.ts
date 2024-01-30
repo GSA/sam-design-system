@@ -45,7 +45,7 @@ export default {
         FormlyAutocompleteInputModule,
         FormlyAutocompleteTagModule,
         FormlyAutocompleteValidationModule,
-        FormlyAutocompleteIdModule
+        FormlyAutocompleteIdModule,
       ],
     }),
   ],
