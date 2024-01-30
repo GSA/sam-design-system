@@ -56,10 +56,6 @@ export * from './video-player/video-player.module';
 export * from './video-player/video-player.component';
 export * from './popup/popup.module';
 export * from './popup/popup.directive';
-export * from './popover/popover.module';
-export * from './popover/popover.directive';
-export * from './tooltip/tooltip.module';
-export * from './tooltip/tooltip.directive';
 export * from './collapse/collapse.module';
 export * from './collapse/collapse.directive';
 export * from './text/text.component';
@@ -95,3 +91,9 @@ export * from './tree-table/tree-table.model';
 
 export * from './step-arrow/step-arrow.component';
 export * from './step-arrow/step-arrow.module';
+
+export * from './new-tooltip/tooltip';
+export * from './new-tooltip/tooltip.module';
+
+export * from './new-popover/popover';
+export * from './new-popover/popover.module';

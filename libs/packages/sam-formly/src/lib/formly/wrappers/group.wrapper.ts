@@ -43,9 +43,11 @@ import { filter } from 'rxjs/operators';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-          <div #popoverContent class="padding-1 text-left sds-width-max-content">
-            <ng-container #fieldComponent></ng-container>
-          </div>
+          <ng-template #popoverContent>
+            <div class="padding-1 text-left sds-width-max-content">
+              <ng-container #fieldComponent></ng-container>
+            </div>
+          </ng-template>
           <div
             [sdsPopover]="popoverContent"
             [position]="'bottom'"

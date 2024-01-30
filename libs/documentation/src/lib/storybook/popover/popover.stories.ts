@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { SdsPopoverDirective, SdsPopoverModule } from '@gsa-sam/components';
+import { SdsPopoverModule } from '@gsa-sam/components';
 import { moduleMetadata, Meta, Story } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { PopoverCloseOnClickOutsideModule } from './popover-close-on-click-outside/popover-close-on-click-outside.module';
@@ -15,7 +15,6 @@ const disable = {
 };
 export default {
   title: 'Components/Popover',
-  component: SdsPopoverDirective,
   decorators: [
     moduleMetadata({
       imports: [
@@ -60,7 +59,7 @@ export default {
 
 const exportedStories = {};
 
-const Template: Story<SdsPopoverDirective> = (args: SdsPopoverDirective) => {
+const Template: Story = (args: any) => {
   return {
     template: `
       <div class="padding-4" *ngIf="sdsPopover">
@@ -68,8 +67,6 @@ const Template: Story<SdsPopoverDirective> = (args: SdsPopoverDirective) => {
         [sdsPopover]="sdsPopover"
         [sdsPopoverTitle]="sdsPopoverTitle"
         [position]="position"
-        [closeOnContentClick]=closeOnContentClick
-        [closeOnClickOutside]=closeOnClickOutside
       >
         I'm a popover!
       </button>
@@ -83,6 +80,7 @@ export const Configurable = Template.bind({});
 Configurable.args = {
   sdsPopover: 'Default Body',
   sdsPopoverTitle: '',
+  position: 'bottom',
 };
 Configurable.parameters = {
   actions: { disable: true },

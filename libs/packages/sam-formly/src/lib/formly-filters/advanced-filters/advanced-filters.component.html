@@ -7,14 +7,15 @@
   *ngIf="enablePopover"
   [sdsPopover]="content"
   [position]="'bottom'"
-  [closeOnContentClick]="false"
-  [closeOnClickOutside]="true"
+  [autoClose]="'outside'"
   tabindex="0"
   aria-label="More Filters"
 >
   More Filters
   <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
-  <p #content class="padding-2 text-left minw-card-lg">
-    <formly-form [fields]="popoverContent" (modelChange)="updateSelectedFields($event)"></formly-form>
-  </p>
+  <ng-template #content>
+    <p class="padding-2 text-left minw-card-lg">
+      <formly-form [fields]="popoverContent" (modelChange)="updateSelectedFields($event)"></formly-form>
+    </p>
+  </ng-template>
 </div>
