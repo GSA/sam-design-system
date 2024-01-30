@@ -26,23 +26,23 @@ $tooltip-font-size: $font-size-sm !default;
   line-break: auto;
 }
 .tooltip {
-  --bs-tooltip-zindex: 1080;
-  --bs-tooltip-max-width: 200px;
-  --bs-tooltip-padding-x: 0.5rem;
-  --bs-tooltip-padding-y: 0.25rem;
-  --bs-tooltip-margin: null;
-  --bs-tooltip-font-size: 0.875rem;
-  --bs-tooltip-color: white;
-  --bs-tooltip-bg: black;
-  --bs-tooltip-border-radius: 0.375;
-  --bs-tooltip-opacity: 0.9;
-  --bs-tooltip-arrow-width: 0.8rem;
-  --bs-tooltip-arrow-height: 0.4rem;
+  --sds-tooltip-zindex: 1080;
+  --sds-tooltip-max-width: 200px;
+  --sds-tooltip-padding-x: 0.5rem;
+  --sds-tooltip-padding-y: 0.25rem;
+  --sds-tooltip-margin: null;
+  --sds-tooltip-font-size: 0.875rem;
+  --sds-tooltip-color: white;
+  --sds-tooltip-bg: black;
+  --sds-tooltip-border-radius: 0.375;
+  --sds-tooltip-opacity: 0.9;
+  --sds-tooltip-arrow-width: 0.8rem;
+  --sds-tooltip-arrow-height: 0.4rem;
 
-  z-index: var(--bs-tooltip-zindex);
+  z-index: var(--sds-tooltip-zindex);
   display: block;
-  margin: var(--bs-tooltip-margin);
-  padding: var(--bs-tooltip-arrow-height);
+  margin: var(--sds-tooltip-margin);
+  padding: var(--sds-tooltip-arrow-height);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
@@ -51,13 +51,13 @@ $tooltip-font-size: $font-size-sm !default;
   opacity: 0;
 
   &.show {
-    opacity: var(--bs-tooltip-opacity);
+    opacity: var(--sds-tooltip-opacity);
   }
 
   .tooltip-arrow {
     display: block;
-    width: var(--bs-tooltip-arrow-width);
-    height: var(--bs-tooltip-arrow-height);
+    width: var(--sds-tooltip-arrow-width);
+    height: var(--sds-tooltip-arrow-height);
 
     &::before {
       position: absolute;
@@ -68,73 +68,73 @@ $tooltip-font-size: $font-size-sm !default;
   }
 }
 
-.bs-tooltip-top .tooltip-arrow {
+.sds-tooltip-top .tooltip-arrow {
   bottom: 0;
 
   &::before {
     top: -1px;
-    border-width: var(--bs-tooltip-arrow-height) calc(var(--bs-tooltip-arrow-width) * 0.5) 0;
-    border-top-color: var(--bs-tooltip-bg);
+    border-width: var(--sds-tooltip-arrow-height) calc(var(--sds-tooltip-arrow-width) * 0.5) 0;
+    border-top-color: var(--sds-tooltip-bg);
   }
 }
-.bs-tooltip-end .tooltip-arrow {
+.sds-tooltip-end .tooltip-arrow {
   left: 0;
-  width: var(--bs-tooltip-arrow-height);
-  height: var(--bs-tooltip-arrow-width);
+  width: var(--sds-tooltip-arrow-height);
+  height: var(--sds-tooltip-arrow-width);
 
   &::before {
     right: -1px;
-    border-width: calc(var(--bs-tooltip-arrow-width) * 0.5) var(--bs-tooltip-arrow-height)
-      calc(var(--bs-tooltip-arrow-width) * 0.5) 0;
-    border-right-color: var(--bs-tooltip-bg);
+    border-width: calc(var(--sds-tooltip-arrow-width) * 0.5) var(--sds-tooltip-arrow-height)
+      calc(var(--sds-tooltip-arrow-width) * 0.5) 0;
+    border-right-color: var(--sds-tooltip-bg);
   }
 }
 
-.bs-tooltip-bottom .tooltip-arrow {
+.sds-tooltip-bottom .tooltip-arrow {
   top: 0;
 
   &::before {
     bottom: -1px;
-    border-width: 0 calc(var(--bs-tooltip-arrow-width) * 0.5) var(--bs-tooltip-arrow-height);
-    border-bottom-color: var(--bs-tooltip-bg);
+    border-width: 0 calc(var(--sds-tooltip-arrow-width) * 0.5) var(--sds-tooltip-arrow-height);
+    border-bottom-color: var(--sds-tooltip-bg);
   }
 }
-.bs-tooltip-start .tooltip-arrow {
+.sds-tooltip-start .tooltip-arrow {
   right: 0;
-  width: var(--bs-tooltip-arrow-height);
-  height: var(--bs-tooltip-arrow-width);
+  width: var(--sds-tooltip-arrow-height);
+  height: var(--sds-tooltip-arrow-width);
 
   &::before {
     left: -1px;
-    border-width: calc(var(--bs-tooltip-arrow-width) * 0.5) 0 calc(var(--bs-tooltip-arrow-width) * 0.5)
-      var(--bs-tooltip-arrow-height);
-    border-left-color: var(--bs-tooltip-bg);
+    border-width: calc(var(--sds-tooltip-arrow-width) * 0.5) 0 calc(var(--sds-tooltip-arrow-width) * 0.5)
+      var(--sds-tooltip-arrow-height);
+    border-left-color: var(--sds-tooltip-bg);
   }
 }
 
-.bs-tooltip-auto {
+.sds-tooltip-auto {
   &[data-popper-placement^='top'] {
-    @extend .bs-tooltip-top;
+    @extend .sds-tooltip-top;
   }
   &[data-popper-placement^='right'] {
-    @extend .bs-tooltip-end;
+    @extend .sds-tooltip-end;
   }
   &[data-popper-placement^='bottom'] {
-    @extend .bs-tooltip-bottom;
+    @extend .sds-tooltip-bottom;
   }
   &[data-popper-placement^='left'] {
-    @extend .bs-tooltip-start;
+    @extend .sds-tooltip-start;
   }
 }
 
 .tooltip-inner {
-  max-width: var(--bs-tooltip-max-width);
-  padding: var(--bs-tooltip-padding-y) var(--bs-tooltip-padding-x);
-  color: var(--bs-tooltip-color);
+  max-width: var(--sds-tooltip-max-width);
+  padding: var(--sds-tooltip-padding-y) var(--sds-tooltip-padding-x);
+  color: var(--sds-tooltip-color);
   text-align: center;
-  background-color: var(--bs-tooltip-bg);
+  background-color: var(--sds-tooltip-bg);
   border-radius: 0.375rem;
   p {
-    color: var(--bs-tooltip-color);
+    color: var(--sds-tooltip-color);
   }
 }

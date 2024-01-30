@@ -258,7 +258,7 @@ export class SdsTooltip implements OnInit, OnDestroy, OnChanges {
           targetElement: this._windowRef!.location.nativeElement,
           placement: this.position,
           appendToBody: this.container === 'body',
-          baseClass: 'bs-tooltip',
+          baseClass: 'sds-tooltip',
           updatePopperOptions: (options) => this.popperOptions(options),
         });
 
