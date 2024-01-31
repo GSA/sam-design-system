@@ -303,13 +303,11 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       } else {
         this.selectItem(this.highlightedItem);
       }
-    } else if (KeyHelper.is(KEYS.ENTER, event) && this.configuration.isFreeTextEnabled) {
-      if (this.highlightedIndex <= 0 && this.inputValue.length > 0) {
+    } else if (KeyHelper.is(KEYS.ENTER, event) && this.highlightedIndex < 0) {
+      if (this.configuration.isFreeTextEnabled && this.inputValue.length > 0) {
         const val = this.createFreeTextItem();
         this.selectItem(val);
         this.clearAndHideResults();
-      } else if (this.highlightedIndex > 0) {
-        this.selectItem(this.highlightedItem);
       }
     } else if (
       KeyHelper.is(KEYS.SPACE, event) &&
