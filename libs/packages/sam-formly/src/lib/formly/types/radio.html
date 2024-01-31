@@ -52,9 +52,7 @@
 
                 <label
                   class="usa-radio__label"
-                  [ngClass]="{
-              'margin-top-0': j==0 ,
-'{{props.optionsClass}}': props.optionsClass}"
+                  [ngClass]="getClassName(j)"
                   [for]="id + '_' + i+ '_'+ j"
                 >
                   <span [innerHtml]="opt.label"></span>
@@ -111,9 +109,7 @@
 
       <label
         class="usa-radio__label"
-        [ngClass]="{
-              'margin-top-0': i==0 ,
-'{{props.optionsClass}}': props.optionsClass}"
+        [ngClass]="getClassName(i)"
         [for]="id + '_' + i"
       >
         <span [innerHtml]="option.label"></span>
