@@ -1,0 +1,16 @@
+<h4>Setting Formly Autocomplete ID</h4>
+<p>
+  This demo shows the multiple ways that ID can be set on autocomplete so that the label and autocomplete input are
+  connected for accessibility purposes.
+</p>
+<p>First Name shows how the ID can be dynamically set and still ensure the IDs match between label and input.</p>
+<p>Middle Name shows a static ID being set and used by both label and autocomplete input.</p>
+<p>Last Name shows the ID being auto-assigned by Formly and used by both label and autocomplete input.</p>
+<form [formGroup]="form">
+  <formly-form [model]="model" [fields]="fields" [options]="options" (modelChange)="onModelChange()" [form]="form">
+  </formly-form>
+</form>
+<br />
+
+<h4>Formly Model</h4>
+<pre>{{ model | json }}</pre>
