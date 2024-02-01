@@ -165,6 +165,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
   clearInput(ev) {
     this.inputEl.nativeElement.value = '';
+    this.inputEl.nativeElement.focus();
     this.writeValueToModel();
   }
 }

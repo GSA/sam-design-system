@@ -35,9 +35,8 @@
 
 <ng-template #inputTemplate>
   <div
-    class="position-relative grid-col-12"
+    class="position-relative grid-col-12 suffix-icon"
     [ngClass]="{
-      'suffix-icon': searchSettings.isSuffixSearchIcon,
       'tablet:grid-col': hasDropdown()
     }"
   >
@@ -56,7 +55,10 @@
       (input)="writeValueToModel()"
     />
 
-    <span *ngIf="searchSettings.isSuffixSearchIcon" class="cursor-pointer display-flex flex-align-center">
+    <span
+      class="cursor-pointer usa-input-suffix"
+      [ngClass]="searchSettings.size === 'large' ? 'right-3 top-2 margin-right-4' : 'right-105 top-1'"
+    >
       <span
         *ngIf="model.searchText"
         class="postfix close-icon"
@@ -69,6 +71,7 @@
         <usa-icon [icon]="'x'" class="text-ink" [size]="searchSettings.size === 'large' ? '1x' : 'xs'"></usa-icon>
       </span>
       <span
+        *ngIf="searchSettings.isSuffixSearchIcon"
         class="postfix search-icon"
         role="button"
         aria-label="search input"
