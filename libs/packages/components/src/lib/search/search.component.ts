@@ -163,7 +163,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
     const cls = this.searchSettings && this.searchSettings.size === 'large' ? 'usa-search--big' : 'usa-search--small';
     return this.searchSettings.dropdown && this.searchSettings.dropdown.inverse ? `${cls} sds-inverse` : cls;
   }
-  clearInput(ev) {
+  clearInput() {
     this.inputEl.nativeElement.value = '';
     this.inputEl.nativeElement.focus();
     this.writeValueToModel();
