@@ -5084,6 +5084,7 @@ export class FormlyAutocompleteCountComponent {
         {
           key: &#39;firstName&#39;,
           type: &#39;autocomplete&#39;,
+          id: &#39;autocompleteMinchar&#39;,
           props: {
             label: &#39;Auto Complete&#39;,
             hideLabel: true,
@@ -5101,7 +5102,6 @@ export class FormlyAutocompleteCountComponent {
   }
 
   setup() {
-    this.settings.id = &#39;autocompleteMinchar&#39;;
     this.settings.primaryKeyField = &#39;id&#39;;
     this.settings.primaryTextField = &#39;name&#39;;
     this.settings.secondaryTextField = &#39;subtext&#39;;
