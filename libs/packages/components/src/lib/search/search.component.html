@@ -64,8 +64,8 @@
         class="postfix close-icon"
         role="button"
         aria-label="Clear input"
-        (click)="clearInput($event)"
-        (keyup.enter)="clearInput($event)"
+        (click)="clearInput()"
+        (keyup.enter)="clearInput()"
         tabindex="0"
       >
         <usa-icon [icon]="'x'" class="text-ink" [size]="searchSettings.size === 'large' ? '1x' : 'xs'"></usa-icon>
