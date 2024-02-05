@@ -1,4 +1,4 @@
-name: Build PR And Deploy
+name: Deploy PRs
 on:
   pull_request:
     types:
@@ -6,31 +6,27 @@ on:
       - reopened
       - synchronize
       - closed
-
-concurrency: preview-${{ github.ref }}
 jobs:
-  Build-And-Deploy:
+  Build-Storybook:
+    if: github.event.action != 'closed'
+    uses: ./.github/workflows/build.yml
+    with:
+        pr-number: ${{ github.event.number }}
+  Deploy-Storybook:
     runs-on: ubuntu-latest
+    if: ${{ !failure() }}
+    needs: Build-Storybook
     steps:
+        # Only needed because rossjrw/pr-preview-action needs to run in a git repo
       - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v4
+      - name: Download Storybook Assets
+        # If closing PR, build will not occur so nothing to download
+        if: github.event.action != 'closed'
+        uses: actions/download-artifact@v4
         with:
-          node-version: '18.x'
-      - name: Install Node Packages
-        run: npm i
-      - name: Install Global NG CLI
-        run: npm install -g @angular/cli@16
-      - name: Build Stackblitz HTMLs
-        run: npm run demo:stackblitzes
-      - name: Build Storybook Assets
-        env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
-          pr: ${{ github.event.number }}
-        run: GH_PAGES=true PR=$pr ng run sam-design-system-site:build-storybook
-      - name: Add .nojekyll file to allow for node_modules to be included in bundle
-        run: touch storybook-static/.nojekyll
+          name: storybook-assets
+          path: ./storybook-static
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
