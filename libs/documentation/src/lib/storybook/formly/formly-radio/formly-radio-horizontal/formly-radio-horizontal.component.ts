@@ -21,12 +21,12 @@ export class FormlyRadioHorizontalComponent {
         required: true,
         options: [
           {
-            key: 'yes',
-            value: 'Yes',
+            value: 'yes',
+            label: 'Yes',
           },
           {
-            key: 'no',
-            value: 'No',
+            value: 'no',
+            label: 'No',
           },
         ],
         horizontal: true,
