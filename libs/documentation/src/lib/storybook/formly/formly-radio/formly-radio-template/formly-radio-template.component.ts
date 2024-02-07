@@ -22,8 +22,8 @@ export class FormlyRadioTemplateComponent implements AfterViewInit {
         required: true,
         options: [
           {
-            key: 'ccorp',
-            value: 'Register for Financial Assistance Awards Only ',
+            value: 'ccorp',
+            label: 'Register for Financial Assistance Awards Only ',
             subText: [
               'To apply for grants and loans as described by 2 CFR 200.',
               'Includes getting a unique entity ID and entity registration.',
@@ -32,8 +32,8 @@ export class FormlyRadioTemplateComponent implements AfterViewInit {
             icon: 'uswds-attach-money',
           },
           {
-            key: 'nonprofit',
-            value: 'Register for All Awards',
+            value: 'nonprofit',
+            label: 'Register for All Awards',
             subText: [
               'To bid on federal contracts and other procurements, as described by the Federal Acquisition Regulation (FAR).',
               'To apply for grants and loans as described by 2 CFR 200.',
@@ -43,8 +43,8 @@ export class FormlyRadioTemplateComponent implements AfterViewInit {
             iconClass: 'text-secondary',
           },
           {
-            key: 'partnerllc',
-            value: 'Get a Unique Entity ID Only',
+            value: 'partnerllc',
+            label: 'Get a Unique Entity ID Only',
             subText: [
               'May be required to report subawards, such as federal subcontractors or sub-grants.',
               'You will get a unique entity ID. This is NOT an entity registration.',
