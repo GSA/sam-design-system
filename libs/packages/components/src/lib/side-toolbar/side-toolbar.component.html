@@ -9,8 +9,13 @@
     (click)="onResponsiveViewButtonClicked()"
     [attr.aria-label]="responsiveButtonText"
   >
-  <usa-icon *ngIf="responsiveButtonIcon" class="padding-right-1" [icon]="responsiveButtonIcon" [size]="'1x'"></usa-icon>
-    {{ responsiveButtonText}}
+    <usa-icon
+      *ngIf="responsiveButtonIcon"
+      class="padding-right-1"
+      [icon]="responsiveButtonIcon"
+      [size]="'1x'"
+    ></usa-icon>
+    {{ responsiveButtonText }}
   </button>
 </div>
 
