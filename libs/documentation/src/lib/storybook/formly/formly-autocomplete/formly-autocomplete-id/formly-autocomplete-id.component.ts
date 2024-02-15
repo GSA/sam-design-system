@@ -82,6 +82,7 @@ export class FormlyAutocompleteIdComponent implements OnInit {
 
   setup() {
     // Set first name autocomplete to connect label and input
+    // If setting autocomplete id programmatically, both lines must be present to avoid 508 issue
     this.firstNameSettings.id = 'firstNameAutocomplete';
     this.fields[0].fieldGroup[0].id = this.firstNameSettings.id;
 
