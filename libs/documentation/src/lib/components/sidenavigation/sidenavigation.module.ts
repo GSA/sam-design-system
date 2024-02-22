@@ -14,14 +14,14 @@ import { Routes } from '@angular/router';
 
 declare var require: any;
 const DEMOS = {
-  // links: {
-  //   title: 'Links Navigation',
-  //   type: LinksSideNavigationComponent,
-  //   code: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component'),
-  //   module: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.module'),
-  //   markup: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component.html'),
-  //   path: 'libs/documentation/src/lib/components/sidenavigation/demos/links-side-navigation',
-  // },
+  links: {
+    title: 'Links Navigation',
+    type: LinksSideNavigationComponent,
+    code: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component'),
+    module: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.module'),
+    markup: require('!!raw-loader!./demos/links-side-navigation/links-side-navigation.component.html'),
+    path: 'libs/documentation/src/lib/components/sidenavigation/demos/links-side-navigation',
+  },
   filter: {
     title: 'Filter Sidenav',
     type: FilterSideNavigationComponent,
