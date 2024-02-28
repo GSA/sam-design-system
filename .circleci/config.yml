@@ -4,7 +4,7 @@
 #
 version: 2.1
 orbs:
-  browser-tools: circleci/browser-tools@1.4.6
+  browser-tools: circleci/browser-tools@1.4.5
 jobs:
   build:
     working_directory: ~/project/sam-design-system
@@ -12,7 +12,7 @@ jobs:
        - image: cimg/node:20.8.0-browsers
     steps:
       - browser-tools/install-chrome
-      # - browser-tools/install-chromedriver
+      - browser-tools/install-chromedriver
       - checkout
      
       - run:
