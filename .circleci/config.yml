@@ -14,7 +14,7 @@ jobs:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - checkout
-    install-browsers: false
+      - install-browsers: false
       - run:
           command: |
             google-chrome --version
