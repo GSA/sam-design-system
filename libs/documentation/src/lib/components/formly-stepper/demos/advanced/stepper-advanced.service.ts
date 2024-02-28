@@ -53,20 +53,20 @@ export class StepperAdvancedService {
             group: 'panel',
             options: [
               {
-                key: 'read-public',
-                value: 'Read Public',
+                value: 'read-public',
+                label: 'Read Public',
               },
               {
-                key: 'read-sensitive',
-                value: 'Read sensitive',
+                value: 'read-sensitive',
+                label: 'Read sensitive',
               },
               {
-                key: 'write',
-                value: 'Write public',
+                value: 'write',
+                label: 'Write public',
               },
               {
-                key: 'write-sensitive',
-                value: 'Write sensitive',
+                value: 'write-sensitive',
+                label: 'Write sensitive',
               },
             ],
           },
