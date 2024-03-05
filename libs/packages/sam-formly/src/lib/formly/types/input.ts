@@ -6,7 +6,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   template: `
     <div class="usa-input-group maxw-mobile-lg">
       <div *ngIf="props.prefix || props.prefixIcon" class="usa-input-prefix" aria-hidden="true">
-        <span *ngIf="props.prefix && !props.prefixIcon" (click)="onPrefixClick($event)">{{ props.prefix }}</span>
         <span *ngIf="props.prefixIcon && !props.prefix" (click)="onPrefixClick($event)">
           <usa-icon [icon]="props.prefixIcon" size="lg" class="font-sans-xs"></usa-icon>
         </span>
