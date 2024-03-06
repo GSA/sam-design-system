@@ -33,7 +33,12 @@ export class ExternalLinkDirective implements OnChanges {
 
   private readonly emailLinkKeyword = 'mailto';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: string, private el: ElementRef, private vc: ViewContainerRef, private renderer: Renderer2) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
+    private el: ElementRef,
+    private vc: ViewContainerRef,
+    private renderer: Renderer2
+  ) {}
 
   public ngOnChanges() {
     this.hrefAttr = this.href;
@@ -49,10 +54,9 @@ export class ExternalLinkDirective implements OnChanges {
     const ariaLabel = this._getAriaLabel();
     (this.el.nativeElement as HTMLAnchorElement).setAttribute('aria-label', ariaLabel);
 
-
     if (!this.hideIcon && !this.iconVisible) {
       this.createIcon();
-    } else if(this.hideIcon && this.iconVisible){
+    } else if (this.hideIcon && this.iconVisible) {
       this.removeIcon();
     }
   }
@@ -103,15 +107,15 @@ export class ExternalLinkDirective implements OnChanges {
       !this.internalLinks.includes(link)
     );
   }
-  private get iconVisible(): boolean{
+  private get iconVisible(): boolean {
     return this.el.nativeElement.classList.contains('usa-link--external');
   }
-  private createIcon(): void{
+  private createIcon(): void {
     this.el.nativeElement.classList.add('usa-link--external');
     this.el.nativeElement.classList.add('display-inline-block');
   }
-  private removeIcon(): void{
-    this.renderer.removeClass(this.el.nativeElement, 'usa-link--external')
-    this.renderer.removeClass(this.el.nativeElement, 'display-inline-block')
+  private removeIcon(): void {
+    this.renderer.removeClass(this.el.nativeElement, 'usa-link--external');
+    this.renderer.removeClass(this.el.nativeElement, 'display-inline-block');
   }
 }
