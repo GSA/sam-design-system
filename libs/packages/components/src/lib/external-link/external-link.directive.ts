@@ -8,6 +8,7 @@ import {
   ViewContainerRef,
   OnChanges,
   AfterViewInit,
+  Renderer2,
 } from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
@@ -32,7 +33,12 @@ export class ExternalLinkDirective implements OnChanges {
 
   private readonly emailLinkKeyword = 'mailto';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: string, private el: ElementRef, private vc: ViewContainerRef) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: string,
+    private el: ElementRef,
+    private vc: ViewContainerRef,
+    private renderer: Renderer2
+  ) {}
 
   public ngOnChanges() {
     this.hrefAttr = this.href;
@@ -48,8 +54,10 @@ export class ExternalLinkDirective implements OnChanges {
     const ariaLabel = this._getAriaLabel();
     (this.el.nativeElement as HTMLAnchorElement).setAttribute('aria-label', ariaLabel);
 
-    if (!this.hideIcon) {
+    if (!this.hideIcon && !this.iconVisible) {
       this.createIcon();
+    } else if (this.hideIcon && this.iconVisible) {
+      this.removeIcon();
     }
   }
 
@@ -82,7 +90,7 @@ export class ExternalLinkDirective implements OnChanges {
       return currentAriaLabel;
     }
 
-    /** Aria label is attached, but does not indicate link will open in new window. 
+    /** Aria label is attached, but does not indicate link will open in new window.
        Add opens in new window keyword to aria label */
     return `${currentAriaLabel} - opens in a new window`;
   }
@@ -99,9 +107,15 @@ export class ExternalLinkDirective implements OnChanges {
       !this.internalLinks.includes(link)
     );
   }
-  private createIcon() {
-    // tslint:disable-next-line:no-unused-expression
+  private get iconVisible(): boolean {
+    return this.el.nativeElement.classList.contains('usa-link--external');
+  }
+  private createIcon(): void {
     this.el.nativeElement.classList.add('usa-link--external');
     this.el.nativeElement.classList.add('display-inline-block');
+  }
+  private removeIcon(): void {
+    this.renderer.removeClass(this.el.nativeElement, 'usa-link--external');
+    this.renderer.removeClass(this.el.nativeElement, 'display-inline-block');
   }
 }
