@@ -7,7 +7,7 @@ input::-ms-clear {
     display: none;
   }
 
-  .postfix ~ input {
+  .postfix~input {
     width: 80%;
     width: calc(100% - 8rem);
     margin-left: 0px;
@@ -17,7 +17,6 @@ input::-ms-clear {
   .postfix {
     color: #3f57a6;
     position: absolute;
-    right: 15px;
     font-size: 2rem;
     -webkit-transition: color 0.2s;
     transition: color 0.2s;
@@ -25,10 +24,10 @@ input::-ms-clear {
   }
 
   .close-icon {
-    width: 3rem;
-    top: -1px;
+    right: 36px;
   }
 }
+
 .no-drop {
   width: 100%;
 }
