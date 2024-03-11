@@ -220,19 +220,14 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           SDSSelectedItemModelHelper.clearItems(this.model.items);
           this.propogateChange(this.model);
         }
-        if(this.inputValue === ''){
-
-        } else if(this.model.items.length === 0 && this.inputValue !== ''){
+        if (this.inputValue === '') {
+        } else if (this.model.items.length === 0 && this.inputValue !== '') {
           const customItem = this.createFreeTextItem();
           this.selectItem(customItem);
-        }else if (
-          this.model.items.length > 0 &&
-          this.model.items[0]['name'] !== this.inputValue
-        ){
+        } else if (this.model.items.length > 0 && this.model.items[0]['name'] !== this.inputValue) {
           const customItem = this.createFreeTextItem();
           this.selectItem(customItem);
         }
-
       } else if (this.model.items.length > 0) {
         this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
       } else {

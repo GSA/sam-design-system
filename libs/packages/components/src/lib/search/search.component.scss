@@ -7,7 +7,7 @@ input::-ms-clear {
     display: none;
   }
 
-  .postfix~input {
+  .postfix ~ input {
     width: 80%;
     width: calc(100% - 8rem);
     margin-left: 0px;
