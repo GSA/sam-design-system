@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyMultiCheckboxIntroductionModule } from './formly-multi-checkbox-introduction/formly-multi-checkbox-introduction.module';
 import { FormlyMultiCheckboxBasicModule } from './formly-multi-checkbox-basic/formly-multi-checkbox-basic.module';
@@ -43,13 +43,13 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-multi-checkbox-introduction></sds-formly-multi-checkbox-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-multi-checkbox-basic></sds-formly-multi-checkbox-basic>',
   props: args,
 });
@@ -67,7 +67,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'basic'),
 };
 
-export const Nested: Story = (args) => ({
+export const Nested: StoryObj = (args) => ({
   template: '<sds-formly-multi-checkbox-nested></sds-formly-multi-checkbox-nested>',
   props: args,
 });
@@ -85,7 +85,7 @@ Nested.parameters = {
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'nested'),
 };
 
-export const Group: Story = (args) => ({
+export const Group: StoryObj = (args) => ({
   template: '<sds-formly-multi-checkbox-group></sds-formly-multi-checkbox-group>',
   props: args,
 });
@@ -103,7 +103,7 @@ Group.parameters = {
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'group'),
 };
 
-export const Expand: Story = (args) => ({
+export const Expand: StoryObj = (args) => ({
   template: '<sds-formly-multi-checkbox-expand></sds-formly-multi-checkbox-expand>',
   props: args,
 });
@@ -121,4 +121,4 @@ Expand.parameters = {
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'expand'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Nested', 'Expand', 'Group'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'Nested', 'Expand', 'Group'];

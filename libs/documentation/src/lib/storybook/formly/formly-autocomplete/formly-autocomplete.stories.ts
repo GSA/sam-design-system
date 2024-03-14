@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyAutocompleteIntroductionModule } from './formly-autocomplete-introduction/formly-autocomplete-introduction.module';
 import { FormlyAutocompleteCountModule } from './formly-autocomplete-count/formly-autocomplete-count.module';
@@ -51,13 +51,13 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-introduction></sds-formly-autocomplete-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-basic></sds-formly-autocomplete-basic>',
   props: args,
 });
@@ -75,7 +75,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'basic'),
 };
 
-export const Disable: Story = (args) => ({
+export const Disable: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-disable></sds-formly-autocomplete-disable>',
   props: args,
 });
@@ -93,7 +93,7 @@ Disable.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'disable'),
 };
 
-export const Count: Story = (args) => ({
+export const Count: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-count></sds-formly-autocomplete-count>',
   props: args,
 });
@@ -111,7 +111,7 @@ Count.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'count'),
 };
 
-export const Freetext: Story = (args) => ({
+export const Freetext: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-freetext></sds-formly-autocomplete-freetext>',
   props: args,
 });
@@ -129,7 +129,7 @@ Freetext.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'free-text'),
 };
 
-export const Input: Story = (args) => ({
+export const Input: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-input></sds-formly-autocomplete-input>',
   props: args,
 });
@@ -147,7 +147,7 @@ Input.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'input'),
 };
 
-export const Tag: Story = (args) => ({
+export const Tag: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-tag></sds-formly-autocomplete-tag>',
   props: args,
 });
@@ -165,7 +165,7 @@ Tag.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'tag'),
 };
 
-export const Validation: Story = (args) => ({
+export const Validation: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-validation></sds-formly-autocomplete-validation>',
   props: args,
 });
@@ -183,7 +183,7 @@ Validation.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'validation'),
 };
 
-export const ID: Story = (args) => ({
+export const ID: StoryObj = (args) => ({
   template: '<sds-formly-autocomplete-id></sds-formly-autocomplete-id>',
   props: args,
 });
@@ -201,14 +201,14 @@ ID.parameters = {
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'id'),
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Basic',
-  'Count',
-  'Disable',
-  'Freetext',
-  'ID',
-  'Input',
-  'Tag',
-  'Validation',
-];
+// export const __namedExportsOrder = [
+//   'Introduction',
+//   'Basic',
+//   'Count',
+//   'Disable',
+//   'Freetext',
+//   'ID',
+//   'Input',
+//   'Tag',
+//   'Validation',
+// ];

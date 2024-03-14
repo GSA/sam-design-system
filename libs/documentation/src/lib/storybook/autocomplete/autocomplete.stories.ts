@@ -5,7 +5,7 @@ import {
   SdsAutocompleteModule,
   SelectionMode as SDSSelectionMode,
 } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { AutocompleteCheckboxModule } from './autocomplete-checkbox/autocomplete-checkbox.module';
 import { AutocompleteConfigurableModule } from './autocomplete-configurable/autocomplete-configurable.module';
@@ -239,99 +239,99 @@ const autocompleteSettingsFunction = (
   return base;
 };
 
-const Template: Story<SDSAutocompletelConfiguration> = (args) => {
-  const {
-    primaryKeyField,
-    id,
-    primaryTextField,
-    secondaryTextField,
-    labelText,
-    selectionMode,
-    autocompletePlaceHolderText,
-    debounceTime,
-    minimumCharacterCountSearch,
-    isFreeTextEnabled,
-    freeTextSubtext,
-    focusInSearch,
-    ariaLabelText,
-    isTagModeEnabled,
-    inputReadOnly,
-    groupByChild,
-    isGroupingEnabled,
-    isSelectableGroup,
-    hideChips,
-    hideCloseIcon,
-  } = args;
-  const combined = autocompleteSettingsFunction(
-    primaryKeyField,
-    id,
-    primaryTextField,
-    secondaryTextField,
-    labelText,
-    selectionMode,
-    autocompletePlaceHolderText,
-    debounceTime,
-    minimumCharacterCountSearch,
-    isFreeTextEnabled,
-    freeTextSubtext,
-    focusInSearch,
-    ariaLabelText,
-    isTagModeEnabled,
-    inputReadOnly,
-    groupByChild,
-    isGroupingEnabled,
-    isSelectableGroup,
-    hideChips,
-    hideCloseIcon
-  );
-  return {
-    template: `
-        <sds-autocomplete-configurable-demo
-        [settings]="settings"
-        [disabled]=disabled
-        >
-        </sds-autocomplete-configurable-demo>
-    `,
-    props: {
-      settings: combined,
-      ...args,
-    },
-    // props: args
-  };
-};
+// const Template: StoryObj<SDSAutocompletelConfiguration> = (args) => {
+//   const {
+//     primaryKeyField,
+//     id,
+//     primaryTextField,
+//     secondaryTextField,
+//     labelText,
+//     selectionMode,
+//     autocompletePlaceHolderText,
+//     debounceTime,
+//     minimumCharacterCountSearch,
+//     isFreeTextEnabled,
+//     freeTextSubtext,
+//     focusInSearch,
+//     ariaLabelText,
+//     isTagModeEnabled,
+//     inputReadOnly,
+//     groupByChild,
+//     isGroupingEnabled,
+//     isSelectableGroup,
+//     hideChips,
+//     hideCloseIcon,
+//   } = args;
+//   const combined = autocompleteSettingsFunction(
+//     primaryKeyField,
+//     id,
+//     primaryTextField,
+//     secondaryTextField,
+//     labelText,
+//     selectionMode,
+//     autocompletePlaceHolderText,
+//     debounceTime,
+//     minimumCharacterCountSearch,
+//     isFreeTextEnabled,
+//     freeTextSubtext,
+//     focusInSearch,
+//     ariaLabelText,
+//     isTagModeEnabled,
+//     inputReadOnly,
+//     groupByChild,
+//     isGroupingEnabled,
+//     isSelectableGroup,
+//     hideChips,
+//     hideCloseIcon
+//   );
+//   return {
+//     template: `
+//         <sds-autocomplete-configurable-demo
+//         [settings]="settings"
+//         [disabled]=disabled
+//         >
+//         </sds-autocomplete-configurable-demo>
+//     `,
+//     props: {
+//       settings: combined,
+//       ...args,
+//     },
+//     // props: args
+//   };
+// };
 
-export const Configurable = Template.bind({});
-Configurable.args = {
-  /**
-     Test
-     */
-  primaryKeyField: 'id',
-  id: 'autocomplete-1',
-  primaryTextField: 'name',
-  secondaryTextField: 'subtext',
-  labelText: 'Some Autocomplete',
-  autocompletePlaceHolderText: 'eg: Level 1',
-  debounceTime: 250,
-  minimumCharacterCountSearch: 0,
-  isFreeTextEnabled: false,
-  freeTextSubtext: 'search',
-  focusInSearch: true,
-  ariaLabelText: '',
-  isTagModeEnabled: false,
-  inputReadOnly: false,
-  groupByChild: 'children',
-  isGroupingEnabled: false,
-  isSelectableGroup: true,
-  hideChips: false,
-  hideCloseIcon: false,
-  disabled: false,
-};
-Configurable.parameters = {
-  preview: { disable: true },
-  controls: { expanded: true },
-};
+// export const Configurable = Template.bind({});
+// Configurable.args = {
+//   /**
+//      Test
+//      */
+//   primaryKeyField: 'id',
+//   id: 'autocomplete-1',
+//   primaryTextField: 'name',
+//   secondaryTextField: 'subtext',
+//   labelText: 'Some Autocomplete',
+//   autocompletePlaceHolderText: 'eg: Level 1',
+//   debounceTime: 250,
+//   minimumCharacterCountSearch: 0,
+//   isFreeTextEnabled: false,
+//   freeTextSubtext: 'search',
+//   focusInSearch: true,
+//   ariaLabelText: '',
+//   isTagModeEnabled: false,
+//   inputReadOnly: false,
+//   groupByChild: 'children',
+//   isGroupingEnabled: false,
+//   isSelectableGroup: true,
+//   hideChips: false,
+//   hideCloseIcon: false,
+//   disabled: false,
+// };
+// Configurable.parameters = {
+//   sdsCodePreview: { disable: true },
+//   controls: { expanded: true },
+// };
 
-export const SelectionMode: Story = (args) => ({
+export const SelectionMode: StoryObj = (args) => ({
   template: `<sds-autocomplete-selection-mode-demo></sds-autocomplete-selection-mode-demo>`,
   props: {
     ...args,
@@ -351,7 +351,7 @@ SelectionMode.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'selection-mode'),
 };
 
-export const Grouping: Story = (args) => ({
+export const Grouping: StoryObj = (args) => ({
   template: `<sds-autocomplete-grouping-demo></sds-autocomplete-grouping-demo>`,
   props: {
     ...args,
@@ -371,7 +371,7 @@ Grouping.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'grouping'),
 };
 
-export const FreeText: Story = (args) => ({
+export const FreeText: StoryObj = (args) => ({
   template: `<sds-autocomplete-free-text-demo></sds-autocomplete-free-text-demo>`,
   props: {
     ...args,
@@ -391,7 +391,7 @@ FreeText.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
 
-export const CheckBox: Story = (args) => ({
+export const CheckBox: StoryObj = (args) => ({
   template: `<sds-autocomplete-checkbox-demo></sds-autocomplete-checkbox-demo>`,
   props: {
     ...args,
@@ -411,7 +411,7 @@ CheckBox.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'checkbox'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-autocomplete-introduction></sds-autocomplete-introduction>',
   props: args,
 });
@@ -422,14 +422,14 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'CheckBox',
-  'FreeText',
-  'Grouping',
-  'SelectionMode',
-];
+// export const __namedExportsOrder = [
+//   'Introduction',
+//   'Configurable',
+//   'CheckBox',
+//   'FreeText',
+//   'Grouping',
+//   'SelectionMode',
+// ];

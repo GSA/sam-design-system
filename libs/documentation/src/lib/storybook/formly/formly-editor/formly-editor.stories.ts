@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyEditorIntroductionModule } from './formly-editor-introduction/formly-editor-introduction.module';
 import { FormlyEditorRegexModule } from './formly-editor-regex/formly-editor-regex.module';
@@ -43,13 +43,13 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-editor-introduction></sds-formly-editor-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-editor-basic></sds-formly-editor-basic>',
   props: args,
 });
@@ -67,7 +67,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-editor', 'basic'),
 };
 
-export const Regex: Story = (args) => ({
+export const Regex: StoryObj = (args) => ({
   template: '<sds-formly-editor-regex></sds-formly-editor-regex>',
   props: args,
 });
@@ -85,7 +85,7 @@ Regex.parameters = {
   stackblitzLink: generateStackblitzLink('formly-editor', 'regex'),
 };
 
-export const Label: Story = (args) => ({
+export const Label: StoryObj = (args) => ({
   template: '<sds-formly-editor-label></sds-formly-editor-label>',
   props: args,
 });
@@ -103,7 +103,7 @@ Label.parameters = {
   stackblitzLink: generateStackblitzLink('formly-editor', 'label'),
 };
 
-export const Updates: Story = (args) => ({
+export const Updates: StoryObj = (args) => ({
   template: '<sds-formly-editor-updates></sds-formly-editor-updates>',
   props: args,
 });
@@ -121,4 +121,4 @@ Updates.parameters = {
   stackblitzLink: generateStackblitzLink('formly-editor', 'updates'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Label', 'Regex', 'Updates'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'Label', 'Regex', 'Updates'];

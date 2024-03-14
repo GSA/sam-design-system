@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -28,7 +28,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-side-navigation-introduction></sds-side-navigation-introduction>`,
   props: {
     ...args,
@@ -41,10 +41,10 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Filters: Story = (args) => ({
+export const Filters: StoryObj = (args) => ({
   template: `<sds-side-navigation-filters></sds-side-navigation-filters>`,
   props: {
     ...args,
@@ -71,7 +71,7 @@ Filters.parameters = {
   stackblitzLink: generateStackblitzLink('side-navigation', 'filters'),
 };
 
-export const Links: Story = (args) => ({
+export const Links: StoryObj = (args) => ({
   template: `<sds-side-navigation-links></sds-side-navigation-links>`,
   props: {
     ...args,
@@ -98,4 +98,4 @@ Links.parameters = {
   stackblitzLink: generateStackblitzLink('side-navigation', 'links'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Filters', 'Links'];
+// export const __namedExportsOrder = ['Introduction', 'Filters', 'Links'];

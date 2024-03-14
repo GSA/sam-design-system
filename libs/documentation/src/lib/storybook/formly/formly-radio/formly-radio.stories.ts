@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyRadioIntroductionModule } from './formly-radio-introduction/formly-radio-introduction.module';
 import { FormlyRadioTemplateModule } from './formly-radio-template/formly-radio-template.module';
@@ -45,13 +45,13 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-radio-introduction></sds-formly-radio-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-radio-basic></sds-formly-radio-basic>',
   props: args,
 });
@@ -69,7 +69,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-radio', 'basic'),
 };
 
-export const Advanced: Story = (args) => ({
+export const Advanced: StoryObj = (args) => ({
   template: '<sds-formly-radio-advanced></sds-formly-radio-advanced>',
   props: args,
 });
@@ -87,7 +87,7 @@ Advanced.parameters = {
   stackblitzLink: generateStackblitzLink('formly-radio', 'advanced'),
 };
 
-export const Template: Story = (args) => ({
+export const Template: StoryObj = (args) => ({
   template: '<sds-formly-radio-template></sds-formly-radio-template>',
   props: args,
 });
@@ -105,7 +105,7 @@ Template.parameters = {
   stackblitzLink: generateStackblitzLink('formly-radio', 'template'),
 };
 
-export const Group: Story = (args) => ({
+export const Group: StoryObj = (args) => ({
   template: '<sds-formly-radio-group></sds-formly-radio-group>',
   props: args,
 });
@@ -123,7 +123,7 @@ Group.parameters = {
   stackblitzLink: generateStackblitzLink('formly-radio', 'group'),
 };
 
-export const Horizontal: Story = (args) => ({
+export const Horizontal: StoryObj = (args) => ({
   template: '<sds-formly-radio-horizontal></sds-formly-radio-horizontal>',
   props: args,
 });
@@ -141,4 +141,4 @@ Horizontal.parameters = {
   stackblitzLink: generateStackblitzLink('formly-radio', 'horizontal'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Advanced', 'Template', 'Group', 'Horizontal'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'Advanced', 'Template', 'Group', 'Horizontal'];

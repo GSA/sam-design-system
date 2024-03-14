@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { PaginationConfigurableModule } from './pagination-configurable/pagination-configurable.module';
 import { PaginationDisplayModeModule } from './pagination-display-mode/pagination-display-mode.module';
@@ -98,8 +98,8 @@ const pageFunction = (pageNumber?: number, pageSize?: number, totalPages?: numbe
   };
 };
 
-const Template: Story = (args) => {
-  const { totalItems, id, pageNumber, pageSize, totalPages, displayMode } = args;
+export const Configurable = (args) => {
+  const { totalItems = 1, id = 'top', pageNumber = 1, pageSize = 25, totalPages = 10, displayMode = 'default' } = args;
   const configuration = { id };
   const pageObj = pageFunction(pageNumber, pageSize, totalPages);
   return {
@@ -120,22 +120,12 @@ const Template: Story = (args) => {
       ...args,
     },
   };
-};
-
-export const Configurable = Template.bind({});
-Configurable.args = {
-  id: 'top',
-  pageNumber: 1,
-  pageSize: 25,
-  totalPages: 10,
-  totalItems: 1,
-  displayMode: 'default',
-};
+}
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const DisplayMode: Story = (args) => ({
+export const DisplayMode: StoryObj = (args) => ({
   template: '<sds-pagination-display-mode></sds-pagination-display-mode>',
   props: args,
 });
@@ -153,7 +143,7 @@ DisplayMode.parameters = {
   stackblitzLink: generateStackblitzLink('pagination', 'display-mode'),
 };
 
-export const TotalItems: Story = (args) => ({
+export const TotalItems: StoryObj = (args) => ({
   template: '<sds-pagination-total-items></sds-pagination-total-items>',
   props: args,
 });
@@ -171,7 +161,7 @@ TotalItems.parameters = {
   stackblitzLink: generateStackblitzLink('pagination', 'total-items'),
 };
 
-export const Page: Story = (args) => ({
+export const Page: StoryObj = (args) => ({
   template: '<sds-pagination-page></sds-pagination-page>',
   props: args,
 });
@@ -185,7 +175,7 @@ Page.parameters = {
   stackblitzLink: generateStackblitzLink('pagination', 'page'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-pagination-introduction></sds-pagination-introduction>',
   props: args,
 });
@@ -193,4 +183,4 @@ Introduction.parameters = {
   options: { showPanel: false },
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'DisplayMode', 'Page', 'TotalItems'];
+// export const __namedExportsOrder = ['Introduction', 'Configurable', 'DisplayMode', 'Page', 'TotalItems'];

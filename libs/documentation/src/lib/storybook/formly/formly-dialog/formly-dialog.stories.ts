@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -49,13 +49,13 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-dialog-introduction></sds-formly-dialog-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Download: Story = (args) => ({
+export const Download: StoryObj = (args) => ({
   template: '<sds-formly-dialog-download></sds-formly-dialog-download>',
   props: args,
 });
@@ -85,7 +85,7 @@ Download.parameters = {
   stackblitzLink: generateStackblitzLink('formly-dialog', 'download'),
 };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-dialog-basic></sds-formly-dialog-basic>',
   props: args,
 });
@@ -103,4 +103,4 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-dialog', 'basic'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Download'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'Download'];

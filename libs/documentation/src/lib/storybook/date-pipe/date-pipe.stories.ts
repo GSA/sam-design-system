@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { SdsDateModule, SdsDatePipe } from '@gsa-sam/components';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { DatePipeCurrentDayModule } from './date-pipe-current-day/date-pipe-current-day.module';
 import { DatePipeCurrentYearModule } from './date-pipe-current-year/date-pipe-current-year.module';
@@ -35,22 +35,17 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SdsDatePipe> = (args) => ({
-  template: `
-    <p>{{ today | sdsDate }}</p>
-  `,
+export const Configurable: StoryObj = (args) => ({
+  template: `<p>{{ today | sdsDate }}</p>`,
+  args: {today: Date.now()},
   props: args,
 });
-export const Configurable = Template.bind({});
-Configurable.args = {
-  today: Date.now(),
-};
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
 
-export const CurrentDay: Story = (args) => ({
+export const CurrentDay: StoryObj = (args) => ({
   template: `<sds-date-pipe-current-day></sds-date-pipe-current-day>`,
   props: args,
 });
@@ -66,7 +61,7 @@ CurrentDay.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('date-pipe', 'current-day'),
 };
-export const CurrentYear: Story = (args) => ({
+export const CurrentYear: StoryObj = (args) => ({
   template: `<sds-date-pipe-current-year></sds-date-pipe-current-year>`,
   props: args,
 });
@@ -82,7 +77,7 @@ CurrentYear.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('date-pipe', 'current-year'),
 };
-export const NonCurrentYear: Story = (args) => ({
+export const NonCurrentYear: StoryObj = (args) => ({
   template: `<sds-date-pipe-non-current-year></sds-date-pipe-non-current-year>`,
   props: args,
 });
@@ -99,7 +94,7 @@ NonCurrentYear.parameters = {
   stackblitzLink: generateStackblitzLink('date-pipe', 'non-current-year'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-date-pipe-introduction></sds-date-pipe-introduction>',
   props: args,
 });
@@ -110,7 +105,7 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'CurrentDay', 'CurrentYear', 'NonCurrentYear'];
+// export const __namedExportsOrder = ['Introduction', 'Configurable', 'CurrentDay', 'CurrentYear', 'NonCurrentYear'];

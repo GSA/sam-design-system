@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyCheckboxIntroductionModule } from './formly-checkbox-introduction/formly-checkbox-introduction.module';
 import { FormlyCheckboxTemplateModule } from './formly-checkbox-template/formly-checkbox-template.module';
@@ -49,13 +49,13 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-introduction></sds-formly-checkbox-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-basic></sds-formly-checkbox-basic>',
   props: args,
 });
@@ -73,7 +73,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'basic'),
 };
 
-export const Nested: Story = (args) => ({
+export const Nested: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-nested></sds-formly-checkbox-nested>',
   props: args,
 });
@@ -91,7 +91,7 @@ Nested.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'nested'),
 };
 
-export const Template: Story = (args) => ({
+export const Template: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-template></sds-formly-checkbox-template>',
   props: args,
 });
@@ -109,7 +109,7 @@ Template.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'template'),
 };
 
-export const Required: Story = (args) => ({
+export const Required: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-required></sds-formly-checkbox-required>',
   props: args,
 });
@@ -127,7 +127,7 @@ Required.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'required'),
 };
 
-export const Tooltip: Story = (args) => ({
+export const Tooltip: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-tooltip></sds-formly-checkbox-tooltip>',
   props: args,
 });
@@ -145,7 +145,7 @@ Tooltip.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'tooltip'),
 };
 
-export const Label: Story = (args) => ({
+export const Label: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-label></sds-formly-checkbox-label>',
   props: args,
 });
@@ -163,7 +163,7 @@ Label.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'label'),
 };
 
-export const Description: Story = (args) => ({
+export const Description: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-description></sds-formly-checkbox-description>',
   props: args,
 });
@@ -181,13 +181,13 @@ Description.parameters = {
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'description'),
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Basic',
-  'Description',
-  'Label',
-  'Required',
-  'Tooltip',
-  'Nested',
-  'Template',
-];
+// export const __namedExportsOrder = [
+//   'Introduction',
+//   'Basic',
+//   'Description',
+//   'Label',
+//   'Required',
+//   'Tooltip',
+//   'Nested',
+//   'Template',
+// ];

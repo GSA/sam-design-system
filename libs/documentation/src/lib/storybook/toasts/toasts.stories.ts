@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsToastModule, SdsToastSettings } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story, applicationConfig } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ToastsConfigurableModule } from './toasts-configurable/toasts-configurable.module';
@@ -45,7 +45,7 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-toasts-introduction></sds-toasts-introduction>`,
   props: {
     ...args,
@@ -61,10 +61,10 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable: Story = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: `<sds-toasts-configurable
   [toastType]="toastType"
   [toastMessage]="toastMessage"
@@ -86,11 +86,11 @@ Configurable.args = {
   preventDuplicates: false,
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
 
-export const Message: Story = (args) => ({
+export const Message: StoryObj = (args) => ({
   template: `<sds-toasts-message></sds-toasts-message>`,
   props: {
     ...args,
@@ -109,7 +109,7 @@ Message.parameters = {
   stackblitzLink: generateStackblitzLink('toasts', 'message'),
 };
 
-export const Type: Story = (args) => ({
+export const Type: StoryObj = (args) => ({
   template: `<sds-toasts-type></sds-toasts-type>`,
   props: {
     ...args,
@@ -128,7 +128,7 @@ Type.parameters = {
   stackblitzLink: generateStackblitzLink('toasts', 'type'),
 };
 
-export const Timeout: Story = (args) => ({
+export const Timeout: StoryObj = (args) => ({
   template: `<sds-toasts-timeout></sds-toasts-timeout>`,
   props: {
     ...args,
@@ -147,7 +147,7 @@ Timeout.parameters = {
   stackblitzLink: generateStackblitzLink('toasts', 'timeout'),
 };
 
-export const PreventDuplicates: Story = (args) => ({
+export const PreventDuplicates: StoryObj = (args) => ({
   template: `<sds-toasts-prevent-duplicates></sds-toasts-prevent-duplicates>`,
   props: {
     ...args,
@@ -170,4 +170,4 @@ PreventDuplicates.parameters = {
   stackblitzLink: generateStackblitzLink('toasts', 'prevent-duplicates'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Message', 'PreventDuplicates', 'Timeout', 'Type'];
+// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Message', 'PreventDuplicates', 'Timeout', 'Type'];

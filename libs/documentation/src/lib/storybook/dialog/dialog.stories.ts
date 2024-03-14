@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story, applicationConfig } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { DialogAlertTypeModule } from './dialog-alert-type/dialog-alert-type.module';
 import { DialogWidthModule } from './dialog-width/dialog-width.module';
 import { DialogNestedModule } from './dialog-nested/dialog-nested.module';
@@ -41,7 +41,7 @@ export default {
   },
 } as Meta;
 
-export const AlertType: Story = (args) => ({
+export const AlertType: StoryObj = (args) => ({
   template: '<sds-dialog-alert-type></sds-dialog-alert-type>',
   props: args,
 });
@@ -56,7 +56,7 @@ AlertType.parameters = {
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'alert-type'),
 };
-export const Nested: Story = (args) => ({
+export const Nested: StoryObj = (args) => ({
   template: '<sds-dialog-nested></sds-dialog-nested>',
   props: args,
 });
@@ -73,7 +73,7 @@ Nested.parameters = {
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'nested'),
 };
-export const Width: Story = (args) => ({
+export const Width: StoryObj = (args) => ({
   template: '<sds-dialog-width></sds-dialog-width>',
   props: args,
 });
@@ -88,7 +88,7 @@ Width.parameters = {
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'width'),
 };
-export const DataReturn: Story = (args) => ({
+export const DataReturn: StoryObj = (args) => ({
   template: '<sds-dialog-data-return></sds-dialog-data-return>',
   props: args,
 });
@@ -103,7 +103,7 @@ DataReturn.parameters = {
   ]),
   stackblitzLink: generateStackblitzLink('dialog', 'data-return'),
 };
-export const Policy: Story = (args) => ({
+export const Policy: StoryObj = (args) => ({
   template: '<sds-dialog-policy></sds-dialog-policy>',
   props: args,
 });
@@ -119,7 +119,7 @@ Policy.parameters = {
   stackblitzLink: generateStackblitzLink('dialog', 'policy'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-dialog-introduction></sds-dialog-introduction>',
   props: args,
 });
@@ -131,29 +131,29 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable: Story = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: `<sds-dialog-configurable [alert]="alert" [width]="width"></sds-dialog-configurable>`,
   props: args,
 });
 
 Configurable.parameters = {
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
 Configurable.args = {
   width: 'small',
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'AlertType',
-  'DataReturn',
-  'Nested',
-  'Policy',
-  'Width',
-];
+// export const __namedExportsOrder = [
+//   'Introduction',
+//   'Configurable',
+//   'AlertType',
+//   'DataReturn',
+//   'Nested',
+//   'Policy',
+//   'Width',
+// ];

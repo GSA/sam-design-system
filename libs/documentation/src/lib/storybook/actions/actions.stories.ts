@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ActionMenuModel, SdsActionsMenuComponent, SdsActionsMenuModule, SdsMenuModule } from '@gsa-sam/components';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ActionsIntroductionModule } from './actions-introduction/actions-introduction.module';
 import { ActionsLabelModule } from './actions-label/actions-label.module';
@@ -15,7 +15,7 @@ const disable = {
 };
 export default {
   title: 'Components/Actions Menu',
-  component: SdsActionsMenuComponent,
+  // component: SdsActionsMenuComponent,
   decorators: [
     moduleMetadata({
       imports: [
@@ -37,16 +37,12 @@ export default {
     getDisabled: disable,
     ngOnInit: disable,
     size: {
-      control: {
-        options: ['', 'sm'],
-        type: 'select',
-      },
+      options: ['', 'sm'],
+      control: 'select',
     },
     type: {
-      control: {
-        options: ['plain', 'primary'],
-        type: 'select',
-      },
+      options: ['plain', 'primary'],
+      control: 'select',
       description: '',
       table: {
         category: 'ActionMenuModel/trigger',
@@ -94,7 +90,7 @@ const actionsMenuModalFunction = (type, shadow, actions, label) => {
   };
   return toReturn;
 };
-const Template = ({ type, shadow, actions, size, label, ...rest }) => {
+export const Configurable = ({ type, shadow, actions, size, label, ...rest }) => {
   const menu = actionsMenuModalFunction(type, shadow, actions, label);
   return {
     template: `
@@ -111,8 +107,7 @@ const Template = ({ type, shadow, actions, size, label, ...rest }) => {
       rest,
     },
   };
-};
-export const Configurable = Template.bind({});
+}
 Configurable.args = {
   model: {},
   actions: [
@@ -122,11 +117,11 @@ Configurable.args = {
   ],
 };
 Configurable.parameters = {
-  preview: { disable: true },
   actions: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Size: Story = (args) => ({
+export const Size: StoryObj = (args) => ({
   template: '<sds-actions-size></sds-actions-size>',
   props: args,
 });
@@ -140,7 +135,7 @@ Size.parameters = {
   stackblitzLink: generateStackblitzLink('actions', 'size'),
 };
 
-export const Label: Story = (args) => ({
+export const Label: StoryObj = (args) => ({
   template: '<sds-actions-label></sds-actions-label>',
   props: args,
 });
@@ -154,7 +149,7 @@ Label.parameters = {
   stackblitzLink: generateStackblitzLink('actions', 'label'),
 };
 
-export const ModelTrigger: Story = (args) => ({
+export const ModelTrigger: StoryObj = (args) => ({
   template: '<sds-actions-model-trigger></sds-actions-model-trigger>',
   props: args,
 });
@@ -172,10 +167,10 @@ ModelTrigger.parameters = {
   stackblitzLink: generateStackblitzLink('actions', 'model-trigger'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-actions-introduction></sds-actions-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Label', 'ModelTrigger', 'Size'];
+// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Label', 'ModelTrigger', 'Size'];

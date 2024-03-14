@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyWrapperReadOnlyBasicModule } from './formly-wrapper-read-only-basic/formly-wrapper-read-only-basic.module';
 import { FormlyWrapperReadOnlyContainerModule } from './formly-wrapper-read-only-container/formly-wrapper-read-only-container.module';
@@ -32,13 +32,13 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-introduction></sds-formly-wrapper-read-only-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-basic></sds-formly-wrapper-read-only-basic>',
   props: args,
 });
@@ -56,7 +56,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'basic'),
 };
 
-export const FormlyType: Story = (args) => ({
+export const FormlyType: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-options></sds-formly-wrapper-read-only-options>',
   props: args,
 });
@@ -73,7 +73,7 @@ FormlyType.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'options'),
 };
-export const CustomTemplate: Story = (args) => ({
+export const CustomTemplate: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-custom-template></sds-formly-wrapper-read-only-custom-template>',
   props: args,
 });
@@ -91,7 +91,7 @@ CustomTemplate.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'custom-template'),
 };
 
-export const ContainerWithoutFormly: Story = (args) => ({
+export const ContainerWithoutFormly: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-container></sds-formly-wrapper-read-only-container>',
   props: args,
 });
@@ -108,4 +108,4 @@ ContainerWithoutFormly.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'custom-template'),
 };
-export const __namedExportsOrder = ['Introduction', 'Basic', 'FormlyType', 'CustomTemplate', 'ContainerWithoutFormly'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'FormlyType', 'CustomTemplate', 'ContainerWithoutFormly'];

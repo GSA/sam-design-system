@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -26,7 +26,7 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-slide-out-introduction></sds-slide-out-introduction>`,
   props: {
     ...args,
@@ -39,10 +39,10 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: `<sds-slide-out-basic></sds-slide-out-basic>`,
   props: {
     ...args,
@@ -61,7 +61,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('slide-out', 'basic'),
 };
 
-export const CustomTemplate: Story = (args) => ({
+export const CustomTemplate: StoryObj = (args) => ({
   template: `<sds-slide-out-custom-template></sds-slide-out-custom-template>`,
   props: {
     ...args,
@@ -81,4 +81,4 @@ CustomTemplate.parameters = {
   stackblitzLink: generateStackblitzLink('slide-out', 'custom-template'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'CustomTemplate'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'CustomTemplate'];

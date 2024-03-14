@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { VideoPlayerConfigurableModule } from './video-player-configurable/video-player-configurable.module';
 import { VideoPlayerCaptionModule } from './video-player-caption/video-player-caption.module';
@@ -58,31 +58,31 @@ const videoConfigFunction = (
     description: description ?? '',
   };
 };
-const Template: Story = (args) => {
-  const { sourceWebm, sourceMp4, height, width, caption, poster, id, seekInterval, debug, preload, description } = args;
-  let config = videoConfigFunction(
-    sourceWebm,
-    sourceMp4,
-    height,
-    width,
-    caption,
-    poster,
-    id,
-    seekInterval,
-    debug,
-    preload,
-    description
-  );
-  return {
-    template: `<sds-video-player-configurable [videoData]="configObj" [crossorigin]="crossorigin"></sds-video-player-configurable>`,
-    props: {
-      configObj: config,
-      ...args,
-    },
-  };
-};
+// const Template: StoryObj = (args) => {
+//   const { sourceWebm, sourceMp4, height, width, caption, poster, id, seekInterval, debug, preload, description } = args;
+//   let config = videoConfigFunction(
+//     sourceWebm,
+//     sourceMp4,
+//     height,
+//     width,
+//     caption,
+//     poster,
+//     id,
+//     seekInterval,
+//     debug,
+//     preload,
+//     description
+//   );
+//   return {
+//     template: `<sds-video-player-configurable [videoData]="configObj" [crossorigin]="crossorigin"></sds-video-player-configurable>`,
+//     props: {
+//       configObj: config,
+//       ...args,
+//     },
+//   };
+// };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-video-player-introduction></sds-video-player-introduction>`,
   props: {
     ...args,
@@ -95,29 +95,29 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable = Template.bind({});
-Configurable.args = {
-  sourceWebm: '',
-  sourceMp4: 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',
-  height: 'auto',
-  width: '100%',
-  caption: 'assets/video/gsa-sample.vtt',
-  poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
-  id: 'sampleId1',
-  seekInterval: 20,
-  debug: true,
-  preload: 'none',
-  description: 'GSA example video',
-  crossorigin: '',
-};
-Configurable.parameters = {
-  preview: { disable: true },
-};
+// export const Configurable = Template.bind({});
+// Configurable.args = {
+//   sourceWebm: '',
+//   sourceMp4: 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',
+//   height: 'auto',
+//   width: '100%',
+//   caption: 'assets/video/gsa-sample.vtt',
+//   poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
+//   id: 'sampleId1',
+//   seekInterval: 20,
+//   debug: true,
+//   preload: 'none',
+//   description: 'GSA example video',
+//   crossorigin: '',
+// };
+// Configurable.parameters = {
+//   sdsCodePreview: { disable: true },
+// };
 
-export const Caption: Story = (args) => ({
+export const Caption: StoryObj = (args) => ({
   template: `<sds-video-player-caption></sds-video-player-caption>`,
   props: {
     ...args,
@@ -138,7 +138,7 @@ Caption.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'caption'),
 };
 
-export const Debug: Story = (args) => ({
+export const Debug: StoryObj = (args) => ({
   template: `<sds-video-player-debug></sds-video-player-debug>`,
   props: {
     ...args,
@@ -159,7 +159,7 @@ Debug.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'debug'),
 };
 
-export const Description: Story = (args) => ({
+export const Description: StoryObj = (args) => ({
   template: `<sds-video-player-description></sds-video-player-description>`,
   props: {
     ...args,
@@ -180,7 +180,7 @@ Description.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'description'),
 };
 
-export const PreLoad: Story = (args) => ({
+export const PreLoad: StoryObj = (args) => ({
   template: `<sds-video-player-preload></sds-video-player-preload>`,
   props: {
     ...args,
@@ -201,7 +201,7 @@ PreLoad.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'preload'),
 };
 
-export const SeekInterval: Story = (args) => ({
+export const SeekInterval: StoryObj = (args) => ({
   template: `<sds-video-player-seek-interval></sds-video-player-seek-interval>`,
   props: {
     ...args,
@@ -222,7 +222,7 @@ SeekInterval.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'seek-interval'),
 };
 
-export const CrossOrigin: Story = (args) => ({
+export const CrossOrigin: StoryObj = (args) => ({
   template: `<sds-video-player-seek-interval></sds-video-player-seek-interval>`,
   props: {
     ...args,
@@ -243,13 +243,13 @@ CrossOrigin.parameters = {
   stackblitzLink: generateStackblitzLink('video-player', 'cross-origin'),
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'Caption',
-  'CrossOrigin',
-  'Debug',
-  'Description',
-  'PreLoad',
-  'SeekInterval',
-];
+// export const __namedExportsOrder = [
+//   'Introduction',
+//   'Configurable',
+//   'Caption',
+//   'CrossOrigin',
+//   'Debug',
+//   'Description',
+//   'PreLoad',
+//   'SeekInterval',
+// ];

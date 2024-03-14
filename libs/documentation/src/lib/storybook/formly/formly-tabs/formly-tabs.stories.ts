@@ -4,7 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 
 import { FormlyTabsIntroductionModule } from './formly-tabs-introduction/formly-tabs-introduction.module';
@@ -52,13 +52,13 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-tabs-introduction></sds-formly-tabs-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Intercept: Story = (args) => ({
+export const Intercept: StoryObj = (args) => ({
   template: '<sds-formly-tabs-intercept></sds-formly-tabs-intercept>',
   props: args,
 });
@@ -76,7 +76,7 @@ Intercept.parameters = {
   stackblitzLink: generateStackblitzLink('formly-tabs', 'intercept'),
 };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-tabs-basic></sds-formly-tabs-basic>',
   props: args,
 });
@@ -94,4 +94,4 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-tabs', 'basic'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Intercept'];
+// export const __namedExportsOrder = ['Introduction', 'Basic', 'Intercept'];
