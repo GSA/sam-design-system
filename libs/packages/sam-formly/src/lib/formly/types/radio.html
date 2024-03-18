@@ -2,7 +2,7 @@
   class="usa-radio"
   [id]="id"
   [attr.aria-label]="props.ariaLabel? props.ariaLabel : props.label"
-  [attr.aria-describedby]="props.description ? id + '_description' : undefined"
+  [attr.aria-describedby]="props.description ? id + '-description' : undefined"
   [ngClass]="{'horizontal': props.horizontal, 'grid-row': props.horizontal}"
 >
   <div *ngIf="props.options">
@@ -50,13 +50,7 @@
                   [value]="opt.value"
                 />
 
-                <label
-                  class="usa-radio__label"
-                  [ngClass]="{
-              'margin-top-0': j==0 ,
-'{{props.optionsClass}}': props.optionsClass}"
-                  [for]="id + '_' + i+ '_'+ j"
-                >
+                <label class="usa-radio__label" [ngClass]="getClassName(j)" [for]="id + '_' + i+ '_'+ j">
                   <span [innerHtml]="opt.label"></span>
                   <ng-container *ngIf="option.value[j].description && option.value[j].description.length">
                     <div class="usa-checkbox__label-description">
@@ -106,15 +100,10 @@
         checked="checked"
         [formControl]="formControl"
         [value]="option.value"
+        tabindex="0"
       />
 
-      <label
-        class="usa-radio__label"
-        [ngClass]="{
-              'margin-top-0': i==0 ,
-'{{props.optionsClass}}': props.optionsClass}"
-        [for]="id + '_' + i"
-      >
+      <label class="usa-radio__label" [ngClass]="getClassName(i)" [for]="id + '_' + i">
         <span [innerHtml]="option.label"></span>
         <ng-container *ngIf="props.options[i].description && props.options[i].description.length">
           <div class="usa-checkbox__label-description">

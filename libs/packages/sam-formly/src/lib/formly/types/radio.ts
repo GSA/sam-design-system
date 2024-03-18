@@ -14,6 +14,13 @@ export class FormlyFieldRadioComponent extends FieldType<FieldTypeConfig> implem
       options: [],
     },
   };
+  getClassName(index) {
+    let cls = '';
+    if (index === 0) {
+      cls = 'margin-top-0';
+    }
+    return `${this.props.optionsClass} ${cls}`;
+  }
   ngAfterViewInit() {
     const passedIn = this.props.template;
     setTimeout(() => {

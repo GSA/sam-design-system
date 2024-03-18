@@ -1,0 +1,33 @@
+name: Deploy PRs
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+jobs:
+  Build-Storybook:
+    if: github.event.action != 'closed'
+    uses: ./.github/workflows/build.yml
+    with:
+        pr-number: ${{ github.event.number }}
+  Deploy-Storybook:
+    runs-on: ubuntu-latest
+    if: ${{ !failure() }}
+    needs: Build-Storybook
+    steps:
+        # Only needed because rossjrw/pr-preview-action needs to run in a git repo
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Download Storybook Assets
+        # If closing PR, build will not occur so nothing to download
+        if: github.event.action != 'closed'
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-assets
+          path: ./storybook-static
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./storybook-static/

@@ -27,6 +27,9 @@ export class SdsSideToolbarComponent implements OnInit, OnDestroy {
   // Text for button in responsive view
   @Input() responsiveButtonText: string;
 
+  // Icon name for button in responsive view
+  @Input() responsiveButtonIcon: string;
+
   // Text for title bar in responsive view. If not provided, will default to responsiveButtonText
   @Input() dialogTitleText: string;
 

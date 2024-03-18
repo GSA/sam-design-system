@@ -4,11 +4,17 @@
 
 <div *ngIf="isResponsiveView">
   <button
-    class="usa-button usa-button--accent-cool usa-button--hover text-secondary-dar"
+    class="usa-button usa-button--accent-cool usa-button--hover text-secondary-dar width-full"
     id="responsiveViewButton"
     (click)="onResponsiveViewButtonClicked()"
     [attr.aria-label]="responsiveButtonText"
   >
+    <usa-icon
+      *ngIf="responsiveButtonIcon"
+      class="padding-right-1"
+      [icon]="responsiveButtonIcon"
+      [size]="'1x'"
+    ></usa-icon>
     {{ responsiveButtonText }}
   </button>
 </div>

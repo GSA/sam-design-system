@@ -15,11 +15,15 @@ export class SDSClickOutsideDirective {
 
   constructor(private _elementRef: ElementRef) {}
 
-  @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement) {
-    const clickedInside = this._elementRef.nativeElement.contains(targetElement);
+  @HostListener('document:click', ['$event'])
+  public onClick(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    const clickedInside = this.isInside(targetElement);
     if (!clickedInside) {
       this.clickOutside.emit(undefined);
     }
+  }
+  private isInside(targetElement: HTMLElement): boolean {
+    return targetElement.closest('.sds-autocomplete, .usa-input') !== null;
   }
 }
