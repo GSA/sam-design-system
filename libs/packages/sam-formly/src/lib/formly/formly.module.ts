@@ -85,7 +85,7 @@ export function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig
 export function requireOrInvalidDateFormat(err, field: FormlyFieldConfig) {
   if (
     field.type === 'datepicker' &&
-    field.props['customDateMessage'] &&
+    field.props['invalidDateMessage'] &&
     field.formControl?.getError('matDatepickerParse')
   ) {
     return `Valid date format required (ex: MM/DD/YYYY)`;
