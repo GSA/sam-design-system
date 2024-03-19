@@ -82,6 +82,18 @@ export function invalidDateFormatValidationMessage(err, field: FormlyFieldConfig
   return `Valid date format required (ex: MM/DD/YYYY)`;
 }
 
+export function requireOrInvalidDateFormat(err, field: FormlyFieldConfig) {
+  if (
+    field.type === 'datepicker' &&
+    field.props['invalidDateMessage'] &&
+    field.formControl?.getError('matDatepickerParse')
+  ) {
+    return `Valid date format required (ex: MM/DD/YYYY)`;
+  } else {
+    return 'This field is required';
+  }
+}
+
 export function matDatepickerMinValidationMessage(err, field: FormlyFieldConfig) {
   const fieldWithMinDate = field.props.minDate ? field : field.parent;
   if (!fieldWithMinDate) {
@@ -187,7 +199,7 @@ export const DATE_FORMAT: MatDateFormats = {
       },
 
       validationMessages: [
-        { name: 'required', message: 'This field is required' },
+        { name: 'required', message: requireOrInvalidDateFormat },
         { name: 'minLength', message: minLengthValidationMessage },
         { name: 'maxLength', message: maxLengthValidationMessage },
         { name: 'min', message: minValidationMessage },
