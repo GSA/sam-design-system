@@ -55,42 +55,40 @@ const formlyConfigFunction = (label: string, description: string, required: bool
   };
 };
 
-// const Template: StoryObj = (args) => {
-//   const { label, description, required, options } = args;
-//   let config = formlyConfigFunction(label, description, required, options);
-//   return {
-//     template: '<sds-formly-select-configurable [config]="configObj"></sds-formly-select-configurable>',
-//     props: {
-//       configObj: config,
-//       ...args,
-//     },
-//   };
-// };
-
 export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-select-introduction></sds-formly-select-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-// export const Configurable = Template.bind({});
-// Configurable.args = {
-//   label: 'Entity Type',
-//   description: 'Select the entity type.',
-//   required: true,
-//   options: [
-//     'Contract Opportunities',
-//     'Entity Information',
-//     'Assistance Listings',
-//     'Contract Data',
-//     'Federal Hierarchy',
-//     'Wage Determination',
-//   ],
-// };
-// Configurable.parameters = {
-//   sdsCodePreview: { disable: true },
-//   actions: { disable: true },
-// };
+export const Configurable = (args) => {
+  const { label, description, required, options } = args;
+  let config = formlyConfigFunction(label, description, required, options);
+  return {
+    template: '<sds-formly-select-configurable [config]="configObj"></sds-formly-select-configurable>',
+    props: {
+      configObj: config,
+      ...args,
+    },
+  };
+};
+Configurable.args = {
+  label: 'Entity Type',
+  description: 'Select the entity type.',
+  required: true,
+  options: [
+    'Contract Opportunities',
+    'Entity Information',
+    'Assistance Listings',
+    'Contract Data',
+    'Federal Hierarchy',
+    'Wage Determination',
+  ],
+};
+Configurable.parameters = {
+  sdsCodePreview: { disable: true },
+  actions: { disable: true },
+};
 
 export const Label: StoryObj = (args) => ({
   template: '<sds-formly-select-label></sds-formly-select-label>',

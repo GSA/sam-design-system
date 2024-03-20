@@ -70,17 +70,6 @@ const formlyConfigFunction = (
     maxLength: maxLength ?? '',
   };
 };
-// const Template: StoryObj = (args) => {
-//   const { label, placeholder, description, required, maxLength } = args;
-//   let config = formlyConfigFunction(label, placeholder, description, required, maxLength);
-//   return {
-//     template: '<sds-formly-text-area-configurable [config]="configObj"></sds-formly-text-area-configurable>',
-//     props: {
-//       configObj: config,
-//       ...args,
-//     },
-//   };
-// };
 
 export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-text-area-introduction></sds-formly-text-area-introduction>',
@@ -88,18 +77,28 @@ export const Introduction: StoryObj = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-// export const Configurable = Template.bind({});
-// Configurable.args = {
-//   label: 'Entity Description',
-//   placeholder: 'eg: Acme Corporation is a federal contractor.',
-//   description: 'Enter the description for your entity.',
-//   required: true,
-//   maxLength: 50,
-// };
-// Configurable.parameters = {
-//   sdsCodePreview: { disable: true },
-//   actions: { disable: true },
-// };
+export const Configurable = (args) => {
+  const { label, placeholder, description, required, maxLength } = args;
+  let config = formlyConfigFunction(label, placeholder, description, required, maxLength);
+  return {
+    template: '<sds-formly-text-area-configurable [config]="configObj"></sds-formly-text-area-configurable>',
+    props: {
+      configObj: config,
+      ...args,
+    },
+  };
+};
+Configurable.args = {
+  label: 'Entity Description',
+  placeholder: 'eg: Acme Corporation is a federal contractor.',
+  description: 'Enter the description for your entity.',
+  required: true,
+  maxLength: 50,
+};
+Configurable.parameters = {
+  sdsCodePreview: { disable: true },
+  actions: { disable: true },
+};
 
 export const Description: StoryObj = (args) => ({
   template: '<sds-formly-text-area-description></sds-formly-text-area-description>',

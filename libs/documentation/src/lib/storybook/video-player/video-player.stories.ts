@@ -31,6 +31,22 @@ export default {
   argTypes: {},
 } as Meta;
 
+export const Introduction: StoryObj = (args) => ({
+  template: `<sds-video-player-introduction></sds-video-player-introduction>`,
+  props: {
+    ...args,
+  },
+});
+Introduction.parameters = {
+  options: { showPanel: false },
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
+
 const videoConfigFunction = (
   sourceWebm: string,
   sourceMp4: string,
@@ -58,64 +74,47 @@ const videoConfigFunction = (
     description: description ?? '',
   };
 };
-// const Template: StoryObj = (args) => {
-//   const { sourceWebm, sourceMp4, height, width, caption, poster, id, seekInterval, debug, preload, description } = args;
-//   let config = videoConfigFunction(
-//     sourceWebm,
-//     sourceMp4,
-//     height,
-//     width,
-//     caption,
-//     poster,
-//     id,
-//     seekInterval,
-//     debug,
-//     preload,
-//     description
-//   );
-//   return {
-//     template: `<sds-video-player-configurable [videoData]="configObj" [crossorigin]="crossorigin"></sds-video-player-configurable>`,
-//     props: {
-//       configObj: config,
-//       ...args,
-//     },
-//   };
-// };
 
-export const Introduction: StoryObj = (args) => ({
-  template: `<sds-video-player-introduction></sds-video-player-introduction>`,
-  props: {
-    ...args,
-  },
-});
-Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
-  actions: { disable: true },
+export const Configurable =  (args) => {
+  const { sourceWebm, sourceMp4, height, width, caption, poster, id, seekInterval, debug, preload, description } = args;
+  let config = videoConfigFunction(
+    sourceWebm,
+    sourceMp4,
+    height,
+    width,
+    caption,
+    poster,
+    id,
+    seekInterval,
+    debug,
+    preload,
+    description
+  );
+  return {
+    template: `<sds-video-player-configurable [videoData]="configObj" [crossorigin]="crossorigin"></sds-video-player-configurable>`,
+    props: {
+      configObj: config,
+      ...args,
+    },
+  };
+}
+Configurable.args = {
+  sourceWebm: '',
+  sourceMp4: 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',
+  height: 'auto',
+  width: '100%',
+  caption: 'assets/video/gsa-sample.vtt',
+  poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
+  id: 'sampleId1',
+  seekInterval: 20,
+  debug: true,
+  preload: 'none',
+  description: 'GSA example video',
+  crossorigin: '',
+};
+Configurable.parameters = {
   sdsCodePreview: { disable: true },
 };
-
-// export const Configurable = Template.bind({});
-// Configurable.args = {
-//   sourceWebm: '',
-//   sourceMp4: 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',
-//   height: 'auto',
-//   width: '100%',
-//   caption: 'assets/video/gsa-sample.vtt',
-//   poster: 'https://github.com/GSA/sam-static-content/raw/master/assets/images/gsa-sample.jpg',
-//   id: 'sampleId1',
-//   seekInterval: 20,
-//   debug: true,
-//   preload: 'none',
-//   description: 'GSA example video',
-//   crossorigin: '',
-// };
-// Configurable.parameters = {
-//   sdsCodePreview: { disable: true },
-// };
 
 export const Caption: StoryObj = (args) => ({
   template: `<sds-video-player-caption></sds-video-player-caption>`,

@@ -78,17 +78,6 @@ const formlyConfigFunction = (
     tooltipText: tooltipText ?? '',
   };
 };
-// const Template: StoryObj = (args) => {
-//   const { label, placeholder, description, required, disabled, tooltipText } = args;
-//   let config = formlyConfigFunction(label, placeholder, description, required, disabled, tooltipText);
-//   return {
-//     template: '<sds-formly-input-configurable [config]="configObj"></sds-formly-input-configurable>',
-//     props: {
-//       configObj: config,
-//       ...args,
-//     },
-//   };
-// };
 
 export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-input-introduction></sds-formly-input-introduction>',
@@ -96,18 +85,28 @@ export const Introduction: StoryObj = (args) => ({
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-// export const Configurable = Template.bind({});
-// Configurable.args = {
-//   label: 'Label',
-//   placeholder: 'Placeholder',
-//   description: 'Description',
-//   required: false,
-//   disabled: false,
-//   tooltipText: '',
-// };
-// Configurable.parameters = {
-//   sdsCodePreview: { disable: true },
-// };
+export const Configurable = (args) => {
+  const { label, placeholder, description, required, disabled, tooltipText } = args;
+  let config = formlyConfigFunction(label, placeholder, description, required, disabled, tooltipText);
+  return {
+    template: '<sds-formly-input-configurable [config]="configObj"></sds-formly-input-configurable>',
+    props: {
+      configObj: config,
+      ...args,
+    },
+  };
+};
+Configurable.args = {
+  label: 'Label',
+  placeholder: 'Placeholder',
+  description: 'Description',
+  required: false,
+  disabled: false,
+  tooltipText: '',
+};
+Configurable.parameters = {
+  sdsCodePreview: { disable: true },
+};
 
 export const Label: StoryObj = (args) => ({
   template: '<sds-formly-input-label></sds-formly-input-label>',

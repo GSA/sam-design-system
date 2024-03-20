@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ActionMenuModel, SdsActionsMenuComponent, SdsActionsMenuModule, SdsMenuModule } from '@gsa-sam/components';
-import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { ActionMenuModel, SdsActionsMenuModule, SdsMenuModule } from '@gsa-sam/components';
+import { applicationConfig, Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ActionsIntroductionModule } from './actions-introduction/actions-introduction.module';
 import { ActionsLabelModule } from './actions-label/actions-label.module';
@@ -15,19 +15,20 @@ const disable = {
 };
 export default {
   title: 'Components/Actions Menu',
-  // component: SdsActionsMenuComponent,
   decorators: [
     moduleMetadata({
       imports: [
         CommonModule,
         SdsActionsMenuModule,
-        BrowserAnimationsModule,
         SdsMenuModule,
         ActionsSizeModule,
         ActionsLabelModule,
         ActionsModelTriggerModule,
         ActionsIntroductionModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -172,5 +173,18 @@ export const Introduction: StoryObj = (args) => ({
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
+
+// export const preview: Preview = {
+//   parameters: {
+//     options: {
+//       storySort: {
+//         method: 'alphabetical',
+//         // order: [],
+//         // locales: '',
+//       },
+//     },
+//   },
+// };
+
 
 // export const __namedExportsOrder = ['Introduction', 'Configurable', 'Label', 'ModelTrigger', 'Size'];

@@ -139,58 +139,58 @@ const searchSettingsFunction = (
   return toReturn;
 };
 
-// const Template: StoryObj<SearchSettings> = (args: SearchSettings) => {
-//   const { placeholder, isSuffixSearchIcon, size, inputClass, parentSelector, id, ariaLabel } = args;
-//   const settings = searchSettingsFunction(
-//     placeholder,
-//     isSuffixSearchIcon,
-//     size,
-//     inputClass,
-//     parentSelector,
-//     id,
-//     ariaLabel
-//   );
-//   return {
-//     template: `
-//     <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="settings"
-//   ></sds-search>
-//     <pre>Model: {{model | json}}</pre>
-//   `,
-//     props: {
-//       // ...args
-//       // Must do as destructive args leads to props such as onChange not being found.
-//       onSubmit: args['onSubmit'],
-//       modelChange: args['modelChange'],
-//       searchSettings: args['searchSettings'],
-//       model: args['model'],
-//       settings: settings,
-//     },
-//   };
-// };
+// const Template: StoryObj =
 
-// export const Configurable = Template.bind({});
-// Configurable.args = {
-//   searchSettings: {
-//     placeholder: 'eg: Acme Corporation',
-//     isSuffixSearchIcon: false,
-//     size: 'small',
-//     inputClass: '',
-//     parentSeletor: '',
-//     id: 'searchBasic',
-//     ariaLabel: 'Basic Search',
-//   },
-//   placeholder: '',
-//   isSuffixSearchIcon: false,
-//   size: '',
-//   inputClass: '',
-//   parentSelector: '',
-//   id: '',
-//   ariaLabel: '',
-//   model: {},
-// };
-// Configurable.parameters = {
-//   sdsCodePreview: { disable: true },
-// };
+export const Configurable = (args) => {
+  const { placeholder, isSuffixSearchIcon, size, inputClass, parentSelector, id, ariaLabel } = args;
+  const settings = searchSettingsFunction(
+    placeholder,
+    isSuffixSearchIcon,
+    size,
+    inputClass,
+    parentSelector,
+    id,
+    ariaLabel
+  );
+  return {
+    template: `
+    <sds-search [(ngModel)]="model" (submit)="onSubmit($event)" (ngModelChange)="modelChange($event)" [searchSettings]="settings"
+  ></sds-search>
+    <pre>Model: {{model | json}}</pre>
+  `,
+    props: {
+      // ...args
+      // Must do as destructive args leads to props such as onChange not being found.
+      onSubmit: args['onSubmit'],
+      modelChange: args['modelChange'],
+      searchSettings: args['searchSettings'],
+      model: args['model'],
+      settings: settings,
+    },
+  };
+};
+Configurable.args = {
+  searchSettings: {
+    placeholder: 'eg: Acme Corporation',
+    isSuffixSearchIcon: false,
+    size: 'small',
+    inputClass: '',
+    parentSeletor: '',
+    id: 'searchBasic',
+    ariaLabel: 'Basic Search',
+  },
+  placeholder: '',
+  isSuffixSearchIcon: false,
+  size: '',
+  inputClass: '',
+  parentSelector: '',
+  id: '',
+  ariaLabel: '',
+  model: {},
+};
+Configurable.parameters = {
+  sdsCodePreview: { disable: true },
+};
 
 export const Size: StoryObj = (args) => ({
   template: `<sds-search-size></sds-search-size>`,
