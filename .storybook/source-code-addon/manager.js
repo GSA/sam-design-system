@@ -16,7 +16,7 @@ addons.register('my/panel', () => {
     title: 'View Code',
     type: types.PANEL,
     paramKey: 'sdsCodePreview',
-    render: ({ active, key }) => {
+    render: ({ active }) => {
       const preview = useParameter('preview', null);
       const [selectedTab, setSelectedTab] = useState(null);
 
@@ -25,7 +25,7 @@ addons.register('my/panel', () => {
       };
 
       return (
-        <AddonPanel key={key} active={active}>
+        <AddonPanel active={active}>
           {preview && preview.length > 0 ? (
             <div>
               {preview.map((item, index) => (
