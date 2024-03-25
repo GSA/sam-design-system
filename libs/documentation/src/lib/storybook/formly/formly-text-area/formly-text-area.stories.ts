@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyTextAreaIntroductionModule } from './formly-text-area-introduction/formly-text-area-introduction.module';
 import { FormlyTextAreaConfigurableModule } from './formly-text-area-configurable/formly-text-area-configurable.module';
@@ -37,13 +37,15 @@ export default {
         FormlyModule.forRoot(),
         FormlyTextAreaIntroductionModule,
         FormlyTextAreaConfigurableModule,
-        NoopAnimationsModule,
         FormlyTextAreaLabelModule,
         FormlyTextAreaDescriptionModule,
         FormlyTextAreaMaxlengthModule,
         FormlyTextAreaRequiredModule,
         FormlyTextAreaPlaceholderModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -189,13 +191,3 @@ MaxLength.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'maxlength'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'Description',
-//   'MaxLength',
-//   'Label',
-//   'Placeholder',
-//   'Required',
-// ];

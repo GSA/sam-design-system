@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyWrapperTemplateOptionsBlurModule } from './formly-wrapper-template-options-blur/formly-wrapper-template-options-blur.module';
 import { FormlyWrapperTemplateOptionsAnnounceLabelModule } from './formly-wrapper-template-options-announce-label/formly-wrapper-template-options-announce-label.module';
@@ -21,16 +21,17 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyWrapperTemplateOptionsIntroductionModule,
         FormlyWrapperTemplateOptionsBlurModule,
         FormlyWrapperTemplateOptionsUpdateonModule,
         FormlyWrapperTemplateOptionsTagsModule,
         FormlyWrapperTemplateOptionsHideOptionalModule,
-
         FormlyWrapperTemplateOptionsAnnounceLabelModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -112,5 +113,3 @@ AnnounceLabel.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'announc-label'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Blur', 'UpdateOn', 'Tags', 'Hideoptional', 'AnnounceLabel'];

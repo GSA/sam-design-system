@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -32,11 +32,13 @@ export default {
         FormsModule,
         FormlyModule.forRoot(),
         FormlyDialogIntroductionModule,
-        NoopAnimationsModule,
         FormlyDialogDownloadModule,
         FormlyDialogBasicModule,
         FormlyDialogIntroductionModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -103,4 +105,3 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-dialog', 'basic'),
 };
 
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Download'];

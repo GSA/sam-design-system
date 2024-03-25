@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -20,13 +20,15 @@ export default {
     moduleMetadata({
       imports: [
         CommonModule,
-        NoopAnimationsModule,
         SelectionPanelIntroductionModule,
         SelectionPanelConfigurableModule,
         SelectionPanelSelectedModule,
         SelectionPanelModeModule,
         SelectionPanelChildrenModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {},
@@ -166,5 +168,3 @@ Selected.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('selection-panel', 'selected'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Children', 'Mode', 'Selected'];

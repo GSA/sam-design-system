@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyInputAffixModule } from './formly-input-affix/formly-input-affix.module';
 import { FormlyInputConfigurableModule } from './formly-input-configurable/formly-input-configurable.module';
@@ -39,7 +39,6 @@ export default {
         FormlyModule.forRoot(),
         FormlyInputIntroductionModule,
         FormlyInputConfigurableModule,
-        NoopAnimationsModule,
         FormlyInputLabelModule,
         FormlyInputDescriptionModule,
         FormlyInputDisabledModule,
@@ -49,6 +48,9 @@ export default {
         FormlyInputIntroductionModule,
         FormlyInputAffixModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -231,15 +233,3 @@ Affix.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'affix'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'Affix',
-//   'Description',
-//   'Disabled',
-//   'Label',
-//   'Placeholder',
-//   'Required',
-//   'TooltipText',
-// ];

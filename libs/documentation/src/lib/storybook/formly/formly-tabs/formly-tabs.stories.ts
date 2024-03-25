@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 
 import { FormlyTabsIntroductionModule } from './formly-tabs-introduction/formly-tabs-introduction.module';
@@ -33,13 +33,13 @@ export default {
         FormsModule,
         FormlyModule.forRoot(),
         FormlyTabsIntroductionModule,
-
-        NoopAnimationsModule,
-
         FormlyTabsInterceptModule,
         FormlyTabsBasicModule,
         FormlyTabsIntroductionModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -93,5 +93,3 @@ Basic.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-tabs', 'basic'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Intercept'];

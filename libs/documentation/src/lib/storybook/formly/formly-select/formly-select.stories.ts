@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlySelectIntroductionModule } from './formly-select-introduction/formly-select-introduction.module';
 import { FormlySelectConfigurableModule } from './formly-select-configurable/formly-select-configurable.module';
@@ -27,7 +27,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlySelectIntroductionModule,
         FormlySelectConfigurableModule,
@@ -36,6 +35,9 @@ export default {
         FormlySelectRequiredModule,
         FormlySelectOptionsModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -161,5 +163,3 @@ Options.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-select', 'options'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Description', 'Label', 'Required', 'Options'];

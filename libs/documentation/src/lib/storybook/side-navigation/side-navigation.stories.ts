@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
   generateStackblitzLink,
 } from 'libs/documentation/src/sandbox/sandbox-utils';
-import { RouterTestingModule } from '@angular/router/testing';
-import { NavigationMode } from '@gsa-sam/components';
 import { SideNavigationIntroductionModule } from './side-navigation-introduction/side-navigation-introduction.module';
 import { SideNavigationFiltersModule } from './side-navigation-filters/side-navigation-filters.module';
 import { SideNavigationLinksModule } from './side-navigation-links/side-navigation-links.module';
@@ -18,11 +16,13 @@ export default {
     moduleMetadata({
       imports: [
         CommonModule,
-        NoopAnimationsModule,
         SideNavigationIntroductionModule,
         SideNavigationFiltersModule,
         SideNavigationLinksModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {},
@@ -97,5 +97,3 @@ Links.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'links'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Filters', 'Links'];

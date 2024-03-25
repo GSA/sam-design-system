@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFileinfoIntroductionModule } from './formly-file-info-introduction/formly-file-info-introduction.module';
 import { FormlyFileinfoOptionsModule } from './formly-file-info-options/formly-file-info-options.module';
@@ -29,12 +29,14 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyFileinfoIntroductionModule,
         FormlyFileinfoBasicModule,
         FormlyFileinfoOptionsModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -80,5 +82,3 @@ Options.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-file-info', 'options'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Options'];

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -16,11 +16,13 @@ export default {
     moduleMetadata({
       imports: [
         CommonModule,
-        BrowserAnimationsModule,
         SlideOutIntroductionModule,
         SlideOutCustomTemplateModule,
         SlideOutBasicModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {},
@@ -80,5 +82,3 @@ CustomTemplate.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('slide-out', 'custom-template'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'CustomTemplate'];

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyMultiCheckboxIntroductionModule } from './formly-multi-checkbox-introduction/formly-multi-checkbox-introduction.module';
 import { FormlyMultiCheckboxBasicModule } from './formly-multi-checkbox-basic/formly-multi-checkbox-basic.module';
@@ -31,7 +31,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyMultiCheckboxIntroductionModule,
         FormlyMultiCheckboxBasicModule,
@@ -39,6 +38,9 @@ export default {
         FormlyMultiCheckboxGroupModule,
         FormlyMultiCheckboxExpandModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -120,5 +122,3 @@ Expand.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'expand'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Nested', 'Expand', 'Group'];

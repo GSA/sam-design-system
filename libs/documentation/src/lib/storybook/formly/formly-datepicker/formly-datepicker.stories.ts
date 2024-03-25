@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyDatepickerIntroductionModule } from './formly-datepicker-introduction/formly-datepicker-introduction.module';
 import { FormlyDatepickerOptionsModule } from './formly-datepicker-options/formly-datepicker-options.module';
@@ -20,7 +20,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyDatepickerIntroductionModule,
         FormlyDatepickerBasicModule,
@@ -28,6 +27,9 @@ export default {
         FormlyDatepickerValidationModule,
         FormlyDatepickerRangeModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -109,5 +111,3 @@ Range.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-datepicker', 'range'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Options', 'Validation', 'Range'];

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -34,7 +34,6 @@ export default {
         FormsModule,
         FormlyModule.forRoot(),
         FormlyFilterIntroductionModule,
-        NoopAnimationsModule,
         FormlyFilterAccordionGroupModule,
         FormlyFilterBasicModule,
         FormlyFilterSingleModule,
@@ -43,6 +42,9 @@ export default {
         FormlyFilterHideExpressionModule,
         FormlyFilterIntroductionModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -167,13 +169,3 @@ HideExpression.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'hideexpression'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Basic',
-//   'Single',
-//   'AccordionGroup',
-//   'HideExpression',
-//   'Nested',
-//   'Horizontal',
-// ];

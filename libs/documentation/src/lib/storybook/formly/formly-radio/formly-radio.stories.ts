@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyRadioIntroductionModule } from './formly-radio-introduction/formly-radio-introduction.module';
 import { FormlyRadioTemplateModule } from './formly-radio-template/formly-radio-template.module';
@@ -32,7 +32,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyRadioIntroductionModule,
         FormlyRadioBasicModule,
@@ -41,6 +40,9 @@ export default {
         FormlyRadioGroupModule,
         FormlyRadioHorizontalModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -140,5 +142,3 @@ Horizontal.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-radio', 'horizontal'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Advanced', 'Template', 'Group', 'Horizontal'];

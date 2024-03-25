@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsToastModule, SdsToastSettings } from '@gsa-sam/components';
 import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -20,7 +20,6 @@ export default {
         CommonModule,
         SdsToastModule,
         ToastrModule.forRoot(SdsToastSettings),
-        NoopAnimationsModule,
         ToastsConfigurableModule,
         ToastsIntroductionModule,
         ToastsMessageModule,
@@ -30,7 +29,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [importProvidersFrom(SdsToastModule)],
+      providers: [importProvidersFrom(SdsToastModule), provideAnimations()],
     }),
   ],
   argTypes: {
@@ -169,5 +168,3 @@ PreventDuplicates.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('toasts', 'prevent-duplicates'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Message', 'PreventDuplicates', 'Timeout', 'Type'];

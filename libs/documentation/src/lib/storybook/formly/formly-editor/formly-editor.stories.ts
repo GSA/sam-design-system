@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyEditorIntroductionModule } from './formly-editor-introduction/formly-editor-introduction.module';
 import { FormlyEditorRegexModule } from './formly-editor-regex/formly-editor-regex.module';
@@ -31,7 +31,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyEditorIntroductionModule,
         FormlyEditorBasicModule,
@@ -39,6 +38,9 @@ export default {
         FormlyEditorUpdatesModule,
         FormlyEditorLabelModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -120,5 +122,3 @@ Updates.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-editor', 'updates'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic', 'Label', 'Regex', 'Updates'];

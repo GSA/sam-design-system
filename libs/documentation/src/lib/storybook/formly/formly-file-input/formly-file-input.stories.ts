@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFileinputIntroductionModule } from './formly-file-input-introduction/formly-file-input-introduction.module';
 import { FormlyFileInputOptionsModule } from './formly-file-input-options/formly-file-input-options.module';
@@ -31,7 +31,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyFileinputIntroductionModule,
         FormlyFileInputOptionsModule,
@@ -39,6 +38,9 @@ export default {
         FormlyFileInputTableModule,
         FormlyFileInputCustomModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -120,5 +122,3 @@ Custom.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-file-input', 'custom'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Options', 'Basic', 'Table', 'Custom'];

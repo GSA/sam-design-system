@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyAutocompleteIntroductionModule } from './formly-autocomplete-introduction/formly-autocomplete-introduction.module';
 import { FormlyAutocompleteCountModule } from './formly-autocomplete-count/formly-autocomplete-count.module';
@@ -35,7 +35,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyAutocompleteIntroductionModule,
         FormlyAutocompleteBasicModule,
@@ -47,6 +46,9 @@ export default {
         FormlyAutocompleteValidationModule,
         FormlyAutocompleteIdModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -200,15 +202,3 @@ ID.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'id'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Basic',
-//   'Count',
-//   'Disable',
-//   'Freetext',
-//   'ID',
-//   'Input',
-//   'Tag',
-//   'Validation',
-// ];

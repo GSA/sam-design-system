@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { IconsColoringModule } from './icons-coloring/icons-coloring.module';
 import { IconsRotationModule } from './icons-rotation/icons-rotation.module';
@@ -24,7 +24,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         IconsColoringModule,
         IconsRotationModule,
@@ -35,6 +34,9 @@ export default {
         IconsBootstrapModule,
         IconsUswdsModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
@@ -154,13 +156,3 @@ Uswds.parameters = {
   preview: generateConfig('storybook/utilities/icons/icons-uswds', 'IconsUswdsModule', 'usa-icon-icons-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'uswds'),
 };
-// export const __namedExportsOrder = [
-//   'Coloring',
-//   'Rotating',
-//   'Sizing',
-//   'Stacking',
-//   'Skewing',
-//   'Custom',
-//   'Bootstrap',
-//   'Uswds',
-// ];

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -7,7 +7,7 @@ import {
 } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TableBasicModule } from './table-basic/table-basic.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { TableSortingModule } from './table-sorting/table-sorting.module';
 import { TablePaginationModule } from './table-pagination/table-pagination.module';
 import { TableStickyHeaderModule } from './table-sticky-header/table-sticky-header.module';
@@ -32,7 +32,6 @@ export default {
       imports: [
         CommonModule,
         RouterTestingModule,
-        NoopAnimationsModule,
         NgxBootstrapIconsModule.pick({ uswdsAdd, dash }),
         TableBasicModule,
         TableSortingModule,
@@ -49,6 +48,9 @@ export default {
         TableIntroductionModule,
         TableCustomClassesModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {},
@@ -259,20 +261,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Basic',
-//   'ChangeData',
-//   'CustomClasses',
-//   'CustomFooter',
-//   'Expansion',
-//   'HighlightRow',
-//   'Pagination',
-//   'RowClicked',
-//   'Sorting',
-//   'StickyColumn',
-//   'StickyFooter',
-//   'StickyHeader',
-//   'UserInteraction',
-// ];
