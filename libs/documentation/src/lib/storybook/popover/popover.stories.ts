@@ -74,11 +74,11 @@ export const Configurable = (args) => ({
       </button>
       </div>
     `,
-    args: {
-      sdsPopover: 'Default Body',
-      sdsPopoverTitle: '',
-    },
-    props: args,
+  args: {
+    sdsPopover: 'Default Body',
+    sdsPopoverTitle: '',
+  },
+  props: args,
 });
 Configurable.parameters = {
   actions: { disable: true },
@@ -165,12 +165,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'CloseOnClickOutside',
-//   'CloseOnContentClicked',
-//   'Title',
-//   'Position',
-// ];

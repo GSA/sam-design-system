@@ -14,12 +14,7 @@ export default {
   title: 'Components/Slide Out',
   decorators: [
     moduleMetadata({
-      imports: [
-        CommonModule,
-        SlideOutIntroductionModule,
-        SlideOutCustomTemplateModule,
-        SlideOutBasicModule,
-      ],
+      imports: [CommonModule, SlideOutIntroductionModule, SlideOutCustomTemplateModule, SlideOutBasicModule],
     }),
     applicationConfig({
       providers: [provideAnimations()],

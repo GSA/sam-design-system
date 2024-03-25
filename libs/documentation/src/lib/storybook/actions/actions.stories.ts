@@ -108,7 +108,7 @@ export const Configurable = ({ type, shadow, actions, size, label, ...rest }) =>
       rest,
     },
   };
-}
+};
 Configurable.args = {
   model: {},
   actions: [
@@ -173,18 +173,3 @@ export const Introduction: StoryObj = (args) => ({
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
-
-// export const preview: Preview = {
-//   parameters: {
-//     options: {
-//       storySort: {
-//         method: 'alphabetical',
-//         // order: [],
-//         // locales: '',
-//       },
-//     },
-//   },
-// };
-
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Label', 'ModelTrigger', 'Size'];

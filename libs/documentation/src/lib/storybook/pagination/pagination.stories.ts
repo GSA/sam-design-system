@@ -120,7 +120,7 @@ export const Configurable = (args) => {
       ...args,
     },
   };
-}
+};
 Configurable.parameters = {
   sdsCodePreview: { disable: true },
 };
@@ -182,5 +182,3 @@ export const Introduction: StoryObj = (args) => ({
 Introduction.parameters = {
   options: { showPanel: false },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'DisplayMode', 'Page', 'TotalItems'];

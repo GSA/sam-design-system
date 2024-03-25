@@ -104,4 +104,3 @@ Basic.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-dialog', 'basic'),
 };
-

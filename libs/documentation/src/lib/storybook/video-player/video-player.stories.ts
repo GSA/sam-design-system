@@ -75,7 +75,7 @@ const videoConfigFunction = (
   };
 };
 
-export const Configurable =  (args) => {
+export const Configurable = (args) => {
   const { sourceWebm, sourceMp4, height, width, caption, poster, id, seekInterval, debug, preload, description } = args;
   let config = videoConfigFunction(
     sourceWebm,
@@ -97,7 +97,7 @@ export const Configurable =  (args) => {
       ...args,
     },
   };
-}
+};
 Configurable.args = {
   sourceWebm: '',
   sourceMp4: 'https://github.com/GSA/sam-static-content/raw/master/assets/video/gsa-sample.mp4',

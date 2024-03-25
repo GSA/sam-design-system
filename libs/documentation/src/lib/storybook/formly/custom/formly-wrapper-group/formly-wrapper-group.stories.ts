@@ -71,4 +71,3 @@ Accordion.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'accordion'),
 };
-

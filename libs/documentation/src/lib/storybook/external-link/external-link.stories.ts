@@ -38,7 +38,7 @@ export default {
   },
 } as Meta;
 
-export const Configurable= (args) => ({
+export const Configurable = (args) => ({
   template: `<a *ngIf="href" class="usa-link" href="{{href}}" [hideIcon]="hideIcon" target="{{target}}">{{href}}</a>`,
   args: {
     href: 'https://Acquisition.gov',
@@ -101,5 +101,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'HideIcon', 'Target'];

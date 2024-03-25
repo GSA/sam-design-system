@@ -55,9 +55,9 @@ export const Configurable: StoryObj = (args) => ({
   </sds-button-group>
   `,
   props: {
-    ...args
+    ...args,
   },
-})
+});
 Configurable.args = {
   extraClasses: 'sds-button-group--secondary',
   optionTexts: ['Reports', 'Subscriptions', 'History'],
@@ -118,5 +118,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Checked', 'Modes'];

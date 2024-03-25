@@ -37,7 +37,7 @@ export default {
 
 export const Configurable: StoryObj = (args) => ({
   template: `<p>{{ today | sdsDate }}</p>`,
-  args: {today: Date.now()},
+  args: { today: Date.now() },
   props: args,
 });
 Configurable.parameters = {
@@ -107,5 +107,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'CurrentDay', 'CurrentYear', 'NonCurrentYear'];

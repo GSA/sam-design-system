@@ -14,12 +14,7 @@ export default {
   title: 'Components/Side Navigation',
   decorators: [
     moduleMetadata({
-      imports: [
-        CommonModule,
-        SideNavigationIntroductionModule,
-        SideNavigationFiltersModule,
-        SideNavigationLinksModule,
-      ],
+      imports: [CommonModule, SideNavigationIntroductionModule, SideNavigationFiltersModule, SideNavigationLinksModule],
     }),
     applicationConfig({
       providers: [provideAnimations()],

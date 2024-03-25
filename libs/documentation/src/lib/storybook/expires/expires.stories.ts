@@ -35,7 +35,7 @@ export default {
 
 export const Configurable = (args) => ({
   template: `<expires-configurable [expiresString]="expires"></expires-configurable>`,
-  args: {expires: 'Jan 5, 2099'},
+  args: { expires: 'Jan 5, 2099' },
   props: args,
 });
 Configurable.parameters = {
@@ -68,5 +68,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Expires'];
