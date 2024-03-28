@@ -14,7 +14,7 @@ import {
 import { TableRowNavigationDirective } from './table-row-import/table-row-navigation.directive';
 import { MatSortModule } from '@angular/material/sort';
 import { PaginationModule } from '@gsa-sam/components';
-import {  MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { chevronDown, chevronUp, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { RouterModule } from '@angular/router';

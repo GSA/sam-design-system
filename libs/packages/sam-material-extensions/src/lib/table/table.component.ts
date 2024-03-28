@@ -16,10 +16,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
-import {
-   MatTableDataSource,
-   MatTable,
-} from '@angular/material/table';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject } from 'rxjs';

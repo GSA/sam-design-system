@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/sam-formly",
-  "version": "16.0.16",
+  "version": "17.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/GSA/sam-design-system.git"
@@ -14,8 +14,8 @@
     "@angular/core": ">=17.0.0 <18.0.0",
     "ngx-bootstrap-icons": "^1.7.2",
     "@ngx-formly/core": ">=6.2.0",
-    "@gsa-sam/components": ">=16.0.0",
-    "@gsa-sam/sam-material-extensions": ">=16.0.0",
-    "@gsa-sam/ngx-uswds": ">=15.0.0"
+    "@gsa-sam/components": ">=17.0.0",
+    "@gsa-sam/sam-material-extensions": ">=17.0.0",
+    "@gsa-sam/ngx-uswds": ">=17.0.0"
   }
 }
