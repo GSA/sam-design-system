@@ -12,7 +12,6 @@ import { FormlyFileInputTableModule } from './formly-file-input-table/formly-fil
 import { FormlyFileInputCustomModule } from './formly-file-input-custom/formly-file-input-custom.module';
 import { importProvidersFrom } from '@angular/core';
 
-
 export default {
   title: 'Formly/Fileinput',
   decorators: [

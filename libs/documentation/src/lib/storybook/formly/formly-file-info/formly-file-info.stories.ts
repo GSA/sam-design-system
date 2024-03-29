@@ -10,7 +10,6 @@ import { FormlyFileinfoOptionsModule } from './formly-file-info-options/formly-f
 import { FormlyFileinfoBasicModule } from './formly-file-info-basic/formly-file-info-basic.module';
 import { importProvidersFrom } from '@angular/core';
 
-
 export default {
   title: 'Formly/Fileinfo',
   decorators: [

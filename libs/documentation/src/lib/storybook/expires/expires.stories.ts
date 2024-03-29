@@ -38,7 +38,7 @@ export const Configurable = (args) => ({
   props: args,
 });
 Configurable.args = {
-  expires: 'Jan 5, 2099'
+  expires: 'Jan 5, 2099',
 };
 Configurable.parameters = {
   sdsCodePreview: { disable: true },

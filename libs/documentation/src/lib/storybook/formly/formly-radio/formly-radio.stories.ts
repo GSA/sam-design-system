@@ -13,7 +13,6 @@ import { FormlyRadioGroupModule } from './formly-radio-group/formly-radio-group.
 import { FormlyRadioHorizontalModule } from './formly-radio-horizontal/formly-radio-horizontal.module';
 import { importProvidersFrom } from '@angular/core';
 
-
 export default {
   title: 'Formly/Radio',
   decorators: [

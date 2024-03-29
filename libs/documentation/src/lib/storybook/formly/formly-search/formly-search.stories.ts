@@ -16,7 +16,6 @@ import { FormlySearchLabelModule } from './formly-search-label/formly-search-lab
 import { FormlySearchPlaceholderModule } from './formly-search-placeholder/formly-search-placeholder.module';
 import { importProvidersFrom } from '@angular/core';
 
-
 export default {
   title: 'Formly/Search',
   decorators: [

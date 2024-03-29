@@ -40,8 +40,8 @@ export const Configurable: StoryObj = (args) => ({
   props: args,
 });
 Configurable.args = {
-  today: Date.now()
-}
+  today: Date.now(),
+};
 Configurable.parameters = {
   sdsCodePreview: { disable: true },
   actions: { disable: true },

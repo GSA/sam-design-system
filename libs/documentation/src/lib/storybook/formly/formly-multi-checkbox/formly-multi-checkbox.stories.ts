@@ -12,7 +12,6 @@ import { FormlyMultiCheckboxGroupModule } from './formly-multi-checkbox-group/fo
 import { FormlyMultiCheckboxExpandModule } from './formly-multi-checkbox-expand/formly-multi-checkbox-expand.module';
 import { importProvidersFrom } from '@angular/core';
 
-
 export default {
   title: 'Formly/Multi Checkbox',
   decorators: [

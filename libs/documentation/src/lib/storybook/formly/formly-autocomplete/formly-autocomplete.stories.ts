@@ -16,7 +16,6 @@ import { FormlyAutocompleteValidationModule } from './formly-autocomplete-valida
 import { FormlyAutocompleteIdModule } from './formly-autocomplete-id/formly-autocomplete-id.module';
 import { importProvidersFrom } from '@angular/core';
 
-
 export default {
   title: 'Formly/Autocomplete',
   decorators: [
