@@ -14,6 +14,7 @@ import { FormlyDialogIntroductionModule } from './formly-dialog-introduction/for
 
 import { FormlyDialogBasicModule } from './formly-dialog-basic/formly-dialog-basic.module';
 import { FormlyDialogDownloadModule } from './formly-dialog-download/formly-dialog-download.module';
+import { importProvidersFrom } from '@angular/core';
 
 const props = {
   table: {
@@ -30,7 +31,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyDialogIntroductionModule,
         FormlyDialogDownloadModule,
         FormlyDialogBasicModule,
@@ -38,7 +38,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {

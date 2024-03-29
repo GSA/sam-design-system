@@ -10,17 +10,8 @@ import { FormlyFileInputOptionsModule } from './formly-file-input-options/formly
 import { FormlyFileInputBasicModule } from './formly-file-input-basic/formly-file-input-basic.module';
 import { FormlyFileInputTableModule } from './formly-file-input-table/formly-file-input-table.module';
 import { FormlyFileInputCustomModule } from './formly-file-input-custom/formly-file-input-custom.module';
+import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Fileinput',
@@ -31,7 +22,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyFileinputIntroductionModule,
         FormlyFileInputOptionsModule,
         FormlyFileInputBasicModule,
@@ -40,7 +30,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

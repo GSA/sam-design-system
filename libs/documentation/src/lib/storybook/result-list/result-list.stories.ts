@@ -1,5 +1,5 @@
-import { SdsSearchResultListComponent, SdsSearchResultListModule } from '@gsa-sam/components';
-import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
+import { SdsSearchResultListComponent } from '@gsa-sam/components';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { CommonModule } from '@angular/common';
 import { ResultListIntroductionModule } from './result-list-introduction/result-list-introduction.module';
@@ -8,6 +8,7 @@ import { ResultListBasicModule } from './result-list-basic/result-list-basic.mod
 import { ResultListCustomComponentModule } from './result-list-custom-component/result-list-custom-component.module';
 import { ResultListCustomTemplateModule } from './result-list-custom-template/result-list-custom-template.module';
 import { ResultListMessagesModule } from './result-list-messages/result-list-messages.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 const disable = {
   table: {
@@ -29,6 +30,9 @@ export default {
         ResultListCustomTemplateModule,
         ResultListMessagesModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {

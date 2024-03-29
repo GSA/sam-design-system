@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -13,6 +12,7 @@ import { FormlyTextAreaLabelModule } from './formly-text-area-label/formly-text-
 import { FormlyTextAreaPlaceholderModule } from './formly-text-area-placeholder/formly-text-area-placeholder.module';
 import { FormlyTextAreaRequiredModule } from './formly-text-area-required/formly-text-area-required.module';
 import { FormlyTextAreaMaxlengthModule } from './formly-text-area-maxlength/formly-text-area-maxlength.module';
+import { importProvidersFrom } from '@angular/core';
 
 const disable = {
   table: {
@@ -34,7 +34,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyTextAreaIntroductionModule,
         FormlyTextAreaConfigurableModule,
         FormlyTextAreaLabelModule,
@@ -45,7 +44,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {

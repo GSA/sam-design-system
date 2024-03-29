@@ -14,17 +14,8 @@ import { FormlySearchBigModule } from './formly-search-big/formly-search-big.mod
 import { FormlySearchDropdownModule } from './formly-search-dropdown/formly-search-dropdown.module';
 import { FormlySearchLabelModule } from './formly-search-label/formly-search-label.module';
 import { FormlySearchPlaceholderModule } from './formly-search-placeholder/formly-search-placeholder.module';
+import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Search',
@@ -35,7 +26,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlySearchIntroductionModule,
         FormlySearchAdvancedModule,
         FormlySearchBasicModule,
@@ -48,7 +38,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

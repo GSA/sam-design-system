@@ -16,6 +16,7 @@ import { FormlyFilterAccordionGroupModule } from './formly-filter-accordiongroup
 import { FormlyFilterHideExpressionModule } from './formly-filter-hideexpression/formly-filter-hideexpression.module';
 import { FormlyFilterNestedModule } from './formly-filter-nested/formly-filter-nested.module';
 import { FormlyFilterHorizontalModule } from './formly-filter-horizontal/formly-filter-horizontal.module';
+import { importProvidersFrom } from '@angular/core';
 
 const props = {
   table: {
@@ -32,7 +33,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyFilterIntroductionModule,
         FormlyFilterAccordionGroupModule,
         FormlyFilterBasicModule,
@@ -44,7 +44,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {

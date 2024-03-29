@@ -8,17 +8,8 @@ import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/s
 import { FormlyFileinfoIntroductionModule } from './formly-file-info-introduction/formly-file-info-introduction.module';
 import { FormlyFileinfoOptionsModule } from './formly-file-info-options/formly-file-info-options.module';
 import { FormlyFileinfoBasicModule } from './formly-file-info-basic/formly-file-info-basic.module';
+import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Fileinfo',
@@ -29,14 +20,13 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyFileinfoIntroductionModule,
         FormlyFileinfoBasicModule,
         FormlyFileinfoOptionsModule,
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

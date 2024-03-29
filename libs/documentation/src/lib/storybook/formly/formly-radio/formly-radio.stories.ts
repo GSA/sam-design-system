@@ -11,17 +11,8 @@ import { FormlyRadioBasicModule } from './formly-radio-basic/formly-radio-basic.
 import { FormlyRadioAdvancedModule } from './formly-radio-advanced/formly-radio-advanced.module';
 import { FormlyRadioGroupModule } from './formly-radio-group/formly-radio-group.module';
 import { FormlyRadioHorizontalModule } from './formly-radio-horizontal/formly-radio-horizontal.module';
+import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Radio',
@@ -32,7 +23,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyRadioIntroductionModule,
         FormlyRadioBasicModule,
         FormlyRadioTemplateModule,
@@ -42,7 +32,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

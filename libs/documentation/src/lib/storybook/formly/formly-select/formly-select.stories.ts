@@ -11,6 +11,7 @@ import { FormlySelectLabelModule } from './formly-select-label/formly-select-lab
 import { FormlySelectDescriptionModule } from './formly-select-description/formly-select-description.module';
 import { FormlySelectRequiredModule } from './formly-select-required/formly-select-required.module';
 import { FormlySelectOptionsModule } from './formly-select-options/formly-select-options.module';
+import { importProvidersFrom } from '@angular/core';
 
 const props = {
   table: {
@@ -27,7 +28,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlySelectIntroductionModule,
         FormlySelectConfigurableModule,
         FormlySelectLabelModule,
@@ -37,7 +37,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {

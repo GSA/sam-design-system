@@ -14,17 +14,8 @@ import { FormlyAutocompleteInputModule } from './formly-autocomplete-input/forml
 import { FormlyAutocompleteTagModule } from './formly-autocomplete-tag/formly-autocomplete-tag.module';
 import { FormlyAutocompleteValidationModule } from './formly-autocomplete-validation/formly-autocomplete-validation.module';
 import { FormlyAutocompleteIdModule } from './formly-autocomplete-id/formly-autocomplete-id.module';
+import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Autocomplete',
@@ -35,7 +26,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyAutocompleteIntroductionModule,
         FormlyAutocompleteBasicModule,
         FormlyAutocompleteCountModule,
@@ -48,7 +38,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

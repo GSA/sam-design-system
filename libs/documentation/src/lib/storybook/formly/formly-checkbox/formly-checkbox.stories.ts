@@ -13,17 +13,7 @@ import { FormlyCheckboxRequiredModule } from './formly-checkbox-required/formly-
 import { FormlyCheckboxTooltipModule } from './formly-checkbox-tooltip/formly-checkbox-tooltip.module';
 import { FormlyCheckboxLabelModule } from './formly-checkbox-label/formly-checkbox-label.module';
 import { FormlyCheckboxDescriptionModule } from './formly-checkbox-description/formly-checkbox-description.module';
-
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
+import { importProvidersFrom } from '@angular/core';
 
 export default {
   title: 'Formly/Checkbox',
@@ -34,7 +24,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyCheckboxIntroductionModule,
         FormlyCheckboxBasicModule,
         FormlyCheckboxTemplateModule,
@@ -46,7 +35,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

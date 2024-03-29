@@ -10,17 +10,7 @@ import { FormlyEditorRegexModule } from './formly-editor-regex/formly-editor-reg
 import { FormlyEditorBasicModule } from './formly-editor-basic/formly-editor-basic.module';
 import { FormlyEditorUpdatesModule } from './formly-editor-updates/formly-editor-updates.module';
 import { FormlyEditorLabelModule } from './formly-editor-label/formly-editor-label.module';
-
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
+import { importProvidersFrom } from '@angular/core';
 
 export default {
   title: 'Formly/Editor',
@@ -31,7 +21,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyEditorIntroductionModule,
         FormlyEditorBasicModule,
         FormlyEditorRegexModule,
@@ -40,7 +29,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

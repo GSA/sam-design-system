@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -11,6 +10,7 @@ import { FormlyTabsIntroductionModule } from './formly-tabs-introduction/formly-
 
 import { FormlyTabsBasicModule } from './formly-tabs-basic/formly-tabs-basic.module';
 import { FormlyTabsInterceptModule } from './formly-tabs-intercept/formly-tabs-intercept.module';
+import { importProvidersFrom } from '@angular/core';
 const disable = {
   table: {
     disable: true,
@@ -31,7 +31,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyTabsIntroductionModule,
         FormlyTabsInterceptModule,
         FormlyTabsBasicModule,
@@ -39,7 +38,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {

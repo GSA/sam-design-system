@@ -10,17 +10,8 @@ import { FormlyMultiCheckboxBasicModule } from './formly-multi-checkbox-basic/fo
 import { FormlyMultiCheckboxNestedModule } from './formly-multi-checkbox-nested/formly-multi-checkbox-nested.module';
 import { FormlyMultiCheckboxGroupModule } from './formly-multi-checkbox-group/formly-multi-checkbox-group.module';
 import { FormlyMultiCheckboxExpandModule } from './formly-multi-checkbox-expand/formly-multi-checkbox-expand.module';
+import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Multi Checkbox',
@@ -31,7 +22,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyMultiCheckboxIntroductionModule,
         FormlyMultiCheckboxBasicModule,
         FormlyMultiCheckboxNestedModule,
@@ -40,7 +30,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

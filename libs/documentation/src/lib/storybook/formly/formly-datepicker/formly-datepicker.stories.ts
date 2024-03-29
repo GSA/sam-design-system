@@ -10,6 +10,7 @@ import { FormlyDatepickerOptionsModule } from './formly-datepicker-options/forml
 import { FormlyDatepickerBasicModule } from './formly-datepicker-basic/formly-datepicker-basic.module';
 import { FormlyDatepickerValidationModule } from './formly-datepicker-validation/formly-datepicker-validation.module';
 import { FormlyDatepickerRangeModule } from './formly-datepicker-range/formly-datepicker-range.module';
+import { importProvidersFrom } from '@angular/core';
 
 export default {
   title: 'Formly/Datepicker',
@@ -20,7 +21,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyDatepickerIntroductionModule,
         FormlyDatepickerBasicModule,
         FormlyDatepickerOptionsModule,
@@ -29,7 +29,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
 } as Meta;

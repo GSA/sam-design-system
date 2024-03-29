@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -15,11 +14,7 @@ import { FormlyInputLabelModule } from './formly-input-label/formly-input-label.
 import { FormlyInputPlaceholderModule } from './formly-input-placeholder/formly-input-placeholder.module';
 import { FormlyInputRequiredModule } from './formly-input-required/formly-input-required.module';
 import { FormlyInputTooltipTextModule } from './formly-input-tooltip-text/formly-input-tooltip-text.module';
-const disable = {
-  table: {
-    disable: true,
-  },
-};
+import { importProvidersFrom } from '@angular/core';
 const props = {
   table: {
     category: 'template-options',
@@ -28,7 +23,6 @@ const props = {
 
 export default {
   title: 'Formly/Input',
-  // component: SdsButtonGroupComponent,
   decorators: [
     moduleMetadata({
       imports: [
@@ -36,7 +30,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyInputIntroductionModule,
         FormlyInputConfigurableModule,
         FormlyInputLabelModule,
@@ -50,7 +43,7 @@ export default {
       ],
     }),
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {
