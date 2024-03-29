@@ -37,9 +37,11 @@ export default {
 
 export const Configurable: StoryObj = (args) => ({
   template: `<p>{{ today | sdsDate }}</p>`,
-  args: { today: Date.now() },
   props: args,
 });
+Configurable.args = {
+  today: Date.now()
+}
 Configurable.parameters = {
   sdsCodePreview: { disable: true },
   actions: { disable: true },

@@ -35,9 +35,11 @@ export default {
 
 export const Configurable = (args) => ({
   template: `<expires-configurable [expiresString]="expires"></expires-configurable>`,
-  args: { expires: 'Jan 5, 2099' },
   props: args,
 });
+Configurable.args = {
+  expires: 'Jan 5, 2099'
+};
 Configurable.parameters = {
   sdsCodePreview: { disable: true },
   actions: { disable: true },
