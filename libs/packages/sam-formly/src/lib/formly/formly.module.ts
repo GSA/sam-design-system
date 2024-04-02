@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormlyModule, FormlyFieldConfig, ConfigOption } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 
 import { MatDateFormats, MatNativeDateModule, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -40,6 +39,7 @@ import {
 } from 'ngx-bootstrap-icons';
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { MatInputModule } from '@angular/material/input';
 
 // Validate the min length of the character
 export function minLengthValidationMessage(err, field) {
