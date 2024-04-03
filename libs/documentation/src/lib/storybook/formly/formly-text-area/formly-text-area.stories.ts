@@ -44,7 +44,7 @@ export default {
         FormlyTextAreaMaxlengthModule,
         FormlyTextAreaRequiredModule,
         FormlyTextAreaPlaceholderModule,
-        FormlyTextAreaWidthModule
+        FormlyTextAreaWidthModule,
       ],
     }),
   ],
@@ -54,6 +54,7 @@ export default {
     description: props,
     required: props,
     maxLength: props,
+    className: props,
   },
 } as Meta;
 
@@ -62,7 +63,8 @@ const formlyConfigFunction = (
   placeholder: string,
   description: string,
   required: boolean,
-  maxLength: number
+  maxLength: number,
+  className: string
 ) => {
   return {
     label: label ?? '',
@@ -70,11 +72,12 @@ const formlyConfigFunction = (
     description: description ?? '',
     required: required ?? false,
     maxLength: maxLength ?? '',
+    className: className ?? '',
   };
 };
 const Template: Story = (args) => {
-  const { label, placeholder, description, required, maxLength } = args;
-  let config = formlyConfigFunction(label, placeholder, description, required, maxLength);
+  const { label, placeholder, description, required, maxLength, className } = args;
+  let config = formlyConfigFunction(label, placeholder, description, required, maxLength, className);
   return {
     template: '<sds-formly-text-area-configurable [config]="configObj"></sds-formly-text-area-configurable>',
     props: {

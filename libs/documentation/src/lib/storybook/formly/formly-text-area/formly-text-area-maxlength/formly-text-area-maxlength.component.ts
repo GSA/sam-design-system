@@ -17,7 +17,7 @@ export class FormlyTextAreaMaxlengthComponent {
       props: {
         label: 'Entity Description',
         maxLength: 50,
-        className: 'width-mobile-lg',
+        className: 'width-card-lg',
       },
     },
   ];
