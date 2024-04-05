@@ -109,6 +109,7 @@
             "main": "apps/sam-design-system-site/src/main.ts",
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
+            "allowedCommonJsDependencies": ["lodash"],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets",
