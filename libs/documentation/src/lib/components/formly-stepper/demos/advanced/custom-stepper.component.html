@@ -19,11 +19,11 @@
         </div>
 
         <div class="sds-card">
-          <div class="sds-card__body sds-card__body--accent-cool">
-            <ul class="usa-sidenav usa-sidenav--styled">
+          <div class="sds-card__body sds-card__body--base-lighter">
+            <ul class="usa-sidenav usa-sidenav--data-entry">
               <li
                 *ngFor="let step of stepTemplates; let i = index"
-                class="usa-sidenav__item"
+                class="usa-sidenav__item-data"
                 [ngClass]="{
                   'usa-current': selectedStep?.id === step.id
                 }"
