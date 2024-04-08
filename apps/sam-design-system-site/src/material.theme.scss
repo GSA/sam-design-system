@@ -1,179 +1,135 @@
-// /* autoprefixer grid: autoplace */
-// @use 'sass:map';
-// @use '@angular/material' as mat;
-
-// @include mat.core();
-
-// // Plus imports for other components in your app.
-
-// // Include the common styles for Angular Material. We include this here so that you only
-// // have to load a single css file for Angular Material in your app.
-// // Be sure that you only ever include this mixin once!
-
-// $mat-sds-green: (
-//   50: #ecf3ec,
-//   //green-cool-5
-//     100: #e3f5e1,
-//   //primary-lighter
-//     200: #b4d0b9,
-//   //green-cool-20
-//     300: #86b98e,
-//   //green-cool-30
-//     400: #70e17b,
-//   //primary
-//     500: #b7f5bd,
-//   //Material default -> sam-styles primary-light color
-//     600: #21c834,
-//   // primary-vivid
-//     700: #00a91c,
-//   // primary-dark
-//     800: #008817,
-//   // primary-darker
-//     900: #446443,
-//   // green-cool-60
-//     A100: #b9f6ca,
-//   A200: #69f0ae,
-//   A400: #00e676,
-//   A700: #00c853,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $dark-primary-text,
-//     400: $dark-primary-text,
-//     500: $dark-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $dark-primary-text,
-//     A400: $dark-primary-text,
-//     A700: $dark-primary-text,
-//   ),
-// );
-
-// $mat-sds-blue: (
-//   50: #eff6fb,
-//   //accent-cool-lighter
-//     100: #d9e8f6,
-//   //accent-cool-light
-//     200: #aacdec,
-//   //accent-cool
-//     300: #81aefc,
-//   //secondary-lighter
-//     400: #5994f6,
-//   //secondary-light
-//     500: #2672de,
-//   //Material default -> sam-tyles secondary color
-//     600: #0050d8,
-//   // secondary-vivid
-//     700: #1a4480,
-//   // secondary-dark
-//     800: #162e51,
-//   // secondary-darker
-//     900: #13171f,
-//   // blue-warm-90
-//     A100: #b9eaf6,
-//   A200: #69def0,
-//   A400: #0095e6,
-//   A700: #0061c8,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $dark-primary-text,
-//     400: $dark-primary-text,
-//     500: $dark-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $dark-primary-text,
-//     A400: $dark-primary-text,
-//     A700: $dark-primary-text,
-//   ),
-// );
-
-// $mat-sds-red: (
-//   50: #f9eeee,
-//   //red-5v
-//     100: #f8e1de,
-//   //red-10v
-//     200: #fde0db,
-//   //red-vivid-10v
-//     300: #fdb8ae,
-//   //error-lighter
-//     400: #ff8d7b,
-//   //error-light
-//     500: #fb5a47,
-//   //Material default -> sam-tyles error color
-//     600: #e52207,
-//   // red-vivid-50v
-//     700: #b51d09,
-//   // error-dark
-//     800: #8b1303,
-//   // error-darker
-//     900: #5c1111,
-//   // red-vivid-80v
-//     A100: #f6b9b9,
-//   A200: #f06969,
-//   A400: #e60000,
-//   A700: #c80000,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $dark-primary-text,
-//     400: $dark-primary-text,
-//     500: $dark-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $dark-primary-text,
-//     A400: $dark-primary-text,
-//     A700: $dark-primary-text,
-//   ),
-// );
-
-// // Define the palettes for your theme using the Material Design palettes available in palette.scss
-// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// // hue. Available color palettes: https://material.io/design/color/
-// $sds-mat-app-primary: mat.define-palette($mat-sds-green);
-// $sds-mat-app-accent: mat.define-palette($mat-sds-blue, A200, A100, A400);
-
-// // The warn palette is optional (defaults to red).
-// $sds-mat-app-warn: mat.define-palette($mat-sds-red);
-
-// // Create the theme object (a Sass map containing all of the palettes).
-// $sds-mat-app-theme: mat.define-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
-
-// // Include theme styles for core and each component used in your app.
-// // Alternatively, you can import and @include the theme mixins for each component
-// // that you are using.
-//  @include mat.core-color($sds-mat-app-theme);
-
-// .mat-calendar-table-header {
-//   color: black !important;
-// }
-
-// .mat-calendar-body-cell-content.mat-calendar-body-selected {
-//   border: solid 1px #70e17b;
-// }
-
-// input.mat-input-element {
-//   margin-top: 0.5rem !important;
-// }
-
 @use '@angular/material' as mat;
 
 @include mat.core();
 
-$dark-primary-text: '#008817';
-$light-primary-text: '#b7f5bd';
+$md-accent: (
+    50: #eaf3fd,
+    100: #cbe2fa,
+    200: #a8cff7,
+    300: #85bcf4,
+    400: #6aadf1,
+    500: #509fef,
+    600: #4997ed,
+    700: #408deb,
+    800: #3783e8,
+    900: #2772e4,
+    A100: #ffffff,
+    A200: #edf4ff,
+    A400: #bad4ff,
+    A700: #a1c4ff,
+    contrast: (50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #000000,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    ),
+);
+
+$md-alternative: (
+    50: #f3fcfb,
+    100: #e1f8f5,
+    200: #cdf3ef,
+    300: #b9eee9,
+    400: #aaebe4,
+    500: #9be7df,
+    600: #93e4db,
+    700: #89e0d7,
+    800: #7fddd2,
+    900: #6dd7ca,
+    A100: #ffffff,
+    A200: #ffffff,
+    A400: #e8fffc,
+    A700: #cffff9,
+    contrast: (50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #000000,
+        800: #000000,
+        900: #000000,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    ),
+);
+
+$md-warn: (
+    50: #fcf2e7,
+    100: #f8dec3,
+    200: #f3c89c,
+    300: #eeb274,
+    400: #eaa256,
+    500: #e69138,
+    600: #e38932,
+    700: #df7e2b,
+    800: #db7424,
+    900: #d56217,
+    A100: #ffffff,
+    A200: #ffe3d4,
+    A400: #ffc3a1,
+    A700: #ffb287,
+    contrast: (50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #000000,
+        800: #000000,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    ),
+);
+
+$md-error: (
+    50: #f9e0e0,
+    100: #f0b3b3,
+    200: #e68080,
+    300: #db4d4d,
+    400: #d42626,
+    500: #cc0000,
+    600: #c70000,
+    700: #c00000,
+    800: #b90000,
+    900: #ad0000,
+    A100: #ffd7d7,
+    A200: #ffa4a4,
+    A400: #ff7171,
+    A700: #ff5858,
+    contrast: (50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #ffffff,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000,
+    ),
+);
+
 
 $mat-sds-green: (
     50: #ecf3ec,
@@ -242,22 +198,23 @@ $mat-sds-blue: (
     A200: #69def0,
     A400: #0095e6,
     A700: #0061c8,
-    contrast: (50: #2672de,
-        100: #2672de,
-        200: #2672de,
-        300: #2672de,
-        400: #2672de,
-        500: #2672de,
-        600: #d9e8f6,
-        700: #d9e8f6,
-        800: #d9e8f6,
-        900: #d9e8f6,
-        A100: #2672de,
-        A200: #2672de,
-        A400: #2672de,
-        A700: #2672de,
+    contrast: (50: #0050d8,
+        100: #0050d8,
+        200: #0050d8,
+        300: #0050d8,
+        400: #0050d8,
+        500: #0050d8,
+        600: #5994f6,
+        700: #5994f6,
+        800: #5994f6,
+        900: #5994f6,
+        A100: #0050d8,
+        A200: #0050d8,
+        A400: #0050d8,
+        A700: #0050d8,
     ),
 );
+
 
 $mat-sds-red: (
     50: #f9eeee,
@@ -284,42 +241,45 @@ $mat-sds-red: (
     A200: #f06969,
     A400: #e60000,
     A700: #c80000,
-    contrast: (50: #e52207,
-        100: #e52207,
-        200: #e52207,
-        300: #e52207,
-        400: #e52207,
-        500: #e52207,
-        600: #fde0db,
-        700: #fde0db,
-        800: #fde0db,
-        900: #fde0db,
-        A100: #e52207,
-        A200: #e52207,
-        A400: #e52207,
-        A700: #e52207,
+    contrast: (50: #8b1303,
+        100: #8b1303,
+        200: #8b1303,
+        300: #8b1303,
+        400: #8b1303,
+        500: #8b1303,
+        600: #ff8d7b,
+        700: #ff8d7b,
+        800: #ff8d7b,
+        900: #ff8d7b,
+        A100: #8b1303,
+        A200: #8b1303,
+        A400: #8b1303,
+        A700: #8b1303,
     ),
 );
 
-$sds-mat-app-primary: mat.define-palette($mat-sds-green);
+$sds-mat-app-primary: mat.define-palette($mat-sds-green, 500);
 $sds-mat-app-accent: mat.define-palette($mat-sds-blue, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
+// The "warn" palette is optional and defaults to red if not specified.
 $sds-mat-app-warn: mat.define-palette($mat-sds-red);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$sds-mat-app-theme: mat.define-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
+$sds-mat-app-theme: mat.define-light-theme((color: (primary: $sds-mat-app-primary,
+                accent: $sds-mat-app-accent,
+                warn: $sds-mat-app-warn,
+            ),
+        ));
 
-@include mat.core-color($sds-mat-app-theme);
+@include mat.all-component-themes($sds-mat-app-theme);
 
 .mat-calendar-table-header {
-  color: black !important;
+    color: black !important;
 }
 
 .mat-calendar-body-cell-content.mat-calendar-body-selected {
-  border: solid 1px #70e17b;
+    border: solid 1px #70e17b;
 }
 
 input.mat-input-element {
-  margin-top: 0.5rem !important;
+    margin-top: 0.5rem !important;
 }
