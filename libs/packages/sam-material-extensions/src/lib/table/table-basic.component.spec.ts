@@ -14,10 +14,11 @@ import {
   SdsTableFooterCellDirective,
 } from './table.component';
 import { PaginationModule } from '@gsa-sam/components';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
+
 import { MatSortModule } from '@angular/material/sort';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const MOCK_DATA = [
   {
@@ -227,7 +228,6 @@ describe('SdsTableComponent Basic', () => {
           MatTableModule,
           IconModule,
           MatSortModule,
-
           MatPaginatorModule,
           BrowserAnimationsModule,
           PaginationModule,
