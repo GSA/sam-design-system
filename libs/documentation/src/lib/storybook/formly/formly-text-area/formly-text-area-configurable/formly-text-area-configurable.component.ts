@@ -27,6 +27,7 @@ export class FormlyTextAreaConfigurableComponent {
         description: 'Enter the description for your entity.',
         required: true,
         maxLength: 50,
+        className: 'width-card-lg',
       },
     },
   ];

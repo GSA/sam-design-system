@@ -1,12 +1,12 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-text-area-maxlength',
-  templateUrl: './formly-text-area-maxlength.component.html',
+  selector: 'sds-formly-text-area-width',
+  templateUrl: './formly-text-area-width.component.html',
 })
-export class FormlyTextAreaMaxlengthComponent {
+export class FormlyTextAreaWidthComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -16,7 +16,7 @@ export class FormlyTextAreaMaxlengthComponent {
       type: 'textarea',
       props: {
         label: 'Entity Description',
-        maxLength: 50,
+        description: 'Enter the description for your entity.',
         className: 'width-card-lg',
       },
     },
