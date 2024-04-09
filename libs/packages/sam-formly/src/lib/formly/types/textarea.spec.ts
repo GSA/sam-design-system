@@ -52,6 +52,7 @@ describe('Formly Input Component', () => {
         props: {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
+          className: 'width-card-lg',
         },
       },
     ];
@@ -73,6 +74,7 @@ describe('Formly Input Component', () => {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
           maxLength: 50,
+          className: 'width-card-lg',
         },
       },
     ];
@@ -94,6 +96,7 @@ describe('Formly Input Component', () => {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
           maxLength: 50,
+          className: 'width-card-lg',
         },
       },
     ];
@@ -120,6 +123,7 @@ describe('Formly Input Component', () => {
           label: 'Formly input type textarea',
           placeholder: 'placeholder for text area',
           maxLength: 5,
+          className: 'width-card-lg',
         },
       },
     ];
