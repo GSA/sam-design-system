@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SdsSearchComponent, SdsSearchModule, SearchSettings } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { SearchSizeModule } from './search-size/search-size.module';
 import { SearchPlaceholderModule } from './search-placeholder/search-placeholder.module';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
@@ -139,7 +139,9 @@ const searchSettingsFunction = (
   return toReturn;
 };
 
-const Template: Story<SearchSettings> = (args: SearchSettings) => {
+// const Template: StoryObj =
+
+export const Configurable = (args) => {
   const { placeholder, isSuffixSearchIcon, size, inputClass, parentSelector, id, ariaLabel } = args;
   const settings = searchSettingsFunction(
     placeholder,
@@ -167,8 +169,6 @@ const Template: Story<SearchSettings> = (args: SearchSettings) => {
     },
   };
 };
-
-export const Configurable = Template.bind({});
 Configurable.args = {
   searchSettings: {
     placeholder: 'eg: Acme Corporation',
@@ -189,10 +189,10 @@ Configurable.args = {
   model: {},
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Size: Story = (args) => ({
+export const Size: StoryObj = (args) => ({
   template: `<sds-search-size></sds-search-size>`,
   props: args,
 });
@@ -206,7 +206,7 @@ Size.parameters = {
   stackblitzLink: generateStackblitzLink('search', 'size'),
 };
 
-export const Placeholder: Story = (args) => ({
+export const Placeholder: StoryObj = (args) => ({
   template: `<sds-search-placeholder></sds-search-placeholder>`,
   props: args,
 });
@@ -220,7 +220,7 @@ Placeholder.parameters = {
   stackblitzLink: generateStackblitzLink('search', 'placeholder'),
 };
 
-export const Dropdown: Story = (args) => ({
+export const Dropdown: StoryObj = (args) => ({
   template: `<sds-search-dropdown></sds-search-dropdown>`,
   props: args,
 });
@@ -234,13 +234,13 @@ Dropdown.parameters = {
   stackblitzLink: generateStackblitzLink('search', 'dropdown'),
 };
 
-export const Overview: Story = (args) => ({
+export const Overview: StoryObj = (args) => ({
   template: '<sds-search-overview></sds-search-overview>',
   props: args,
 });
 Overview.parameters = { options: { showPanel: false } };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-search-introduction></sds-search-introduction>',
   props: args,
 });
@@ -251,7 +251,7 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const __namedExportsOrder = ['Introduction', 'Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];
+// export const __namedExportsOrder = ['Introduction', 'Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];

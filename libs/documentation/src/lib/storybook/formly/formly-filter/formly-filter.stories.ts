@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -16,6 +16,7 @@ import { FormlyFilterAccordionGroupModule } from './formly-filter-accordiongroup
 import { FormlyFilterHideExpressionModule } from './formly-filter-hideexpression/formly-filter-hideexpression.module';
 import { FormlyFilterNestedModule } from './formly-filter-nested/formly-filter-nested.module';
 import { FormlyFilterHorizontalModule } from './formly-filter-horizontal/formly-filter-horizontal.module';
+import { importProvidersFrom } from '@angular/core';
 
 const props = {
   table: {
@@ -32,9 +33,7 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyFilterIntroductionModule,
-        NoopAnimationsModule,
         FormlyFilterAccordionGroupModule,
         FormlyFilterBasicModule,
         FormlyFilterSingleModule,
@@ -43,6 +42,9 @@ export default {
         FormlyFilterHideExpressionModule,
         FormlyFilterIntroductionModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {
@@ -55,13 +57,13 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-filter-introduction></sds-formly-filter-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const AccordionGroup: Story = (args) => ({
+export const AccordionGroup: StoryObj = (args) => ({
   template: '<sds-formly-filter-accordiongroup></sds-formly-filter-accordiongroup>',
   props: args,
 });
@@ -78,7 +80,7 @@ AccordionGroup.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'accordiongroup'),
 };
-export const Horizontal: Story = (args) => ({
+export const Horizontal: StoryObj = (args) => ({
   template: '<sds-formly-filter-horizontal></sds-formly-filter-horizontal>',
   props: args,
 });
@@ -95,7 +97,7 @@ Horizontal.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'horizontal'),
 };
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-filter-basic></sds-formly-filter-basic>',
   props: args,
 });
@@ -113,7 +115,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-filter', 'basic'),
 };
 
-export const Single: Story = (args) => ({
+export const Single: StoryObj = (args) => ({
   template: '<sds-formly-filter-single></sds-formly-filter-single>',
   props: args,
 });
@@ -131,7 +133,7 @@ Single.parameters = {
   stackblitzLink: generateStackblitzLink('formly-filter', 'single'),
 };
 
-export const Nested: Story = (args) => ({
+export const Nested: StoryObj = (args) => ({
   template: '<sds-formly-filter-nested></sds-formly-filter-nested>',
   props: args,
 });
@@ -150,7 +152,7 @@ Nested.parameters = {
   stackblitzLink: generateStackblitzLink('formly-filter', 'nested'),
 };
 
-export const HideExpression: Story = (args) => ({
+export const HideExpression: StoryObj = (args) => ({
   template: '<sds-formly-filter-hideexpression></sds-formly-filter-hideexpression>',
   props: args,
 });
@@ -167,13 +169,3 @@ HideExpression.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'hideexpression'),
 };
-
-export const __namedExportsOrder = [
-  'Introduction',
-  'Basic',
-  'Single',
-  'AccordionGroup',
-  'HideExpression',
-  'Nested',
-  'Horizontal',
-];

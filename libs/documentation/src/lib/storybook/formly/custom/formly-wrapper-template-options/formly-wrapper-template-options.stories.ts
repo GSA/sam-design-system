@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyWrapperTemplateOptionsBlurModule } from './formly-wrapper-template-options-blur/formly-wrapper-template-options-blur.module';
 import { FormlyWrapperTemplateOptionsAnnounceLabelModule } from './formly-wrapper-template-options-announce-label/formly-wrapper-template-options-announce-label.module';
@@ -21,27 +21,28 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyWrapperTemplateOptionsIntroductionModule,
         FormlyWrapperTemplateOptionsBlurModule,
         FormlyWrapperTemplateOptionsUpdateonModule,
         FormlyWrapperTemplateOptionsTagsModule,
         FormlyWrapperTemplateOptionsHideOptionalModule,
-
         FormlyWrapperTemplateOptionsAnnounceLabelModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-introduction></sds-formly-wrapper-template-options-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Blur: Story = (args) => ({
+export const Blur: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-blur></sds-formly-wrapper-template-options-blur>',
   props: args,
 });
@@ -59,7 +60,7 @@ Blur.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'blur'),
 };
 
-export const UpdateOn: Story = (args) => ({
+export const UpdateOn: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-updateon></sds-formly-wrapper-template-options-updateon>',
   props: args,
 });
@@ -77,7 +78,7 @@ UpdateOn.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'updateon'),
 };
 
-export const Hideoptional: Story = (args) => ({
+export const Hideoptional: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-hideoptional></sds-formly-wrapper-template-options-hideoptional>',
   props: args,
 });
@@ -95,7 +96,7 @@ Hideoptional.parameters = {
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'hideoptional'),
 };
 
-export const AnnounceLabel: Story = (args) => ({
+export const AnnounceLabel: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-announce-label></sds-formly-wrapper-template-options-announce-label>',
   props: args,
 });
@@ -112,5 +113,3 @@ AnnounceLabel.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'announc-label'),
 };
-
-export const __namedExportsOrder = ['Introduction', 'Blur', 'UpdateOn', 'Tags', 'Hideoptional', 'AnnounceLabel'];

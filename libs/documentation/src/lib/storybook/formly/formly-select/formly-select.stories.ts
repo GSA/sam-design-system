@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlySelectIntroductionModule } from './formly-select-introduction/formly-select-introduction.module';
 import { FormlySelectConfigurableModule } from './formly-select-configurable/formly-select-configurable.module';
@@ -11,6 +11,7 @@ import { FormlySelectLabelModule } from './formly-select-label/formly-select-lab
 import { FormlySelectDescriptionModule } from './formly-select-description/formly-select-description.module';
 import { FormlySelectRequiredModule } from './formly-select-required/formly-select-required.module';
 import { FormlySelectOptionsModule } from './formly-select-options/formly-select-options.module';
+import { importProvidersFrom } from '@angular/core';
 
 const props = {
   table: {
@@ -27,8 +28,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
-        FormlyModule.forRoot(),
         FormlySelectIntroductionModule,
         FormlySelectConfigurableModule,
         FormlySelectLabelModule,
@@ -36,6 +35,9 @@ export default {
         FormlySelectRequiredModule,
         FormlySelectOptionsModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {
@@ -55,7 +57,13 @@ const formlyConfigFunction = (label: string, description: string, required: bool
   };
 };
 
-const Template: Story = (args) => {
+export const Introduction: StoryObj = (args) => ({
+  template: '<sds-formly-select-introduction></sds-formly-select-introduction>',
+  props: args,
+});
+Introduction.parameters = { options: { showPanel: false } };
+
+export const Configurable = (args) => {
   const { label, description, required, options } = args;
   let config = formlyConfigFunction(label, description, required, options);
   return {
@@ -66,14 +74,6 @@ const Template: Story = (args) => {
     },
   };
 };
-
-export const Introduction: Story = (args) => ({
-  template: '<sds-formly-select-introduction></sds-formly-select-introduction>',
-  props: args,
-});
-Introduction.parameters = { options: { showPanel: false } };
-
-export const Configurable = Template.bind({});
 Configurable.args = {
   label: 'Entity Type',
   description: 'Select the entity type.',
@@ -88,11 +88,11 @@ Configurable.args = {
   ],
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
 
-export const Label: Story = (args) => ({
+export const Label: StoryObj = (args) => ({
   template: '<sds-formly-select-label></sds-formly-select-label>',
   props: args,
 });
@@ -110,7 +110,7 @@ Label.parameters = {
   stackblitzLink: generateStackblitzLink('formly-select', 'label'),
 };
 
-export const Description: Story = (args) => ({
+export const Description: StoryObj = (args) => ({
   template: '<sds-formly-select-description></sds-formly-select-description>',
   props: args,
 });
@@ -128,7 +128,7 @@ Description.parameters = {
   stackblitzLink: generateStackblitzLink('formly-select', 'description'),
 };
 
-export const Required: Story = (args) => ({
+export const Required: StoryObj = (args) => ({
   template: '<sds-formly-select-required></sds-formly-select-required>',
   props: args,
 });
@@ -146,7 +146,7 @@ Required.parameters = {
   stackblitzLink: generateStackblitzLink('formly-select', 'required'),
 };
 
-export const Options: Story = (args) => ({
+export const Options: StoryObj = (args) => ({
   template: '<sds-formly-select-options></sds-formly-select-options>',
   props: args,
 });
@@ -163,5 +163,3 @@ Options.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-select', 'options'),
 };
-
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Description', 'Label', 'Required', 'Options'];

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { SdsExpiresDirective, SdsExpiresModule } from '@gsa-sam/components';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExpiresConfigurableModule } from './expires-configurable/expires-configurable.module';
 import { ExpiresExpiresModule } from './expires-expires/expires-expires.module';
@@ -32,21 +32,19 @@ export default {
     initialized: disable,
   },
 } as Meta;
-const Template: Story<SdsExpiresDirective> = (args) => ({
-  template: `
-      <expires-configurable [expiresString]="expires"></expires-configurable>
-    `,
+
+export const Configurable = (args) => ({
+  template: `<expires-configurable [expiresString]="expires"></expires-configurable>`,
   props: args,
 });
-export const Configurable = Template.bind({});
 Configurable.args = {
   expires: 'Jan 5, 2099',
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
-export const Expires: Story = (args) => ({
+export const Expires: StoryObj = (args) => ({
   template: `<expires-expires></expires-expires>`,
   props: args,
 });
@@ -59,7 +57,7 @@ Expires.parameters = {
   stackblitzLink: generateStackblitzLink('expires', 'expires'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-expires-introduction></sds-expires-introduction>',
   props: args,
 });
@@ -70,7 +68,5 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Expires'];

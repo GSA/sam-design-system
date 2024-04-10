@@ -1,5 +1,5 @@
-import { SdsSearchResultListComponent, SdsSearchResultListModule } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { SdsSearchResultListComponent } from '@gsa-sam/components';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { CommonModule } from '@angular/common';
 import { ResultListIntroductionModule } from './result-list-introduction/result-list-introduction.module';
@@ -8,6 +8,7 @@ import { ResultListBasicModule } from './result-list-basic/result-list-basic.mod
 import { ResultListCustomComponentModule } from './result-list-custom-component/result-list-custom-component.module';
 import { ResultListCustomTemplateModule } from './result-list-custom-template/result-list-custom-template.module';
 import { ResultListMessagesModule } from './result-list-messages/result-list-messages.module';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 const disable = {
   table: {
@@ -29,6 +30,9 @@ export default {
         ResultListCustomTemplateModule,
         ResultListMessagesModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations()],
     }),
   ],
   argTypes: {
@@ -139,7 +143,7 @@ const resultListConfigFunction = (
   }
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-result-list-introduction></sds-result-list-introduction>',
   props: args,
 });
@@ -150,10 +154,10 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable: Story = (args) => {
+export const Configurable: StoryObj = (args) => {
   const { results, showMessage, type, title, message, classes, isDefaultModel } = args;
 
   const config = resultListConfigFunction(results, showMessage, type, title, message, classes, isDefaultModel);
@@ -167,7 +171,7 @@ export const Configurable: Story = (args) => {
   };
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
 Configurable.args = {
@@ -181,7 +185,7 @@ Configurable.args = {
   showMessage: false,
 };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-result-list-basic></sds-result-list-basic>',
   props: args,
 });
@@ -195,7 +199,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('result-list', 'basic'),
 };
 
-export const Messages: Story = (args) => ({
+export const Messages: StoryObj = (args) => ({
   template: '<sds-result-list-messages></sds-result-list-messages>',
   props: args,
 });
@@ -213,7 +217,7 @@ Messages.parameters = {
   stackblitzLink: generateStackblitzLink('result-list', 'messages'),
 };
 
-export const CustomTemplate: Story = (args) => ({
+export const CustomTemplate: StoryObj = (args) => ({
   template: '<sds-result-list-custom-template></sds-result-list-custom-template>',
   props: args,
 });
@@ -231,7 +235,7 @@ CustomTemplate.parameters = {
   stackblitzLink: generateStackblitzLink('result-list', 'custom-template'),
 };
 
-export const CustomComponent: Story = (args) => ({
+export const CustomComponent: StoryObj = (args) => ({
   template: '<sds-result-list-custom-component></sds-result-list-custom-component>',
   props: args,
 });
@@ -249,11 +253,11 @@ CustomComponent.parameters = {
   stackblitzLink: generateStackblitzLink('result-list', 'custom-component'),
 };
 
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'Basic',
-  'CustomComponent',
-  'CustomTemplate',
-  'Messages',
-];
+// export const __namedExportsOrder = [
+//   'Introduction',
+//   'Configurable',
+//   'Basic',
+//   'CustomComponent',
+//   'CustomTemplate',
+//   'Messages',
+// ];

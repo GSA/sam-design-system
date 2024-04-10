@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { SdsTreeTableComponent } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -69,7 +69,7 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-tree-table-introduction></sds-tree-table-introduction>',
   props: args,
 });
@@ -77,7 +77,7 @@ Introduction.parameters = {
   options: { showPanel: false },
 };
 
-export const Configurable: Story = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: `<sds-tree-table-configurable
     [childrenLimit]=childrenLimit
     [numChildrenToDisplay]=numChildrenToDisplay
@@ -88,7 +88,7 @@ export const Configurable: Story = (args) => ({
   props: args,
 });
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 Configurable.args = {
   childrenLimit: 10,
@@ -96,7 +96,7 @@ Configurable.args = {
   displayColumns: ['Title', 'Description', 'Year'],
 };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: `<sds-tree-table-basic
     (viewAll)="viewAll($event)"
     (rowExpanded)="rowExpanded($event)"
@@ -114,7 +114,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('tree-table', 'basic'),
 };
 
-export const ProgrammaticControl: Story = (args) => ({
+export const ProgrammaticControl: StoryObj = (args) => ({
   template: '<sds-tree-table-programmatic-control></sds-tree-table-programmatic-control>',
   props: args,
 });
@@ -133,4 +133,4 @@ ProgrammaticControl.parameters = {
   stackblitzLink: generateStackblitzLink('tree-table', 'programmatic-control'),
 };
 
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Basic', 'ProgrammaticControl'];
+// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Basic', 'ProgrammaticControl'];

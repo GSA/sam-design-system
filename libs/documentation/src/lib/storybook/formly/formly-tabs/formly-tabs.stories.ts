@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 
 import { FormlyTabsIntroductionModule } from './formly-tabs-introduction/formly-tabs-introduction.module';
 
 import { FormlyTabsBasicModule } from './formly-tabs-basic/formly-tabs-basic.module';
 import { FormlyTabsInterceptModule } from './formly-tabs-intercept/formly-tabs-intercept.module';
+import { importProvidersFrom } from '@angular/core';
 const disable = {
   table: {
     disable: true,
@@ -31,15 +31,14 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyTabsIntroductionModule,
-
-        NoopAnimationsModule,
-
         FormlyTabsInterceptModule,
         FormlyTabsBasicModule,
         FormlyTabsIntroductionModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {
@@ -52,13 +51,13 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-tabs-introduction></sds-formly-tabs-introduction>',
   props: args,
 });
 Introduction.parameters = { options: { showPanel: false } };
 
-export const Intercept: Story = (args) => ({
+export const Intercept: StoryObj = (args) => ({
   template: '<sds-formly-tabs-intercept></sds-formly-tabs-intercept>',
   props: args,
 });
@@ -76,7 +75,7 @@ Intercept.parameters = {
   stackblitzLink: generateStackblitzLink('formly-tabs', 'intercept'),
 };
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-tabs-basic></sds-formly-tabs-basic>',
   props: args,
 });
@@ -93,5 +92,3 @@ Basic.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-tabs', 'basic'),
 };
-
-export const __namedExportsOrder = ['Introduction', 'Basic', 'Intercept'];

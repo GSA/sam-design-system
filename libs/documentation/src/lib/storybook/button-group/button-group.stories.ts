@@ -5,7 +5,7 @@ import {
   SdsButtonGroupModule,
   SdsButtonGroupOptionComponent,
 } from '@gsa-sam/sam-material-extensions';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ButtonGroupCheckedModule } from './button-group-checked/button-group-checked.module';
 import { ButtonGroupIntroductionModule } from './button-group-introduction/button-group-introduction.module';
@@ -48,26 +48,26 @@ export default {
   },
 } as Meta;
 
-const Template: Story<SdsButtonGroupComponent> = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: `
   <sds-button-group class="sds-button-group" [ngClass]="[extraClasses]" [mode]="mode" (change)="buttonGroupChanged({source: 'originalEmitter: MatButtonToggle', value: $event.value})">
     <sds-button-group-option *ngFor="let optionText of optionTexts" value="{{optionText}}">{{optionText}}</sds-button-group-option>
   </sds-button-group>
   `,
-  props: args,
+  props: {
+    ...args,
+  },
 });
-
-export const Configurable = Template.bind({});
 Configurable.args = {
   extraClasses: 'sds-button-group--secondary',
   optionTexts: ['Reports', 'Subscriptions', 'History'],
   mode: 'checkbox',
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Modes: Story = (args) => ({
+export const Modes: StoryObj = (args) => ({
   template: `<sds-button-group-modes></sds-button-group-modes>`,
   props: args,
 });
@@ -85,7 +85,7 @@ Modes.parameters = {
   stackblitzLink: generateStackblitzLink('button-group', 'modes'),
 };
 
-export const Checked: Story = (args) => ({
+export const Checked: StoryObj = (args) => ({
   template: `<sds-button-group-checked></sds-button-group-checked>`,
   props: {
     ...args,
@@ -105,7 +105,7 @@ Checked.parameters = {
   stackblitzLink: generateStackblitzLink('button-group', 'checked'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-button-group-introduction></sds-button-group-introduction>',
   props: args,
 });
@@ -116,7 +116,5 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Checked', 'Modes'];

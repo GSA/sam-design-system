@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -20,7 +20,6 @@ export default {
     moduleMetadata({
       imports: [
         CommonModule,
-        NoopAnimationsModule,
         SelectionPanelIntroductionModule,
         SelectionPanelConfigurableModule,
         SelectionPanelSelectedModule,
@@ -28,11 +27,14 @@ export default {
         SelectionPanelChildrenModule,
       ],
     }),
+    applicationConfig({
+      providers: [provideAnimations()],
+    }),
   ],
   argTypes: {},
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-selection-panel-introduction></sds-selection-panel-introduction>`,
   props: {
     ...args,
@@ -45,10 +47,10 @@ Introduction.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable: Story = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: `<sds-selection-panel-configurable [config]=model></sds-selection-panel-configurable>`,
   props: {
     ...args,
@@ -83,10 +85,10 @@ Configurable.args = {
 };
 Configurable.parameters = {
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Mode: Story = (args) => ({
+export const Mode: StoryObj = (args) => ({
   template: `<sds-selection-panel-mode></sds-selection-panel-mode>`,
   props: {
     ...args,
@@ -113,7 +115,7 @@ Mode.parameters = {
   stackblitzLink: generateStackblitzLink('selection-panel', 'mode'),
 };
 
-export const Children: Story = (args) => ({
+export const Children: StoryObj = (args) => ({
   template: `<sds-selection-panel-children></sds-selection-panel-children>`,
   props: {
     ...args,
@@ -140,7 +142,7 @@ Children.parameters = {
   stackblitzLink: generateStackblitzLink('selection-panel', 'children'),
 };
 
-export const Selected: Story = (args) => ({
+export const Selected: StoryObj = (args) => ({
   template: `<sds-selection-panel-selected></sds-selection-panel-selected>`,
   props: {
     ...args,
@@ -166,5 +168,3 @@ Selected.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('selection-panel', 'selected'),
 };
-
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Children', 'Mode', 'Selected'];

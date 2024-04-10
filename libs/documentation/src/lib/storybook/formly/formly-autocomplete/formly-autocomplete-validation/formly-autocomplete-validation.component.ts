@@ -60,6 +60,7 @@ export class FormlyAutocompleteValidationComponent {
 
   setup() {
     this.settings.id = 'autocompleteValidationSingle';
+    this.fields[0].fieldGroup[0].id = this.settings.id;
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
@@ -68,6 +69,7 @@ export class FormlyAutocompleteValidationComponent {
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
 
     this.multipleSettings.id = 'autocompleteValidationMultiple';
+    this.fields[0].fieldGroup[1].id = this.multipleSettings.id;
     this.multipleSettings.primaryKeyField = 'id';
     this.multipleSettings.primaryTextField = 'name';
     this.multipleSettings.secondaryTextField = 'subtext';

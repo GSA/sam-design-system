@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { IconsColoringModule } from './icons-coloring/icons-coloring.module';
 import { IconsRotationModule } from './icons-rotation/icons-rotation.module';
@@ -24,7 +24,6 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         IconsColoringModule,
         IconsRotationModule,
@@ -36,10 +35,13 @@ export default {
         IconsUswdsModule,
       ],
     }),
+    applicationConfig({
+      providers: [provideAnimations()],
+    }),
   ],
 } as Meta;
 
-export const Coloring: Story = (args) => ({
+export const Coloring: StoryObj = (args) => ({
   template: '<usa-icon-coloring-demo></usa-icon-coloring-demo>',
   props: args,
 });
@@ -53,7 +55,7 @@ Coloring.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'coloring'),
 };
 
-export const Rotating: Story = (args) => ({
+export const Rotating: StoryObj = (args) => ({
   template: '<usa-icon-rotation-demo></usa-icon-rotation-demo>',
   props: args,
 });
@@ -67,7 +69,7 @@ Rotating.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'rotation'),
 };
 
-export const Sizing: Story = (args) => ({
+export const Sizing: StoryObj = (args) => ({
   template: '<usa-icon-scaling-demo></usa-icon-scaling-demo>',
   props: args,
 });
@@ -81,7 +83,7 @@ Sizing.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'scaling'),
 };
 
-export const Skewing: Story = (args) => ({
+export const Skewing: StoryObj = (args) => ({
   template: '<usa-icon-skewing-demo></usa-icon-skewing-demo>',
   props: args,
 });
@@ -95,7 +97,7 @@ Skewing.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'skewing'),
 };
 
-export const Stacking: Story = (args) => ({
+export const Stacking: StoryObj = (args) => ({
   template: '<usa-icon-stacking-demo></usa-icon-stacking-demo>',
   props: args,
 });
@@ -109,7 +111,7 @@ Stacking.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'stacking'),
 };
 
-export const Custom: Story = (args) => ({
+export const Custom: StoryObj = (args) => ({
   template: '<sds-icons-basic-demo></sds-icons-basic-demo>',
   props: args,
 });
@@ -123,7 +125,7 @@ Custom.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'basic'),
 };
 
-export const Bootstrap: Story = (args) => ({
+export const Bootstrap: StoryObj = (args) => ({
   template: '<sds-icons-bootstrap-demo></sds-icons-bootstrap-demo>',
   props: args,
 });
@@ -141,7 +143,7 @@ Bootstrap.parameters = {
   stackblitzLink: generateStackblitzLink('icons', 'bootstrap'),
 };
 
-export const Uswds: Story = (args) => ({
+export const Uswds: StoryObj = (args) => ({
   template: '<usa-icon-icons-demo></usa-icon-icons-demo>',
   props: args,
 });
@@ -154,13 +156,3 @@ Uswds.parameters = {
   preview: generateConfig('storybook/utilities/icons/icons-uswds', 'IconsUswdsModule', 'usa-icon-icons-demo'),
   stackblitzLink: generateStackblitzLink('icons', 'uswds'),
 };
-export const __namedExportsOrder = [
-  'Coloring',
-  'Rotating',
-  'Sizing',
-  'Stacking',
-  'Skewing',
-  'Custom',
-  'Bootstrap',
-  'Uswds',
-];
