@@ -239,8 +239,6 @@ const autocompleteSettingsFunction = (
   return base;
 };
 
-// const Template: StoryObj<SDSAutocompletelConfiguration> =
-
 export const Configurable = (args) => {
   const {
     primaryKeyField,
