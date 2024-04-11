@@ -34,7 +34,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-group-introduction></sds-formly-wrapper-group-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Panel: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-group-panel></sds-formly-wrapper-group-panel>',

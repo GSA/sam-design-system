@@ -55,7 +55,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-tabs-introduction></sds-formly-tabs-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Intercept: StoryObj = (args) => ({
   template: '<sds-formly-tabs-intercept></sds-formly-tabs-intercept>',

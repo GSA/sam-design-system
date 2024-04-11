@@ -40,7 +40,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-radio-introduction></sds-formly-radio-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-radio-basic></sds-formly-radio-basic>',

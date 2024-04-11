@@ -38,7 +38,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-introduction></sds-formly-wrapper-read-only-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-read-only-basic></sds-formly-wrapper-read-only-basic>',

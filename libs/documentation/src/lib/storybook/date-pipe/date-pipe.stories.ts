@@ -101,11 +101,7 @@ export const Introduction: StoryObj = (args) => ({
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };

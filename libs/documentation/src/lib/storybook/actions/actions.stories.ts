@@ -172,4 +172,8 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-actions-introduction></sds-actions-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};

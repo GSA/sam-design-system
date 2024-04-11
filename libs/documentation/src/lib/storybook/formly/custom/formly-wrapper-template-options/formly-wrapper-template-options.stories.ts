@@ -40,7 +40,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-introduction></sds-formly-wrapper-template-options-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Blur: StoryObj = (args) => ({
   template: '<sds-formly-wrapper-template-options-blur></sds-formly-wrapper-template-options-blur>',

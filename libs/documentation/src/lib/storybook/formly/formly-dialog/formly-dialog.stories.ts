@@ -55,7 +55,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-dialog-introduction></sds-formly-dialog-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Download: StoryObj = (args) => ({
   template: '<sds-formly-dialog-download></sds-formly-dialog-download>',

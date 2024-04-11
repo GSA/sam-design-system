@@ -236,18 +236,18 @@ export const Overview: StoryObj = (args) => ({
   template: '<sds-search-overview></sds-search-overview>',
   props: args,
 });
-Overview.parameters = { options: { showPanel: false } };
+Overview.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Introduction: StoryObj = (args) => ({
   template: '<sds-search-introduction></sds-search-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };

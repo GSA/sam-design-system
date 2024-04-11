@@ -61,7 +61,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-filter-introduction></sds-formly-filter-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const AccordionGroup: StoryObj = (args) => ({
   template: '<sds-formly-filter-accordiongroup></sds-formly-filter-accordiongroup>',

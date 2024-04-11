@@ -78,7 +78,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-input-introduction></sds-formly-input-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Configurable = (args) => {
   const { label, placeholder, description, required, disabled, tooltipText } = args;

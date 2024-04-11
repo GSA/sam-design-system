@@ -44,7 +44,11 @@ export const Introduction: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-introduction></sds-formly-checkbox-introduction>',
   props: args,
 });
-Introduction.parameters = { options: { showPanel: false } };
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
 
 export const Basic: StoryObj = (args) => ({
   template: '<sds-formly-checkbox-basic></sds-formly-checkbox-basic>',
