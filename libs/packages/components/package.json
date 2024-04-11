@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/components",
-  "version": "17.0.3",
+  "version": "17.0.4",
   "types": "../../../dist/out-tsc/libs/components/index.d.ts",
   "repository": {
     "type": "git",
@@ -11,8 +11,8 @@
   },
   "homepage": "https://github.com/GSA/sam-design-system/tree/master/libs/packages/components",
   "peerDependencies": {
-    "@angular/common": ">=16.0.0 <17.0.0",
-    "@angular/core": ">=16.0.0 <17.0.0",
+    "@angular/common": ">=17.0.0 <18.0.0",
+    "@angular/core": ">=17.0.0 <18.0.0",
     "accessible-html5-video-player": "^1.0.6",
     "ngx-bootstrap-icons": "^1.7.2"
   }
