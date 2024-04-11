@@ -147,13 +147,3 @@ Configurable.parameters = {
 Configurable.args = {
   width: 'small',
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'AlertType',
-//   'DataReturn',
-//   'Nested',
-//   'Policy',
-//   'Width',
-// ];

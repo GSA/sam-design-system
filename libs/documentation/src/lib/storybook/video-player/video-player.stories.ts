@@ -241,14 +241,3 @@ CrossOrigin.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'cross-origin'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'Caption',
-//   'CrossOrigin',
-//   'Debug',
-//   'Description',
-//   'PreLoad',
-//   'SeekInterval',
-// ];

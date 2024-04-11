@@ -49,5 +49,3 @@ Introduction.parameters = {
   },
   actions: { disable: true },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Basic'];

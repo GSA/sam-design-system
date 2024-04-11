@@ -139,8 +139,6 @@ const searchSettingsFunction = (
   return toReturn;
 };
 
-// const Template: StoryObj =
-
 export const Configurable = (args) => {
   const { placeholder, isSuffixSearchIcon, size, inputClass, parentSelector, id, ariaLabel } = args;
   const settings = searchSettingsFunction(
@@ -253,5 +251,3 @@ Introduction.parameters = {
   actions: { disable: true },
   sdsCodePreview: { disable: true },
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Overview', 'Configurable', 'Dropdown', 'Placeholder', 'Size'];

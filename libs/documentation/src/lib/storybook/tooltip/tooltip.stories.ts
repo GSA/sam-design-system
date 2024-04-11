@@ -102,5 +102,3 @@ SdsTooltip.parameters = {
   preview: generateConfig('storybook/tooltip/tooltip-sdsTooltip', 'TooltipSdsTooltipModule', 'sds-tooltip-sdsTooltip'),
   stackblitzLink: generateStackblitzLink('tooltip', 'sdsTooltip'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Position', 'SdsTooltip'];

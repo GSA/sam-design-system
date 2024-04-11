@@ -425,11 +425,3 @@ Introduction.parameters = {
   sdsCodePreview: { disable: true },
 };
 
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'CheckBox',
-//   'FreeText',
-//   'Grouping',
-//   'SelectionMode',
-// ];

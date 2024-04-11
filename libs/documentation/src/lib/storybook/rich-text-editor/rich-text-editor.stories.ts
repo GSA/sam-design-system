@@ -72,5 +72,3 @@ MaxHeight.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('rich-text-editor', 'max-height'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'MaxHeight', 'MinHeight'];

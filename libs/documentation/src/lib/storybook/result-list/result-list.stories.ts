@@ -252,12 +252,3 @@ CustomComponent.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('result-list', 'custom-component'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'Basic',
-//   'CustomComponent',
-//   'CustomTemplate',
-//   'Messages',
-// ];

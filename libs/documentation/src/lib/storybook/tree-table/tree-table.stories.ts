@@ -132,5 +132,3 @@ ProgrammaticControl.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('tree-table', 'programmatic-control'),
 };
-
-// export const __namedExportsOrder = ['Introduction', 'Configurable', 'Basic', 'ProgrammaticControl'];

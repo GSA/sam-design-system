@@ -230,16 +230,3 @@ SelectedTab.parameters = {
   preview: generateConfig('storybook/tabs/tabs-selected-tab', 'TabsSelectedTabModule', 'sds-tabs-selected-tab'),
   stackblitzLink: generateStackblitzLink('tabs', 'selected-tab'),
 };
-
-// export const __namedExportsOrder = [
-//   'Introduction',
-//   'Configurable',
-//   'Aria',
-//   'AutomaticActivation',
-//   'CustomClasses',
-//   'CustomHeader',
-//   'Disabled',
-//   'DynamicGeneration',
-//   'PreChangeEvent',
-//   'SelectedTab',
-// ];
