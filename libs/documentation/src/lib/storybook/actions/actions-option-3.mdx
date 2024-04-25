@@ -1,0 +1,19 @@
+import { Canvas, Meta, Markdown, Controls } from '@storybook/blocks';
+import IntroReadme from './markdown/actions-intro.md?raw';
+import SizeReadme from './markdown/actions-size-only.md?raw';
+import LabelReadme from './markdown/actions-label.md?raw';
+import TriggerReadme from './markdown/actions-trigger.md?raw';
+import * as ActionStories from './actions.stories';
+
+<Meta of={ActionStories} name="Option 3" />
+
+<Markdown>{IntroReadme}</Markdown>
+
+<Canvas of={ActionStories.Label} sourceState="none" />
+<Markdown>{LabelReadme}</Markdown>
+
+<Canvas of={ActionStories.ModelTrigger} sourceState="none" />
+<Markdown>{TriggerReadme}</Markdown>
+
+<Canvas of={ActionStories.Size} sourceState="none" />
+<Markdown>{SizeReadme}</Markdown>

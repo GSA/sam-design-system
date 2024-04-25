@@ -1,5 +1,6 @@
 module.exports = {
   stories: [
+    '../libs/documentation/src/lib/storybook/**/*.mdx',
     '../libs/documentation/**/*.stories.ts',
   ],
 
