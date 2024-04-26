@@ -10,7 +10,7 @@ import { Options } from '@popperjs/core';
  */
 @Injectable({ providedIn: 'root' })
 export class SdsPopoverConfig {
-  autoClose: boolean | 'inside' | 'outside' = true;
+  autoClose: boolean | 'inside' | 'outside' = 'inside';
   placement: PlacementArray = 'auto';
   popperOptions = (options: Partial<Options>) => options;
   triggers = 'click';
