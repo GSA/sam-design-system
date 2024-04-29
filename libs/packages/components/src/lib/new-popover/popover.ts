@@ -307,7 +307,7 @@ export class SdsPopover implements OnInit, OnDestroy, OnChanges {
           targetElement: this._windowRef!.location.nativeElement,
           placement: this.position,
           appendToBody: this.container === 'body',
-          baseClass: 'bs-popover',
+          baseClass: 'sds-popover',
           updatePopperOptions: (options) => this.popperOptions(addPopperOffset([0, 8])(options)),
         });
 
