@@ -10,7 +10,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [formControl]="formControl"
         [cols]="props.cols"
         [rows]="props.rows"
-        class="usa-textarea minw-15"
+        [ngClass]="['usa-textarea', 'minw-15', props.className]"
         [class.usa-input--error]="showError"
         [placeholder]="props.placeholder"
         [formlyAttributes]="field"

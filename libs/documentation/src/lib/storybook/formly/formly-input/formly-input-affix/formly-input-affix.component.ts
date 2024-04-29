@@ -12,14 +12,6 @@ export class FormlyInputAffixComponent {
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'prefix',
-      type: 'input',
-      props: {
-        label: 'Entity Name with prefix',
-        prefix: '$',
-      },
-    },
-    {
       key: 'suffix',
       type: 'input',
       props: {

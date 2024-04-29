@@ -24,6 +24,7 @@ export class FormlyAutocompleteCountComponent {
         {
           key: 'firstName',
           type: 'autocomplete',
+          id: 'autocompleteMinchar',
           props: {
             label: 'Auto Complete',
             hideLabel: true,
@@ -41,7 +42,6 @@ export class FormlyAutocompleteCountComponent {
   }
 
   setup() {
-    this.settings.id = 'autocompleteMinchar';
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
