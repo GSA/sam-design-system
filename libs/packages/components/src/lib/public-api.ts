@@ -92,8 +92,8 @@ export * from './tree-table/tree-table.model';
 export * from './step-arrow/step-arrow.component';
 export * from './step-arrow/step-arrow.module';
 
-export * from './new-tooltip/tooltip';
-export * from './new-tooltip/tooltip.module';
+export * from './tooltip/tooltip';
+export * from './tooltip/tooltip.module';
 
-export * from './new-popover/popover';
-export * from './new-popover/popover.module';
+export * from './popover/popover';
+export * from './popover/popover.module';
