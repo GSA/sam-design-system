@@ -24,7 +24,7 @@ export default {
         ActionsSizeModule,
         ActionsLabelModule,
         ActionsModelTriggerModule,
-        ActionsIntroductionModule,
+        ActionsIntroductionModule
       ],
     }),
     applicationConfig({
@@ -68,7 +68,7 @@ export default {
       },
     },
     actions: {
-      control: 'array',
+      control: 'object',
       table: {
         category: 'ActionMenuModel/actions',
       },
