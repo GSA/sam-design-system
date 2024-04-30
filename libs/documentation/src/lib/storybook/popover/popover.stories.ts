@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { SdsPopoverModule } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { PopoverCloseOnClickOutsideModule } from './popover-close-on-click-outside/popover-close-on-click-outside.module';
 import { PopoverCloseOnContentClickModule } from './popover-close-on-content-click/popover-close-on-content-click.module';
@@ -59,9 +59,8 @@ export default {
 
 const exportedStories = {};
 
-const Template: Story = (args: any) => {
-  return {
-    template: `
+export const Configurable = (args) => ({
+  template: `
       <div class="padding-4" *ngIf="sdsPopover">
       <button class="usa-button usa-button--base"
         [sdsPopover]="sdsPopover"
@@ -72,22 +71,18 @@ const Template: Story = (args: any) => {
       </button>
       </div>
     `,
-    props: args,
-  };
-};
-
-export const Configurable = Template.bind({});
-Configurable.args = {
-  sdsPopover: 'Default Body',
-  sdsPopoverTitle: '',
-  position: 'bottom',
-};
+  args: {
+    sdsPopover: 'Default Body',
+    sdsPopoverTitle: '',
+  },
+  props: args,
+});
 Configurable.parameters = {
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Position: Story = (args) => ({
+export const Position: StoryObj = (args) => ({
   template: `<sds-popover-position></sds-popover-position>`,
   props: args,
 });
@@ -101,7 +96,7 @@ Position.parameters = {
   stackblitzLink: generateStackblitzLink('popover', 'position'),
 };
 
-export const Title: Story = (args) => ({
+export const Title: StoryObj = (args) => ({
   template: `<popover-title></popover-title>`,
   props: args,
 });
@@ -119,7 +114,7 @@ Title.parameters = {
   stackblitzLink: generateStackblitzLink('popover', 'title'),
 };
 
-export const CloseOnContentClicked: Story = (args) => ({
+export const CloseOnContentClicked: StoryObj = (args) => ({
   template: `<sds-popover-close-on-content-click></sds-popover-close-on-content-click>`,
   props: args,
 });
@@ -137,7 +132,7 @@ CloseOnContentClicked.parameters = {
   stackblitzLink: generateStackblitzLink('popover', 'close-on-content-click'),
 };
 
-export const CloseOnClickOutside: Story = (args) => ({
+export const CloseOnClickOutside: StoryObj = (args) => ({
   template: `<sds-popover-close-on-click-outside></sds-popover-close-on-click-outside>`,
   props: args,
 });
@@ -154,25 +149,12 @@ CloseOnClickOutside.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('popover', 'close-on-click-outside'),
 };
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-popover-introduction></sds-popover-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'CloseOnClickOutside',
-  'CloseOnContentClicked',
-  'Title',
-  'Position',
-];

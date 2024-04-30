@@ -16,9 +16,9 @@ import {
   SdsTableHeaderCellDirective,
   SdsTableFooterCellDirective,
 } from './table.component';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { MatSortModule } from '@angular/material/sort';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const MOCK_DATA = [
   {

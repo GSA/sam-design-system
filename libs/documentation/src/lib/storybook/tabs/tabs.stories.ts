@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { QueryList } from '@angular/core';
 import { TabsComponent } from '@gsa-sam/components';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TabsAriaModule } from './tabs-aria/tabs-aria.module';
 import { TabsAutomaticActivationModule } from './tabs-automatic-activation/tabs-automatic-activation.module';
@@ -59,23 +59,19 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-tabs-introduction></sds-tabs-introduction>`,
   props: {
     ...args,
   },
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable: Story = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: `<sds-tabs-configurable
     [automaticActivation]=automaticActivation
     [tabClass]=tabClass
@@ -87,11 +83,11 @@ export const Configurable: Story = (args) => ({
   },
 });
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
 
-export const Aria: Story = (args) => ({
+export const Aria: StoryObj = (args) => ({
   template: `<sds-tabs-aria></sds-tabs-aria>`,
   props: {
     ...args,
@@ -107,7 +103,7 @@ Aria.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'aria'),
 };
 
-export const AutomaticActivation: Story = (args) => ({
+export const AutomaticActivation: StoryObj = (args) => ({
   template: `<sds-tabs-automatic-activation></sds-tabs-automatic-activation>`,
   props: {
     ...args,
@@ -127,7 +123,7 @@ AutomaticActivation.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'automatic-activation'),
 };
 
-export const CustomHeader: Story = (args) => ({
+export const CustomHeader: StoryObj = (args) => ({
   template: `<sds-tabs-custom-header></sds-tabs-custom-header>`,
   props: {
     ...args,
@@ -143,7 +139,7 @@ CustomHeader.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'custom-header'),
 };
 
-export const Disabled: Story = (args) => ({
+export const Disabled: StoryObj = (args) => ({
   template: `<sds-tabs-disabled></sds-tabs-disabled>`,
   props: {
     ...args,
@@ -159,7 +155,7 @@ Disabled.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'disabled'),
 };
 
-export const DynamicGeneration: Story = (args) => ({
+export const DynamicGeneration: StoryObj = (args) => ({
   template: `<sds-tabs-dynamic-generation></sds-tabs-dynamic-generation>`,
   props: {
     ...args,
@@ -179,7 +175,7 @@ DynamicGeneration.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'dynamic-generation'),
 };
 
-export const PreChangeEvent: Story = (args) => ({
+export const PreChangeEvent: StoryObj = (args) => ({
   template: `<sds-tabs-pre-change-event></sds-tabs-pre-change-event>`,
   props: {
     ...args,
@@ -199,7 +195,7 @@ PreChangeEvent.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'pre-change-event'),
 };
 
-export const CustomClasses: Story = (args) => ({
+export const CustomClasses: StoryObj = (args) => ({
   template: `<sds-tabs-custom-classes></sds-tabs-custom-classes>`,
   props: {
     ...args,
@@ -215,7 +211,7 @@ CustomClasses.parameters = {
   stackblitzLink: generateStackblitzLink('tabs', 'custom-classes'),
 };
 
-export const SelectedTab: Story = (args) => ({
+export const SelectedTab: StoryObj = (args) => ({
   template: `<sds-tabs-selected-tab></sds-tabs-selected-tab>`,
   props: {
     ...args,
@@ -230,16 +226,3 @@ SelectedTab.parameters = {
   preview: generateConfig('storybook/tabs/tabs-selected-tab', 'TabsSelectedTabModule', 'sds-tabs-selected-tab'),
   stackblitzLink: generateStackblitzLink('tabs', 'selected-tab'),
 };
-
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'Aria',
-  'AutomaticActivation',
-  'CustomClasses',
-  'CustomHeader',
-  'Disabled',
-  'DynamicGeneration',
-  'PreChangeEvent',
-  'SelectedTab',
-];

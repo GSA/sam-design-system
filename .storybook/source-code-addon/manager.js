@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AddonPanel, Placeholder } from '@storybook/components';
-import { useParameter, addons, types } from '@storybook/api';
+import { useParameter, addons, types } from '@storybook/manager-api';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { themes } from '@storybook/theming';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -15,7 +15,8 @@ addons.register('my/panel', () => {
   addons.add('my-panel-addon/panel', {
     title: 'View Code',
     type: types.PANEL,
-    render: ({ active, key }) => {
+    paramKey: 'sdsCodePreview',
+    render: ({ active }) => {
       const preview = useParameter('preview', null);
       const [selectedTab, setSelectedTab] = useState(null);
 
@@ -24,7 +25,7 @@ addons.register('my/panel', () => {
       };
 
       return (
-        <AddonPanel key={key} active={active}>
+        <AddonPanel active={active}>
           {preview && preview.length > 0 ? (
             <div>
               {preview.map((item, index) => (

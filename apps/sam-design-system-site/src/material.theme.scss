@@ -1,12 +1,138 @@
-/* autoprefixer grid: autoplace */
+@use '@angular/material' as mat;
 
-@import '@angular/material/theming';
-// Plus imports for other components in your app.
+@include mat.core();
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
+$md-accent: (
+  50: #eaf3fd,
+  100: #cbe2fa,
+  200: #a8cff7,
+  300: #85bcf4,
+  400: #6aadf1,
+  500: #509fef,
+  600: #4997ed,
+  700: #408deb,
+  800: #3783e8,
+  900: #2772e4,
+  A100: #ffffff,
+  A200: #edf4ff,
+  A400: #bad4ff,
+  A700: #a1c4ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-alternative: (
+  50: #f3fcfb,
+  100: #e1f8f5,
+  200: #cdf3ef,
+  300: #b9eee9,
+  400: #aaebe4,
+  500: #9be7df,
+  600: #93e4db,
+  700: #89e0d7,
+  800: #7fddd2,
+  900: #6dd7ca,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #e8fffc,
+  A700: #cffff9,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-warn: (
+  50: #fcf2e7,
+  100: #f8dec3,
+  200: #f3c89c,
+  300: #eeb274,
+  400: #eaa256,
+  500: #e69138,
+  600: #e38932,
+  700: #df7e2b,
+  800: #db7424,
+  900: #d56217,
+  A100: #ffffff,
+  A200: #ffe3d4,
+  A400: #ffc3a1,
+  A700: #ffb287,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-error: (
+  50: #f9e0e0,
+  100: #f0b3b3,
+  200: #e68080,
+  300: #db4d4d,
+  400: #d42626,
+  500: #cc0000,
+  600: #c70000,
+  700: #c00000,
+  800: #b90000,
+  900: #ad0000,
+  A100: #ffd7d7,
+  A200: #ffa4a4,
+  A400: #ff7171,
+  A700: #ff5858,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
 
 $mat-sds-green: (
   50: #ecf3ec,
@@ -34,20 +160,20 @@ $mat-sds-green: (
   A400: #00e676,
   A700: #00c853,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: #008817,
+    100: #008817,
+    200: #008817,
+    300: #008817,
+    400: #008817,
+    500: #008817,
+    600: #b7f5bd,
+    700: #b7f5bd,
+    800: #b7f5bd,
+    900: #b7f5bd,
+    A100: #008817,
+    A200: #008817,
+    A400: #008817,
+    A700: #008817,
   ),
 );
 
@@ -77,20 +203,20 @@ $mat-sds-blue: (
   A400: #0095e6,
   A700: #0061c8,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: #0050d8,
+    100: #0050d8,
+    200: #0050d8,
+    300: #0050d8,
+    400: #0050d8,
+    500: #0050d8,
+    600: #5994f6,
+    700: #5994f6,
+    800: #5994f6,
+    900: #5994f6,
+    A100: #0050d8,
+    A200: #0050d8,
+    A400: #0050d8,
+    A700: #0050d8,
   ),
 );
 
@@ -120,39 +246,40 @@ $mat-sds-red: (
   A400: #e60000,
   A700: #c80000,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: #8b1303,
+    100: #8b1303,
+    200: #8b1303,
+    300: #8b1303,
+    400: #8b1303,
+    500: #8b1303,
+    600: #ff8d7b,
+    700: #ff8d7b,
+    800: #ff8d7b,
+    900: #ff8d7b,
+    A100: #8b1303,
+    A200: #8b1303,
+    A400: #8b1303,
+    A700: #8b1303,
   ),
 );
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$sds-mat-app-primary: mat-palette($mat-sds-green);
-$sds-mat-app-accent: mat-palette($mat-sds-blue, A200, A100, A400);
+$sds-mat-app-primary: mat.define-palette($mat-sds-green, 500);
+$sds-mat-app-accent: mat.define-palette($mat-sds-blue, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-$sds-mat-app-warn: mat-palette($mat-sds-red);
+// The "warn" palette is optional and defaults to red if not specified.
+$sds-mat-app-warn: mat.define-palette($mat-sds-red);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$sds-mat-app-theme: mat-light-theme($sds-mat-app-primary, $sds-mat-app-accent, $sds-mat-app-warn);
+$sds-mat-app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $sds-mat-app-primary,
+      accent: $sds-mat-app-accent,
+      warn: $sds-mat-app-warn,
+    ),
+  )
+);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($sds-mat-app-theme);
+@include mat.all-component-themes($sds-mat-app-theme);
 
 .mat-calendar-table-header {
   color: black !important;

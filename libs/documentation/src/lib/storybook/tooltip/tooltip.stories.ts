@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TooltipConfigurableModule } from './tooltip-configurable/tooltip-configurable.module';
 import { TooltipIntroductionModule } from './tooltip-introduction/tooltip-introduction.module';
@@ -47,21 +47,17 @@ export default {
   },
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-tooltip-introduction></sds-tooltip-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Configurable: Story = (args) => ({
+export const Configurable: StoryObj = (args) => ({
   template: '<sds-tooltip-configurable [position]=position [tooltipContent]=sdsTooltip></sds-tooltip-configurable>',
   props: args,
 });
@@ -70,10 +66,10 @@ Configurable.args = {
 };
 Configurable.parameters = {
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Position: Story = (args) => ({
+export const Position: StoryObj = (args) => ({
   template: `<sds-tooltip-position></sds-tooltip-position>`,
   props: args,
 });
@@ -87,7 +83,7 @@ Position.parameters = {
   stackblitzLink: generateStackblitzLink('tooltip', 'position'),
 };
 
-export const SdsTooltip: Story = (args) => ({
+export const SdsTooltip: StoryObj = (args) => ({
   template: `<sds-tooltip-sdsTooltip></sds-tooltip-sdsTooltip>`,
   props: args,
 });
@@ -100,5 +96,3 @@ SdsTooltip.parameters = {
   preview: generateConfig('storybook/tooltip/tooltip-sdsTooltip', 'TooltipSdsTooltipModule', 'sds-tooltip-sdsTooltip'),
   stackblitzLink: generateStackblitzLink('tooltip', 'sdsTooltip'),
 };
-
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'Position', 'SdsTooltip'];

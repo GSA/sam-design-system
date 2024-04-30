@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { RichTextEditorMinHeightModule } from './rich-text-editor-min-height/rich-text-editor-min-height.module';
 import { RichTextEditorMaxHeightModule } from './rich-text-editor-max-height/rich-text-editor-max-height.module';
@@ -19,21 +19,17 @@ export default {
   ],
 } as Meta;
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-rich-text-editor-introduction></sds-rich-text-editor-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const MinHeight: Story = (args) => ({
+export const MinHeight: StoryObj = (args) => ({
   template: `<sds-rich-text-editor-min-height></sds-rich-text-editor-min-height>`,
   props: {
     ...args,
@@ -53,7 +49,7 @@ MinHeight.parameters = {
   stackblitzLink: generateStackblitzLink('rich-text-editor', 'min-height'),
 };
 
-export const MaxHeight: Story = (args) => ({
+export const MaxHeight: StoryObj = (args) => ({
   template: `<sds-rich-text-editor-max-height></sds-rich-text-editor-max-height>`,
   props: {
     ...args,
@@ -72,5 +68,3 @@ MaxHeight.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('rich-text-editor', 'max-height'),
 };
-
-export const __namedExportsOrder = ['Introduction', 'MaxHeight', 'MinHeight'];

@@ -13,10 +13,9 @@ import {
 } from './table.component';
 import { TableRowNavigationDirective } from './table-row-import/table-row-navigation.directive';
 import { MatSortModule } from '@angular/material/sort';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
-
+import { MatTableModule } from '@angular/material/table';
 import { PaginationModule } from '@gsa-sam/components';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { chevronDown, chevronUp, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { RouterModule } from '@angular/router';

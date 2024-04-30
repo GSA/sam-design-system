@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
-import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
+import { generateConfig } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyFormsModule } from './formly-forms.module';
 
 export default {
@@ -16,15 +16,17 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        NoopAnimationsModule,
         FormlyModule.forRoot(),
         FormlyFormsModule,
       ],
     }),
+    applicationConfig({
+      providers: [provideAnimations()],
+    }),
   ],
 } as Meta;
 
-export const AddressForm: Story = (args) => ({
+export const AddressForm: StoryObj = (args) => ({
   template: '<sds-formly-forms></sds-formly-forms>',
   props: args,
 });
@@ -36,5 +38,3 @@ AddressForm.parameters = {
   actions: { disable: true },
   preview: generateConfig('storybook/formly/custom/formly-forms', 'FormlyFormsModule', 'sds-formly-forms'),
 };
-
-export const __namedExportsOrder = ['AddressForm'];
