@@ -1,12 +1,16 @@
 import { Canvas, Meta, Markdown, Controls } from '@storybook/blocks';
-import SizeReadme from './markdown/actions-size.md?raw';
+import SmallSize from './markdown/SmallSize.md?raw';
+import PrimaryType from './markdown/PrimaryType.md?raw';
 import * as ActionStories from './actions.stories';
+import * as ActionConfigurable from './actions-config.stories';
 
-See below for usage information
+{/* See below for usage information */}
+
 
 <Meta of={ActionStories} name="Option 2" />
 
-<Canvas of={ActionStories.Configurable} sourceState="none" />
-<Controls of={ActionStories.Configurable} />
+<Markdown>{SmallSize}</Markdown>
+<Canvas of={ActionConfigurable.SmallSize}  sourceState="none" />
 
-<Markdown>{SizeReadme}</Markdown>
+<Markdown>{PrimaryType}</Markdown>
+<Canvas of={ActionConfigurable.PrimaryType}  sourceState="none" />
