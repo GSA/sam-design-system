@@ -44,7 +44,7 @@ export default {
     label: props,
     description: props,
     required: props,
-    options: { control: { type: 'array' }, table: { category: 'template-options' } },
+    options: { control: { type: 'object' }, table: { category: 'template-options' } },
   },
 } as Meta;
 

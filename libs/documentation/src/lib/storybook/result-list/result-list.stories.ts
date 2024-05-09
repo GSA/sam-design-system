@@ -51,7 +51,7 @@ export default {
     },
 
     results: {
-      control: 'array',
+      control: 'object',
       if: { arg: 'showMessage', truthy: false },
       table: {
         category: 'inputs',
