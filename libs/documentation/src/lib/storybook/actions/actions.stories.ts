@@ -68,7 +68,7 @@ export default {
       },
     },
     actions: {
-      control: 'array',
+      control: 'object',
       table: {
         category: 'ActionMenuModel/actions',
       },
