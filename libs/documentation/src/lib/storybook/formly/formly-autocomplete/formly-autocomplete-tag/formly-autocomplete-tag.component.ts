@@ -42,6 +42,7 @@ export class FormlyAutocompleteTagComponent {
 
   setup() {
     this.settings.id = 'autocompleteTag';
+    this.fields[0].fieldGroup[0].id = this.settings.id;
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';

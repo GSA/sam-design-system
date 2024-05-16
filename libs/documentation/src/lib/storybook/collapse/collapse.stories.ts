@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CollapseDirective, SdsCollapseModule } from '@gsa-sam/components';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { moduleMetadata, StoryObj, Meta } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { CollapseBasicModule } from './collapse-basic/collapse-basic.module';
 import { CollapseIntroductionModule } from './collapse-introduction/collapse-introduction.module';
@@ -25,7 +25,7 @@ export default {
   },
 } as Meta;
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: `<sds-collapse-basic></sds-collapse-basic>`,
   props: args,
 });
@@ -38,16 +38,12 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('collapse', 'basic'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-collapse-introduction></sds-collapse-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = ['Introduction', 'Basic'];

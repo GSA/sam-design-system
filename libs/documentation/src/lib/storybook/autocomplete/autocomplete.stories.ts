@@ -5,7 +5,7 @@ import {
   SdsAutocompleteModule,
   SelectionMode as SDSSelectionMode,
 } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { AutocompleteCheckboxModule } from './autocomplete-checkbox/autocomplete-checkbox.module';
 import { AutocompleteConfigurableModule } from './autocomplete-configurable/autocomplete-configurable.module';
@@ -239,7 +239,7 @@ const autocompleteSettingsFunction = (
   return base;
 };
 
-const Template: Story<SDSAutocompletelConfiguration> = (args) => {
+export const Configurable = (args) => {
   const {
     primaryKeyField,
     id,
@@ -299,8 +299,6 @@ const Template: Story<SDSAutocompletelConfiguration> = (args) => {
     // props: args
   };
 };
-
-export const Configurable = Template.bind({});
 Configurable.args = {
   /**
      Test
@@ -327,11 +325,11 @@ Configurable.args = {
   disabled: false,
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   controls: { expanded: true },
 };
 
-export const SelectionMode: Story = (args) => ({
+export const SelectionMode: StoryObj = (args) => ({
   template: `<sds-autocomplete-selection-mode-demo></sds-autocomplete-selection-mode-demo>`,
   props: {
     ...args,
@@ -351,7 +349,7 @@ SelectionMode.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'selection-mode'),
 };
 
-export const Grouping: Story = (args) => ({
+export const Grouping: StoryObj = (args) => ({
   template: `<sds-autocomplete-grouping-demo></sds-autocomplete-grouping-demo>`,
   props: {
     ...args,
@@ -371,7 +369,7 @@ Grouping.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'grouping'),
 };
 
-export const FreeText: Story = (args) => ({
+export const FreeText: StoryObj = (args) => ({
   template: `<sds-autocomplete-free-text-demo></sds-autocomplete-free-text-demo>`,
   props: {
     ...args,
@@ -391,7 +389,7 @@ FreeText.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
 
-export const CheckBox: Story = (args) => ({
+export const CheckBox: StoryObj = (args) => ({
   template: `<sds-autocomplete-checkbox-demo></sds-autocomplete-checkbox-demo>`,
   props: {
     ...args,
@@ -411,25 +409,12 @@ CheckBox.parameters = {
   stackblitzLink: generateStackblitzLink('autocomplete', 'checkbox'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-autocomplete-introduction></sds-autocomplete-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'CheckBox',
-  'FreeText',
-  'Grouping',
-  'SelectionMode',
-];

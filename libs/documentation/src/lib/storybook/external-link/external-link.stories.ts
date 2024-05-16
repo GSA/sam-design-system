@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ExternalLinkDirective, SdsExternalLinkDirectivesModule } from '@gsa-sam/components';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { ExternalLinkHideIconModule } from './external-link-hide-icon/external-link-hide-icon.module';
 import { ExternalLinkIntroductionModule } from './external-link-introduction/external-link-introduction.module';
@@ -38,23 +38,21 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ExternalLinkDirective> = (args: ExternalLinkDirective) => ({
+export const Configurable = (args) => ({
   template: `<a *ngIf="href" class="usa-link" href="{{href}}" [hideIcon]="hideIcon" target="{{target}}">{{href}}</a>`,
+  args: {
+    href: 'https://Acquisition.gov',
+    target: '_blank',
+    hideIcon: false,
+  },
   props: args,
 });
-
-export const Configurable = Template.bind({});
-Configurable.args = {
-  href: 'https://Acquisition.gov',
-  target: '_blank',
-  hideIcon: false,
-};
 Configurable.parameters = {
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
 
-export const Target: Story = (args) => ({
+export const Target: StoryObj = (args) => ({
   template: `<sds-external-link-target></sds-external-link-target>`,
   props: args,
 });
@@ -72,7 +70,7 @@ Target.parameters = {
   stackblitzLink: generateStackblitzLink('external-link', 'external-link-target'),
 };
 
-export const HideIcon: Story = (args) => ({
+export const HideIcon: StoryObj = (args) => ({
   template: `<sds-external-link-hide-icon></sds-external-link-hide-icon>`,
   props: args,
 });
@@ -90,18 +88,12 @@ HideIcon.parameters = {
   stackblitzLink: generateStackblitzLink('external-link', 'external-link-hide-icon'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: '<sds-external-link-introduction></sds-external-link-introduction>',
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = ['Introduction', 'Configurable', 'HideIcon', 'Target'];
