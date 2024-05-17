@@ -86,6 +86,7 @@ export class FormlyAutocompleteDisableComponent {
 
   setup() {
     this.settings.id = 'autocompleteDisableSingle';
+    this.fields[0].fieldGroup[0].id = this.settings.id;
     this.settings.primaryKeyField = 'id';
     this.settings.primaryTextField = 'name';
     this.settings.secondaryTextField = 'subtext';
@@ -94,6 +95,7 @@ export class FormlyAutocompleteDisableComponent {
     this.settings.autocompletePlaceHolderText = 'eg: Level 1';
 
     this.settings2.id = 'autocompleteDisable2Single';
+    this.fields[0].fieldGroup[1].id = this.settings2.id;
     this.settings2.primaryKeyField = 'id';
     this.settings2.primaryTextField = 'name';
     this.settings2.secondaryTextField = 'subtext';
@@ -102,6 +104,7 @@ export class FormlyAutocompleteDisableComponent {
     this.settings2.autocompletePlaceHolderText = 'eg: Level 1';
 
     this.multipleSettings.id = 'autocompleteDisableMultiple';
+    this.fields[0].fieldGroup[2].id = this.multipleSettings.id;
     this.multipleSettings.primaryKeyField = 'id';
     this.multipleSettings.primaryTextField = 'name';
     this.multipleSettings.secondaryTextField = 'subtext';

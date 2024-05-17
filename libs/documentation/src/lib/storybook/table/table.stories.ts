@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import {
   createCodePreviewTabData,
   generateConfig,
@@ -7,7 +7,7 @@ import {
 } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TableBasicModule } from './table-basic/table-basic.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { TableSortingModule } from './table-sorting/table-sorting.module';
 import { TablePaginationModule } from './table-pagination/table-pagination.module';
 import { TableStickyHeaderModule } from './table-sticky-header/table-sticky-header.module';
@@ -32,7 +32,6 @@ export default {
       imports: [
         CommonModule,
         RouterTestingModule,
-        NoopAnimationsModule,
         NgxBootstrapIconsModule.pick({ uswdsAdd, dash }),
         TableBasicModule,
         TableSortingModule,
@@ -50,11 +49,14 @@ export default {
         TableCustomClassesModule,
       ],
     }),
+    applicationConfig({
+      providers: [provideAnimations()],
+    }),
   ],
   argTypes: {},
 } as Meta;
 
-export const Basic: Story = (args) => ({
+export const Basic: StoryObj = (args) => ({
   template: `<sds-table-basic></sds-table-basic>`,
   props: args,
 });
@@ -68,7 +70,7 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'basic'),
 };
 
-export const Sorting: Story = (args) => ({
+export const Sorting: StoryObj = (args) => ({
   template: `<sds-table-sorting></sds-table-sorting>`,
   props: args,
 });
@@ -82,7 +84,7 @@ Sorting.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'sorting'),
 };
 
-export const Pagination: Story = (args) => ({
+export const Pagination: StoryObj = (args) => ({
   template: `<sds-table-pagination></sds-table-pagination>`,
   props: args,
 });
@@ -98,7 +100,7 @@ Pagination.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'pagination'),
 };
 
-export const StickyHeader: Story = (args) => ({
+export const StickyHeader: StoryObj = (args) => ({
   template: `<sds-table-sticky-header></sds-table-sticky-header>`,
   props: args,
 });
@@ -112,7 +114,7 @@ StickyHeader.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'sticky-header'),
 };
 
-export const StickyFooter: Story = (args) => ({
+export const StickyFooter: StoryObj = (args) => ({
   template: `<sds-table-sticky-footer></sds-table-sticky-footer>`,
   props: args,
 });
@@ -126,7 +128,7 @@ StickyFooter.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'sticky-footer'),
 };
 
-export const StickyColumn: Story = (args) => ({
+export const StickyColumn: StoryObj = (args) => ({
   template: `<sds-table-sticky-column></sds-table-sticky-column>`,
   props: args,
 });
@@ -140,7 +142,7 @@ StickyColumn.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'sticky-column'),
 };
 
-export const Expansion: Story = (args) => ({
+export const Expansion: StoryObj = (args) => ({
   template: `<sds-table-expansion></sds-table-expansion>`,
   props: args,
 });
@@ -154,7 +156,7 @@ Expansion.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'expansion'),
 };
 
-export const CustomFooter: Story = (args) => ({
+export const CustomFooter: StoryObj = (args) => ({
   template: `<sds-table-custom-footer></sds-table-custom-footer>`,
   props: args,
 });
@@ -168,7 +170,7 @@ CustomFooter.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'custom-footer'),
 };
 
-export const UserInteraction: Story = (args) => ({
+export const UserInteraction: StoryObj = (args) => ({
   template: `<sds-table-user-interaction></sds-table-user-interaction>`,
   props: args,
 });
@@ -186,7 +188,7 @@ UserInteraction.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'user-interaction'),
 };
 
-export const ChangeData: Story = (args) => ({
+export const ChangeData: StoryObj = (args) => ({
   template: `<sds-table-change-data></sds-table-change-data>`,
   props: args,
 });
@@ -200,7 +202,7 @@ ChangeData.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'change-data'),
 };
 
-export const HighlightRow: Story = (args) => ({
+export const HighlightRow: StoryObj = (args) => ({
   template: `<sds-table-highlight-row></sds-table-highlight-row>`,
   props: args,
 });
@@ -214,7 +216,7 @@ HighlightRow.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'highlight-row'),
 };
 
-export const RowClicked: Story = (args) => ({
+export const RowClicked: StoryObj = (args) => ({
   template: `<sds-table-row-clicked></sds-table-row-clicked>`,
   props: args,
 });
@@ -228,7 +230,7 @@ RowClicked.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'row-clicked'),
 };
 
-export const CustomClasses: Story = (args) => ({
+export const CustomClasses: StoryObj = (args) => ({
   template: `<sds-table-custom-classes></sds-table-custom-classes>`,
   props: args,
 });
@@ -246,33 +248,12 @@ CustomClasses.parameters = {
   stackblitzLink: generateStackblitzLink('table', 'custom-classes'),
 };
 
-export const Introduction: Story = (args) => ({
+export const Introduction: StoryObj = (args) => ({
   template: `<sds-table-introduction></sds-table-introduction>`,
   props: args,
 });
 Introduction.parameters = {
-  options: { showPanel: false },
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
+  controls: { disable: true },
   actions: { disable: true },
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
 };
-
-export const __namedExportsOrder = [
-  'Introduction',
-  'Basic',
-  'ChangeData',
-  'CustomClasses',
-  'CustomFooter',
-  'Expansion',
-  'HighlightRow',
-  'Pagination',
-  'RowClicked',
-  'Sorting',
-  'StickyColumn',
-  'StickyFooter',
-  'StickyHeader',
-  'UserInteraction',
-];

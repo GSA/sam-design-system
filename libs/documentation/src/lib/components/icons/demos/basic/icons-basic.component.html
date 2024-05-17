@@ -4,17 +4,17 @@
 </p>
 <p>
   To select an icon you wish you use, you must first import the icon from either ngx-bootstrap-icons or
-  @gsa-sam/ngx-uswds-icons into the module which declares your component.
+  &#64;gsa-sam/ngx-uswds-icons into the module which declares your component.
 </p>
 <code>import &#123; NgxBootstrapIconsModule, square &#125; from 'ngx-bootstrap-icons';</code><br />
-<code>import &#123; add, IconModule &#125; from '@gsa-sam/ngx-uswds-icons';</code>
+<code>import &#123; add, IconModule &#125; from '&#64;gsa-sam/ngx-uswds-icons';</code>
 <p>
   Next you must add NgxBootstrapIconsModule to your imports and call it's
   <code>pick</code> function. As an input to this function you should provide an object which contains all of the icons
   you imported in the previous step
 </p>
 <code>
-  @NgModule(&#123;<br />
+  &#64;NgModule(&#123;<br />
   &emsp;imports: [<br />
   &emsp;&emsp;CommonModule,<br />
   &emsp;&emsp;IconModule,<br />

@@ -109,6 +109,7 @@
             "main": "apps/sam-design-system-site/src/main.ts",
             "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
+            "allowedCommonJsDependencies": ["lodash"],
             "assets": [
               "apps/sam-design-system-site/src/favicon.ico",
               "apps/sam-design-system-site/src/assets",
@@ -181,21 +182,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sam-design-system-site:build"
+            "buildTarget": "sam-design-system-site:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sam-design-system-site:build:production"
+              "buildTarget": "sam-design-system-site:build:production"
             },
             "development": {
-              "browserTarget": "sam-design-system-site:build:development"
+              "buildTarget": "sam-design-system-site:build:development"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sam-design-system-site:build"
+            "buildTarget": "sam-design-system-site:build"
           }
         },
         "test": {

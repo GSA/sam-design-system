@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
-import {} from '@gsa-sam/sam-material-extensions';
 import { FormlyModule } from '@ngx-formly/core';
-import { moduleMetadata, Meta, Story } from '@storybook/angular';
+import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyTextAreaIntroductionModule } from './formly-text-area-introduction/formly-text-area-introduction.module';
 import { FormlyTextAreaConfigurableModule } from './formly-text-area-configurable/formly-text-area-configurable.module';
@@ -14,6 +13,7 @@ import { FormlyTextAreaPlaceholderModule } from './formly-text-area-placeholder/
 import { FormlyTextAreaRequiredModule } from './formly-text-area-required/formly-text-area-required.module';
 import { FormlyTextAreaMaxlengthModule } from './formly-text-area-maxlength/formly-text-area-maxlength.module';
 import { FormlyTextAreaWidthModule } from './formly-text-area-width/formly-text-area-width.module';
+import { importProvidersFrom } from '@angular/core';
 
 const disable = {
   table: {
@@ -35,10 +35,8 @@ export default {
         ReactiveFormsModule,
         SdsFormlyModule,
         FormsModule,
-        FormlyModule.forRoot(),
         FormlyTextAreaIntroductionModule,
         FormlyTextAreaConfigurableModule,
-        NoopAnimationsModule,
         FormlyTextAreaLabelModule,
         FormlyTextAreaDescriptionModule,
         FormlyTextAreaMaxlengthModule,
@@ -46,6 +44,9 @@ export default {
         FormlyTextAreaPlaceholderModule,
         FormlyTextAreaWidthModule,
       ],
+    }),
+    applicationConfig({
+      providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
   argTypes: {
@@ -75,7 +76,18 @@ const formlyConfigFunction = (
     className: className ?? '',
   };
 };
-const Template: Story = (args) => {
+
+export const Introduction: StoryObj = (args) => ({
+  template: '<sds-formly-text-area-introduction></sds-formly-text-area-introduction>',
+  props: args,
+});
+Introduction.parameters = {
+  controls: { disable: true },
+  actions: { disable: true },
+  sdsCodePreview: { disable: true },
+};
+
+export const Configurable = (args) => {
   const { label, placeholder, description, required, maxLength, className } = args;
   let config = formlyConfigFunction(label, placeholder, description, required, maxLength, className);
   return {
@@ -86,14 +98,6 @@ const Template: Story = (args) => {
     },
   };
 };
-
-export const Introduction: Story = (args) => ({
-  template: '<sds-formly-text-area-introduction></sds-formly-text-area-introduction>',
-  props: args,
-});
-Introduction.parameters = { options: { showPanel: false } };
-
-export const Configurable = Template.bind({});
 Configurable.args = {
   label: 'Entity Description',
   placeholder: 'eg: Acme Corporation is a federal contractor.',
@@ -102,11 +106,11 @@ Configurable.args = {
   maxLength: 50,
 };
 Configurable.parameters = {
-  preview: { disable: true },
+  sdsCodePreview: { disable: true },
   actions: { disable: true },
 };
 
-export const Description: Story = (args) => ({
+export const Description: StoryObj = (args) => ({
   template: '<sds-formly-text-area-description></sds-formly-text-area-description>',
   props: args,
 });
@@ -124,7 +128,7 @@ Description.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'description'),
 };
 
-export const Label: Story = (args) => ({
+export const Label: StoryObj = (args) => ({
   template: '<sds-formly-text-area-label></sds-formly-text-area-label>',
   props: args,
 });
@@ -142,7 +146,7 @@ Label.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'label'),
 };
 
-export const Placeholder: Story = (args) => ({
+export const Placeholder: StoryObj = (args) => ({
   template: '<sds-formly-text-area-placeholder></sds-formly-text-area-placeholder>',
   props: args,
 });
@@ -160,7 +164,7 @@ Placeholder.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'placeholder'),
 };
 
-export const Required: Story = (args) => ({
+export const Required: StoryObj = (args) => ({
   template: '<sds-formly-text-area-required></sds-formly-text-area-required>',
   props: args,
 });
@@ -178,7 +182,7 @@ Required.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'required'),
 };
 
-export const MaxLength: Story = (args) => ({
+export const MaxLength: StoryObj = (args) => ({
   template: '<sds-formly-text-area-maxlength></sds-formly-text-area-maxlength>',
   props: args,
 });
@@ -196,7 +200,7 @@ MaxLength.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'maxlength'),
 };
 
-export const Width: Story = (args) => ({
+export const Width: StoryObj = (args) => ({
   template: '<sds-formly-text-area-width></sds-formly-text-area-width>',
   props: args,
 });
@@ -213,14 +217,3 @@ Width.parameters = {
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'width'),
 };
-
-export const __namedExportsOrder = [
-  'Introduction',
-  'Configurable',
-  'Description',
-  'MaxLength',
-  'Label',
-  'Placeholder',
-  'Required',
-  'Width',
-];
