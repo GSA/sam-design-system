@@ -9,6 +9,7 @@ import {
   exclamationTriangle,
   exclamationCircle,
   checkCircle,
+  slashCircle,
 } from 'ngx-bootstrap-icons';
 import {
   SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
@@ -32,7 +33,15 @@ import {
     OverlayModule,
     PortalModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({ x, alertError, infoCircle, exclamationTriangle, exclamationCircle, checkCircle }),
+    NgxBootstrapIconsModule.pick({
+      x,
+      alertError,
+      infoCircle,
+      exclamationTriangle,
+      exclamationCircle,
+      checkCircle,
+      slashCircle,
+    }),
   ],
   exports: [
     SdsDialogContainerComponent,
