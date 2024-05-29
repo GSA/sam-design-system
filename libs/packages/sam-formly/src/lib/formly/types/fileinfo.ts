@@ -7,6 +7,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     <div class="grid-row grid-gap margin-top-1">
       <div *ngFor="let option of props.options | formlySelectOptions: field | async; let i = index">
         <div
+          role="radio"
+          aria-checked="false"
           class="sds-card mobile-lg:grid-col"
           [ngClass]="{ 'sds-card-selected': formControl.value == option.value }"
           tabindex="0"
