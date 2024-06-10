@@ -15,11 +15,6 @@ import { FormlyStepperAdvancedModule } from './formly-stepper-advanced/formly-st
 import { UswdsStepperModule } from './formly-stepper-uswds/formly-stepper-uswds.module';
 import { importProvidersFrom } from '@angular/core';
 
-const disable = {
-  table: {
-    disable: true,
-  },
-};
 const props = {
   table: {
     category: 'template-options',
@@ -45,14 +40,6 @@ export default {
       providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
-  argTypes: {
-    label: props,
-    placeholder: props,
-    description: props,
-    required: props,
-    disabled: props,
-    tooltipText: props,
-  },
 } as Meta;
 
 export const Introduction: StoryObj = (args) => ({
@@ -71,7 +58,7 @@ export const Uneven: StoryObj = (args) => ({
 });
 Uneven.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
@@ -101,7 +88,7 @@ export const USWDS: StoryObj = (args) => ({
 });
 USWDS.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },
@@ -131,7 +118,7 @@ export const Advanced: StoryObj = (args) => ({
 });
 Advanced.parameters = {
   controls: {
-    disabled: true,
+    disable: true,
     hideNoControlsWarning: true,
   },
   actions: { disabled: true },

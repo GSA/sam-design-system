@@ -20,7 +20,6 @@ import { FormlyStepperBasicComponent } from './formly-stepper-basic.component';
 import { USWDSCustomStepperComponent } from './formly-stepper-basic-uneven.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-//import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -39,7 +38,6 @@ import { FormsModule } from '@angular/forms';
     }),
     IconModule,
     SdsStepArrowModule,
-    //BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterTestingModule,
