@@ -61,7 +61,12 @@
     <button *ngIf="showReviewButton()" sdsStepperNext class="usa-button usa-button-pill space-x-1">
       Review<usa-icon size="md" [icon]="'chevron-right'"></usa-icon>
     </button>
-    <button *ngIf="showNextButton()" sdsStepperNext [attr.id]="id + '-nextBtn'" class="usa-button usa-button-pill space-x-1">
+    <button
+      *ngIf="showNextButton()"
+      sdsStepperNext
+      [attr.id]="id + '-nextBtn'"
+      class="usa-button usa-button-pill space-x-1"
+    >
       Next <usa-icon size="md" [icon]="'chevron-right'"></usa-icon>
     </button>
   </div>

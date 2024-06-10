@@ -4,13 +4,16 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
-import { createCodePreviewTabData, generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
+import {
+  createCodePreviewTabData,
+  generateConfig,
+  generateStackblitzLink,
+} from 'libs/documentation/src/sandbox/sandbox-utils';
 import { FormlyStepperIntroductionModule } from './formly-stepper-introduction/formly-stepper-introduction.module';
 import { FormlyStepperBasicModule } from './formly-stepper-basic/formly-stepper-basic.module';
 import { FormlyStepperAdvancedModule } from './formly-stepper-advanced/formly-stepper-advanced.module';
 import { UswdsStepperModule } from './formly-stepper-uswds/formly-stepper-uswds.module';
 import { importProvidersFrom } from '@angular/core';
-
 
 const disable = {
   table: {
