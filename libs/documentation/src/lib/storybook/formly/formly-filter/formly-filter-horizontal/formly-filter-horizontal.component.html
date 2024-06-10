@@ -6,6 +6,7 @@
       [fields]="fields"
       [model]="{}"
       [horizontal]="true"
+      (resetClicked)="onResetClick()"
       (filterChange)="onFilterChange($event)"
     >
       <sds-search

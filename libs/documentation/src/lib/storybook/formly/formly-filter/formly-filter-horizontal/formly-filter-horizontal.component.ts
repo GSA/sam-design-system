@@ -20,16 +20,16 @@ export class FormlyFilterHorizontalComponent {
         group: 'popover',
         options: [
           {
-            key: 'active',
-            value: 'Active',
+            value: 'active',
+            label: 'Active',
           },
           {
-            key: 'inactive',
-            value: 'Inactive',
+            value: 'inactive',
+            label: 'Inactive',
           },
           {
-            key: 'all',
-            value: 'All',
+            value: 'all',
+            label: 'All',
           },
         ],
       },
@@ -42,16 +42,16 @@ export class FormlyFilterHorizontalComponent {
         group: 'popover',
         options: [
           {
-            key: 'vet',
-            value: 'Veteran Owned',
+            value: 'vet',
+            label: 'Veteran Owned',
           },
           {
-            key: 'women',
-            value: 'Women Owned',
+            value: 'women',
+            label: 'Women Owned',
           },
           {
-            key: 'minority',
-            value: 'Minority Owned',
+            value: 'minority',
+            label: 'Minority Owned',
           },
         ],
       },
@@ -168,4 +168,8 @@ export class FormlyFilterHorizontalComponent {
   onFilterChange($event) {
     console.log($event);
   }
+
+onResetClick(){
+this.searchModel = '';
+}
 }
