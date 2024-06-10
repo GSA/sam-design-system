@@ -168,8 +168,4 @@ export class FormlyFilterHorizontalComponent {
   onFilterChange($event) {
     console.log($event);
   }
-
-onResetClick(){
-this.searchModel = '';
-}
 }

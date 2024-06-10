@@ -4,14 +4,13 @@
     <sds-filters
       [advancedFilters]="true"
       [fields]="fields"
-      [model]="{}"
+      [model]="model"
       [horizontal]="true"
-      (resetClicked)="onResetClick()"
       (filterChange)="onFilterChange($event)"
     >
       <sds-search
         [searchSettings]="{ isSuffixSearchIcon: true, placeholder: 'Keyword', ariaLabel: 'Keyword Search' }"
-        [(ngModel)]="searchModel"
+        [(ngModel)]="model.searchModel"
         (ngModelChange)="onSearchModelChange($event)"
       >
       </sds-search>
