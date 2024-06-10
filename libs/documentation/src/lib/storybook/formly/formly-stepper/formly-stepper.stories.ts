@@ -61,7 +61,7 @@ Uneven.parameters = {
     disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-stepper/formly-stepper-basic',
     'FormlyStepperBasicModule',
@@ -91,7 +91,7 @@ USWDS.parameters = {
     disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-stepper/formly-stepper-uswds',
     'UswdsStepperModule',
@@ -121,7 +121,7 @@ Advanced.parameters = {
     disable: true,
     hideNoControlsWarning: true,
   },
-  actions: { disabled: true },
+  actions: { disable: true },
   preview: generateConfig(
     'storybook/formly/formly-stepper/formly-stepper-advanced',
     'FormlyStepperAdvancedModule',
