@@ -17,7 +17,6 @@ export class FormlyTextAreaWidthComponent {
       props: {
         label: 'Entity Description',
         description: 'Enter the description for your entity.',
-        className: 'width-card-lg',
       },
     },
   ];
