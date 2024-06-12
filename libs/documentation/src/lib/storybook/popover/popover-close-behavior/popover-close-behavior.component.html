@@ -1,0 +1,15 @@
+<div class="padding-4">
+
+  <button class="usa-button usa-button--base" [sdsPopover]="'Click button to close'" [autoClose]="false">
+    autoClose=false
+  </button>
+  <button class="usa-button usa-button--base" [sdsPopover]="'Click me to close'" [autoClose]="'inside'">
+    autoClose=inside
+  </button>
+  <button class="usa-button usa-button--base" [sdsPopover]="'Click anything other than popover to close'" [autoClose]="'outside'">
+    autoClose=outside
+  </button>
+  <button class="usa-button usa-button--base" [sdsPopover]="'Click anything to close'" [autoClose]="true">
+    autoClose=true
+  </button>
+</div>
