@@ -338,15 +338,67 @@ export class PopoverIntroductionModule {}
 @Component({
   selector: &#39;sds-popover-introduction&#39;,
   templateUrl: &#39;./popover-introduction.component.html&#39;,
+  preserveWhitespaces: true,
 })
 export class PopoverIntroductionComponent {
   constructor() {}
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/popover-introduction.component.html]" value="&lt;p&gt;
-  Popover allows for additional content to be displayed when a user interacts with an element on the webpage.
-&lt;/p&gt;
+    <input type="hidden" name="project[files][src/app/popover-introduction.component.html]" value="&lt;h2&gt;17.x.x Migration&lt;/h2&gt;
+&lt;p&gt;With version 17.x.x of SAM Design System the popover was updated to match the latest design mockups and to address a number of long-standing issues that had been raised with the existing popover.&lt;/p&gt;
+&lt;h3&gt;Changes&lt;/h3&gt;
+&lt;h4&gt;Positioning&lt;/h4&gt;
+&lt;p&gt;With this update popovers can now reposition if their content will spill out of view. The position input can now take multiple direction tokens as input. If the first token in the list would place the popover off the user&#39;s screen, the next token in the list will be tested. The first token in the list that does not overflow will be the token that is used. If all of the provided tokens would result in the popover going off the screen, the first token in the list will be used. Take a look at the position demo for this dynamic positioning in action. &lt;/p&gt;
+&lt;h3&gt;Breaking Changes&lt;/h3&gt;
+&lt;h4&gt;Close Behavior&lt;/h4&gt;
+&lt;p&gt;Previously the close behavior was controlled by two inputs &lt;code&gt;closeOnContentClick&lt;/code&gt; and &lt;code&gt;closeOnClickOutside&lt;/code&gt;. Going forward the close behavior of the popover will be controlled by one input &lt;code&gt;autoClose&lt;/code&gt;. The default behavior of the popover will remain the same, an update will only be required if either &lt;code&gt;closeOnContentClick&lt;/code&gt; or &lt;code&gt;closeOnClickOutside&lt;/code&gt; were being set on a popover. Below is a chart to guide in maintaining the same close behavior.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;autoClose&lt;/th&gt;
+      &lt;th&gt;closeOnContentClick&lt;/th&gt;
+      &lt;th&gt;closeOnClickOutside&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&#39;false&#39;&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&#39;inside&#39;&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&#39;outside&#39;&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&#39;true&#39;&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;HTML Embedding&lt;/h4&gt;
+&lt;p&gt;The way that HTML elements are passed to the popover are being update with this updated. Previously a tag such as #popover-content would have been applied to the element to be embedded, this tag would then be passed into the &lt;code&gt;sdsPopover&lt;/code&gt; input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template element which is tagged with the original popover-tag. See below for an example of the changes needed.&lt;/p&gt;
+&lt;h5&gt;Pre-17.x.x&lt;/h5&gt;
+&lt;code&gt;
+  &amp;#60;p #tipContent&amp;#62;Hello, &amp;#60;b&amp;#62;World&amp;#60;/b&amp;#62;!&amp;#60;/p&amp;#62;&lt;br /&gt;
+  &amp;#60;button [sdsPopover]=&#34;tipContent&#34; [position]=&#34;&#39;bottom&#39;&#34; class=&#34;usa-button usa-button--base&#34;&amp;#62;&amp;#60;/button&amp;#62;&lt;br /&gt;
+&lt;/code&gt;
+
+&lt;h5&gt;Post-17.x.x&lt;/h5&gt;
+&lt;code&gt;
+  &amp;#60;ng-template #tipContent&amp;#62;&lt;br /&gt;
+  &amp;emsp;&amp;#60;p&amp;#62;Hello, &amp;#60;b&amp;#62;World&amp;#60;/b&amp;#62;!&amp;#60;/p&amp;#62;&lt;br /&gt;
+  &amp;#60;/ng-template&amp;#62;&lt;br /&gt;
+  &amp;#60;button [sdsPopover]=&#34;tipContent&#34; [position]=&#34;&#39;bottom&#39;&#34; class=&#34;usa-button usa-button--base&#34;&amp;#62;&amp;#60;/button&amp;#62;
+&lt;/code&gt;
 ">
     
   </form>

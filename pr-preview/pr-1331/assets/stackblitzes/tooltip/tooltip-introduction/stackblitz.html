@@ -338,6 +338,7 @@ export class TooltipIntroductionModule {}
 @Component({
   selector: &#39;sds-tooltip-introduction&#39;,
   templateUrl: &#39;./tooltip-introduction.component.html&#39;,
+  preserveWhitespaces: true,
 })
 export class TooltipIntroductionComponent {
   constructor() {}
@@ -348,6 +349,28 @@ export class TooltipIntroductionComponent {
   Tooltip allows additional information to be displayed when a user &#34;focuses&#34; on an element that this directive is
   applied to.
 &lt;/p&gt;
+
+&lt;h2&gt;17.x.x Migration&lt;/h2&gt;
+&lt;p&gt;With version 17.x.x of SAM Design System the tooltip was updated to match the latest design mockups and to address a number of long-standing issues that had been raised with the existing tooltip.&lt;/p&gt;
+&lt;h3&gt;Changes&lt;/h3&gt;
+&lt;h4&gt;Positioning&lt;/h4&gt;
+&lt;p&gt;With this update tooltips can now reposition if their content will spill out of view. The position input can now take multiple direction tokens as input. If the first token in the list would place the tooltip off the user&#39;s screen, the next token in the list will be tested. The first token in the list that does not overflow will be the token that is used. If all of the provided tokens would result in the tooltip going off the screen, the first token in the list will be used. Take a look at the position demo for this dynamic positioning in action. &lt;/p&gt;
+&lt;h3&gt;Breaking Changes&lt;/h3&gt;
+&lt;h4&gt;HTML Embedding&lt;/h4&gt;
+&lt;p&gt;The way that HTML elements are passed to the tooltip are being update with this updated. Previously a tag such as #tooltip-content would have been applied to the element to be embedded, this tag would then be passed into the &lt;code&gt;sdsTooltip&lt;/code&gt; input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template element which is tagged with the original tooltip-tag. See below for an example of the changes needed.&lt;/p&gt;
+&lt;h5&gt;Pre-17.x.x&lt;/h5&gt;
+&lt;code&gt;
+  &amp;#60;p #tipContent&amp;#62;Hello, &amp;#60;b&amp;#62;World&amp;#60;/b&amp;#62;!&amp;#60;/p&amp;#62;&lt;br /&gt;
+  &amp;#60;button [sdsTooltip]=&#34;tipContent&#34; [position]=&#34;&#39;bottom&#39;&#34; class=&#34;usa-button usa-button--base&#34;&amp;#62;&amp;#60;/button&amp;#62;&lt;br /&gt;
+&lt;/code&gt;
+
+&lt;h5&gt;Post-17.x.x&lt;/h5&gt;
+&lt;code&gt;
+  &amp;#60;ng-template #tipContent&amp;#62;&lt;br /&gt;
+  &amp;emsp;&amp;#60;p&amp;#62;Hello, &amp;#60;b&amp;#62;World&amp;#60;/b&amp;#62;!&amp;#60;/p&amp;#62;&lt;br /&gt;
+  &amp;#60;/ng-template&amp;#62;&lt;br /&gt;
+  &amp;#60;button [sdsTooltip]=&#34;tipContent&#34; [position]=&#34;&#39;bottom&#39;&#34; class=&#34;usa-button usa-button--base&#34;&amp;#62;&amp;#60;/button&amp;#62;
+&lt;/code&gt;
 ">
     
   </form>

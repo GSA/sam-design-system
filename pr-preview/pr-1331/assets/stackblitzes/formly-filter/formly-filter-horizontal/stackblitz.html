@@ -359,16 +359,16 @@ export class FormlyFilterHorizontalComponent {
         group: &#39;popover&#39;,
         options: [
           {
-            key: &#39;active&#39;,
-            value: &#39;Active&#39;,
+            value: &#39;active&#39;,
+            label: &#39;Active&#39;,
           },
           {
-            key: &#39;inactive&#39;,
-            value: &#39;Inactive&#39;,
+            value: &#39;inactive&#39;,
+            label: &#39;Inactive&#39;,
           },
           {
-            key: &#39;all&#39;,
-            value: &#39;All&#39;,
+            value: &#39;all&#39;,
+            label: &#39;All&#39;,
           },
         ],
       },
@@ -381,16 +381,16 @@ export class FormlyFilterHorizontalComponent {
         group: &#39;popover&#39;,
         options: [
           {
-            key: &#39;vet&#39;,
-            value: &#39;Veteran Owned&#39;,
+            value: &#39;vet&#39;,
+            label: &#39;Veteran Owned&#39;,
           },
           {
-            key: &#39;women&#39;,
-            value: &#39;Women Owned&#39;,
+            value: &#39;women&#39;,
+            label: &#39;Women Owned&#39;,
           },
           {
-            key: &#39;minority&#39;,
-            value: &#39;Minority Owned&#39;,
+            value: &#39;minority&#39;,
+            label: &#39;Minority Owned&#39;,
           },
         ],
       },
@@ -516,13 +516,13 @@ export class FormlyFilterHorizontalComponent {
     &lt;sds-filters
       [advancedFilters]=&#34;true&#34;
       [fields]=&#34;fields&#34;
-      [model]=&#34;{}&#34;
+      [model]=&#34;model&#34;
       [horizontal]=&#34;true&#34;
       (filterChange)=&#34;onFilterChange($event)&#34;
     &gt;
       &lt;sds-search
         [searchSettings]=&#34;{ isSuffixSearchIcon: true, placeholder: &#39;Keyword&#39;, ariaLabel: &#39;Keyword Search&#39; }&#34;
-        [(ngModel)]=&#34;searchModel&#34;
+        [(ngModel)]=&#34;model.searchModel&#34;
         (ngModelChange)=&#34;onSearchModelChange($event)&#34;
       &gt;
       &lt;/sds-search&gt;
