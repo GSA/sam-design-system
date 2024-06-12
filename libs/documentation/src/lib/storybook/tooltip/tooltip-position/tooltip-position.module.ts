@@ -4,7 +4,7 @@ import { TooltipPositionComponent } from './tooltip-position.component';
 import { SdsTooltipModule } from '@gsa-sam/components';
 
 @NgModule({
-  imports: [CommonModule, SdsTooltipModule, SdsTooltipModule],
+  imports: [CommonModule, SdsTooltipModule],
   declarations: [TooltipPositionComponent],
   exports: [TooltipPositionComponent],
   bootstrap: [TooltipPositionComponent],

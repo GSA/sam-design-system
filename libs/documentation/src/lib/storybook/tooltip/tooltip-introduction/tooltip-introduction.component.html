@@ -2,3 +2,25 @@
   Tooltip allows additional information to be displayed when a user "focuses" on an element that this directive is
   applied to.
 </p>
+
+<h2>17.x.x Migration</h2>
+<p>With version 17.x.x of SAM Design System the tooltip was updated to match the latest design mockups and to address a number of long-standing issues that had been raised with the existing tooltip.</p>
+<h3>Changes</h3>
+<h4>Positioning</h4>
+<p>With this update tooltips can now reposition if their content will spill out of view. The position input can now take multiple direction tokens as input. If the first token in the list would place the tooltip off the user's screen, the next token in the list will be tested. The first token in the list that does not overflow will be the token that is used. If all of the provided tokens would result in the tooltip going off the screen, the first token in the list will be used. Take a look at the position demo for this dynamic positioning in action. </p>
+<h3>Breaking Changes</h3>
+<h4>HTML Embedding</h4>
+<p>The way that HTML elements are passed to the tooltip are being update with this updated. Previously a tag such as #tooltip-content would have been applied to the element to be embedded, this tag would then be passed into the <code>sdsTooltip</code> input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template element which is tagged with the original tooltip-tag. See below for an example of the changes needed.</p>
+<h5>Pre-17.x.x</h5>
+<code>
+  &#60;p #tipContent&#62;Hello, &#60;b&#62;World&#60;/b&#62;!&#60;/p&#62;<br />
+  &#60;button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base"&#62;&#60;/button&#62;<br />
+</code>
+
+<h5>Post-17.x.x</h5>
+<code>
+  &#60;ng-template #tipContent&#62;<br />
+  &emsp;&#60;p&#62;Hello, &#60;b&#62;World&#60;/b&#62;!&#60;/p&#62;<br />
+  &#60;/ng-template&#62;<br />
+  &#60;button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base"&#62;&#60;/button&#62;
+</code>
