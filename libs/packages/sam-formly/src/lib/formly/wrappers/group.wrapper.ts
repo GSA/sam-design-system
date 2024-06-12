@@ -51,8 +51,7 @@ import { filter } from 'rxjs/operators';
           <div
             [sdsPopover]="popoverContent"
             [position]="'bottom'"
-            [closeOnContentClick]="props.closeOnContentClick != undefined ? props.closeOnContentClick : false"
-            [closeOnClickOutside]="props.closeOnClickOutside != undefined ? props.closeOnClickOutside : true"
+            [autoClose]="props.autoClose != undefined ? props.autoClose : 'outside'"
             tabindex="0"
             [attr.aria-label]="props.label"
           >
