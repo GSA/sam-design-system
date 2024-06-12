@@ -24,7 +24,7 @@ export default {
         ActionsSizeModule,
         ActionsLabelModule,
         ActionsModelTriggerModule,
-        ActionsIntroductionModule
+        ActionsIntroductionModule,
       ],
     }),
     applicationConfig({
