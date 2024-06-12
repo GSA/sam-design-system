@@ -2,9 +2,9 @@
   --sds-popover-zindex: 1070;
   --sds-popover-max-width: 276px;
   --sds-popover-font-size: 0.875rem;
-  --sds-popover-bg: white;
+  --sds-popover-bg: #f9f9f7;
   --sds-popover-border-width: 1px;
-  --sds-popover-border-color: #dee2e6;
+  --sds-popover-border-color: #757575;
   --sds-popover-border-radius: 0.5rem;
   --sds-popover-inner-border-radius: calc(0.5rem - 1px);
   --sds-popover-box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
@@ -18,7 +18,7 @@
   --sds-popover-body-color: #212529;
   --sds-popover-arrow-width: 1rem;
   --sds-popover-arrow-height: 0.5rem;
-  --sds-popover-arrow-border: #dee2e6;
+  --sds-popover-arrow-border: #757575;
 
   z-index: var(--sds-popover-zindex);
   display: block;
