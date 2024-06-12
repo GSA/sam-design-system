@@ -61,7 +61,7 @@ export class FormlyFilterHorizontalComponent {
       props: {
         label: 'Date Range',
         group: 'popover',
-        autoClose: 'false'
+        autoClose: 'false',
       },
       fieldGroup: [
         {
