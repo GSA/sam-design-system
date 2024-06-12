@@ -22,7 +22,7 @@ export default {
         PopoverPositionModule,
         PopoverTitleModule,
         PopoverIntroductionModule,
-        PopoverCloseBehaviorModule
+        PopoverCloseBehaviorModule,
       ],
     }),
   ],

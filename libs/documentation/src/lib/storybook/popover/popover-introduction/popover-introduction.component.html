@@ -1,11 +1,26 @@
 <h2>17.x.x Migration</h2>
-<p>With version 17.x.x of SAM Design System the popover was updated to match the latest design mockups and to address a number of long-standing issues that had been raised with the existing popover.</p>
+<p>
+  With version 17.x.x of SAM Design System the popover was updated to match the latest design mockups and to address a
+  number of long-standing issues that had been raised with the existing popover.
+</p>
 <h3>Changes</h3>
 <h4>Positioning</h4>
-<p>With this update popovers can now reposition if their content will spill out of view. The position input can now take multiple direction tokens as input. If the first token in the list would place the popover off the user's screen, the next token in the list will be tested. The first token in the list that does not overflow will be the token that is used. If all of the provided tokens would result in the popover going off the screen, the first token in the list will be used. Take a look at the position demo for this dynamic positioning in action. </p>
+<p>
+  With this update popovers can now reposition if their content will spill out of view. The position input can now take
+  multiple direction tokens as input. If the first token in the list would place the popover off the user's screen, the
+  next token in the list will be tested. The first token in the list that does not overflow will be the token that is
+  used. If all of the provided tokens would result in the popover going off the screen, the first token in the list will
+  be used. Take a look at the position demo for this dynamic positioning in action.
+</p>
 <h3>Breaking Changes</h3>
 <h4>Close Behavior</h4>
-<p>Previously the close behavior was controlled by two inputs <code>closeOnContentClick</code> and <code>closeOnClickOutside</code>. Going forward the close behavior of the popover will be controlled by one input <code>autoClose</code>. The default behavior of the popover will remain the same, an update will only be required if either <code>closeOnContentClick</code> or <code>closeOnClickOutside</code> were being set on a popover. Below is a chart to guide in maintaining the same close behavior.</p>
+<p>
+  Previously the close behavior was controlled by two inputs <code>closeOnContentClick</code> and
+  <code>closeOnClickOutside</code>. Going forward the close behavior of the popover will be controlled by one input
+  <code>autoClose</code>. The default behavior of the popover will remain the same, an update will only be required if
+  either <code>closeOnContentClick</code> or <code>closeOnClickOutside</code> were being set on a popover. Below is a
+  chart to guide in maintaining the same close behavior.
+</p>
 <table>
   <thead>
     <tr>
@@ -38,11 +53,17 @@
   </tbody>
 </table>
 <h4>HTML Embedding</h4>
-<p>The way that HTML elements are passed to the popover are being update with this updated. Previously a tag such as #popover-content would have been applied to the element to be embedded, this tag would then be passed into the <code>sdsPopover</code> input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template element which is tagged with the original popover-tag. See below for an example of the changes needed.</p>
+<p>
+  The way that HTML elements are passed to the popover are being update with this updated. Previously a tag such as
+  #popover-content would have been applied to the element to be embedded, this tag would then be passed into the
+  <code>sdsPopover</code> input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template
+  element which is tagged with the original popover-tag. See below for an example of the changes needed.
+</p>
 <h5>Pre-17.x.x</h5>
 <code>
   &#60;p #tipContent&#62;Hello, &#60;b&#62;World&#60;/b&#62;!&#60;/p&#62;<br />
-  &#60;button [sdsPopover]="tipContent" [position]="'bottom'" class="usa-button usa-button--base"&#62;&#60;/button&#62;<br />
+  &#60;button [sdsPopover]="tipContent" [position]="'bottom'" class="usa-button
+  usa-button--base"&#62;&#60;/button&#62;<br />
 </code>
 
 <h5>Post-17.x.x</h5>
