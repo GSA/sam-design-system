@@ -1,18 +1,34 @@
 <div class="padding-4">
-  <button class="usa-button usa-button--base" [sdsPopover]="'Click button to close'" [autoClose]="false">
-    autoClose=false
-  </button>
-  <button class="usa-button usa-button--base" [sdsPopover]="'Click me to close'" [autoClose]="'inside'">
-    autoClose=inside
+  <button
+    class="usa-button usa-button--base"
+    [sdsPopoverTitle]="'autoClose=false'"
+    [sdsPopover]="'Click button to close'"
+    [autoClose]="false"
+  >
+    Close By Button
   </button>
   <button
     class="usa-button usa-button--base"
+    [sdsPopoverTitle]="'autoClose=\'inside\''"
+    [sdsPopover]="'Click popover to close'"
+    [autoClose]="'inside'"
+  >
+    Close By Popover
+  </button>
+  <button
+    class="usa-button usa-button--base"
+    [sdsPopoverTitle]="'autoClose=\'outside\''"
     [sdsPopover]="'Click anything other than popover to close'"
     [autoClose]="'outside'"
   >
-    autoClose=outside
+    Close Almost Anywhere
   </button>
-  <button class="usa-button usa-button--base" [sdsPopover]="'Click anything to close'" [autoClose]="true">
-    autoClose=true
+  <button
+    class="usa-button usa-button--base"
+    [sdsPopoverTitle]="'autoClose=true'"
+    [sdsPopover]="'Click anything to close'"
+    [autoClose]="true"
+  >
+    Close Anywhere
   </button>
 </div>

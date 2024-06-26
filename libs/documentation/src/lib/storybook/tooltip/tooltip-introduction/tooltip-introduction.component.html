@@ -3,9 +3,9 @@
   applied to.
 </p>
 
-<h2>17.x.x Migration</h2>
+<h2>17.0.7 Migration</h2>
 <p>
-  With version 17.x.x of SAM Design System the tooltip was updated to match the latest design mockups and to address a
+  With version 17.0.7 of SAM Design System the tooltip was updated to match the latest design mockups and to address a
   number of long-standing issues that had been raised with the existing tooltip.
 </p>
 <h3>Changes</h3>
@@ -25,14 +25,14 @@
   <code>sdsTooltip</code> input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template
   element which is tagged with the original tooltip-tag. See below for an example of the changes needed.
 </p>
-<h5>Pre-17.x.x</h5>
+<h5>Pre-17.0.7</h5>
 <code>
   &#60;p #tipContent&#62;Hello, &#60;b&#62;World&#60;/b&#62;!&#60;/p&#62;<br />
   &#60;button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button
   usa-button--base"&#62;&#60;/button&#62;<br />
 </code>
 
-<h5>Post-17.x.x</h5>
+<h5>Post-17.0.7</h5>
 <code>
   &#60;ng-template #tipContent&#62;<br />
   &emsp;&#60;p&#62;Hello, &#60;b&#62;World&#60;/b&#62;!&#60;/p&#62;<br />

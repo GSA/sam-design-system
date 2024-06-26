@@ -72,6 +72,7 @@ export const Configurable = (args) => ({
 Configurable.args = {
   sdsPopover: 'Default Body',
   sdsPopoverTitle: '',
+  position: 'top',
 };
 Configurable.parameters = {
   actions: { disable: true },
