@@ -345,9 +345,9 @@ export class PopoverIntroductionComponent {
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/popover-introduction.component.html]" value="&lt;h2&gt;17.x.x Migration&lt;/h2&gt;
+    <input type="hidden" name="project[files][src/app/popover-introduction.component.html]" value="&lt;h2&gt;17.0.7 Migration&lt;/h2&gt;
 &lt;p&gt;
-  With version 17.x.x of SAM Design System the popover was updated to match the latest design mockups and to address a
+  With version 17.0.7 of SAM Design System the popover was updated to match the latest design mockups and to address a
   number of long-standing issues that had been raised with the existing popover.
 &lt;/p&gt;
 &lt;h3&gt;Changes&lt;/h3&gt;
@@ -406,14 +406,14 @@ export class PopoverIntroductionComponent {
   &lt;code&gt;sdsPopover&lt;/code&gt; input. Going forward the HTML element to be embedded will need to be wrapped in an ng-template
   element which is tagged with the original popover-tag. See below for an example of the changes needed.
 &lt;/p&gt;
-&lt;h5&gt;Pre-17.x.x&lt;/h5&gt;
+&lt;h5&gt;Pre-17.0.7&lt;/h5&gt;
 &lt;code&gt;
   &amp;#60;p #tipContent&amp;#62;Hello, &amp;#60;b&amp;#62;World&amp;#60;/b&amp;#62;!&amp;#60;/p&amp;#62;&lt;br /&gt;
   &amp;#60;button [sdsPopover]=&#34;tipContent&#34; [position]=&#34;&#39;bottom&#39;&#34; class=&#34;usa-button
   usa-button--base&#34;&amp;#62;&amp;#60;/button&amp;#62;&lt;br /&gt;
 &lt;/code&gt;
 
-&lt;h5&gt;Post-17.x.x&lt;/h5&gt;
+&lt;h5&gt;Post-17.0.7&lt;/h5&gt;
 &lt;code&gt;
   &amp;#60;ng-template #tipContent&amp;#62;&lt;br /&gt;
   &amp;emsp;&amp;#60;p&amp;#62;Hello, &amp;#60;b&amp;#62;World&amp;#60;/b&amp;#62;!&amp;#60;/p&amp;#62;&lt;br /&gt;

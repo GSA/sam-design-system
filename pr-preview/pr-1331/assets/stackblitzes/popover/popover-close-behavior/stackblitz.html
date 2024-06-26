@@ -344,21 +344,37 @@ export class PopoverCloseBehaviorComponent {}
 ">
     
     <input type="hidden" name="project[files][src/app/popover-close-behavior.component.html]" value="&lt;div class=&#34;padding-4&#34;&gt;
-  &lt;button class=&#34;usa-button usa-button--base&#34; [sdsPopover]=&#34;&#39;Click button to close&#39;&#34; [autoClose]=&#34;false&#34;&gt;
-    autoClose=false
-  &lt;/button&gt;
-  &lt;button class=&#34;usa-button usa-button--base&#34; [sdsPopover]=&#34;&#39;Click me to close&#39;&#34; [autoClose]=&#34;&#39;inside&#39;&#34;&gt;
-    autoClose=inside
+  &lt;button
+    class=&#34;usa-button usa-button--base&#34;
+    [sdsPopoverTitle]=&#34;&#39;autoClose=false&#39;&#34;
+    [sdsPopover]=&#34;&#39;Click button to close&#39;&#34;
+    [autoClose]=&#34;false&#34;
+  &gt;
+    Close By Button
   &lt;/button&gt;
   &lt;button
     class=&#34;usa-button usa-button--base&#34;
+    [sdsPopoverTitle]=&#34;&#39;autoClose=\&#39;inside\&#39;&#39;&#34;
+    [sdsPopover]=&#34;&#39;Click popover to close&#39;&#34;
+    [autoClose]=&#34;&#39;inside&#39;&#34;
+  &gt;
+    Close By Popover
+  &lt;/button&gt;
+  &lt;button
+    class=&#34;usa-button usa-button--base&#34;
+    [sdsPopoverTitle]=&#34;&#39;autoClose=\&#39;outside\&#39;&#39;&#34;
     [sdsPopover]=&#34;&#39;Click anything other than popover to close&#39;&#34;
     [autoClose]=&#34;&#39;outside&#39;&#34;
   &gt;
-    autoClose=outside
+    Close Almost Anywhere
   &lt;/button&gt;
-  &lt;button class=&#34;usa-button usa-button--base&#34; [sdsPopover]=&#34;&#39;Click anything to close&#39;&#34; [autoClose]=&#34;true&#34;&gt;
-    autoClose=true
+  &lt;button
+    class=&#34;usa-button usa-button--base&#34;
+    [sdsPopoverTitle]=&#34;&#39;autoClose=true&#39;&#34;
+    [sdsPopover]=&#34;&#39;Click anything to close&#39;&#34;
+    [autoClose]=&#34;true&#34;
+  &gt;
+    Close Anywhere
   &lt;/button&gt;
 &lt;/div&gt;
 ">
