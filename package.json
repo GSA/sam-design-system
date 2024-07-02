@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "17.0.6",
+  "version": "17.0.7",
   "license": "MIT",
   "scripts": {
     "start": "ng serve --configuration development",
@@ -67,6 +67,7 @@
     "@gsa-sam/sam-styles": "^3.0.18",
     "@ngx-formly/core": "^6.2.1",
     "@ngx-formly/schematics": "^6.2.1",
+    "@popperjs/core": "^2.11.8",
     "@storybook/test": "^8.0.0",
     "@types/qs": "^6.9.5",
     "accessible-html5-video-player": "^1.0.6",

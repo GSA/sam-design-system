@@ -58,7 +58,7 @@ export class HorizontalFilterDemo {
       props: {
         label: 'Date Range',
         group: 'popover',
-        closeOnClickOutside: false,
+        autoClose: 'false',
       },
       fieldGroup: [
         {

@@ -36,12 +36,13 @@
               </label>
             </div>
             <div *ngIf="option.value[j].tooltipText" class="margin-left-1">
-              <p
-                #tipContent
-                [ngClass]="option.value[j].tooltipClass"
-                class="margin-1"
-                [innerHTML]="option.value[j].tooltipText"
-              ></p>
+              <ng-template #tipContent>
+                <p
+                  [ngClass]="option.value[j].tooltipClass"
+                  class="margin-1"
+                  [innerHTML]="option.value[j].tooltipText"
+                ></p>
+              </ng-template>
               <usa-icon
                 class="text-secondary"
                 [position]="option.value[j].tooltipPosition ? option.value[j].tooltipPosition :'right'"
@@ -74,7 +75,9 @@
         </label>
       </div>
       <div *ngIf="props.selectTooltipText">
-        <p #tipContent1 [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.selectTooltipText"></p>
+        <ng-template #tipContent1>
+          <p [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.selectTooltipText"></p>
+        </ng-template>
         <usa-icon
           class="text-secondary"
           class="margin-left-1"
@@ -125,7 +128,9 @@
           </label>
         </div>
         <div *ngIf="option.tooltipText" class="margin-left-1">
-          <p #tipContent [ngClass]="option.tooltipClass" class="margin-1" [innerHTML]="option.tooltipText"></p>
+          <ng-template #tipContent>
+            <p [ngClass]="option.tooltipClass" class="margin-1" [innerHTML]="option.tooltipText"></p>
+          </ng-template>
           <usa-icon
             class="text-secondary"
             [position]="option.tooltipPosition ? option.tooltipPosition :'right'"
@@ -185,12 +190,9 @@
               </label>
             </div>
             <div *ngIf="subOption.tooltipText" class="margin-left-1">
-              <p
-                #tipContent
-                [ngClass]="subOption.tooltipClass"
-                class="margin-1"
-                [innerHTML]="subOption.tooltipText"
-              ></p>
+              <ng-template #tipContent>
+                <p [ngClass]="subOption.tooltipClass" class="margin-1" [innerHTML]="subOption.tooltipText"></p>
+              </ng-template>
               <usa-icon
                 class="text-secondary"
                 [position]="subOption.tooltipPosition ? subOption.tooltipPosition :'right'"

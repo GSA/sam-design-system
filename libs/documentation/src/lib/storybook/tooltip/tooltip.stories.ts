@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { SdsTooltipDirective } from '@gsa-sam/components';
 import { moduleMetadata, Meta, StoryObj } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
 import { TooltipConfigurableModule } from './tooltip-configurable/tooltip-configurable.module';
@@ -15,7 +14,6 @@ const disable = {
 
 export default {
   title: 'Components/Tooltip',
-  component: SdsTooltipDirective,
   decorators: [
     moduleMetadata({
       imports: [

@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SdsTooltipDirective } from './tooltip.directive';
+
+import { SdsTooltip } from './tooltip';
+
+export { SdsTooltipConfig } from './tooltip-config';
+export { SdsTooltip } from './tooltip';
+export { Placement } from '../util/positioning';
 
 @NgModule({
-  declarations: [SdsTooltipDirective],
-  imports: [CommonModule],
-  exports: [SdsTooltipDirective],
+  imports: [SdsTooltip],
+  exports: [SdsTooltip],
 })
 export class SdsTooltipModule {}
