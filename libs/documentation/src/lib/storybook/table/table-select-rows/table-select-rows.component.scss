@@ -1,0 +1,21 @@
+.usa-checkbox__label:not(.header-checkbox){
+  &::before{
+    margin-top: -1rem ;
+  }
+}
+.usa-checkbox__label.header-checkbox{
+  &::before{
+    margin-top: -0.3rem ;
+  }
+}
+
+.select-all-container{
+  display: flex;
+  .select-all-icon{
+    margin-top: 5px;
+  }
+}
+
+.select-all-status-container{
+  width: 5rem;
+}
