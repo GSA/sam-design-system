@@ -43,15 +43,14 @@ import { filter } from 'rxjs/operators';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-          <ng-template #popoverContent>
-            <div class="padding-1 text-left sds-width-max-content">
-              <ng-container #fieldComponent></ng-container>
-            </div>
-          </ng-template>
+          <div #popoverContent class="padding-1 text-left sds-width-max-content">
+            <ng-container #fieldComponent></ng-container>
+          </div>
           <div
-            [sdsPopover]="popoverContent"
+            [sdsPopoverLegacy]="popoverContent"
             [position]="'bottom'"
-            [autoClose]="props.autoClose != undefined ? props.autoClose : 'outside'"
+            [closeOnContentClick]="props.closeOnContentClick != undefined ? props.closeOnContentClick : false"
+            [closeOnClickOutside]="props.closeOnClickOutside != undefined ? props.closeOnClickOutside : true"
             tabindex="0"
             [attr.aria-label]="props.label"
           >
@@ -84,9 +83,11 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
   }
 
   ngAfterViewInit() {
+    // this.
     if (this.props.group === 'accordion' || this.props.group === 'panel' || this.field.fieldGroup) {
       this.field.className = this.field.className ? this.field.className : 'margin-top-0';
     }
+    console.log('fieldComponent', this.fieldComponent)
 
     if (this.props.group != 'accordion' || !this.accordion) {
       return;

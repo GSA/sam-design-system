@@ -97,3 +97,6 @@ export * from './tooltip/tooltip.module';
 
 export * from './popover/popover';
 export * from './popover/popover.module';
+
+export * from './popover-legacy/popover-legacy.directive'
+export * from './popover-legacy/popover-legacy.module'
