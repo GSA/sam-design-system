@@ -87,7 +87,6 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
     if (this.props.group === 'accordion' || this.props.group === 'panel' || this.field.fieldGroup) {
       this.field.className = this.field.className ? this.field.className : 'margin-top-0';
     }
-    console.log('fieldComponent', this.fieldComponent)
 
     if (this.props.group != 'accordion' || !this.accordion) {
       return;
