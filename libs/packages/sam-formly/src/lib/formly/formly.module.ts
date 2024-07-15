@@ -17,6 +17,7 @@ import {
   SdsTooltipModule,
   SdsTabsModule,
   SdsPopoverModule,
+  SdsPopoverLegacyModule,
   SdsRichTextModule,
   SdsStepArrowModule,
 } from '@gsa-sam/components';
@@ -178,6 +179,7 @@ export const DATE_FORMAT: MatDateFormats = {
     SdsTableModule,
     SdsTabsModule,
     SdsPopoverModule,
+    SdsPopoverLegacyModule,
     SdsRichTextModule,
     SdsStepArrowModule,
     NgxBootstrapIconsModule.pick({
