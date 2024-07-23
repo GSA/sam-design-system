@@ -15,7 +15,7 @@ import {
   circle,
   question,
   save,
-  x,
+  xLg,
 } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -35,7 +35,7 @@ import { RouterTestingModule } from '@angular/router/testing';
       checkCircleFill,
       question,
       save,
-      x,
+      xLg,
     }),
     SdsSideToolbarModule,
     RouterTestingModule,

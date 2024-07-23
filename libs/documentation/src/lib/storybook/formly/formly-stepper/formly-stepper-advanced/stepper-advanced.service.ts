@@ -11,7 +11,7 @@ export class StepperAdvancedService {
       fieldGroup: [
         {
           key: 'permissionsNeeded',
-          template: '<br/><h4><b>what permission</b></h4></br> Select the specfific <br>',
+          template: '<br/><h4><b>What permission</b></h4></br> Select the specfific <br>',
         },
         {
           key: 'typeOfEntity',
@@ -53,19 +53,19 @@ export class StepperAdvancedService {
             group: 'panel',
             options: [
               {
-                key: 'read-public',
+                label: 'read-public',
                 value: 'Read Public',
               },
               {
-                key: 'read-sensitive',
+                label: 'read-sensitive',
                 value: 'Read sensitive',
               },
               {
-                key: 'write',
+                label: 'write',
                 value: 'Write public',
               },
               {
-                key: 'write-sensitive',
+                label: 'write-sensitive',
                 value: 'Write sensitive',
               },
             ],
