@@ -10,10 +10,6 @@ export class StepperAdvancedService {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
-          key: 'permissionsNeeded',
-          template: '<br/><h4><b>What permission</b></h4></br> Select the specfific <br>',
-        },
-        {
           key: 'typeOfEntity',
           className: 'desktop: grid-col-12 tablet: grid-col-12',
           type: SdsFormlyTypes.RADIO,
@@ -53,20 +49,20 @@ export class StepperAdvancedService {
             group: 'panel',
             options: [
               {
-                label: 'read-public',
-                value: 'Read Public',
+                label: 'Read Public',
+                value: 'read-public',
               },
               {
-                label: 'read-sensitive',
-                value: 'Read sensitive',
+                label: 'Read sensitive',
+                value: 'read-sensitive',
               },
               {
-                label: 'write',
-                value: 'Write public',
+                label: 'Write public',
+                value: 'write',
               },
               {
-                label: 'write-sensitive',
-                value: 'Write sensitive',
+                label: 'Write sensitive',
+                value: 'write-sensitive',
               },
             ],
           },
