@@ -585,10 +585,6 @@ export class StepperAdvancedService {
       fieldGroupClassName: &#39;grid-row&#39;,
       fieldGroup: [
         {
-          key: &#39;permissionsNeeded&#39;,
-          template: &#39;&lt;br/&gt;&lt;h4&gt;&lt;b&gt;What permission&lt;/b&gt;&lt;/h4&gt;&lt;/br&gt; Select the specfific &lt;br&gt;&#39;,
-        },
-        {
           key: &#39;typeOfEntity&#39;,
           className: &#39;desktop: grid-col-12 tablet: grid-col-12&#39;,
           type: SdsFormlyTypes.RADIO,
@@ -628,20 +624,20 @@ export class StepperAdvancedService {
             group: &#39;panel&#39;,
             options: [
               {
-                label: &#39;read-public&#39;,
-                value: &#39;Read Public&#39;,
+                label: &#39;Read Public&#39;,
+                value: &#39;read-public&#39;,
               },
               {
-                label: &#39;read-sensitive&#39;,
-                value: &#39;Read sensitive&#39;,
+                label: &#39;Read sensitive&#39;,
+                value: &#39;read-sensitive&#39;,
               },
               {
-                label: &#39;write&#39;,
-                value: &#39;Write public&#39;,
+                label: &#39;Write public&#39;,
+                value: &#39;write&#39;,
               },
               {
-                label: &#39;write-sensitive&#39;,
-                value: &#39;Write sensitive&#39;,
+                label: &#39;Write sensitive&#39;,
+                value: &#39;write-sensitive&#39;,
               },
             ],
           },
@@ -1125,7 +1121,7 @@ export class StepperAdvancedDemoComponent {
   &lt;/sds-step&gt;
 
   &lt;sds-step id=&#34;entityDetails&#34; text=&#34;Entity Details&#34; [editable]=&#34;false&#34;&gt;
-    &lt;sds-step id=&#34;permission&#34; text=&#34;permission&#34; [fieldConfig]=&#34;stepMap.permission.fieldConfig&#34;&gt;
+    &lt;sds-step id=&#34;permission&#34; text=&#34;Permission&#34; [fieldConfig]=&#34;stepMap.permission.fieldConfig&#34;&gt;
       &lt;h1 sdsStepHeader class=&#34;margin-top-0&#34;&gt;
         Permission
         &lt;hr /&gt;
