@@ -1324,7 +1324,7 @@ export class CustomStepperDemo extends SdsStepper {
   &lt;div class=&#34;desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3 margin-right-2&#34;&gt;
     &lt;sds-side-toolbar [responsiveButtonText]=&#34;&#39;Select Step&#39;&#34; (responsiveDialog)=&#34;onDialogOpen($event)&#34;&gt;
       &lt;ng-template #toolbarContent&gt;
-        &lt;div class=&#34;sds-card&#34; *ngIf=&#34;!!responseDialog&#34;&gt;
+        &lt;div class=&#34;sds-card&#34; *ngIf=&#34;responseDialog&#34;&gt;
           &lt;div class=&#34;sds-card__header sds-card__header--accent-cool grid-row&#34;&gt;
             &lt;button
               id=&#34;cancelButton&#34;
