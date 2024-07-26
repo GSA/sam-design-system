@@ -18,7 +18,7 @@ export class TableSelectRowsComponent implements AfterViewInit {
     data['status'] = this.getRandomStatus()
     return data;
   }));
-  displayedColumns: string[] = ['selectBox', 'status', 'id', 'firstName', 'lastName', 'email', 'requests', 'date'];
+  displayedColumns: string[] = ['selectBox', 'status', 'id', 'firstName', 'lastName', 'email', 'requests', 'navigate'];
 
   numberOfRows = 25;
   currentPageIndex = 0;
@@ -54,11 +54,14 @@ export class TableSelectRowsComponent implements AfterViewInit {
   }
 
   onSingleRowSelect(element: any){
+    console.log('test')
     const elementIndex = this.selectedRows.indexOf(element)
     if(elementIndex !== -1){
       this.selectedRows.splice(elementIndex,1);
+      element = element.checked = false
     }else {
       this.selectedRows.push(element)
+      element = element.checked = true
     }
 
     console.log('this.selectedRows', this.selectedRows)
@@ -92,6 +95,10 @@ export class TableSelectRowsComponent implements AfterViewInit {
 
   deleteFunction(){
     console.log('Do the deleting action with this data', this.selectedRows)
+  }
+
+  handleRowClicked(i: number){
+    console.log('Navigate with this data', this.data[i])
   }
 
 }

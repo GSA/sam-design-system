@@ -1,7 +1,7 @@
 
 <div style="width: 90%;">
   <button class="usa-button usa-button--primary" [disabled]="deleteButtonEnabled" (click)="deleteFunction()">Delete Subaward</button>
-  <sds-table [data]="data" [tableName]="'paginationTable'" [pagination]="true">
+  <sds-table [data]="data" [tableName]="'paginationTable'" [pagination]="true" (rowClicked)="handleRowClicked($event)">
     <sds-table-column sdsColumnName="selectBox">
       <ng-template #sdsHeaderCell>
         <div class="select-all-container" #target>
@@ -17,42 +17,43 @@
               <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Published')">Published</button>
             </div>
           </ng-template>
-          <button class="usa-button sds-button--circle usa-button--base usa-button--outline">
+          <button class="usa-button sds-button--circle usa-button--base bg-base-lighter usa-button--outline"
+            [sdsPopover]="dropdown_menu"
+            [position]="'bottom-left'"
+            [popperOptions]="popperOptions"
+          >
             <usa-icon
               class="select-all-icon"
               [icon]="'caret-down-fill'"
               [size]="'xs'"
-              [sdsPopover]="dropdown_menu"
-              [position]="'bottom-left'"
-              [popperOptions]="popperOptions"
             ></usa-icon>
           </button>
         </div>
       </ng-template>
       <ng-template #sdsCell let-element="element">
-        <div class="usa-checkbox">
-          <input class="usa-checkbox__input" id="check-historical-truth-{{element.id}}" type="checkbox" [(ngModel)]="element.checked" (click)="onSingleRowSelect(element)">
-          <label class="usa-checkbox__label" for="check-historical-truth-{{element.id}}"><span class="usa-sr-only">Select Row 1</span></label>
+        <div class="usa-checkbox" (click)="onSingleRowSelect(element)">
+          <input class="usa-checkbox__input" id="check-historical-truth-{{element.id}}" type="checkbox" [(ngModel)]="element.checked">
+          <label class="usa-checkbox__label" for="check-historical-truth-{{element.id}}"><span class="usa-sr-only">Select Row {{element.id}}</span></label>
         </div>
       </ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="status">
+    <sds-table-column sdsColumnName="status" isClickable=true>
       <ng-template #sdsHeaderCell>Status</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.status }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="id">
+    <sds-table-column sdsColumnName="id" isClickable=true>
       <ng-template #sdsHeaderCell>ID</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="firstName">
+    <sds-table-column sdsColumnName="firstName" isClickable=true>
       <ng-template #sdsHeaderCell>First</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="lastName">
+    <sds-table-column sdsColumnName="lastName" isClickable=true>
       <ng-template #sdsHeaderCell>Last</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="email">
+    <sds-table-column sdsColumnName="email" isClickable=true>
       <ng-template #sdsHeaderCell>Email</ng-template>
       <ng-template #sdsCell let-element="element"
         ><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{
@@ -60,13 +61,15 @@
         }}</a></ng-template
       >
     </sds-table-column>
-    <sds-table-column sdsColumnName="requests">
+    <sds-table-column sdsColumnName="requests" isClickable=true>
       <ng-template #sdsHeaderCell>Requests</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="date">
-      <ng-template #sdsHeaderCell>Date</ng-template>
-      <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
+    <sds-table-column sdsColumnName="navigate" isClickable=true>
+      <ng-template #sdsHeaderCell></ng-template>
+      <ng-template #sdsCell let-element="element">
+        <usa-icon [icon]="'chevron-right'"></usa-icon>
+      </ng-template>
     </sds-table-column>
 
     <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>

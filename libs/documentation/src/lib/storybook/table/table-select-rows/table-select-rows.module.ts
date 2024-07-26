@@ -4,7 +4,7 @@ import { SdsTableModule } from '@gsa-sam/sam-material-extensions';
 import { TableSelectRowsComponent } from './table-select-rows.component';
 import { FormsModule } from '@angular/forms';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-import { NgxBootstrapIconsModule, caretDownFill } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, caretDownFill, chevronRight } from 'ngx-bootstrap-icons';
 import { SdsPopoverModule } from '@gsa-sam/components';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { SdsPopoverModule } from '@gsa-sam/components';
     SdsTableModule,
     FormsModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({caretDownFill}),
+    NgxBootstrapIconsModule.pick({caretDownFill, chevronRight}),
     SdsPopoverModule
   ],
   declarations: [TableSelectRowsComponent],
