@@ -54,7 +54,6 @@ export class TableSelectRowsComponent implements AfterViewInit {
   }
 
   onSingleRowSelect(element: any){
-    console.log('test')
     const elementIndex = this.selectedRows.indexOf(element)
     if(elementIndex !== -1){
       this.selectedRows.splice(elementIndex,1);
@@ -97,8 +96,8 @@ export class TableSelectRowsComponent implements AfterViewInit {
     console.log('Do the deleting action with this data', this.selectedRows)
   }
 
-  handleRowClicked(i: number){
-    console.log('Navigate with this data', this.data[i])
+  handleRowClicked(rowIndex: number){
+    console.log('Navigate with this data', this.data[rowIndex])
   }
 
 }
