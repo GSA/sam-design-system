@@ -4,7 +4,10 @@
 </button>
 
 <p>Content displayed in a tooltip can also be HTML elements</p>
-<p #tipContent>Hello, <b>World</b>!</p>
-<button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base" tabindex="0">
+
+<ng-template #tipContent
+  ><p>Hello, <b>World</b>!</p></ng-template
+>
+<button [sdsTooltip]="tipContent" [position]="'bottom'" class="usa-button usa-button--base">
   HTML binding
 </button>

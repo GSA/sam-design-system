@@ -43,14 +43,15 @@ import { filter } from 'rxjs/operators';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-          <div #popoverContent class="padding-1 text-left sds-width-max-content">
-            <ng-container #fieldComponent></ng-container>
-          </div>
+          <ng-template #popoverContent>
+            <div class="padding-1 text-left sds-width-max-content">
+              <ng-container #fieldComponent></ng-container>
+            </div>
+          </ng-template>
           <div
             [sdsPopover]="popoverContent"
             [position]="'bottom'"
-            [closeOnContentClick]="props.closeOnContentClick != undefined ? props.closeOnContentClick : false"
-            [closeOnClickOutside]="props.closeOnClickOutside != undefined ? props.closeOnClickOutside : true"
+            [autoClose]="props.autoClose != undefined ? props.autoClose : 'outside'"
             tabindex="0"
             [attr.aria-label]="props.label"
           >

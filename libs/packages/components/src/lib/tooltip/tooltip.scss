@@ -1,0 +1,140 @@
+$variable-prefix: bs- !default;
+$prefix: $variable-prefix !default;
+
+$font-family-base: var(--#{$prefix}font-sans-serif) !default;
+$font-weight-normal: 400 !default;
+$line-height-base: 1.5 !default;
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-sm: $font-size-base * 0.875 !default;
+$tooltip-font-size: $font-size-sm !default;
+
+@mixin reset-text {
+  font-family: $font-family-base;
+  // We deliberately do NOT reset font-size or overflow-wrap / word-wrap.
+  font-style: normal;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  text-align: left; // Fallback for where `start` is not supported
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  white-space: normal;
+  word-spacing: normal;
+  line-break: auto;
+}
+.tooltip {
+  --sds-tooltip-zindex: 1080;
+  --sds-tooltip-max-width: 200px;
+  --sds-tooltip-padding-x: 0.5rem;
+  --sds-tooltip-padding-y: 0.25rem;
+  --sds-tooltip-margin: null;
+  --sds-tooltip-font-size: 0.875rem;
+  --sds-tooltip-color: white;
+  --sds-tooltip-bg: #454540;
+  --sds-tooltip-border-radius: 0.375;
+  --sds-tooltip-opacity: 0.9;
+  --sds-tooltip-arrow-width: 0.8rem;
+  --sds-tooltip-arrow-height: 0.4rem;
+
+  z-index: var(--sds-tooltip-zindex);
+  display: block;
+  margin: var(--sds-tooltip-margin);
+  padding: var(--sds-tooltip-arrow-height);
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
+  opacity: 0;
+
+  &.show {
+    opacity: var(--sds-tooltip-opacity);
+  }
+
+  .tooltip-arrow {
+    display: block;
+    width: var(--sds-tooltip-arrow-width);
+    height: var(--sds-tooltip-arrow-height);
+
+    &::before {
+      position: absolute;
+      content: '';
+      border-color: transparent;
+      border-style: solid;
+    }
+  }
+}
+
+.sds-tooltip-top .tooltip-arrow {
+  bottom: 0;
+
+  &::before {
+    top: -1px;
+    border-width: var(--sds-tooltip-arrow-height) calc(var(--sds-tooltip-arrow-width) * 0.5) 0;
+    border-top-color: var(--sds-tooltip-bg);
+  }
+}
+.sds-tooltip-end .tooltip-arrow {
+  left: 0;
+  width: var(--sds-tooltip-arrow-height);
+  height: var(--sds-tooltip-arrow-width);
+
+  &::before {
+    right: -1px;
+    border-width: calc(var(--sds-tooltip-arrow-width) * 0.5) var(--sds-tooltip-arrow-height)
+      calc(var(--sds-tooltip-arrow-width) * 0.5) 0;
+    border-right-color: var(--sds-tooltip-bg);
+  }
+}
+
+.sds-tooltip-bottom .tooltip-arrow {
+  top: 0;
+
+  &::before {
+    bottom: -1px;
+    border-width: 0 calc(var(--sds-tooltip-arrow-width) * 0.5) var(--sds-tooltip-arrow-height);
+    border-bottom-color: var(--sds-tooltip-bg);
+  }
+}
+.sds-tooltip-start .tooltip-arrow {
+  right: 0;
+  width: var(--sds-tooltip-arrow-height);
+  height: var(--sds-tooltip-arrow-width);
+
+  &::before {
+    left: -1px;
+    border-width: calc(var(--sds-tooltip-arrow-width) * 0.5) 0 calc(var(--sds-tooltip-arrow-width) * 0.5)
+      var(--sds-tooltip-arrow-height);
+    border-left-color: var(--sds-tooltip-bg);
+  }
+}
+
+.sds-tooltip-auto {
+  &[data-popper-placement^='top'] {
+    @extend .sds-tooltip-top;
+  }
+  &[data-popper-placement^='right'] {
+    @extend .sds-tooltip-end;
+  }
+  &[data-popper-placement^='bottom'] {
+    @extend .sds-tooltip-bottom;
+  }
+  &[data-popper-placement^='left'] {
+    @extend .sds-tooltip-start;
+  }
+}
+
+.tooltip-inner {
+  max-width: var(--sds-tooltip-max-width);
+  padding: var(--sds-tooltip-padding-y) var(--sds-tooltip-padding-x);
+  color: var(--sds-tooltip-color);
+  text-align: center;
+  background-color: var(--sds-tooltip-bg);
+  border-radius: 0.375rem;
+  p {
+    color: var(--sds-tooltip-color);
+  }
+}

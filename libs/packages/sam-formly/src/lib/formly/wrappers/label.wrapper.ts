@@ -37,7 +37,9 @@ import { FieldWrapper } from '@ngx-formly/core';
             >{{ props.label }}
             <span class="text-normal" *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
             <span *ngIf="props.tooltipText && field.type !== 'checkbox'" class="margin-left-1">
-              <p #tipContent [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.tooltipText"></p>
+              <ng-template #tipContent>
+                <p [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.tooltipText"></p>
+              </ng-template>
               <usa-icon
                 class="text-secondary"
                 [position]="props.tooltipPosition ? props.tooltipPosition : 'right'"

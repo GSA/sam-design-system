@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SdsPopoverDirective } from './popover.directive';
+
+import { SdsPopover } from './popover';
+
+export { SdsPopover } from './popover';
+export { SdsPopoverConfig } from './popover-config';
+export { Placement } from '../util/positioning';
 
 @NgModule({
-  declarations: [SdsPopoverDirective],
-  imports: [CommonModule],
-  exports: [SdsPopoverDirective],
+  imports: [SdsPopover],
+  exports: [SdsPopover],
 })
 export class SdsPopoverModule {}
