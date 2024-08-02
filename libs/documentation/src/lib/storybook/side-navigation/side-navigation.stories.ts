@@ -9,12 +9,13 @@ import {
 import { SideNavigationIntroductionModule } from './side-navigation-introduction/side-navigation-introduction.module';
 import { SideNavigationFiltersModule } from './side-navigation-filters/side-navigation-filters.module';
 import { SideNavigationLinksModule } from './side-navigation-links/side-navigation-links.module';
+import { SideNavigationSelectionModule } from './side-navigation-selection/side-navigation-selection.module';
 
 export default {
   title: 'Components/Side Navigation',
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, SideNavigationIntroductionModule, SideNavigationFiltersModule, SideNavigationLinksModule],
+      imports: [CommonModule, SideNavigationIntroductionModule, SideNavigationFiltersModule, SideNavigationLinksModule, SideNavigationSelectionModule],
     }),
     applicationConfig({
       providers: [provideAnimations()],
@@ -87,4 +88,31 @@ Links.parameters = {
     ]
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'links'),
+};
+
+export const Selection: StoryObj = (args) => ({
+  template: `<sds-side-navigation-selection></sds-side-navigation-selection>`,
+  props: {
+    ...args,
+  },
+});
+Selection.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig(
+    'storybook/side-navigation/side-navigation-selection',
+    'SideNavigationSelectionModule',
+    'sds-side-navigation-selection',
+    [
+      createCodePreviewTabData(
+        'storybook/side-navigation/side-navigation-selection/side-navigation-selection.config.ts',
+        'ts',
+        false
+      ),
+    ]
+  ),
+  stackblitzLink: generateStackblitzLink('side-navigation', 'selection'),
 };

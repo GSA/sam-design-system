@@ -1,0 +1,43 @@
+<div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3 margin-right-2">
+  <sds-side-toolbar>
+    <ng-template #toolbarContent>
+      <div class="sds-card">
+        <div class="sds-card__body sds-card__body--accent-cool">
+          <ul class="usa-sidenav usa-sidenav--styled">
+            <li *ngFor="let panel of navigationModel.navigationLinks; let i = index" class="usa-sidenav__item" [ngClass]="{
+                  'usa-current': selectedPanel?.id === panel.id
+                }">
+              <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: panel }">
+              </ng-container>
+              <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{ $implicit: panel }">
+              </ng-container>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
+  </sds-side-toolbar>
+</div>
+
+<ng-template #subPanelTemplate let-panelItem>
+  <div *ngFor="let pItem of panelItem.children; let i = index">
+    <ul class="usa-sidenav usa-sidenav--styled bg-base-lighter margin-x-0">
+      <li class="usa-sidenav__item padding-left-3" [ngClass]="{ 'usa-current': selectedPanel?.id === pItem.id }">
+        <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: pItem }"></ng-container>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #sidenavItem let-panel>
+  <ng-container>
+    <a href="javascript:void(0);" (click)="onPanelSelection(panel)" class="display-flex justify-content-space-between"
+      [ngClass]="{ 'usa-sidenav__item--disabled': panel.disabled }">
+
+      <span>
+        {{ panel.text }}
+      </span>
+    </a>
+  </ng-container>
+</ng-template>
+
