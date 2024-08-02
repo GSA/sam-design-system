@@ -210,31 +210,29 @@ describe('SdsTableComponent Basic', () => {
   let tableDe: DebugElement;
   let wrapper: WrapperComponent;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          SdsTableComponent,
-          SdsTableRowComponent,
-          SdsTableHeaderRowComponent,
-          SdsTableFooterRowComponent,
-          SdsTableColumnDefComponent,
-          SdsTableCellDirective,
-          SdsTableHeaderCellDirective,
-          SdsTableFooterCellDirective,
-          WrapperComponent,
-        ],
-        imports: [
-          MatTableModule,
-          IconModule,
-          MatSortModule,
-          MatPaginatorModule,
-          BrowserAnimationsModule,
-          PaginationModule,
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        SdsTableComponent,
+        SdsTableRowComponent,
+        SdsTableHeaderRowComponent,
+        SdsTableFooterRowComponent,
+        SdsTableColumnDefComponent,
+        SdsTableCellDirective,
+        SdsTableHeaderCellDirective,
+        SdsTableFooterCellDirective,
+        WrapperComponent,
+      ],
+      imports: [
+        MatTableModule,
+        IconModule,
+        MatSortModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule,
+      ],
+    }).compileComponents();
+  }));
 
   describe('Table Component', () => {
     beforeEach(() => {
@@ -248,11 +246,8 @@ describe('SdsTableComponent Basic', () => {
       fixture.detectChanges();
     });
 
-    it(
-      'should create',
-      waitForAsync(() => {
-        expect(component).toBeTruthy();
-      })
-    );
+    it('should create', waitForAsync(() => {
+      expect(component).toBeTruthy();
+    }));
   });
 });

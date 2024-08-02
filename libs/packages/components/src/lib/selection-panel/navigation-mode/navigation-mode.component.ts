@@ -17,7 +17,10 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
   @Output() panelSelected = new EventEmitter<NavigationLink>();
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.model && this.currentSelection && changes.currentSelection) {

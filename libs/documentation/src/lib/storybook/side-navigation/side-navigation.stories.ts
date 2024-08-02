@@ -15,7 +15,13 @@ export default {
   title: 'Components/Side Navigation',
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, SideNavigationIntroductionModule, SideNavigationFiltersModule, SideNavigationLinksModule, SideNavigationSelectionModule],
+      imports: [
+        CommonModule,
+        SideNavigationIntroductionModule,
+        SideNavigationFiltersModule,
+        SideNavigationLinksModule,
+        SideNavigationSelectionModule,
+      ],
     }),
     applicationConfig({
       providers: [provideAnimations()],
@@ -56,9 +62,9 @@ Filters.parameters = {
       createCodePreviewTabData(
         'storybook/side-navigation/side-navigation-filters/side-navigation-filters.config.ts',
         'ts',
-        false
+        false,
       ),
-    ]
+    ],
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'filters'),
 };
@@ -83,9 +89,9 @@ Links.parameters = {
       createCodePreviewTabData(
         'storybook/side-navigation/side-navigation-filters/side-navigation-filters.config.ts',
         'ts',
-        false
+        false,
       ),
-    ]
+    ],
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'links'),
 };
@@ -110,9 +116,9 @@ Selection.parameters = {
       createCodePreviewTabData(
         'storybook/side-navigation/side-navigation-selection/side-navigation-selection.config.ts',
         'ts',
-        false
+        false,
       ),
-    ]
+    ],
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'selection'),
 };

@@ -8,15 +8,9 @@ import { SdsButtonGroupComponent, SdsButtonGroupOptionComponent } from './button
 @Component({
   template: `
     <sds-button-group #buttonGroup [mode]="'radio'" class="sds-button-group">
-      <sds-button-group-option value="reports">
-        Reports
-      </sds-button-group-option>
-      <sds-button-group-option value="subscriptions">
-        Subscriptions
-      </sds-button-group-option>
-      <sds-button-group-option value="history">
-        History
-      </sds-button-group-option>
+      <sds-button-group-option value="reports"> Reports </sds-button-group-option>
+      <sds-button-group-option value="subscriptions"> Subscriptions </sds-button-group-option>
+      <sds-button-group-option value="history"> History </sds-button-group-option>
     </sds-button-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,15 +22,9 @@ class RadioWrapperComponent {
 @Component({
   template: `
     <sds-button-group #buttonGroup [mode]="'checkbox'" class="sds-button-group sds-button-group--secondary">
-      <sds-button-group-option value="reports">
-        Reports
-      </sds-button-group-option>
-      <sds-button-group-option value="subscriptions">
-        Subscriptions
-      </sds-button-group-option>
-      <sds-button-group-option value="history">
-        History
-      </sds-button-group-option>
+      <sds-button-group-option value="reports"> Reports </sds-button-group-option>
+      <sds-button-group-option value="subscriptions"> Subscriptions </sds-button-group-option>
+      <sds-button-group-option value="history"> History </sds-button-group-option>
     </sds-button-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

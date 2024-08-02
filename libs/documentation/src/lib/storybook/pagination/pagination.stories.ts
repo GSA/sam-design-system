@@ -138,7 +138,7 @@ DisplayMode.parameters = {
   preview: generateConfig(
     'storybook/pagination/pagination-display-mode',
     'PaginationDisplayModeModule',
-    'sds-pagination-display-mode'
+    'sds-pagination-display-mode',
   ),
   stackblitzLink: generateStackblitzLink('pagination', 'display-mode'),
 };
@@ -156,7 +156,7 @@ TotalItems.parameters = {
   preview: generateConfig(
     'storybook/pagination/pagination-total-items',
     'PaginationTotalItemsModule',
-    'sds-pagination-total-items'
+    'sds-pagination-total-items',
   ),
   stackblitzLink: generateStackblitzLink('pagination', 'total-items'),
 };

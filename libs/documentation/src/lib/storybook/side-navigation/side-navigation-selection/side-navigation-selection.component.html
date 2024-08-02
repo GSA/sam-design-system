@@ -4,9 +4,13 @@
       <div class="sds-card">
         <div class="sds-card__body sds-card__body--accent-cool">
           <ul class="usa-sidenav usa-sidenav--styled">
-            <li *ngFor="let panel of navigationModel.navigationLinks; let i = index" class="usa-sidenav__item" [ngClass]="{
-                  'usa-current': selectedPanel?.id === panel.id
-                }">
+            <li
+              *ngFor="let panel of navigationModel.navigationLinks; let i = index"
+              class="usa-sidenav__item"
+              [ngClass]="{
+                'usa-current': selectedPanel?.id === panel.id,
+              }"
+            >
               <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: panel }">
               </ng-container>
               <ng-container [ngTemplateOutlet]="subPanelTemplate" [ngTemplateOutletContext]="{ $implicit: panel }">
@@ -31,13 +35,15 @@
 
 <ng-template #sidenavItem let-panel>
   <ng-container>
-    <a href="javascript:void(0);" (click)="onPanelSelection(panel)" class="display-flex justify-content-space-between"
-      [ngClass]="{ 'usa-sidenav__item--disabled': panel.disabled }">
-
+    <a
+      href="javascript:void(0);"
+      (click)="onPanelSelection(panel)"
+      class="display-flex justify-content-space-between"
+      [ngClass]="{ 'usa-sidenav__item--disabled': panel.disabled }"
+    >
       <span>
         {{ panel.text }}
       </span>
     </a>
   </ng-container>
 </ng-template>
-

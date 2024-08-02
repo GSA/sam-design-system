@@ -7,7 +7,7 @@ import { runInZone } from '../util';
 export type NgbTransitionStartFn<T = any> = (
   element: HTMLElement,
   animation: boolean,
-  context: T
+  context: T,
 ) => NgbTransitionEndFn | void;
 export type NgbTransitionEndFn = () => void;
 
@@ -32,7 +32,7 @@ export const ngbRunTransition = <T>(
   zone: NgZone,
   element: HTMLElement,
   startFn: NgbTransitionStartFn<T>,
-  options: NgbTransitionOptions<T>
+  options: NgbTransitionOptions<T>,
 ): Observable<void> => {
   // Getting initial context from options
   let context = options.context || <T>{};
@@ -91,7 +91,7 @@ export const ngbRunTransition = <T>(
   zone.runOutsideAngular(() => {
     const transitionEnd$ = fromEvent(element, 'transitionend').pipe(
       takeUntil(stop$),
-      filter(({ target }) => target === element)
+      filter(({ target }) => target === element),
     );
     const timer$ = timer(transitionDurationMs + transitionTimerDelayMs).pipe(takeUntil(stop$));
 

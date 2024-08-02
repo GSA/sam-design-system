@@ -57,7 +57,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-basic',
     'FormlyEditorBasicModule',
-    'sds-formly-editor-basic'
+    'sds-formly-editor-basic',
   ),
   stackblitzLink: generateStackblitzLink('formly-editor', 'basic'),
 };
@@ -75,7 +75,7 @@ Regex.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-regex',
     'FormlyEditorRegexModule',
-    'sds-formly-editor-regex'
+    'sds-formly-editor-regex',
   ),
   stackblitzLink: generateStackblitzLink('formly-editor', 'regex'),
 };
@@ -93,7 +93,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-label',
     'FormlyEditorLabelModule',
-    'sds-formly-editor-label'
+    'sds-formly-editor-label',
   ),
   stackblitzLink: generateStackblitzLink('formly-editor', 'label'),
 };
@@ -111,7 +111,7 @@ Updates.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-editor/formly-editor-updates',
     'FormlyEditorUpdatesModule',
-    'sds-formly-editor-updates'
+    'sds-formly-editor-updates',
   ),
   stackblitzLink: generateStackblitzLink('formly-editor', 'updates'),
 };

@@ -6,11 +6,7 @@ import { SdsSideNavigationModule, SdsSelectionPanelModule, SdsSideToolbarModule 
 import { UsaAccordionModule } from '@gsa-sam/ngx-uswds';
 import { SdsFiltersModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import {
-  NgxBootstrapIconsModule,
-  chevronLeft,
-  chevronRight
-} from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, chevronLeft, chevronRight } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
@@ -27,7 +23,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     IconModule,
     NgxBootstrapIconsModule.pick({
       chevronLeft,
-      chevronRight
+      chevronRight,
     }),
   ],
   declarations: [SideNavigationSelectionComponent],

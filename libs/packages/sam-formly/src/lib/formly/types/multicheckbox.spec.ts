@@ -79,7 +79,7 @@ describe('Formly Field multicheckbox Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
@@ -114,7 +114,7 @@ describe('Formly Field multicheckbox Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
@@ -154,7 +154,7 @@ describe('Formly Field multicheckbox Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;
@@ -194,7 +194,7 @@ describe('Formly Field multicheckbox Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('usa-fieldset');
       const expectedValue = fixture.debugElement.query(By.css('.usa-fieldset')).componentInstance.field;

@@ -7,7 +7,6 @@ import { navigationConfig } from './side-navigation-selection.config';
   templateUrl: './side-navigation-selection.component.html',
 })
 export class SideNavigationSelectionComponent {
-
   public navigationModel: SelectionPanelModel = {
     navigationLinks: navigationConfig.navigationLinks,
     selectionMode: 'SELECTION',

@@ -57,7 +57,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-basic',
     'FormlyWrapperReadOnlyBasicModule',
-    'sds-formly-wrapper-read-only-basic'
+    'sds-formly-wrapper-read-only-basic',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'basic'),
 };
@@ -75,7 +75,7 @@ FormlyType.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-options',
     'FormlyWrapperReadOnlyOptionsModule',
-    'sds-formly-wrapper-read-only-options'
+    'sds-formly-wrapper-read-only-options',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'options'),
 };
@@ -92,7 +92,7 @@ CustomTemplate.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-custom-template',
     'FormlyWrapperReadOnlyCustomTemplateModule',
-    'sds-formly-wrapper-read-only-custom-template'
+    'sds-formly-wrapper-read-only-custom-template',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'custom-template'),
 };
@@ -110,7 +110,7 @@ ContainerWithoutFormly.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-read-only/formly-wrapper-read-only-container',
     'FormlyWrapperReadOnlyContainerModule',
-    'sds-formly-wrapper-read-only-container'
+    'sds-formly-wrapper-read-only-container',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-read-only', 'custom-template'),
 };

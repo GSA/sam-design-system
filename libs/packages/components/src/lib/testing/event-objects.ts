@@ -25,7 +25,7 @@ export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
     false /* shiftKey */,
     false /* metaKey */,
     button /* button */,
-    null /* relatedTarget */
+    null /* relatedTarget */,
   );
 
   // `initMouseEvent` doesn't allow us to pass the `buttons` and

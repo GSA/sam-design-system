@@ -22,7 +22,7 @@ import { FieldWrapper } from '@ngx-formly/core';
               this.field?.props?.label && !this.field?.props?.hideLabel && this.field?.parent?.fieldGroup?.length === 1,
             'usa-sr-only':
               props.hideLabel ||
-              ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
+              ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group'),
           }"
         >
           <span
@@ -55,10 +55,10 @@ import { FieldWrapper } from '@ngx-formly/core';
       </div>
       <div
         [ngClass]="{
-'{{props.labelContentClass}}': props.labelContentClass,
-         'single-form-control':
-              ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
-          }"
+          '{{props.labelContentClass}}': props.labelContentClass,
+          'single-form-control':
+            (props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group',
+        }"
       >
         <ng-container #fieldComponent></ng-container>
       </div>

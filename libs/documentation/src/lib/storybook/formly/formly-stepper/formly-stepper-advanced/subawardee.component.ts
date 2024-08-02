@@ -56,7 +56,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
   constructor(
     public dialogRef: SdsDialogRef<AddSubawardeeDialogDemo>,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData,
-    private stepperAdvancedService: StepperAdvancedService
+    private stepperAdvancedService: StepperAdvancedService,
   ) {}
 
   ngOnInit() {

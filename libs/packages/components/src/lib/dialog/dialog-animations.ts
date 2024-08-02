@@ -25,7 +25,7 @@ const animationBody = [
       animation([
         style({ right: '-{{ width }}' }),
         animate('{{ time }} cubic-bezier(0, 0, 0.2, 1)', style({ right: '0rem' })),
-      ])
+      ]),
     ),
   ]),
   transition('* => slideExit', [
@@ -33,7 +33,7 @@ const animationBody = [
       animation([
         style({ right: '0rem' }),
         animate('{{ time }} cubic-bezier(0, 0, 0.2, 1)', style({ right: '-{{ width }}' })),
-      ])
+      ]),
     ),
   ]),
 ];
