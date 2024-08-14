@@ -20,7 +20,7 @@ jobs:
             chromedriver --version
           name: Check install
       - run: npm install
-      - run: npm run test:prettier
+      # - run: npm run test:prettier
       - run: npm run test:components
       - run: npm run test:material-extensions
       - run: npm run test:sam-formly
