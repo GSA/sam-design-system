@@ -12,47 +12,46 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
-      <div class="grid-row">
-        <label
-          class="usa-label"
-          *ngIf="hasLabel()"
-          [attr.for]="id"
-          [ngClass]="{
-            'margin-bottom-1':
-              this.field?.props?.label && !this.field?.props?.hideLabel && this.field?.parent?.fieldGroup?.length === 1,
-            'usa-sr-only':
-              props.hideLabel ||
-              ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group'),
-          }"
+      <label
+        class="usa-label"
+        *ngIf="hasLabel()"
+        [attr.for]="id"
+        [ngClass]="{
+          'margin-bottom-1':
+            this.field?.props?.label && !this.field?.props?.hideLabel && this.field?.parent?.fieldGroup?.length === 1,
+          'usa-sr-only':
+            props.hideLabel ||
+            ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
+        }"
+      >
+        <span
+          *ngIf="props.tagText"
+          class="usa-tag"
+          [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'"
+          >{{ props.tagText }}</span
         >
-          <span
-            *ngIf="props.tagText"
-            class="usa-tag"
-            [ngClass]="props.tagClass ? props.tagClass : 'sds-tag--info-white'"
-            >{{ props.tagText }}</span
-          >
 
-          <ng-container *ngIf="props.labelTemplate" [ngTemplateOutlet]="props.labelTemplate"> </ng-container>
-          <ng-container *ngIf="!props.labelTemplate">
-            <span [attr.class]="props.labelClass">{{ props.label }}</span>
-          </ng-container>
+        <ng-container *ngIf="props.labelTemplate" [ngTemplateOutlet]="props.labelTemplate"> </ng-container>
+        <ng-container *ngIf="!props.labelTemplate">
+          <span [attr.class]="props.labelClass"
+            >{{ props.label }}
+            <span class="text-normal" *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
+            <span *ngIf="props.tooltipText && field.type !== 'checkbox'" class="margin-left-1">
+              <ng-template #tipContent>
+                <p [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.tooltipText"></p>
+              </ng-template>
+              <usa-icon
+                class="text-secondary"
+                [position]="props.tooltipPosition ? props.tooltipPosition : 'right'"
+                [sdsTooltip]="tipContent"
+                [size]="'lg'"
+                [icon]="'info-circle'"
+              ></usa-icon>
+            </span>
+          </span>
+        </ng-container>
+      </label>
 
-          <span class="text-normal" *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
-        </label>
-
-        <span *ngIf="props.tooltipText && field.type !== 'checkbox'" class="margin-left-1">
-          <ng-template #tipContent>
-            <p [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.tooltipText"></p>
-          </ng-template>
-          <usa-icon
-            class="text-secondary"
-            [position]="props.tooltipPosition ? props.tooltipPosition : 'right'"
-            [sdsTooltip]="tipContent"
-            [size]="'lg'"
-            [icon]="'info-circle'"
-          ></usa-icon>
-        </span>
-      </div>
       <div
         [ngClass]="{
           '{{props.labelContentClass}}': props.labelContentClass,
