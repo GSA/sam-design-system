@@ -371,7 +371,6 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.showResults = false;
       this.inputValue = '';
       this.input.nativeElement.focus();
-      
     }
   }
 
