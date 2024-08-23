@@ -367,7 +367,7 @@ export class TableFullComponent {
       .getData()
       .pipe(
         tap((val) =&gt; console.log(&#39;Before &#39; + val)),
-        delay(1000)
+        delay(1000),
       )
       .subscribe((response) =&gt; {
         this.data = response;
@@ -500,18 +500,10 @@ export class TableFullComponent {
 &lt;div&gt;
   &lt;hr class=&#34;margin-top-4&#34; /&gt;
   &lt;p&gt;Change number of rows:&lt;/p&gt;
-  &lt;button (click)=&#34;sliceData(0, 5)&#34; class=&#34;usa-button usa-button--base&#34;&gt;
-    5 rows
-  &lt;/button&gt;
-  &lt;button (click)=&#34;sliceData(0, 25)&#34; class=&#34;usa-button usa-button--base&#34;&gt;
-    25 rows
-  &lt;/button&gt;
-  &lt;button (click)=&#34;getAsyncData()&#34; class=&#34;usa-button usa-button--base&#34;&gt;
-    50 rows (HTTP Async)
-  &lt;/button&gt;
-  &lt;button (click)=&#34;sliceData(0, 100)&#34; class=&#34;usa-button usa-button--base&#34;&gt;
-    100 rows
-  &lt;/button&gt;
+  &lt;button (click)=&#34;sliceData(0, 5)&#34; class=&#34;usa-button usa-button--base&#34;&gt;5 rows&lt;/button&gt;
+  &lt;button (click)=&#34;sliceData(0, 25)&#34; class=&#34;usa-button usa-button--base&#34;&gt;25 rows&lt;/button&gt;
+  &lt;button (click)=&#34;getAsyncData()&#34; class=&#34;usa-button usa-button--base&#34;&gt;50 rows (HTTP Async)&lt;/button&gt;
+  &lt;button (click)=&#34;sliceData(0, 100)&#34; class=&#34;usa-button usa-button--base&#34;&gt;100 rows&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&#34;margin-2&#34; *ngIf=&#34;rowEdit&#34;&gt;

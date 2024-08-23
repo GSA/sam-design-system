@@ -438,7 +438,10 @@ export class FormlyDialogBasicComponent {
       },
     },
   ];
-  constructor(public service: AutocompleteSampleDataService, public dialog: SdsDialogService) {
+  constructor(
+    public service: AutocompleteSampleDataService,
+    public dialog: SdsDialogService,
+  ) {
     this.setup();
   }
   changes(value) {
@@ -485,9 +488,7 @@ export class FormlyDialogBasicComponent {
 ">
     
     <input type="hidden" name="project[files][src/app/formly-dialog-basic.component.html]" value="&lt;div class=&#34;width-tablet-lg&#34;&gt;
-  &lt;button type=&#34;button&#34; (click)=&#34;openDialog()&#34; class=&#34;usa-button usa-button--base&#34;&gt;
-    Open
-  &lt;/button&gt;
+  &lt;button type=&#34;button&#34; (click)=&#34;openDialog()&#34; class=&#34;usa-button usa-button--base&#34;&gt;Open&lt;/button&gt;
 
   &lt;pre&gt;
   {{ updatedModel | json }}

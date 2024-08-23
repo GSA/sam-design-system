@@ -684,7 +684,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
           this.readonlyModes.autocompleteSingleSelectType = !this.readonlyModes.autocompleteSingleSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteSingleSelectType,
-            this.autocompleteSingleSelectFields
+            this.autocompleteSingleSelectFields,
           );
         },
       },
@@ -718,7 +718,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
           this.readonlyModes.autocompleteMultiSelectType = !this.readonlyModes.autocompleteMultiSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteMultiSelectType,
-            this.autocompleteMultiSelectFields
+            this.autocompleteMultiSelectFields,
           );
         },
       },
@@ -828,8 +828,8 @@ export class AutocompleteSampleDataService implements SDSAutocompleteServiceInte
     if (searchValue) {
       itemsOb = data.pipe(
         map((items) =&gt;
-          items.filter((itm) =&gt; itm.name.indexOf(searchValue) !== -1 || itm.subtext.indexOf(searchValue) !== -1)
-        )
+          items.filter((itm) =&gt; itm.name.indexOf(searchValue) !== -1 || itm.subtext.indexOf(searchValue) !== -1),
+        ),
       );
     } else {
       itemsOb = data;

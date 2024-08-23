@@ -367,15 +367,9 @@ export class DialogWidthComponent {
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/dialog-width.component.html]" value="&lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openSmallDialog()&#34;&gt;
-  Open Small Dialog
-&lt;/button&gt;
-&lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openMediumDialog()&#34;&gt;
-  Open Medium Dialog
-&lt;/button&gt;
-&lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openLargeDialog()&#34;&gt;
-  Open Large Dialog
-&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/dialog-width.component.html]" value="&lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openSmallDialog()&#34;&gt;Open Small Dialog&lt;/button&gt;
+&lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openMediumDialog()&#34;&gt;Open Medium Dialog&lt;/button&gt;
+&lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openLargeDialog()&#34;&gt;Open Large Dialog&lt;/button&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-template.component.ts]" value="import { Component, Inject } from &#39;@angular/core&#39;;
@@ -386,7 +380,10 @@ import { SdsDialogRef, SDS_DIALOG_DATA } from &#39;@gsa-sam/components&#39;;
   templateUrl: &#39;./dialog-template.component.html&#39;,
 })
 export class DialogWidthTypeTemplate {
-  constructor(public dialogRef: SdsDialogRef&lt;DialogWidthTypeTemplate&gt;, @Inject(SDS_DIALOG_DATA) public data: string) {}
+  constructor(
+    public dialogRef: SdsDialogRef&lt;DialogWidthTypeTemplate&gt;,
+    @Inject(SDS_DIALOG_DATA) public data: string,
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

@@ -321,20 +321,14 @@ export class AppComponent {}
 ">
     
     <input type="hidden" name="project[files][src/app/overview-template.html]" value="&lt;div sds-dialog-title&gt;Save Entity as Draft?&lt;/div&gt;
-&lt;div sds-dialog-subtitle&gt;
-  {{ data.name }} Do you want to save the entity as draft?
-&lt;/div&gt;
+&lt;div sds-dialog-subtitle&gt;{{ data.name }} Do you want to save the entity as draft?&lt;/div&gt;
 &lt;div sds-dialog-content&gt;
   &lt;label class=&#34;usa-label&#34; for=&#34;input-type-text&#34;&gt;Entity Name&lt;/label&gt;
   &lt;input class=&#34;usa-input&#34; [(ngModel)]=&#34;data.animal&#34; id=&#34;input-type-text&#34; name=&#34;input-type-text&#34; type=&#34;text&#34; /&gt;
 &lt;/div&gt;
 &lt;div sds-dialog-actions&gt;
-  &lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;onNoClick()&#34;&gt;
-    Cancel
-  &lt;/button&gt;
-  &lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;data.animal&#34; cdkFocusInitial&gt;
-    Save
-  &lt;/button&gt;
+  &lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;onNoClick()&#34;&gt;Cancel&lt;/button&gt;
+  &lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;data.animal&#34; cdkFocusInitial&gt;Save&lt;/button&gt;
 &lt;/div&gt;
 ">
     
@@ -368,7 +362,7 @@ export interface DialogData {
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: SdsDialogRef&lt;DialogOverviewExampleDialog&gt;,
-    @Inject(SDS_DIALOG_DATA) public data: DialogData
+    @Inject(SDS_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onNoClick(): void {
@@ -382,11 +376,7 @@ export class DialogOverviewExampleDialog {
  */
 @Component({
   selector: &#39;sds-dialog-sample-nested&#39;,
-  template: `
-    &lt;button class=&#34;usa-button&#34; (click)=&#34;openDialog()&#34;&gt;
-      Open another dialog
-    &lt;/button&gt;
-  `,
+  template: ` &lt;button class=&#34;usa-button&#34; (click)=&#34;openDialog()&#34;&gt;Open another dialog&lt;/button&gt; `,
 })
 export class NestedDialogComponent {
   animal: string;
@@ -425,9 +415,7 @@ export class DialogNested {
 &lt;p&gt;&lt;code&gt;import &amp;#123; SdsDialogModule &amp;#125; from &#39;&amp;#64;gsa-sam/components&#39;;&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3&gt;Dialog opens Dialog&lt;/h3&gt;
-&lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;openNestedDialog()&#34;&gt;
-  Open dialog
-&lt;/button&gt;
+&lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;openNestedDialog()&#34;&gt;Open dialog&lt;/button&gt;
 ">
     
   </form>

@@ -347,7 +347,10 @@ export class SlideOutCustomTemplateComponent {
 
   openedDialogRef: SdsDialogRef&lt;any&gt;;
 
-  constructor(public dialog: SdsDialogService, private options: ScrollStrategyOptions) {}
+  constructor(
+    public dialog: SdsDialogService,
+    private options: ScrollStrategyOptions,
+  ) {}
 
   buttonClicked() {
     if (!this.openedDialogRef) {

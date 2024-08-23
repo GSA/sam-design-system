@@ -321,29 +321,21 @@ export class AppComponent {}
 ">
     
     <input type="hidden" name="project[files][src/app/overview-template.html]" value="&lt;div sds-dialog-title&gt;Save Entity as Draft?&lt;/div&gt;
-&lt;div sds-dialog-subtitle&gt;
-  {{ data.name }} Do you want to save the entity as draft?
-&lt;/div&gt;
+&lt;div sds-dialog-subtitle&gt;{{ data.name }} Do you want to save the entity as draft?&lt;/div&gt;
 &lt;div sds-dialog-content&gt;
   &lt;label class=&#34;usa-label&#34; for=&#34;input-type-text&#34;&gt;Entity Name&lt;/label&gt;
   &lt;input class=&#34;usa-input&#34; [(ngModel)]=&#34;data.animal&#34; id=&#34;input-type-text&#34; name=&#34;input-type-text&#34; type=&#34;text&#34; /&gt;
 &lt;/div&gt;
 &lt;div sds-dialog-actions&gt;
-  &lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;onNoClick()&#34;&gt;
-    Cancel
-  &lt;/button&gt;
-  &lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;data.animal&#34; cdkFocusInitial&gt;
-    Save
-  &lt;/button&gt;
+  &lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;onNoClick()&#34;&gt;Cancel&lt;/button&gt;
+  &lt;button class=&#34;usa-button&#34; [sds-dialog-close]=&#34;data.animal&#34; cdkFocusInitial&gt;Save&lt;/button&gt;
 &lt;/div&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/official-template.html]" value="&lt;div class=&#34;sds-dialog-section--centered margin-y-205&#34;&gt;
   &lt;img src=&#34;assets/img/logo-sam.svg&#34; width=&#34;170&#34; /&gt;
 &lt;/div&gt;
-&lt;div sds-dialog-title class=&#34;sds-dialog-section--centered text-uppercase&#34;&gt;
-  Policy Dialog
-&lt;/div&gt;
+&lt;div sds-dialog-title class=&#34;sds-dialog-section--centered text-uppercase&#34;&gt;Policy Dialog&lt;/div&gt;
 &lt;div sds-dialog-subtitle class=&#34;sds-dialog-section--centered margin-top-neg-205&#34;&gt;
   You have requested access to &lt;br /&gt;
   It is important to read and adhere to the terms of use.
@@ -423,9 +415,7 @@ export class DialogOfficial {
 &lt;p&gt;&lt;code&gt;import &amp;#123; SdsDialogModule &amp;#125; from &#39;&amp;#64;gsa-sam/components&#39;;&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3&gt;Official policy modal&lt;/h3&gt;
-&lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;openOfficial()&#34;&gt;
-  Policy
-&lt;/button&gt;
+&lt;button class=&#34;usa-button usa-button--base&#34; (click)=&#34;openOfficial()&#34;&gt;Policy&lt;/button&gt;
 ">
     
   </form>

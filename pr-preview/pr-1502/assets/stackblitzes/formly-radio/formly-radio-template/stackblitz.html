@@ -344,7 +344,7 @@ export const appendPrefix = (iconsObject: { [key: string]: string }, prefix: str
     SdsFormlyModule,
     IconModule,
     NgxBootstrapIconsModule.pick(
-      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), &#39;sds&#39;), _.cloneDeep(uswdsAllIcons))
+      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), &#39;sds&#39;), _.cloneDeep(uswdsAllIcons)),
     ),
     FormsModule,
     FormlyModule.forRoot(),

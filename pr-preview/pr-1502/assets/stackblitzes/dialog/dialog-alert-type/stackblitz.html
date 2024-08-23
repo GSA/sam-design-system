@@ -328,7 +328,10 @@ import { SdsDialogRef, SDS_DIALOG_DATA } from &#39;@gsa-sam/components&#39;;
   templateUrl: &#39;./dialog-template.component.html&#39;,
 })
 export class DialogAlertTypeTemplate {
-  constructor(public dialogRef: SdsDialogRef&lt;DialogAlertTypeTemplate&gt;, @Inject(SDS_DIALOG_DATA) public data: any) {}
+  constructor(
+    public dialogRef: SdsDialogRef&lt;DialogAlertTypeTemplate&gt;,
+    @Inject(SDS_DIALOG_DATA) public data: any,
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -401,18 +404,10 @@ export class DialogAlertTypeComponent {
 ">
     
     <input type="hidden" name="project[files][src/app/dialog-alert-type.component.html]" value="&lt;div class=&#34;margin-bottom-105&#34;&gt;
-  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openErrorDialog()&#34;&gt;
-    Open Error Dialog
-  &lt;/button&gt;
-  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openWarningDialog()&#34;&gt;
-    Open Warning Dialog
-  &lt;/button&gt;
-  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openInfoDialog()&#34;&gt;
-    Open Info Dialog
-  &lt;/button&gt;
-  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openSuccessDialog()&#34;&gt;
-    Open Success Dialog
-  &lt;/button&gt;
+  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openErrorDialog()&#34;&gt;Open Error Dialog&lt;/button&gt;
+  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openWarningDialog()&#34;&gt;Open Warning Dialog&lt;/button&gt;
+  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openInfoDialog()&#34;&gt;Open Info Dialog&lt;/button&gt;
+  &lt;button class=&#34;usa-button margin-top-2&#34; (click)=&#34;openSuccessDialog()&#34;&gt;Open Success Dialog&lt;/button&gt;
 &lt;/div&gt;
 ">
     

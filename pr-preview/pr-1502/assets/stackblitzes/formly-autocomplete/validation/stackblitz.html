@@ -454,8 +454,8 @@ export class AutocompleteSampleDataService implements SDSAutocompleteServiceInte
     if (searchValue) {
       itemsOb = data.pipe(
         map((list) =&gt;
-          list.filter((itm) =&gt; itm.name.indexOf(searchValue) !== -1 || itm.subtext.indexOf(searchValue) !== -1)
-        )
+          list.filter((itm) =&gt; itm.name.indexOf(searchValue) !== -1 || itm.subtext.indexOf(searchValue) !== -1),
+        ),
       );
     } else {
       itemsOb = data;

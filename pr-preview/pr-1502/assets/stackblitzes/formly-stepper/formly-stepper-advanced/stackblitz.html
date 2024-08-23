@@ -378,7 +378,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
   constructor(
     public dialogRef: SdsDialogRef&lt;AddSubawardeeDialogDemo&gt;,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData,
-    private stepperAdvancedService: StepperAdvancedService
+    private stepperAdvancedService: StepperAdvancedService,
   ) {}
 
   ngOnInit() {
@@ -413,9 +413,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
       /&gt;
     &lt;/div&gt;
     &lt;div class=&#34;grid-col padding-left-3 padding-top-3&#34;&gt;
-      &lt;button class=&#34;usa-button&#34; type=&#34;button&#34; (click)=&#34;onAddSubawardee(input.value)&#34;&gt;
-        Add Subawardee
-      &lt;/button&gt;
+      &lt;button class=&#34;usa-button&#34; type=&#34;button&#34; (click)=&#34;onAddSubawardee(input.value)&#34;&gt;Add Subawardee&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -425,9 +423,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
     &lt;h2 class=&#34;sds-card__title&#34;&gt;No Subawardees&lt;/h2&gt;
   &lt;/div&gt;
   &lt;div class=&#34;sds-card__body&#34;&gt;
-    &lt;p&gt;
-      To add a subawardee, begin by entering a subawardee Unique Entity ID above.
-    &lt;/p&gt;
+    &lt;p&gt;To add a subawardee, begin by entering a subawardee Unique Entity ID above.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1097,9 +1093,7 @@ export class StepperAdvancedDemoComponent {
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/formly-stepper-advanced.component.html]" value="&lt;button class=&#34;usa-button margin-bottom-3&#34; (click)=&#34;toggleLinearMode()&#34;&gt;
-  Toggle Linear Mode
-&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/formly-stepper-advanced.component.html]" value="&lt;button class=&#34;usa-button margin-bottom-3&#34; (click)=&#34;toggleLinearMode()&#34;&gt;Toggle Linear Mode&lt;/button&gt;
 
 &lt;custom-stepper-demo
   #stepper
@@ -1181,14 +1175,10 @@ export class StepperAdvancedDemoComponent {
 
 &lt;!-- Custom Templates --&gt;
 &lt;ng-template #gatherInformation&gt;
-  &lt;h1 class=&#34;margin-top-0&#34;&gt;
-    Gather Your Information
-  &lt;/h1&gt;
+  &lt;h1 class=&#34;margin-top-0&#34;&gt;Gather Your Information&lt;/h1&gt;
   &lt;div class=&#34;sds-card&#34;&gt;
     &lt;div class=&#34;sds-card__header&#34;&gt;
-      &lt;h2&gt;
-        U.S. REGISTRANTS:
-      &lt;/h2&gt;
+      &lt;h2&gt;U.S. REGISTRANTS:&lt;/h2&gt;
     &lt;/div&gt;
     &lt;div class=&#34;sds-card__body&#34;&gt;
       &lt;ul class=&#34;usa-list usa-list--unstyled&#34;&gt;
@@ -1347,7 +1337,7 @@ export class CustomStepperDemo extends SdsStepper {
                 *ngFor=&#34;let step of stepTemplates; let i = index&#34;
                 class=&#34;usa-sidenav__item&#34;
                 [ngClass]=&#34;{
-                  &#39;usa-current&#39;: selectedStep?.id === step.id
+                  &#39;usa-current&#39;: selectedStep?.id === step.id,
                 }&#34;
               &gt;
                 &lt;ng-container [ngTemplateOutlet]=&#34;sidenavItem&#34; [ngTemplateOutletContext]=&#34;{ $implicit: step }&#34;&gt;

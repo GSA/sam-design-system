@@ -458,7 +458,10 @@ export class FormlyDialogDownloadComponent {
       },
     },
   ];
-  constructor(public service: AutocompleteSampleDataService, public dialog: SdsDialogService) {
+  constructor(
+    public service: AutocompleteSampleDataService,
+    public dialog: SdsDialogService,
+  ) {
     this.setup();
   }
   changes(value) {
@@ -510,9 +513,7 @@ export class FormlyDialogDownloadComponent {
 ">
     
     <input type="hidden" name="project[files][src/app/formly-dialog-download.component.html]" value="&lt;div class=&#34;width-tablet-lg&#34;&gt;
-  &lt;button type=&#34;button&#34; (click)=&#34;openDialog()&#34; class=&#34;usa-button usa-button--unstyled&#34;&gt;
-    Download
-  &lt;/button&gt;
+  &lt;button type=&#34;button&#34; (click)=&#34;openDialog()&#34; class=&#34;usa-button usa-button--unstyled&#34;&gt;Download&lt;/button&gt;
 
   &lt;pre&gt;
   {{ updatedModel | json }}
@@ -550,8 +551,8 @@ export class AutocompleteSampleDataService implements SDSAutocompleteServiceInte
     if (searchValue) {
       itemsOb = data.pipe(
         map((items) =&gt;
-          items.filter((itm) =&gt; itm.name.indexOf(searchValue) !== -1 || itm.subtext.indexOf(searchValue) !== -1)
-        )
+          items.filter((itm) =&gt; itm.name.indexOf(searchValue) !== -1 || itm.subtext.indexOf(searchValue) !== -1),
+        ),
       );
     } else {
       itemsOb = data;

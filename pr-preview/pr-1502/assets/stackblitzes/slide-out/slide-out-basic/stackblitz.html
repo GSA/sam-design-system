@@ -414,7 +414,10 @@ import { SdsDialogRef, SdsDialogService } from &#39;@gsa-sam/components&#39;;
 export class SlideOutBasicComponent {
   openedDialogRef: SdsDialogRef&lt;any&gt;;
 
-  constructor(public dialog: SdsDialogService, private options: ScrollStrategyOptions) {}
+  constructor(
+    public dialog: SdsDialogService,
+    private options: ScrollStrategyOptions,
+  ) {}
 
   buttonClicked() {
     if (!this.openedDialogRef) {
