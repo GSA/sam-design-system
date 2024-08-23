@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ComponentRef, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 import { Subscription } from 'rxjs';
@@ -42,24 +42,7 @@ import { filter } from 'rxjs/operators';
             </div>
           </div>
         </ng-container>
-        <ng-container *ngSwitchCase="'popover'">
-          <ng-template #popoverContent>
-            <div class="padding-1 text-left sds-width-max-content">
-              <ng-container #fieldComponent></ng-container>
-            </div>
-          </ng-template>
-          <div
-            [sdsPopover]="popoverContent"
-            [position]="'bottom'"
-            [autoClose]="props.autoClose != undefined ? props.autoClose : 'outside'"
-            tabindex="0"
-            [attr.aria-label]="props.label"
-          >
-            {{ props.label }}
-            <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
-          </div>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
+        <ng-container *ngSwitchDefault>   
           <ng-container #fieldComponent></ng-container>
         </ng-container>
       </ng-container>
