@@ -179,7 +179,7 @@ export class SdsTooltip implements OnInit, OnDestroy, OnChanges {
     private _ngZone: NgZone,
     @Inject(DOCUMENT) private _document: any,
     private _changeDetector: ChangeDetectorRef,
-    applicationRef: ApplicationRef
+    applicationRef: ApplicationRef,
   ) {
     this.animation = config.animation;
     this.autoClose = config.autoClose;
@@ -197,7 +197,7 @@ export class SdsTooltip implements OnInit, OnDestroy, OnChanges {
       viewContainerRef,
       _renderer,
       this._ngZone,
-      applicationRef
+      applicationRef,
     );
     this._positioning = sdsPositioning();
   }
@@ -324,7 +324,7 @@ export class SdsTooltip implements OnInit, OnDestroy, OnChanges {
       this.open.bind(this),
       this.close.bind(this),
       +this.openDelay,
-      +this.closeDelay
+      +this.closeDelay,
     );
   }
 

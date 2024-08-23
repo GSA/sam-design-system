@@ -2921,8 +2921,7 @@ export let registrationData: any = {
   },
   _links: {
     self: {
-      href:
-        'https://52samdotgovsearch.prod.apps-internal.prod-iae.bsp.gsa.gov/sgs/v1/search?index=ent&index=ent&q=ana&q=ana&page=0&page=0&size=10&sort=-relevance&sort=-relevance&raw=false&mode=search&mode=search&random=1580703076637&is_active=true',
+      href: 'https://52samdotgovsearch.prod.apps-internal.prod-iae.bsp.gsa.gov/sgs/v1/search?index=ent&index=ent&q=ana&q=ana&page=0&page=0&size=10&sort=-relevance&sort=-relevance&raw=false&mode=search&mode=search&random=1580703076637&is_active=true',
     },
   },
   page: { size: 10, totalElements: 1141, totalPages: 115, number: 0, maxAllowedRecords: 10000 },

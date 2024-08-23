@@ -37,14 +37,14 @@ export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOpti
     @Host() public accordionItem: SdsAccordionItemComponent,
     private _element: ElementRef,
     private _focusMonitor: FocusMonitor,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
   ) {
     // Since the toggle state depends on an @Input on the accordion item, we
     // need to subscribe and trigger change detection manually.
     this._parentChangeSubscription = merge(
       accordionItem.opened,
       accordionItem.closed,
-      accordionItem._inputChanges.pipe(filter((changes) => !!changes['disabled']))
+      accordionItem._inputChanges.pipe(filter((changes) => !!changes['disabled'])),
     ).subscribe(() => this._changeDetectorRef.markForCheck());
 
     _focusMonitor.monitor(_element).subscribe((origin) => {

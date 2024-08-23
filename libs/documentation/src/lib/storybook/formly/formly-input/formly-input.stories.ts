@@ -62,7 +62,7 @@ const formlyConfigFunction = (
   description: string,
   required: boolean,
   disabled: boolean,
-  tooltipText: string
+  tooltipText: string,
 ) => {
   return {
     label: label ?? '',
@@ -120,7 +120,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-label',
     'FormlyInputLabelModule',
-    'sds-formly-input-label'
+    'sds-formly-input-label',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'input-label'),
 };
@@ -137,7 +137,7 @@ TooltipText.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-tooltip-text',
     'FormlyInputTooltipTextModule',
-    'sds-formly-input-tooltip-text'
+    'sds-formly-input-tooltip-text',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'tooltip-text'),
 };
@@ -154,7 +154,7 @@ Description.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-description',
     'FormlyInputDescriptionModule',
-    'sds-formly-input-description'
+    'sds-formly-input-description',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'description'),
 };
@@ -172,7 +172,7 @@ Disabled.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-disabled',
     'FormlyInputDisabledModule',
-    'sds-formly-input-disabled'
+    'sds-formly-input-disabled',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'disabled'),
 };
@@ -190,7 +190,7 @@ Required.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-required',
     'FormlyInputRequiredModule',
-    'sds-formly-input-required'
+    'sds-formly-input-required',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'required'),
 };
@@ -208,7 +208,7 @@ Placeholder.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-placeholder',
     'FormlyInputPlaceholderModule',
-    'sds-formly-input-placeholder'
+    'sds-formly-input-placeholder',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'placeholder'),
 };
@@ -226,7 +226,7 @@ Affix.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-input/formly-input-affix',
     'FormlyInputAffixModule',
-    'sds-formly-input-affix'
+    'sds-formly-input-affix',
   ),
   stackblitzLink: generateStackblitzLink('formly-input', 'affix'),
 };

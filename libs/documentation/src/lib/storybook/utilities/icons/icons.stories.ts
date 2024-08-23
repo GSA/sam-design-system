@@ -138,7 +138,7 @@ Bootstrap.parameters = {
   preview: generateConfig(
     'storybook/utilities/icons/icons-bootstrap',
     'IconsBootstrapModule',
-    'sds-icons-bootstrap-demo'
+    'sds-icons-bootstrap-demo',
   ),
   stackblitzLink: generateStackblitzLink('icons', 'bootstrap'),
 };

@@ -250,7 +250,7 @@ export class FormlyConditionalComponent implements OnInit {
               field.props.options = sportControl.valueChanges.pipe(
                 startWith(sportControl.value),
                 map((sportId) => teams.filter((team) => team.sportId === sportId)),
-                tap(() => field.formControl.setValue(null))
+                tap(() => field.formControl.setValue(null)),
               );
             },
           },
@@ -280,7 +280,7 @@ export class FormlyConditionalComponent implements OnInit {
               field.props.options = teamControl.valueChanges.pipe(
                 startWith(teamControl.value),
                 map((teamId) => players.filter((player) => player.teamId === teamId)),
-                tap(() => field.formControl.setValue(null))
+                tap(() => field.formControl.setValue(null)),
               );
             },
           },

@@ -74,7 +74,7 @@ describe('Sam External Link Directive', () => {
   it('Should update aria label to external link if existing aria label does not indicate opening in new window', () => {
     const testElementWithoutAriaLabel = fixture.debugElement.query(By.css('#test5'));
     expect(testElementWithoutAriaLabel.nativeElement.getAttribute('aria-label')).toEqual(
-      'test aria label with no keywords - opens in a new window'
+      'test aria label with no keywords - opens in a new window',
     );
   });
 

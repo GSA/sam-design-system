@@ -54,7 +54,7 @@ const videoConfigFunction = (
   seekInterval: number,
   debug: boolean,
   preload: string,
-  description: string
+  description: string,
 ) => {
   return {
     sourceWebm: sourceWebm ?? '',
@@ -84,7 +84,7 @@ export const Configurable = (args) => {
     seekInterval,
     debug,
     preload,
-    description
+    description,
   );
   return {
     template: `<sds-video-player-configurable [videoData]="configObj" [crossorigin]="crossorigin"></sds-video-player-configurable>`,
@@ -128,7 +128,7 @@ Caption.parameters = {
     'storybook/video-player/video-player-caption',
     'VideoPlayerCaptionModule',
     'sds-video-player-caption',
-    []
+    [],
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'caption'),
 };
@@ -149,7 +149,7 @@ Debug.parameters = {
     'storybook/video-player/video-player-debug',
     'VideoPlayerDebugModule',
     'sds-video-player-debug',
-    []
+    [],
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'debug'),
 };
@@ -170,7 +170,7 @@ Description.parameters = {
     'storybook/video-player/video-player-description',
     'VideoPlayerDescriptionModule',
     'sds-video-player-description',
-    []
+    [],
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'description'),
 };
@@ -191,7 +191,7 @@ PreLoad.parameters = {
     'storybook/video-player/video-player-preload',
     'VideoPlayerPreloadModule',
     'sds-video-player-preload',
-    []
+    [],
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'preload'),
 };
@@ -212,7 +212,7 @@ SeekInterval.parameters = {
     'storybook/video-player/video-player-seek-interval',
     'VideoPlayerSeekIntervalModule',
     'sds-video-player-seek-interval',
-    []
+    [],
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'seek-interval'),
 };
@@ -233,7 +233,7 @@ CrossOrigin.parameters = {
     'storybook/video-player/video-player-cross-origin',
     'VideoPlayerCrossOriginModule',
     'sds-video-player-cross-origin',
-    []
+    [],
   ),
   stackblitzLink: generateStackblitzLink('video-player', 'cross-origin'),
 };

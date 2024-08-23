@@ -65,7 +65,7 @@ const formlyConfigFunction = (
   description: string,
   required: boolean,
   maxLength: number,
-  className: string
+  className: string,
 ) => {
   return {
     label: label ?? '',
@@ -123,7 +123,7 @@ Description.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-description',
     'FormlyTextAreaDescriptionModule',
-    'sds-formly-text-area-description'
+    'sds-formly-text-area-description',
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'description'),
 };
@@ -141,7 +141,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-label',
     'FormlyTextAreaLabelModule',
-    'sds-formly-text-area-label'
+    'sds-formly-text-area-label',
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'label'),
 };
@@ -159,7 +159,7 @@ Placeholder.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-placeholder',
     'FormlyTextAreaPlaceholderModule',
-    'sds-formly-text-area-placeholder'
+    'sds-formly-text-area-placeholder',
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'placeholder'),
 };
@@ -177,7 +177,7 @@ Required.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-required',
     'FormlyTextAreaRequiredModule',
-    'sds-formly-text-area-required'
+    'sds-formly-text-area-required',
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'required'),
 };
@@ -195,7 +195,7 @@ MaxLength.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-maxlength',
     'FormlyTextAreaMaxlengthModule',
-    'sds-formly-text-area-maxlength'
+    'sds-formly-text-area-maxlength',
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'maxlength'),
 };
@@ -213,7 +213,7 @@ Width.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-width',
     'FormlyTextAreaWidthModule',
-    'sds-formly-text-area-width'
+    'sds-formly-text-area-width',
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'width'),
 };
