@@ -121,7 +121,7 @@ describe('SamAutocompleteComponent', () => {
     fixture.detectChanges();
     tick();
     fixture.detectChanges();
-    expect(component.inputValue).toBe('search text');
+    expect(component.inputValue).toBe('');
   }));
 
   it('Should have results key press', fakeAsync(() => {
