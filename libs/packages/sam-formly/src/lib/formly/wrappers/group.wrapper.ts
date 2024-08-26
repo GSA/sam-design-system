@@ -43,8 +43,9 @@ import { filter } from 'rxjs/operators';
           </div>
         </ng-container>
         <ng-container *ngSwitchCase="'popover'">
-          <div #popoverContent class="padding-1 text-left sds-width-max-content">
+          <div #popoverContent id="tooltip" class="padding-1 text-left sds-width-max-content sds-popover-auto">
             <ng-container #fieldComponent></ng-container>
+            <div class="popover-arrow" id="arrow" data-popper-arrow></div>
           </div>
           <div
             [sdsPopoverLegacy]="popoverContent"
@@ -53,6 +54,7 @@ import { filter } from 'rxjs/operators';
             [closeOnClickOutside]="props.closeOnClickOutside != undefined ? props.closeOnClickOutside : true"
             tabindex="0"
             [attr.aria-label]="props.label"
+            id="button"
           >
             {{ props.label }}
             <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>

@@ -11,7 +11,7 @@
 <br />
 <br />
 <div class="padding-top-4 padding-left-15">
-  <button class="usa-button usa-button--base" [sdsPopover]="'Popover on left'" [position]="'left'">
+  <button class="usa-button usa-button--base" [sdsPopover]="'Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover'" [position]="'left'">
     Popover on left
   </button>
   <button class="usa-button usa-button--base" [sdsPopover]="'Popover on top'" [position]="'top bottom'">
@@ -27,6 +27,39 @@
 <br />
 <br />
 <br />
+<h1>Legacy Poppver</h1>
+<div style="display: flex; padding-left: 10rem;">
+  <div #leftPopover class="padding-1 sds-width-max-content">
+    Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover Left Popover
+    <div class="popover-arrow" id="arrow" data-popper-arrow></div>
+  </div>
+  <div #topPopover class="padding-1 sds-width-max-content">
+    Top Popover
+    <div class="popover-arrow" id="arrow" data-popper-arrow></div>
+  </div>
+  <div #bottomPopover class="padding-1 sds-width-max-content">
+    Bottom Popover
+    <div class="popover-arrow" id="arrow" data-popper-arrow></div>
+  </div>
+  <div #rightPopover class="padding-1 sds-width-max-content">
+    Right Popover
+    <div class="popover-arrow" id="arrow" data-popper-arrow></div>
+  </div>
+  <div>
+    <button id="button" class="usa-button usa-button--base" closeOnClickOutside="true" closeOnContentClick="true" [sdsPopoverLegacy]="leftPopover" [position]="'left'">
+      Left
+    </button>
+    <button id="button" class="usa-button usa-button--base" closeOnClickOutside="true" closeOnContentClick="true" [sdsPopoverLegacy]="topPopover" [position]="'top'">
+      Top
+    </button>
+    <button id="button" class="usa-button usa-button--base" closeOnClickOutside="true" closeOnContentClick="true" [sdsPopoverLegacy]="bottomPopover" [position]="'bottom'">
+      Bottom
+    </button>
+    <button id="button" class="usa-button usa-button--base" closeOnClickOutside="true" closeOnContentClick="true" [sdsPopoverLegacy]="rightPopover" [position]="'right'">
+      Right
+    </button>
+  </div>
+</div>
 <br />
 <br />
 <br />
