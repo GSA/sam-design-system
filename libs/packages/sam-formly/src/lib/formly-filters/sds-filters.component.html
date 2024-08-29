@@ -1,13 +1,24 @@
 <!-- Vertical Filters -->
 <div *ngIf="!horizontal">
-  <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model"
-    (modelChange)="onModelChange($event)">
+  <formly-form
+    [form]="form"
+    [fields]="fields"
+    [options]="options"
+    [model]="model"
+    (modelChange)="onModelChange($event)"
+  >
   </formly-form>
   <div class="grid-row margin-top-2">
     <div *ngIf="advancedFilters" class="grid-col">
-      <sds-advanced-filters [form]="form" [sortMoreFilterBy]="sortMoreFilterBy" [fields]="fields" [options]="options"
-        [model]="model" (showInactiveFiltersChange)="showInactiveFiltersChange.next($event)"
-        [isInactiveValueFieldShown]="isInactiveValueFieldShown">
+      <sds-advanced-filters
+        [form]="form"
+        [sortMoreFilterBy]="sortMoreFilterBy"
+        [fields]="fields"
+        [options]="options"
+        [model]="model"
+        (showInactiveFiltersChange)="showInactiveFiltersChange.next($event)"
+        [isInactiveValueFieldShown]="isInactiveValueFieldShown"
+      >
       </sds-advanced-filters>
     </div>
     <div class="grid-col text-right">
@@ -21,34 +32,42 @@
 <div *ngIf="horizontal" class="sds-filters--horizontal">
   <div class="horizontal-filters grid-row">
     <div *ngFor="let field of fields">
-      <div *ngIf="!field.hide" [sdsPopover]="content" [position]="'bottom'" [autoClose]="'outside'" tabindex="0"
-        [attr.aria-label]="field.props.label" class="margin-right-2">
+      <div
+        *ngIf="!field.hide"
+        [sdsPopover]="content"
+        [position]="'bottom'"
+        [autoClose]="'outside'"
+        tabindex="0"
+        [attr.aria-label]="field.props.label"
+        class="margin-right-2"
+      >
         {{ field.props.label }}
         <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
         <ng-template #content>
           <p class="text-left width-full">
-            <formly-form [options]="options" [form]="form" [model]="model" [fields]="[field]"
-              (modelChange)="onModelChange($event)"></formly-form>
+            <formly-form
+              [options]="options"
+              [form]="form"
+              [model]="model"
+              [fields]="[field]"
+              (modelChange)="onModelChange($event)"
+            ></formly-form>
           </p>
         </ng-template>
       </div>
     </div>
 
-    <!-- <formly-form
-      *ngIf="!dialogRef"
-      [form]="form"
-      [fields]="fields"
-      [options]="options"
-      [model]="model"
-      (modelChange)="onModelChange($event)"
-    >
-    </formly-form> -->
-
-
     <div *ngIf="advancedFilters">
-      <sds-advanced-filters [form]="form" [sortMoreFilterBy]="sortMoreFilterBy" [fields]="fields" [options]="options"
-        [model]="model" [isInactiveValueFieldShown]="isInactiveValueFieldShown" [enablePopover]="horizontal"
-        (showInactiveFiltersChange)="handleInactiveFilterChange($event)">
+      <sds-advanced-filters
+        [form]="form"
+        [sortMoreFilterBy]="sortMoreFilterBy"
+        [fields]="fields"
+        [options]="options"
+        [model]="model"
+        [isInactiveValueFieldShown]="isInactiveValueFieldShown"
+        [enablePopover]="horizontal"
+        (showInactiveFiltersChange)="handleInactiveFilterChange($event)"
+      >
       </sds-advanced-filters>
     </div>
   </div>
@@ -73,17 +92,28 @@
 <ng-container *ngIf="displayChips">
   <div *ngFor="let chip of chips" class="width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2">
     <div class="sds--tag__item">
-      <sds-readonly-container [label]="chip.label" [value]="chip.value" [additionalConfig]="chip.readonlyOptions"
-        [formlyType]="chip.formlyType">
-        <ng-container *sdsReadonlyLabel><span class="margin-right-1 text-bold" [attr.aria-label]="chip.label">{{
-            chip.label }}:</span></ng-container>
-        <ng-container *sdsReadonlyValue="let value"><span class="margin-right-1" [attr.aria-label]="chip.srValue">{{
-            value }}</span></ng-container>
+      <sds-readonly-container
+        [label]="chip.label"
+        [value]="chip.value"
+        [additionalConfig]="chip.readonlyOptions"
+        [formlyType]="chip.formlyType"
+      >
+        <ng-container *sdsReadonlyLabel
+          ><span class="margin-right-1 text-bold" [attr.aria-label]="chip.label">{{ chip.label }}:</span></ng-container
+        >
+        <ng-container *sdsReadonlyValue="let value"
+          ><span class="margin-right-1" [attr.aria-label]="chip.srValue">{{ value }}</span></ng-container
+        >
       </sds-readonly-container>
     </div>
 
-    <button [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.srValue" aria-hidden="false"
-      class="sds-tag__close position-static" (click)="removeChip(chip)" (keyup.enter)="removeChip(chip)">
+    <button
+      [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.srValue"
+      aria-hidden="false"
+      class="sds-tag__close position-static"
+      (click)="removeChip(chip)"
+      (keyup.enter)="removeChip(chip)"
+    >
       <usa-icon [icon]="'x'" size="lg"></usa-icon>
     </button>
   </div>
@@ -92,8 +122,12 @@
 <ng-template #horizontalFiltersDialog let-data>
   <div class="bg-accent-cool-lighter height-full">
     <div class="grid-row shadow-4 padding-1">
-      <button id="cancelButton" class="sds-button sds-button--circular sds-button--white" (click)="close()"
-        aria-label="Cancel Filter By">
+      <button
+        id="cancelButton"
+        class="sds-button sds-button--circular sds-button--white"
+        (click)="close()"
+        aria-label="Cancel Filter By"
+      >
         <usa-icon [icon]="'chevron-left'"></usa-icon>
       </button>
       <div class="margin-x-auto">

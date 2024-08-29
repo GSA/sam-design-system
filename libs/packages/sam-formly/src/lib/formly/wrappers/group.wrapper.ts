@@ -1,4 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ComponentRef, OnDestroy, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { FieldWrapper } from '@ngx-formly/core';
 import * as qs from 'qs';
 import { Subscription } from 'rxjs';
@@ -42,7 +48,7 @@ import { filter } from 'rxjs/operators';
             </div>
           </div>
         </ng-container>
-        <ng-container *ngSwitchDefault>   
+        <ng-container *ngSwitchDefault>
           <ng-container #fieldComponent></ng-container>
         </ng-container>
       </ng-container>
@@ -74,14 +80,6 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
     if (this.props.group != 'accordion' || !this.accordion) {
       return;
     }
-
-    // this.resetAllSubscription = this.field.options.fieldChanges
-    //   .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
-    //   .subscribe(() => {
-    //     if (!this.modelHasValue()) {
-    //       this.accordion.collapse(this.accordionItem.id);
-    //     }
-    //   });
     this.resetAllSubscription = this.field.options?.fieldChanges?.subscribe(({ type }) => {
       if (type === 'resetAll' && this.accordionItem.expanded && !this.modelHasValue()) {
         this.accordion.collapse(this.accordionItem.id);
