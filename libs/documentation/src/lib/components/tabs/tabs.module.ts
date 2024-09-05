@@ -10,7 +10,7 @@ import { TabsAutoActivateComponent } from './demos/auto-activate/tabs-auto-activ
 import { TabsAutoActivateModule } from './demos/auto-activate/tabs-auto-activate.module';
 import { TabsBasicComponent } from './demos/basic/tabs-basic.component';
 import { TabsBasicModule } from './demos/basic/tabs-basic.module';
-import { TabsDisabledComponent } from './demos/disabled/tabs-disabled.component';
+import { OldTabsDisabledComponent } from './demos/disabled/tabs-disabled.component';
 import { TabsDisabledModule } from './demos/disabled/tabs-disabled.module';
 import { DynamicTabsComponet } from './demos/dynamic-tabs/dynamic-tabs.component';
 import { DynamicTabsModule } from './demos/dynamic-tabs/dynamic-tabs.module';
@@ -52,7 +52,7 @@ const DEMOS = {
   },
   disabledTabs: {
     title: 'Disabled Tabs',
-    type: TabsDisabledComponent,
+    type: OldTabsDisabledComponent,
     code: require('!!raw-loader!./demos/disabled/tabs-disabled.component'),
     markup: require('!!raw-loader!./demos/disabled/tabs-disabled.component.html'),
     module: require('!!raw-loader!./demos/disabled/tabs-disabled.module.ts'),
