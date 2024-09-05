@@ -13,15 +13,6 @@ const samFormlyPackage = fs.readJsonSync('libs/packages/sam-formly/package.json'
 const samMaterialExtensions = fs.readJsonSync('libs/packages/sam-material-extensions/package.json');
 
 let dependencies = packageJson.dependencies;
-// Locking version at 11.0.3 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
-const samDependencies = {
-  '@gsa-sam/layouts': '12.0.0',
-  '@gsa-sam/components': '16.0.16',
-  '@gsa-sam/sam-formly': '16.0.16',
-  '@gsa-sam/sam-material-extensions': '16.0.16',
-};
-
-dependencies = { ...dependencies, ...samDependencies };
 
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
