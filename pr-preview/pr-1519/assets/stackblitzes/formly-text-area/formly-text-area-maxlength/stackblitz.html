@@ -348,7 +348,7 @@ export class FormlyTextAreaMaxlengthComponent {
   formSmall = new FormGroup({});
   formMedium = new FormGroup({});
   formLarge = new FormGroup({});
-  
+
   modelSmall: any = {};
   modelMedium: any = {};
   modelLarge: any = {};
@@ -403,7 +403,12 @@ export class FormlyTextAreaMaxlengthComponent {
 &lt;/form&gt;
 
 &lt;form [formGroup]=&#34;formMedium&#34;&gt;
-  &lt;formly-form [model]=&#34;modelMedium&#34; [fields]=&#34;fieldsMedium&#34; [options]=&#34;optionsMedium&#34; [form]=&#34;formMedium&#34;&gt;&lt;/formly-form&gt;
+  &lt;formly-form
+    [model]=&#34;modelMedium&#34;
+    [fields]=&#34;fieldsMedium&#34;
+    [options]=&#34;optionsMedium&#34;
+    [form]=&#34;formMedium&#34;
+  &gt;&lt;/formly-form&gt;
 &lt;/form&gt;
 
 &lt;form [formGroup]=&#34;formLarge&#34;&gt;
