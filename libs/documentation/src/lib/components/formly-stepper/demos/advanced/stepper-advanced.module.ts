@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { StepperAdvancedDemoComponent } from './stepper-advanced.component';
+import { OldStepperAdvancedDemoComponent } from './stepper-advanced.component';
 import { SdsFormlyModule, SdsStepperModule } from '@gsa-sam/sam-formly';
 import { AddSubawardeeDialogDemo, SubawardeeDemoComponent } from './subawardee.component';
 import { FormlyModule } from '@ngx-formly/core';
@@ -38,8 +38,8 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
     }),
     SdsSideToolbarModule,
   ],
-  declarations: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
-  exports: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
-  bootstrap: [StepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
+  declarations: [OldStepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
+  exports: [OldStepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
+  bootstrap: [OldStepperAdvancedDemoComponent, SubawardeeDemoComponent, AddSubawardeeDialogDemo, CustomStepperDemo],
 })
 export class StepperAdvancedModule {}
