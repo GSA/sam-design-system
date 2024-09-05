@@ -10,7 +10,7 @@ export class FormlyTextAreaMaxlengthComponent {
   formSmall = new FormGroup({});
   formMedium = new FormGroup({});
   formLarge = new FormGroup({});
-  
+
   modelSmall: any = {};
   modelMedium: any = {};
   modelLarge: any = {};
