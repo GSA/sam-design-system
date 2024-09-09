@@ -32,7 +32,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
                 *ngFor="let step of stepTemplates; let i = index"
                 class="usa-sidenav__item"
                 [ngClass]="{
-                  'usa-current': selectedStep?.id === step.id,
+                  'usa-current': selectedStep?.id === step.id
                 }"
               >
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: step }">

@@ -54,10 +54,10 @@ import { FieldWrapper } from '@ngx-formly/core';
 
       <div
         [ngClass]="{
-          '{{props.labelContentClass}}': props.labelContentClass,
-          'single-form-control':
-            (props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group',
-        }"
+'{{props.labelContentClass}}': props.labelContentClass,
+         'single-form-control':
+              ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
+          }"
       >
         <ng-container #fieldComponent></ng-container>
       </div>
