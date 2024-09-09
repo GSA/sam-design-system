@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
-import { FormlyTextAreaMaxlengthComponent } from './formly-text-area-maxlength.component';
+import { FormlyTextAreaSizesComponent } from './formly-text-area-sizes.component';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
-  declarations: [FormlyTextAreaMaxlengthComponent],
-  exports: [FormlyTextAreaMaxlengthComponent],
-  bootstrap: [FormlyTextAreaMaxlengthComponent],
+  declarations: [FormlyTextAreaSizesComponent],
+  exports: [FormlyTextAreaSizesComponent],
+  bootstrap: [FormlyTextAreaSizesComponent],
 })
-export class FormlyTextAreaMaxlengthModule {}
+export class FormlyTextAreaSizesModule {}

@@ -11,7 +11,7 @@ import { FormlyTextAreaDescriptionModule } from './formly-text-area-description/
 import { FormlyTextAreaLabelModule } from './formly-text-area-label/formly-text-area-label.module';
 import { FormlyTextAreaPlaceholderModule } from './formly-text-area-placeholder/formly-text-area-placeholder.module';
 import { FormlyTextAreaRequiredModule } from './formly-text-area-required/formly-text-area-required.module';
-import { FormlyTextAreaMaxlengthModule } from './formly-text-area-maxlength/formly-text-area-maxlength.module';
+import { FormlyTextAreaSizesModule } from './formly-text-area-sizes/formly-text-area-sizes.module';
 import { importProvidersFrom } from '@angular/core';
 
 const disable = {
@@ -38,7 +38,7 @@ export default {
         FormlyTextAreaConfigurableModule,
         FormlyTextAreaLabelModule,
         FormlyTextAreaDescriptionModule,
-        FormlyTextAreaMaxlengthModule,
+        FormlyTextAreaSizesModule,
         FormlyTextAreaRequiredModule,
         FormlyTextAreaPlaceholderModule,
       ],
@@ -181,20 +181,20 @@ Required.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'required'),
 };
 
-export const MaxLength: StoryObj = (args) => ({
-  template: '<sds-formly-text-area-maxlength></sds-formly-text-area-maxlength>',
+export const Sizes: StoryObj = (args) => ({
+  template: '<sds-formly-text-area-sizes></sds-formly-text-area-sizes>',
   props: args,
 });
-MaxLength.parameters = {
+Sizes.parameters = {
   controls: {
     disable: true,
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
   preview: generateConfig(
-    'storybook/formly/formly-text-area/formly-text-area-maxlength',
-    'FormlyTextAreaMaxlengthModule',
-    'sds-formly-text-area-maxlength'
+    'storybook/formly/formly-text-area/formly-text-area-sizes',
+    'FormlyTextAreaSizesModule',
+    'sds-formly-text-area-sizes'
   ),
-  stackblitzLink: generateStackblitzLink('formly-text-area', 'maxlength'),
+  stackblitzLink: generateStackblitzLink('formly-text-area', 'sizes'),
 };

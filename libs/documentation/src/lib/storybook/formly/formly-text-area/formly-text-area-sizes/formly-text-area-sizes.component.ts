@@ -3,10 +3,10 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-text-area-maxlength',
-  templateUrl: './formly-text-area-maxlength.component.html',
+  selector: 'sds-formly-text-area-sizes',
+  templateUrl: './formly-text-area-sizes.component.html',
 })
-export class FormlyTextAreaMaxlengthComponent {
+export class FormlyTextAreaSizesComponent {
   formSmall = new FormGroup({});
   formMedium = new FormGroup({});
   formLarge = new FormGroup({});
