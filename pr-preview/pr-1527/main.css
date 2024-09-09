@@ -57880,10 +57880,16 @@ sds-filters usa-accordion formly-field:first-child {
   flex-direction: row-reverse;
 }
 .usa-character-count textarea {
-  width: 320px;
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
 }
 
+@media (min-width: 400px) {
+  .usa-character-count textarea {
+    width: 320px;
+    max-width: 100%;
+  }
+}
 .usa-label.usa-label--sm {
   font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 0.87rem;
@@ -58512,6 +58518,21 @@ i.size-10x {
 
 i.sds-icon-margin {
   margin-right: 0.5rem;
+}
+
+.sds-textarea-small {
+  width: 20rem;
+}
+
+.sds-textarea-medium {
+  width: 30rem;
+}
+
+.sds-textarea-large {
+  width: 40rem;
+}
+.sds-textarea-large .usa-textarea {
+  max-width: none !important;
 }
 
 .sds-field {
