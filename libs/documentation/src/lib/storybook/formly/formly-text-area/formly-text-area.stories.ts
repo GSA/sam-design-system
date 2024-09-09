@@ -11,8 +11,7 @@ import { FormlyTextAreaDescriptionModule } from './formly-text-area-description/
 import { FormlyTextAreaLabelModule } from './formly-text-area-label/formly-text-area-label.module';
 import { FormlyTextAreaPlaceholderModule } from './formly-text-area-placeholder/formly-text-area-placeholder.module';
 import { FormlyTextAreaRequiredModule } from './formly-text-area-required/formly-text-area-required.module';
-import { FormlyTextAreaMaxlengthModule } from './formly-text-area-maxlength/formly-text-area-maxlength.module';
-import { FormlyTextAreaWidthModule } from './formly-text-area-width/formly-text-area-width.module';
+import { FormlyTextAreaSizesModule } from './formly-text-area-sizes/formly-text-area-sizes.module';
 import { importProvidersFrom } from '@angular/core';
 
 const disable = {
@@ -39,10 +38,9 @@ export default {
         FormlyTextAreaConfigurableModule,
         FormlyTextAreaLabelModule,
         FormlyTextAreaDescriptionModule,
-        FormlyTextAreaMaxlengthModule,
+        FormlyTextAreaSizesModule,
         FormlyTextAreaRequiredModule,
         FormlyTextAreaPlaceholderModule,
-        FormlyTextAreaWidthModule,
       ],
     }),
     applicationConfig({
@@ -55,7 +53,7 @@ export default {
     description: props,
     required: props,
     maxLength: props,
-    className: props,
+    size: props,
   },
 } as Meta;
 
@@ -65,7 +63,7 @@ const formlyConfigFunction = (
   description: string,
   required: boolean,
   maxLength: number,
-  className: string,
+  className: string
 ) => {
   return {
     label: label ?? '',
@@ -73,7 +71,7 @@ const formlyConfigFunction = (
     description: description ?? '',
     required: required ?? false,
     maxLength: maxLength ?? '',
-    className: className ?? '',
+    size: size ?? '',
   };
 };
 
@@ -88,8 +86,8 @@ Introduction.parameters = {
 };
 
 export const Configurable = (args) => {
-  const { label, placeholder, description, required, maxLength, className } = args;
-  let config = formlyConfigFunction(label, placeholder, description, required, maxLength, className);
+  const { label, placeholder, description, required, maxLength, size } = args;
+  let config = formlyConfigFunction(label, placeholder, description, required, maxLength, size);
   return {
     template: '<sds-formly-text-area-configurable [config]="configObj"></sds-formly-text-area-configurable>',
     props: {
@@ -104,6 +102,7 @@ Configurable.args = {
   description: 'Enter the description for your entity.',
   required: true,
   maxLength: 50,
+  size: 'small',
 };
 Configurable.parameters = {
   sdsCodePreview: { disable: true },
@@ -182,11 +181,11 @@ Required.parameters = {
   stackblitzLink: generateStackblitzLink('formly-text-area', 'required'),
 };
 
-export const MaxLength: StoryObj = (args) => ({
-  template: '<sds-formly-text-area-maxlength></sds-formly-text-area-maxlength>',
+export const Sizes: StoryObj = (args) => ({
+  template: '<sds-formly-text-area-sizes></sds-formly-text-area-sizes>',
   props: args,
 });
-MaxLength.parameters = {
+Sizes.parameters = {
   controls: {
     disable: true,
     hideNoControlsWarning: true,
@@ -195,7 +194,7 @@ MaxLength.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-maxlength',
     'FormlyTextAreaMaxlengthModule',
-    'sds-formly-text-area-maxlength',
+    'sds-formly-text-area-maxlength'
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'maxlength'),
 };
@@ -213,7 +212,7 @@ Width.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-width',
     'FormlyTextAreaWidthModule',
-    'sds-formly-text-area-width',
+    'sds-formly-text-area-width'
   ),
-  stackblitzLink: generateStackblitzLink('formly-text-area', 'width'),
+  stackblitzLink: generateStackblitzLink('formly-text-area', 'sizes'),
 };
