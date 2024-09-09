@@ -338,6 +338,7 @@ export class FormlyFilterIntroductionModule {}
 @Component({
   selector: &#39;sds-formly-filter-introduction&#39;,
   templateUrl: &#39;./formly-filter-introduction.component.html&#39;,
+  preserveWhitespaces: true,
 })
 export class FormlyFilterIntroductionComponent {
   constructor() {}
@@ -347,6 +348,50 @@ export class FormlyFilterIntroductionComponent {
     <input type="hidden" name="project[files][src/app/formly-filter-introduction.component.html]" value="&lt;p&gt;
   Formly filter provides an filter for text to formly forms. This filter supports a number of features to inform users
   what sort of filter is expected.
+&lt;/p&gt;
+
+&lt;h2&gt;Horizontal Filters 17.0.9&lt;/h2&gt;
+&lt;p&gt;Below are a couple of possible changes to check after updating to 17.0.9&lt;/p&gt;
+&lt;h3&gt;Field Labels Required&lt;/h3&gt;
+&lt;p&gt;
+  Going forward each element of the fields array that is passed into formly must have a label to be displayed. This
+  label will be used to label the dropdown in the horizontal filters toolbar. If a label is not provided, the field will
+  not be shown within horizontal filters.
+&lt;/p&gt;
+&lt;p&gt;
+  Below is a barebones example of the expected structure for a horizontal filter. Note that label &lt;i&gt;Status&lt;/i&gt; is
+  provided within the props field of this FormlyFieldConfig
+&lt;/p&gt;
+&lt;code&gt;
+  fields: FormlyFieldConfig&amp;#91;&amp;#93; = &amp;#91;&lt;br /&gt;
+  &amp;emsp;&amp;#123;&lt;br /&gt;
+  &amp;emsp;&amp;emsp;key: &#39;status&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;type: &#39;multicheckbox&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;props: &amp;#123;&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;label: &#39;Status&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;options: &amp;#91;&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;#123;&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;value: &#39;active&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;label: &#39;Active&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;#125;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;#123;&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;value: &#39;inactive&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;label: &#39;Inactive&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;#125;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;#123;&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;value: &#39;all&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;label: &#39;All&#39;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;#125;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;emsp;&amp;#93;,&lt;br /&gt;
+  &amp;emsp;&amp;emsp;&amp;#125;,&lt;br /&gt;
+  &amp;emsp;&amp;#125;&lt;br /&gt;
+  &amp;#93;
+&lt;/code&gt;
+&lt;h3&gt;OnInit Hook&lt;/h3&gt;
+&lt;p&gt;
+  Previously the onInit hook could be attached to a field and would trigger as the horizontal filters component loaded
+  in. This is not the case anymore. The onInit hook will now trigger when the popover containing the field is opened,
+  rather than on page load. If some action needs to be taken on page load, please use an Angular lifecycle hook.
 &lt;/p&gt;
 ">
     
