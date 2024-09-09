@@ -118,7 +118,7 @@ AutomaticActivation.parameters = {
   preview: generateConfig(
     'storybook/tabs/tabs-automatic-activation',
     'TabsAutomaticActivationModule',
-    'sds-tabs-automatic-activation',
+    'sds-tabs-automatic-activation'
   ),
   stackblitzLink: generateStackblitzLink('tabs', 'automatic-activation'),
 };
@@ -170,7 +170,7 @@ DynamicGeneration.parameters = {
   preview: generateConfig(
     'storybook/tabs/tabs-dynamic-generation',
     'TabsDynamicGenerationModule',
-    'sds-tabs-dynamic-generation',
+    'sds-tabs-dynamic-generation'
   ),
   stackblitzLink: generateStackblitzLink('tabs', 'dynamic-generation'),
 };
@@ -190,7 +190,7 @@ PreChangeEvent.parameters = {
   preview: generateConfig(
     'storybook/tabs/tabs-pre-change-event',
     'TabsPreChangeEventModule',
-    'sds-tabs-pre-change-event',
+    'sds-tabs-pre-change-event'
   ),
   stackblitzLink: generateStackblitzLink('tabs', 'pre-change-event'),
 };

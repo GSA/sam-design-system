@@ -126,7 +126,7 @@ const searchSettingsFunction = (
   inputClass?: string,
   parentSelector?: string,
   id?: string,
-  ariaLabel?: string,
+  ariaLabel?: string
 ) => {
   const toReturn = new SearchSettings();
   toReturn.placeholder = placeholder ?? 'Search';
@@ -148,7 +148,7 @@ export const Configurable = (args) => {
     inputClass,
     parentSelector,
     id,
-    ariaLabel,
+    ariaLabel
   );
   return {
     template: `

@@ -160,7 +160,7 @@ PreventDuplicates.parameters = {
   preview: generateConfig(
     'storybook/toasts/toasts-prevent-duplicates',
     'ToastsPreventDuplicatesModule',
-    'sds-toasts-prevent-duplicates',
+    'sds-toasts-prevent-duplicates'
   ),
   stackblitzLink: generateStackblitzLink('toasts', 'prevent-duplicates'),
 };

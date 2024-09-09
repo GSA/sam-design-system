@@ -99,13 +99,13 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
     private _overlay: Overlay,
     private _element: ElementRef<HTMLElement>,
     private _viewContainerRef: ViewContainerRef,
-    private _focusMonitor: FocusMonitor,
+    private _focusMonitor: FocusMonitor
   ) {
     // On touch devices set _openedBy to 'touch'
     _element.nativeElement.addEventListener(
       'touchstart',
       () => (this._openedBy = 'touch'),
-      normalizePassiveListenerOptions({ passive: true }),
+      normalizePassiveListenerOptions({ passive: true })
     );
   }
 
@@ -118,7 +118,7 @@ export class SdsMenuTriggerForDirective implements OnDestroy {
     this._element.nativeElement.removeEventListener(
       'touchstart',
       () => (this._openedBy = 'touch'),
-      normalizePassiveListenerOptions({ passive: true }),
+      normalizePassiveListenerOptions({ passive: true })
     );
 
     this._menuCloseSubscription.unsubscribe();

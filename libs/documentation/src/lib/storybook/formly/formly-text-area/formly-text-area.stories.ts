@@ -122,7 +122,7 @@ Description.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-description',
     'FormlyTextAreaDescriptionModule',
-    'sds-formly-text-area-description',
+    'sds-formly-text-area-description'
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'description'),
 };
@@ -140,7 +140,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-label',
     'FormlyTextAreaLabelModule',
-    'sds-formly-text-area-label',
+    'sds-formly-text-area-label'
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'label'),
 };
@@ -158,7 +158,7 @@ Placeholder.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-placeholder',
     'FormlyTextAreaPlaceholderModule',
-    'sds-formly-text-area-placeholder',
+    'sds-formly-text-area-placeholder'
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'placeholder'),
 };
@@ -176,7 +176,7 @@ Required.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-text-area/formly-text-area-required',
     'FormlyTextAreaRequiredModule',
-    'sds-formly-text-area-required',
+    'sds-formly-text-area-required'
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'required'),
 };

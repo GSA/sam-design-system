@@ -53,7 +53,7 @@ Panel.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-panel',
     'FormlyWrapperGroupPanelModule',
-    'sds-formly-wrapper-group-panel',
+    'sds-formly-wrapper-group-panel'
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'panel'),
 };
@@ -71,7 +71,7 @@ Accordion.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-group/formly-wrapper-group-accordion',
     'FormlyWrapperGroupAccordionModule',
-    'sds-formly-wrapper-group-template',
+    'sds-formly-wrapper-group-template'
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-group', 'accordion'),
 };

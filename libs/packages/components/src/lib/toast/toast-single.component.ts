@@ -26,10 +26,7 @@ import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';
   preserveWhitespaces: false,
 })
 export class SdsToastComponent extends Toast {
-  constructor(
-    protected toastrService: ToastrService,
-    public toastPackage: ToastPackage,
-  ) {
+  constructor(protected toastrService: ToastrService, public toastPackage: ToastPackage) {
     super(toastrService, toastPackage);
   }
 

@@ -104,7 +104,7 @@ export function dateRangeValidator(control: UntypedFormControl, field: FormlyFie
   }
 
   const innerFieldGroup: FormlyFieldConfig = field.fieldGroup.find(
-    (field) => field.formControl.invalid && field.formControl.errors,
+    (field) => field.formControl.invalid && field.formControl.errors
   );
 
   if (!innerFieldGroup) {

@@ -222,16 +222,19 @@ describe('SdsStepperComponent', () => {
     expect(invalidSteps.length).toEqual(0);
   });
 
-  it('Should move to next step when next button is clicked', waitForAsync(() => {
-    expect(stepper.currentStepId).toEqual('step1');
-    const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
-    nextButton.triggerEventHandler('click', null);
-    fixture.detectChanges();
-
-    fixture.whenStable().then(() => {
+  it(
+    'Should move to next step when next button is clicked',
+    waitForAsync(() => {
       expect(stepper.currentStepId).toEqual('step1');
-    });
-  }));
+      const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
+      nextButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      fixture.whenStable().then(() => {
+        expect(stepper.currentStepId).toEqual('step1');
+      });
+    })
+  );
 
   it('Should mark invalid step when moving to next step', () => {
     expect(stepper.currentStepId).toEqual('step1');
@@ -255,14 +258,17 @@ describe('SdsStepperComponent', () => {
     expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
 
-  it('Should jump to step 1 when clicking from side navigation', waitForAsync(() => {
-    const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
-    sidenavLinks[2].triggerEventHandler('click', null);
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(stepper.currentStepId).toEqual('step1');
-    });
-  }));
+  it(
+    'Should jump to step 1 when clicking from side navigation',
+    waitForAsync(() => {
+      const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
+      sidenavLinks[2].triggerEventHandler('click', null);
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(stepper.currentStepId).toEqual('step1');
+      });
+    })
+  );
 
   it('Should prepopulate with correct model and validity when provided', () => {
     component.model = {

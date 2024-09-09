@@ -71,7 +71,7 @@ export class AdvancedFiltersComponent implements OnInit {
   constructor(
     public dialog: SdsDialogService,
     private advancedFiltersService: SdsAdvancedFiltersService,
-    private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -230,11 +230,11 @@ export class AdvancedFiltersComponent implements OnInit {
   getCheckboxFieldConfigs(hideChildrenGroups = false) {
     const modalFields: FormlyFieldConfig[] = this.advancedFiltersService.convertToCheckboxes(
       this.fields,
-      hideChildrenGroups,
+      hideChildrenGroups
     );
     if (this.sortMoreFilterBy) {
       modalFields.sort((a: FormlyFieldConfig, b: FormlyFieldConfig) =>
-        a.props && b.props ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy]) : 0,
+        a.props && b.props ? a.props[this.sortMoreFilterBy].localeCompare(b.props[this.sortMoreFilterBy]) : 0
       );
     }
     const filedGroup: FormlyFieldConfig[] = this.filedGroup;
@@ -309,7 +309,7 @@ export class AdvancedFiltersComponent implements OnInit {
                     tap((showInactiveValue) => {
                       this.showInactive = showInactiveValue;
                       isOnload = false;
-                    }),
+                    })
                   )
                   .subscribe();
               },

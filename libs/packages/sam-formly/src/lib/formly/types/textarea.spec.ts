@@ -103,7 +103,7 @@ describe('Formly Input Component', () => {
     fixture.detectChanges();
 
     const characterCountText: HTMLSpanElement = fixture.debugElement.query(
-      By.css('#testCharacterCount-character-count'),
+      By.css('#testCharacterCount-character-count')
     ).nativeElement;
     expect(characterCountText.innerText.trim()).toBe('45 characters left');
   });
@@ -126,11 +126,10 @@ describe('Formly Input Component', () => {
     fixture.detectChanges();
 
     const characterCountText: HTMLSpanElement = fixture.debugElement.query(
-      By.css('#testCharacterCount-character-count'),
+      By.css('#testCharacterCount-character-count')
     ).nativeElement;
-    const characterCountInput: HTMLTextAreaElement = fixture.debugElement.query(
-      By.css('#testCharacterCount'),
-    ).nativeElement;
+    const characterCountInput: HTMLTextAreaElement = fixture.debugElement.query(By.css('#testCharacterCount'))
+      .nativeElement;
     expect(characterCountText.innerText.trim()).toBe('0 characters left');
     expect(characterCountInput.value).toBe('Hello');
   });

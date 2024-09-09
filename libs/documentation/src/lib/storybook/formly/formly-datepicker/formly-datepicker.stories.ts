@@ -57,7 +57,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-basic',
     'FormlyDatepickerBasicModule',
-    'sds-formly-datepicker-basic',
+    'sds-formly-datepicker-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-datepicker', 'basic'),
 };
@@ -75,7 +75,7 @@ Options.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-options',
     'FormlyDatepickerOptionsModule',
-    'sds-formly-datepicker-template',
+    'sds-formly-datepicker-template'
   ),
   stackblitzLink: generateStackblitzLink('formly-datepicker', 'options'),
 };
@@ -93,7 +93,7 @@ Validation.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-validation',
     'FormlyDatepickerValidationModule',
-    'sds-formly-datepicker-validation',
+    'sds-formly-datepicker-validation'
   ),
   stackblitzLink: generateStackblitzLink('formly-datepicker', 'validation'),
 };
@@ -111,7 +111,7 @@ Range.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-datepicker/formly-datepicker-range',
     'FormlyDatepickerRangeModule',
-    'sds-formly-datepicker-range',
+    'sds-formly-datepicker-range'
   ),
   stackblitzLink: generateStackblitzLink('formly-datepicker', 'range'),
 };

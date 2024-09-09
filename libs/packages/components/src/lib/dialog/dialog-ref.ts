@@ -35,7 +35,7 @@ export class SdsDialogRef<T, R = any> {
     private _overlayRef: OverlayRef,
     public _containerInstance: SdsDialogContainerComponent,
     _location?: Location,
-    readonly id: string = `sds-dialog-${uniqueId++}`,
+    readonly id: string = `sds-dialog-${uniqueId++}`
   ) {
     // Pass the id along to the container.
     _containerInstance._id = id;
@@ -44,7 +44,7 @@ export class SdsDialogRef<T, R = any> {
     _containerInstance._animationStateChanged
       .pipe(
         filter((event) => event.phaseName === 'done' && (event.toState === 'enter' || event.toState === 'slideEnter')),
-        take(1),
+        take(1)
       )
       .subscribe(() => {
         this._afterOpened.next();
@@ -55,7 +55,7 @@ export class SdsDialogRef<T, R = any> {
     _containerInstance._animationStateChanged
       .pipe(
         filter((event) => event.phaseName === 'done' && (event.toState === 'exit' || event.toState === 'slideExit')),
-        take(1),
+        take(1)
       )
       .subscribe(() => this._overlayRef.dispose());
 
@@ -85,7 +85,7 @@ export class SdsDialogRef<T, R = any> {
     this._containerInstance._animationStateChanged
       .pipe(
         filter((event) => event.phaseName === 'start'),
-        take(1),
+        take(1)
       )
       .subscribe(() => {
         this._beforeClosed.next(dialogResult);

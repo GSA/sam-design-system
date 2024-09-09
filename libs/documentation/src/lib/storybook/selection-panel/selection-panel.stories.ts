@@ -104,9 +104,9 @@ Mode.parameters = {
       createCodePreviewTabData(
         'storybook/selection-panel/selection-panel-mode/selection-panel-mode.config.ts',
         'ts',
-        false,
+        false
       ),
-    ],
+    ]
   ),
   stackblitzLink: generateStackblitzLink('selection-panel', 'mode'),
 };
@@ -131,9 +131,9 @@ Children.parameters = {
       createCodePreviewTabData(
         'storybook/selection-panel/selection-panel-children/selection-panel-children.config.ts',
         'ts',
-        false,
+        false
       ),
-    ],
+    ]
   ),
   stackblitzLink: generateStackblitzLink('selection-panel', 'children'),
 };
@@ -158,9 +158,9 @@ Selected.parameters = {
       createCodePreviewTabData(
         'storybook/selection-panel/selection-panel-selected/selection-panel-selected.config.ts',
         'ts',
-        false,
+        false
       ),
-    ],
+    ]
   ),
   stackblitzLink: generateStackblitzLink('selection-panel', 'selected'),
 };

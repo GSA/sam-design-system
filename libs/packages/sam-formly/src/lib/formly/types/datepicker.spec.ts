@@ -69,7 +69,7 @@ describe('Formly Field Datepicker Component', () => {
       ];
 
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
       );
       //Checks created
       expect(fixture).toBeTruthy();

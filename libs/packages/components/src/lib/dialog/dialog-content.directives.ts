@@ -30,7 +30,7 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
   constructor(
     @Optional() public dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService,
+    private _dialog: SdsDialogService
   ) {}
 
   ngOnInit() {
@@ -71,7 +71,7 @@ export class SdsDialogTitleDirective implements OnInit {
   constructor(
     @Optional() private _dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService,
+    private _dialog: SdsDialogService
   ) {}
 
   ngOnInit() {

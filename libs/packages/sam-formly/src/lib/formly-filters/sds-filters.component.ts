@@ -149,7 +149,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private formlyDialogService: SdsDialogService,
     private cdr: ChangeDetectorRef,
     @Optional()
-    private filterUpdateModelService: SDSFormlyUpdateModelService,
+    private filterUpdateModelService: SDSFormlyUpdateModelService
   ) {}
   ngOnDestroy() {
     this.unsubscribe$.next();
@@ -466,7 +466,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     // If the form control contains complex values, such as an object or array, we need to determine what the new
     // value of the form will be after this chip has been removed, and update the form control accordingly
     const chipsWithSameKey = this.chips.filter(
-      (exisingChip) => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey,
+      (exisingChip) => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey
     );
     const existingValues = chipsWithSameKey.map((chipWithSameKey) => chipWithSameKey.value);
 

@@ -65,7 +65,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-basic',
     'FormlySearchBasicModule',
-    'sds-formly-search-basic',
+    'sds-formly-search-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'basic'),
 };
@@ -83,7 +83,7 @@ HandlingSubmit.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-handling-submit',
     'FormlySearchHandlingSubmitModule',
-    'sds-formly-search-handling-submit',
+    'sds-formly-search-handling-submit'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'handling-submit'),
 };
@@ -101,7 +101,7 @@ Advanced.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-advanced',
     'FormlySearchAdvancedModule',
-    'sds-formly-search-advanced',
+    'sds-formly-search-advanced'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'advanced'),
 };
@@ -119,7 +119,7 @@ Big.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-big',
     'FormlySearchBigModule',
-    'sds-formly-search-big',
+    'sds-formly-search-big'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'big'),
 };
@@ -137,7 +137,7 @@ Optional.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-optional',
     'FormlySearchOptionalModule',
-    'sds-formly-search-optional',
+    'sds-formly-search-optional'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'optional'),
 };
@@ -155,7 +155,7 @@ Dropdown.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-dropdown',
     'FormlySearchDropdownModule',
-    'sds-formly-search-dropdown',
+    'sds-formly-search-dropdown'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'dropdown'),
 };
@@ -173,7 +173,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-label',
     'FormlySearchLabelModule',
-    'sds-formly-search-label',
+    'sds-formly-search-label'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'label'),
 };
@@ -191,7 +191,7 @@ Placeholder.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-search/formly-search-placeholder',
     'FormlySearchPlaceholderModule',
-    'sds-formly-search-placeholder',
+    'sds-formly-search-placeholder'
   ),
   stackblitzLink: generateStackblitzLink('formly-search', 'placeholder'),
 };

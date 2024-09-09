@@ -37,11 +37,7 @@ export class SideNavigationFiltersComponent {
 
   selectedPanel: NavigationLink = this.navigationModel.navigationLinks[1];
 
-  constructor(
-    public filterService: FilterService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) {}
+  constructor(public filterService: FilterService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.fields = this.filterService.fields;

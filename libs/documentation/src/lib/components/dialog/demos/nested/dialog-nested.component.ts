@@ -13,7 +13,7 @@ export interface DialogData {
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: SdsDialogRef<DialogOverviewExampleDialog>,
-    @Inject(SDS_DIALOG_DATA) public data: DialogData,
+    @Inject(SDS_DIALOG_DATA) public data: DialogData
   ) {}
 
   onNoClick(): void {

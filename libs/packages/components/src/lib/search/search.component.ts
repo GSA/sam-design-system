@@ -64,7 +64,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   constructor(
     private cd: ChangeDetectorRef,
     private focusMonitor: FocusMonitor,
-    private viewportRuler: ViewportRuler,
+    private viewportRuler: ViewportRuler
   ) {}
 
   ngAfterViewInit() {

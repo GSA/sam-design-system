@@ -38,7 +38,7 @@ export class FormlyUtilsService {
   public static formlyConfigToReadonlyData(
     fields: FormlyFieldConfig[],
     model: any,
-    options = { convertAll: false },
+    options = { convertAll: false }
   ): ReadonlyDataType[] {
     const readonlyData = [];
     fields.forEach((field) => {
@@ -64,7 +64,7 @@ export class FormlyUtilsService {
     field: FormlyFieldConfig,
     model: any,
     readonlyData: any[],
-    options: { convertAll: boolean },
+    options: { convertAll: boolean }
   ) {
     if (field.props && (options.convertAll || Object.values(SdsReadonlyTypes).includes(field.type as any))) {
       const label = field.props.label;

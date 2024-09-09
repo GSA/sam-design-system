@@ -59,7 +59,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-basic',
     'FormlyRadioBasicModule',
-    'sds-formly-radio-basic',
+    'sds-formly-radio-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-radio', 'basic'),
 };
@@ -77,7 +77,7 @@ Advanced.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-advanced',
     'FormlyRadioAdvancedModule',
-    'sds-formly-radio-advanced',
+    'sds-formly-radio-advanced'
   ),
   stackblitzLink: generateStackblitzLink('formly-radio', 'advanced'),
 };
@@ -95,7 +95,7 @@ Template.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-template',
     'FormlyRadioTemplateModule',
-    'sds-formly-radio-template',
+    'sds-formly-radio-template'
   ),
   stackblitzLink: generateStackblitzLink('formly-radio', 'template'),
 };
@@ -113,7 +113,7 @@ Group.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-group',
     'FormlyRadioGroupModule',
-    'sds-formly-radio-group',
+    'sds-formly-radio-group'
   ),
   stackblitzLink: generateStackblitzLink('formly-radio', 'group'),
 };
@@ -131,7 +131,7 @@ Horizontal.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-radio/formly-radio-horizontal',
     'FormlyRadioHorizontalModule',
-    'sds-formly-radio-horizontal',
+    'sds-formly-radio-horizontal'
   ),
   stackblitzLink: generateStackblitzLink('formly-radio', 'horizontal'),
 };

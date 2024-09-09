@@ -57,7 +57,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-basic',
     'FormlyFileinputBasicModule',
-    'sds-formly-file-input-basic',
+    'sds-formly-file-input-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-file-input', 'basic'),
 };
@@ -75,7 +75,7 @@ Options.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-options',
     'FormlyFileinputOptionsModule',
-    'sds-formly-file-input-template',
+    'sds-formly-file-input-template'
   ),
   stackblitzLink: generateStackblitzLink('formly-file-input', 'options'),
 };
@@ -93,7 +93,7 @@ Table.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-table',
     'FormlyFileinputTableModule',
-    'sds-formly-file-input-table',
+    'sds-formly-file-input-table'
   ),
   stackblitzLink: generateStackblitzLink('formly-file-input', 'table'),
 };
@@ -111,7 +111,7 @@ Custom.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-file-input/formly-file-input-custom',
     'FormlyFileinputCustomModule',
-    'sds-formly-file-input-custom',
+    'sds-formly-file-input-custom'
   ),
   stackblitzLink: generateStackblitzLink('formly-file-input', 'custom'),
 };

@@ -15,10 +15,7 @@ export class SdsObserveWidthDirective implements OnInit, OnDestroy {
   /** Subscription to window resize stream */
   windowResize$: Subscription;
 
-  constructor(
-    private _elementRef: ElementRef<HTMLElement>,
-    private viewportRuler: ViewportRuler,
-  ) {}
+  constructor(private _elementRef: ElementRef<HTMLElement>, private viewportRuler: ViewportRuler) {}
 
   ngOnInit() {
     this.windowResize$ = this.viewportRuler

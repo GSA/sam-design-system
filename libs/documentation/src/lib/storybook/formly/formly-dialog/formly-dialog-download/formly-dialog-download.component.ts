@@ -109,10 +109,7 @@ export class FormlyDialogDownloadComponent {
       },
     },
   ];
-  constructor(
-    public service: AutocompleteSampleDataService,
-    public dialog: SdsDialogService,
-  ) {
+  constructor(public service: AutocompleteSampleDataService, public dialog: SdsDialogService) {
     this.setup();
   }
   changes(value) {

@@ -38,12 +38,14 @@ describe('SdsSideNavigationComponent', () => {
     ],
   };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SdsSideNavigationComponent],
-      imports: [RouterTestingModule, SdsAccordionModule, BrowserAnimationsModule],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SdsSideNavigationComponent],
+        imports: [RouterTestingModule, SdsAccordionModule, BrowserAnimationsModule],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSideNavigationComponent);

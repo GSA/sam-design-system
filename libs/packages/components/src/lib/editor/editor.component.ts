@@ -52,10 +52,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
   private _onChange = (_: any) => {};
   private _onTouched = () => {};
 
-  constructor(
-    private cd: ChangeDetectorRef,
-    @Inject(DOCUMENT) private _document: any,
-  ) {}
+  constructor(private cd: ChangeDetectorRef, @Inject(DOCUMENT) private _document: any) {}
 
   // Helper method to programatically update a value of the model on blur
   onBlur(value) {

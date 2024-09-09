@@ -62,9 +62,9 @@ Filters.parameters = {
       createCodePreviewTabData(
         'storybook/side-navigation/side-navigation-filters/side-navigation-filters.config.ts',
         'ts',
-        false,
+        false
       ),
-    ],
+    ]
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'filters'),
 };
@@ -89,9 +89,9 @@ Links.parameters = {
       createCodePreviewTabData(
         'storybook/side-navigation/side-navigation-filters/side-navigation-filters.config.ts',
         'ts',
-        false,
+        false
       ),
-    ],
+    ]
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'links'),
 };
@@ -116,9 +116,9 @@ Selection.parameters = {
       createCodePreviewTabData(
         'storybook/side-navigation/side-navigation-selection/side-navigation-selection.config.ts',
         'ts',
-        false,
+        false
       ),
-    ],
+    ]
   ),
   stackblitzLink: generateStackblitzLink('side-navigation', 'selection'),
 };

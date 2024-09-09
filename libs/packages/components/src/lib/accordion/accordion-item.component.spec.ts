@@ -4,13 +4,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsAccordionModule } from './accordion.module';
 
 describe('SdsAccordionItem', () => {
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [SdsAccordionModule, NoopAnimationsModule],
-      declarations: [AccordionItem],
-    });
-    TestBed.compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SdsAccordionModule, NoopAnimationsModule],
+        declarations: [AccordionItem],
+      });
+      TestBed.compileComponents();
+    })
+  );
 
   it('should expand and collapse the accordion item', fakeAsync(() => {
     const fixture = TestBed.createComponent(AccordionItem);

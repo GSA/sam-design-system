@@ -183,7 +183,7 @@ UserInteraction.parameters = {
   preview: generateConfig(
     'storybook/table/table-user-interaction',
     'TableUserInteractionModule',
-    'sds-table-user-interaction',
+    'sds-table-user-interaction'
   ),
   stackblitzLink: generateStackblitzLink('table', 'user-interaction'),
 };
@@ -243,7 +243,7 @@ CustomClasses.parameters = {
   preview: generateConfig(
     'storybook/table/table-custom-classes',
     'TableCustomClassesModule',
-    'sds-table-custom-classes',
+    'sds-table-custom-classes'
   ),
   stackblitzLink: generateStackblitzLink('table', 'custom-classes'),
 };

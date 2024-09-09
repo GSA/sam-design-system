@@ -76,11 +76,7 @@ export class SdsTreeTableComponent {
   _selectedRow: any;
   _selectedRowParent: any;
 
-  constructor(
-    private elementRef: ElementRef,
-    public cdr: ChangeDetectorRef,
-    private ngZone: NgZone,
-  ) {}
+  constructor(private elementRef: ElementRef, public cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   /**
    * Public Interface - close all opened children
@@ -254,7 +250,7 @@ export class SdsTreeTableComponent {
     index: number,
     level: number,
     parentSelected?: boolean,
-    parentRow?: HTMLTableRowElement,
+    parentRow?: HTMLTableRowElement
   ) {
     const updatedLevel = level + 1;
     const posinset = index + 1;

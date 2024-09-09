@@ -68,7 +68,7 @@ describe('Formly Field Radio Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
         ),
         trigger = fixture.debugElement.queryAll(By.css('.usa-radio'));
 

@@ -16,18 +16,20 @@ describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
   let fixture: ComponentFixture<SDSAutocompleteSearchComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SDSAutocompleteSearchComponent],
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SDSAutocompleteSearchComponent],
 
-      imports: [
-        FormsModule,
-        OverlayModule,
-        IconModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
-      ],
-    }).compileComponents();
-  }));
+        imports: [
+          FormsModule,
+          OverlayModule,
+          IconModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SDSAutocompleteSearchComponent);

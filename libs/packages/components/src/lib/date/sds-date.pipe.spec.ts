@@ -13,7 +13,7 @@ describe('SdsDatePipe', () => {
     const hours = todayDate.getHours();
     const min = todayDate.getMinutes();
     expect(pipe.transform(today)).toBe(
-      `${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`,
+      `${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`
     );
   });
   it('should display the time when date displayed is today (date string)', () => {
@@ -23,7 +23,7 @@ describe('SdsDatePipe', () => {
     const hours = todayDate.getHours();
     const min = todayDate.getMinutes();
     expect(pipe.transform(today)).toBe(
-      `${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`,
+      `${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`
     );
   });
 
@@ -37,7 +37,7 @@ describe('SdsDatePipe', () => {
     }
     const today = todayDate.getTime();
     expect(pipe.transform(today)).toBe(
-      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric' }).format(todayDate),
+      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric' }).format(todayDate)
     );
   });
   it('should display the date without the year when date displayed is this calendar year (date time)', () => {
@@ -50,7 +50,7 @@ describe('SdsDatePipe', () => {
     }
     const today = todayDate.toISOString();
     expect(pipe.transform(today)).toBe(
-      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric' }).format(todayDate),
+      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric' }).format(todayDate)
     );
   });
 
@@ -60,7 +60,7 @@ describe('SdsDatePipe', () => {
     todayDate.setFullYear(todayDate.getFullYear() - 1);
     const today = todayDate.getTime();
     expect(pipe.transform(today)).toBe(
-      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric', year: 'numeric' }).format(todayDate),
+      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric', year: 'numeric' }).format(todayDate)
     );
   });
   it('should display the date without the year when date displayed is this calendar year (date time)', () => {
@@ -69,7 +69,7 @@ describe('SdsDatePipe', () => {
     todayDate.setFullYear(todayDate.getFullYear() - 1);
     const today = todayDate.toISOString();
     expect(pipe.transform(today)).toBe(
-      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric', year: 'numeric' }).format(todayDate),
+      new Intl.DateTimeFormat('en-us', { month: 'short', day: 'numeric', year: 'numeric' }).format(todayDate)
     );
   });
 });

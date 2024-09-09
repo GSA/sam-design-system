@@ -44,7 +44,7 @@ MinHeight.parameters = {
   preview: generateConfig(
     'storybook/rich-text-editor/rich-text-editor-min-height',
     'RichTextEditorMinHeightModule',
-    'sds-rich-text-editor-min-height',
+    'sds-rich-text-editor-min-height'
   ),
   stackblitzLink: generateStackblitzLink('rich-text-editor', 'min-height'),
 };
@@ -64,7 +64,7 @@ MaxHeight.parameters = {
   preview: generateConfig(
     'storybook/rich-text-editor/rich-text-editor-max-height',
     'RichTextEditorMaxHeightModule',
-    'sds-rich-text-editor-max-height',
+    'sds-rich-text-editor-max-height'
   ),
   stackblitzLink: generateStackblitzLink('rich-text-editor', 'max-height'),
 };

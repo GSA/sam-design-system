@@ -67,7 +67,7 @@ describe('Formly Field Select Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('usa-select');
 
@@ -76,34 +76,37 @@ describe('Formly Field Select Component', () => {
       expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
     });
 
-    it('should correctly bind to an Observable', waitForAsync(() => {
-      const sports$ = observableOf([
-        { id: '1', name: 'Soccer' },
-        { id: '2', name: 'Basketball' },
-        { id: { test: 'A' }, name: 'Not Soccer or Basketball' },
-      ]);
+    it(
+      'should correctly bind to an Observable',
+      waitForAsync(() => {
+        const sports$ = observableOf([
+          { id: '1', name: 'Soccer' },
+          { id: '2', name: 'Basketball' },
+          { id: { test: 'A' }, name: 'Not Soccer or Basketball' },
+        ]);
 
-      testComponentInputs.fields = [
-        {
-          key: 'sportId',
-          type: 'select',
-          props: {
-            options: sports$,
-            valueProp: 'id',
-            labelProp: 'name',
+        testComponentInputs.fields = [
+          {
+            key: 'sportId',
+            type: 'select',
+            props: {
+              options: sports$,
+              valueProp: 'id',
+              labelProp: 'name',
+            },
           },
-        },
-      ];
+        ];
 
-      const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
-        ),
-        trigger = fixture.debugElement.query(By.css('option')).nativeElement;
+        const fixture = createTestComponent(
+            '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          ),
+          trigger = fixture.debugElement.query(By.css('option')).nativeElement;
 
-      fixture.detectChanges();
+        fixture.detectChanges();
 
-      expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
-    }));
+        expect(fixture.debugElement.queryAll(By.css('option')).length).toEqual(3);
+      })
+    );
   });
 });
 

@@ -87,7 +87,7 @@ export class SdsAccordionItemComponent extends CdkAccordionItem implements After
     _uniqueSelectionDispatcher: UniqueSelectionDispatcher,
     private _viewContainerRef: ViewContainerRef,
     @Inject(DOCUMENT) _document: any,
-    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string,
+    @Optional() @Inject(ANIMATION_MODULE_TYPE) public _animationMode: string
   ) {
     super(accordion, _changeDetectorRef, _uniqueSelectionDispatcher);
     this.accordion = accordion;
@@ -99,7 +99,7 @@ export class SdsAccordionItemComponent extends CdkAccordionItem implements After
       .pipe(
         distinctUntilChanged((x, y) => {
           return x.fromState === y.fromState && x.toState === y.toState;
-        }),
+        })
       )
       .subscribe((event) => {
         if (event.fromState !== 'void') {
@@ -127,7 +127,7 @@ export class SdsAccordionItemComponent extends CdkAccordionItem implements After
         .pipe(
           startWith(null!),
           filter(() => this.expanded && !this._portal),
-          take(1),
+          take(1)
         )
         .subscribe(() => {
           this._portal = new TemplatePortal(this._lazyContent._template, this._viewContainerRef);

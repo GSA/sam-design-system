@@ -57,7 +57,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-basic',
     'FormlyMultiCheckboxBasicModule',
-    'sds-formly-multi-checkbox-basic',
+    'sds-formly-multi-checkbox-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'basic'),
 };
@@ -75,7 +75,7 @@ Nested.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-nested',
     'FormlyMultiCheckboxNestedModule',
-    'sds-formly-multi-checkbox-nested',
+    'sds-formly-multi-checkbox-nested'
   ),
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'nested'),
 };
@@ -93,7 +93,7 @@ Group.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-group',
     'FormlyMultiCheckboxGroupModule',
-    'sds-formly-multi-checkbox-group',
+    'sds-formly-multi-checkbox-group'
   ),
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'group'),
 };
@@ -111,7 +111,7 @@ Expand.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-multi-checkbox/formly-multi-checkbox-expand',
     'FormlyMultiCheckboxExpandModule',
-    'sds-formly-multi-checkbox-expand',
+    'sds-formly-multi-checkbox-expand'
   ),
   stackblitzLink: generateStackblitzLink('formly-multi-checkbox', 'expand'),
 };

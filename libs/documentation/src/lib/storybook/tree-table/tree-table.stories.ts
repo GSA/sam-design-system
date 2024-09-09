@@ -130,7 +130,7 @@ ProgrammaticControl.parameters = {
     'storybook/tree-table/tree-table-programmatic-control',
     'TreeTableProgrammaticControlModule',
     'sds-tree-table-modes',
-    [createCodePreviewTabData('storybook/tree-table/services/TreeTableData.ts', 'ts', false)],
+    [createCodePreviewTabData('storybook/tree-table/services/TreeTableData.ts', 'ts', false)]
   ),
   stackblitzLink: generateStackblitzLink('tree-table', 'programmatic-control'),
 };

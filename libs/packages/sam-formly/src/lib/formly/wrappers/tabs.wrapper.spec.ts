@@ -143,19 +143,23 @@ describe('Tabs Formly Field Component', () => {
     };
 
     fixture = createTestComponent(
-      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
     );
   });
 
-  xit('should properly trigger filter change on model update', waitForAsync(() => {
-    const subscription = fixture.componentInstance.formlyForm.modelChange.subscribe((change) => {
-      expect(change.keyword.keywordRadio === 'allWords');
-      subscription.unsubscribe();
-    });
-    const secondRadioOption: HTMLFormElement = fixture.debugElement.query(By.css('#keywordRadioTest_1')).nativeElement;
-    secondRadioOption.click();
-    fixture.detectChanges();
-  }));
+  xit(
+    'should properly trigger filter change on model update',
+    waitForAsync(() => {
+      const subscription = fixture.componentInstance.formlyForm.modelChange.subscribe((change) => {
+        expect(change.keyword.keywordRadio === 'allWords');
+        subscription.unsubscribe();
+      });
+      const secondRadioOption: HTMLFormElement = fixture.debugElement.query(By.css('#keywordRadioTest_1'))
+        .nativeElement;
+      secondRadioOption.click();
+      fixture.detectChanges();
+    })
+  );
 
   xit('Should switch tabs on tab click', () => {
     const tabsElements: DebugElement[] = fixture.debugElement.queryAll(By.css('.sds-tabs__item'));

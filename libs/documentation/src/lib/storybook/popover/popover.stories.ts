@@ -106,7 +106,7 @@ Title.parameters = {
   preview: generateConfig(
     'storybook/popover/popover-title',
     'PopoverSdsPopoverTitleModule',
-    'sds-popover-sds-popover-title',
+    'sds-popover-sds-popover-title'
   ),
   stackblitzLink: generateStackblitzLink('popover', 'title'),
 };
@@ -124,7 +124,7 @@ CloseBehavior.parameters = {
   preview: generateConfig(
     'storybook/popover/popover-close-behavior',
     'PopoverCloseBehaviorModule',
-    'sds-popover-close-behavior',
+    'sds-popover-close-behavior'
   ),
   stackblitzLink: generateStackblitzLink('popover', 'close-on-content-click'),
 };

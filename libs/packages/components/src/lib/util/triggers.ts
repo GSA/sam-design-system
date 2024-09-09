@@ -3,10 +3,7 @@ import { share, filter, delay, map } from 'rxjs/operators';
 import { Renderer2 } from '@angular/core';
 
 export class Trigger {
-  constructor(
-    public open: string,
-    public close?: string,
-  ) {
+  constructor(public open: string, public close?: string) {
     if (!close) {
       this.close = open;
     }
@@ -54,7 +51,7 @@ export function observeTriggers(
   renderer: Renderer2,
   nativeElement: HTMLElement,
   triggers: Trigger[],
-  isOpenedFn: () => boolean,
+  isOpenedFn: () => boolean
 ) {
   return new Observable<boolean>((subscriber) => {
     const listeners: (() => void)[] = [];
@@ -68,7 +65,7 @@ export function observeTriggers(
       } else {
         listeners.push(
           renderer.listen(nativeElement, trigger.open, openFn),
-          renderer.listen(nativeElement, trigger.close!, closeFn),
+          renderer.listen(nativeElement, trigger.close!, closeFn)
         );
       }
     });
@@ -97,15 +94,15 @@ export function triggerDelay(openDelay: number, closeDelay: number, isOpenedFn: 
         }
         return false;
       }),
-      share(),
+      share()
     );
     const delayedOpen$ = filteredInput$.pipe(
       filter((event) => event.open),
-      delayOrNoop(openDelay),
+      delayOrNoop(openDelay)
     );
     const delayedClose$ = filteredInput$.pipe(
       filter((event) => !event.open),
-      delayOrNoop(closeDelay),
+      delayOrNoop(closeDelay)
     );
     return merge(delayedOpen$, delayedClose$).pipe(
       filter((event) => {
@@ -115,7 +112,7 @@ export function triggerDelay(openDelay: number, closeDelay: number, isOpenedFn: 
         }
         return false;
       }),
-      map((event) => event.open),
+      map((event) => event.open)
     );
   };
 }
@@ -128,7 +125,7 @@ export function listenToTriggers(
   openFn: () => void,
   closeFn: () => void,
   openDelay = 0,
-  closeDelay = 0,
+  closeDelay = 0
 ) {
   const parsedTriggers = parseTriggers(triggers);
 

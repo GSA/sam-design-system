@@ -37,7 +37,7 @@ export class ExternalLinkDirective implements OnChanges {
     @Inject(PLATFORM_ID) private platformId: string,
     private el: ElementRef,
     private vc: ViewContainerRef,
-    private renderer: Renderer2,
+    private renderer: Renderer2
   ) {}
 
   public ngOnChanges() {

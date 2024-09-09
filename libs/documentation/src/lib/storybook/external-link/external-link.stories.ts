@@ -65,7 +65,7 @@ Target.parameters = {
   preview: generateConfig(
     'storybook/external-link/external-link-target',
     'ButtonGroupBasicModule',
-    'sds-button-group-demo',
+    'sds-button-group-demo'
   ),
   stackblitzLink: generateStackblitzLink('external-link', 'external-link-target'),
 };
@@ -83,7 +83,7 @@ HideIcon.parameters = {
   preview: generateConfig(
     'storybook/external-link/external-link-hide-icon',
     'ButtonGroupBasicModule',
-    'sds-button-group-demo',
+    'sds-button-group-demo'
   ),
   stackblitzLink: generateStackblitzLink('external-link', 'external-link-hide-icon'),
 };

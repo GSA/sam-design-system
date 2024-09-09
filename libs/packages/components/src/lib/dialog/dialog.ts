@@ -89,7 +89,7 @@ export class SdsDialogService implements OnDestroy {
    * Will emit on subscribe if there are no open dialogs to begin with.
    */
   readonly afterAllClosed: Observable<any> = defer<any>(() =>
-    this.openDialogs.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined)),
+    this.openDialogs.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined))
   );
 
   constructor(
@@ -100,7 +100,7 @@ export class SdsDialogService implements OnDestroy {
     @Inject(SDS_DIALOG_SCROLL_STRATEGY) scrollStrategy: any,
     @Inject(SDS_SLIDE_OUT_SCROLL_STRATEGY) slideOutScrollStrategy: any,
     @Optional() @SkipSelf() private _parentDialog: SdsDialogService,
-    private _overlayContainer: OverlayContainer,
+    private _overlayContainer: OverlayContainer
   ) {
     this._scrollStrategy = scrollStrategy;
     this._slideOutScrollStrategy = slideOutScrollStrategy;
@@ -115,7 +115,7 @@ export class SdsDialogService implements OnDestroy {
    */
   open<T, D = any, R = any>(
     componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
-    config?: SdsDialogConfig<D>,
+    config?: SdsDialogConfig<D>
   ): SdsDialogRef<T, R> {
     // Convenience widths names: small | medium | large
     // added to help with standardization
@@ -250,7 +250,7 @@ export class SdsDialogService implements OnDestroy {
     componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
     dialogContainer: SdsDialogContainerComponent,
     overlayRef: OverlayRef,
-    config: SdsDialogConfig,
+    config: SdsDialogConfig
   ): SdsDialogRef<T, R> {
     // Create a reference to the dialog we're creating in order to give the user a handle
     // to modify and close it.
@@ -267,12 +267,12 @@ export class SdsDialogService implements OnDestroy {
 
     if (componentOrTemplateRef instanceof TemplateRef) {
       dialogContainer.attachTemplatePortal(
-        new TemplatePortal<T>(componentOrTemplateRef, null!, <any>{ $implicit: config.data, dialogRef }),
+        new TemplatePortal<T>(componentOrTemplateRef, null!, <any>{ $implicit: config.data, dialogRef })
       );
     } else {
       const injector = this._createInjector<T>(config, dialogRef, dialogContainer);
       const contentRef = dialogContainer.attachComponentPortal<T>(
-        new ComponentPortal(componentOrTemplateRef, undefined, injector),
+        new ComponentPortal(componentOrTemplateRef, undefined, injector)
       );
       dialogRef.componentInstance = contentRef.instance;
     }
@@ -293,7 +293,7 @@ export class SdsDialogService implements OnDestroy {
   private _createInjector<T>(
     config: SdsDialogConfig,
     dialogRef: SdsDialogRef<T>,
-    dialogContainer: SdsDialogContainerComponent,
+    dialogContainer: SdsDialogContainerComponent
   ): PortalInjector {
     const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
 

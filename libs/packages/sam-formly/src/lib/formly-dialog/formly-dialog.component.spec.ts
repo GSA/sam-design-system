@@ -15,22 +15,24 @@ describe('SdsFormlyDialogComponent', () => {
   let dialogRef: SdsDialogService;
   let advancedFiltersService: SdsAdvancedFiltersService;
 
-  beforeEach(waitForAsync(() => {
-    const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['updateFields']);
-    const dialogSpy = jasmine.createSpyObj('SdsDialogRef', ['close']);
-    TestBed.configureTestingModule({
-      declarations: [SdsFormlyDialogComponent],
-      imports: [CommonModule, FormlyModule, SdsFormlyModule, ReactiveFormsModule, BrowserAnimationsModule],
-      providers: [
-        { provide: SDS_DIALOG_DATA, useValue: {} },
-        { provide: SdsDialogRef, useValue: dialogSpy },
-        {
-          provide: SdsAdvancedFiltersService,
-          useValue: advancedFiltersServiceSpy,
-        },
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['updateFields']);
+      const dialogSpy = jasmine.createSpyObj('SdsDialogRef', ['close']);
+      TestBed.configureTestingModule({
+        declarations: [SdsFormlyDialogComponent],
+        imports: [CommonModule, FormlyModule, SdsFormlyModule, ReactiveFormsModule, BrowserAnimationsModule],
+        providers: [
+          { provide: SDS_DIALOG_DATA, useValue: {} },
+          { provide: SdsDialogRef, useValue: dialogSpy },
+          {
+            provide: SdsAdvancedFiltersService,
+            useValue: advancedFiltersServiceSpy,
+          },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsFormlyDialogComponent);
@@ -93,19 +95,25 @@ describe('SdsFormlyDialogComponent', () => {
     expect(component.cancel).toEqual('Cancel');
   });
 
-  it('should call onCancel() when Cancel button is clicked', waitForAsync(() => {
-    spyOn(component, 'onCancel');
-    const closeBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="button"]');
-    closeBtn.click();
-    expect(component.onCancel).toHaveBeenCalled();
-  }));
+  it(
+    'should call onCancel() when Cancel button is clicked',
+    waitForAsync(() => {
+      spyOn(component, 'onCancel');
+      const closeBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="button"]');
+      closeBtn.click();
+      expect(component.onCancel).toHaveBeenCalled();
+    })
+  );
 
-  it('should call onSubmit() when Submit button is clicked', waitForAsync(() => {
-    spyOn(component, 'onSubmit');
-    const submitBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="submit"]');
-    submitBtn.click();
-    expect(component.onSubmit).toHaveBeenCalled();
-  }));
+  it(
+    'should call onSubmit() when Submit button is clicked',
+    waitForAsync(() => {
+      spyOn(component, 'onSubmit');
+      const submitBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="submit"]');
+      submitBtn.click();
+      expect(component.onSubmit).toHaveBeenCalled();
+    })
+  );
 
   it('should not close when form is invalid and submit button is clicked', () => {
     component.form.setErrors({ invalid: true });

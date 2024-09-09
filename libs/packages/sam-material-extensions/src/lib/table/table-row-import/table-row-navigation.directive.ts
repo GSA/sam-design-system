@@ -10,11 +10,7 @@ export class TableRowNavigationDirective {
   @Input()
   highlightOnHover = false;
 
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer2,
-    private router: Router,
-  ) {}
+  constructor(private el: ElementRef, private renderer: Renderer2, private router: Router) {}
 
   @HostListener('mouseenter') onMouseEnter() {
     if (this.highlightOnHover) {

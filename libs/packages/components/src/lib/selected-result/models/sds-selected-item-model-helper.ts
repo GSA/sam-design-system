@@ -15,7 +15,7 @@ export class SDSSelectedItemModelHelper {
     itemToAdd: object,
     keyField: string,
     selectionMode: SelectionMode,
-    model: SDSSelectedItemModel,
+    model: SDSSelectedItemModel
   ) {
     if (!SDSSelectedItemModelHelper.containsItem(itemToAdd[keyField], keyField, model.items)) {
       if (selectionMode === SelectionMode.SINGLE) {
@@ -37,7 +37,7 @@ export class SDSSelectedItemModelHelper {
     toAddItems: object[],
     keyField: string,
     selectionMode: SelectionMode,
-    model: SDSSelectedItemModel,
+    model: SDSSelectedItemModel
   ) {
     for (let i = 0; i < toAddItems.length; i++) {
       SDSSelectedItemModelHelper.addItem(toAddItems[i], keyField, selectionMode, model);
@@ -91,7 +91,7 @@ export class SDSSelectedItemModelHelper {
     selectedItems: object[],
     keyField: string,
     selectionMode: SelectionMode,
-    model: SDSSelectedItemModel,
+    model: SDSSelectedItemModel
   ) {
     //Clears Old List
     SDSSelectedItemModelHelper.clearItems(model.items);

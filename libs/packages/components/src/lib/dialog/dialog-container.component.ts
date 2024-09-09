@@ -89,7 +89,7 @@ export class SdsDialogContainerComponent extends BasePortalOutlet {
     private _changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(DOCUMENT) private _document: any,
     /** The dialog configuration. */
-    public _config: SdsDialogConfig,
+    public _config: SdsDialogConfig
   ) {
     super();
   }

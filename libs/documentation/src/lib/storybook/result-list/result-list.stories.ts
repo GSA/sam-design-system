@@ -112,7 +112,7 @@ const resultListConfigFunction = (
   title?: string,
   message?: string,
   classes?: string,
-  defaultModel?: boolean,
+  defaultModel?: boolean
 ) => {
   if (showMessage) {
     return {
@@ -208,7 +208,7 @@ Messages.parameters = {
   preview: generateConfig(
     'storybook/result-list/result-list-messages',
     'ResultListMessagesModule',
-    'sds-result-list-messages',
+    'sds-result-list-messages'
   ),
   stackblitzLink: generateStackblitzLink('result-list', 'messages'),
 };
@@ -226,7 +226,7 @@ CustomTemplate.parameters = {
   preview: generateConfig(
     'storybook/result-list/result-list-custom-template',
     'ResultListCustomTemplateModule',
-    'sds-result-list-custom-template',
+    'sds-result-list-custom-template'
   ),
   stackblitzLink: generateStackblitzLink('result-list', 'custom-template'),
 };
@@ -244,7 +244,7 @@ CustomComponent.parameters = {
   preview: generateConfig(
     'storybook/result-list/result-list-custom-component',
     'ResultListCustomComponentModule',
-    'sds-result-list-custom-component',
+    'sds-result-list-custom-component'
   ),
   stackblitzLink: generateStackblitzLink('result-list', 'custom-component'),
 };

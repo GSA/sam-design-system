@@ -80,7 +80,7 @@ AccordionGroup.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-accordiongroup',
     'FormlyFilterAccordionGroupModule',
-    'sds-formly-filter-accordiongroup',
+    'sds-formly-filter-accordiongroup'
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'accordiongroup'),
 };
@@ -97,7 +97,7 @@ Horizontal.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-horizontal',
     'FormlyFilterHorizontalModule',
-    'sds-formly-filter-horizontal',
+    'sds-formly-filter-horizontal'
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'horizontal'),
 };
@@ -114,7 +114,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-basic',
     'FormlyFilterBasicModule',
-    'sds-formly-filter-basic',
+    'sds-formly-filter-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'basic'),
 };
@@ -132,7 +132,7 @@ Single.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-single',
     'FormlyFilterSingleModule',
-    'sds-formly-filter-single',
+    'sds-formly-filter-single'
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'single'),
 };
@@ -151,7 +151,7 @@ Nested.parameters = {
     'storybook/formly/formly-filter/formly-filter-nested',
     'FormlyFilterNestedModule',
     'sds-formly-filter-nested',
-    [createCodePreviewTabData('storybook/formly/formly-filter/formly-filter-nested/fields.ts', 'ts', false)],
+    [createCodePreviewTabData('storybook/formly/formly-filter/formly-filter-nested/fields.ts', 'ts', false)]
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'nested'),
 };
@@ -169,7 +169,7 @@ HideExpression.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-filter/formly-filter-hideexpression',
     'FormlyFilterHideExpressionModule',
-    'sds-formly-filter-hideexpression',
+    'sds-formly-filter-hideexpression'
   ),
   stackblitzLink: generateStackblitzLink('formly-filter', 'hideexpression'),
 };

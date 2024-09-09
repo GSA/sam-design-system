@@ -28,7 +28,7 @@ export class TableFullComponent {
       .getData()
       .pipe(
         tap((val) => console.log('Before ' + val)),
-        delay(1000),
+        delay(1000)
       )
       .subscribe((response) => {
         this.data = response;

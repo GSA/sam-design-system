@@ -6,12 +6,14 @@ describe('SdsTopBannerComponent', () => {
   let component: SdsTopBannerComponent;
   let fixture: ComponentFixture<SdsTopBannerComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SdsTopBannerComponent],
-      imports: [],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SdsTopBannerComponent],
+        imports: [],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsTopBannerComponent);

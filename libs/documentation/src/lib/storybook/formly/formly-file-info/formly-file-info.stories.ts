@@ -53,7 +53,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-file-info/formly-file-info-basic',
     'FormlyFileinfoBasicModule',
-    'sds-formly-file-info-basic',
+    'sds-formly-file-info-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-file-info', 'basic'),
 };
@@ -71,7 +71,7 @@ Options.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-file-info/formly-file-info-options',
     'FormlyFileinfoOptionsModule',
-    'sds-formly-file-info-template',
+    'sds-formly-file-info-template'
   ),
   stackblitzLink: generateStackblitzLink('formly-file-info', 'options'),
 };

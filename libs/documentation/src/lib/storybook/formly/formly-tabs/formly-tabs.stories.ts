@@ -74,7 +74,7 @@ Intercept.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-tabs/formly-tabs-intercept',
     'FormlyTabsInterceptModule',
-    'sds-formly-tabs-intercept',
+    'sds-formly-tabs-intercept'
   ),
   stackblitzLink: generateStackblitzLink('formly-tabs', 'intercept'),
 };
@@ -92,7 +92,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-tabs/formly-tabs-basic',
     'FormlyTabsBasicModule',
-    'sds-formly-tabs-basic',
+    'sds-formly-tabs-basic'
   ),
   stackblitzLink: generateStackblitzLink('formly-tabs', 'basic'),
 };

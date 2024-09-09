@@ -6,10 +6,7 @@ import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
   templateUrl: './dialog-template.component.html',
 })
 export class DialogAlertTypeTemplate {
-  constructor(
-    public dialogRef: SdsDialogRef<DialogAlertTypeTemplate>,
-    @Inject(SDS_DIALOG_DATA) public data: any,
-  ) {}
+  constructor(public dialogRef: SdsDialogRef<DialogAlertTypeTemplate>, @Inject(SDS_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {
     this.dialogRef.close();

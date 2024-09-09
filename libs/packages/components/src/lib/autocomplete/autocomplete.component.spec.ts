@@ -15,17 +15,19 @@ describe('SDSAutocompleteComponent', () => {
   let component: SDSAutocompleteComponent;
   let fixture: ComponentFixture<SDSAutocompleteComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [SDSAutocompleteComponent],
-      imports: [
-        FormsModule,
-        SdsSelectedResultsModule,
-        SdsAutocompleteSearchModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SDSAutocompleteComponent],
+        imports: [
+          FormsModule,
+          SdsSelectedResultsModule,
+          SdsAutocompleteSearchModule,
+          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SDSAutocompleteComponent);

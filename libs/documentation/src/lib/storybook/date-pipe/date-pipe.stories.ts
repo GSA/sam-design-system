@@ -59,7 +59,7 @@ CurrentDay.parameters = {
   preview: generateConfig(
     'storybook/date-pipe/date-pipe-current-day',
     'DatePipeCurrentDayModule',
-    'sds-date-pipe-current-day',
+    'sds-date-pipe-current-day'
   ),
   stackblitzLink: generateStackblitzLink('date-pipe', 'current-day'),
 };
@@ -75,7 +75,7 @@ CurrentYear.parameters = {
   preview: generateConfig(
     'storybook/date-pipe/date-pipe-current-year',
     'DatePipeCurrentYearModule',
-    'sds-date-pipe-current-year',
+    'sds-date-pipe-current-year'
   ),
   stackblitzLink: generateStackblitzLink('date-pipe', 'current-year'),
 };
@@ -91,7 +91,7 @@ NonCurrentYear.parameters = {
   preview: generateConfig(
     'storybook/date-pipe/date-pipe-non-current-year',
     'DatePipePreviousYearModule',
-    'sds-date-pipe-non-current-year',
+    'sds-date-pipe-non-current-year'
   ),
   stackblitzLink: generateStackblitzLink('date-pipe', 'non-current-year'),
 };

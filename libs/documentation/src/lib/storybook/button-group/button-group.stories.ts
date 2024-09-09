@@ -80,7 +80,7 @@ Modes.parameters = {
   preview: generateConfig(
     'storybook/button-group/button-group-modes',
     'ButtonGroupModesModule',
-    'sds-button-group-modes',
+    'sds-button-group-modes'
   ),
   stackblitzLink: generateStackblitzLink('button-group', 'modes'),
 };
@@ -100,7 +100,7 @@ Checked.parameters = {
   preview: generateConfig(
     'storybook/button-group/button-group-checked',
     'ButtonGroupBasicModule',
-    'sds-button-group-checked',
+    'sds-button-group-checked'
   ),
   stackblitzLink: generateStackblitzLink('button-group', 'checked'),
 };
