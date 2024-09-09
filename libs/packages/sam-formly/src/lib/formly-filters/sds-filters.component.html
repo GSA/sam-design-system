@@ -57,12 +57,12 @@
       </div>
       <div *ngIf="!field.props?.label && field.hooks">
         <formly-form
-              [options]="options"
-              [form]="form"
-              [model]="model"
-              [fields]="[field]"
-              (modelChange)="onModelChange($event)"
-            ></formly-form>
+          [options]="options"
+          [form]="form"
+          [model]="model"
+          [fields]="[field]"
+          (modelChange)="onModelChange($event)"
+        ></formly-form>
       </div>
     </div>
 

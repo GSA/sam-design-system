@@ -7,35 +7,42 @@
 <p>Below are a couple of possible changes to check after updating to 17.0.9</p>
 <h3>Field Labels Required</h3>
 <p>
-  Going forward each element of the fields array that is passed into formly must have a label to be displayed. This label will be used to label the dropdown in the horizontal filters toolbar. If a label is not provided, the field will not be shown within horizontal filters.
+  Going forward each element of the fields array that is passed into formly must have a label to be displayed. This
+  label will be used to label the dropdown in the horizontal filters toolbar. If a label is not provided, the field will
+  not be shown within horizontal filters.
 </p>
-<p>Below is a barebones example of the expected structure for a horizontal filter. Note that label <i>Status</i> is provided within the props field of this FormlyFieldConfig</p>
+<p>
+  Below is a barebones example of the expected structure for a horizontal filter. Note that label <i>Status</i> is
+  provided within the props field of this FormlyFieldConfig
+</p>
 <code>
   fields: FormlyFieldConfig&#91;&#93; = &#91;<br />
-    &emsp;&#123;<br />
-    &emsp;&emsp;key: 'status',<br />
-    &emsp;&emsp;type: 'multicheckbox',<br />
-    &emsp;&emsp;props: &#123;<br />
-    &emsp;&emsp;&emsp;label: 'Status',<br />
-    &emsp;&emsp;&emsp;options: &#91;<br />
-    &emsp;&emsp;&emsp;&emsp;&#123;<br />
-    &emsp;&emsp;&emsp;&emsp;&emsp;value: 'active',<br />
-    &emsp;&emsp;&emsp;&emsp;&emsp;label: 'Active',<br />
-    &emsp;&emsp;&emsp;&emsp;&#125;,<br />
-    &emsp;&emsp;&emsp;&emsp;&#123;<br />
-    &emsp;&emsp;&emsp;&emsp;&emsp;value: 'inactive',<br />
-    &emsp;&emsp;&emsp;&emsp;&emsp;label: 'Inactive',<br />
-    &emsp;&emsp;&emsp;&emsp;&#125;,<br />
-    &emsp;&emsp;&emsp;&emsp;&#123;<br />
-    &emsp;&emsp;&emsp;&emsp;&emsp;value: 'all',<br />
-    &emsp;&emsp;&emsp;&emsp;&emsp;label: 'All',<br />
-    &emsp;&emsp;&emsp;&emsp;&#125;,<br />
-    &emsp;&emsp;&emsp;&#93;,<br />
-    &emsp;&emsp;&#125;,<br />
-    &emsp;&#125;<br />
-    &#93;
+  &emsp;&#123;<br />
+  &emsp;&emsp;key: 'status',<br />
+  &emsp;&emsp;type: 'multicheckbox',<br />
+  &emsp;&emsp;props: &#123;<br />
+  &emsp;&emsp;&emsp;label: 'Status',<br />
+  &emsp;&emsp;&emsp;options: &#91;<br />
+  &emsp;&emsp;&emsp;&emsp;&#123;<br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;value: 'active',<br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;label: 'Active',<br />
+  &emsp;&emsp;&emsp;&emsp;&#125;,<br />
+  &emsp;&emsp;&emsp;&emsp;&#123;<br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;value: 'inactive',<br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;label: 'Inactive',<br />
+  &emsp;&emsp;&emsp;&emsp;&#125;,<br />
+  &emsp;&emsp;&emsp;&emsp;&#123;<br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;value: 'all',<br />
+  &emsp;&emsp;&emsp;&emsp;&emsp;label: 'All',<br />
+  &emsp;&emsp;&emsp;&emsp;&#125;,<br />
+  &emsp;&emsp;&emsp;&#93;,<br />
+  &emsp;&emsp;&#125;,<br />
+  &emsp;&#125;<br />
+  &#93;
 </code>
 <h3>OnInit Hook</h3>
 <p>
-  Previously the onInit hook could be attached to a field and would trigger as the horizontal filters component loaded in. This is not the case anymore. The onInit hook will now trigger when the popover containing the field is opened, rather than on page load. If some action needs to be taken on page load, please use an Angular lifecycle hook.
+  Previously the onInit hook could be attached to a field and would trigger as the horizontal filters component loaded
+  in. This is not the case anymore. The onInit hook will now trigger when the popover containing the field is opened,
+  rather than on page load. If some action needs to be taken on page load, please use an Angular lifecycle hook.
 </p>
