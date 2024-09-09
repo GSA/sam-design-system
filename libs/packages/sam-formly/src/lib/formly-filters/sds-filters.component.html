@@ -33,7 +33,7 @@
   <div class="horizontal-filters grid-row">
     <div *ngFor="let field of fields">
       <div
-        *ngIf="!field.hide"
+        *ngIf="!field.hide && field.props?.label"
         [sdsPopover]="content"
         [position]="'bottom'"
         [autoClose]="'outside'"
@@ -54,6 +54,15 @@
             ></formly-form>
           </p>
         </ng-template>
+      </div>
+      <div *ngIf="!field.props?.label && field.hooks">
+        <formly-form
+              [options]="options"
+              [form]="form"
+              [model]="model"
+              [fields]="[field]"
+              (modelChange)="onModelChange($event)"
+            ></formly-form>
       </div>
     </div>
 
