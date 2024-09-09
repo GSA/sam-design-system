@@ -17,7 +17,6 @@ export class FormlyFilterHorizontalComponent {
       type: 'multicheckbox',
       props: {
         label: 'Status',
-        group: 'popover',
         options: [
           {
             value: 'active',
@@ -39,7 +38,6 @@ export class FormlyFilterHorizontalComponent {
       type: 'multicheckbox',
       props: {
         label: 'Socio-Economic Status',
-        group: 'popover',
         options: [
           {
             value: 'vet',
@@ -60,7 +58,6 @@ export class FormlyFilterHorizontalComponent {
       key: 'dateRange',
       props: {
         label: 'Date Range',
-        group: 'popover',
         autoClose: 'false',
       },
       fieldGroup: [
@@ -128,7 +125,6 @@ export class FormlyFilterHorizontalComponent {
       type: 'daterangepickerv2',
       hide: true,
       props: {
-        group: 'popover',
         label: 'Expiration Date Range',
         minDate: new Date(2019, 9, 5),
         maxDate: new Date(2020, 11, 15),
@@ -147,7 +143,6 @@ export class FormlyFilterHorizontalComponent {
       type: 'input',
       hide: true,
       props: {
-        group: 'popover',
         label: 'Entity Name',
         placeholder: 'eg: Acme Corporation',
         description: 'Enter the name of your entity.',
