@@ -63,7 +63,7 @@ const formlyConfigFunction = (
   description: string,
   required: boolean,
   maxLength: number,
-  className: string
+  size: string
 ) => {
   return {
     label: label ?? '',
@@ -192,27 +192,9 @@ Sizes.parameters = {
   },
   actions: { disable: true },
   preview: generateConfig(
-    'storybook/formly/formly-text-area/formly-text-area-maxlength',
-    'FormlyTextAreaMaxlengthModule',
-    'sds-formly-text-area-maxlength'
-  ),
-  stackblitzLink: generateStackblitzLink('formly-text-area', 'maxlength'),
-};
-
-export const Width: StoryObj = (args) => ({
-  template: '<sds-formly-text-area-width></sds-formly-text-area-width>',
-  props: args,
-});
-Width.parameters = {
-  controls: {
-    disable: true,
-    hideNoControlsWarning: true,
-  },
-  actions: { disable: true },
-  preview: generateConfig(
-    'storybook/formly/formly-text-area/formly-text-area-width',
-    'FormlyTextAreaWidthModule',
-    'sds-formly-text-area-width'
+    'storybook/formly/formly-text-area/formly-text-area-sizes',
+    'FormlyTextAreaSizesModule',
+    'sds-formly-text-area-sizes'
   ),
   stackblitzLink: generateStackblitzLink('formly-text-area', 'sizes'),
 };

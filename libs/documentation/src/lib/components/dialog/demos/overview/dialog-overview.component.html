@@ -6,7 +6,9 @@
 <div class="margin-bottom-105">
   <input class="usa-input" aria-label="Name" [(ngModel)]="name" placeholder="eg: Jane Doe" />
 
-  <button class="usa-button usa-button--base margin-top-2" (click)="openDialog()">Pick one</button>
+  <button class="usa-button usa-button--base margin-top-2" (click)="openDialog()">
+    Pick one
+  </button>
 </div>
 <div *ngIf="animal">
   Saved as: <i>{{ animal }}</i>

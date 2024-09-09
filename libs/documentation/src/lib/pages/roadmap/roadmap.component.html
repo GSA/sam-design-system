@@ -1,13 +1,17 @@
 <div>
   <h1>Product Roadmap</h1>
-  <p class="roadmap-intro">Here, you’ll find our product roadmap — an up-to-date report on the work we’re doing.</p>
+  <p class="roadmap-intro">
+    Here, you’ll find our product roadmap — an up-to-date report on the work we’re doing.
+  </p>
   <p>
     Below is our product roadmap: a long-term plan of the goals, features, and long-term direction of SDS. We update
     this frequently with the status of our progress, as well as add new high-level feature requests and ideas.
   </p>
 </div>
 <div class="roadmap-featues-container">
-  <h2>Version 1 Roadmap</h2>
+  <h2>
+    Version 1 Roadmap
+  </h2>
   <hr class="top-divider" />
   <ng-container *ngFor="let section of sections">
     <p style="font-weight: bolder;" class="section-label">{{ section.sectionLabel }}</p>
@@ -18,7 +22,7 @@
         [ngClass]="{
           'label-done': feature.status === DONE,
           'label-in-progress': feature.status === IN_PROGRESS,
-          'label-upcoming': feature.status === UPCOMING,
+          'label-upcoming': feature.status === UPCOMING
         }"
         >{{ feature.status }}</span
       >

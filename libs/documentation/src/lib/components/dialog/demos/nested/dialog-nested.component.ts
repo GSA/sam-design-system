@@ -27,7 +27,11 @@ export class DialogOverviewExampleDialog {
  */
 @Component({
   selector: 'sds-dialog-sample-nested',
-  template: ` <button class="usa-button" (click)="openDialog()">Open another dialog</button> `,
+  template: `
+    <button class="usa-button" (click)="openDialog()">
+      Open another dialog
+    </button>
+  `,
 })
 export class NestedDialogComponent {
   animal: string;
