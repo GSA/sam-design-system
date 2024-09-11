@@ -6,7 +6,7 @@ import { DocumentationSourcePage } from '../shared/source-page/source.component'
 import { DocumentationTemplatePage } from '../shared/template-page/template.component';
 import { DocumentationComponentsSharedModule, DocumentationDemoList } from '../shared/index';
 import { ComponentWrapperComponent } from '../../shared/component-wrapper/component-wrapper.component';
-import { OldStepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.component';
+import { StepperAdvancedDemoComponent } from './demos/advanced/stepper-advanced.component';
 import { StepperAdvancedModule } from './demos/advanced/stepper-advanced.module';
 import { UswdsStepperComponent } from './demos/uswds-stepper/uswds-stepper.component';
 import { UswdsStepperModule } from './demos/uswds-stepper/uswds-stepper.module';
@@ -54,7 +54,7 @@ const DEMOS = {
   // },
   advanced: {
     title: 'Complex Formly Stepper',
-    type: OldStepperAdvancedDemoComponent,
+    type: StepperAdvancedDemoComponent,
     code: require('!!raw-loader!./demos/advanced/stepper-advanced.component'),
     markup: require('!!raw-loader!./demos/advanced/stepper-advanced.component.html'),
     module: require('!!raw-loader!./demos/advanced/stepper-advanced.module.ts'),

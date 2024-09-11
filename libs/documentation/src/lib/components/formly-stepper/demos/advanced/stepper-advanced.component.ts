@@ -8,7 +8,7 @@ import { FormlyForm } from '@ngx-formly/core';
   templateUrl: `./stepper-advanced.component.html`,
   providers: [StepperAdvancedService, SdsStepper],
 })
-export class OldStepperAdvancedDemoComponent {
+export class StepperAdvancedDemoComponent {
   model = { subawardee: [], reportDetails: { report: { month: '03', year: '03' } } };
   validateStepsOnInit = true;
   showLoading = false;
