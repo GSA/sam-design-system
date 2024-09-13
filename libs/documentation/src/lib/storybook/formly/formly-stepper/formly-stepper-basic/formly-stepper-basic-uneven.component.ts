@@ -4,9 +4,9 @@ import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 @Component({
   selector: `sds-formly-stepper-basic-uneven`,
   templateUrl: './formly-stepper-basic-uneven.component.html',
-  providers: [{ provide: SdsStepper, useExisting: USWDSCustomStepperComponent }],
+  providers: [{ provide: SdsStepper, useExisting: USWDSBasicStepperComponent }],
 })
-export class USWDSCustomStepperComponent extends SdsStepper implements AfterContentInit {
+export class USWDSBasicStepperComponent extends SdsStepper implements AfterContentInit {
   stepLabels = [];
   currentStepIndex = 0;
 
