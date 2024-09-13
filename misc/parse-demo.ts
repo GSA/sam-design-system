@@ -49,6 +49,9 @@ export function parseDemo(globPath: string): Map<string, DemoMetadata> {
             if (textDecorator.startsWith('@Component')) {
               const matches = SELECTOR_REGEX.exec(textDecorator);
               if (matches) {
+                if(components.has(className)){
+                  console.error(`COMPONENT NAME COLLISION: Component Name ${className} already exists. Stackblitz will render wrong component if not corrected!`)
+                }
                 components.set(className, {selector: matches[1], fileName: path.basename(sourceFile.fileName)});
               }
             }
