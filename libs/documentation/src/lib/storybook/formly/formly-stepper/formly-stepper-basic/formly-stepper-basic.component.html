@@ -1,0 +1,18 @@
+<div class="display-flex flex-justify-center">
+  <sds-formly-stepper-basic-uneven [model]="model" [stepValidityMap]="stepValidityMap" (saveData)="onSaveData($event)">
+    <sds-step id="unevenStepsStepOne" text="Entity Title" [fieldConfig]="stepOne">
+      <sds-step
+        id="unevenStepsStepOneSubstepOne"
+        text="Entity Title - Substep One"
+        [fieldConfig]="stepOneSubstepOne"
+      ></sds-step>
+      <sds-step
+        id="unevenStepsStepOneSubstepTwo"
+        text="Entity Title - Substep Two"
+        [fieldConfig]="stepOneSubstepTwo"
+      ></sds-step>
+    </sds-step>
+    <sds-step id="unevenStepsStepTwo" text="Purpose of Registration" [fieldConfig]="stepTwo"></sds-step>
+    <sds-step id="unevenStepsStepThree" text="Taxpayer Details" [fieldConfig]="stepThree"></sds-step>
+  </sds-formly-stepper-basic-uneven>
+</div>

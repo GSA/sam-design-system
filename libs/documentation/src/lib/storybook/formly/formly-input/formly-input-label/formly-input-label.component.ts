@@ -18,5 +18,14 @@ export class FormlyInputLabelComponent {
         label: 'Entity Name',
       },
     },
+    {
+      key: 'name',
+      type: 'input',
+      props: {
+        tooltipText:
+          'Corporate Entity, Not Tax Exempt (Firm pays U.S. Federal Income Taxes or U.S. Possession Income Taxes)',
+        label: 'Are you a successor to a predecessor that help a federal contractor or grant within the last 3 years',
+      },
+    },
   ];
 }

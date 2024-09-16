@@ -42,23 +42,6 @@ import { filter } from 'rxjs/operators';
             </div>
           </div>
         </ng-container>
-        <ng-container *ngSwitchCase="'popover'">
-          <ng-template #popoverContent>
-            <div class="padding-1 text-left sds-width-max-content">
-              <ng-container #fieldComponent></ng-container>
-            </div>
-          </ng-template>
-          <div
-            [sdsPopover]="popoverContent"
-            [position]="'bottom'"
-            [autoClose]="props.autoClose != undefined ? props.autoClose : 'outside'"
-            tabindex="0"
-            [attr.aria-label]="props.label"
-          >
-            {{ props.label }}
-            <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
-          </div>
-        </ng-container>
         <ng-container *ngSwitchDefault>
           <ng-container #fieldComponent></ng-container>
         </ng-container>
@@ -91,14 +74,6 @@ export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterVi
     if (this.props.group != 'accordion' || !this.accordion) {
       return;
     }
-
-    // this.resetAllSubscription = this.field.options.fieldChanges
-    //   .pipe(filter(({ type }) => type === 'resetAll' && this.accordionItem.expanded))
-    //   .subscribe(() => {
-    //     if (!this.modelHasValue()) {
-    //       this.accordion.collapse(this.accordionItem.id);
-    //     }
-    //   });
     this.resetAllSubscription = this.field.options?.fieldChanges?.subscribe(({ type }) => {
       if (type === 'resetAll' && this.accordionItem.expanded && !this.modelHasValue()) {
         this.accordion.collapse(this.accordionItem.id);

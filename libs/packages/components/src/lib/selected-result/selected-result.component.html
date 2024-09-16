@@ -3,10 +3,10 @@
   [attr.aria-label]="configuration.labelText + ' results'"
   class="usa-list usa-list--unstyled sds-autocomplete-selected"
   aria-relevant="additions"
-  role="listbox"
+  role="list"
   aria-live="polite"
 >
-  <li role="option" *ngFor="let result of model.items; let i = index">
+  <li role="listitem" *ngFor="let result of model.items; let i = index">
     <div class="sds-tag sds-tag--chip sds-tag--input" [ngClass]="disabled ? 'sds-tag--disabled' : ''">
       <ng-container
         *ngIf="itemTemplate"
