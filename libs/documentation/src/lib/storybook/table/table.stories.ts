@@ -260,7 +260,9 @@ SelectRow.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: generateConfig('storybook/table/table-select-rows', 'TableSelectRowsModule', 'sds-table-select-rows',[createCodePreviewTabData('storybook/table/table-select-rows/table-select-rows.component.scss', 'scss', false)]),
+  preview: generateConfig('storybook/table/table-select-rows', 'TableSelectRowsModule', 'sds-table-select-rows', [
+    createCodePreviewTabData('storybook/table/table-select-rows/table-select-rows.component.scss', 'scss', false),
+  ]),
   stackblitzLink: generateStackblitzLink('table', 'select-rows'),
 };
 
