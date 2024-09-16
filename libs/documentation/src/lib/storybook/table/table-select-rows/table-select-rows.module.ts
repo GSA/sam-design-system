@@ -13,8 +13,8 @@ import { SdsPopoverModule } from '@gsa-sam/components';
     SdsTableModule,
     FormsModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({caretDownFill, chevronRight}),
-    SdsPopoverModule
+    NgxBootstrapIconsModule.pick({ caretDownFill, chevronRight }),
+    SdsPopoverModule,
   ],
   declarations: [TableSelectRowsComponent],
   exports: [TableSelectRowsComponent],

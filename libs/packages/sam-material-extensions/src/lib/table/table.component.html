@@ -42,7 +42,11 @@
             </th>
           </ng-container>
         </ng-template>
-        <td mat-cell *matCellDef="let element; let i = dataIndex" (click)="sdsColumnItem.isClickable ? rowClicked.emit(i) : true">
+        <td
+          mat-cell
+          *matCellDef="let element; let i = dataIndex"
+          (click)="sdsColumnItem.isClickable ? rowClicked.emit(i) : true"
+        >
           <ng-container *ngTemplateOutlet="sdsColumnItem.columnCell; context: { element: element }"></ng-container>
         </td>
         <ng-container *ngIf="sdsColumnItem.footerCellTemplate">

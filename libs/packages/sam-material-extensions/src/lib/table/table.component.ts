@@ -327,7 +327,7 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     this.expansionClicked.emit(this.expandedElement);
   }
 
-  get columnsClickable(): boolean{
-    return this.sdsColumnItems.filter(item => item.isClickable).length > 0;
+  get columnsClickable(): boolean {
+    return this.sdsColumnItems.filter((item) => item.isClickable).length > 0;
   }
 }

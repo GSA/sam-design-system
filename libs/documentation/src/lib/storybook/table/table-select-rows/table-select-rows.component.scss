@@ -1,32 +1,31 @@
-.usa-checkbox__label:not(.header-checkbox){
-  &::before{
-    margin-top: -1rem ;
+.usa-checkbox__label:not(.header-checkbox) {
+  &::before {
+    margin-top: -1rem;
   }
 }
-.usa-checkbox__label.header-checkbox{
-  &::before{
-    margin-top: -0.3rem ;
+.usa-checkbox__label.header-checkbox {
+  &::before {
+    margin-top: -0.3rem;
   }
 }
 
-.select-all-container{
+.select-all-container {
   display: flex;
-  .select-all-icon{
+  .select-all-icon {
     margin-top: 5px;
   }
 }
 
-.select-all-status-container{
+.select-all-status-container {
   width: 5rem;
   text-align: left;
   button:not(:last-child) {
     padding-bottom: 0.5rem;
   }
-
 }
-sds-table{
-  ::ng-deep{
-    .mat-column-selectBox{
+sds-table {
+  ::ng-deep {
+    .mat-column-selectBox {
       border-right: 1px solid #c9c9c9 !important;
       width: 7rem;
     }

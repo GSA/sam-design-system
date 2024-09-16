@@ -1,59 +1,79 @@
-
 <div style="width: 90%;">
-  <button class="usa-button usa-button--primary" [disabled]="deleteButtonEnabled" (click)="deleteFunction()">Delete Subaward</button>
+  <button class="usa-button usa-button--primary" [disabled]="deleteButtonEnabled" (click)="deleteFunction()">
+    Delete Subaward
+  </button>
   <sds-table [data]="data" [tableName]="'paginationTable'" [pagination]="true" (rowClicked)="handleRowClicked($event)">
     <sds-table-column sdsColumnName="selectBox">
       <ng-template #sdsHeaderCell>
         <div class="select-all-container" #target>
           <div class="usa-checkbox">
-            <input class="usa-checkbox__input" id="check-historical-truth-all" type="checkbox" (click)="onSelectAllRows()" [(ngModel)]="selectAllChecked">
-            <label class="usa-checkbox__label header-checkbox" for="check-historical-truth-all"><span class="usa-sr-only">Select All Rows</span></label>
+            <input
+              class="usa-checkbox__input"
+              id="check-select-all"
+              type="checkbox"
+              (click)="onSelectAllRows()"
+              [(ngModel)]="selectAllChecked"
+            />
+            <label class="usa-checkbox__label header-checkbox" for="check-select-all"
+              ><span class="usa-sr-only">Select All Rows</span></label
+            >
           </div>
           <ng-template #dropdown_menu>
             <div class="select-all-status-container">
-              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllRows()">All</button><br>
-              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Draft')">Draft</button><br>
-              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Reopened')">Reopened</button><br>
-              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Published')">Published</button>
+              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllRows()">All</button
+              ><br />
+              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Draft')">
+                Draft</button
+              ><br />
+              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Reopened')">
+                Reopened</button
+              ><br />
+              <button type="button" class="usa-button usa-button--unstyled" (click)="onSelectAllStatus('Published')">
+                Published
+              </button>
             </div>
           </ng-template>
-          <button class="usa-button sds-button--circle usa-button--base bg-base-lighter usa-button--outline   margin-left-2px"
+          <button
+            class="usa-button sds-button--circle usa-button--base bg-base-lighter usa-button--outline margin-left-2px"
             [sdsPopover]="dropdown_menu"
             [position]="'bottom-left'"
             [popperOptions]="popperOptions"
           >
-            <usa-icon
-              class="select-all-icon"
-              [icon]="'caret-down-fill'"
-              [size]="'xs'"
-            ></usa-icon>
+            <usa-icon class="select-all-icon" [icon]="'caret-down-fill'" [size]="'xs'"></usa-icon>
           </button>
         </div>
       </ng-template>
       <ng-template #sdsCell let-element="element">
         <div class="usa-checkbox" (click)="onSingleRowSelect(element)">
-          <input class="usa-checkbox__input" id="check-historical-truth-{{element.id}}" type="checkbox" [(ngModel)]="element.checked">
-          <label class="usa-checkbox__label" for="check-historical-truth-{{element.id}}"><span class="usa-sr-only">Select Row {{element.id}}</span></label>
+          <input
+            class="usa-checkbox__input"
+            id="check-select-{{ element.id }}"
+            type="checkbox"
+            [(ngModel)]="element.checked"
+          />
+          <label class="usa-checkbox__label" for="check-select-{{ element.id }}"
+            ><span class="usa-sr-only">Select Row {{ element.id }}</span></label
+          >
         </div>
       </ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="status" isClickable=true>
+    <sds-table-column sdsColumnName="status" isClickable="true">
       <ng-template #sdsHeaderCell>Status</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.status }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="id" isClickable=true>
+    <sds-table-column sdsColumnName="id" isClickable="true">
       <ng-template #sdsHeaderCell>ID</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="firstName" isClickable=true>
+    <sds-table-column sdsColumnName="firstName" isClickable="true">
       <ng-template #sdsHeaderCell>First</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.firstName }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="lastName" isClickable=true>
+    <sds-table-column sdsColumnName="lastName" isClickable="true">
       <ng-template #sdsHeaderCell>Last</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.lastName }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="email" isClickable=true>
+    <sds-table-column sdsColumnName="email" isClickable="true">
       <ng-template #sdsHeaderCell>Email</ng-template>
       <ng-template #sdsCell let-element="element"
         ><a href="https://beta.sam.gov" (click)="$event.stopPropagation()" class="usa-link">{{
@@ -61,11 +81,11 @@
         }}</a></ng-template
       >
     </sds-table-column>
-    <sds-table-column sdsColumnName="requests" isClickable=true>
+    <sds-table-column sdsColumnName="requests" isClickable="true">
       <ng-template #sdsHeaderCell>Requests</ng-template>
       <ng-template #sdsCell let-element="element">{{ element.requests }}</ng-template>
     </sds-table-column>
-    <sds-table-column sdsColumnName="navigate" isClickable=true>
+    <sds-table-column sdsColumnName="navigate" isClickable="true">
       <ng-template #sdsHeaderCell></ng-template>
       <ng-template #sdsCell let-element="element">
         <usa-icon [icon]="'chevron-right'"></usa-icon>
