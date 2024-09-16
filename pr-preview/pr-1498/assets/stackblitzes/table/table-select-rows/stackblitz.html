@@ -335,8 +335,8 @@ import { SdsPopoverModule } from &#39;@gsa-sam/components&#39;;
     SdsTableModule,
     FormsModule,
     IconModule,
-    NgxBootstrapIconsModule.pick({caretDownFill, chevronRight}),
-    SdsPopoverModule
+    NgxBootstrapIconsModule.pick({ caretDownFill, chevronRight }),
+    SdsPopoverModule,
   ],
   declarations: [TableSelectRowsComponent],
   exports: [TableSelectRowsComponent],
@@ -355,16 +355,15 @@ import { filter } from &#39;rxjs&#39;;
 @Component({
   selector: &#39;sds-table-select-rows&#39;,
   templateUrl: &#39;./table-select-rows.component.html&#39;,
-  styleUrls: [&#39;./table-select-rows.component.scss&#39;]
+  styleUrls: [&#39;./table-select-rows.component.scss&#39;],
 })
 export class TableSelectRowsComponent implements AfterViewInit {
-
   @ViewChild(SdsTableComponent) table: SdsTableComponent;
 
-  data = tableDataFull.map((data =&gt; {
-    data[&#39;status&#39;] = this.getRandomStatus()
+  data = tableDataFull.map((data) =&gt; {
+    data[&#39;status&#39;] = this.getRandomStatus();
     return data;
-  }));
+  });
   displayedColumns: string[] = [&#39;selectBox&#39;, &#39;status&#39;, &#39;id&#39;, &#39;firstName&#39;, &#39;lastName&#39;, &#39;email&#39;, &#39;requests&#39;, &#39;navigate&#39;];
 
   numberOfRows = 25;
@@ -383,11 +382,11 @@ export class TableSelectRowsComponent implements AfterViewInit {
     return options;
   };
 
-  get deleteButtonEnabled(): boolean{
+  get deleteButtonEnabled(): boolean {
     return this.selectedRows.length === 0;
   }
 
-  getRandomStatus(): string{
+  getRandomStatus(): string {
     const possibleStatuses = [&#39;Draft&#39;, &#39;Reopened&#39;, &#39;Published&#39;];
     const statusIndex = Math.floor(Math.random() * 3);
     return possibleStatuses[statusIndex];
@@ -397,88 +396,86 @@ export class TableSelectRowsComponent implements AfterViewInit {
     this.table.matPaginator.page.subscribe((pageEvent: PageEvent) =&gt; {
       this.numberOfRows = pageEvent.pageSize;
       this.currentPageIndex = pageEvent.pageIndex;
-    })
+    });
   }
 
-  onSingleRowSelect(element: any){
-    const elementIndex = this.selectedRows.indexOf(element)
-    if(elementIndex !== -1){
-      this.selectedRows.splice(elementIndex,1);
-      element = element.checked = false
-    }else {
-      this.selectedRows.push(element)
-      element = element.checked = true
+  onSingleRowSelect(element: any) {
+    const elementIndex = this.selectedRows.indexOf(element);
+    if (elementIndex !== -1) {
+      this.selectedRows.splice(elementIndex, 1);
+      element = element.checked = false;
+    } else {
+      this.selectedRows.push(element);
+      element = element.checked = true;
     }
 
-    console.log(&#39;this.selectedRows&#39;, this.selectedRows)
+    console.log(&#39;this.selectedRows&#39;, this.selectedRows);
   }
 
-  onSelectAllRows(){
-    if(!this.selectAllChecked){
+  onSelectAllRows() {
+    if (!this.selectAllChecked) {
       const startIndex = this.currentPageIndex * this.numberOfRows;
       const endIndex = startIndex + this.numberOfRows;
       const dataToSelect = this.data.slice(startIndex, endIndex);
       this.selectedRows = dataToSelect;
-      this.selectedRows.forEach(row =&gt; row.checked = true);
+      this.selectedRows.forEach((row) =&gt; (row.checked = true));
       this.selectAllChecked = true;
     } else {
-      this.selectedRows.forEach(row =&gt; row.checked = false);
+      this.selectedRows.forEach((row) =&gt; (row.checked = false));
       this.selectedRows = [];
       this.selectAllChecked = false;
     }
-    console.log(&#39;this.selectedRows&#39;, this.selectedRows)
+    console.log(&#39;this.selectedRows&#39;, this.selectedRows);
   }
 
-  onSelectAllStatus(statusToSelect: string){
+  onSelectAllStatus(statusToSelect: string) {
     const startIndex = this.currentPageIndex * this.numberOfRows;
     const endIndex = startIndex + this.numberOfRows;
     const dataToSelect = this.data.slice(startIndex, endIndex);
-    const filteredData = dataToSelect.filter(data =&gt; data[&#39;status&#39;]===statusToSelect)
+    const filteredData = dataToSelect.filter((data) =&gt; data[&#39;status&#39;] === statusToSelect);
     this.selectedRows = filteredData;
-    this.selectedRows.forEach(row =&gt; row.checked = true);
+    this.selectedRows.forEach((row) =&gt; (row.checked = true));
     this.selectAllChecked = true;
   }
 
-  deleteFunction(){
-    console.log(&#39;Do the deleting action with this data&#39;, this.selectedRows)
+  deleteFunction() {
+    console.log(&#39;Do the deleting action with this data&#39;, this.selectedRows);
   }
 
-  handleRowClicked(rowIndex: number){
-    console.log(&#39;Navigate with this data&#39;, this.data[rowIndex])
+  handleRowClicked(rowIndex: number) {
+    console.log(&#39;Navigate with this data&#39;, this.data[rowIndex]);
   }
-
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/table-select-rows.component.scss]" value=".usa-checkbox__label:not(.header-checkbox){
-  &amp;::before{
-    margin-top: -1rem ;
+    <input type="hidden" name="project[files][src/app/table-select-rows.component.scss]" value=".usa-checkbox__label:not(.header-checkbox) {
+  &amp;::before {
+    margin-top: -1rem;
   }
 }
-.usa-checkbox__label.header-checkbox{
-  &amp;::before{
-    margin-top: -0.3rem ;
+.usa-checkbox__label.header-checkbox {
+  &amp;::before {
+    margin-top: -0.3rem;
   }
 }
 
-.select-all-container{
+.select-all-container {
   display: flex;
-  .select-all-icon{
+  .select-all-icon {
     margin-top: 5px;
   }
 }
 
-.select-all-status-container{
+.select-all-status-container {
   width: 5rem;
   text-align: left;
   button:not(:last-child) {
     padding-bottom: 0.5rem;
   }
-
 }
-sds-table{
-  ::ng-deep{
-    .mat-column-selectBox{
+sds-table {
+  ::ng-deep {
+    .mat-column-selectBox {
       border-right: 1px solid #c9c9c9 !important;
       width: 7rem;
     }
@@ -486,62 +483,82 @@ sds-table{
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/table-select-rows.component.html]" value="
-&lt;div style=&#34;width: 90%;&#34;&gt;
-  &lt;button class=&#34;usa-button usa-button--primary&#34; [disabled]=&#34;deleteButtonEnabled&#34; (click)=&#34;deleteFunction()&#34;&gt;Delete Subaward&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/table-select-rows.component.html]" value="&lt;div style=&#34;width: 90%;&#34;&gt;
+  &lt;button class=&#34;usa-button usa-button--primary&#34; [disabled]=&#34;deleteButtonEnabled&#34; (click)=&#34;deleteFunction()&#34;&gt;
+    Delete Subaward
+  &lt;/button&gt;
   &lt;sds-table [data]=&#34;data&#34; [tableName]=&#34;&#39;paginationTable&#39;&#34; [pagination]=&#34;true&#34; (rowClicked)=&#34;handleRowClicked($event)&#34;&gt;
     &lt;sds-table-column sdsColumnName=&#34;selectBox&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;
         &lt;div class=&#34;select-all-container&#34; #target&gt;
           &lt;div class=&#34;usa-checkbox&#34;&gt;
-            &lt;input class=&#34;usa-checkbox__input&#34; id=&#34;check-historical-truth-all&#34; type=&#34;checkbox&#34; (click)=&#34;onSelectAllRows()&#34; [(ngModel)]=&#34;selectAllChecked&#34;&gt;
-            &lt;label class=&#34;usa-checkbox__label header-checkbox&#34; for=&#34;check-historical-truth-all&#34;&gt;&lt;span class=&#34;usa-sr-only&#34;&gt;Select All Rows&lt;/span&gt;&lt;/label&gt;
+            &lt;input
+              class=&#34;usa-checkbox__input&#34;
+              id=&#34;check-select-all&#34;
+              type=&#34;checkbox&#34;
+              (click)=&#34;onSelectAllRows()&#34;
+              [(ngModel)]=&#34;selectAllChecked&#34;
+            /&gt;
+            &lt;label class=&#34;usa-checkbox__label header-checkbox&#34; for=&#34;check-select-all&#34;
+              &gt;&lt;span class=&#34;usa-sr-only&#34;&gt;Select All Rows&lt;/span&gt;&lt;/label
+            &gt;
           &lt;/div&gt;
           &lt;ng-template #dropdown_menu&gt;
             &lt;div class=&#34;select-all-status-container&#34;&gt;
-              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllRows()&#34;&gt;All&lt;/button&gt;&lt;br&gt;
-              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllStatus(&#39;Draft&#39;)&#34;&gt;Draft&lt;/button&gt;&lt;br&gt;
-              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllStatus(&#39;Reopened&#39;)&#34;&gt;Reopened&lt;/button&gt;&lt;br&gt;
-              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllStatus(&#39;Published&#39;)&#34;&gt;Published&lt;/button&gt;
+              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllRows()&#34;&gt;All&lt;/button
+              &gt;&lt;br /&gt;
+              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllStatus(&#39;Draft&#39;)&#34;&gt;
+                Draft&lt;/button
+              &gt;&lt;br /&gt;
+              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllStatus(&#39;Reopened&#39;)&#34;&gt;
+                Reopened&lt;/button
+              &gt;&lt;br /&gt;
+              &lt;button type=&#34;button&#34; class=&#34;usa-button usa-button--unstyled&#34; (click)=&#34;onSelectAllStatus(&#39;Published&#39;)&#34;&gt;
+                Published
+              &lt;/button&gt;
             &lt;/div&gt;
           &lt;/ng-template&gt;
-          &lt;button class=&#34;usa-button sds-button--circle usa-button--base bg-base-lighter usa-button--outline   margin-left-2px&#34;
+          &lt;button
+            class=&#34;usa-button sds-button--circle usa-button--base bg-base-lighter usa-button--outline margin-left-2px&#34;
             [sdsPopover]=&#34;dropdown_menu&#34;
             [position]=&#34;&#39;bottom-left&#39;&#34;
             [popperOptions]=&#34;popperOptions&#34;
           &gt;
-            &lt;usa-icon
-              class=&#34;select-all-icon&#34;
-              [icon]=&#34;&#39;caret-down-fill&#39;&#34;
-              [size]=&#34;&#39;xs&#39;&#34;
-            &gt;&lt;/usa-icon&gt;
+            &lt;usa-icon class=&#34;select-all-icon&#34; [icon]=&#34;&#39;caret-down-fill&#39;&#34; [size]=&#34;&#39;xs&#39;&#34;&gt;&lt;/usa-icon&gt;
           &lt;/button&gt;
         &lt;/div&gt;
       &lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;
         &lt;div class=&#34;usa-checkbox&#34; (click)=&#34;onSingleRowSelect(element)&#34;&gt;
-          &lt;input class=&#34;usa-checkbox__input&#34; id=&#34;check-historical-truth-{{element.id}}&#34; type=&#34;checkbox&#34; [(ngModel)]=&#34;element.checked&#34;&gt;
-          &lt;label class=&#34;usa-checkbox__label&#34; for=&#34;check-historical-truth-{{element.id}}&#34;&gt;&lt;span class=&#34;usa-sr-only&#34;&gt;Select Row {{element.id}}&lt;/span&gt;&lt;/label&gt;
+          &lt;input
+            class=&#34;usa-checkbox__input&#34;
+            id=&#34;check-select-{{ element.id }}&#34;
+            type=&#34;checkbox&#34;
+            [(ngModel)]=&#34;element.checked&#34;
+          /&gt;
+          &lt;label class=&#34;usa-checkbox__label&#34; for=&#34;check-select-{{ element.id }}&#34;
+            &gt;&lt;span class=&#34;usa-sr-only&#34;&gt;Select Row {{ element.id }}&lt;/span&gt;&lt;/label
+          &gt;
         &lt;/div&gt;
       &lt;/ng-template&gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;status&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;status&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;Status&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.status }}&lt;/ng-template&gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;id&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;id&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;ID&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.id }}&lt;/ng-template&gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;firstName&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;firstName&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;First&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.firstName }}&lt;/ng-template&gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;lastName&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;lastName&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;Last&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.lastName }}&lt;/ng-template&gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;email&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;email&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;Email&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;
         &gt;&lt;a href=&#34;https://beta.sam.gov&#34; (click)=&#34;$event.stopPropagation()&#34; class=&#34;usa-link&#34;&gt;{{
@@ -549,11 +566,11 @@ sds-table{
         }}&lt;/a&gt;&lt;/ng-template
       &gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;requests&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;requests&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;Requests&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;{{ element.requests }}&lt;/ng-template&gt;
     &lt;/sds-table-column&gt;
-    &lt;sds-table-column sdsColumnName=&#34;navigate&#34; isClickable=true&gt;
+    &lt;sds-table-column sdsColumnName=&#34;navigate&#34; isClickable=&#34;true&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;&lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;
         &lt;usa-icon [icon]=&#34;&#39;chevron-right&#39;&#34;&gt;&lt;/usa-icon&gt;
