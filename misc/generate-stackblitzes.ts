@@ -13,15 +13,6 @@ const samFormlyPackage = fs.readJsonSync('libs/packages/sam-formly/package.json'
 const samMaterialExtensions = fs.readJsonSync('libs/packages/sam-material-extensions/package.json');
 
 let dependencies = packageJson.dependencies;
-// Locking version at 11.0.3 - issue with stackblitz is that it does not pick up newly released npm modules for weeks
-const samDependencies = {
-  '@gsa-sam/layouts': '12.0.0',
-  '@gsa-sam/components': '16.0.16',
-  '@gsa-sam/sam-formly': '16.0.16',
-  '@gsa-sam/sam-material-extensions': '16.0.16',
-};
-
-dependencies = { ...dependencies, ...samDependencies };
 
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -56,7 +47,7 @@ if (isFederalistBuild) {
   base = path.join('apps', 'sam-design-system-site', 'src', 'assets', 'stackblitzes');
 }
 
-const root = path.join('libs', 'documentation', 'src', 'lib');
+const root = path.join('libs', 'documentation', 'src', 'lib', 'storybook');
 
 const initialData = {
   stackblitzUrl,
@@ -93,8 +84,7 @@ modulesInfo.forEach((value, demoModule) => {
   demoFolder = path.relative(root, path.resolve(demoFolder));
 
   const splitDemoFolder = demoFolder.replace(root, '').split(path.sep);
-  const isStorybookDemo = demoFolder.startsWith('storybook');
-  const componentName = splitDemoFolder[splitDemoFolder.length - (isStorybookDemo ? 2 : 3)];
+  const componentName = splitDemoFolder[splitDemoFolder.length - 2];
   const demoName = splitDemoFolder[splitDemoFolder.length - 1];
   const modulePath = path.basename(demoModule, '.ts');
 
@@ -133,13 +123,16 @@ modulesInfo.forEach((value, demoModule) => {
   });
   for (const file of demoFiles) {
     const destFile = path.basename(file);
-    try {
-      stackblitzData.files.push({
-        name: `src/app/${destFile}`,
-        source: fs.readFileSync(file).toString(),
-      });
-    } catch (exception) {
-      console.log(file);
+    if(path.extname(destFile) !== ''){
+      try {
+        stackblitzData.files.push({
+          name: `src/app/${destFile}`,
+          source: fs.readFileSync(file).toString(),
+        });
+      } catch (exception) {
+        console.log(file);
+        console.error(exception)
+      }
     }
 
     // Look for service folders and add those in as well to the demo
