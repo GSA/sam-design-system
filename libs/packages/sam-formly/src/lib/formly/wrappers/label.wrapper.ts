@@ -33,7 +33,9 @@ import { FieldWrapper } from '@ngx-formly/core';
 
         <ng-container *ngIf="props.labelTemplate" [ngTemplateOutlet]="props.labelTemplate"> </ng-container>
         <ng-container *ngIf="!props.labelTemplate">
-          <span [attr.class]="props.labelClass">{{ props.label }}<span class="text-normal" *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
+          <span [attr.class]="props.labelClass"
+            >{{ props.label
+            }}<span class="text-normal" *ngIf="!props.required && !props.hideOptional"> (Optional)</span>
             <span *ngIf="props.tooltipText && field.type !== 'checkbox'" class="margin-left-1">
               <ng-template #tipContent>
                 <p [ngClass]="props.tooltipClass" class="margin-1" [innerHTML]="props.tooltipText"></p>
