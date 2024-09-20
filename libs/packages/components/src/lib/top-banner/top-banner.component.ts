@@ -15,6 +15,12 @@ export class SdsTopBannerComponent {
     this.showDetail = !this.showDetail;
   }
 
+  ngOnInit() {
+    if (!this.flagPath) {
+      this.flagPath = 'assets/uswds/img/us_flag_small.png';
+    }
+  }
+
   closeDetail() {
     if (this.showDetail) {
       this.showDetail = false;
