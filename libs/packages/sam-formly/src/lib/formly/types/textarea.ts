@@ -4,7 +4,13 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 @Component({
   selector: 'sds-formly-field-textarea',
   template: `
-    <div [ngClass]="{ 'usa-character-count': props.maxLength }">
+    <div
+      [ngClass]="{
+        'sds-textarea-small': props.maxLength && props.size === 'small',
+        'sds-textarea-medium': props.maxLength && props.size === 'medium',
+        'sds-textarea-large': props.maxLength && props.size === 'large'
+      }"
+    >
       <textarea
         #textarea
         [formControl]="formControl"
@@ -34,6 +40,7 @@ export class FormlyFieldTextAreaComponent extends FieldType<FieldTypeConfig> imp
     props: {
       cols: 1,
       rows: 1,
+      width: 'small', // default to small if not specified
     },
   };
 

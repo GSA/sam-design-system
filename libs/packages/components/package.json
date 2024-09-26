@@ -1,6 +1,6 @@
 {
   "name": "@gsa-sam/components",
-  "version": "17.0.7",
+  "version": "17.0.10",
   "types": "../../../dist/out-tsc/libs/components/index.d.ts",
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
     "@angular/common": ">=17.0.0 <18.0.0",
     "@angular/core": ">=17.0.0 <18.0.0",
     "accessible-html5-video-player": "^1.0.6",
-    "ngx-bootstrap-icons": "^1.7.2"
+    "ngx-bootstrap-icons": "^1.7.2",
+    "@popperjs/core": "^2.11.8"
   }
 }

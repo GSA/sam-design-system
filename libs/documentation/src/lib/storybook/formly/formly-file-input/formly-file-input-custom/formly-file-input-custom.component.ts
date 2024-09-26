@@ -7,7 +7,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
   selector: 'sds-formly-file-input-custom',
   templateUrl: './formly-file-input-custom.component.html',
 })
-export class TableFileInputComponent implements AfterViewInit {
+export class TableFileInputCustomComponent implements AfterViewInit {
   @ViewChild('replacementTemplate') replacementTemplate: TemplateRef<any>;
   fields: FormlyFieldConfig[] = [
     {

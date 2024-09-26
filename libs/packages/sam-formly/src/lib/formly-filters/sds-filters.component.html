@@ -31,15 +31,41 @@
 <!-- Horizontal Filters -->
 <div *ngIf="horizontal" class="sds-filters--horizontal">
   <div class="horizontal-filters grid-row">
-    <formly-form
-      *ngIf="!dialogRef"
-      [form]="form"
-      [fields]="fields"
-      [options]="options"
-      [model]="model"
-      (modelChange)="onModelChange($event)"
-    >
-    </formly-form>
+    <div *ngFor="let field of fields">
+      <div
+        *ngIf="!field.hide && field.props?.label"
+        [sdsPopover]="content"
+        [position]="'bottom'"
+        [autoClose]="'outside'"
+        tabindex="0"
+        [attr.aria-label]="field.props.label"
+        class="margin-right-2"
+      >
+        {{ field.props.label }}
+        <usa-icon [icon]="'chevron-down'" [size]="'sm'"></usa-icon>
+        <ng-template #content>
+          <p class="text-left width-full">
+            <formly-form
+              [options]="options"
+              [form]="form"
+              [model]="model"
+              [fields]="[field]"
+              (modelChange)="onModelChange($event)"
+            ></formly-form>
+          </p>
+        </ng-template>
+      </div>
+      <div *ngIf="!field.props?.label && field.hooks">
+        <formly-form
+          [options]="options"
+          [form]="form"
+          [model]="model"
+          [fields]="[field]"
+          (modelChange)="onModelChange($event)"
+        ></formly-form>
+      </div>
+    </div>
+
     <div *ngIf="advancedFilters">
       <sds-advanced-filters
         [form]="form"

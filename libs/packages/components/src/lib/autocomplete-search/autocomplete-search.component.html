@@ -6,7 +6,7 @@
         [attr.aria-expanded]="showResults"
         cdkOverlayOrigin
         #trigger="cdkOverlayOrigin"
-        [attr.aria-owns]="showResults ? configuration.id + '-listbox' : ''"
+        [attr.aria-owns]="showResults ? configuration.id + '-list' : ''"
         aria-haspopup="listbox"
         [disabled]="disabled"
         (keypress)="onkeypress($event)"
@@ -23,7 +23,7 @@
         [(ngModel)]="inputValue"
         [attr.placeholder]="configuration.autocompletePlaceHolderText"
         [attr.aria-activedescendant]="showResults ? configuration.id + '-resultItem-' + highlightedIndex : ''"
-        [attr.aria-controls]="showResults ? configuration.id + '-listbox' : ''"
+        [attr.aria-controls]="showResults ? configuration.id + '-list' : ''"
         autocomplete="off"
       />
     </div>
@@ -36,8 +36,8 @@
     >
       <ul
         #resultsList
-        [attr.id]="configuration.id + '-listbox'"
-        role="listbox"
+        [attr.id]="configuration.id + '-list'"
+        role="list"
         class="usa-list usa-list--unstyled sds-autocomplete"
         (scroll)="onScroll()"
       >
@@ -53,7 +53,7 @@
           <div>
             <li
               [attr.id]="configuration.id + '-resultItem-' + i"
-              role="option"
+              role="listitem"
               *ngFor="let result of results; let i = index"
               (click)="selectItem(result)"
               [ngClass]="{
@@ -83,7 +83,7 @@
         <ng-container *ngIf="results && results.length && !configuration.useCheckBoxes">
           <li
             [attr.id]="configuration.id + '-resultItem-' + i"
-            role="option"
+            role="listitem"
             [ngClass]="{
               'sds-autocomplete__group': configuration.isGroupingEnabled,
               'sds-autocomplete__item': !configuration.isGroupingEnabled,
@@ -124,12 +124,12 @@
               <ul
                 class="usa-list usa-list--unstyled"
                 #childrenList
-                [attr.id]="configuration.id + '-childrenlistbox-' + i"
-                role="listbox"
+                [attr.id]="configuration.id + '-childrenlist-' + i"
+                role="list"
               >
                 <li
                   [attr.id]="configuration.id + '-childItem-' + j"
-                  role="option"
+                  role="listitem"
                   [ngClass]="{
                     'sds-autocomplete__group': child[configuration.groupByChild]?.length,
                     'sds-autocomplete__item': !child[configuration.groupByChild]?.length,
@@ -168,11 +168,11 @@
                     class="usa-list usa-list--unstyled"
                     #childrenItems
                     [attr.id]="configuration.id + '-grandchildren-'"
-                    role="listbox"
+                    role="list"
                   >
                     <li
                       [attr.id]="configuration.id + '-grandchildren-' + k"
-                      role="option"
+                      role="listitem"
                       class="sds-autocomplete__item"
                       [ngClass]="{
                         'sds-autocomplete__item--selected': checkItemSelected(subchild),

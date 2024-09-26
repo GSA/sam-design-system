@@ -11,7 +11,7 @@ export class ActionsLabelComponent {
     label: 'More',
     trigger: {
       type: 'plain', // plain | primary
-      shadow: true,
+      shadow: false,
     },
     actions: [
       { id: 'DownloadBtn', text: 'Download' },

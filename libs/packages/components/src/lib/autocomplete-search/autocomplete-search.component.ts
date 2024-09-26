@@ -369,6 +369,9 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.setHighlightedItem(flat[this.highlightedIndex]);
     } else {
       this.showResults = false;
+      if (this.configuration.selectionMode === SelectionMode.MULTIPLE) {
+        this.inputValue = '';
+      }
       this.input.nativeElement.focus();
     }
   }

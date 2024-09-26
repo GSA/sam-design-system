@@ -9,8 +9,16 @@ export class SdsTopBannerComponent {
   showDetail = false;
   @Input() description = '';
 
+  @Input() flagPath = 'assets/uswds/img/us_flag_small.png';
+
   toggleDetails() {
     this.showDetail = !this.showDetail;
+  }
+
+  ngOnInit() {
+    if (!this.flagPath) {
+      this.flagPath = 'assets/uswds/img/us_flag_small.png';
+    }
   }
 
   closeDetail() {
