@@ -23,6 +23,7 @@ import { TableHighlightRowModule } from './table-highlight-row/table-highlight-r
 import { TableRowClickedModule } from './table-row-clicked/table-row-clicked.module';
 import { TableIntroductionModule } from './table-introduction/table-introduction.module';
 import { TableCustomClassesModule } from './table-custom-classes/table-custom-classes.module';
+import { TableSelectRowsModule } from './table-select-rows/table-select-rows.module';
 
 export default {
   title: 'Components/Table',
@@ -47,6 +48,7 @@ export default {
         TableRowClickedModule,
         TableIntroductionModule,
         TableCustomClassesModule,
+        TableSelectRowsModule,
       ],
     }),
     applicationConfig({
@@ -246,6 +248,22 @@ CustomClasses.parameters = {
     'sds-table-custom-classes'
   ),
   stackblitzLink: generateStackblitzLink('table', 'custom-classes'),
+};
+
+export const SelectRow: StoryObj = (args) => ({
+  template: `<sds-table-select-rows></sds-table-select-rows>`,
+  props: args,
+});
+SelectRow.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig('storybook/table/table-select-rows', 'TableSelectRowsModule', 'sds-table-select-rows', [
+    createCodePreviewTabData('storybook/table/table-select-rows/table-select-rows.component.scss', 'scss', false),
+  ]),
+  stackblitzLink: generateStackblitzLink('table', 'select-rows'),
 };
 
 export const Introduction: StoryObj = (args) => ({
