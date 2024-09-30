@@ -10,7 +10,7 @@ import { FormlyForm } from '@ngx-formly/core';
 })
 export class StepperAdvancedDemoComponent {
   model = { subawardee: [], reportDetails: { report: { month: '03', year: '03' } } };
-  validateStepsOnInit = true;
+  // validateStepsOnInit = true;
   showLoading = false;
 
   stepMap = {
@@ -25,6 +25,10 @@ export class StepperAdvancedDemoComponent {
     },
     enitityInformation: {
       fieldConfig: this.stepperAdvancedService.getEntityInformation(),
+      validationFn: (model: any) => {
+       console.log('validation ', model.legalBusinessName, model)
+        return model.legalBusinessName.length > 0 ? true : false;
+      },
     },
     reportDetails: {
       fieldConfig: this.stepperAdvancedService.getReportDetails(),

@@ -13,7 +13,7 @@ export class StepperAdvancedService {
           key: 'typeOfEntity',
           className: 'desktop: grid-col-12 tablet: grid-col-12',
           type: SdsFormlyTypes.RADIO,
-          templateOptions: {
+          props: {
             label: 'What type of entity are you registering?',
             hideOptions: true,
             options: [
@@ -44,7 +44,7 @@ export class StepperAdvancedService {
           key: 'contractOpp',
           type: SdsFormlyTypes.MULTICHECKBOX,
           className: 'desktop: grid-col-12 tablet: grid-col-12',
-          templateOptions: {
+          props: {
             label: 'Contract Opportunities',
             group: 'panel',
             options: [
@@ -78,7 +78,7 @@ export class StepperAdvancedService {
         {
           key: 'typeOfEntity',
           type: SdsFormlyTypes.RADIO,
-          templateOptions: {
+          props: {
             label: 'What type of entity are you registering?',
             hideOptions: true,
             options: [
@@ -108,7 +108,7 @@ export class StepperAdvancedService {
         {
           key: 'purposeOfRegistration',
           type: SdsFormlyTypes.RADIO,
-          templateOptions: {
+          props: {
             hideOptions: true,
             label: 'Why are you registering this entity to do business with the U.S. government?',
             options: [
@@ -137,12 +137,15 @@ export class StepperAdvancedService {
         {
           key: 'legalBusinessName',
           type: SdsFormlyTypes.INPUT,
-          templateOptions: {
+          props: {
             hideOptions: true,
+            required: true,
             label: 'Legal Business Name',
             description: `If you are acting on behalf of a limited partnershil, LLC, or corporation,
                           your legal business name is the name you registered with your state filing office.`,
           },
+
+
         },
         {
           template: `
@@ -157,7 +160,7 @@ export class StepperAdvancedService {
           className: 'grid-col-7',
           key: 'country',
           type: 'select',
-          templateOptions: {
+          props: {
             label: 'Country',
             hideOptional: true,
             options: [
@@ -170,7 +173,7 @@ export class StepperAdvancedService {
           className: 'grid-col-7',
           key: 'streetAddress',
           type: 'input',
-          templateOptions: {
+          props: {
             label: 'Street Address',
             hideOptional: true,
           },
@@ -180,7 +183,7 @@ export class StepperAdvancedService {
           type: 'input',
           key: 'zip',
 
-          templateOptions: {
+          props: {
             hideOptional: true,
             type: 'number',
             label: 'Zip',
@@ -193,7 +196,7 @@ export class StepperAdvancedService {
           className: 'grid-col-7',
           type: 'input',
           key: 'cityName',
-          templateOptions: {
+          props: {
             label: 'City',
             hideOptional: true,
           },
@@ -203,7 +206,7 @@ export class StepperAdvancedService {
           key: 'state',
           type: 'select',
           hideExpression: (model) => model.country === 'canada',
-          templateOptions: {
+          props: {
             label: 'State',
             hideOptional: true,
             options: [
@@ -237,7 +240,7 @@ export class StepperAdvancedService {
         {
           type: 'input',
           key: 'taxpayerName',
-          templateOptions: {
+          props: {
             label: 'Taxpayer Name',
             hideOptional: true,
           },
@@ -245,7 +248,7 @@ export class StepperAdvancedService {
         {
           type: 'input',
           key: 'tinNumber',
-          templateOptions: {
+          props: {
             label: 'TIN Number',
             hideOptional: true,
           },
@@ -259,26 +262,26 @@ export class StepperAdvancedService {
       key: 'subawardee',
       fieldGroup: [
         {
-          templateOptions: { label: 'Input Details' },
+          props: { label: 'Input Details' },
           fieldGroup: [
             {
               key: 'globalDunsNumber',
               type: 'input',
-              templateOptions: {
+              props: {
                 label: 'Subawardee Number',
               },
             },
             {
               key: 'globalName',
               type: 'input',
-              templateOptions: {
+              props: {
                 label: 'Subawardee Name',
               },
             },
             {
               key: 'date',
               type: 'datepicker',
-              templateOptions: {
+              props: {
                 label: 'Subawardee Date',
                 placeholder:
                   'eg: ' +
@@ -292,7 +295,7 @@ export class StepperAdvancedService {
             {
               key: 'description',
               type: 'textarea',
-              templateOptions: {
+              props: {
                 label:
                   'Description of the overall purpose and expected outcomes, OR results of the contract, including significant deliverables and, if appropriate, associated units of measure. (Optional)',
               },
@@ -300,7 +303,7 @@ export class StepperAdvancedService {
             {
               key: 'subcontract',
               type: 'radio',
-              templateOptions: {
+              props: {
                 label:
                   "As provided to you by your subcontractor, in your subcontractor's business or organization's preceding completed fiscal year, did its business or organization (the legal entity to which the DUNS number it provided belongs) receive (1) 80 percent or more of its annual gross revenues in U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative agreements; and (2) $25,000,000 or more in annual gross revenues from U.S. federal contracts, subcontracts, loans, grants, subgrants, and/or cooperative agreements?*:",
                 options: [
@@ -324,7 +327,7 @@ export class StepperAdvancedService {
   getReportDetails() {
     return {
       key: 'reportDetails',
-      templateOptions: {
+      props: {
         placeholder: 'Input Unique Entity ID',
       },
       fieldGroup: [
@@ -336,7 +339,7 @@ export class StepperAdvancedService {
               className: 'grid-col-5',
               key: 'month',
               type: 'select',
-              templateOptions: {
+              props: {
                 label: 'Report Month',
                 hideOptional: true,
                 options: [
@@ -352,7 +355,7 @@ export class StepperAdvancedService {
               className: 'grid-col-4',
               key: 'year',
               type: 'select',
-              templateOptions: {
+              props: {
                 label: 'Report Year',
                 hideOptional: true,
                 options: [
@@ -373,7 +376,7 @@ export class StepperAdvancedService {
           type: 'input',
           key: 'title',
 
-          templateOptions: {
+          props: {
             label: 'Program or Project Title',
             required: true,
             showError: false,

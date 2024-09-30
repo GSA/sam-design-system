@@ -22,6 +22,13 @@
   </sds-step>
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
+    <sds-step id="entityInformation" text="Entity Information" [fieldConfig]="stepMap.enitityInformation.fieldConfig">
+      <h1 sdsStepHeader class="margin-top-0">
+        Enter Entity Information
+        <hr />
+      </h1>
+    </sds-step>
+
     <sds-step id="permission" text="Permission" [fieldConfig]="stepMap.permission.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Permission
@@ -40,12 +47,7 @@
       </h1>
     </sds-step>
 
-    <sds-step id="entityInformation" text="Entity Information" [fieldConfig]="stepMap.enitityInformation.fieldConfig">
-      <h1 sdsStepHeader class="margin-top-0">
-        Enter Entity Information
-        <hr />
-      </h1>
-    </sds-step>
+   
 
     <sds-step id="reportDetails" text="Report Details" [fieldConfig]="stepMap.reportDetails.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
