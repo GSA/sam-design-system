@@ -95,7 +95,7 @@
       [sdsStepperNav]="step"
       (click)="onSideNavClick()"
       class="display-flex justify-content-space-between"
-      [ngClass]="{ 'usa-sidenav__item--disabled': step.disabled || (step.isReview && _isReviewAndSubmitDisabled) }"
+      [ngClass]="{ 'usa-sidenav__item--disabled': step.disabled || (step.isReview  && (!canReviewWithErrors && _isReviewAndSubmitDisabled)) }"
     >
       <span>
         {{ step.text }}
