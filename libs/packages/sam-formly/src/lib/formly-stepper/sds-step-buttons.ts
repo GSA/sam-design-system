@@ -46,7 +46,10 @@ export class SdsStepperNextDirective {
     }
 
     /** Otherwise, if next step is disabled or next step is review step and review step is disabled, disable next step */
-    if (flatSteps[nextIndex].disabled || (flatSteps[nextIndex].isReview && (!this._stepper.canReviewWithErrors && this._stepper._isReviewAndSubmitDisabled))) {
+    if (
+      flatSteps[nextIndex].disabled ||
+      (flatSteps[nextIndex].isReview && !this._stepper.canReviewWithErrors && this._stepper._isReviewAndSubmitDisabled)
+    ) {
       return true;
     }
 

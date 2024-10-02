@@ -436,7 +436,10 @@ export class SdsStepper {
      * On non-linear mode, do not allow step change if step we are moving to is disabled or is review step.
      * In linear mode, we will run validations first, then decide whether or not to move to next step
      */
-    if (!this.linear && (step.disabled || (step.isReview && (!this.canReviewWithErrors && this._isReviewAndSubmitDisabled)))) {
+    if (
+      !this.linear &&
+      (step.disabled || (step.isReview && !this.canReviewWithErrors && this._isReviewAndSubmitDisabled))
+    ) {
       return;
     }
 
