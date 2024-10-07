@@ -11,7 +11,7 @@ import {
   SdsTableHeaderCellDirective,
   SdsTableFooterCellDirective,
 } from './table.component';
-import { TableRowNavigationDirective } from './table-row-import/table-row-navigation.directive';
+import { TableRowClickDirective } from './table-row-click/table-row-click.directive';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PaginationModule } from '@gsa-sam/components';
@@ -30,7 +30,7 @@ import { RouterModule } from '@angular/router';
     SdsTableCellDirective,
     SdsTableHeaderCellDirective,
     SdsTableFooterCellDirective,
-    TableRowNavigationDirective,
+    TableRowClickDirective,
   ],
   imports: [
     RouterModule,
@@ -51,7 +51,7 @@ import { RouterModule } from '@angular/router';
     SdsTableCellDirective,
     SdsTableHeaderCellDirective,
     SdsTableFooterCellDirective,
-    TableRowNavigationDirective,
+    TableRowClickDirective,
   ],
 })
 export class SdsTableModule {}

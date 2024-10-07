@@ -100,11 +100,11 @@
       *matRowDef="let row; columns: rowConfig.displayedColumns; let i = dataIndex"
       class="sds-table__row {{ row['classesToApply'] }}"
       [ngClass]="{ 'cursor-pointer': rowConfig.expandOnClick, 'sds-table__row--expanded': expandedElement == row }"
-      (click)="
-        rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false; rowClicked.emit(i)
-      "
-      sdsTableRowNavigation
+      (click)="rowConfig.expandOnClick ? (expandedElement = expandedElement === row ? null : row) : false"
+      sdsTableRowClick
+      [emitOnRowClick]="rowConfig.emitOnRowClick"
       [highlightOnHover]="rowConfig.highlightOnHover"
+      (rowClicked)="rowClicked.emit(i)"
     ></tr>
 
     <ng-container *ngIf="expansion">
