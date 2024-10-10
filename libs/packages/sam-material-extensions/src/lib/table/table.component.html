@@ -65,7 +65,7 @@
             *matCellDef="let element"
             [attr.colspan]="rowConfig.displayedColumns.length"
             class="sds-table__cell--detail"
-            role="rowgroup"
+            role="cell"
           >
             <div
               class="sds-table__cell__expanded-wrapper"
@@ -86,7 +86,7 @@
         class="cursor-pointer maxw-3 padding-top-2 padding-right-0 padding-left-1"
         (click)="onExpansionClicked(element)"
         [attr.aria-expanded]="element == expandedElement ? 'true' : 'false'"
-        [attr.aria-label]="element == expandedElement ? 'Collapse details' : 'Expand details'"
+        [attr.aria-label]="element == expandedElement ? expandedAriaLabel : collapsedAriaLabel"
         tabindex="0"
         (keydown.enter)="onExpansionClicked(element)"
         (keydown.space)="onExpansionClicked(element)"
