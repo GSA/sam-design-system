@@ -65,6 +65,7 @@
             *matCellDef="let element"
             [attr.colspan]="rowConfig.displayedColumns.length"
             class="sds-table__cell--detail"
+            role="cell"
           >
             <div
               class="sds-table__cell__expanded-wrapper"
@@ -84,6 +85,11 @@
         *matCellDef="let element"
         class="cursor-pointer maxw-3 padding-top-2 padding-right-0 padding-left-1"
         (click)="onExpansionClicked(element)"
+        [attr.aria-expanded]="element == expandedElement ? 'true' : 'false'"
+        [attr.aria-label]="element == expandedElement ? expandedAriaLabel : collapsedAriaLabel"
+        tabindex="0"
+        (keydown.enter)="onExpansionClicked(element)"
+        (keydown.space)="onExpansionClicked(element)"
       >
         <usa-icon *ngIf="element == expandedElement" [icon]="'dash'" size="lg"></usa-icon>
         <usa-icon *ngIf="element != expandedElement" [icon]="'uswds-add'" size="lg"></usa-icon>
