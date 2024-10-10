@@ -53,7 +53,10 @@ export default {
     description: props,
     required: props,
     maxLength: props,
-    size: props,
+    size: {
+      options: ['small', 'medium', 'large'],
+      control: { type: 'select' },
+    },
   },
 } as Meta;
 
