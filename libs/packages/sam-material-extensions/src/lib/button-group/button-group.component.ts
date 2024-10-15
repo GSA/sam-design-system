@@ -3,6 +3,7 @@ import {
   ContentChildren,
   EventEmitter,
   Input,
+  OnInit,
   Output,
   QueryList,
   TemplateRef,
@@ -24,15 +25,24 @@ export class SdsButtonGroupOptionComponent {
   @Input() value: any;
   @Input() checked: boolean;
   @Input('aria-label') ariaLabel: any;
+  @Input() disabled: boolean;
 }
 
 @Component({
   selector: 'sds-button-group',
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss'],
-  host: { class: 'sds-button-group--segmented' },
+  host: {
+    class: 'sds-button-group--segmented',
+    '[class.sds-button-group--modular]': 'modularDashboard',
+  },
 })
-export class SdsButtonGroupComponent {
+export class SdsButtonGroupComponent implements OnInit {
+  ngOnInit(): void {
+    if (this.modularDashboard) {
+      this.mode = 'radio';
+    }
+  }
   @ContentChildren(SdsButtonGroupOptionComponent) buttonOptions!: QueryList<SdsButtonGroupOptionComponent>;
   classesToApply: Object = {};
 
@@ -41,6 +51,9 @@ export class SdsButtonGroupComponent {
    */
   @Input()
   mode: 'checkbox' | 'radio' = 'radio';
+
+  @Input()
+  modularDashboard: boolean = false;
 
   @Output()
   change = new EventEmitter<MatButtonToggleChange>();
