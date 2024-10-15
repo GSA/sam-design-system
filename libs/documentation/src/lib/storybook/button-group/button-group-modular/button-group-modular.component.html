@@ -1,0 +1,11 @@
+<sds-button-group [mode]="'radio'" [modularDashboard]="true" (change)="handleChange($event)">
+  <sds-button-group-option value="grid-view" [aria-label]="'Grid View'">
+    <usa-icon [icon]="'grid-fill'"></usa-icon>
+  </sds-button-group-option>
+  <sds-button-group-option value="list-view" [aria-label]="'List View'" [checked]="true">
+    <usa-icon [icon]="'list'"></usa-icon>
+  </sds-button-group-option>
+  <sds-button-group-option value="list-view-2" [aria-label]="'List View 2'" [disabled]="true">
+    <usa-icon [icon]="'list'"></usa-icon>
+  </sds-button-group-option>
+</sds-button-group>
