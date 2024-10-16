@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "17.0.10",
+  "version": "17.0.11",
   "license": "MIT",
   "scripts": {
     "start": "ng serve --configuration development",

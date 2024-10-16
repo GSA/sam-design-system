@@ -186,6 +186,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   }
   private _expansion = false;
 
+  @Input() expandedAriaLabel: string = 'Collapse details';
+  @Input() collapsedAriaLabel: string = 'Expand details';
+
   @Output()
   expansionClicked = new EventEmitter<any>();
 
