@@ -424,6 +424,8 @@ export class TableExpansionComponent {
     [tableName]=&#34;&#39;expansionTable&#39;&#34;
     [expansion]=&#34;true&#34;
     (expansionClicked)=&#34;onExpansionClicked($event)&#34;
+    expandedAriaLabel=&#34;Collapse job details&#34;
+    collapsedAriaLabel=&#34;Expand job details&#34;
   &gt;
     &lt;sds-table-column sdsColumnName=&#34;id&#34;&gt;
       &lt;ng-template #sdsHeaderCell&gt;ID&lt;/ng-template&gt;

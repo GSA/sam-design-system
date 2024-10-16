@@ -1417,7 +1417,10 @@ export class CustomStepperDemo extends SdsStepper {
       [sdsStepperNav]=&#34;step&#34;
       (click)=&#34;onSideNavClick()&#34;
       class=&#34;display-flex justify-content-space-between&#34;
-      [ngClass]=&#34;{ &#39;usa-sidenav__item--disabled&#39;: step.disabled || (step.isReview &amp;&amp; _isReviewAndSubmitDisabled) }&#34;
+      [ngClass]=&#34;{
+        &#39;usa-sidenav__item--disabled&#39;:
+          step.disabled || (step.isReview &amp;&amp; !canReviewWithErrors &amp;&amp; _isReviewAndSubmitDisabled)
+      }&#34;
     &gt;
       &lt;span&gt;
         {{ step.text }}
