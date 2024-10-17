@@ -23,6 +23,7 @@ import { TableHighlightRowModule } from './table-highlight-row/table-highlight-r
 import { TableRowClickedModule } from './table-row-clicked/table-row-clicked.module';
 import { TableIntroductionModule } from './table-introduction/table-introduction.module';
 import { TableCustomClassesModule } from './table-custom-classes/table-custom-classes.module';
+import { TableHeaderColorModule } from './table-header-color/table-header-color.module';
 
 export default {
   title: 'Components/Table',
@@ -47,6 +48,7 @@ export default {
         TableRowClickedModule,
         TableIntroductionModule,
         TableCustomClassesModule,
+        TableHeaderColorModule
       ],
     }),
     applicationConfig({
@@ -246,6 +248,24 @@ CustomClasses.parameters = {
     'sds-table-custom-classes'
   ),
   stackblitzLink: generateStackblitzLink('table', 'custom-classes'),
+};
+
+export const HeaderColor: StoryObj = (args) => ({
+  template: `<sds-table-header-color></sds-table-header-color>`,
+  props: args,
+});
+HeaderColor.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig(
+    'storybook/table/table-header-color',
+    'TableHeaderColorModule',
+    'sds-table-header-color'
+  ),
+  stackblitzLink: generateStackblitzLink('table', 'header-color'),
 };
 
 export const Introduction: StoryObj = (args) => ({
