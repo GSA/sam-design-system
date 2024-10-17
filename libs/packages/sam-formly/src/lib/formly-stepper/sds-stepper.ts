@@ -326,7 +326,10 @@ export class SdsStepper {
     }
   }
   ngAfterViewInit() {
-    if (this.validateStepsOnInit) {
+    if (
+      this.validateStepsOnInit === true ||
+      (this.validateStepsOnInit instanceof Array && this.validateStepsOnInit.length > 0)
+    ) {
       const currentStep = this.selectedStep;
       if (!this.linear) {
         const isRouteEnabled = this.isRouteEnabled;
