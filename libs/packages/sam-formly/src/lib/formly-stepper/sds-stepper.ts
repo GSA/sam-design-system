@@ -223,7 +223,7 @@ export class SdsStepper {
    */
   @Input() isRouteEnabled = true;
 
-  @Input() validateStepsOnInit = true;
+  @Input() validateStepsOnInit: boolean | Array<string> = true;
 
   /**
    * Input to override the check for _isReviewAndSubmitDisabled truthyness
@@ -326,11 +326,23 @@ export class SdsStepper {
     }
   }
   ngAfterViewInit() {
-    if (this.validateStepsOnInit) {
+    if (
+      this.validateStepsOnInit === true ||
+      (this.validateStepsOnInit instanceof Array && this.validateStepsOnInit.length > 0)
+    ) {
       const currentStep = this.selectedStep;
       if (!this.linear) {
         const isRouteEnabled = this.isRouteEnabled;
-        this.flatSteps = this.getFlatSteps(this.stepTemplates);
+        this.flatSteps = this.getFlatSteps(this.stepTemplates).filter((step) => {
+          if (this.validateStepsOnInit === true) {
+            return true;
+          } else {
+            return (this.validateStepsOnInit as Array<string>).includes(step.id);
+          }
+        });
+        if (this.flatSteps.length === 0) {
+          return;
+        }
         this.isRouteEnabled = false;
 
         this.flatSteps.forEach((step) => {
