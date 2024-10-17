@@ -98,7 +98,11 @@
     </ng-container>
 
     <ng-container *ngIf="headerRowConfig && headerRowConfig.displayedColumns">
-      <tr mat-header-row *matHeaderRowDef="headerRowConfig.displayedColumns; sticky: headerRowConfig.sticky" [ngClass]="headerColor"></tr>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="headerRowConfig.displayedColumns; sticky: headerRowConfig.sticky"
+        [ngClass]="headerColor"
+      ></tr>
     </ng-container>
 
     <tr

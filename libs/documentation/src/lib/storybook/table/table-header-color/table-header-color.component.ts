@@ -6,7 +6,6 @@ import { SdsTableHeaderColor } from '@gsa-sam/sam-material-extensions';
   templateUrl: './table-header-color.component.html',
 })
 export class TableHeaderColorComponent {
-
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
 
   data = [
@@ -76,5 +75,4 @@ export class TableHeaderColorComponent {
   ];
 
   headerColor: SdsTableHeaderColor = SdsTableHeaderColor.AccentCoolLight;
-
 }

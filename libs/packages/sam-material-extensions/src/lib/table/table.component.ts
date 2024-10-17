@@ -38,9 +38,9 @@ export interface SdsFooterRowConfig extends SdsRowConfig {
 }
 
 export enum SdsTableHeaderColor {
-  InfoLighter='header-info-lighter',
-  AccentCoolLight='header-accent-cool-light',
-  PrimaryLighter='header-primary-lighter'
+  InfoLighter = 'header-info-lighter',
+  AccentCoolLight = 'header-accent-cool-light',
+  PrimaryLighter = 'header-primary-lighter',
 }
 
 @Component({

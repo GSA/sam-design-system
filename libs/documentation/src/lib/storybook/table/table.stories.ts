@@ -48,7 +48,7 @@ export default {
         TableRowClickedModule,
         TableIntroductionModule,
         TableCustomClassesModule,
-        TableHeaderColorModule
+        TableHeaderColorModule,
       ],
     }),
     applicationConfig({
@@ -260,11 +260,7 @@ HeaderColor.parameters = {
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: generateConfig(
-    'storybook/table/table-header-color',
-    'TableHeaderColorModule',
-    'sds-table-header-color'
-  ),
+  preview: generateConfig('storybook/table/table-header-color', 'TableHeaderColorModule', 'sds-table-header-color'),
   stackblitzLink: generateStackblitzLink('table', 'header-color'),
 };
 
