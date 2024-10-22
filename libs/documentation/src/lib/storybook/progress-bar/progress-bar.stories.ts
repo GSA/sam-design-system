@@ -20,10 +20,7 @@ export default {
   ],
 } as Meta;
 
-
-
 export const Configurable = ({ progress, topBorder }) => {
-  
   return {
     template: `
       <sds-progress-bar
@@ -33,13 +30,13 @@ export const Configurable = ({ progress, topBorder }) => {
     `,
     props: {
       progress,
-      topBorder
+      topBorder,
     },
   };
 };
 Configurable.args = {
   topBorder: false,
-  progress: 10
+  progress: 10,
 };
 Configurable.parameters = {
   actions: { disable: true },
@@ -55,7 +52,11 @@ Basic.parameters = {
     disable: true,
   },
   actions: { disable: true },
-  preview: generateConfig('storybook/progress-bar/progress-bar-basic', 'ProgressBarBasicModule', 'sds-progress-bar-basic'),
+  preview: generateConfig(
+    'storybook/progress-bar/progress-bar-basic',
+    'ProgressBarBasicModule',
+    'sds-progress-bar-basic'
+  ),
   stackblitzLink: generateStackblitzLink('progress-bar', 'basic'),
 };
 
