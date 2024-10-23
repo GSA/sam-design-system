@@ -97,3 +97,6 @@ export * from './tooltip/tooltip.module';
 
 export * from './popover/popover';
 export * from './popover/popover.module';
+
+export * from './progress-bar/progress-bar.component';
+export * from './progress-bar/progress-bar.module';
