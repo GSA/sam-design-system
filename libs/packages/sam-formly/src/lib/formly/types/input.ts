@@ -20,6 +20,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [formlyAttributes]="field"
         [type]="props.inputType ? props.inputType : 'text'"
         [formControl]="formControl"
+        [attr.aria-describedby]="props.description ? id + '-description' : undefined"
       />
       <div
         *ngIf="props.suffix || props.suffixIcon || field.formControl.value"
