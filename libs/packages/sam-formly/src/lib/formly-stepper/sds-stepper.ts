@@ -66,6 +66,9 @@ export class SdsStepComponent {
    */
   @Input() stepValidationFn: (model: any, field?: FormlyFieldConfig) => boolean | Observable<boolean> | void;
 
+  @Input() validateOnBlur: boolean = false;
+   
+
   /**
    * Human readable label text for this step
    */
@@ -163,7 +166,13 @@ export class SdsStepComponent {
     this._el.nativeElement.dispatchEvent(event);
 
     this.modelChange.emit($event);
+
+  console.log(this.model, 'onModelChange')
+//this._stepper.updateValidation(this._stepper.selectedStep);
+this._stepper.changeStep(this._stepper.currentStepId);
+
   }
+
 }
 
 @Directive({
@@ -441,7 +450,7 @@ export class SdsStepper {
     const step = this.flatSteps[stepIndex];
 
     /** Already on desired step, nothing to do */
-    if (step === this.selectedStep) {
+    if (step === this.selectedStep && !this.selectedStep.validateOnBlur) {
       return;
     }
     /**

@@ -2,23 +2,17 @@
   Toggle Linear Mode
 </button>
 
-<custom-stepper-demo
-  #stepper
-  [queryParamKey]="'sdsAdvancedStepper'"
-  [model]="model"
-  [stepValidityMap]="stepValidityMap"
-  (stepChange)="onStepChange($event)"
-  [linear]="linear"
-  [validateStepsOnInit]="validateStepsOnInit"
-  (saveData)="onSaveData($event)"
-  (submittedData)="handleSubmit($event)"
->
-  <sds-step
-    id="welcome"
-    text="Welcome"
-    [stepTemplate]="gatherInformation"
-    [stepValidationFn]="stepMap.welcome.validationFn"
-  >
+<custom-stepper-demo #stepper [queryParamKey]="'sdsAdvancedStepper'" [model]="model" [stepValidityMap]="stepValidityMap"
+  (stepChange)="onStepChange($event)" [linear]="linear" [validateStepsOnInit]="validateStepsOnInit"
+  (saveData)="onSaveData($event)" (submittedData)="handleSubmit($event)">
+  <sds-step id="welcome" text="Welcome" [stepTemplate]="gatherInformation"
+    [stepValidationFn]="stepMap.welcome.validationFn">
+  </sds-step>
+  <sds-step id="reportDetails" text="Report Details" [fieldConfig]="stepMap.reportDetails.fieldConfig" [validateOnBlur]="true">
+    <h1 sdsStepHeader class="margin-top-0">
+      Report Details
+      <hr />
+    </h1>
   </sds-step>
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
@@ -29,11 +23,8 @@
       </h1>
     </sds-step>
 
-    <sds-step
-      id="registrationPurpose"
-      text="Purpose of Registration"
-      [fieldConfig]="stepMap.registrationPurpose.fieldConfig"
-    >
+    <sds-step id="registrationPurpose" text="Purpose of Registration"
+      [fieldConfig]="stepMap.registrationPurpose.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
         Purpose of Registration
         <hr />
@@ -47,12 +38,7 @@
       </h1>
     </sds-step>
 
-    <sds-step id="reportDetails" text="Report Details" [fieldConfig]="stepMap.reportDetails.fieldConfig">
-      <h1 sdsStepHeader class="margin-top-0">
-        Report Details
-        <hr />
-      </h1>
-    </sds-step>
+
   </sds-step>
 
   <sds-step id="taxPayerInfoForm" text="Taxpayer Details" [fieldConfig]="stepMap.taxpayerInformation.fieldConfig">
@@ -62,21 +48,12 @@
     </h1>
   </sds-step>
 
-  <sds-step
-    id="addSubawardee"
-    text="Add Subawardee"
-    [stepTemplate]="subawardeeStep"
-    [stepValidationFn]="stepMap.subawardee.validationFn"
-  >
+  <sds-step id="addSubawardee" text="Add Subawardee" [stepTemplate]="subawardeeStep"
+    [stepValidationFn]="stepMap.subawardee.validationFn">
   </sds-step>
 
-  <sds-step
-    id="review"
-    text="Review and Submit"
-    [isReview]="true"
-    [stepTemplate]="reviewTemplate"
-    [stepValidationFn]="stepMap.review.validationFn"
-  >
+  <sds-step id="review" text="Review and Submit" [isReview]="true" [stepTemplate]="reviewTemplate"
+    [stepValidationFn]="stepMap.review.validationFn">
   </sds-step>
 </custom-stepper-demo>
 
