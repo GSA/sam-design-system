@@ -261,7 +261,7 @@ SelectRow.parameters = {
     createCodePreviewTabData('storybook/table/table-select-rows/table-select-rows.component.scss', 'scss', false),
   ]),
   stackblitzLink: generateStackblitzLink('table', 'select-rows'),
-}
+};
 
 export const HeaderColor: StoryObj = (args) => ({
   template: `<sds-table-header-color></sds-table-header-color>`,
