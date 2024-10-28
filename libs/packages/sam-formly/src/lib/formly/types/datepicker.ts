@@ -16,6 +16,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [max]="props.maxDate"
         [matDatepicker]="picker"
         [placeholder]="props.placeholder ? props.placeholder : ''"
+        [attr.aria-describedby]="props.description ? id + '-description' : undefined"
         (ngModelChange)="props.change ? props.change(field) : ''"
       />
       <mat-datepicker-toggle class="padding-left-1 padding-top-2" matSuffix [for]="picker">

@@ -1,5 +1,5 @@
 <div class="sds-tree-table--scrollable">
-  <table role="grid" class="usa-table sds-tree-table padding-x-1">
+  <table role="tree" class="usa-table sds-tree-table padding-x-1">
     <thead role="rowgroup">
       <tr role="row">
         <th>Related</th>
@@ -30,7 +30,7 @@
   let-parentRow="parentRow"
 >
   <tr
-    role="row"
+    role="treeitem"
     #tableRow
     [attr.id]="row.id"
     [attr.aria-level]="level"
