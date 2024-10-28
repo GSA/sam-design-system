@@ -4,7 +4,7 @@ import { SdsTableHeaderColor } from '@gsa-sam/sam-material-extensions';
 @Component({
   selector: 'sds-table-header-color',
   templateUrl: './table-header-color.component.html',
-  styleUrls: ['table-header-color.component.scss']
+  styleUrls: ['table-header-color.component.scss'],
 })
 export class TableHeaderColorComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];
