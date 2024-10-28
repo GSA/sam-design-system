@@ -6,7 +6,14 @@ import { FieldWrapper } from '@ngx-formly/core';
 @Component({
   template: `
     <ng-container #fieldComponent></ng-container>
-    <div *ngIf="showError" class="usa-error-message" [style.display]="'block'">
+    <div
+      *ngIf="showError"
+      class="usa-error-message"
+      role="alert"
+      [id]="id + '-error-message'"
+      aria-live="assertive"
+      [style.display]="'block'"
+    >
       <formly-validation-message [field]="field"></formly-validation-message>
     </div>
   `,
