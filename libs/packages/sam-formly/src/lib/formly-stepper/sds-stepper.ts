@@ -66,9 +66,10 @@ export class SdsStepComponent {
    */
   @Input() stepValidationFn: (model: any, field?: FormlyFieldConfig) => boolean | Observable<boolean> | void;
 
+  /**
+   * This is used for updating the validation on blur
+   */
   @Input() validateOnBlur: boolean = false;
-   
-
   /**
    * Human readable label text for this step
    */
@@ -167,12 +168,15 @@ export class SdsStepComponent {
 
     this.modelChange.emit($event);
 
-  console.log(this.model, 'onModelChange')
-//this._stepper.updateValidation(this._stepper.selectedStep);
-this._stepper.changeStep(this._stepper.currentStepId);
-
+    if (this.validateOnBlur) {
+      this.validateFormAndSideNav($event, this._stepper.currentStepId);
+    }
   }
 
+  validateFormAndSideNav(event, id) {
+    this._stepper.updateValidation(this._stepper.selectedStep);
+    console.log('this validation', event, 'this._stepper.currentStepId', id);
+  }
 }
 
 @Directive({
@@ -449,10 +453,10 @@ export class SdsStepper {
 
     const step = this.flatSteps[stepIndex];
 
-    /** Already on desired step, nothing to do */
-    if (step === this.selectedStep && !this.selectedStep.validateOnBlur) {
-      return;
-    }
+    // /** Already on desired step, nothing to do */
+    // if (step === this.selectedStep) {
+    //   return;
+    // }
     /**
      * On non-linear mode, do not allow step change if step we are moving to is disabled or is review step.
      * In linear mode, we will run validations first, then decide whether or not to move to next step
