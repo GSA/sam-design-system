@@ -110,6 +110,8 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
 
   @Input() sdsExpandedTemplate = false;
 
+  @Input() isClickable = false;
+
   ngAfterContentInit() {}
 }
 
@@ -183,6 +185,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
     return this._expansion;
   }
   private _expansion = false;
+
+  @Input() expandedAriaLabel: string = 'Collapse details';
+  @Input() collapsedAriaLabel: string = 'Expand details';
 
   @Output()
   expansionClicked = new EventEmitter<any>();
@@ -323,5 +328,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
   onExpansionClicked(element: any) {
     !this.rowConfig.expandOnClick ? (this.expandedElement = this.expandedElement === element ? null : element) : false;
     this.expansionClicked.emit(this.expandedElement);
+  }
+
+  get columnsClickable(): boolean {
+    return this.sdsColumnItems.filter((item) => item.isClickable).length > 0;
   }
 }

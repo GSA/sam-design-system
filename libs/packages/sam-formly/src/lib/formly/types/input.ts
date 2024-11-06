@@ -20,6 +20,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [formlyAttributes]="field"
         [type]="props.inputType ? props.inputType : 'text'"
         [formControl]="formControl"
+        [attr.aria-describedby]="props.description ? id + '-description' : undefined"
       />
       <div
         *ngIf="props.suffix || props.suffixIcon || field.formControl.value"
@@ -49,6 +50,7 @@ export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
   onClear() {
     this.field.formControl.setValue('');
     this.field.focus = true;
+    this.field.formControl.markAsDirty();
   }
 
   onSuffixClick(ev) {
