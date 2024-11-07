@@ -54,9 +54,9 @@ export class FormlyFormsComponent {
           type: 'button',
           props: {
             enableInput: true,
-            btnIcon: 'bag-plus',
+            btnIcon: 'plus-circle',
             additionalField: this.street2AddressField,
-            text: 'Street Address 2 (optional)',
+            text: 'Street Address 2 (Optional)',
             btnType: 'info',
             
           },
