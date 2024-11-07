@@ -369,7 +369,7 @@ import { FormlyModule } from &#39;@ngx-formly/core&#39;;
 import { FormlyFormsComponent } from &#39;./formly-forms.component&#39;;
 import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
 import { IconModule } from &#39;@gsa-sam/ngx-uswds-icons&#39;;
-import { NgxBootstrapIconsModule, plusCircle } from &#39;ngx-bootstrap-icons&#39;;
+import { NgxBootstrapIconsModule, plusCircle} from &#39;ngx-bootstrap-icons&#39;;
 
 @NgModule({
   imports: [
@@ -442,17 +442,13 @@ export class FormlyFormsComponent {
         {
           className: &#39;desktop:grid-col-12 tablet:grid-col-12&#39;,
           type: &#39;button&#39;,
-
           props: {
-            type: &#39;button&#39;,
             enableInput: true,
+            btnIcon: &#39;bag-plus&#39;,
             additionalField: this.street2AddressField,
             text: &#39;Street Address 2 (optional)&#39;,
             btnType: &#39;info&#39;,
-            onClick: ($event) =&gt; {
-              this.model.showStreet2 = true;
-              return false;
-            },
+            
           },
         },
       ],
