@@ -1,24 +1,26 @@
 <div class="sds-pagination" *ngIf="displayMode === 'default'">
   <div class="sds-pagination__controls">
     <button [attr.id]="paginationConfiguration.id + '-previousPage'" (click)="previousPage()">Previous Page</button>
-    <label
-      class="usa-label font-sans-3xs margin-top-1 text-italic text-base usa-sr-only"
-      [attr.for]="paginationConfiguration.id + '-currentPage'"
-      >Current Page</label
-    >
-    <input
-      [attr.id]="paginationConfiguration.id + '-currentPage'"
-      class="usa-input usa-input--small font-sans-3xs text-center border-base-light"
-      #currentPage
-      [attr.aria-label]="'Page ' + page.pageNumber + ' of ' + page.totalPages"
-      (ngModelChange)="valuechange($event)"
-      [(ngModel)]="page.pageNumber"
-      type="number"
-      min="1"
-      [(attr.max)]="page.totalPages"
-      (focusout)="currentPageFocusOut()"
-      [ngStyle]="{ width: 20 + page.totalPages.toString().length * 10 + 'px' }"
-    />
+    <div class="current-page-container">
+      <label
+        class="usa-label font-sans-3xs margin-top-1 text-italic text-base"
+        [attr.for]="paginationConfiguration.id + '-currentPage'"
+        >page</label
+      >
+      <input
+        [attr.id]="paginationConfiguration.id + '-currentPage'"
+        class="usa-input usa-input--small font-sans-3xs text-center border-base-light"
+        #currentPage
+        [attr.aria-label]="'Page ' + page.pageNumber + ' of ' + page.totalPages"
+        (ngModelChange)="valuechange($event)"
+        [(ngModel)]="page.pageNumber"
+        type="number"
+        min="1"
+        [(attr.max)]="page.totalPages"
+        (focusout)="currentPageFocusOut()"
+        [ngStyle]="{ width: 20 + page.totalPages.toString().length * 10 + 'px' }"
+      />
+    </div>
     <span class="sds-pagination__total">
       of <strong>{{ page.totalPages }}</strong>
     </span>
@@ -26,7 +28,7 @@
   </div>
   <div class="sds-pagination__results">
     <label class="usa-label font-sans-3xs text-italic text-base" [attr.for]="paginationConfiguration.id + '-select'"
-      >Results per page</label
+      >results per page</label
     >
     <select
       class="usa-select usa-select--small border-base-light"
