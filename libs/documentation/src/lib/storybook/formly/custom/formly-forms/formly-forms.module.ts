@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyFormsComponent } from './formly-forms.component';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-import { NgxBootstrapIconsModule, plusCircle } from 'ngx-bootstrap-icons';
+import { NgxBootstrapIconsModule, plusCircle} from 'ngx-bootstrap-icons';
 
 @NgModule({
   imports: [

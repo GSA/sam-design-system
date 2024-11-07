@@ -35,7 +35,6 @@ import {
   chevronDown,
   infoCircleFill,
   calendar,
-  plusCircle,
   x,
 } from 'ngx-bootstrap-icons';
 import { UsaAccordionModule, UsaFileInputModule } from '@gsa-sam/ngx-uswds';
@@ -188,7 +187,7 @@ export const DATE_FORMAT: MatDateFormats = {
       arrowClockwise,
       chevronDown,
       infoCircleFill,
-      plusCircle,
+     
       calendar,
       x,
     }),
