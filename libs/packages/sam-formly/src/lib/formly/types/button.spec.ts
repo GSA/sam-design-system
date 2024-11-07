@@ -19,7 +19,7 @@ export function createGenericTestComponent<T>(html: string, type: { new (...args
 
 let testComponentButtons;
 
-xdescribe('Formly Field button Component', () => {
+describe('Formly Field button Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, FormlyFieldButtonComponent],

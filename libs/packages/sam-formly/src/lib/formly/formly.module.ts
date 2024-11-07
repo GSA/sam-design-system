@@ -187,7 +187,7 @@ export const DATE_FORMAT: MatDateFormats = {
       arrowClockwise,
       chevronDown,
       infoCircleFill,
-     
+
       calendar,
       x,
     }),

@@ -58,7 +58,6 @@ export class FormlyFormsComponent {
             additionalField: this.street2AddressField,
             text: 'Street Address 2 (Optional)',
             btnType: 'info',
-            
           },
         },
       ],
