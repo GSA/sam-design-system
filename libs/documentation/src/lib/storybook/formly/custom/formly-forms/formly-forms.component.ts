@@ -11,6 +11,16 @@ export class FormlyFormsComponent {
   model: any = {};
   options: any = null;
 
+  street2AddressField = {
+    key: 'street2',
+    type: 'input',
+    focus: true,
+    props: {
+      label: 'Address Street2',
+      placeholder: '',
+    },
+  };
+
   fields: FormlyFieldConfig[] = [
     {
       fieldGroupClassName: 'grid-row',
@@ -42,16 +52,14 @@ export class FormlyFormsComponent {
         {
           className: 'desktop:grid-col-12 tablet:grid-col-12',
           type: 'button',
-          hideExpression: () => {
-            return !(this.model && !this.model.showStreet2);
-          },
 
           props: {
             type: 'button',
+            enableInput: true,
+            additionalField: this.street2AddressField,
             text: 'Street Address 2 (optional)',
             btnType: 'info',
             onClick: ($event) => {
-              $event.preventDefault();
               this.model.showStreet2 = true;
               return false;
             },
@@ -60,22 +68,6 @@ export class FormlyFormsComponent {
       ],
     },
 
-    {
-      fieldGroupClassName: 'grid-row ',
-      fieldGroup: [
-        {
-          className: 'grid-col-12 tablet:grid-col-12',
-          hideExpression: () => {
-            return !this.model.showStreet2;
-          },
-          type: 'input',
-          key: 'street2',
-          props: {
-            label: 'Street Address 2',
-          },
-        },
-      ],
-    },
     {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
