@@ -11,7 +11,7 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFormBuilder } from
       (click)="onClick($event)"
       [attr.aria-label]="props.text"
     >
-      <usa-icon *ngIf="props.btnIcon" [icon]="props.btnIcon"></usa-icon>
+      <usa-icon *ngIf="props.btnIcon" [icon]="props.btnIcon" [size]="'s'"></usa-icon>
       {{ props.text }}
     </button>
 
