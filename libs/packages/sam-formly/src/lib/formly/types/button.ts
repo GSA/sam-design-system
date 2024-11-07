@@ -7,13 +7,14 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFormBuilder } from
   template: `
     <button
       *ngIf="!hideButton && !additionalField"
-      [type]="props.type"
-      [ngClass]="'btn btn-' + props.btnType"
+      class="usa-button usa-button--unstyled"
       (click)="onClick($event)"
-      class="usa-button--unstyled"
+      [attr.aria-label]="props.text"
     >
+      <usa-icon [icon]="'plus-circle'"></usa-icon>
       {{ props.text }}
     </button>
+
     <ng-container *ngIf="additionalField">
       <formly-field class="margin-top-0" [field]="additionalField"></formly-field>
     </ng-container>

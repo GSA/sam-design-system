@@ -52,17 +52,12 @@ export class FormlyFormsComponent {
         {
           className: 'desktop:grid-col-12 tablet:grid-col-12',
           type: 'button',
-
           props: {
-            type: 'button',
             enableInput: true,
             additionalField: this.street2AddressField,
             text: 'Street Address 2 (optional)',
             btnType: 'info',
-            onClick: ($event) => {
-              this.model.showStreet2 = true;
-              return false;
-            },
+            
           },
         },
       ],
