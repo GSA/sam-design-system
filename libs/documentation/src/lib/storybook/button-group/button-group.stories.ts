@@ -10,6 +10,7 @@ import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/s
 import { ButtonGroupCheckedModule } from './button-group-checked/button-group-checked.module';
 import { ButtonGroupIntroductionModule } from './button-group-introduction/button-group-introduction.module';
 import { ButtonGroupModesModule } from './button-group-modes/button-group-modes.module';
+import { ButtonGroupModularModule } from './button-group-modular/button-group-modular.module';
 
 const disable = {
   table: {
@@ -32,6 +33,7 @@ export default {
         ButtonGroupModesModule,
         ButtonGroupCheckedModule,
         ButtonGroupIntroductionModule,
+        ButtonGroupModularModule,
       ],
     }),
   ],
@@ -99,10 +101,30 @@ Checked.parameters = {
   actions: { disable: true },
   preview: generateConfig(
     'storybook/button-group/button-group-checked',
-    'ButtonGroupBasicModule',
+    'ButtonGroupCheckedModule',
     'sds-button-group-checked'
   ),
   stackblitzLink: generateStackblitzLink('button-group', 'checked'),
+};
+
+export const Modular: StoryObj = (args) => ({
+  template: `<sds-button-group-modular></sds-button-group-modular>`,
+  props: {
+    ...args,
+  },
+});
+Modular.parameters = {
+  controls: {
+    disable: true,
+    hideNoControlsWarning: true,
+  },
+  actions: { disable: true },
+  preview: generateConfig(
+    'storybook/button-group/button-group-modular',
+    'ButtonGroupModularModule',
+    'sds-button-group-modular'
+  ),
+  stackblitzLink: generateStackblitzLink('button-group', 'modular'),
 };
 
 export const Introduction: StoryObj = (args) => ({
