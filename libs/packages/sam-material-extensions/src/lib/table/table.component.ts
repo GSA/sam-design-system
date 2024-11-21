@@ -37,6 +37,12 @@ export interface SdsFooterRowConfig extends SdsRowConfig {
   sticky?: boolean;
 }
 
+export enum SdsTableHeaderColor {
+  InfoLighter = 'header-info-lighter',
+  AccentCoolLight = 'header-accent-cool-light',
+  PrimaryLighter = 'header-primary-lighter',
+}
+
 @Component({
   selector: 'sds-row',
   template: ` <ng-content></ng-content> `,
@@ -188,6 +194,8 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
 
   @Input() expandedAriaLabel: string = 'Collapse details';
   @Input() collapsedAriaLabel: string = 'Expand details';
+
+  @Input() headerColor: SdsTableHeaderColor;
 
   @Output()
   expansionClicked = new EventEmitter<any>();
