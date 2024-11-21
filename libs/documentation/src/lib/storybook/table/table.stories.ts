@@ -23,6 +23,7 @@ import { TableHighlightRowModule } from './table-highlight-row/table-highlight-r
 import { TableRowClickedModule } from './table-row-clicked/table-row-clicked.module';
 import { TableIntroductionModule } from './table-introduction/table-introduction.module';
 import { TableCustomClassesModule } from './table-custom-classes/table-custom-classes.module';
+import { TableHeaderColorModule } from './table-header-color/table-header-color.module';
 import { TableSelectRowsModule } from './table-select-rows/table-select-rows.module';
 
 export default {
@@ -48,6 +49,7 @@ export default {
         TableRowClickedModule,
         TableIntroductionModule,
         TableCustomClassesModule,
+        TableHeaderColorModule,
         TableSelectRowsModule,
       ],
     }),
@@ -255,15 +257,24 @@ export const SelectRow: StoryObj = (args) => ({
   props: args,
 });
 SelectRow.parameters = {
+  preview: generateConfig('storybook/table/table-select-rows', 'TableSelectRowsModule', 'sds-table-select-rows', [
+    createCodePreviewTabData('storybook/table/table-select-rows/table-select-rows.component.scss', 'scss', false),
+  ]),
+  stackblitzLink: generateStackblitzLink('table', 'select-rows'),
+};
+
+export const HeaderColor: StoryObj = (args) => ({
+  template: `<sds-table-header-color></sds-table-header-color>`,
+  props: args,
+});
+HeaderColor.parameters = {
   controls: {
     disable: true,
     hideNoControlsWarning: true,
   },
   actions: { disable: true },
-  preview: generateConfig('storybook/table/table-select-rows', 'TableSelectRowsModule', 'sds-table-select-rows', [
-    createCodePreviewTabData('storybook/table/table-select-rows/table-select-rows.component.scss', 'scss', false),
-  ]),
-  stackblitzLink: generateStackblitzLink('table', 'select-rows'),
+  preview: generateConfig('storybook/table/table-header-color', 'TableHeaderColorModule', 'sds-table-header-color'),
+  stackblitzLink: generateStackblitzLink('table', 'header-color'),
 };
 
 export const Introduction: StoryObj = (args) => ({
