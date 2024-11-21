@@ -372,41 +372,20 @@ export class SdsStepper {
     }
   }
 
-  ngAfterContentInit() {
-    this.flatSteps = this.getFlatSteps(this.stepTemplates);
-    this.flatSteps.forEach((step) => {
-      step.model = step.model ? step.model : this.model;
-    });
+ ngAfterContentInit() {
+  this.flatSteps = this.getFlatSteps(this.stepTemplates);
+  this.flatSteps.forEach((step) => {
+    step.model = step.model || this.model;
+    this.updateValidation(step); // Validate pre-filled data
+  });
 
-    if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
-      this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
-    } else if (!this.currentStepId) {
-      this.currentStepId = this.flatSteps[0].id;
-      this.selectedStepIndex = 0;
-      this.selectedStep = this.flatSteps[this.selectedStepIndex];
-    }
-
-    if (this.stepValidityMap) {
-      this.updateValidity(this.stepValidityMap, this.stepTemplates);
-      this.checkReviewAndSubmit();
-    } else {
-      this.stepValidityMap = {};
-    }
-
-    if (this.linear) {
-      this.evaluateIncompleteForms();
-    }
-
-    this.changeStep(this.currentStepId).finally(() => {
-      if (this.isRouteEnabled) {
-        this.activatedRoute.queryParams.subscribe((queryParam) => {
-          if (queryParam[this.queryParamKey] && queryParam[this.queryParamKey] != this.currentStepId) {
-            this.changeStep(queryParam[this.queryParamKey]);
-          }
-        });
-      }
-    });
+  if (this.currentStepId) {
+    this.changeStep(this.currentStepId);
+  } else {
+    this.currentStepId = this.flatSteps[0].id;
+    this.changeStep(this.currentStepId);
   }
+}
 
   getFlatSteps(stepTemplates: QueryList<SdsStepComponent>): SdsStepComponent[] {
     let flat: SdsStepComponent[] = [];
@@ -529,26 +508,29 @@ export class SdsStepper {
     }
   }
 
-  onNextStep() {
-    this.changeStep(this.selectedStep.id, 1);
-  }
+async onNextStep() {
+  await this.updateValidation(this.selectedStep);
+  await this.changeStep(this.selectedStep.id, 1);
+}
 
-  onPreviousStep() {
-    this.changeStep(this.selectedStep.id, -1);
-  }
+ async onPreviousStep() {
+  await this.updateValidation(this.selectedStep);
+  await this.changeStep(this.selectedStep.id, -1);
+}
 
   /**
    * Called through sdsStepperSave button - updates validity of the current step
    * and toggles error display. Emits saveData event.
    */
-  async onSaveClicked() {
-    console.warn(`This is a deprectaed version of sdsStepperSave directive, and will be removed in future versions.
+ 
+async onSaveClicked() {
+ console.warn(`This is a deprectaed version of sdsStepperSave directive, and will be removed in future versions.
       Please switch to using sdsStepperPrevious/sdsStepperNext`);
-    this.flatSteps = this.getFlatSteps(this.stepTemplates);
-    this.selectedStepIndex = this.flatSteps.findIndex((step) => step.id === this.selectedStep.id);
 
-    await this.updateValidation(this.selectedStep);
-    this.checkReviewAndSubmit();
+  await this.updateValidation(this.selectedStep);
+  this.flatSteps.forEach((step) => this.updateValidation(step));
+
+ this.checkReviewAndSubmit();
     if (this.linear) {
       this.evaluateIncompleteForms();
     }
@@ -557,14 +539,14 @@ export class SdsStepper {
       this.selectedStep.options.showError = (field) => !field.formControl.valid;
     }
 
-    this.saveData.emit({
-      model: this.model,
-      metadata: {
-        stepId: this.selectedStep.id,
-        stepValidityMap: this.stepValidityMap,
-      },
-    });
-  }
+  this.saveData.emit({
+    model: this.model,
+    metadata: {
+      stepId: this.selectedStep.id,
+      stepValidityMap: this.stepValidityMap,
+    },
+  });
+}
 
   /**
    * Gets all steps that are not hidden
@@ -616,6 +598,14 @@ export class SdsStepper {
     });
   }
 
+public validateOnBlur(field: AbstractControl, step: SdsStepComponent) {
+  if (field.touched || field.dirty) {
+    step.valid = field.valid;
+    this.stepValidityMap[step.id] = step.valid;
+  }
+}
+
+
   private updateValidity(validityMap: any, stepTemplates: QueryList<SdsStepComponent>) {
     stepTemplates.forEach((step) => {
       if (!step) {
@@ -640,44 +630,51 @@ export class SdsStepper {
    *  if false, step's validity will be force set to false
    * @returns
    */
-  async updateValidation(currentStep: SdsStepComponent, forceValidationValue?: boolean) {
-    if (!currentStep) {
-      return;
+async updateValidation(currentStep: SdsStepComponent, forceValidationValue?: boolean) {
+  if (!currentStep) {
+    return;
+  }
+
+  const currentStepFieldConfig = currentStep.fieldConfig;
+  const isFormEmpty = this.isFormEmpty(
+    currentStepFieldConfig?.formControl,
+    currentStepFieldConfig?.defaultValue
+  );
+
+  if (isFormEmpty && forceValidationValue === undefined) {
+    // Set validity as undefined when form is empty
+    currentStep.valid = undefined;
+    this.stepValidityMap[currentStep.id] = undefined;
+    return;
+  }
+
+  if (forceValidationValue !== undefined) {
+    // Force validity
+    currentStep.valid = forceValidationValue;
+    this.stepValidityMap[currentStep.id] = forceValidationValue;
+    return;
+  }
+
+  if (currentStep.stepValidationFn) {
+    const isValid = currentStep.stepValidationFn(currentStep.model ? currentStep.model : this.model);
+    if (typeof isValid === 'boolean') {
+      currentStep.valid = isValid;
+      this.stepValidityMap[currentStep.id] = isValid;
+    } else if (isValid instanceof Observable) {
+      const res = await isValid.toPromise();
+      currentStep.valid = res;
+      this.stepValidityMap[currentStep.id] = res;
     }
+    return;
+  }
 
-    if (forceValidationValue === true || forceValidationValue === false) {
-      currentStep.valid = forceValidationValue;
-      this.stepValidityMap[currentStep.id] = forceValidationValue;
-      return;
-    }
-
-    // Custom validation function was provided, use provided custom validation
-    if (currentStep.stepValidationFn) {
-      const isValid = currentStep.stepValidationFn(currentStep.model ? currentStep.model : this.model);
-      if (typeof isValid === 'boolean') {
-        currentStep.valid = isValid;
-        this.stepValidityMap[currentStep.id] = isValid;
-      } else if (typeof isValid === 'object') {
-        const res = await isValid.toPromise();
-        currentStep.valid = res;
-        this.stepValidityMap[currentStep.id] = res;
-      }
-
-      return;
-    }
-
-    const currentStepFieldConfig = currentStep.fieldConfig;
-    if (
-      !currentStepFieldConfig ||
-      this.isFormEmpty(currentStepFieldConfig.formControl, currentStepFieldConfig.defaultValue)
-    ) {
-      return;
-    }
-
-    const isValid = currentStep.fieldConfig.formControl.valid;
+  if (currentStepFieldConfig) {
+    const isValid = currentStepFieldConfig.formControl.valid;
     currentStep.valid = isValid;
     this.stepValidityMap[currentStep.id] = isValid;
   }
+}
+
 
   private isFormEmpty(form: AbstractControl, defaultValue?: any) {
     if (!form) {
