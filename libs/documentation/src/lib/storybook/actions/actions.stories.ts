@@ -42,7 +42,7 @@ export default {
       control: 'select',
     },
     type: {
-      options: ['plain', 'primary','secondary'],
+      options: ['plain', 'primary', 'secondary'],
       control: 'select',
       description: '',
       table: {
