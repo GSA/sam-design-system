@@ -368,9 +368,19 @@ import { FormsModule, ReactiveFormsModule } from &#39;@angular/forms&#39;;
 import { FormlyModule } from &#39;@ngx-formly/core&#39;;
 import { FormlyFormsComponent } from &#39;./formly-forms.component&#39;;
 import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
+import { IconModule } from &#39;@gsa-sam/ngx-uswds-icons&#39;;
+import { NgxBootstrapIconsModule, plusCircle } from &#39;ngx-bootstrap-icons&#39;;
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+    IconModule,
+    NgxBootstrapIconsModule.pick({ plusCircle }),
+  ],
   declarations: [FormlyFormsComponent],
   exports: [FormlyFormsComponent],
   bootstrap: [FormlyFormsComponent],
@@ -390,35 +400,27 @@ export class FormlyFormsComponent {
   form = new FormGroup({});
   model: any = {};
   options: any = null;
+
+  street2AddressField = {
+    key: &#39;street2&#39;,
+    type: &#39;input&#39;,
+    focus: true,
+    props: {
+      label: &#39;Address Street2&#39;,
+      placeholder: &#39;&#39;,
+    },
+  };
+
   fields: FormlyFieldConfig[] = [
     {
       fieldGroupClassName: &#39;grid-row&#39;,
       fieldGroup: [
         {
-          template:
-            &#39;&lt;h3&gt;Physical Address&lt;/h3&gt;&lt;span&gt;Your physical address is the street address of the primary office or other building where your entity is located. A post office box may not be used as your physical…&lt;/span&gt;&#39;,
+          template: `&lt;h3&gt;Physical Address&lt;/h3&gt;&lt;span class=&#34;padding-top-1&#34;&gt;Where does your organization conduct business? Use an address you can document with your legal business name.&lt;/span&gt;`,
         },
       ],
     },
-    {
-      fieldGroupClassName: &#39;grid-row&#39;,
-      fieldGroup: [
-        {
-          className: &#39;grid-col-7&#39;,
-          key: &#39;country&#39;,
-          type: &#39;select&#39;,
-          defaultValue: &#39;united_states&#39;,
-          props: {
-            label: &#39;Country&#39;,
-            required: true,
-            options: [
-              { label: &#39;United States (USA)&#39;, value: &#39;united_states&#39; },
-              { label: &#39;Canada&#39;, value: &#39;canada&#39; },
-            ],
-          },
-        },
-      ],
-    },
+
     {
       fieldGroupClassName: &#39;grid-row&#39;,
       fieldGroup: [
@@ -433,19 +435,24 @@ export class FormlyFormsComponent {
         },
       ],
     },
+
     {
-      fieldGroupClassName: &#39;grid-row &#39;,
+      fieldGroupClassName: &#39;grid-row&#39;,
       fieldGroup: [
         {
-          className: &#39;grid-col-12 tablet:grid-col-12&#39;,
-          type: &#39;input&#39;,
-          key: &#39;street2&#39;,
+          className: &#39;desktop:grid-col-12 tablet:grid-col-12&#39;,
+          type: &#39;button&#39;,
           props: {
-            label: &#39;Street Address 2&#39;,
+            enableInput: true,
+            btnIcon: &#39;plus-circle&#39;,
+            additionalField: this.street2AddressField,
+            text: &#39;Street Address 2 (Optional)&#39;,
+            btnType: &#39;info&#39;,
           },
         },
       ],
     },
+
     {
       fieldGroupClassName: &#39;grid-row&#39;,
       fieldGroup: [
@@ -465,29 +472,12 @@ export class FormlyFormsComponent {
         },
       ],
     },
-    {
-      fieldGroupClassName: &#39;grid-row&#39;,
-      fieldGroup: [
-        {
-          className: &#39;grid-col-4&#39;,
-          type: &#39;input&#39;,
-          key: &#39;postal&#39;,
-          hideExpression: (model) =&gt; this.model.country === &#39;united_states&#39;,
-          props: {
-            required: true,
-            label: &#39;Postal Code&#39;,
-            maxLength: 6,
-            min: 0,
-            pattern: &#39;\\d{5}&#39;,
-          },
-        },
-      ],
-    },
+
     {
       fieldGroupClassName: &#39;grid-row grid-gap-2&#39;,
       fieldGroup: [
         {
-          className: &#39;grid-col-8&#39;,
+          className: &#39;grid-col-4&#39;,
           type: &#39;input&#39;,
           key: &#39;cityName&#39;,
           props: {
@@ -566,7 +556,7 @@ export class FormlyFormsComponent {
           key: &#39;province&#39;,
           hideExpression: (model) =&gt; this.model.country === &#39;united_states&#39;,
           props: {
-            label: &#39;State/Province&#39;,
+            label: &#39;State/Territory&#39;,
             required: true,
             options: [
               { id: &#39;1&#39;, label: &#39;Alberta&#39;, value: &#39;Alberta&#39; },
@@ -588,93 +578,20 @@ export class FormlyFormsComponent {
       fieldGroupClassName: &#39;grid-row&#39;,
       fieldGroup: [
         {
-          className: &#39;grid-col-4&#39;,
-          type: &#39;input&#39;,
-          key: &#39;congressional_district&#39;,
-          hideExpression: (model) =&gt; this.model.country === &#39;canada&#39;,
+          className: &#39;grid-col-7&#39;,
+          key: &#39;country&#39;,
+          type: &#39;select&#39;,
+          defaultValue: &#39;united_states&#39;,
           props: {
+            label: &#39;Country&#39;,
             required: true,
-            label: &#39;Congressional District&#39;,
+            options: [
+              { label: &#39;United States (USA)&#39;, value: &#39;united_states&#39; },
+              { label: &#39;Canada&#39;, value: &#39;canada&#39; },
+            ],
           },
         },
       ],
-    },
-    {
-      fieldGroupClassName: &#39;grid-row&#39;,
-      fieldGroup: [
-        {
-          template: &#39;&lt;h3&gt;Phone Number&lt;/h3&gt; Your phone number is the primary number associated with your vendor&#39;,
-        },
-      ],
-    },
-    {
-      fieldGroupClassName: &#39;grid-row grid-gap-2&#39;,
-      fieldGroup: [
-        {
-          className: &#39;grid-col-12 tablet:grid-col-4 desktop:grid-col-3&#39;,
-          type: &#39;input&#39;,
-          key: &#39;Code&#39;,
-          props: {
-            label: &#39;Country Code&#39;,
-            required: true,
-            type: &#39;number&#39;,
-            pattern: &#39;\\d{3}&#39;,
-            placeholder: &#39;ex-123&#39;,
-          },
-        },
-        {
-          className: &#39;grid-col-12 tablet:grid-col-7 desktop:grid-col-5&#39;,
-          type: &#39;input&#39;,
-          key: &#39;phone&#39;,
-          props: {
-            label: &#39;Phone&#39;,
-            required: true,
-            type: &#39;number&#39;,
-            pattern: &#39;\\d{9}&#39;,
-            placeholder: &#39;ex-123456789&#39;,
-          },
-        },
-        {
-          className: &#39;margin-bottom-0 grid-col-3 desktop:grid-col-4 display-none desktop:display-inline-block&#39;,
-          type: &#39;input&#39;,
-          key: &#39;extension&#39;,
-          props: {
-            label: &#39;Extension&#39;,
-            type: &#39;number&#39;,
-            pattern: &#39;\\d{3}&#39;,
-            placeholder: &#39;ex-123&#39;,
-          },
-        },
-      ],
-    },
-    {
-      className: &#39; margin-top-(-1) grid-col-8 display-block desktop:display-none&#39;,
-      type: &#39;button&#39;,
-      hideExpression: (model) =&gt; this.model.showExtension,
-      props: {
-        type: &#39;button&#39;,
-        text: &#39;Show Extension&#39;,
-        btnType: &#39;info&#39;,
-        onClick: ($event) =&gt; {
-          $event.preventDefault();
-          this.model.showExtension = &#39;show&#39;;
-          return false;
-        },
-      },
-    },
-    {
-      className: &#39;margin-top-(-1) grid-col-8 display-block desktop:display-none&#39;,
-      type: &#39;input&#39;,
-      key: &#39;extension1&#39;,
-      hideExpression: (model) =&gt; !this.model.showExtension,
-      props: {
-        label: &#39;Extension&#39;,
-        type: &#39;number&#39;,
-        max: 99999,
-        min: 0,
-        pattern: &#39;\\d{3}&#39;,
-        placeholder: &#39;ex-123&#39;,
-      },
     },
   ];
 

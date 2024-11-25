@@ -4942,6 +4942,19 @@ dfn {
     flex-direction: row;
   }
 }
+.usa-button-group .usa-button-group {
+  height: 100%;
+}
+@media all and (min-width: 30em) {
+  .usa-button-group .usa-button-group .usa-button-group__item {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.usa-button-group .usa-button-group--segmented .usa-button-group__item {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
 .usa-button-group__item {
   margin: 0.25rem;
@@ -5971,123 +5984,6 @@ dfn {
   }
 }
 
-.grid-row {
-  display: flex;
-  flex-wrap: wrap;
-  /* stylelint-disable */
-  /* stylelint-enable */
-}
-.grid-row.grid-gap-1 {
-  margin-left: -0.25rem;
-  margin-right: -0.25rem;
-}
-.grid-row.grid-gap-1 > * {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-.grid-row.grid-gap-2 {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-}
-.grid-row.grid-gap-2 > * {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-.grid-row.grid-gap-4 {
-  margin-left: -1rem;
-  margin-right: -1rem;
-}
-.grid-row.grid-gap-4 > * {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-@media all and (min-width: 30em) {
-  .grid-row.mobile-lg\:grid-gap-2 {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-  }
-  .grid-row.mobile-lg\:grid-gap-2 > * {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-}
-
-.grid-gap {
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-}
-.grid-gap > * {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-@media all and (min-width: 64em) {
-  .grid-gap {
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-  .grid-gap > * {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-[class*=grid-col] {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.grid-col-auto {
-  flex: 0 1 auto;
-  width: auto;
-  max-width: 100%;
-}
-
-/* stylelint-disable */
-@media all and (min-width: 30em) {
-  .mobile-lg\:grid-col-auto {
-    flex: 0 1 auto;
-    width: auto;
-    max-width: 100%;
-  }
-  .mobile-lg\:grid-col-4 {
-    flex: 0 1 auto;
-    width: 33.3333333333%;
-  }
-  .mobile-lg\:grid-col-6 {
-    flex: 0 1 auto;
-    width: 50%;
-  }
-  .mobile-lg\:grid-col-8 {
-    flex: 0 1 auto;
-    width: 66.6666666667%;
-  }
-  .mobile-lg\:grid-col-12 {
-    flex: 0 1 auto;
-    width: 100%;
-  }
-}
-@media all and (min-width: 40em) {
-  .tablet\:grid-col-4 {
-    flex: 0 1 auto;
-    width: 33.3333333333%;
-  }
-  .tablet\:grid-col-8 {
-    flex: 0 1 auto;
-    width: 66.6666666667%;
-  }
-}
-@media all and (min-width: 64em) {
-  .desktop\:grid-col-auto {
-    flex: 0 1 auto;
-    width: auto;
-    max-width: 100%;
-  }
-  .desktop\:grid-col-3 {
-    flex: 0 1 auto;
-    width: 25%;
-  }
-}
 .usa-footer {
   font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
@@ -16792,20 +16688,18 @@ input[type=search] {
   font-size: 1rem;
   opacity: 0;
   padding: 0.5rem;
-  pointer-events: none;
   width: auto;
   white-space: pre;
   z-index: 100000;
   position: absolute;
   /* positioning is completed with JS */
 }
-.usa-tooltip__body:after,
-.usa-tooltip__body--top:after {
+.usa-tooltip__body::after,
+.usa-tooltip__body--top::after {
   content: "";
   display: block;
   width: 0;
   height: 0;
-  pointer-events: none;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #2e2e2a;
@@ -16813,6 +16707,12 @@ input[type=search] {
   bottom: -5px;
   left: 50%;
   margin-left: -5px;
+}
+.usa-tooltip__body::before,
+.usa-tooltip__body--top::before {
+  content: "";
+  display: block;
+  position: absolute;
 }
 
 .usa-tooltip__body--wrap {
@@ -16830,7 +16730,20 @@ input[type=search] {
   opacity: 1;
 }
 
-.usa-tooltip__body--bottom:after {
+.usa-tooltip__body--top::before {
+  top: 100%;
+  height: 5px;
+  left: 0;
+  right: 0;
+}
+
+.usa-tooltip__body--bottom::before {
+  bottom: 100%;
+  height: 5px;
+  left: 0;
+  right: 0;
+}
+.usa-tooltip__body--bottom::after {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid #2e2e2a;
@@ -16839,7 +16752,13 @@ input[type=search] {
   top: -5px;
 }
 
-.usa-tooltip__body--right:after {
+.usa-tooltip__body--right::before {
+  right: 100%;
+  bottom: 0;
+  top: 0;
+  width: 5px;
+}
+.usa-tooltip__body--right::after {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-right: 5px solid #2e2e2a;
@@ -16851,7 +16770,13 @@ input[type=search] {
   margin: -5px 0 0 0;
 }
 
-.usa-tooltip__body--left:after {
+.usa-tooltip__body--left::before {
+  left: 100%;
+  bottom: 0;
+  top: 0;
+  width: 5px;
+}
+.usa-tooltip__body--left::after {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid #2e2e2a;
@@ -19042,16 +18967,18 @@ utilities to reference.
 ASPECT
 ----------------------------------------
 usage:
-  .aspect-[value]
+  .add-aspect-[key]
 ----------------------------------------
 output:
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  padding-bottom: 100%;
+  aspect-ratio: [value];
 ----------------------------------------
 example:
-  .aspect-16x9
+  .add-aspect-16x9 {
+    height: inherit;
+    padding: inherit;
+    aspect-ratio: 1.7777777778;
+    max-width: 100%;
+  }
 ----------------------------------------
 */
 .add-aspect-9x16 {
@@ -19194,16 +19121,21 @@ example:
 LIST RESET
 ----------------------------------------
 usage:
-  .list-reset
+  .add-list-reset
 ----------------------------------------
 output:
-  list-style: none;
+  margin-bottom: 0;
+  margin-top: 0;
   padding-left: 0;
+  list-style: none;
 ----------------------------------------
 example:
-  .list-reset {
+  .add-list-reset {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
     list-style: none;
-    padding-left: 0; }
+  }
 ----------------------------------------
 */
 /*
@@ -19218,7 +19150,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19293,7 +19226,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19308,7 +19242,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-self-start {
-    align-self: flex-start; }
+    align-self: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19323,7 +19258,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19337,8 +19273,9 @@ output:
   background-color: [value];
 ----------------------------------------
 example:
-  .bg-red-50v {
-    background-color: #be4900; }
+  .bg-red {
+    background-color: #e52207;
+  }
 ----------------------------------------
 */
 /*
@@ -19353,7 +19290,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19370,11 +19308,13 @@ output:
   border-[modifier]: [value];
 ----------------------------------------
 example:
-  .border-t-1px {
-    border-top: 1px solid; }
+  .border-top-1px {
+    border-top: 1px solid;
+  }
 
   .border-0 {
-    border: none; }
+    border: 0 solid;
+  }
 ----------------------------------------
 */
 /*
@@ -19389,22 +19329,24 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-background-color
+border-color
 ----------------------------------------
 usage:
-  .border-[color]
+  .border-[key]
 ----------------------------------------
 output:
-  border[-color]: [color];
+  border-color: [value];
 ----------------------------------------
 example:
   .border-red {
-    border-color: #be4900; }
+    border-color: #e52207;
+  }
 ----------------------------------------
 */
 /*
@@ -19419,7 +19361,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19427,17 +19370,19 @@ example:
 border-radius
 ----------------------------------------
 usage:
-  .border-radius-[key]
+  .radius-[key]
 ----------------------------------------
 output:
   border-radius: [value];
 ----------------------------------------
 example:
-  .border-radius-0 {
-    border-radius: 0; }
+  .radius-0 {
+    border-radius: 0;
+  }
 
-  .border-radius-pill {
-    border-radius: 10em; }
+  .radius-pill {
+    border-radius: 99rem;
+  }
 ----------------------------------------
 */
 /*
@@ -19452,7 +19397,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19460,14 +19406,15 @@ example:
 border-style
 ----------------------------------------
 usage:
-  .border[-modifier]*-[key]
+  .border-[key]
 ----------------------------------------
 output:
   border-style: [value];
 ----------------------------------------
 example:
   .border-dotted {
-    border-style: dotted; }
+    border-style: dotted;
+  }
 ----------------------------------------
 */
 /*
@@ -19482,7 +19429,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19497,7 +19445,8 @@ output:
 ----------------------------------------
 example:
   .border-top-width-1px {
-    border-top-width: 1px; }
+    border-top-width: 1px;
+  }
 ----------------------------------------
 */
 /*
@@ -19512,14 +19461,13 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-.bottom
-----------------------------------------
-property: bottom
+bottom
 ----------------------------------------
 usage:
   .bottom-[key]
@@ -19528,8 +19476,13 @@ output:
   bottom: [value];
 ----------------------------------------
 example:
-  .bottom-n2px {
-    bottom: -2px; }
+  .bottom-3 {
+    bottom: 1.5rem;
+  }
+
+  .bottom-neg-2px {
+    bottom: -2px;
+  }
 ----------------------------------------
 */
 /*
@@ -19544,7 +19497,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19552,14 +19506,15 @@ example:
 box-shadow
 ----------------------------------------
 usage:
-  .box-shadow-[value]
+  .shadow-[key]
 ----------------------------------------
 output:
   box-shadow: [value];
 ----------------------------------------
 example:
-  .box-shadow-1 {
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10); }
+  .shadow-1 {
+    box-shadow: 0 1px 0.25rem 0 rgba(0, 0, 0, 0.1);
+  }
 ----------------------------------------
 */
 /*
@@ -19574,7 +19529,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19592,7 +19548,9 @@ output:
 example:
   .circle-6 {
     height: 3rem;
-    width: 3rem; }
+    width: 3rem;
+    border-radius: 50%;
+  }
 ----------------------------------------
 */
 /*
@@ -19606,7 +19564,8 @@ example:
   .clearfix::after {
     clear: both;
     content: "";
-    display: block; }
+    display: block;
+  }
 ----------------------------------------
 */
 /*
@@ -19621,7 +19580,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19629,14 +19589,15 @@ example:
 color
 ----------------------------------------
 usage:
-  .color-[key]
+  .text-[key]
 ----------------------------------------
 output:
   color: [value];
 ----------------------------------------
 example:
-  .color-black-100 {
-    color: #000; }
+  .text-black {
+    color: black;
+  }
 ----------------------------------------
 */
 /*
@@ -19651,12 +19612,13 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-color
+cursor
 ----------------------------------------
 usage:
   .cursor-[key]
@@ -19666,7 +19628,8 @@ output:
 ----------------------------------------
 example:
   .cursor-pointer {
-    cursor: pointer; }
+    cursor: pointer;
+  }
 ----------------------------------------
 */
 /*
@@ -19681,7 +19644,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19692,11 +19656,12 @@ usage:
   .display-[key]
 ----------------------------------------
 output:
-  display: [value]
+  display: [value];
 ----------------------------------------
 example:
   .display-none {
-    display: none; }
+    display: none;
+  }
 ----------------------------------------
 */
 /*
@@ -19711,7 +19676,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19726,7 +19692,8 @@ output:
 ----------------------------------------
 example:
   .float-left {
-    float: left; }
+    float: left;
+  }
 ----------------------------------------
 */
 /*
@@ -19741,7 +19708,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19756,13 +19724,16 @@ output:
 ----------------------------------------
 example:
   .flex-1 {
-    flex: 1 0 0; }
+    flex: 1 0 0;
+  }
 
   .flex-fill {
-    flex: 1 0 0; }
+    flex: 1 0 0;
+  }
 
   .flex-auto {
-    flex: none; }
+    flex: 0 1 auto;
+  }
 ----------------------------------------
 */
 /*
@@ -19777,7 +19748,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19785,14 +19757,19 @@ example:
 flex-direction
 ----------------------------------------
 usage:
-  .flex-direction-[value]
+  .flex-[key]
 ----------------------------------------
 output:
-  flex-direction: [value]
+  flex-direction: [value];
 ----------------------------------------
 example:
-  .flex-direction-row {
-    flex-direction: row; }
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-column {
+    flex-direction: column;
+  }
 ----------------------------------------
 */
 /*
@@ -19807,7 +19784,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19815,14 +19793,19 @@ example:
 flex-wrap
 ----------------------------------------
 usage:
-  .flex-wrap-[key]
+  .flex-[key]
 ----------------------------------------
 output:
   flex-wrap: [value];
 ----------------------------------------
 example:
   .flex-wrap {
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+  }
+
+  .flex-no-wrap {
+    flex-wrap: nowrap;
+  }
 ----------------------------------------
 */
 /*
@@ -19837,34 +19820,24 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-font
-----------------------------------------
-sets font-size and font-family
+font-size
 ----------------------------------------
 usage:
-  .size-[key]-[key]
+  .font-[key]-[key]
 ----------------------------------------
 output:
-  font-family: [value];
   font-size: [value];
 ----------------------------------------
 example:
-  .size-sans-s3 {
-    font-face: '18Franklin-webfont',
-                system,
-                -apple-system,
-                BlinkMacSystemFont,
-                'Roboto',
-                'Helvetica Neue',
-                'Helvetica',
-                'Arial',
-                sans-serif;
-    font-size: 1rem; }
+  .font-sans-md {
+    font-size: 1.13rem;
+  }
 ----------------------------------------
 */
 /*
@@ -19879,7 +19852,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19887,22 +19861,21 @@ example:
 font-family
 ----------------------------------------
 usage:
-  .family-[key]
+  .font-family-[key]
 ----------------------------------------
 output:
-  font-family: [value]
+  font-family: [value];
 ----------------------------------------
 example:
-  .family-sans {
-    font-family: 'United Sans webfont',
-                system,
-                -apple-system,
-                BlinkMacSystemFont,
-                'Roboto',
-                'Helvetica Neue',
-                'Helvetica',
-                'Arial',
-                sans-serif; }
+  .font-family-sans {
+    font-family:
+      Source Sans Pro Web,
+      Helvetica Neue,
+      Helvetica,
+      Roboto,
+      Arial,
+      sans-serif;
+  }
 ----------------------------------------
 */
 /*
@@ -19917,7 +19890,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19933,7 +19907,8 @@ output:
 example:
   .text-tabular {
     font-feature-settings:
-      'tnum' 1, 'kern' 1; }
+      'tnum' 1, 'kern' 1;
+  }
 ----------------------------------------
 */
 /*
@@ -19948,7 +19923,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19956,16 +19932,19 @@ example:
 font-style
 ----------------------------------------
 usage:
-  .text-italic
+  .text-[key]
 ----------------------------------------
 output:
-  font-style: italic;
+  font-style: [value];
 ----------------------------------------
 example:
   .text-italic {
-    font-style: italic; }
+    font-style: italic;
+  }
+
   .text-no-italic {
-    font-style: normal; }
+    font-style: normal;
+  }
 ----------------------------------------
 */
 /*
@@ -19980,7 +19959,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -19994,8 +19974,13 @@ output:
   font-weight: [value];
 ----------------------------------------
 example:
-  .text-300 {
-    font-weight: 300; }
+  .text-bold {
+    font-weight: 700;
+  }
+
+  .text-light{
+    font-weight: 300;
+  }
 ----------------------------------------
 */
 /*
@@ -20010,7 +19995,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20018,14 +20004,15 @@ example:
 height
 ----------------------------------------
 usage:
-  .height-[value]
+  .height-[key]
 ----------------------------------------
 output:
   height: [value];
 ----------------------------------------
 example:
-  .height-33ct {
-    height: 33.33333333%; }
+  .height-6 {
+    height: 3rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20040,14 +20027,13 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-.justify-content
-----------------------------------------
-property: justify-content
+justify-content
 ----------------------------------------
 usage:
   .flex-justify-[key]
@@ -20057,7 +20043,8 @@ output:
 ----------------------------------------
 example:
   .flex-justify-start {
-    justify-content: flex-start; }
+    justify-content: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20072,14 +20059,13 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-.left
-----------------------------------------
-property: left
+left
 ----------------------------------------
 usage:
   .left-[key]
@@ -20088,8 +20074,9 @@ output:
   left: [value];
 ----------------------------------------
 example:
-  .left-n2px {
-    left: -2px; }
+  .left-neg-2px {
+    left: -2px;
+  }
 ----------------------------------------
 */
 /*
@@ -20104,7 +20091,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20119,7 +20107,8 @@ output:
 ----------------------------------------
 example:
   .text-ls-2 {
-    letter-spacing: .1em; }
+    letter-spacing: .1em;
+  }
 ----------------------------------------
 */
 /*
@@ -20134,7 +20123,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20142,14 +20132,15 @@ example:
 line-height
 ----------------------------------------
 usage:
-  .line-height-[value]
+  .line-height-[modifier]-[key]
 ----------------------------------------
 output:
   line-height: [value];
 ----------------------------------------
 example:
   .line-height-sans-2 {
-    line-height: 1.15; }
+    line-height: 1.1;
+  }
 ----------------------------------------
 */
 /*
@@ -20164,7 +20155,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20175,15 +20167,17 @@ usage:
   .margin-[modifier]*-[key]
 ----------------------------------------
 output:
-  margin: [value]
+  margin: [value];
 ----------------------------------------
 example:
   .margin-x-auto {
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+  }
 
-  .margin-g105 {
-    margin: .75rem; }
+  .margin-105 {
+    margin: .75rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20198,7 +20192,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20206,14 +20201,15 @@ example:
 max-height
 ----------------------------------------
 usage:
-  .maxh[key]
+  .maxh-[key]
 ----------------------------------------
 output:
   max-height: [value];
 ----------------------------------------
 example:
   .maxh-viewport {
-    max-height: 100vh; }
+    max-height: 100vh;
+  }
 ----------------------------------------
 */
 /*
@@ -20228,7 +20224,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20243,7 +20240,8 @@ output:
 ----------------------------------------
 example:
   .maxw-desktop {
-    max-width: 960px; }
+    max-width: 64rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20258,7 +20256,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20275,7 +20274,8 @@ output:
 ----------------------------------------
 example:
   .measure-4 {
-    max-width: 68ex; }
+    max-width: 68ex;
+  }
 ----------------------------------------
 */
 /*
@@ -20290,7 +20290,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20305,7 +20306,8 @@ output:
 ----------------------------------------
 example:
   .minh-card {
-    min-height: 200px; }
+    min-height: 10rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20320,7 +20322,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20334,8 +20337,9 @@ output:
   min-width: [value];
 ----------------------------------------
 example:
-  .minw-desktop {
-    min-width: 960px; }
+  .minw-15 {
+    min-width: 7.5rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20350,7 +20354,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20365,7 +20370,12 @@ output:
 ----------------------------------------
 example:
   .opacity-0 {
-    opacity: 0; }
+    opacity: 0;
+  }
+
+  .opacity-30 {
+    opacity: 0.3;
+  }
 ----------------------------------------
 */
 /*
@@ -20380,7 +20390,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20396,8 +20407,9 @@ output:
   outline: [modifier] solid;
 ----------------------------------------
 example:
-  .outline-g05 {
-    outline: 4px solid }
+  .outline-2px {
+    outline: 2px solid;
+  }
 ----------------------------------------
 */
 /*
@@ -20412,7 +20424,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20420,14 +20433,15 @@ example:
 outline-color
 ----------------------------------------
 usage:
-  .outline-color-[key]
+  .outline-[key]
 ----------------------------------------
 output:
   outline-color: [value];
 ----------------------------------------
 example:
-  .outline-color-yellow-50 {
-    outline-color: #91721f; }
+  .outline-yellow {
+    outline-color: #fee685;
+  }
 ----------------------------------------
 */
 /*
@@ -20442,7 +20456,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20450,14 +20465,15 @@ example:
 overflow
 ----------------------------------------
 usage:
-  .overflow-[modifier]
+  .overflow-[modifier]*-[key]
 ----------------------------------------
 output:
-  overflow[-modifier]: [value] solid;
+  overflow[-modifier]: [value];
 ----------------------------------------
 example:
   .overflow-y-hidden {
-    overflow-y: hidden; }
+    overflow-y: hidden;
+  }
 ----------------------------------------
 */
 /*
@@ -20472,7 +20488,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20483,14 +20500,16 @@ usage:
   .order-[key]
 ----------------------------------------
 output:
-  order: [value]
+  order: [value];
 ----------------------------------------
 example:
   .order-first {
-    order: -1; }
+    order: -1;
+  }
 
   .order-2 {
-    order: 2; }
+    order: 2;
+  }
 ----------------------------------------
 */
 /*
@@ -20505,7 +20524,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20513,17 +20533,19 @@ example:
 padding
 ----------------------------------------
 usage:
-  .padding-[modifier]*-[value]
+  .padding-[modifier]*-[key]
 ----------------------------------------
 output:
-  padding: [value]
+  padding[-modifier]: [value];
 ----------------------------------------
 example:
   .padding-0 {
-    padding: none; }
+    padding: 0;
+  }
 
   .padding-bottom-1px {
-    padding-bottom: 1px; }
+    padding-bottom: 1px;
+  }
 ----------------------------------------
 */
 /*
@@ -20531,16 +20553,21 @@ example:
 PIN
 ----------------------------------------
 usage:
-  .pin-all
-----------------------------------------
-output:
-  bottom: 0
-  left:0
-  right: 0
-  top: 0
+  .pin-[key]
 ----------------------------------------
 example:
-  .pin-all
+  .pin-all {
+    bottom:0;
+    left:0;
+    right:0;
+    top:0;
+    position:absolute;
+  }
+
+  .pin-left {
+    left:0;
+    position:absolute;
+  }
 ----------------------------------------
 */
 /*
@@ -20555,7 +20582,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20570,7 +20598,8 @@ output:
 ----------------------------------------
 example:
   .position-absolute {
-    position: absolute; }
+    position: absolute;
+  }
 ----------------------------------------
 */
 /*
@@ -20585,14 +20614,13 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-.right
-----------------------------------------
-property: right
+right
 ----------------------------------------
 usage:
   .right-[key]
@@ -20601,8 +20629,9 @@ output:
   right: [value];
 ----------------------------------------
 example:
-  .right-n2px {
-    right: -2px; }
+  .right-neg-2px {
+    right: -2px;
+  }
 ----------------------------------------
 */
 /*
@@ -20617,7 +20646,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20632,9 +20662,10 @@ output:
   width: [value];
 ----------------------------------------
 example:
-  .square-g6 {
+  .square-6 {
     height: 3rem;
-    width: 3rem; }
+    width: 3rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20649,7 +20680,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20660,11 +20692,12 @@ usage:
   .text-[key]
 ----------------------------------------
 output:
-  align: [value];
+  text-align: [value];
 ----------------------------------------
 example:
   .text-left {
-    align: left; }
+    text-align: left;
+  }
 ----------------------------------------
 */
 /*
@@ -20679,7 +20712,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20690,11 +20724,12 @@ usage:
   .text-[key]
 ----------------------------------------
 output:
-  text-decoration: [value]
+  text-decoration: [value];
 ----------------------------------------
 example:
   .text-no-underline {
-    text-decoration: none; }
+    text-decoration: none;
+  }
 ----------------------------------------
 */
 /*
@@ -20709,7 +20744,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20717,14 +20753,15 @@ example:
 text-decoration-color
 ----------------------------------------
 usage:
-  .text-decoration-color-[key]
+  .underline-[key]
 ----------------------------------------
 output:
-  text-decoration-color: [value]
+  text-decoration-color: [value];
 ----------------------------------------
 example:
-  .text-decoration-color-black {
-    text-decoration-color: #000; }
+  .underline-red {
+    text-decoration-color: #e52207;
+  }
 ----------------------------------------
 */
 /*
@@ -20739,7 +20776,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20750,11 +20788,12 @@ usage:
   .text-indent-[key]
 ----------------------------------------
 output:
-  align: [value];
+  text-indent: [value];
 ----------------------------------------
 example:
   .text-indent-0 {
-    text-ident: 0; }
+    text-ident: 0;
+  }
 ----------------------------------------
 */
 /*
@@ -20769,7 +20808,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20777,14 +20817,15 @@ example:
 text-transform
 ----------------------------------------
 usage:
-  .text-[value]
+  .text-[key]
 ----------------------------------------
 output:
-  text-transform: value;
+  text-transform: [value];
 ----------------------------------------
 example:
   .text-uppercase {
-    text-transform: uppercase; }
+    text-transform: uppercase;
+  }
 ----------------------------------------
 */
 /*
@@ -20799,14 +20840,13 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
 ========================================
-.top
-----------------------------------------
-property: top
+top
 ----------------------------------------
 usage:
   .top-[key]
@@ -20815,8 +20855,9 @@ output:
   top: [value];
 ----------------------------------------
 example:
-  .top-n2px {
-    top: -2px; }
+  .top-neg-2px {
+    top: -2px;
+  }
 ----------------------------------------
 */
 /*
@@ -20831,7 +20872,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20839,14 +20881,15 @@ example:
 vertical-align
 ----------------------------------------
 usage:
-  .vertical-align-[value]
+  .text-[key]
 ----------------------------------------
 output:
-  vertical-align: [value]
+  vertical-align: [value];
 ----------------------------------------
 example:
-  .vertical-align-top {
-    vertical-align: top; }
+  .text-top {
+    vertical-align: top;
+  }
 ----------------------------------------
 */
 /*
@@ -20861,7 +20904,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20876,7 +20920,8 @@ output:
 ----------------------------------------
 example:
   .text-pre-wrap {
-    white-space: pre-wrap; }
+    white-space: pre-wrap;
+  }
 ----------------------------------------
 */
 /*
@@ -20891,7 +20936,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20905,8 +20951,9 @@ output:
   width: [value];
 ----------------------------------------
 example:
-  .width-75ct {
-    width: 75%; }
+  .width-2 {
+    width: 1rem;
+  }
 ----------------------------------------
 */
 /*
@@ -20921,7 +20968,8 @@ output:
 ----------------------------------------
 example:
   .flex-align-start {
-    align-items: flex-start; }
+    align-items: flex-start;
+  }
 ----------------------------------------
 */
 /*
@@ -20936,9 +20984,12 @@ output:
 ----------------------------------------
 example:
   .z-100 {
-    z-index: 100; }
+    z-index: 100;
+  }
+
   .z-top {
-    z-index: 9999; }
+    z-index: 99999;
+  }
 ----------------------------------------
 */
 .add-list-reset {
