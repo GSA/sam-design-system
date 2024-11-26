@@ -50718,18 +50718,15 @@ h6, .h6 {
 .usa-button--unstyled {
   color: #3f57a6;
   border: none;
-  text-decoration: none;
+  text-decoration: underline;
   min-width: 0px !important;
 }
 .usa-button--unstyled.usa-button--active, .usa-button--unstyled:active {
   border: none;
   background-color: transparent;
-  font-weight: 700;
   color: #374274;
 }
 .usa-button--unstyled.usa-button--hover, .usa-button--unstyled:hover {
-  font-weight: 700;
-  color: #374274;
   border: none;
   background-color: transparent;
   text-decoration: underline;
@@ -51083,6 +51080,34 @@ h6, .h6 {
   border-style: solid;
 }
 
+.usa-button--info-light {
+  background-color: #9DDFEB;
+  border-color: #9DDFEB;
+}
+.usa-button--info-light.usa-button--hover, .usa-button--info-light:hover {
+  background-color: #E7F6F8;
+  border-color: #E7F6F8;
+}
+.usa-button--info-light.usa-button--active, .usa-button--info-light:active {
+  color: white;
+  background-color: #009EC1;
+  border-color: #009EC1;
+}
+
+.usa-button--error-light {
+  background-color: #FDB8AE;
+  border-color: #FDB8AE;
+}
+.usa-button--error-light.usa-button--hover, .usa-button--error-light:hover {
+  background-color: #FDE0DB;
+  border-color: #FDE0DB;
+}
+.usa-button--error-light.usa-button--active, .usa-button--error-light:active {
+  color: white;
+  background-color: #B50909;
+  border-color: #B50909;
+}
+
 .usa-button--accent-warm {
   background-color: #dec69a;
   border-color: #dec69a;
@@ -51305,6 +51330,26 @@ h6, .h6 {
   color: white;
 }
 .sds-button--primary.usa-focus, .sds-button--primary:focus {
+  outline-offset: 2px;
+}
+
+/*-------------------
+  SDS Button Secondary
+--------------------*/
+.sds-button--secondary {
+  background-color: #1a4480;
+  color: white;
+  box-shadow: none;
+}
+.sds-button--secondary.usa-button--hover, .sds-button--secondary:hover {
+  background-color: #5994f6;
+  color: white;
+}
+.sds-button--secondary.usa-button--active, .sds-button--secondary:active {
+  background-color: #162e51;
+  color: white;
+}
+.sds-button--secondary.usa-focus, .sds-button--secondary:focus {
   outline-offset: 2px;
 }
 
@@ -53029,11 +53074,7 @@ through all possible variants
 .sds-pagination .sds-pagination__controls input {
   margin-top: 0;
   min-height: 1.75rem;
-}
-@media all and (min-width: 30em) {
-  .sds-pagination .sds-pagination__controls input {
-    margin-right: 0.5rem;
-  }
+  margin-right: 0.5rem;
 }
 
 .sds-pagination button {
@@ -53064,12 +53105,7 @@ through all possible variants
 }
 
 .sds-pagination__results {
-  display: none;
-}
-@media all and (min-width: 30em) {
-  .sds-pagination__results {
-    display: block;
-  }
+  display: block;
 }
 
 .sds-pagination .usa-label {
@@ -53077,16 +53113,11 @@ through all possible variants
 }
 
 .sds-pagination .sds-pagination__total {
-  display: none;
+  display: block;
 }
 .sds-pagination .sds-pagination__total strong {
   color: #162e51;
   margin-left: 2px;
-}
-@media all and (min-width: 30em) {
-  .sds-pagination .sds-pagination__total {
-    display: block;
-  }
 }
 
 .width-6 {
@@ -57933,7 +57964,7 @@ sds-filters usa-accordion formly-field:first-child {
 .usa-checkbox__label::before,
 .usa-radio__label::before {
   margin-right: 0.5rem;
-  box-shadow: 0 0 0 2px #2e2e2a;
+  box-shadow: 0 0 0 1px #2e2e2a;
 }
 
 .usa-checkbox__label-description,
