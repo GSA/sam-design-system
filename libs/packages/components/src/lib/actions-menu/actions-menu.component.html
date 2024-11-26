@@ -7,6 +7,7 @@
     'usa-button--disabled': disabled
   }"
   [class.sds-button--primary]="model.trigger.type === 'primary' && !model.label"
+  [class.sds-button--secondary]="model.trigger.type === 'secondary'"
   [class.sds-button--shadow]="model.trigger.shadow"
   [class.sds-button--small]="size === 'sm'"
   [sdsMenuTriggerFor]="menu"
