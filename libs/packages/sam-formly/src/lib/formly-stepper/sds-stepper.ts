@@ -44,6 +44,7 @@ let nextId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsStepComponent {
+  @Input() onBlurValidation = false;
   /**
    * References to Any children this step might contain
    */
@@ -151,16 +152,25 @@ export class SdsStepComponent {
    * @param $event - the updated model
    */
   onModelChange($event) {
-    let event: CustomEvent;
-    if (typeof Event === 'function') {
-      event = new CustomEvent('stepModelChange', { bubbles: true, detail: $event });
-    } else {
-      // IE11 support
-      event = this._document.createEvent('CustomEvent');
-      event.initCustomEvent('sort', true, true, $event);
-    }
+    if (this.onBlurValidation && this.fieldConfig) {
 
-    this._el.nativeElement.dispatchEvent(event);
+     // this._stepper.updateValidation(this._stepper.selectedStep);
+      this.fieldConfig.formControl.updateValueAndValidity(); // Trigger validation on blur
+      this.fieldConfig.options.showError = (field) => {
+        return field.formControl.invalid && field.formControl.touched; // Show errors only if invalid and touched
+      };
+    } else {
+      let event: CustomEvent;
+      if (typeof Event === 'function') {
+        event = new CustomEvent('stepModelChange', { bubbles: true, detail: $event });
+      } else {
+        // IE11 support
+        event = this._document.createEvent('CustomEvent');
+        event.initCustomEvent('sort', true, true, $event);
+      }
+
+      this._el.nativeElement.dispatchEvent(event);
+    }
 
     this.modelChange.emit($event);
   }

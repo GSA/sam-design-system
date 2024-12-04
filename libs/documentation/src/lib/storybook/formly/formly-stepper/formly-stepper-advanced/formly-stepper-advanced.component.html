@@ -13,13 +13,21 @@
   (saveData)="onSaveData($event)"
   (submittedData)="handleSubmit($event)"
 >
-  <sds-step
+ <sds-step [id]="stepMap.security.id" text="Security" [fieldConfig]="stepMap.security.fieldConfig" [onBlurValidation]="true" >
+      <h1 sdsStepHeader class="margin-top-0">
+        Security
+        <hr />
+      </h1>
+    </sds-step>
+
+
+  <!-- <sds-step
     id="welcome"
     text="Welcome"
     [stepTemplate]="gatherInformation"
     [stepValidationFn]="stepMap.welcome.validationFn"
   >
-  </sds-step>
+  </sds-step> -->
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
     <sds-step id="permission" text="Permission" [fieldConfig]="stepMap.permission.fieldConfig">
@@ -158,3 +166,6 @@
   <formly-form [fields]="[stepMap.review.fieldConfig]" [model]="model"></formly-form>
   <subawardee-demo [displayInput]="false" [subawardees]="model.subawardee"></subawardee-demo>
 </ng-template>
+
+
+{{model |json}}
