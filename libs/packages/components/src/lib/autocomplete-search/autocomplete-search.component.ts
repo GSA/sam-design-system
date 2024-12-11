@@ -363,7 +363,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       this.input.nativeElement.focus();
       const flat = this.getFlatElements();
       const index = flat.findIndex(
-        (element) => element[this.configuration.primaryKeyField] === item[this.configuration.primaryKeyField]
+        (element) => element[this.configuration.primaryKeyField] === item[this.configuration.primaryKeyField],
       );
       this.highlightedIndex = index;
       this.setHighlightedItem(flat[this.highlightedIndex]);
@@ -381,7 +381,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
       item,
       this.configuration.primaryKeyField,
       this.configuration.selectionMode,
-      this.model
+      this.model,
     );
     this.propogateChange(this.model);
     let message = this.getObjectValue(item, this.configuration.primaryTextField);
@@ -512,7 +512,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    */
   checkItemSelected(result: any) {
     const selectedItem = this.model.items.filter(
-      (item) => item[this.configuration.primaryKeyField] === result[this.configuration.primaryKeyField]
+      (item) => item[this.configuration.primaryKeyField] === result[this.configuration.primaryKeyField],
     );
     return selectedItem.length > 0 ? true : false;
   }
@@ -540,8 +540,8 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
               this.configuration.isFreeTextEnabled || this.maxResults == 0
                 ? -1
                 : this.highlightedIndex >= 0
-                ? this.highlightedIndex
-                : 0;
+                  ? this.highlightedIndex
+                  : 0;
             if (!this.configuration.isFreeTextEnabled) {
               this.setHighlightedItem(this.results[this.highlightedIndex]);
             }

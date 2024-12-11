@@ -8,7 +8,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [ngClass]="{
         'sds-textarea-small': props.maxLength && props.size === 'small',
         'sds-textarea-medium': props.maxLength && props.size === 'medium',
-        'sds-textarea-large': props.maxLength && props.size === 'large'
+        'sds-textarea-large': props.maxLength && props.size === 'large',
       }"
     >
       <textarea

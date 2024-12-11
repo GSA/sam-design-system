@@ -50,7 +50,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     private elementRef: ElementRef,
     private renderer2: Renderer2,
     private cdr: ChangeDetectorRef,
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: any,
   ) {}
 
   ngOnDestroy() {

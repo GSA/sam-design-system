@@ -157,7 +157,7 @@ export class SdsStepperNavDirective {
 export class SdsStepperUSWDSNavDirective implements OnInit, OnDestroy {
   constructor(
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
-    private _el: UsaStepIndicatorComponent
+    private _el: UsaStepIndicatorComponent,
   ) {}
 
   stepChangeSubscriptions: Subscription = new Subscription();

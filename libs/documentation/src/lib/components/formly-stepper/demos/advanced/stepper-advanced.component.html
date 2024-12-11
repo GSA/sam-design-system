@@ -1,30 +1,26 @@
-<button class="usa-button margin-bottom-3" (click)="toggleLinearMode()">
-  Toggle Linear Mode
-</button>
-
 <custom-stepper-demo
   #stepper
   [queryParamKey]="'sdsAdvancedStepper'"
   [model]="model"
   [stepValidityMap]="stepValidityMap"
   (stepChange)="onStepChange($event)"
-  [linear]="linear"
-  [validateStepsOnInit]="validateStepsOnInit"
+  [linear]="false"
+  [validateStepsOnInit]="false"
   (saveData)="onSaveData($event)"
   (submittedData)="handleSubmit($event)"
 >
   <sds-step
-    id="welcome"
-    text="Welcome"
-    [stepTemplate]="gatherInformation"
-    [stepValidationFn]="stepMap.welcome.validationFn"
+    id="Validation"
+    text="Validation Form"
+    [fieldConfig]="stepMap.validationForm.fieldConfig"
+    [validateOnBlur]="true"
   >
   </sds-step>
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
-    <sds-step id="permission" text="permission" [fieldConfig]="stepMap.permission.fieldConfig">
+    <sds-step id="permission" text="Permission" [fieldConfig]="stepMap.permission.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
-        permission
+        Permission
         <hr />
       </h1>
     </sds-step>
@@ -82,14 +78,10 @@
 
 <!-- Custom Templates -->
 <ng-template #gatherInformation>
-  <h1 class="margin-top-0">
-    Gather Your Information
-  </h1>
+  <h1 class="margin-top-0">Gather Your Information</h1>
   <div class="sds-card">
     <div class="sds-card__header">
-      <h2>
-        U.S. REGISTRANTS:
-      </h2>
+      <h2>U.S. REGISTRANTS:</h2>
     </div>
     <div class="sds-card__body">
       <ul class="usa-list usa-list--unstyled">

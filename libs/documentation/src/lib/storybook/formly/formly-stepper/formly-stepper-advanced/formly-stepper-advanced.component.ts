@@ -10,11 +10,12 @@ import { CustomStepperDemo } from './custom-stepper.component';
   providers: [StepperAdvancedService, SdsStepper],
 })
 export class StepperAdvancedDemoComponent {
-
   @ViewChild(CustomStepperDemo, { static: true }) public customStepper: CustomStepperDemo;
-  model = { "subawardee": [], "reportDetails": { "report": { "month": "03", "year": "03" } },
- //"securityLevels": { "nameOfIndividualConsent": "Test" , "titleOfIndividualConsent": "test123" }
- }
+  model = {
+    subawardee: [],
+    reportDetails: { report: { month: '03', year: '03' } },
+    //"securityLevels": { "nameOfIndividualConsent": "Test" , "titleOfIndividualConsent": "test123" }
+  };
   validateStepsOnInit = ['businessoperations.security'];
   showLoading = false;
 
@@ -58,7 +59,6 @@ export class StepperAdvancedDemoComponent {
                 field.formControl.markAsTouched(); // Mark field as touched on blur
                 field.options.showError = (f) => f.formControl.invalid && f.formControl.touched; // Show errors
                 this.onBlurHandler(field, event);
-
               },
             },
 
@@ -153,9 +153,8 @@ export class StepperAdvancedDemoComponent {
   reinitializeComponents = false;
   constructor(private stepperAdvancedService: StepperAdvancedService) {}
 
-onBlurHandler(field: any, event: FocusEvent): void {
-
-this.customStepper.updateValidation(this.customStepper.selectedStep);
+  onBlurHandler(field: any, event: FocusEvent): void {
+    this.customStepper.updateValidation(this.customStepper.selectedStep);
     console.log('Field blurred:', field.key);
     console.log('Event:', event);
   }

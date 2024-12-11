@@ -10,6 +10,7 @@ import { FormlyForm } from '@ngx-formly/core';
   styles: [
     '.justify-content-space-between {justify-content: space-between; }',
     '.usa-sidenav__item--disabled {cursor: default; hover:none; opacity: 60%; pointer-events: none}',
+    '.hr {width: 100%; }',
   ],
 })
 export class CustomStepperDemo extends SdsStepper {

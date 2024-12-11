@@ -44,7 +44,6 @@ let nextId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SdsStepComponent {
-  @Input() onBlurValidation = false;
   /**
    * References to Any children this step might contain
    */
@@ -134,6 +133,12 @@ export class SdsStepComponent {
   @Input() disabled?: boolean;
 
   /**
+   * Defines whether the step is to validate on blur
+   * @default true
+   */
+  @Input() validateOnBlur = true;
+
+  /**
    * Emitted anytime user input changes in the step - only applicable if
    * step is a formly field config
    */
@@ -142,7 +147,7 @@ export class SdsStepComponent {
   constructor(
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
     private _el: ElementRef,
-    @Inject(DOCUMENT) private _document
+    @Inject(DOCUMENT) private _document,
   ) {}
 
   /**
@@ -152,25 +157,16 @@ export class SdsStepComponent {
    * @param $event - the updated model
    */
   onModelChange($event) {
-    if (this.onBlurValidation && this.fieldConfig) {
-
-     // this._stepper.updateValidation(this._stepper.selectedStep);
-      this.fieldConfig.formControl.updateValueAndValidity(); // Trigger validation on blur
-      this.fieldConfig.options.showError = (field) => {
-        return field.formControl.invalid && field.formControl.touched; // Show errors only if invalid and touched
-      };
+    let event: CustomEvent;
+    if (typeof Event === 'function') {
+      event = new CustomEvent('stepModelChange', { bubbles: true, detail: $event });
     } else {
-      let event: CustomEvent;
-      if (typeof Event === 'function') {
-        event = new CustomEvent('stepModelChange', { bubbles: true, detail: $event });
-      } else {
-        // IE11 support
-        event = this._document.createEvent('CustomEvent');
-        event.initCustomEvent('sort', true, true, $event);
-      }
-
-      this._el.nativeElement.dispatchEvent(event);
+      // IE11 support
+      event = this._document.createEvent('CustomEvent');
+      event.initCustomEvent('sort', true, true, $event);
     }
+
+    this._el.nativeElement.dispatchEvent(event);
 
     this.modelChange.emit($event);
   }
@@ -207,7 +203,7 @@ export class SdsStepper {
    * only on save click or when loading a pre-saved form with defined validity.
    * @default false
    */
-  @Input() customErrorHandling = false;
+  @Input() customErrorHandling = true;
 
   /** Whether the validity of previous steps should prevent navigating to next steps.
    * @default false
@@ -290,13 +286,20 @@ export class SdsStepper {
    */
   @HostListener('stepModelChange', ['$event'])
   onModelChange($event: CustomEvent) {
+    console.log(this.customErrorHandling, 'customErrorHandling');
+
     $event.stopImmediatePropagation();
     this.modelChange.emit($event.detail);
   }
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
+    //await this.updateValidation(this.selectedStep);
     if (!this.selectedStep) {
       return;
     }
@@ -373,6 +376,9 @@ export class SdsStepper {
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     this.flatSteps.forEach((step) => {
       step.model = step.model ? step.model : this.model;
+      if (this.customErrorHandling && step.options?.formState?.onStateChange) {
+        step.options.formState.onStateChange = (state) => this.onFormStateChange(state);
+      }
     });
 
     if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
@@ -403,6 +409,11 @@ export class SdsStepper {
         });
       }
     });
+  }
+
+  onFormStateChange(state: any) {
+    console.log('Global form state changed:', state);
+    // Custom logic for global state changes
   }
 
   getFlatSteps(stepTemplates: QueryList<SdsStepComponent>): SdsStepComponent[] {
@@ -443,7 +454,7 @@ export class SdsStepper {
       stepIndex = stepIndex + incrementor;
       if (stepIndex > this.flatSteps.length) {
         throw Error(
-          `StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`
+          `StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`,
         );
       }
     }
@@ -511,7 +522,7 @@ export class SdsStepper {
   private toggleOnValidationForStep(
     step: SdsStepComponent,
     validityMap: { [key: string]: boolean | undefined },
-    customErrorHandling?: boolean
+    customErrorHandling?: boolean,
   ) {
     if (!step.options && !customErrorHandling) {
       this.selectedStep.options = {};

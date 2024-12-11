@@ -163,7 +163,7 @@ ModelTrigger.parameters = {
   preview: generateConfig(
     'storybook/actions/actions-model-trigger',
     'ActionsModelTriggerModule',
-    'sds-actions-model-trigger'
+    'sds-actions-model-trigger',
   ),
   stackblitzLink: generateStackblitzLink('actions', 'model-trigger'),
 };

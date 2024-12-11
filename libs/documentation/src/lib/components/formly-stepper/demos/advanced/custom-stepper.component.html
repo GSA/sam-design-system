@@ -2,7 +2,7 @@
   <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3 margin-right-2">
     <sds-side-toolbar [responsiveButtonText]="'Select Step'" (responsiveDialog)="onDialogOpen($event)">
       <ng-template #toolbarContent>
-        <div class="sds-card" *ngIf="!!responseDialog">
+        <div class="sds-card" *ngIf="responseDialog">
           <div class="sds-card__header sds-card__header--accent-cool grid-row">
             <button
               id="cancelButton"
@@ -25,7 +25,7 @@
                 *ngFor="let step of stepTemplates; let i = index"
                 class="usa-sidenav__item"
                 [ngClass]="{
-                  'usa-current': selectedStep?.id === step.id
+                  'usa-current': selectedStep?.id === step.id,
                 }"
               >
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: step }">
@@ -44,25 +44,29 @@
     <div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
   </div>
 </div>
-<hr style="width: 100%;" class="fine" />
+<hr class="fine" />
 <div class="grid-row grid-gap margin-top-4">
   <div class="flex-10 flex-justify-start">
-    <button class="usa-button usa-button--base usa-button--outline radius-pill">
-      <usa-icon size="md" [icon]="'x'"></usa-icon> Cancel
+    <button class="usa-button usa-button--base usa-button--outline usa-button-pill text-ink space-x-1">
+      <div><usa-icon size="md" [icon]="'x-lg'"></usa-icon> Cancel</div>
     </button>
   </div>
-
-  <div class="flex-justify-end">
-    <button sdsStepperPrevious class="usa-button bg-primary-lighter radius-pill">
+  <div class="flex-justify-end display-flex">
+    <button sdsStepperPrevious class="usa-button bg-primary-lighter usa-button-pill space-x-1">
       <usa-icon size="md" [icon]="'chevron-left'"></usa-icon> Previous
     </button>
     <button *ngIf="showSubmitButton()" class="usa-button bg-primary-lighter radius-pill" (click)="submitClicked()">
       Submit
     </button>
-    <button *ngIf="showReviewButton()" sdsStepperNext class="usa-button bg-primary-lighter radius-pill">
+    <button *ngIf="showReviewButton()" sdsStepperNext class="usa-button usa-button-pill space-x-1">
       Review<usa-icon size="md" [icon]="'chevron-right'"></usa-icon>
     </button>
-    <button *ngIf="showNextButton()" sdsStepperNext [attr.id]="id + '-nextBtn'" class="usa-button radius-pill">
+    <button
+      *ngIf="showNextButton()"
+      sdsStepperNext
+      [attr.id]="id + '-nextBtn'"
+      class="usa-button usa-button-pill space-x-1"
+    >
       Next <usa-icon size="md" [icon]="'chevron-right'"></usa-icon>
     </button>
   </div>
@@ -91,7 +95,10 @@
       [sdsStepperNav]="step"
       (click)="onSideNavClick()"
       class="display-flex justify-content-space-between"
-      [ngClass]="{ 'usa-sidenav__item--disabled': step.disabled || (step.isReview && _isReviewAndSubmitDisabled) }"
+      [ngClass]="{
+        'usa-sidenav__item--disabled':
+          step.disabled || (step.isReview && !canReviewWithErrors && _isReviewAndSubmitDisabled),
+      }"
     >
       <span>
         {{ step.text }}

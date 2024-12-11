@@ -63,20 +63,18 @@ describe('SdsAccordionComponent', () => {
   let fixture: ComponentFixture<WrapperComponent>;
   let accordionDe: DebugElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          SdsAccordionComponent,
-          SdsAccordionItemComponent,
-          SdsAccordionTitleDirective,
-          SdsAccordionContentDirective,
-          WrapperComponent,
-        ],
-        imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        SdsAccordionComponent,
+        SdsAccordionItemComponent,
+        SdsAccordionTitleDirective,
+        SdsAccordionContentDirective,
+        WrapperComponent,
+      ],
+      imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule],
+    }).compileComponents();
+  }));
 
   // expandable rows
   describe('Accordion', () => {
@@ -90,12 +88,9 @@ describe('SdsAccordionComponent', () => {
       wrapper = wrapperComponent;
     });
 
-    it(
-      'should create',
-      waitForAsync(() => {
-        expect(component).toBeTruthy();
-      })
-    );
+    it('should create', waitForAsync(() => {
+      expect(component).toBeTruthy();
+    }));
 
     it('should have 4 items', () => {
       expect(component.accordionItems.length).toEqual(4);

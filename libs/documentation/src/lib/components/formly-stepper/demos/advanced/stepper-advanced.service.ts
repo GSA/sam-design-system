@@ -10,10 +10,6 @@ export class StepperAdvancedService {
       fieldGroupClassName: 'grid-row',
       fieldGroup: [
         {
-          key: 'permissionsNeeded',
-          template: '<br/><h4><b>what permission</b></h4></br> Select the specfific <br>',
-        },
-        {
           key: 'typeOfEntity',
           className: 'desktop: grid-col-12 tablet: grid-col-12',
           type: SdsFormlyTypes.RADIO,
@@ -53,22 +49,84 @@ export class StepperAdvancedService {
             group: 'panel',
             options: [
               {
-                key: 'read-public',
-                value: 'Read Public',
+                label: 'Read Public',
+                value: 'read-public',
               },
               {
-                key: 'read-sensitive',
-                value: 'Read sensitive',
+                label: 'Read sensitive',
+                value: 'read-sensitive',
               },
               {
-                key: 'write',
-                value: 'Write public',
+                label: 'Write public',
+                value: 'write',
               },
               {
-                key: 'write-sensitive',
-                value: 'Write sensitive',
+                label: 'Write sensitive',
+                value: 'write-sensitive',
               },
             ],
+          },
+        },
+      ],
+    };
+  }
+
+  getValidationForm(): FormlyFieldConfig {
+    return {
+      key: 'validationForm',
+      fieldGroup: [
+        {
+          key: 'name',
+          type: 'input',
+          props: {
+            label: 'Name (required)',
+            required: true,
+          },
+        },
+        {
+          key: 'age',
+          type: 'input',
+          props: {
+            label: 'Age (min= 18, max= 40)',
+            type: 'number',
+            min: 18,
+            max: 40,
+            required: true,
+          },
+        },
+        {
+          key: 'password',
+          type: 'input',
+          props: {
+            label: 'Password (minLength = 6)',
+            type: 'password',
+            required: true,
+            minLength: 6,
+          },
+        },
+        {
+          key: 'comment',
+          type: 'textarea',
+          props: {
+            label: 'Comment (maxLength = 100)',
+            required: true,
+            maxLength: 100,
+            rows: 5,
+          },
+        },
+        {
+          key: 'ip',
+          type: 'input',
+          props: {
+            label: 'IP Address (pattern = /(d{1,3}.){3}d{1,3}/)',
+            pattern: /(\d{1,3}\.){3}\d{1,3}/,
+            required: true,
+          },
+          validation: {
+            messages: {
+              pattern: (error: any, field: FormlyFieldConfig) =>
+                `"${field.formControl.value}" is not a valid IP Address`,
+            },
           },
         },
       ],
@@ -383,7 +441,7 @@ export class StepperAdvancedService {
             showError: false,
           },
           modelOptions: {
-            updateOn: 'blur',
+            updateOn: 'blur' as 'blur',
           },
         },
       ],

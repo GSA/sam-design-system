@@ -346,7 +346,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
           this.readonlyModes.autocompleteSingleSelectType = !this.readonlyModes.autocompleteSingleSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteSingleSelectType,
-            this.autocompleteSingleSelectFields
+            this.autocompleteSingleSelectFields,
           );
         },
       },
@@ -380,7 +380,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
           this.readonlyModes.autocompleteMultiSelectType = !this.readonlyModes.autocompleteMultiSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteMultiSelectType,
-            this.autocompleteMultiSelectFields
+            this.autocompleteMultiSelectFields,
           );
         },
       },
