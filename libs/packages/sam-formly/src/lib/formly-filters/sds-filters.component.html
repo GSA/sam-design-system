@@ -93,7 +93,8 @@
   </div>
 
   <div *ngIf="showReset" class="horizontal-reset margin-left-2 text-right">
-    <sds-formly-reset [options]="options" [defaultModel]="{}" (resetClicked)="resetClicked.emit()"></sds-formly-reset>
+    <sds-formly-reset [options]="options" [defaultModel]="defaultModel" (resetClicked)="reset($event)">
+    </sds-formly-reset>
   </div>
 </div>
 
