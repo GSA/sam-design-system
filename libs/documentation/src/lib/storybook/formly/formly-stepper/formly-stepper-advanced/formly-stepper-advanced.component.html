@@ -10,13 +10,14 @@
   [validateStepsOnInit]="validateStepsOnInit"
   (saveData)="onSaveData($event)"
   (submittedData)="handleSubmit($event)"
-[customErrorHandling]="true"
+  [customErrorHandling]="true"
 >
-  <sds-step 
-
-id="Validation" text="Validation Form" [fieldConfig]="stepMap.validationForm.fieldConfig"
-[validateOnBlur]="true"
->
+  <sds-step
+    id="Validation"
+    text="Validation Form"
+    [fieldConfig]="stepMap.validationForm.fieldConfig"
+    [validateOnBlur]="true"
+  >
   </sds-step>
 
   <sds-step

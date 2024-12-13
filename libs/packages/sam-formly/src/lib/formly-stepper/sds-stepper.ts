@@ -144,7 +144,7 @@ export class SdsStepComponent {
   constructor(
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
     private _el: ElementRef,
-    @Inject(DOCUMENT) private _document
+    @Inject(DOCUMENT) private _document,
   ) {}
 
   ngOnInit() {
@@ -329,7 +329,11 @@ export class SdsStepper {
     this.modelChange.emit($event.detail);
   }
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     //await this.updateValidation(this.selectedStep);
@@ -484,7 +488,7 @@ export class SdsStepper {
       stepIndex = stepIndex + incrementor;
       if (stepIndex > this.flatSteps.length) {
         throw Error(
-          `StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`
+          `StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`,
         );
       }
     }
@@ -552,7 +556,7 @@ export class SdsStepper {
   private toggleOnValidationForStep(
     step: SdsStepComponent,
     validityMap: { [key: string]: boolean | undefined },
-    customErrorHandling?: boolean
+    customErrorHandling?: boolean,
   ) {
     if (!step.options && !customErrorHandling) {
       this.selectedStep.options = {};
