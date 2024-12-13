@@ -614,8 +614,8 @@ export class StepperAdvancedService {
           type: &#39;textarea&#39;,
           props: {
             label: &#39;Comment (maxLength = 100)&#39;,
-           // required: true,
-           // maxLength: 100,
+            // required: true,
+            // maxLength: 100,
             rows: 5,
           },
         },
@@ -625,20 +625,18 @@ export class StepperAdvancedService {
           props: {
             label: &#39;IP Address (pattern = /(d{1,3}.){3}d{1,3}/)&#39;,
             pattern: /(\d{1,3}\.){3}\d{1,3}/,
-           //  required: true,
-          // },
-          // validation: {
-          //   messages: {
-          //     pattern: (error: any, field: FormlyFieldConfig) =&gt;
-          //       `&#34;${field.formControl.value}&#34; is not a valid IP Address`,
-          //   },
-           },
+            //  required: true,
+            // },
+            // validation: {
+            //   messages: {
+            //     pattern: (error: any, field: FormlyFieldConfig) =&gt;
+            //       `&#34;${field.formControl.value}&#34; is not a valid IP Address`,
+            //   },
+          },
         },
       ],
     };
   }
-
-
 
   getPermission(): FormlyFieldConfig {
     return {
@@ -1087,9 +1085,9 @@ import { CustomStepperDemo } from &#39;./custom-stepper.component&#39;;
 export class StepperAdvancedDemoComponent {
   @ViewChild(CustomStepperDemo, { static: true }) public customStepper: CustomStepperDemo;
   model = {
-&#34;validationForm&#34;: { &#34;age&#34;: &#34;12&#34;, &#34;name&#34;: &#34;&#34;, &#34;password&#34;: &#34;1234567&#34;}
+    validationForm: { age: &#39;12&#39;, name: &#39;&#39;, password: &#39;1234567&#39; },
     //subawardee: [],
-   // reportDetails: { report: { month: &#39;03&#39;, year: &#39;03&#39; } },
+    // reportDetails: { report: { month: &#39;03&#39;, year: &#39;03&#39; } },
     //&#34;securityLevels&#34;: { &#34;nameOfIndividualConsent&#34;: &#34;Test&#34; , &#34;titleOfIndividualConsent&#34;: &#34;test123&#34; }
   };
   validateStepsOnInit = [&#39;businessoperations.security&#39;];
@@ -1185,7 +1183,7 @@ export class StepperAdvancedDemoComponent {
       },
       validationFn: undefined,
     },
- validationForm: {
+    validationForm: {
       fieldConfig: this.stepperAdvancedService.getValidationForm(),
     },
     welcome: {
@@ -1275,13 +1273,14 @@ export class StepperAdvancedDemoComponent {
   [validateStepsOnInit]=&#34;validateStepsOnInit&#34;
   (saveData)=&#34;onSaveData($event)&#34;
   (submittedData)=&#34;handleSubmit($event)&#34;
-[customErrorHandling]=&#34;true&#34;
+  [customErrorHandling]=&#34;true&#34;
 &gt;
-  &lt;sds-step 
-
-id=&#34;Validation&#34; text=&#34;Validation Form&#34; [fieldConfig]=&#34;stepMap.validationForm.fieldConfig&#34;
-[validateOnBlur]=&#34;true&#34;
-&gt;
+  &lt;sds-step
+    id=&#34;Validation&#34;
+    text=&#34;Validation Form&#34;
+    [fieldConfig]=&#34;stepMap.validationForm.fieldConfig&#34;
+    [validateOnBlur]=&#34;true&#34;
+  &gt;
   &lt;/sds-step&gt;
 
   &lt;sds-step
