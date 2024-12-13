@@ -336,7 +336,6 @@ export class SdsStepper {
   ) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    //await this.updateValidation(this.selectedStep);
     if (!this.selectedStep) {
       return;
     }
@@ -443,11 +442,6 @@ export class SdsStepper {
         });
       }
     });
-  }
-
-  onFormStateChange(state: any) {
-    console.log('Global form state changed:', state);
-    // Custom logic for global state changes
   }
 
   getFlatSteps(stepTemplates: QueryList<SdsStepComponent>): SdsStepComponent[] {
