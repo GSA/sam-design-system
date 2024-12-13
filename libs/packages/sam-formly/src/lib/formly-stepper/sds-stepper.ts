@@ -151,9 +151,18 @@ export class SdsStepComponent {
     if (this.validateOnBlur) {
       this.form = new FormGroup({}, { updateOn: 'blur' });
     }
+    const keyid = this.fieldConfig?.key ? this.fieldConfig?.key.toString() : '';
+    if (keyid && this._stepper.model[keyid]) {
+      this.form.markAllAsTouched();
+      console.log('model', this._stepper.model[keyid]);
+
+      this.options = {
+        formState: {
+          submitted: false,
+        },
+      };
+    }
     this.form.statusChanges.subscribe((status) => {
-      //  this.extractErrors();
-      //const frv = this.errors.length > 1 ? true : false
       this._stepper.updateValidation(this._stepper.selectedStep);
     });
   }
@@ -233,7 +242,7 @@ export class SdsStepper {
    * only on save click or when loading a pre-saved form with defined validity.
    * @default false
    */
-  @Input() customErrorHandling = true;
+  @Input() customErrorHandling = false;
 
   /** Whether the validity of previous steps should prevent navigating to next steps.
    * @default false
