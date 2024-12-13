@@ -358,7 +358,7 @@ export class FormlyInputAffixComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  fields1: FormlyFieldConfig[] = [
+  fields: FormlyFieldConfig[] = [
     {
       key: &#39;suffix&#39;,
       type: &#39;input&#39;,
@@ -388,68 +388,6 @@ export class FormlyInputAffixComponent {
       },
     },
   ];
-
-  fields: FormlyFieldConfig[] = [
-    {
-      key: &#39;name&#39;,
-      type: &#39;input&#39;,
-      props: {
-        label: &#39;Name (required)&#39;,
-        required: true,
-      },
-    },
-    {
-      key: &#39;age&#39;,
-      type: &#39;input&#39;,
-      props: {
-        label: &#39;Age (min= 18, max= 40)&#39;,
-        type: &#39;number&#39;,
-        min: 18,
-        max: 40,
-        required: true,
-      },
-    },
-    {
-      key: &#39;password&#39;,
-      type: &#39;input&#39;,
-      props: {
-        label: &#39;Password (minLength = 6)&#39;,
-        type: &#39;password&#39;,
-        required: true,
-        minLength: 6,
-      },
-    },
-    {
-      key: &#39;comment&#39;,
-      type: &#39;textarea&#39;,
-      props: {
-        label: &#39;Comment (maxLength = 100)&#39;,
-        required: true,
-        maxLength: 100,
-        rows: 5,
-      },
-    },
-    {
-      key: &#39;ip&#39;,
-      type: &#39;input&#39;,
-      props: {
-        label: &#39;IP Address (pattern = /(d{1,3}.){3}d{1,3}/)&#39;,
-        pattern: /(\d{1,3}\.){3}\d{1,3}/,
-        required: true,
-      },
-      validation: {
-        messages: {
-          pattern: (error: any, field: FormlyFieldConfig) =&gt; `&#34;${field.formControl.value}&#34; is not a valid IP Address`,
-        },
-      },
-    },
-  ];
-
-  submit() {
-    if (this.form.valid) {
-      alert(JSON.stringify(this.model));
-    }
-  }
 }
 ">
     
