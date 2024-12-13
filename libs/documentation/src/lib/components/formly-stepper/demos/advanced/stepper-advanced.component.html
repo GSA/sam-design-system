@@ -1,26 +1,28 @@
+<button class="usa-button margin-bottom-3" (click)="toggleLinearMode()">Toggle Linear Mode</button>
+
 <custom-stepper-demo
   #stepper
   [queryParamKey]="'sdsAdvancedStepper'"
   [model]="model"
   [stepValidityMap]="stepValidityMap"
   (stepChange)="onStepChange($event)"
-  [linear]="false"
-  [validateStepsOnInit]="false"
+  [linear]="linear"
+  [validateStepsOnInit]="validateStepsOnInit"
   (saveData)="onSaveData($event)"
   (submittedData)="handleSubmit($event)"
 >
   <sds-step
-    id="Validation"
-    text="Validation Form"
-    [fieldConfig]="stepMap.validationForm.fieldConfig"
-    [validateOnBlur]="true"
+    id="welcome"
+    text="Welcome"
+    [stepTemplate]="gatherInformation"
+    [stepValidationFn]="stepMap.welcome.validationFn"
   >
   </sds-step>
 
   <sds-step id="entityDetails" text="Entity Details" [editable]="false">
-    <sds-step id="permission" text="Permission" [fieldConfig]="stepMap.permission.fieldConfig">
+    <sds-step id="permission" text="permission" [fieldConfig]="stepMap.permission.fieldConfig">
       <h1 sdsStepHeader class="margin-top-0">
-        Permission
+        permission
         <hr />
       </h1>
     </sds-step>

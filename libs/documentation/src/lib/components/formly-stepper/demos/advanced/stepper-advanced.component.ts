@@ -10,15 +10,12 @@ import { FormlyForm } from '@ngx-formly/core';
 })
 export class StepperAdvancedDemoComponent {
   model = { subawardee: [], reportDetails: { report: { month: '03', year: '03' } } };
-
+  validateStepsOnInit = true;
   showLoading = false;
 
   stepMap = {
     welcome: {
       validationFn: () => true,
-    },
-    validationForm: {
-      fieldConfig: this.stepperAdvancedService.getValidationForm(),
     },
     permission: {
       fieldConfig: this.stepperAdvancedService.getPermission(),
