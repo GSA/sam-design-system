@@ -109,7 +109,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-label',
     'FormlySelectLabelModule',
-    'sds-formly-select-label'
+    'sds-formly-select-label',
   ),
   stackblitzLink: generateStackblitzLink('formly-select', 'label'),
 };
@@ -127,7 +127,7 @@ Description.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-description',
     'FormlySelectDescriptionModule',
-    'sds-formly-select-description'
+    'sds-formly-select-description',
   ),
   stackblitzLink: generateStackblitzLink('formly-select', 'description'),
 };
@@ -145,7 +145,7 @@ Required.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-required',
     'FormlySelectRequiredModule',
-    'sds-formly-select-required'
+    'sds-formly-select-required',
   ),
   stackblitzLink: generateStackblitzLink('formly-select', 'required'),
 };
@@ -163,7 +163,7 @@ Options.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-select/formly-select-options',
     'FormlySelectOptionsModule',
-    'sds-formly-select-options'
+    'sds-formly-select-options',
   ),
   stackblitzLink: generateStackblitzLink('formly-select', 'options'),
 };

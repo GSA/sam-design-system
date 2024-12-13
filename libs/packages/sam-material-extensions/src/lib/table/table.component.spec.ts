@@ -268,31 +268,29 @@ describe('SdsTableComponent Full', () => {
   let tableDe: DebugElement;
   let wrapper: WrapperComponent;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          SdsTableComponent,
-          SdsTableRowComponent,
-          SdsTableHeaderRowComponent,
-          SdsTableFooterRowComponent,
-          SdsTableColumnDefComponent,
-          SdsTableCellDirective,
-          SdsTableHeaderCellDirective,
-          SdsTableFooterCellDirective,
-          WrapperComponent,
-        ],
-        imports: [
-          MatTableModule,
-          IconModule,
-          MatSortModule,
-          MatPaginatorModule,
-          BrowserAnimationsModule,
-          PaginationModule,
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        SdsTableComponent,
+        SdsTableRowComponent,
+        SdsTableHeaderRowComponent,
+        SdsTableFooterRowComponent,
+        SdsTableColumnDefComponent,
+        SdsTableCellDirective,
+        SdsTableHeaderCellDirective,
+        SdsTableFooterCellDirective,
+        WrapperComponent,
+      ],
+      imports: [
+        MatTableModule,
+        IconModule,
+        MatSortModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule,
+      ],
+    }).compileComponents();
+  }));
 
   xdescribe('Table Component', () => {
     beforeEach(() => {
@@ -305,55 +303,37 @@ describe('SdsTableComponent Full', () => {
       fixture.detectChanges();
     });
 
-    it(
-      'should create',
-      waitForAsync(() => {
-        expect(component).toBeTruthy();
-      })
-    );
+    it('should create', waitForAsync(() => {
+      expect(component).toBeTruthy();
+    }));
 
-    it(
-      'isArray should return true',
-      waitForAsync(() => {
-        expect(component.isArray(['test'])).toBeTruthy();
-      })
-    );
+    it('isArray should return true', waitForAsync(() => {
+      expect(component.isArray(['test'])).toBeTruthy();
+    }));
 
-    it(
-      'check after content init',
-      waitForAsync(() => {
-        component.ngAfterContentInit();
-        fixture.detectChanges();
-        expect(component).toBeTruthy();
-      })
-    );
+    it('check after content init', waitForAsync(() => {
+      component.ngAfterContentInit();
+      fixture.detectChanges();
+      expect(component).toBeTruthy();
+    }));
 
-    it(
-      'should update pagination',
-      waitForAsync(() => {
-        component.page = {
-          pageNumber: 1,
-          pageSize: 5,
-          totalPages: 0,
-        };
-        component.updateSdsPagination();
-        fixture.detectChanges();
-        expect(component.page.totalPages).toBe(2);
-      })
-    );
+    it('should update pagination', waitForAsync(() => {
+      component.page = {
+        pageNumber: 1,
+        pageSize: 5,
+        totalPages: 0,
+      };
+      component.updateSdsPagination();
+      fixture.detectChanges();
+      expect(component.page.totalPages).toBe(2);
+    }));
 
-    it(
-      'default string sort should return lowercase',
-      waitForAsync(() => {
-        expect(component.defaultSort(component.data[0], 'firstName')).toBe('gregorius');
-      })
-    );
+    it('default string sort should return lowercase', waitForAsync(() => {
+      expect(component.defaultSort(component.data[0], 'firstName')).toBe('gregorius');
+    }));
 
-    it(
-      'default number sort should return lowercase',
-      waitForAsync(() => {
-        expect(component.defaultSort(component.data[0], 'requests')).toBe(1);
-      })
-    );
+    it('default number sort should return lowercase', waitForAsync(() => {
+      expect(component.defaultSort(component.data[0], 'requests')).toBe(1);
+    }));
   });
 });

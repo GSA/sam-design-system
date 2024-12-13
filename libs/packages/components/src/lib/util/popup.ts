@@ -16,7 +16,11 @@ import { mergeMap, take, tap } from 'rxjs/operators';
 import { ngbRunTransition } from './transition/ngbTransition';
 
 export class ContentRef {
-  constructor(public nodes: Node[][], public viewRef?: ViewRef, public componentRef?: ComponentRef<any>) {}
+  constructor(
+    public nodes: Node[][],
+    public viewRef?: ViewRef,
+    public componentRef?: ComponentRef<any>,
+  ) {}
 }
 
 export class PopupService<T> {
@@ -29,13 +33,13 @@ export class PopupService<T> {
     private _viewContainerRef: ViewContainerRef,
     private _renderer: Renderer2,
     private _ngZone: NgZone,
-    private _applicationRef: ApplicationRef
+    private _applicationRef: ApplicationRef,
   ) {}
 
   open(
     content?: string | TemplateRef<any>,
     templateContext?: any,
-    animation = false
+    animation = false,
   ): { windowRef: ComponentRef<T>; transition$: Observable<void> } {
     if (!this._windowRef) {
       this._contentRef = this._getContentRef(content, templateContext);
@@ -52,8 +56,8 @@ export class PopupService<T> {
         ngbRunTransition(this._ngZone, nativeElement, ({ classList }) => classList.add('show'), {
           animation,
           runningTransition: 'continue',
-        })
-      )
+        }),
+      ),
     );
 
     return { windowRef: this._windowRef, transition$ };
@@ -68,7 +72,7 @@ export class PopupService<T> {
       this._ngZone,
       this._windowRef.location.nativeElement,
       ({ classList }) => classList.remove('show'),
-      { animation, runningTransition: 'stop' }
+      { animation, runningTransition: 'stop' },
     ).pipe(
       tap(() => {
         if (this._windowRef) {
@@ -81,7 +85,7 @@ export class PopupService<T> {
           this._contentRef.viewRef.destroy();
           this._contentRef = null;
         }
-      })
+      }),
     );
   }
 

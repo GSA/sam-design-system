@@ -4,7 +4,8 @@ import { SelectionMode } from '../../selected-result/models/sds-selected-item-mo
 import { Observable } from 'rxjs';
 
 export class SDSAutocompletelConfiguration
-  implements SDSSelectedResultConfiguration, SDSAutocompleteSearchConfiguration {
+  implements SDSSelectedResultConfiguration, SDSAutocompleteSearchConfiguration
+{
   /**
    * sets the default debounce time to 250 milliseconds
    */

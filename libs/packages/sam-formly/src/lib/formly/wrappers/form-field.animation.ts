@@ -11,7 +11,7 @@ const SlideInOutAnimation = [
         'max-height': 'auto',
         opacity: '1',
         visibility: 'visible',
-      })
+      }),
     ),
     state(
       'out',
@@ -19,7 +19,7 @@ const SlideInOutAnimation = [
         'max-height': '0px',
         opacity: '0',
         visibility: 'hidden',
-      })
+      }),
     ),
     transition('in => out', [
       group([
@@ -27,19 +27,19 @@ const SlideInOutAnimation = [
           '400ms ease-in-out',
           style({
             opacity: '0',
-          })
+          }),
         ),
         animate(
           '600ms ease-in-out',
           style({
             'max-height': '0px',
-          })
+          }),
         ),
         animate(
           '700ms ease-in-out',
           style({
             visibility: 'hidden',
-          })
+          }),
         ),
       ]),
     ]),
@@ -49,19 +49,19 @@ const SlideInOutAnimation = [
           '1ms ease-in-out',
           style({
             visibility: 'visible',
-          })
+          }),
         ),
         animate(
           '600ms ease-in-out',
           style({
             'max-height': '500px',
-          })
+          }),
         ),
         animate(
           '800ms ease-in-out',
           style({
             opacity: '1',
-          })
+          }),
         ),
       ]),
     ]),

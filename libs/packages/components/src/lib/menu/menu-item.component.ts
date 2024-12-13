@@ -48,7 +48,7 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
     private _focusMonitor: FocusMonitor,
     @Inject(SDS_MENU_TOKEN)
     private _parentMenu: SdsMenuInterface<SdsMenuItemComponent>,
-    @Optional() private _parentMenuHeader: SdsMenuHeaderComponent
+    @Optional() private _parentMenuHeader: SdsMenuHeaderComponent,
   ) {
     // Start listening to focus changes
     _focusMonitor.monitor(this._elementRef, false);

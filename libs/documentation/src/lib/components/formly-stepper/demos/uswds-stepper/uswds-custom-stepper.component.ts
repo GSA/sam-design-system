@@ -48,7 +48,7 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
        * With incrementing you'd get 1 / 2 = 50%
        */
       this.stepLabels[mainStepIndex].completionPercent = Math.round(
-        ((subStepIndex + 1) / (this.stepTemplates.get(mainStepIndex).children.length + 1)) * 100
+        ((subStepIndex + 1) / (this.stepTemplates.get(mainStepIndex).children.length + 1)) * 100,
       );
       // If main step
     } else {

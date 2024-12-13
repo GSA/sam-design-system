@@ -13,7 +13,7 @@ export interface DialogData {
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: SdsDialogRef<DialogOverviewExampleDialog>,
-    @Inject(SDS_DIALOG_DATA) public data: DialogData
+    @Inject(SDS_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onNoClick(): void {
@@ -27,11 +27,7 @@ export class DialogOverviewExampleDialog {
  */
 @Component({
   selector: 'sds-dialog-sample-nested',
-  template: `
-    <button class="usa-button" (click)="openDialog()">
-      Open another dialog
-    </button>
-  `,
+  template: ` <button class="usa-button" (click)="openDialog()">Open another dialog</button> `,
 })
 export class NestedDialogComponent {
   animal: string;

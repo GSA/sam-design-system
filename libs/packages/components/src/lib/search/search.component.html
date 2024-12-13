@@ -26,8 +26,9 @@
         [value]="item.value"
         [selected]="model.searchCategory == item.value"
         [disabled]="item.disabled"
-        >{{ item.label }}</option
       >
+        {{ item.label }}
+      </option>
     </ng-container>
   </select>
   <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
@@ -37,7 +38,7 @@
   <div
     class="position-relative grid-col-12 suffix-icon"
     [ngClass]="{
-      'tablet:grid-col': hasDropdown()
+      'tablet:grid-col': hasDropdown(),
     }"
   >
     <label class="usa-sr-only" [attr.for]="searchSettings.id">Search</label>

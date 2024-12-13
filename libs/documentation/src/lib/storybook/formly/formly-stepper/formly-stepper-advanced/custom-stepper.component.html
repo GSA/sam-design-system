@@ -25,7 +25,7 @@
                 *ngFor="let step of stepTemplates; let i = index"
                 class="usa-sidenav__item"
                 [ngClass]="{
-                  'usa-current': selectedStep?.id === step.id
+                  'usa-current': selectedStep?.id === step.id,
                 }"
               >
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: step }">
@@ -97,7 +97,7 @@
       class="display-flex justify-content-space-between"
       [ngClass]="{
         'usa-sidenav__item--disabled':
-          step.disabled || (step.isReview && !canReviewWithErrors && _isReviewAndSubmitDisabled)
+          step.disabled || (step.isReview && !canReviewWithErrors && _isReviewAndSubmitDisabled),
       }"
     >
       <span>

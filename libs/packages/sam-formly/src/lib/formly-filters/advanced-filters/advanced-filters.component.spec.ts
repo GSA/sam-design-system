@@ -16,23 +16,21 @@ describe('Advanced Filteres Component', () => {
   });
   let advancedFiltersService: SdsAdvancedFiltersService;
 
-  beforeEach(
-    waitForAsync(() => {
-      modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
-      const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['convertToCheckboxes']);
-      TestBed.configureTestingModule({
-        declarations: [AdvancedFiltersComponent],
-        imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
-        providers: [
-          { provide: SdsDialogService, useValue: modalServiceSpy },
-          {
-            provide: SdsAdvancedFiltersService,
-            useValue: advancedFiltersServiceSpy,
-          },
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
+    const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['convertToCheckboxes']);
+    TestBed.configureTestingModule({
+      declarations: [AdvancedFiltersComponent],
+      imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
+      providers: [
+        { provide: SdsDialogService, useValue: modalServiceSpy },
+        {
+          provide: SdsAdvancedFiltersService,
+          useValue: advancedFiltersServiceSpy,
+        },
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvancedFiltersComponent);

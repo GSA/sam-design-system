@@ -90,7 +90,7 @@ describe('Formly Field DateRangePicker Component', () => {
 
   it('should open date picker and select value', () => {
     const fixture = createTestComponent(
-      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
     );
     //Checks created
     expect(fixture).toBeTruthy();
@@ -114,7 +114,7 @@ describe('Formly Field DateRangePicker Component', () => {
     testComponentInputs.fields[0].props.minDate = new Date(2019, 8, 15);
 
     const fixture = createTestComponent(
-      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
     );
     //Checks created
     expect(fixture).toBeTruthy();
@@ -132,7 +132,7 @@ describe('Formly Field DateRangePicker Component', () => {
     testComponentInputs.fields[0].props.maxDate = new Date(2020, 0, 1);
 
     const fixture = createTestComponent(
-      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
     );
     //Checks created
     expect(fixture).toBeTruthy();
@@ -148,7 +148,7 @@ describe('Formly Field DateRangePicker Component', () => {
 
   it('Should display validation error if date is invalid range', () => {
     const fixture = createTestComponent(
-      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+      '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
     );
     //Checks created
     expect(fixture).toBeTruthy();

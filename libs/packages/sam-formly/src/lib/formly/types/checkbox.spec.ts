@@ -63,7 +63,7 @@ describe('Formly Field checkbox Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('usa-checkbox');
       const expectedValue = fixture.debugElement.query(By.css('.usa-checkbox')).componentInstance.field.props.option

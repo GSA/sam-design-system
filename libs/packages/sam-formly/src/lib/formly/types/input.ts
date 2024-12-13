@@ -15,7 +15,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         class="usa-input"
         [ngClass]="{
           'usa-input--disabled': props.disabled,
-          'usa-input--error': showError
+          'usa-input--error': showError,
         }"
         [formlyAttributes]="field"
         [type]="props.inputType ? props.inputType : 'text'"

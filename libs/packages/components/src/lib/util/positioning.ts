@@ -224,7 +224,7 @@ export function sdsPositioning() {
         popperInstance = createPopperLite(
           positioningOption.hostElement,
           positioningOption.targetElement,
-          popperOptions
+          popperOptions,
         );
       }
     },

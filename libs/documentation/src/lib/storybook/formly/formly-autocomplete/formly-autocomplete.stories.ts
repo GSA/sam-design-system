@@ -65,7 +65,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-basic',
     'FormlyAutocompleteBasicModule',
-    'sds-formly-autocomplete-basic'
+    'sds-formly-autocomplete-basic',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'basic'),
 };
@@ -83,7 +83,7 @@ Disable.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-disable',
     'FormlyAutocompleteDisableModule',
-    'sds-formly-autocomplete-disable'
+    'sds-formly-autocomplete-disable',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'disable'),
 };
@@ -101,7 +101,7 @@ Count.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-count',
     'FormlyAutocompleteCountModule',
-    'sds-formly-autocomplete-count'
+    'sds-formly-autocomplete-count',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'count'),
 };
@@ -119,7 +119,7 @@ Freetext.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-free-text',
     'FormlyAutocompleteFreetextModule',
-    'sds-formly-autocomplete-freetext'
+    'sds-formly-autocomplete-freetext',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'free-text'),
 };
@@ -137,7 +137,7 @@ Input.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-input',
     'FormlyAutocompleteInputModule',
-    'sds-formly-autocomplete-input'
+    'sds-formly-autocomplete-input',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'input'),
 };
@@ -155,7 +155,7 @@ Tag.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-tag',
     'FormlyAutocompleteTagModule',
-    'sds-formly-autocomplete-tag'
+    'sds-formly-autocomplete-tag',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'tag'),
 };
@@ -173,7 +173,7 @@ Validation.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-validation',
     'FormlyAutocompleteValidationModule',
-    'sds-formly-autocomplete-validation'
+    'sds-formly-autocomplete-validation',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'validation'),
 };
@@ -191,7 +191,7 @@ ID.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-autocomplete/formly-autocomplete-id',
     'FormlyAutocompleteIdModule',
-    'sds-formly-autocomplete-id'
+    'sds-formly-autocomplete-id',
   ),
   stackblitzLink: generateStackblitzLink('formly-autocomplete', 'id'),
 };

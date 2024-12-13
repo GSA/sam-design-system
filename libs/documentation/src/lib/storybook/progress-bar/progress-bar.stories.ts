@@ -55,7 +55,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/progress-bar/progress-bar-basic',
     'ProgressBarBasicModule',
-    'sds-progress-bar-basic'
+    'sds-progress-bar-basic',
   ),
   stackblitzLink: generateStackblitzLink('progress-bar', 'basic'),
 };

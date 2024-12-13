@@ -8,13 +8,9 @@ import { SDSTabOutsideDirective } from './taboutside.directive';
 @Component({
   selector: 'test-cmp',
   template: ` <div #var sds-tab-outside (tabOutside)="tabOutsideHandler()">
-      <p class="test">
-        test content
-      </p>
+      <p class="test">test content</p>
     </div>
-    <p class="test2">
-      click outside target content
-    </p>`,
+    <p class="test2">click outside target content</p>`,
 })
 class TestComponent {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();

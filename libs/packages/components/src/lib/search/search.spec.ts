@@ -15,14 +15,12 @@ describe('SearchComponent', () => {
   let component: SdsSearchComponent;
   let fixture: ComponentFixture<SdsSearchComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [SdsSearchComponent],
-        providers: [FocusMonitor, ViewportRuler],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SdsSearchComponent],
+      providers: [FocusMonitor, ViewportRuler],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSearchComponent);

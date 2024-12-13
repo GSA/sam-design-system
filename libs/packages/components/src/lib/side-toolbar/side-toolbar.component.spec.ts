@@ -8,15 +8,13 @@ describe('SideToolbarComponent', () => {
   let component: SdsSideToolbarComponent;
   let fixture: ComponentFixture<SdsSideToolbarComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [SdsDialogModule],
-        declarations: [SdsSideToolbarComponent],
-        providers: [SdsDialogService],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [SdsDialogModule],
+      declarations: [SdsSideToolbarComponent],
+      providers: [SdsDialogService],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSideToolbarComponent);

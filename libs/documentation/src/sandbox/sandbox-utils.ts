@@ -11,7 +11,7 @@ export function generateConfig(
   filePath: string,
   moduleName: string,
   selector: string,
-  additionalFiles?: Array<CodePreviewTabData>
+  additionalFiles?: Array<CodePreviewTabData>,
 ) {
   const splitPath = filePath.split('/');
   const fileName = splitPath[splitPath.length - 1];
@@ -62,7 +62,7 @@ export function createCodePreviewTabData(
   relativePath: string,
   language: 'ts' | 'html' | 'scss',
   copy: boolean,
-  tabTitle?: string
+  tabTitle?: string,
 ): CodePreviewTabData {
   const splitPath = relativePath.split('/');
   const folderPath = splitPath.slice(0, splitPath.length - 1).join('/');

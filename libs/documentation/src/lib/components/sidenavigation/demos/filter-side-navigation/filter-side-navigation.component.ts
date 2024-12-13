@@ -42,7 +42,7 @@ export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
     public service: DataService,
     public filterService: FilterService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {

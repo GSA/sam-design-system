@@ -9,13 +9,9 @@ import { SDSClickOutsideDirective } from './click-outside.directive';
   selector: 'test-cmp',
   template: `
     <div #var sds-click-outside (clickOutside)="clickOutsideHandler()">
-      <p class="test">
-        test content
-      </p>
+      <p class="test">test content</p>
     </div>
-    <p class="test2">
-      click outside target content
-    </p>
+    <p class="test2">click outside target content</p>
   `,
 })
 class TestComponent {
