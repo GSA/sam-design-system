@@ -11,11 +11,18 @@
   (saveData)="onSaveData($event)"
   (submittedData)="handleSubmit($event)"
 >
+  <sds-step 
+
+id="Validation" text="Validation Form" [fieldConfig]="stepMap.validationForm.fieldConfig"
+[validateOnBlur]="true"
+>
+  </sds-step>
+
   <sds-step
     [id]="stepMap.security.id"
     text="Security"
     [fieldConfig]="stepMap.security.fieldConfig"
-    [onBlurValidation]="true"
+    [validateOnBlur]="true"
   >
     <h1 sdsStepHeader class="margin-top-0">
       Security

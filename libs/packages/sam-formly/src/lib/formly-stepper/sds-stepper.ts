@@ -17,7 +17,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import * as _ from 'lodash-es';
@@ -132,12 +132,9 @@ export class SdsStepComponent {
    */
   @Input() disabled?: boolean;
 
-  /**
-   * Defines whether the step is to validate on blur
-   * @default true
-   */
-  @Input() validateOnBlur = true;
+  @Input() validateOnBlur = false;
 
+  form = new FormGroup({});
   /**
    * Emitted anytime user input changes in the step - only applicable if
    * step is a formly field config
@@ -147,8 +144,42 @@ export class SdsStepComponent {
   constructor(
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
     private _el: ElementRef,
-    @Inject(DOCUMENT) private _document,
+    @Inject(DOCUMENT) private _document
   ) {}
+
+  ngOnInit() {
+    if (this.validateOnBlur) {
+      this.form = new FormGroup({}, { updateOn: 'blur' });
+    }
+    this.form.statusChanges.subscribe((status) => {
+      //  this.extractErrors();
+      //const frv = this.errors.length > 1 ? true : false
+      this._stepper.updateValidation(this._stepper.selectedStep);
+    });
+  }
+
+  errors: string[] = [];
+
+  // Extract all form errors
+  extractErrors(control = this.form, path = ''): void {
+    this.errors = [];
+    Object.keys(control.controls).forEach((key) => {
+      const controlPath = path ? `${path}.${key}` : key;
+      const field = control.get(key);
+
+      if (field?.errors && !field?.pristine) {
+        Object.keys(field.errors).forEach((errorKey) => {
+          const error = `${controlPath}: ${errorKey} error --field.pristine--${field.pristine}`;
+          this.errors.push(error);
+        });
+      }
+
+      // Handle nested controls (FormGroup or FormArray)
+      if (field instanceof FormGroup) {
+        this.extractErrors(field, controlPath);
+      }
+    });
+  }
 
   /**
    * Dispatch a custom event for parent stepper component to listen for on model change
@@ -178,7 +209,6 @@ export class SdsStepComponent {
 })
 export class SdsStepper {
   @ContentChildren(SdsStepComponent) stepTemplates: QueryList<SdsStepComponent>;
-
   /**
    * Singular global model to store user input for all steps. Alternatively,
    * users may pass in a model specifically to each sds-step and manage the data
@@ -286,17 +316,11 @@ export class SdsStepper {
    */
   @HostListener('stepModelChange', ['$event'])
   onModelChange($event: CustomEvent) {
-    console.log(this.customErrorHandling, 'customErrorHandling');
-
     $event.stopImmediatePropagation();
     this.modelChange.emit($event.detail);
   }
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    public cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
     //await this.updateValidation(this.selectedStep);
@@ -376,9 +400,6 @@ export class SdsStepper {
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     this.flatSteps.forEach((step) => {
       step.model = step.model ? step.model : this.model;
-      if (this.customErrorHandling && step.options?.formState?.onStateChange) {
-        step.options.formState.onStateChange = (state) => this.onFormStateChange(state);
-      }
     });
 
     if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
@@ -454,7 +475,7 @@ export class SdsStepper {
       stepIndex = stepIndex + incrementor;
       if (stepIndex > this.flatSteps.length) {
         throw Error(
-          `StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`,
+          `StepIndex of ${stepIndex} is greater than the number of steps. Check that you are passing in a sensible incrementor.)`
         );
       }
     }
@@ -522,13 +543,13 @@ export class SdsStepper {
   private toggleOnValidationForStep(
     step: SdsStepComponent,
     validityMap: { [key: string]: boolean | undefined },
-    customErrorHandling?: boolean,
+    customErrorHandling?: boolean
   ) {
     if (!step.options && !customErrorHandling) {
       this.selectedStep.options = {};
     }
 
-    if (!step.options.showError && !customErrorHandling) {
+    if (!step.options?.showError && !customErrorHandling) {
       this.selectedStep.options.showError = () => false;
     }
 
