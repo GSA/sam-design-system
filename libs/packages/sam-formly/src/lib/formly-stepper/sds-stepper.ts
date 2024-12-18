@@ -400,10 +400,8 @@ export class SdsStepper {
       step.model = step.model ? step.model : this.model;
     });
 
-    // if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
-    // this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
-    if (true && !this.linear && this.isRouteEnabled) {
-      this.currentStepId = 'reportDetails';
+    if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
+    this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
     } else if (!this.currentStepId) {
       this.currentStepId = this.flatSteps[0].id;
       this.selectedStepIndex = 0;
