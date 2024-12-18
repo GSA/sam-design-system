@@ -345,9 +345,44 @@ export class SdsStepper {
         }
         this.isRouteEnabled = false;
 
-        this.flatSteps.forEach((step) => {
+        this.flatSteps.forEach((step, index) => {
           setTimeout(() => {
-            this.changeStep(step.id);
+            if (step.isReview) {
+              return;
+            }
+            const isValidateStepsOnInitArray = Array.isArray(this.validateStepsOnInit);
+
+            /**
+             * Handles cases where key specified in `queryParamKey` is not
+             * a part of the validateStepsOnInit array. Need to not check the
+             * validity when moving from `queryParamKey` step to first step in
+             * validateStepsOnInit array. Checking `queryParamKey` step before
+             * navigating would cause that step to be validated when that is not
+             * wanted.
+             */
+            if (
+              index === 0 &&
+              this.currentStepId &&
+              isValidateStepsOnInitArray &&
+              !(this.validateStepsOnInit as Array<string>).includes(this.currentStepId)
+            ) {
+              this.changeStep(step.id, 0, true);
+            } else if (
+              /**
+               * Handles case where key specified in `queryParamKey` is the only
+               * member of validateStepsOnInit array. In this case changeStep
+               * will not cause form to be re-validated, so we need to do this
+               * manually.
+               */
+              this.currentStepId &&
+              isValidateStepsOnInitArray &&
+              (this.validateStepsOnInit as Array<string>).length === 1 &&
+              (this.validateStepsOnInit as Array<string>).includes(this.currentStepId)
+            ) {
+              this.updateValidation(step);
+            } else {
+              this.changeStep(step.id);
+            }
           }, 0);
         });
 
@@ -424,7 +459,7 @@ export class SdsStepper {
    *  given. When a value of -1 is provided, then the selected step will be the step
    *  previous to the provided step
    */
-  async changeStep(stepId: string, incrementor?: number) {
+  async changeStep(stepId: string, incrementor?: number, blockValidity?: boolean) {
     this.flatSteps = this.getFlatSteps(this.stepTemplates);
     let stepIndex = this.flatSteps.findIndex((step) => step.id === stepId);
     stepIndex = stepIndex === -1 ? 0 : stepIndex;
@@ -457,7 +492,9 @@ export class SdsStepper {
 
     // Update current step's validity before moving to next step
     if (this.selectedStep) {
-      await this.updateValidation(this.selectedStep);
+      if (!blockValidity) {
+        await this.updateValidation(this.selectedStep);
+      }
       this.checkReviewAndSubmit();
       if (this.linear) {
         this.evaluateIncompleteForms();
