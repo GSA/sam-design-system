@@ -347,7 +347,7 @@ export class SdsStepper {
 
         this.flatSteps.forEach((step, index) => {
           setTimeout(() => {
-            if(step.isReview){
+            if (step.isReview) {
               return;
             }
             const isValidateStepsOnInitArray = Array.isArray(this.validateStepsOnInit);
@@ -360,24 +360,25 @@ export class SdsStepper {
              * navigating would cause that step to be validated when that is not
              * wanted.
              */
-            if(index === 0 &&
+            if (
+              index === 0 &&
               this.currentStepId &&
               isValidateStepsOnInitArray &&
-              !(this.validateStepsOnInit as Array<string>).includes(this.currentStepId)){
-              this.changeStep(step.id,0, true);
-            }
+              !(this.validateStepsOnInit as Array<string>).includes(this.currentStepId)
+            ) {
+              this.changeStep(step.id, 0, true);
+            } else if (
             /**
              * Handles case where key specified in `queryParamKey` is the only
              * member of validateStepsOnInit array. In this case changeStep
              * will not cause form to be re-validated, so we need to do this
              * manually.
              */
-            else if(
               this.currentStepId &&
               isValidateStepsOnInitArray &&
               (this.validateStepsOnInit as Array<string>).length === 1 &&
               (this.validateStepsOnInit as Array<string>).includes(this.currentStepId)
-            ){
+            ) {
               this.updateValidation(step);
             } else {
               this.changeStep(step.id);
@@ -400,9 +401,9 @@ export class SdsStepper {
     });
 
     // if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
-      // this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
-      if (true && !this.linear && this.isRouteEnabled) {
-        this.currentStepId = 'reportDetails';
+    // this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
+    if (true && !this.linear && this.isRouteEnabled) {
+      this.currentStepId = 'reportDetails';
     } else if (!this.currentStepId) {
       this.currentStepId = this.flatSteps[0].id;
       this.selectedStepIndex = 0;
@@ -493,7 +494,7 @@ export class SdsStepper {
 
     // Update current step's validity before moving to next step
     if (this.selectedStep) {
-      if(!blockValidity){
+      if (!blockValidity) {
         await this.updateValidation(this.selectedStep);
       }
       this.checkReviewAndSubmit();
