@@ -368,12 +368,12 @@ export class SdsStepper {
             ) {
               this.changeStep(step.id, 0, true);
             } else if (
-            /**
-             * Handles case where key specified in `queryParamKey` is the only
-             * member of validateStepsOnInit array. In this case changeStep
-             * will not cause form to be re-validated, so we need to do this
-             * manually.
-             */
+              /**
+               * Handles case where key specified in `queryParamKey` is the only
+               * member of validateStepsOnInit array. In this case changeStep
+               * will not cause form to be re-validated, so we need to do this
+               * manually.
+               */
               this.currentStepId &&
               isValidateStepsOnInitArray &&
               (this.validateStepsOnInit as Array<string>).length === 1 &&
@@ -401,7 +401,7 @@ export class SdsStepper {
     });
 
     if (this.activatedRoute.snapshot.queryParams[this.queryParamKey] && !this.linear && this.isRouteEnabled) {
-    this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
+      this.currentStepId = this.activatedRoute.snapshot.queryParams[this.queryParamKey];
     } else if (!this.currentStepId) {
       this.currentStepId = this.flatSteps[0].id;
       this.selectedStepIndex = 0;
