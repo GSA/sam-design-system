@@ -43,8 +43,7 @@ export class StepperAdvancedService {
           type: 'textarea',
           props: {
             label: 'Comment (maxLength = 100)',
-            // required: true,
-            // maxLength: 100,
+
             rows: 5,
           },
         },
@@ -53,14 +52,6 @@ export class StepperAdvancedService {
           type: 'input',
           props: {
             label: 'IP Address (pattern = /(d{1,3}.){3}d{1,3}/)',
-            pattern: /(\d{1,3}\.){3}\d{1,3}/,
-            //  required: true,
-            // },
-            // validation: {
-            //   messages: {
-            //     pattern: (error: any, field: FormlyFieldConfig) =>
-            //       `"${field.formControl.value}" is not a valid IP Address`,
-            //   },
           },
         },
       ],

@@ -144,12 +144,12 @@ export class SdsStepComponent {
   constructor(
     @Inject(forwardRef(() => SdsStepper)) public _stepper: SdsStepper,
     private _el: ElementRef,
-    @Inject(DOCUMENT) private _document,
+    @Inject(DOCUMENT) private _document
   ) {}
 
   ngOnInit() {
     if (this.validateOnBlur) {
-      this.form = new FormGroup({}, { updateOn: 'blur' });
+      this.form = new FormGroup({}, { updateOn:'change'  });
     }
     const keyid = this.fieldConfig?.key ? this.fieldConfig?.key.toString() : '';
     if (keyid && this._stepper.model[keyid]) {
@@ -329,11 +329,7 @@ export class SdsStepper {
     this.modelChange.emit($event.detail);
   }
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    public cdr: ChangeDetectorRef,
-  ) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (!this.selectedStep) {
@@ -550,7 +546,7 @@ export class SdsStepper {
   private toggleOnValidationForStep(
     step: SdsStepComponent,
     validityMap: { [key: string]: boolean | undefined },
-    customErrorHandling?: boolean,
+    customErrorHandling?: boolean
   ) {
     if (!step.options && !customErrorHandling) {
       this.selectedStep.options = {};
@@ -567,9 +563,15 @@ export class SdsStepper {
 
   onNextStep() {
     this.changeStep(this.selectedStep.id, 1);
+    if (this.selectedStep.validateOnBlur) {
+      this.updateValidation(this.selectedStep);
+    }
   }
 
   onPreviousStep() {
+    if (this.selectedStep.validateOnBlur) {
+      this.updateValidation(this.selectedStep);
+    }
     this.changeStep(this.selectedStep.id, -1);
   }
 

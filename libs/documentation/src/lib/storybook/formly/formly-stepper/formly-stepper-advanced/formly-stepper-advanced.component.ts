@@ -12,7 +12,7 @@ import { CustomStepperDemo } from './custom-stepper.component';
 export class StepperAdvancedDemoComponent {
   @ViewChild(CustomStepperDemo, { static: true }) public customStepper: CustomStepperDemo;
   model = {
-    validationForm: { age: '12', name: '', password: '1234567' },
+    validationForm: { age: '', name: '', password: '' },
     //subawardee: [],
     // reportDetails: { report: { month: '03', year: '03' } },
     //"securityLevels": { "nameOfIndividualConsent": "Test" , "titleOfIndividualConsent": "test123" }
@@ -21,6 +21,10 @@ export class StepperAdvancedDemoComponent {
   showLoading = false;
 
   stepMap = {
+    validationForm: {
+      fieldConfig: this.stepperAdvancedService.getValidationForm(),
+     // validationFn: this.validationFormValidateFn,
+    },
     security: {
       id: 'businessoperations.security',
       text: 'Security Levels',
@@ -109,9 +113,6 @@ export class StepperAdvancedDemoComponent {
         ],
       },
       validationFn: undefined,
-    },
-    validationForm: {
-      fieldConfig: this.stepperAdvancedService.getValidationForm(),
     },
     welcome: {
       validationFn: () => true,
