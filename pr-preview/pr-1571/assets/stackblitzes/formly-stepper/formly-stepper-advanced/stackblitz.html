@@ -614,8 +614,7 @@ export class StepperAdvancedService {
           type: &#39;textarea&#39;,
           props: {
             label: &#39;Comment (maxLength = 100)&#39;,
-            // required: true,
-            // maxLength: 100,
+
             rows: 5,
           },
         },
@@ -624,14 +623,6 @@ export class StepperAdvancedService {
           type: &#39;input&#39;,
           props: {
             label: &#39;IP Address (pattern = /(d{1,3}.){3}d{1,3}/)&#39;,
-            pattern: /(\d{1,3}\.){3}\d{1,3}/,
-            //  required: true,
-            // },
-            // validation: {
-            //   messages: {
-            //     pattern: (error: any, field: FormlyFieldConfig) =&gt;
-            //       `&#34;${field.formControl.value}&#34; is not a valid IP Address`,
-            //   },
           },
         },
       ],
@@ -1085,7 +1076,7 @@ import { CustomStepperDemo } from &#39;./custom-stepper.component&#39;;
 export class StepperAdvancedDemoComponent {
   @ViewChild(CustomStepperDemo, { static: true }) public customStepper: CustomStepperDemo;
   model = {
-    validationForm: { age: &#39;12&#39;, name: &#39;&#39;, password: &#39;1234567&#39; },
+    validationForm: { age: &#39;&#39;, name: &#39;&#39;, password: &#39;&#39; },
     //subawardee: [],
     // reportDetails: { report: { month: &#39;03&#39;, year: &#39;03&#39; } },
     //&#34;securityLevels&#34;: { &#34;nameOfIndividualConsent&#34;: &#34;Test&#34; , &#34;titleOfIndividualConsent&#34;: &#34;test123&#34; }
@@ -1094,6 +1085,10 @@ export class StepperAdvancedDemoComponent {
   showLoading = false;
 
   stepMap = {
+    validationForm: {
+      fieldConfig: this.stepperAdvancedService.getValidationForm(),
+     // validationFn: this.validationFormValidateFn,
+    },
     security: {
       id: &#39;businessoperations.security&#39;,
       text: &#39;Security Levels&#39;,
@@ -1182,9 +1177,6 @@ export class StepperAdvancedDemoComponent {
         ],
       },
       validationFn: undefined,
-    },
-    validationForm: {
-      fieldConfig: this.stepperAdvancedService.getValidationForm(),
     },
     welcome: {
       validationFn: () =&gt; true,
@@ -1280,6 +1272,7 @@ export class StepperAdvancedDemoComponent {
     text=&#34;Validation Form&#34;
     [fieldConfig]=&#34;stepMap.validationForm.fieldConfig&#34;
     [validateOnBlur]=&#34;true&#34;
+    [stepValidationFn]=&#34;stepMap.validationForm.validationFn&#34;
   &gt;
   &lt;/sds-step&gt;
 
