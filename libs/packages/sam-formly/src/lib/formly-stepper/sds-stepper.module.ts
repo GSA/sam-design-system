@@ -13,10 +13,13 @@ import {
   SdsStepperUSWDSNavDirective,
 } from './sds-step-buttons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     FormlyModule,
     SdsFormlyModule,
     IconModule,
