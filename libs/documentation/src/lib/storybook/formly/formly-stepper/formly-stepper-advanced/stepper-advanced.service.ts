@@ -4,53 +4,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Injectable()
 export class StepperAdvancedService {
-  getValidationForm(): FormlyFieldConfig {
-    return {
-      key: 'validationForm',
-      fieldGroup: [
-        {
-          key: 'name',
-          type: 'input',
-
-          props: {
-            label: 'Name (required)',
-            required: true,
-          },
-        },
-        {
-          key: 'age',
-          type: 'input',
-          props: {
-            label: 'Age (min= 18, max= 40)',
-            type: 'number',
-            min: 18,
-            max: 40,
-            required: true,
-          },
-        },
-        {
-          key: 'password',
-          type: 'input',
-          props: {
-            label: 'Password (minLength = 6)',
-            type: 'password',
-            required: true,
-            minLength: 6,
-          },
-        },
-        {
-          key: 'comment',
-          type: 'textarea',
-          props: {
-            label: 'Comment (maxLength = 100)',
-
-            rows: 5,
-          },
-        },
-      ],
-    };
-  }
-
   getPermission(): FormlyFieldConfig {
     return {
       key: 'permissions',
