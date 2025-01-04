@@ -3,6 +3,7 @@
   <ng-template #formlyField>
     <ng-content select="[sdsStepHeader]"></ng-content>
     <formly-form
+      [form]="form"
       *ngIf="fieldConfig"
       [model]="model"
       [fields]="[fieldConfig]"

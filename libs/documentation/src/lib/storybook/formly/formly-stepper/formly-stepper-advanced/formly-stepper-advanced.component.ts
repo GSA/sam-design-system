@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, viewChild } from '@angular/core';
 import { FormlyUtilsService, SdsStepper } from '@gsa-sam/sam-formly';
 import { StepperAdvancedService } from './stepper-advanced.service';
 import { FormlyForm } from '@ngx-formly/core';
+import { CustomStepperDemo } from './custom-stepper.component';
 
 @Component({
   selector: `stepper-advanced-demo`,
@@ -9,15 +10,25 @@ import { FormlyForm } from '@ngx-formly/core';
   providers: [StepperAdvancedService, SdsStepper],
 })
 export class StepperAdvancedDemoComponent {
-  model = { subawardee: [], reportDetails: { report: { month: '03', year: '03' } } };
-  validateStepsOnInit = ['welcome'];
+  @ViewChild(CustomStepperDemo, { static: true }) public customStepper: CustomStepperDemo;
+  model = {
+    validationForm: { age: '17', name: '', password: '' },
+    //subawardee: [],
+    // reportDetails: { report: { month: '03', year: '03' } },
+    //"securityLevels": { "nameOfIndividualConsent": "Test" , "titleOfIndividualConsent": "test123" }
+  };
+  validateStepsOnInit = ['validateId'];
   showLoading = false;
 
   stepMap = {
-    welcome: {
-      validationFn: () => true,
+    validationForm: {
+      id: 'validateId',
+      fieldConfig: this.stepperAdvancedService.getValidationForm(),
+     // validationFn: this.validationFormValidateFn,
     },
+  
     permission: {
+   id: 'permissionId',
       fieldConfig: this.stepperAdvancedService.getPermission(),
     },
     registrationPurpose: {
@@ -57,6 +68,12 @@ export class StepperAdvancedDemoComponent {
   reinitializeComponents = false;
   constructor(private stepperAdvancedService: StepperAdvancedService) {}
 
+  onBlurHandler(field: any, event: FocusEvent): void {
+    this.customStepper.updateValidation(this.customStepper.selectedStep);
+    console.log('Field blurred:', field.key);
+    console.log('Event:', event);
+  }
+
   onStepChange($event) {
     this.currentStepId = $event.id;
 
@@ -70,7 +87,7 @@ export class StepperAdvancedDemoComponent {
   }
 
   updateSubawardee($event) {
-    this.model.subawardee = $event;
+    //this.model.subawardee = $event;
   }
 
   toggleLinearMode() {
