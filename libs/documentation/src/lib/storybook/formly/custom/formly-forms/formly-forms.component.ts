@@ -8,7 +8,11 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class FormlyFormsComponent {
   form = new FormGroup({});
-  model: any = {};
+  model: any = {
+  "state": "None",
+  "country": "united_states",
+  "street2": "test"
+};
   options: any = null;
 
   street2AddressField = {
@@ -57,7 +61,7 @@ export class FormlyFormsComponent {
             btnIcon: 'plus-circle',
             additionalField: this.street2AddressField,
             text: 'Street Address 2 (Optional)',
-            btnType: 'info',
+            btnClass: 'usa-button--unstyled margin-top-neg-1',
           },
         },
       ],
