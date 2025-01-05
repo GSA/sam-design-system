@@ -7,7 +7,8 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFormBuilder } from
   template: `
     <button
       *ngIf="!hideButton && !additionalField"
-      class="usa-button usa-button--unstyled margin-top-neg-1"
+      class="usa-button"
+      [ngClass]="props.btnClass"
       (click)="onClick($event)"
       [attr.aria-label]="props.text"
     >
@@ -26,6 +27,14 @@ export class FormlyFieldButtonComponent extends FieldType<FieldTypeConfig> {
 
   constructor(private formBuilder: FormlyFormBuilder) {
     super();
+  }
+
+  ngOnInit(){
+   if( this.props.additionalField && this.model[this.props.additionalField.key] && this.props.enableInput) {
+    this.hideButton = true;
+    this.additionalField = this.props.additionalField;
+    this.formBuilder.buildForm(this.form as FormGroup, [this.additionalField], this.model, this.options);
+   }
   }
 
   onClick($event) {
