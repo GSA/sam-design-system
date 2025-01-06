@@ -8,11 +8,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 })
 export class FormlyFormsComponent {
   form = new FormGroup({});
-  model: any = {
-  "state": "None",
-  "country": "united_states",
-  "street2": "test"
-};
+  model: any = {};
   options: any = null;
 
   street2AddressField = {
