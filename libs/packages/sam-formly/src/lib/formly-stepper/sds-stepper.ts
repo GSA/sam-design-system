@@ -17,7 +17,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import * as _ from 'lodash-es';
@@ -132,6 +132,9 @@ export class SdsStepComponent {
    */
   @Input() disabled?: boolean;
 
+  @Input() validateOnBlur = false;
+
+  form = new FormGroup({});
   /**
    * Emitted anytime user input changes in the step - only applicable if
    * step is a formly field config
@@ -143,6 +146,45 @@ export class SdsStepComponent {
     private _el: ElementRef,
     @Inject(DOCUMENT) private _document
   ) {}
+
+hasAllEmptyValues(obj) {
+  if (!obj || typeof obj !== 'object') {
+    return true; // Consider non-object types as empty
+  }
+
+  return Object.values(obj).every((value) => {
+    if (Array.isArray(value)) {
+      return value.length === 0; // Empty arrays
+    }
+    if (typeof value === 'object' && value !== null) {
+      return this.hasAllEmptyValues(value); // Recursively check nested objects
+    }
+    return value === '' || value === null || value === undefined || value === false || value === 0;
+  });
+}
+  ngOnInit() {
+    if (this.validateOnBlur) {
+      this.form = new FormGroup({}, { updateOn:'change'  });
+   
+    
+    const keyid = this.fieldConfig?.key ? this.fieldConfig?.key.toString() : '';
+    if (keyid && this._stepper.model[keyid] && !this.hasAllEmptyValues(this._stepper.model[keyid])) {
+
+      setTimeout(() => this.form.markAllAsTouched());
+      console.log('model', this._stepper.model[keyid]);
+
+      this.options = {
+        formState: {
+          submitted: false,
+        },
+      };
+    }
+
+    }
+    this.form.statusChanges.subscribe((status) => {
+      this._stepper.updateValidation(this._stepper.selectedStep);
+    });
+  }
 
   /**
    * Dispatch a custom event for parent stepper component to listen for on model change
@@ -544,7 +586,7 @@ export class SdsStepper {
       this.selectedStep.options = {};
     }
 
-    if (!step.options.showError && !customErrorHandling) {
+    if (!step.options?.showError && !customErrorHandling) {
       this.selectedStep.options.showError = () => false;
     }
 
@@ -555,9 +597,15 @@ export class SdsStepper {
 
   onNextStep() {
     this.changeStep(this.selectedStep.id, 1);
+    if (this.selectedStep.validateOnBlur) {
+      this.updateValidation(this.selectedStep);
+    }
   }
 
   onPreviousStep() {
+    if (this.selectedStep.validateOnBlur) {
+      this.updateValidation(this.selectedStep);
+    }
     this.changeStep(this.selectedStep.id, -1);
   }
 
