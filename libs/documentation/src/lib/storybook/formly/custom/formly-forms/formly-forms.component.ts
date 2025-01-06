@@ -57,7 +57,7 @@ export class FormlyFormsComponent {
             btnIcon: 'plus-circle',
             additionalField: this.street2AddressField,
             text: 'Street Address 2 (Optional)',
-            btnType: 'info',
+            btnClass: 'usa-button--unstyled margin-top-neg-1',
           },
         },
       ],
