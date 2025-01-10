@@ -1,5 +1,5 @@
 /**
- * @license Angular v17.3.11
+ * @license Angular v17.3.12
  * (c) 2010-2024 Google LLC. https://angular.io/
  * License: MIT
  */
