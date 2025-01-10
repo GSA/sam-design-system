@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { SelectionMode, TabPanelComponent } from '@gsa-sam/components';
-import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
@@ -12,7 +10,7 @@ export class FormlyButtonOptionsComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  inpuField = {
+  inputField = {
     key: 'search',
     type: 'input',
     focus: true,
@@ -28,7 +26,7 @@ export class FormlyButtonOptionsComponent {
           props: {
             enableInput: true,
             btnIcon: 'plus-circle',
-            additionalField: this.inpuField,
+            additionalField: this.inputField,
             text: 'Search',
             btnClass: 'usa-button--unstyled margin-top-neg-1',
           },

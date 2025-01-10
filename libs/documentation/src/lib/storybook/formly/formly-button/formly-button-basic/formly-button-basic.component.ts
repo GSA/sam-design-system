@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { SelectionMode } from '@gsa-sam/components';
-import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({

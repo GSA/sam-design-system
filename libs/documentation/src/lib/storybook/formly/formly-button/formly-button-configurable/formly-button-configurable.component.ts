@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -13,7 +13,7 @@ export class FormlyButtonConfigurableComponent {
     temp['props'] = config;
 
     if (config['enableInput']) {
-      temp['props'].additionalField = this.inpuField;
+      temp['props'].additionalField = this.inputField;
     } else {
       temp['props'].additionalField = null;
       this.model = {};
@@ -23,7 +23,7 @@ export class FormlyButtonConfigurableComponent {
     }
     this.fields = [temp];
   }
-  inpuField = {
+  inputField = {
     key: 'search',
     type: 'input',
     focus: true,
