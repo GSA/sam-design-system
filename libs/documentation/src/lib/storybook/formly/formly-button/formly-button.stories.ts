@@ -5,23 +5,11 @@ import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
 import { moduleMetadata, Meta, StoryObj, applicationConfig } from '@storybook/angular';
 import { generateConfig, generateStackblitzLink } from 'libs/documentation/src/sandbox/sandbox-utils';
-
 import { FormlyButtonIntroductionModule } from './formly-button-introduction/formly-button-introduction.module';
-
 import { FormlyButtonBasicModule } from './formly-button-basic/formly-button-basic.module';
 import { FormlyButtonOptionsModule } from './formly-button-options/formly-button-options.module';
 import { importProvidersFrom } from '@angular/core';
 import { FormlyButtonConfigurableModule } from './formly-button-configurable/formly-button-configurable.module';
-const disable = {
-  table: {
-    disable: true,
-  },
-};
-const props = {
-  table: {
-    category: 'template-options',
-  },
-};
 
 export default {
   title: 'Formly/Button',

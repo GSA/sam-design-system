@@ -21,10 +21,7 @@ export class FormlyButtonBasicComponent {
           type: 'button',
           props: {
             enableInput: true,
-           // btnIcon: 'plus-circle',
-           
             text: 'Button',
-           // btnClass: 'usa-button--unstyled margin-top-neg-1',
           },
         },
       ],
