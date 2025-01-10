@@ -336,7 +336,7 @@ import { FormlyModule } from &#39;@ngx-formly/core&#39;;
 export class FormlyButtonConfigurableModule {}
 ">
     
-    <input type="hidden" name="project[files][src/app/formly-button-configurable.component.ts]" value="import { AfterViewInit, Component, Input } from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/formly-button-configurable.component.ts]" value="import { Component, Input } from &#39;@angular/core&#39;;
 import { FormGroup } from &#39;@angular/forms&#39;;
 import { FormlyFormOptions, FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
 
@@ -351,7 +351,7 @@ export class FormlyButtonConfigurableComponent {
     temp[&#39;props&#39;] = config;
 
     if (config[&#39;enableInput&#39;]) {
-      temp[&#39;props&#39;].additionalField = this.inpuField;
+      temp[&#39;props&#39;].additionalField = this.inputField;
     } else {
       temp[&#39;props&#39;].additionalField = null;
       this.model = {};
@@ -361,7 +361,7 @@ export class FormlyButtonConfigurableComponent {
     }
     this.fields = [temp];
   }
-  inpuField = {
+  inputField = {
     key: &#39;search&#39;,
     type: &#39;input&#39;,
     focus: true,

@@ -338,8 +338,6 @@ export class FormlyButtonOptionsModule {}
     
     <input type="hidden" name="project[files][src/app/formly-button-options.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
 import { FormGroup } from &#39;@angular/forms&#39;;
-import { SelectionMode, TabPanelComponent } from &#39;@gsa-sam/components&#39;;
-import { SdsFormlyTypes } from &#39;@gsa-sam/sam-formly&#39;;
 import { FormlyFormOptions, FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
 
 @Component({
@@ -350,7 +348,7 @@ export class FormlyButtonOptionsComponent {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  inpuField = {
+  inputField = {
     key: &#39;search&#39;,
     type: &#39;input&#39;,
     focus: true,
@@ -366,7 +364,7 @@ export class FormlyButtonOptionsComponent {
           props: {
             enableInput: true,
             btnIcon: &#39;plus-circle&#39;,
-            additionalField: this.inpuField,
+            additionalField: this.inputField,
             text: &#39;Search&#39;,
             btnClass: &#39;usa-button--unstyled margin-top-neg-1&#39;,
           },
