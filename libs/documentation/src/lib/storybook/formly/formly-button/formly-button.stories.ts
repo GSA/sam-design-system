@@ -40,6 +40,12 @@ export default {
         type: 'boolean',
       },
     },
+    btnIcon: {
+      options: ['','plus-circle','info', 'info-circle'],
+      control: {
+        type: 'select'  
+      },
+    },
   },
 } as Meta;
 
@@ -94,7 +100,7 @@ const formlyConfigFunction = (text: string, enableInput: boolean, btnClass: stri
     text: text ?? '',
     enableInput: enableInput ?? '',
     btnClass: btnClass ?? '',
-btnIcon:btnIcon??''
+    btnIcon: btnIcon ?? '',
   };
 };
 

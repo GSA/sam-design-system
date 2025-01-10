@@ -4,9 +4,12 @@ import { FormlyButtonConfigurableComponent } from './formly-button-configurable.
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SdsFormlyModule } from '@gsa-sam/sam-formly';
 import { FormlyModule } from '@ngx-formly/core';
+import { info, infoCircle, NgxBootstrapIconsModule, plusCircle } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(),
+ IconModule,NgxBootstrapIconsModule.pick({ plusCircle, infoCircle, info })],
   declarations: [FormlyButtonConfigurableComponent],
   exports: [FormlyButtonConfigurableComponent],
   bootstrap: [FormlyButtonConfigurableComponent],
