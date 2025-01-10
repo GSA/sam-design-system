@@ -11,11 +11,11 @@ export class FormlyButtonOptionsComponent {
   model: any = {};
   options: FormlyFormOptions = {};
   inputField = {
-    key: 'search',
+    key: 'address',
     type: 'input',
     focus: true,
     props: {
-      label: 'Search',
+      label: 'Address Line 2',
       placeholder: '',
     },
   };
@@ -27,7 +27,7 @@ export class FormlyButtonOptionsComponent {
             enableInput: true,
             btnIcon: 'plus-circle',
             additionalField: this.inputField,
-            text: 'Search',
+            text: 'Address Line 2',
             btnClass: 'usa-button--unstyled margin-top-neg-1',
           },
        

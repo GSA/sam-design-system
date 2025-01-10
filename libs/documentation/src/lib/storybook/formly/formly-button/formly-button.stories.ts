@@ -31,7 +31,16 @@ export default {
       providers: [provideAnimations(), importProvidersFrom(FormlyModule.forRoot())],
     }),
   ],
-  argTypes: {},
+  argTypes: {
+    hasModel: {
+      table: {
+        category: 'Model',
+      },
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
 } as Meta;
 
 export const Introduction: StoryObj = (args) => ({
@@ -80,21 +89,25 @@ Basic.parameters = {
   stackblitzLink: generateStackblitzLink('formly-button', 'basic'),
 };
 
-const formlyConfigFunction = (text: string, enableInput: boolean, btnClass: string, hasModel: boolean) => {
+const formlyConfigFunction = (text: string, enableInput: boolean, btnClass: string, btnIcon: string) => {
   return {
     text: text ?? '',
     enableInput: enableInput ?? '',
     btnClass: btnClass ?? '',
-    hasModel: hasModel ?? '',
+btnIcon:btnIcon??''
   };
 };
 
 export const Configurable = (args) => {
-  const { text, enableInput, btnClass, hasModel } = args;
-  let config = formlyConfigFunction(text, enableInput, btnClass, hasModel);
+  const { text, enableInput, btnClass, btnIcon } = args;
+
+  const hasModel = args.hasModel;
+  let config = formlyConfigFunction(text, enableInput, btnClass, btnIcon);
   return {
-    template: '<sds-formly-button-configurable [config]="configObj"></sds-formly-button-configurable>',
+    template:
+      '<sds-formly-button-configurable [hasModel]="hasModel" [config]="configObj"></sds-formly-button-configurable>',
     props: {
+      hasModel: hasModel,
       configObj: config,
       ...args,
     },
@@ -104,6 +117,7 @@ Configurable.args = {
   text: 'Search',
   enableInput: false,
   btnClass: '',
+  btnIcon: '',
   hasModel: false,
 };
 Configurable.parameters = {

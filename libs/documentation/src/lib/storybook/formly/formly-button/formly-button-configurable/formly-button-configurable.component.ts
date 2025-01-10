@@ -7,6 +7,11 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
   templateUrl: './formly-button-configurable.component.html',
 })
 export class FormlyButtonConfigurableComponent {
+  @Input('hasModel')
+  set hasModel(hasModel: boolean) {
+    hasModel ? (this.model = { search: 'Test' }) : {};
+  }
+
   @Input('config')
   set config(config: object) {
     const temp = this.fields[0];
@@ -17,9 +22,6 @@ export class FormlyButtonConfigurableComponent {
     } else {
       temp['props'].additionalField = null;
       this.model = {};
-    }
-    if (config['hasModel']) {
-      this.model = { search: 'Test' };
     }
     this.fields = [temp];
   }
