@@ -326,9 +326,12 @@ import { ReactiveFormsModule, FormsModule } from &#39;@angular/forms&#39;;
 import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
 import { FormlyModule } from &#39;@ngx-formly/core&#39;;
 import { FormlyButtonOptionsComponent } from &#39;./formly-button-options.component&#39;;
+import { IconModule } from &#39;@gsa-sam/ngx-uswds-icons&#39;;
+import { NgxBootstrapIconsModule, plusCircle } from &#39;ngx-bootstrap-icons&#39;;
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(), IconModule,
+    NgxBootstrapIconsModule.pick({ plusCircle }),],
   declarations: [FormlyButtonOptionsComponent],
   exports: [FormlyButtonOptionsComponent],
   bootstrap: [FormlyButtonOptionsComponent],
@@ -349,11 +352,11 @@ export class FormlyButtonOptionsComponent {
   model: any = {};
   options: FormlyFormOptions = {};
   inputField = {
-    key: &#39;search&#39;,
+    key: &#39;address&#39;,
     type: &#39;input&#39;,
     focus: true,
     props: {
-      label: &#39;Search&#39;,
+      label: &#39;Address Line 2&#39;,
       placeholder: &#39;&#39;,
     },
   };
@@ -365,7 +368,7 @@ export class FormlyButtonOptionsComponent {
             enableInput: true,
             btnIcon: &#39;plus-circle&#39;,
             additionalField: this.inputField,
-            text: &#39;Search&#39;,
+            text: &#39;Address Line 2&#39;,
             btnClass: &#39;usa-button--unstyled margin-top-neg-1&#39;,
           },
        

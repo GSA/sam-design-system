@@ -326,9 +326,12 @@ import { FormlyButtonConfigurableComponent } from &#39;./formly-button-configura
 import { ReactiveFormsModule, FormsModule } from &#39;@angular/forms&#39;;
 import { SdsFormlyModule } from &#39;@gsa-sam/sam-formly&#39;;
 import { FormlyModule } from &#39;@ngx-formly/core&#39;;
+import { info, infoCircle, NgxBootstrapIconsModule, plusCircle } from &#39;ngx-bootstrap-icons&#39;;
+import { IconModule } from &#39;@gsa-sam/ngx-uswds-icons&#39;;
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot()],
+  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(),
+ IconModule,NgxBootstrapIconsModule.pick({ plusCircle, infoCircle, info })],
   declarations: [FormlyButtonConfigurableComponent],
   exports: [FormlyButtonConfigurableComponent],
   bootstrap: [FormlyButtonConfigurableComponent],
@@ -345,6 +348,11 @@ import { FormlyFormOptions, FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
   templateUrl: &#39;./formly-button-configurable.component.html&#39;,
 })
 export class FormlyButtonConfigurableComponent {
+  @Input(&#39;hasModel&#39;)
+  set hasModel(hasModel: boolean) {
+    hasModel ? (this.model = { search: &#39;Test&#39; }) : {};
+  }
+
   @Input(&#39;config&#39;)
   set config(config: object) {
     const temp = this.fields[0];
@@ -355,9 +363,6 @@ export class FormlyButtonConfigurableComponent {
     } else {
       temp[&#39;props&#39;].additionalField = null;
       this.model = {};
-    }
-    if (config[&#39;hasModel&#39;]) {
-      this.model = { search: &#39;Test&#39; };
     }
     this.fields = [temp];
   }
