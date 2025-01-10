@@ -65,7 +65,7 @@ describe('Formly Field button Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
-      const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+      const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
       const spy = spyOn(buttonField.nativeElement, 'click');
       buttonField.nativeElement.click();
@@ -91,7 +91,7 @@ describe('Formly Field button Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
-      const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+      const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
       const spy = spyOn(buttonField.nativeElement, 'click');
       buttonField.nativeElement.click();
