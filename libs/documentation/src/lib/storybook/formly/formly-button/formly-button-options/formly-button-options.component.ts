@@ -21,17 +21,14 @@ export class FormlyButtonOptionsComponent {
   };
   fields: FormlyFieldConfig[] = [
     {
-     
-          type: 'button',
-          props: {
-            enableInput: true,
-            btnIcon: 'plus-circle',
-            additionalField: this.inputField,
-            text: 'Address Line 2',
-            btnClass: 'usa-button--unstyled margin-top-neg-1',
-          },
-       
+      type: 'button',
+      props: {
+        enableInput: true,
+        btnIcon: 'plus-circle',
+        additionalField: this.inputField,
+        text: 'Address Line 2',
+        btnClass: 'usa-button--unstyled margin-top-neg-1',
+      },
     },
-     
   ];
 }

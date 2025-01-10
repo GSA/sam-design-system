@@ -41,9 +41,9 @@ export default {
       },
     },
     btnIcon: {
-      options: ['','plus-circle','info', 'info-circle'],
+      options: ['', 'plus-circle', 'info', 'info-circle'],
       control: {
-        type: 'select'  
+        type: 'select',
       },
     },
   },
@@ -72,7 +72,7 @@ Options.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-button/formly-button-options',
     'FormlyButtonOptionsModule',
-    'sds-formly-button-options'
+    'sds-formly-button-options',
   ),
   stackblitzLink: generateStackblitzLink('formly-button', 'options'),
 };
@@ -90,7 +90,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-button/formly-button-basic',
     'FormlyButtonBasicModule',
-    'sds-formly-button-basic'
+    'sds-formly-button-basic',
   ),
   stackblitzLink: generateStackblitzLink('formly-button', 'basic'),
 };

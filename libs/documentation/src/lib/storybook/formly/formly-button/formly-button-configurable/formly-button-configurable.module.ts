@@ -8,8 +8,15 @@ import { info, infoCircle, NgxBootstrapIconsModule, plusCircle } from 'ngx-boots
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, SdsFormlyModule, FormsModule, FormlyModule.forRoot(),
- IconModule,NgxBootstrapIconsModule.pick({ plusCircle, infoCircle, info })],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SdsFormlyModule,
+    FormsModule,
+    FormlyModule.forRoot(),
+    IconModule,
+    NgxBootstrapIconsModule.pick({ plusCircle, infoCircle, info }),
+  ],
   declarations: [FormlyButtonConfigurableComponent],
   exports: [FormlyButtonConfigurableComponent],
   bootstrap: [FormlyButtonConfigurableComponent],

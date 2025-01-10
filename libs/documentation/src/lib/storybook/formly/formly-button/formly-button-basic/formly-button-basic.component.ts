@@ -11,8 +11,7 @@ export class FormlyButtonBasicComponent {
   model: any = {};
   options: FormlyFormOptions = {};
   fields: FormlyFieldConfig[] = [
-     {
-      
+    {
       fieldGroup: [
         {
           className: 'desktop:grid-col-12 tablet:grid-col-12',
@@ -23,7 +22,6 @@ export class FormlyButtonBasicComponent {
           },
         },
       ],
-  
     },
   ];
 }
