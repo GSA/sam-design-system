@@ -85,13 +85,13 @@ export class StepperAdvancedService {
     if (!control.value) {
       return of(null); // Skip validation for empty values
     }
-    let res = this.isZipCodeValid(control.value)
+    let res = this.isZipCodeValid(control.value);
     return of(control.value).pipe(
       delay(500),
       map((value) => (value === '12345' ? null : { zipCodeInvalid: true }))
     );
   }
- 
+
   // Utility method to check ZIP code validity
   isZipCodeValid(zipCode: string): boolean {
     // Example: Only allowing ZIP codes starting with '9'
