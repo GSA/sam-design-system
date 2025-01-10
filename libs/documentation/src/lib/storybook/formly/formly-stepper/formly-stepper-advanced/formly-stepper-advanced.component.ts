@@ -12,7 +12,7 @@ import { CustomStepperDemo } from './custom-stepper.component';
 export class StepperAdvancedDemoComponent {
   @ViewChild(CustomStepperDemo, { static: true }) public customStepper: CustomStepperDemo;
   model = {
-    validationForm: { age: '17', name: '', password: '' },
+    validationForm: { age: '17', name: '', password: '', zipCode5: '12345'},
     //subawardee: [],
     // reportDetails: { report: { month: '03', year: '03' } },
     //"securityLevels": { "nameOfIndividualConsent": "Test" , "titleOfIndividualConsent": "test123" }
