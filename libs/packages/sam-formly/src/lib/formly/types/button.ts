@@ -29,12 +29,12 @@ export class FormlyFieldButtonComponent extends FieldType<FieldTypeConfig> {
     super();
   }
 
-  ngOnInit(){
-   if( this.props.additionalField && this.model[this.props.additionalField.key] && this.props.enableInput) {
-    this.hideButton = true;
-    this.additionalField = this.props.additionalField;
-    this.formBuilder.buildForm(this.form as FormGroup, [this.additionalField], this.model, this.options);
-   }
+  ngOnInit() {
+    if (this.props.additionalField && this.model[this.props.additionalField.key] && this.props.enableInput) {
+      this.hideButton = true;
+      this.additionalField = this.props.additionalField;
+      this.formBuilder.buildForm(this.form as FormGroup, [this.additionalField], this.model, this.options);
+    }
   }
 
   onClick($event) {

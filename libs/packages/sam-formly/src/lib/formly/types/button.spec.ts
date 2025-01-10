@@ -1,4 +1,4 @@
-import { FormlyModule, FormlyForm } from '@ngx-formly/core';
+import { FormlyModule, FormlyForm, FormlyFormBuilder } from '@ngx-formly/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyFieldButtonComponent } from './button';
 import { Component, ViewChild } from '@angular/core';
@@ -18,7 +18,7 @@ export function createGenericTestComponent<T>(html: string, type: { new (...args
 }
 
 let testComponentButtons;
-
+let formBuilder: FormlyFormBuilder;
 describe('Formly Field button Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -65,9 +65,9 @@ describe('Formly Field button Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
-      const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+      const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
-      const spy = spyOn(buttonField.nativeElement, 'click');
+      const spy = spyOn(buttonField?.nativeElement, 'click');
       buttonField.nativeElement.click();
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();
@@ -91,9 +91,9 @@ describe('Formly Field button Component', () => {
           '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
         ),
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
-      const buttonField: any = fixture.debugElement.query(By.css('.usa-button--unstyled'));
+      const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
-      const spy = spyOn(buttonField.nativeElement, 'click');
+      const spy = spyOn(buttonField?.nativeElement, 'click');
       buttonField.nativeElement.click();
       buttonField.nativeElement.dispatchEvent(new Event('onClick'));
     });
