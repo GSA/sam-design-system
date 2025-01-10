@@ -1,9 +1,102 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { Observable, of, delay, map } from 'rxjs';
 
+export const ADDRESS_REGEX = {
+  zipCode5: /^[0-9]{5}$/, // Validates 5-digit ZIP codes (adjust for other formats)
+};
 @Injectable()
 export class StepperAdvancedService {
+  getValidationForm(): FormlyFieldConfig {
+    return {
+      key: 'validationForm',
+      fieldGroup: [
+        {
+          key: 'name',
+          type: 'input',
+
+          props: {
+            label: 'Name (required)',
+            required: true,
+          },
+        },
+        {
+          key: 'age',
+          type: 'input',
+          props: {
+            label: 'Age (min= 18, max= 40)',
+            type: 'number',
+            min: 18,
+            max: 40,
+            required: true,
+          },
+        },
+        {
+          key: 'password',
+          type: 'input',
+          props: {
+            label: 'Password (minLength = 6)',
+            type: 'password',
+            required: true,
+            minLength: 6,
+          },
+        },
+        {
+          key: 'comment',
+          type: 'textarea',
+          props: {
+            label: 'Comment (maxLength = 100)',
+
+            rows: 5,
+          },
+        },
+
+        {
+          type: 'input',
+          key: 'zipCode5',
+          expressions: {
+            'props.required': (field: FormlyFieldConfig) => true,
+            hide: (field: FormlyFieldConfig) => false,
+          },
+          props: {
+            placeholder: '12345',
+            label: 'Zip Code',
+          },
+          validators: {
+            invalidZip5: {
+              expression: (c) => !c.value || /^[0-9]{5}$/.test(c.value),
+              message: 'Invalid ZIP Code format',
+            },
+          },
+          asyncValidators: {
+            zipCode: {
+              expression: (control: AbstractControl, field: FormlyFieldConfig) => this.zipValidation(control, field),
+              message: 'ZIP Code validation failed',
+            },
+          },
+        },
+      ],
+    };
+  }
+  zipValidation(control: AbstractControl, field: FormlyFieldConfig): Observable<ValidationErrors | null> {
+    console.log(control, 'zipcode5');
+    if (!control.value) {
+      return of(null); // Skip validation for empty values
+    }
+    let res = this.isZipCodeValid(control.value);
+    return of(control.value).pipe(
+      delay(500),
+      map((value) => (value === '12345' ? null : { zipCodeInvalid: true }))
+    );
+  }
+
+  // Utility method to check ZIP code validity
+  isZipCodeValid(zipCode: string): boolean {
+    // Example: Only allowing ZIP codes starting with '9'
+    return /^[9][0-9]{4}$/.test(zipCode);
+  }
   getPermission(): FormlyFieldConfig {
     return {
       key: 'permissions',
