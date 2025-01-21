@@ -10,7 +10,9 @@
     href="javascript:void(0);"
     class="usa-sidenav__item"
     (click)="onPanelItemClick(panelItem)"
-    [ngClass]="{ 'usa-current': panelItem.selected }"
+    [ngClass]="{ 'usa-current': panelItem.selected, 'disabled': panelItem.disabled }"
+    [attr.tabindex]="panelItem.disabled ? '-1' : ''"
+    [attr.aria-disabled]="panelItem.disabled"
   >
     <span>{{ panelItem.text }}</span>
   </a>
