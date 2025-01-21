@@ -30,7 +30,7 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   }
 
   onPanelItemClick(panelItem: NavigationLink) {
-    if(panelItem.disabled){
+    if (panelItem.disabled) {
       return;
     }
     this.selectPanel(panelItem);
