@@ -105,6 +105,13 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   @Input() displayChips: boolean;
 
   /**
+   * This is to display the search field inside horizontal filter
+   * in normal situations. When horizontal setting is turned on, then chip display is
+   * also toggled on by default
+   */
+  @Input() enableSearchfield: boolean = false;
+
+  /**
    * Switch to show/hide the reset all button
    * @default true
    */
@@ -119,6 +126,21 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   chips: ReadonlyDataType[] = [];
   dialogRef: SdsDialogRef<any>;
+
+  /**
+   * Default search field configuration for the horizontal filter
+   */
+  searchField: FormlyFieldConfig = {
+    key: 'search',
+    type: 'search',
+    props: {
+      hideOptional: true,
+      searchSettings: {
+        placeholder: 'type here',
+        isSuffixSearchIcon: true,
+      },
+    },
+  };
 
   // Snapshot of model before filter dialog opens during horizontal responsive format
   _modelSnapshot: any;

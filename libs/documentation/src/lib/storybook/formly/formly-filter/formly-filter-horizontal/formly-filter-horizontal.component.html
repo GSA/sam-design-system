@@ -7,13 +7,8 @@
       [model]="model"
       [horizontal]="true"
       (filterChange)="onFilterChange($event)"
+      [enableSearchfield]="true"
     >
-      <sds-search
-        [searchSettings]="{ isSuffixSearchIcon: true, placeholder: 'Keyword', ariaLabel: 'Keyword Search' }"
-        [(ngModel)]="model.searchModel"
-        (ngModelChange)="onSearchModelChange($event)"
-      >
-      </sds-search>
     </sds-filters>
   </div>
 </div>
