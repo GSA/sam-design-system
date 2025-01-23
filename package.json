@@ -61,7 +61,7 @@
     "@compodoc/compodoc": "^1.1.19",
     "@gsa-sam/components": "^18.0.0",
     "@gsa-sam/ngx-uswds": "^18.0.0",
-    "@gsa-sam/ngx-uswds-icons": "^18.0.0",
+    "@gsa-sam/ngx-uswds-icons": "^18.0.1",
     "@gsa-sam/sam-formly": "^18.0.0",
     "@gsa-sam/sam-material-extensions": "^18.0.0",
     "@gsa-sam/sam-styles": "^3.0.23",
