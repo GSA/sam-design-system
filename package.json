@@ -77,7 +77,7 @@
     "lodash.camelcase": "4.3.0",
     "minimist": "^1.2.5",
     "ngx-bootstrap-icons": "^1.7.2",
-    "ngx-markdown": "^17.2.0",
+    "ngx-markdown": "^18.0.0",
     "ngx-toastr": "^16.2.0",
     "qs": "^6.9.6",
     "raw-loader": "^4.0.2",
