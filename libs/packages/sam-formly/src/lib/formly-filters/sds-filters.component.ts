@@ -106,10 +106,23 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   /**
    * This is to display the search field inside horizontal filter
-   * in normal situations. When horizontal setting is turned on, then chip display is
-   * also toggled on by default
    */
   @Input() enableSearchfield: boolean = false;
+
+ /**
+   * This is to update the place holder text for the sds-search.
+   */
+  private _horizontalSearchPlaceholder = '';
+
+  @Input()
+  public get horizontalSearchPlaceholder() {
+    return this._horizontalSearchPlaceholder;
+  }
+
+  public set horizontalSearchPlaceholder(val) {
+    this._horizontalSearchPlaceholder = val;
+    this.searchField.props['searchSettings']['placeholder'] = val;
+  }
 
   /**
    * Switch to show/hide the reset all button
@@ -136,7 +149,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     props: {
       hideOptional: true,
       searchSettings: {
-        placeholder: 'type here',
+        placeholder: this.horizontalSearchPlaceholder,
         isSuffixSearchIcon: true,
       },
     },
