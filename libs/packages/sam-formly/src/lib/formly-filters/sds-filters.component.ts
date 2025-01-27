@@ -109,7 +109,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   @Input() enableSearchfield: boolean = false;
 
- /**
+  /**
    * This is to update the place holder text for the sds-search.
    */
   private _horizontalSearchPlaceholder = '';
