@@ -53148,6 +53148,13 @@ through all possible variants
   color: #1a4480;
   font-weight: 700;
 }
+.usa-sidenav--styled .usa-sidenav__item.disabled {
+  color: #c9c9c9 !important;
+  cursor: auto;
+}
+.usa-sidenav--styled .usa-sidenav__item.disabled:focus {
+  outline: none;
+}
 .usa-sidenav.sds-subpanel .usa-sidenav__item a:not(.usa-button) {
   color: #3f57a6;
   text-decoration: underline;
@@ -58523,6 +58530,67 @@ Label Title
   line-height: 1.5;
   margin-left: 0.75rem;
   text-decoration: none;
+}
+
+.sds-tag-right-align {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+@media (max-width: 1000px) {
+  .sds-tag-right-align {
+    position: static;
+    display: block;
+    text-align: center;
+  }
+}
+
+.sds-status-tag {
+  font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-size: 0.87rem;
+  font-weight: normal;
+  padding: 6px 10px !important;
+  margin: 8px;
+  border-radius: 99rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+}
+@media (max-width: 1000px) {
+  .sds-status-tag {
+    width: 100%;
+    max-width: none;
+    border-radius: 4px 4px 0 0;
+    margin: 0px;
+  }
+}
+.sds-status-tag--info {
+  background-color: #E7F6F8;
+  border-color: #9DDFEB;
+}
+.sds-status-tag--error {
+  background-color: #FDE0DB;
+  border-color: #FDB8AE;
+}
+.sds-status-tag--accent-cool {
+  background-color: #eff6fb;
+  border-color: #aacdec;
+  border-style: solid;
+}
+.sds-status-tag--locked {
+  background-color: #c9c9c9;
+  border-color: #c9c9c9;
+  border-style: solid;
+}
+.sds-status-tag--locked i {
+  margin-right: 8px;
+}
+.sds-status-tag--primary-lighter {
+  background-color: #e3f5e1;
+  border-color: #70e17b;
+  border-style: solid;
 }
 
 .cursor-pointer {
