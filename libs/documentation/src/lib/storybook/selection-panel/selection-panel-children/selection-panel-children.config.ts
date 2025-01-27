@@ -7,6 +7,7 @@ export let selectionPanelConfig: SideNavigationModel = {
       route: '/',
       id: 'link1',
       mode: NavigationMode.INTERNAL,
+      disabled: true,
     },
     {
       text: 'Link 2',

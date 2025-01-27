@@ -39,6 +39,8 @@ export class NavigationLink implements Selectable, INavigationLink {
    */
   selected?: boolean;
 
+  disabled?: boolean;
+
   /**
    * Query string paramaters supporeted with external and internal links
    * ex. { 'name': 'value',...}
