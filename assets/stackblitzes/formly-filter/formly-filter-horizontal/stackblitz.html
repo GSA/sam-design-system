@@ -514,13 +514,9 @@ export class FormlyFilterHorizontalComponent {
       [model]=&#34;model&#34;
       [horizontal]=&#34;true&#34;
       (filterChange)=&#34;onFilterChange($event)&#34;
+      [enableSearchfield]=&#34;true&#34;
+      [horizontalSearchPlaceholder]=&#34;&#39;Search&#39;&#34;
     &gt;
-      &lt;sds-search
-        [searchSettings]=&#34;{ isSuffixSearchIcon: true, placeholder: &#39;Keyword&#39;, ariaLabel: &#39;Keyword Search&#39; }&#34;
-        [(ngModel)]=&#34;model.searchModel&#34;
-        (ngModelChange)=&#34;onSearchModelChange($event)&#34;
-      &gt;
-      &lt;/sds-search&gt;
     &lt;/sds-filters&gt;
   &lt;/div&gt;
 &lt;/div&gt;
