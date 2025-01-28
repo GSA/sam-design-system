@@ -169,8 +169,6 @@ export class SdsStepComponent {
       const keyid = this.fieldConfig?.key ? this.fieldConfig?.key.toString() : '';
       if (keyid && this._stepper.model[keyid] && !this.hasAllEmptyValues(this._stepper.model[keyid])) {
         setTimeout(() => this.form.markAllAsTouched());
-        console.log('model', this._stepper.model[keyid]);
-
         this.options = {
           formState: {
             submitted: false,
@@ -179,7 +177,9 @@ export class SdsStepComponent {
       }
     }
     this.form.statusChanges.subscribe((status) => {
-      this._stepper.updateValidation(this._stepper.selectedStep);
+      if (this.validateOnBlur) {
+        this._stepper.updateValidation(this._stepper.selectedStep);
+      }
     });
   }
 

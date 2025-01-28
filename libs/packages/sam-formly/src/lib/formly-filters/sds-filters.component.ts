@@ -105,6 +105,26 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   @Input() displayChips: boolean;
 
   /**
+   * This is to display the search field inside horizontal filter
+   */
+  @Input() enableSearchfield: boolean = false;
+
+  /**
+   * This is to update the place holder text for the sds-search.
+   */
+  private _horizontalSearchPlaceholder = '';
+
+  @Input()
+  public get horizontalSearchPlaceholder() {
+    return this._horizontalSearchPlaceholder;
+  }
+
+  public set horizontalSearchPlaceholder(val) {
+    this._horizontalSearchPlaceholder = val;
+    this.searchField.props['searchSettings']['placeholder'] = val;
+  }
+
+  /**
    * Switch to show/hide the reset all button
    * @default true
    */
@@ -119,6 +139,21 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
   chips: ReadonlyDataType[] = [];
   dialogRef: SdsDialogRef<any>;
+
+  /**
+   * Default search field configuration for the horizontal filter
+   */
+  searchField: FormlyFieldConfig = {
+    key: 'search',
+    type: 'search',
+    props: {
+      hideOptional: true,
+      searchSettings: {
+        placeholder: this.horizontalSearchPlaceholder,
+        isSuffixSearchIcon: true,
+      },
+    },
+  };
 
   // Snapshot of model before filter dialog opens during horizontal responsive format
   _modelSnapshot: any;
