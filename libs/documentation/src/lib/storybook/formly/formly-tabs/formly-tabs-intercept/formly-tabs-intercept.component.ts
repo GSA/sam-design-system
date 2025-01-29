@@ -26,7 +26,6 @@ export class FormlyTabsInterceptComponent {
         selectedTab: this.selectedTab,
         preTabChange: this.preTabChange,
       },
-      fieldArray: {
         fieldGroup: [
           // tab 1
           {
@@ -103,7 +102,6 @@ export class FormlyTabsInterceptComponent {
             ],
           },
         ],
-      },
     },
   ];
   preTabChange(destinationTab: TabPanelComponent) {
