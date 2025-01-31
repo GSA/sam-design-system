@@ -53133,8 +53133,6 @@ through all possible variants
   padding-top: 1rem;
 }
 .usa-sidenav--styled .usa-sidenav__item {
-  border-top-width: 0;
-  border-top-style: solid;
   border-left-width: 1px;
   border-right-width: 1px;
   border-left-style: solid;
@@ -53143,6 +53141,14 @@ through all possible variants
   border-bottom-style: solid;
   border-color: #c9c9c9;
   border-style: solid;
+}
+.usa-sidenav--styled .usa-sidenav__item:first-child {
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+.usa-sidenav--styled .usa-sidenav__item:not(:first-child) {
+  border-top-width: 0;
+  border-top-style: solid;
 }
 .usa-sidenav--styled .usa-sidenav__item.usa-current > a {
   color: #1a4480;
@@ -58580,7 +58586,7 @@ Label Title
   border-style: solid;
 }
 .sds-status-tag--locked {
-  background-color: #c9c9c9;
+  background-color: #E5E5E5;
   border-color: #c9c9c9;
   border-style: solid;
 }
@@ -59356,6 +59362,11 @@ p.sds-text-error, .sds-text-error.p {
   margin-top: -12px;
   margin-left: 1rem;
   width: 240px;
+}
+.sds-filters--horizontal .search-input formly-field {
+  display: block;
+  margin-right: 0rem !important;
+  margin-top: 0 !important;
 }
 @media only screen and (max-width: 800px) {
   .sds-filters--horizontal .search-input {
