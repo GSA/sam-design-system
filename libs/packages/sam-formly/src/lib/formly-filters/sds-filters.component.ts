@@ -278,6 +278,17 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     this.updateChange(change);
   }
 
+  clearSearchContent() {
+    this.model['searchModel'] = '';
+    this.updateChange(this.model);
+  }
+
+  reset(isOptionsEmpty: boolean) {
+    if (isOptionsEmpty) {
+      this.clearSearchContent();
+    }
+  }
+
   onResetClicked() {
     const fieldChangeEvent: FormlyValueChangeEvent = {
       field: { key: '' },
