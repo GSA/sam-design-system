@@ -1,6 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ClassicEditor } from 'ckeditor5'
 
 @Component({
   selector: 'sds-rich-text',
@@ -36,7 +36,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   registerOnTouched(fn: any) {
     this._onTouched = fn;
   }
-  public editor = ClassicEditor.default ?? ClassicEditor;
+  public editor = ClassicEditor;
 
   model = '';
 }
