@@ -1,7 +1,19 @@
-<ckeditor
+<!-- <ckeditor #editorCtrl
   [(ngModel)]="model"
   [editor]="editor"
   (change)="_onChange(model)"
   (blur)="_onTouched(model)"
   class="{{ minHeightClass }} {{ maxHeightClass }}"
-></ckeditor>
+></ckeditor> -->
+<ckeditor
+  *ngIf="isLayoutReady"
+  [editor]="Editor"
+  [config]="config"
+  [(data)]="model"
+  (change)="_onChange(model)"
+  (blur)="_onTouched(model)"
+  
+>
+</ckeditor>
+
+<!-- //class="{{ minHeightClass }} {{ maxHeightClass }}" -->
