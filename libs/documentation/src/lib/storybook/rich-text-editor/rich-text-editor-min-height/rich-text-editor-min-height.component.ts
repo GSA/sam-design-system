@@ -7,5 +7,5 @@ import { UntypedFormControl } from '@angular/forms';
 })
 export class RichTextEditorMinHeightComponent {
   public data = '';
-  fc: UntypedFormControl = new UntypedFormControl('<p>this is a test</p>');
+  fc: UntypedFormControl = new UntypedFormControl('<p>this is a test PRogeess</p>');
 }

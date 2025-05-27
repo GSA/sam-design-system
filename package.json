@@ -69,6 +69,7 @@
     "@storybook/test": "^8.0.0",
     "@types/qs": "^6.9.5",
     "accessible-html5-video-player": "^1.0.6",
+    "ckeditor5": "^45.1.0",
     "core-js": "^3.22.4",
     "fs-extra": "^9.1.0",
     "lodash-es": "^4.17.15",

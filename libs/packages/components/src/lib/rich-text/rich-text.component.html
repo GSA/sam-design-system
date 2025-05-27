@@ -5,15 +5,22 @@
   (blur)="_onTouched(model)"
   class="{{ minHeightClass }} {{ maxHeightClass }}"
 ></ckeditor> -->
-<ckeditor
-  *ngIf="isLayoutReady"
-  [editor]="Editor"
-  [config]="config"
-  [(data)]="model"
-  (change)="_onChange(model)"
-  (blur)="_onTouched(model)"
-  
->
-</ckeditor>
+<div>
+  Value:
+  {{ model }}
+</div>
+<br />
+<div>
+  <ckeditor
+    #editor
+    *ngIf="isLayoutReady"
+    [editor]="Editor"
+    [config]="config"
+    [data]="model"
+    (change)="_onChange($event)"
+    (blur)="_onTouched($event)"
+  >
+  </ckeditor>
+</div>
 
 <!-- //class="{{ minHeightClass }} {{ maxHeightClass }}" -->

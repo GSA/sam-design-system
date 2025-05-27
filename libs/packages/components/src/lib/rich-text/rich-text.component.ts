@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, Strikethrough, Underline } from 'ckeditor5'
+import { CKEditorComponent } from '@ckeditor/ckeditor5-angular';
+import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, Strikethrough, Underline, TableToolbar, Table } from 'ckeditor5'
 
 @Component({
   selector: 'sds-rich-text',
@@ -17,10 +18,11 @@ import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Headin
 export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() minHeight: number;
   @Input() maxHeight: number;
+  @ViewChild('editor') editorComponent: CKEditorComponent;
+  @Input() placeholder: string;
 
-  // @ViewChild('editorCtrl') editorCtrl;
+  model: string;
 
-  model = '';
 
   get minHeightClass(): string {
     return this.minHeight ? `min-height-${this.minHeight}` : '';
@@ -29,14 +31,22 @@ export class SdsRichTextComponent implements ControlValueAccessor {
     return this.maxHeight ? `max-height-${this.maxHeight}` : '';
   }
 
-  _onChange = (_: any) => { };
-  _onTouched = (_: any) => { };
+  _onChange(_: any) {
+    console.log('change');
+    console.log(_);
+
+  };
+  _onTouched(_: any) {
+    console.log('blur');
+    console.log(_);
+
+  };
 
   writeValue(value: any): void {
     this.model = value;
   }
   registerOnChange(fn: any): void {
-    this._onChange = fn;
+    // this._onChange = fn;
   }
   registerOnTouched(fn: any) {
     this._onTouched = fn;
@@ -49,16 +59,15 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   public isLayoutReady = false;
 
   public Editor = ClassicEditor;
-  // public config = {
-  //   licenseKey: 'GPL',
-  //   plugins: [Essentials, Paragraph, Bold, Italic],
-  //   toolbar: ['undo', 'redo', '|', 'bold', 'italic', '|', 'formatPainter']
-  // }
+
 
 
   public config: EditorConfig = {}; // CKEditor needs the DOM tree before calculating the configuration.
   public ngAfterViewInit(): void {
+
+
     this.config = {
+
       toolbar: {
         items: [
           'heading',
@@ -66,12 +75,9 @@ export class SdsRichTextComponent implements ControlValueAccessor {
           'bold', 'italic', 'link', 'bulletedList', 'numberedList',
           '|',
           'indent', 'outdent',
-
-
           '|',
-
-
-
+          'insertTable',
+          'blockQuote',
           '|',
           'undo',
           'redo'
@@ -82,8 +88,9 @@ export class SdsRichTextComponent implements ControlValueAccessor {
         Bold, Italic, Link, List,
         Indent, IndentBlock,
         BlockQuote, Essentials,
-
-         Paragraph
+        Table,
+        TableToolbar,
+        Paragraph
       ],
       heading: {
         options: [
@@ -130,9 +137,10 @@ export class SdsRichTextComponent implements ControlValueAccessor {
           }
         ]
       },
-      // initialData:
-      //   '',
       licenseKey: 'GPL',
+      table: {
+        contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+      },
       link: {
         addTargetToExternalLinks: true,
         defaultProtocol: 'https://',
@@ -146,7 +154,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
           }
         }
       },
-      placeholder: 'Type or paste your content here!'
+      placeholder: this.placeholder
     };
 
     this.isLayoutReady = true;
