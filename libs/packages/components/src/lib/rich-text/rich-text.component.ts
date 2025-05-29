@@ -19,7 +19,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() minHeight: number;
   @Input() maxHeight: number;
   @ViewChild('editor') editorComponent: CKEditorComponent;
-  @Input() placeholder: string;
+  @Input() placeholder: string = '';
 
   model: string;
 
@@ -43,10 +43,12 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   };
 
   writeValue(value: any): void {
+    console.log('writeValue');
+    console.log(value);
     this.model = value;
   }
   registerOnChange(fn: any): void {
-    // this._onChange = fn;
+    this._onChange = fn;
   }
   registerOnTouched(fn: any) {
     this._onTouched = fn;

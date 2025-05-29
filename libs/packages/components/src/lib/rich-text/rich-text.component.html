@@ -16,7 +16,7 @@
     *ngIf="isLayoutReady"
     [editor]="Editor"
     [config]="config"
-    [data]="model"
+    [(ngModel)]="model"
     (change)="_onChange($event)"
     (blur)="_onTouched($event)"
   >

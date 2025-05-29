@@ -1,5 +1,6 @@
 <div style="padding-top: 5rem;">
-  <sds-rich-text [formControl]="fc" [maxHeight]="6"></sds-rich-text>
-
-  <p>Rich Text Editor Value: {{ fc.value }}</p>
+  <sds-rich-text  [(ngModel)]="data"
+ [minHeight]="10"></sds-rich-text>
+  <!-- [formControl]="fc" -->
+  <p>Rich Text Editor Value: {{ data}}</p>
 </div>
