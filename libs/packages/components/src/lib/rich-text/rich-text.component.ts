@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CKEditorComponent } from '@ckeditor/ckeditor5-angular';
-import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, Strikethrough, Underline, TableToolbar, Table } from 'ckeditor5'
+import { ChangeEvent, CKEditorComponent, BlurEvent, FocusEvent } from '@ckeditor/ckeditor5-angular';
+import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, TableToolbar, Table } from 'ckeditor5'
 
 @Component({
   selector: 'sds-rich-text',
@@ -14,6 +14,7 @@ import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Headin
       multi: true,
     },
   ],
+
 })
 export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() minHeight: number;
@@ -31,20 +32,23 @@ export class SdsRichTextComponent implements ControlValueAccessor {
     return this.maxHeight ? `max-height-${this.maxHeight}` : '';
   }
 
-  _onChange(_: any) {
-    console.log('change');
-    console.log(_);
+  _onChange = (_: any) => { };
+  
+  _onTouched = (_: any) => { };
 
-  };
-  _onTouched(_: any) {
-    console.log('blur');
-    console.log(_);
+  onChange({ editor }: ChangeEvent) {
+    const data = editor.getData();
+    this._onChange(data);
+  }
 
-  };
+
+  onTouched({ editor }: BlurEvent) {
+    const data = editor.getData();
+    this._onTouched(data);
+  }
 
   writeValue(value: any): void {
-    console.log('writeValue');
-    console.log(value);
+
     this.model = value;
   }
   registerOnChange(fn: any): void {
@@ -78,8 +82,8 @@ export class SdsRichTextComponent implements ControlValueAccessor {
           '|',
           'indent', 'outdent',
           '|',
-          'insertTable',
           'blockQuote',
+          'insertTable',
           '|',
           'undo',
           'redo'
@@ -156,7 +160,9 @@ export class SdsRichTextComponent implements ControlValueAccessor {
           }
         }
       },
-      placeholder: this.placeholder
+      placeholder: this.placeholder,
+
+
     };
 
     this.isLayoutReady = true;

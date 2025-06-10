@@ -7,16 +7,22 @@ import { UntypedFormControl } from '@angular/forms';
 })
 export class RichTextEditorMaxHeightComponent implements OnInit, OnChanges {
   public data = 'Max';
+
+  fc: UntypedFormControl = new UntypedFormControl('<p>this is a test Max</p>');
   //fc: UntypedFormControl = new UntypedFormControl('<p>this is a test PRogeess</p>');
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Changes')
-    console.log(this.data);
+
   }
 
 
   ngOnInit() {
-    console.log('ngOnInit')
-    console.log(this.data);
+    this.fc.valueChanges.subscribe(value => {
+      console.log('Component valueChanges')
+      console.log(value)
+    });
+
+
+
     //   this.fc.registerOnChange(i => {
 
     //  //t   this.fc.
