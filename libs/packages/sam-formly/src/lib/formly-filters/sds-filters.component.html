@@ -81,8 +81,14 @@
     </div>
   </div>
 
-  <div class="search-input">
-    <ng-content select="sds-search"></ng-content>
+  <div *ngIf="enableSearchfield" class="search-input">
+    <formly-form
+      [options]="options"
+      [form]="form"
+      [model]="model"
+      [fields]="[searchField]"
+      (modelChange)="onModelChange($event)"
+    ></formly-form>
   </div>
 
   <div class="filters-modal margin-left-2">
