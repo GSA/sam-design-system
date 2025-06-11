@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ChangeEvent, CKEditorComponent, BlurEvent, FocusEvent } from '@ckeditor/ckeditor5-angular';
-import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, TableToolbar, Table } from 'ckeditor5'
+import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, TableToolbar, Table, MediaEmbed } from 'ckeditor5'
 
 @Component({
   selector: 'sds-rich-text',
@@ -33,7 +33,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   }
 
   _onChange = (_: any) => { };
-  
+
   _onTouched = (_: any) => { };
 
   onChange({ editor }: ChangeEvent) {
@@ -84,6 +84,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
           '|',
           'blockQuote',
           'insertTable',
+          'mediaEmbed',
           '|',
           'undo',
           'redo'
@@ -95,7 +96,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
         Indent, IndentBlock,
         BlockQuote, Essentials,
         Table,
-        TableToolbar,
+        TableToolbar, MediaEmbed,
         Paragraph
       ],
       heading: {
