@@ -185,7 +185,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private cdr: ChangeDetectorRef,
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService
-  ) {}
+  ) { }
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -289,6 +289,11 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     this.resetClicked.emit();
   }
 
+  reset() {
+    this.formlyUpdateComunicationService.updateFilter(this.defaultModel);
+    this.resetClicked.emit();
+  }
+
   updateChange(change) {
     const updatedModel = this.getCleanModel ? this.convertToModel(change) : change;
     this.filterChange.emit(updatedModel);
@@ -297,6 +302,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     }
 
     if (this.displayChips) {
+      console.log('Display chips')
+      console.log(change)
+      console.log(this.fields)
       this.generateChips(change, this.fields);
     }
 

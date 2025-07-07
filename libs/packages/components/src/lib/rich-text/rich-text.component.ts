@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ChangeEvent, CKEditorComponent, BlurEvent, FocusEvent } from '@ckeditor/ckeditor5-angular';
+import { ChangeEvent, CKEditorComponent, BlurEvent } from '@ckeditor/ckeditor5-angular';
 import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, TableToolbar, Table, MediaEmbed } from 'ckeditor5'
 
 @Component({
