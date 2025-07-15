@@ -186,6 +186,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     @Optional()
     private filterUpdateModelService: SDSFormlyUpdateModelService
   ) { }
+
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -262,9 +263,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       } else if (field.fieldGroup) {
         matchingField = this.findFieldInFieldGroup(field.fieldGroup, key);
       }
-      // else if (field.fieldArray) {
-      //         matchingField = this.findFieldInFieldGroup([field.fieldArray], key);
-      //       }
 
       if (matchingField) {
         break;
@@ -290,8 +288,19 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   reset() {
+    // this.chips = this.chips.splice(0, this.chips.length);
+    this.model = this.defaultModel;
     this.formlyUpdateComunicationService.updateFilter(this.defaultModel);
+    this.filterChange.emit(this.defaultModel);
+    // this.generateChips(this.defaultModel, this.fields);
+    // this.chips.forEach(
+    //   (chip) => {
+    //     this.removeChip(chip)
+    //   });
+    this.generateChips(this.defaultModel, this.fields);
+
     this.resetClicked.emit();
+    this.cdr.detectChanges();
   }
 
   updateChange(change) {
@@ -302,9 +311,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     }
 
     if (this.displayChips) {
-      console.log('Display chips')
-      console.log(change)
-      console.log(this.fields)
       this.generateChips(change, this.fields);
     }
 
@@ -498,6 +504,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       return;
     }
 
+
     if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
       const fromDateControl = field.fieldGroup[0].formControl;
       const toDateControl = field.fieldGroup[1].formControl;
@@ -508,22 +515,66 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
 
     // If the form control contains complex values, such as an object or array, we need to determine what the new
     // value of the form will be after this chip has been removed, and update the form control accordingly
+
     const chipsWithSameKey = this.chips.filter(
       (exisingChip) => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey
     );
     const existingValues = chipsWithSameKey.map((chipWithSameKey) => chipWithSameKey.value);
+
 
     if (Array.isArray(field.formControl.value)) {
       let updatedValue = [];
       existingValues.forEach((value) => {
         updatedValue = updatedValue.concat(value);
       });
-      field.formControl.setValue(updatedValue);
+      field.formControl.patchValue(updatedValue)
+      this.setParentWithProperty(this.model, field.key.toString(), updatedValue);
+      this.filterChange.emit(this.model);
+      this.generateChips(this.model, this.fields);
+      this.cdr.detectChanges();
       return;
     }
 
     const objectValue = {};
-    Object.assign(objectValue, ...existingValues);
-    field.formControl.setValue(objectValue);
+    if (field.type === 'multicheckbox') {
+      existingValues.forEach((value) => {
+        Object.assign(objectValue, value);
+
+      });
+    } else {
+      Object.assign(objectValue, ...existingValues);
+    }
+
+
+    field.formControl.patchValue(objectValue);
+    this.setParentWithProperty(this.model, field.key.toString(), objectValue);
+    this.filterChange.emit(this.model);
+
+    this.generateChips(this.model, this.fields);
+
+    this.cdr.detectChanges();
+  }
+
+  setParentWithProperty(item: object, propertyName: string, newValue: object) {
+
+
+    if (item.hasOwnProperty(propertyName)) {
+      if (Object.keys(newValue).length === 0) {
+        //removes empty objects
+        delete item[propertyName];
+      } else {
+        item[propertyName] = newValue;
+      }
+    } else {
+      const propertyList = Object.keys(item);
+      propertyList.forEach((key) => {
+        const child = item[key];
+        if (typeof child === 'object') {
+          this.setParentWithProperty(child, propertyName, newValue)
+        }
+
+      });
+    }
   }
 }
+
