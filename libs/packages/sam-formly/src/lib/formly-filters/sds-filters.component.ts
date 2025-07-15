@@ -26,6 +26,7 @@ import { SdsFormlyTypes } from '../formly/models/formly-types';
 import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
 import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'sds-filters',
@@ -89,7 +90,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    * assigned to the model input during component init
    * or defaultValue provided in formly config
    */
-  @Input() defaultModel: any;
+  @Input() defaultModel: any = {};
 
   /**
    * Toggle layout for filters - when horizontal is toggled,
@@ -195,6 +196,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     // keep display chips to defined value if defined, otherwise, default to false, unless hoirzontal is turned on
     this.displayChips = this.displayChips != undefined ? this.displayChips : this.horizontal;
+    if (this.enableSearchfield) {
+      this.fields.push(this.searchField);
+      this.cdr.detectChanges();
+    }
 
     if (this.filterUpdateModelService) {
       this.filterUpdateModelService.filterModel.pipe(takeUntil(this.unsubscribe$)).subscribe((filter) => {
@@ -218,6 +223,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       this.checkForHide();
     }
   }
+
 
   /**
    * This is for getting the model which has a value.
@@ -288,18 +294,14 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   reset() {
-    // this.chips = this.chips.splice(0, this.chips.length);
-    this.model = this.defaultModel;
-    this.formlyUpdateComunicationService.updateFilter(this.defaultModel);
-    this.filterChange.emit(this.defaultModel);
-    // this.generateChips(this.defaultModel, this.fields);
-    // this.chips.forEach(
-    //   (chip) => {
-    //     this.removeChip(chip)
-    //   });
-    this.generateChips(this.defaultModel, this.fields);
 
+    this.model = JSON.parse(JSON.stringify(this.defaultModel));
+    if (this.formlyUpdateComunicationService) {
+      this.formlyUpdateComunicationService.updateFilter(this.model);
+    }
+    this.filterChange.emit(this.model);
     this.resetClicked.emit();
+    this.generateChips(this.model, this.fields);
     this.cdr.detectChanges();
   }
 
@@ -440,7 +442,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    */
   private generateChips(model: any, fields: FormlyFieldConfig[]) {
     const readonlyData = FormlyUtilsService.formlyConfigToReadonlyData(fields, model);
-    const chipsWithValue = readonlyData.filter((data) => data.value);
+    const chipsWithValue = readonlyData.filter((data) => data.value && data.label);
     let allChips = [];
     chipsWithValue.forEach((chip) => {
       if (typeof chip.value != 'object') {

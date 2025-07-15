@@ -79,7 +79,29 @@ export class FormlyFilterHorizontalComponent {
           },
         }
       ],
-    },
+    }
+    // ,
+    // {
+    //   key: 'socioeconomic4',
+    //   type: 'multicheckbox',
+    //   props: {
+    //     label: 'Socio-Economic Status 4',
+    //     options: [
+    //       {
+    //         value: 'vet',
+    //         label: 'Veteran Owned',
+    //       },
+    //       {
+    //         value: 'women',
+    //         label: 'Women Owned',
+    //       },
+    //       {
+    //         value: 'minority',
+    //         label: 'Minority Owned',
+    //       },
+    //     ],
+    //   },
+    // },
     // {
     //   key: 'dateRange',
     //   props: {

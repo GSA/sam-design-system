@@ -96,7 +96,7 @@ export class FormlyUtilsService {
       }
     }
 
-    if (field.fieldGroup) {
+    if (field.fieldGroup && model) {
       const innerModel = field.key ? model[field.key as string] : model;
       field.fieldGroup.forEach((innerField) => {
         this._formlyConfigToReadonlyData(innerField, innerModel, readonlyData, options);
