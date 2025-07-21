@@ -265,6 +265,7 @@
     "warnings": {
       "versionMismatch": false
     },
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": false
   }
 }
