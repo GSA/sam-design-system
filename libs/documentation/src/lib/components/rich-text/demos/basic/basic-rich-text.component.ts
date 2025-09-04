@@ -8,7 +8,15 @@ import { UntypedFormControl } from '@angular/forms';
 })
 export class BasicRichTextComponent implements OnInit {
   public data = '';
-  fc: UntypedFormControl = new UntypedFormControl('<p>this is a test</p>');
+  fc: UntypedFormControl = new UntypedFormControl('<p>this is a test Machine</p>');
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('ngOnInit')
+
+    this.fc.registerOnChange(i => {
+      console.log('Comp On change')
+      console.log(
+        i.value);
+    })
+  }
 }

@@ -55,7 +55,7 @@
           </p>
         </ng-template>
       </div>
-      <div *ngIf="!field.props?.label && field.hooks">
+      <div *ngIf="!field.props?.label">
         <formly-form
           [options]="options"
           [form]="form"
@@ -73,7 +73,7 @@
         [fields]="fields"
         [options]="options"
         [model]="model"
-        [isInactiveValueFieldShown]="isInactiveValueFieldShown"
+    [isInactiveValueFieldShown]="isInactiveValueFieldShown"
         [enablePopover]="horizontal"
         (showInactiveFiltersChange)="handleInactiveFilterChange($event)"
       >
@@ -81,9 +81,15 @@
     </div>
   </div>
 
-  <div class="search-input">
-    <ng-content select="sds-search"></ng-content>
-  </div>
+  <!-- <div *ngIf="enableSearchfield" class="search-input">
+    <formly-form
+      [options]="options"
+      [form]="form"
+      [model]="model"
+      [fields]="[searchField]"
+      (modelChange)="onModelChange($event)"
+    ></formly-form>
+  </div> -->
 
   <div class="filters-modal margin-left-2">
     <button type="button" (click)="openDialog()" class="usa-button usa-button--unstyled">
@@ -93,14 +99,14 @@
   </div>
 
   <div *ngIf="showReset" class="horizontal-reset margin-left-2 text-right">
-    <sds-formly-reset [options]="options" [defaultModel]="{}" (resetClicked)="resetClicked.emit()"></sds-formly-reset>
+    <sds-formly-reset [options]="options" [defaultModel]="{}" (resetClicked)="reset()"></sds-formly-reset>
   </div>
 </div>
 
 <!-- Chip Display -->
 <ng-container *ngIf="displayChips">
   <div *ngFor="let chip of chips" class="width-auto sds-tag sds-tag--chip sds-tag--input margin-right-2">
-    <div class="sds--tag__item">
+    <div *ngIf="chip.label" class="sds--tag__item">
       <sds-readonly-container
         [label]="chip.label"
         [value]="chip.value"
@@ -116,7 +122,7 @@
       </sds-readonly-container>
     </div>
 
-    <button
+    <button *ngIf="chip.label" 
       [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.srValue"
       aria-hidden="false"
       class="sds-tag__close position-static"

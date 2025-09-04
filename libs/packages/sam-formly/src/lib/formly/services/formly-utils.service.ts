@@ -68,7 +68,12 @@ export class FormlyUtilsService {
   ) {
     if (field.props && (options.convertAll || Object.values(SdsReadonlyTypes).includes(field.type as any))) {
       const label = field.props.label;
-      const value = model[field.key as string];
+      let value = undefined
+      if (model) {
+        value = model[field.key as string];
+      } else {
+        value = undefined;
+      }
       const readonlyOptions: ReadonlyOptions = {
         providedOptions: field.props.options as any,
         autocompleteOptions: field.props.configuration,
@@ -91,7 +96,7 @@ export class FormlyUtilsService {
       }
     }
 
-    if (field.fieldGroup) {
+    if (field.fieldGroup && model) {
       const innerModel = field.key ? model[field.key as string] : model;
       field.fieldGroup.forEach((innerField) => {
         this._formlyConfigToReadonlyData(innerField, innerModel, readonlyData, options);
