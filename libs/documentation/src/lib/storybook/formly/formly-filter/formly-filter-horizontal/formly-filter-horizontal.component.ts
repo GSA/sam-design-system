@@ -37,27 +37,7 @@ export class FormlyFilterHorizontalComponent {
         ],
       },
     },
-    {
-      key: 'socioeconomic2',
-      type: 'multicheckbox',
-      props: {
-        label: 'Socio-Economic Status',
-        options: [
-          {
-            value: 'vet',
-            label: 'Veteran Owned',
-          },
-          {
-            value: 'women',
-            label: 'Women Owned',
-          },
-          {
-            value: 'minority',
-            label: 'Minority Owned',
-          },
-        ],
-      },
-    },
+
 
     {
       key: 'searchCtcode',
