@@ -14,22 +14,23 @@ import { filter } from 'rxjs/operators';
 import { SdsAccordionItemComponent } from './accordion-item.component';
 
 @Component({
-  selector: 'sds-accordion-item-header',
-  templateUrl: './accordion-item-header.component.html',
-  styleUrls: ['./accordion-item-header.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'sds-accordion__trigger',
-    role: 'button',
-    '[attr.id]': 'accordionItem._headerId',
-    '[attr.tabindex]': 'disabled ? -1 : 0',
-    '[attr.aria-controls]': '_getAccordionItemId()',
-    '[attr.aria-expanded]': '_isExpanded()',
-    '[attr.aria-disabled]': 'accordionItem.disabled',
-    '(click)': '_toggle()',
-    '(keydown)': '_keydown($event)',
-  },
+    selector: 'sds-accordion-item-header',
+    templateUrl: './accordion-item-header.component.html',
+    styleUrls: ['./accordion-item-header.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'sds-accordion__trigger',
+        role: 'button',
+        '[attr.id]': 'accordionItem._headerId',
+        '[attr.tabindex]': 'disabled ? -1 : 0',
+        '[attr.aria-controls]': '_getAccordionItemId()',
+        '[attr.aria-expanded]': '_isExpanded()',
+        '[attr.aria-disabled]': 'accordionItem.disabled',
+        '(click)': '_toggle()',
+        '(keydown)': '_keydown($event)',
+    },
+    standalone: false
 })
 export class SdsAccordionItemHeaderComponent implements OnDestroy, FocusableOption {
   private _parentChangeSubscription = Subscription.EMPTY;

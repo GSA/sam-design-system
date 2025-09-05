@@ -4,17 +4,17 @@ import { ChangeEvent, CKEditorComponent, BlurEvent } from '@ckeditor/ckeditor5-a
 import { BlockQuote, Essentials, List, Bold, ClassicEditor, EditorConfig, Heading, Indent, IndentBlock, Italic, Link, Paragraph, TableToolbar, Table, MediaEmbed } from 'ckeditor5'
 
 @Component({
-  selector: 'sds-rich-text',
-  templateUrl: './rich-text.component.html',
-  styleUrl: './rich-text.component.scss',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SdsRichTextComponent),
-      multi: true,
-    },
-  ],
-
+    selector: 'sds-rich-text',
+    templateUrl: './rich-text.component.html',
+    styleUrl: './rich-text.component.scss',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SdsRichTextComponent),
+            multi: true,
+        },
+    ],
+    standalone: false
 })
 export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() minHeight: number;

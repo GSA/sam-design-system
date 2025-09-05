@@ -3,8 +3,9 @@ import { SelectionPanelModel } from '@gsa-sam/components';
 import { selectionPanelConfig } from './navigation.config';
 
 @Component({
-  selector: `sds-selection-mode-panel-demo`,
-  templateUrl: './selection-mode.component.html',
+    selector: `sds-selection-mode-panel-demo`,
+    templateUrl: './selection-mode.component.html',
+    standalone: false
 })
 export class SelectionModeComponent {
   selectionPanelModel: SelectionPanelModel = {

@@ -49,13 +49,14 @@ export interface SdsMenuInterface<T = any> {
 }
 
 @Component({
-  selector: 'sds-menu',
-  exportAs: 'sdsMenu',
-  templateUrl: 'menu.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  animations: [sdsMenuAnimations.transformMenu],
-  providers: [{ provide: SDS_MENU_TOKEN, useExisting: SdsMenuComponent }],
+    selector: 'sds-menu',
+    exportAs: 'sdsMenu',
+    templateUrl: 'menu.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    animations: [sdsMenuAnimations.transformMenu],
+    providers: [{ provide: SDS_MENU_TOKEN, useExisting: SdsMenuComponent }],
+    standalone: false
 })
 export class SdsMenuComponent implements OnInit, AfterContentInit, OnDestroy, SdsMenuInterface<SdsMenuItemComponent> {
   /** After | Before the menu triger element */

@@ -4,9 +4,10 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-mincharacter.component.html',
-  selector: `sds-autocomplete-mincharacter-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-mincharacter.component.html',
+    selector: `sds-autocomplete-mincharacter-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteMinCharacter implements OnInit {
   private data = SampleAutocompleteData;

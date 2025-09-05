@@ -5,10 +5,11 @@ import { SdsStepComponent, SdsStepper } from './sds-stepper';
 
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
-  selector: `[sdsStepperNext]`,
-  host: {
-    '[attr.disabled]': '_disabled()',
-  },
+    selector: `[sdsStepperNext]`,
+    host: {
+        '[attr.disabled]': '_disabled()',
+    },
+    standalone: false
 })
 export class SdsStepperNextDirective {
   constructor(public _stepper: SdsStepper) {}
@@ -59,10 +60,11 @@ export class SdsStepperNextDirective {
 
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
-  selector: `[sdsStepperPrevious]`,
-  host: {
-    '[attr.disabled]': '_stepper.selectedStepIndex === 0 ? true : undefined',
-  },
+    selector: `[sdsStepperPrevious]`,
+    host: {
+        '[attr.disabled]': '_stepper.selectedStepIndex === 0 ? true : undefined',
+    },
+    standalone: false
 })
 export class SdsStepperPreviousDirective {
   constructor(public _stepper: SdsStepper) {}
@@ -102,7 +104,8 @@ export class SdsStepperPreviousDirective {
 
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
-  selector: `[sdsStepperSave]`,
+    selector: `[sdsStepperSave]`,
+    standalone: false
 })
 export class SdsStepperSaveDirective {
   constructor(public _stepper: SdsStepper) {}
@@ -120,10 +123,11 @@ export class SdsStepperSaveDirective {
 
 /** Button that moves to the next step in a stepper workflow. */
 @Directive({
-  selector: `[sdsStepperNav]`,
-  host: {
-    '[attr.disabled]': 'sdsStepperNav.disabled',
-  },
+    selector: `[sdsStepperNav]`,
+    host: {
+        '[attr.disabled]': 'sdsStepperNav.disabled',
+    },
+    standalone: false
 })
 export class SdsStepperNavDirective {
   @Input() sdsStepperNav: SdsStepComponent;
@@ -152,7 +156,8 @@ export class SdsStepperNavDirective {
  *  <usa-step-indicator sdsStepperUSWDSNav> </usa-step-indicator>
  */
 @Directive({
-  selector: `usa-step-indicator [sdsStepperUSWDSNav]`,
+    selector: `usa-step-indicator [sdsStepperUSWDSNav]`,
+    standalone: false
 })
 export class SdsStepperUSWDSNavDirective implements OnInit, OnDestroy {
   constructor(

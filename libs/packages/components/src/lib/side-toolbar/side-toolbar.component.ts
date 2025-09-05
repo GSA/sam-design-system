@@ -16,8 +16,9 @@ import { SdsDialogConfig } from '../dialog/dialog-config';
 import { SdsDialogService } from '../dialog/dialog';
 
 @Component({
-  selector: 'sds-side-toolbar',
-  templateUrl: './side-toolbar.component.html',
+    selector: 'sds-side-toolbar',
+    templateUrl: './side-toolbar.component.html',
+    standalone: false
 })
 export class SdsSideToolbarComponent implements OnInit, OnDestroy {
   @ContentChild(TemplateRef) template: TemplateRef<any>;

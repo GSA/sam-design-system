@@ -212,8 +212,9 @@ describe('Formly Field multicheckbox Component', () => {
 });
 
 @Component({
-  selector: 'formly-form-multicheckbox',
-  template: '',
+    selector: 'formly-form-multicheckbox',
+    template: '',
+    standalone: false
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

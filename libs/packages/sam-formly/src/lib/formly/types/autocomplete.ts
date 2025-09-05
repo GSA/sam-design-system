@@ -3,9 +3,10 @@ import { AbstractSdsFormly } from '../sds-formly';
 import { SDSAutocompleteComponent } from '@gsa-sam/components';
 
 @Component({
-  selector: 'sds-formly-field-autocomplete',
-  template: ` <sds-autocomplete [formControl]="formControl"></sds-autocomplete> `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sds-formly-field-autocomplete',
+    template: ` <sds-autocomplete [formControl]="formControl"></sds-autocomplete> `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implements AfterViewInit {
   @ViewChild(SDSAutocompleteComponent, { static: true }) public template: SDSAutocompleteComponent;

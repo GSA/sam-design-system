@@ -2,10 +2,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ToastrService, GlobalConfig } from 'ngx-toastr';
 
 @Component({
-  templateUrl: './toasts-basic.component.html',
-  styleUrls: ['./toasts-basic.component.scss'],
-  selector: `sds-toasts-basic-demo`,
-  encapsulation: ViewEncapsulation.None,
+    templateUrl: './toasts-basic.component.html',
+    styleUrls: ['./toasts-basic.component.scss'],
+    selector: `sds-toasts-basic-demo`,
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ToastsBasic {
   options: GlobalConfig;

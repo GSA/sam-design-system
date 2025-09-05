@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
-  selector: 'gsa-sam-radio-horizontal',
-  templateUrl: './radio-horizontal.component.html',
-  styleUrls: ['./radio-horizontal.component.scss'],
+    selector: 'gsa-sam-radio-horizontal',
+    templateUrl: './radio-horizontal.component.html',
+    styleUrls: ['./radio-horizontal.component.scss'],
+    standalone: false
 })
 export class RadioHorizontalComponent {
   form = new UntypedFormGroup({});

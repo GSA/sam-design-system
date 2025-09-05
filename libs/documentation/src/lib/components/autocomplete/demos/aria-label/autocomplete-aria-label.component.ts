@@ -3,9 +3,10 @@ import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } fr
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-  selector: `sds-autocomplete-aria-label-demo`,
-  templateUrl: './autocomplete-aria-label.component.html',
-  providers: [AutocompleteSampleDataService],
+    selector: `sds-autocomplete-aria-label-demo`,
+    templateUrl: './autocomplete-aria-label.component.html',
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteAriaLabelComponent {
   public settings = new SDSAutocompletelConfiguration();

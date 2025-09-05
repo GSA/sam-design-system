@@ -2,8 +2,8 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'sds-text-child',
-  template: `
+    selector: 'sds-text-child',
+    template: `
     <ng-container *ngIf="items">
       <span
         class="sds-tag sds-tag--chip margin-x-05"
@@ -14,6 +14,7 @@ import { Subject } from 'rxjs';
       >
     </ng-container>
   `,
+    standalone: false
 })
 export class SdsTextChildComponent {
   @Input() items;

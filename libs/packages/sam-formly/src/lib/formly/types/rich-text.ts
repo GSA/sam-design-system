@@ -3,8 +3,9 @@ import { AbstractSdsFormly } from '../sds-formly';
 import { SdsRichTextComponent } from '@gsa-sam/components';
 
 @Component({
-  selector: 'sds-formly-rich-text-editor',
-  template: ` <sds-rich-text [formControl]="formControl"> </sds-rich-text> `,
+    selector: 'sds-formly-rich-text-editor',
+    template: ` <sds-rich-text [formControl]="formControl"> </sds-rich-text> `,
+    standalone: false
 })
 export class FormlyFieldRichTextEditorComponent extends AbstractSdsFormly {
   @ViewChild(SdsRichTextComponent, { static: true }) public template: SdsRichTextComponent;

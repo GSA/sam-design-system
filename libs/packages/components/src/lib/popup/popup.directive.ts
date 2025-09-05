@@ -1,8 +1,9 @@
 import { Directive, Input, ElementRef, Renderer2, AfterViewInit, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[sdsPopup]',
-  exportAs: 'sdsPopup',
+    selector: '[sdsPopup]',
+    exportAs: 'sdsPopup',
+    standalone: false
 })
 export class SdsPopupDirective implements AfterViewInit {
   @Input() sdsPopup: HTMLElement;

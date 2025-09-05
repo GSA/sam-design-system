@@ -3,9 +3,10 @@ import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } fr
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-freetext.component.html',
-  selector: `sds-autocomplete-freetext-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-freetext.component.html',
+    selector: `sds-autocomplete-freetext-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteFreeText implements OnInit {
   public settings = new SDSAutocompletelConfiguration();

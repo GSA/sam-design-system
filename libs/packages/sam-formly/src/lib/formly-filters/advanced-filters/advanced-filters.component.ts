@@ -17,10 +17,11 @@ import { SdsFormlyDialogComponent } from '../../formly-dialog/formly-dialog.comp
 import { tap, startWith } from 'rxjs/operators';
 
 @Component({
-  selector: 'sds-advanced-filters',
-  templateUrl: './advanced-filters.component.html',
-  styleUrls: ['./advanced-filters.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sds-advanced-filters',
+    templateUrl: './advanced-filters.component.html',
+    styleUrls: ['./advanced-filters.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AdvancedFiltersComponent implements OnInit {
   /**

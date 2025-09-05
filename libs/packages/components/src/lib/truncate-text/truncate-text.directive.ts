@@ -17,7 +17,10 @@ import { PortalInjector, ComponentPortal } from '@angular/cdk/portal';
 import { SdsTruncatedTextContainerComponent } from './truncate-text-container.component';
 import { SDS_TRUNCATED_TEXT_DATA } from './truncates-text-base';
 
-@Directive({ selector: '[sdsTruncateTextByLine]' })
+@Directive({
+    selector: '[sdsTruncateTextByLine]',
+    standalone: false
+})
 export class SdsTruncateTextByLineDirective implements OnInit, OnDestroy, AfterViewInit {
   /** Maximum lines of text limit */
   @Input('sdsTruncateTextByLine')

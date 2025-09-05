@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 @Component({
-  selector: 'basic-rich-text',
-  templateUrl: './basic-rich-text.component.html',
-  styleUrls: [],
+    selector: 'basic-rich-text',
+    templateUrl: './basic-rich-text.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class BasicRichTextComponent implements OnInit {
   public data = '';

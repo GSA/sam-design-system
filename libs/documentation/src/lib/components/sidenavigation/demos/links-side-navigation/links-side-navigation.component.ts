@@ -3,8 +3,9 @@ import { SdsDialogConfig, SideNavigationModel, SdsSideNavigationComponent, SdsDi
 import { navigationConfig } from '../filter-side-navigation/navigation.config';
 
 @Component({
-  selector: 'links-side-navigation',
-  templateUrl: './links-side-navigation.component.html',
+    selector: 'links-side-navigation',
+    templateUrl: './links-side-navigation.component.html',
+    standalone: false
 })
 export class LinksSideNavigationComponent implements AfterViewInit {
   @ViewChild('sideNavigation') sideNavigation: SdsSideNavigationComponent;

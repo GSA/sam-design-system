@@ -62,11 +62,11 @@ export function getFormWrapper(name) {
 }
 
 @Component({
-  selector: 'docs-api-component',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './docs-api-component.component.html',
-  styles: [
-    `
+    selector: 'docs-api-component',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './docs-api-component.component.html',
+    styles: [
+        `
       code::before,
       code::after {
         content: '';
@@ -78,7 +78,8 @@ export function getFormWrapper(name) {
         width: 75%;
       }
     `,
-  ],
+    ],
+    standalone: false
 })
 export class DocumentationAPIComponent implements OnInit {
   api: apiDesc;

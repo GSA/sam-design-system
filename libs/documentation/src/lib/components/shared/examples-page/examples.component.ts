@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DocumentationDemoList } from '../demo-list';
 
 @Component({
-  template: `
+    template: `
     <documentation-widget-demo
       *ngFor="let demo of demos"
       [id]="demo.id"
@@ -20,6 +20,7 @@ import { DocumentationDemoList } from '../demo-list';
       <ng-template [ngComponentOutlet]="demo.type"></ng-template>
     </documentation-widget-demo>
   `,
+    standalone: false
 })
 export class DocumentationExamplesPage {
   component: string;

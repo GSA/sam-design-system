@@ -12,8 +12,8 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'sds-editor',
-  template: `
+    selector: 'sds-editor',
+    template: `
     <div
       #searchInput
       [attr.id]="id"
@@ -23,22 +23,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       (blur)="validateOnBlur && onBlur($event.target.innerHTML)"
     ></div>
   `,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SdsEditorComponent),
-      multi: true,
-    },
-  ],
-  styles: [
-    `
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SdsEditorComponent),
+            multi: true,
+        },
+    ],
+    styles: [
+        `
       ::ng-deep mark {
         background-color: red;
         color: white;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SdsEditorComponent implements ControlValueAccessor {
   @ViewChild('searchInput', { read: ElementRef, static: true }) searchInput: ElementRef;

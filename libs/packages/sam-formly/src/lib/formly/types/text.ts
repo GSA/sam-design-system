@@ -4,9 +4,10 @@ import { AbstractSdsFormly } from '../sds-formly';
 import { SdsTextComponent } from '@gsa-sam/components';
 
 @Component({
-  selector: 'sds-formly-field-text',
-  template: ` <sds-text [formControl]="formControl"></sds-text> `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sds-formly-field-text',
+    template: ` <sds-text [formControl]="formControl"></sds-text> `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormlyFieldTextComponent extends AbstractSdsFormly {
   @ViewChild(SdsTextComponent, { static: true }) public template: SdsTextComponent;

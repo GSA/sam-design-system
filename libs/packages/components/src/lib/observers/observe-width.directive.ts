@@ -7,7 +7,10 @@ import { Subscription } from 'rxjs';
  * Directive that triggers a callback whenever the width of
  * its associated element has changed.
  */
-@Directive({ selector: '[sdsObserveWidth]' })
+@Directive({
+    selector: '[sdsObserveWidth]',
+    standalone: false
+})
 export class SdsObserveWidthDirective implements OnInit, OnDestroy {
   /** Event emitted for each change in the element's width. */
   @Output('sdsObserveWidth') elementWidth = new EventEmitter<number>();

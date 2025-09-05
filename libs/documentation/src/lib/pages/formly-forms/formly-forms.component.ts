@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-forms',
-  templateUrl: './formly-forms.component.html',
+    selector: 'sds-formly-forms',
+    templateUrl: './formly-forms.component.html',
+    standalone: false
 })
 export class FormlyFormsComponent {
   form = new UntypedFormGroup({});

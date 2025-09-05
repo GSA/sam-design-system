@@ -4,9 +4,10 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-disable.component.html',
-  selector: `sds-autocomplete-disable-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-disable.component.html',
+    selector: `sds-autocomplete-disable-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteDisable implements OnInit {
   private data = SampleAutocompleteData;

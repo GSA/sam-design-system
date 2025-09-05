@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './textarea-basic.component.html',
-  styleUrls: ['./textarea-basic.component.scss'],
-  selector: `sds-formly-textarea-basic-demo`,
+    templateUrl: './textarea-basic.component.html',
+    styleUrls: ['./textarea-basic.component.scss'],
+    selector: `sds-formly-textarea-basic-demo`,
+    standalone: false
 })
 export class TextAreaBasic {
   form = new UntypedFormGroup({});

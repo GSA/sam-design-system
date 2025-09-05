@@ -6,9 +6,10 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
-  selector: 'sds-readonly-basic-demo',
-  templateUrl: './readonly-basic.component.html',
-  providers: [AutocompleteSampleDataService],
+    selector: 'sds-readonly-basic-demo',
+    templateUrl: './readonly-basic.component.html',
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class ReadonlyBasicComponent implements OnInit {
   autocompleteSingleSelectSettings = new SDSAutocompletelConfiguration();

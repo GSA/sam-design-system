@@ -14,7 +14,8 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
-  selector: 'a[href]',
+    selector: 'a[href]',
+    standalone: false
 })
 export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.rel') relAttr = '';

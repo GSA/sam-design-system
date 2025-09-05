@@ -5,8 +5,9 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { StepperAdvancedService } from './stepper-advanced.service';
 
 @Component({
-  selector: `subawardee-demo`,
-  templateUrl: './subawardee.component.html',
+    selector: `subawardee-demo`,
+    templateUrl: './subawardee.component.html',
+    standalone: false
 })
 export class SubawardeeDemoComponent {
   @Input() displayInput = true;
@@ -34,8 +35,8 @@ export class SubawardeeDemoComponent {
 }
 
 @Component({
-  selector: `add-subawardee-dialog-demo`,
-  template: `
+    selector: `add-subawardee-dialog-demo`,
+    template: `
     <div sds-dialog-title>
       <h3>Add Subawardee</h3>
     </div>
@@ -47,7 +48,8 @@ export class SubawardeeDemoComponent {
       <button type="submit" (click)="onFormSubmit()" class="usa-button margin-top-2">Submit</button>
     </div>
   `,
-  providers: [StepperAdvancedService],
+    providers: [StepperAdvancedService],
+    standalone: false
 })
 export class AddSubawardeeDialogDemo implements OnInit {
   subawardeeFields: FormlyFieldConfig[];

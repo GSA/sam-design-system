@@ -31,35 +31,35 @@ export function throwSdsDialogContentAlreadyAttachedError() {
  * @docs-private
  */
 @Component({
-  selector: 'sds-dialog-container',
-  templateUrl: 'dialog-container.component.html',
-  encapsulation: ViewEncapsulation.None,
-  // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.
-  // tslint:disable-next-line:validate-decorators
-  changeDetection: ChangeDetectionStrategy.Default,
-  animations: [sdsDialogAnimations.dialogContainer],
-  // tslint:disable-next-line: use-host-property-decorator
-  host: {
-    class: 'sds-dialog__container',
-    '[class.sds-dialog--alert]': '_config.alert',
-    '[class.sds-dialog--alert-error]': '_config.alert === "error"',
-    '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
-    '[class.sds-dialog--alert-info]': '_config.alert === "info"',
-    '[class.sds-dialog--alert-success]': '_config.alert === "success"',
-    '[class.dialog-slide-out]': '_config.slideOut',
-    tabindex: '-1',
-    'aria-modal': 'true',
-    '[attr.id]': '_id',
-    '[attr.role]': '_config.role',
-    '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
-    '[attr.aria-label]': '_config.ariaLabel',
-    '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
-    '[style.width]': '_config.slideOut && isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
-    '[@dialogContainer]':
-      '{ value: _state, params: _config.slideOut && isSlideOutConfig(_config.slideOut) ? { width: _config.slideOut.width || "15rem", time: _config.slideOut.time || "1s" } : { width: "15rem", time: "1s" } }',
-    '(@dialogContainer.start)': '_onAnimationStart($event)',
-    '(@dialogContainer.done)': '_onAnimationDone($event)',
-  },
+    selector: 'sds-dialog-container',
+    templateUrl: 'dialog-container.component.html',
+    encapsulation: ViewEncapsulation.None,
+    // Using OnPush for dialogs caused some G3 sync issues. Disabled until we can track them down.
+    // tslint:disable-next-line:validate-decorators
+    changeDetection: ChangeDetectionStrategy.Default,
+    animations: [sdsDialogAnimations.dialogContainer],
+    // tslint:disable-next-line: use-host-property-decorator
+    host: {
+        class: 'sds-dialog__container',
+        '[class.sds-dialog--alert]': '_config.alert',
+        '[class.sds-dialog--alert-error]': '_config.alert === "error"',
+        '[class.sds-dialog--alert-warning]': '_config.alert === "warning"',
+        '[class.sds-dialog--alert-info]': '_config.alert === "info"',
+        '[class.sds-dialog--alert-success]': '_config.alert === "success"',
+        '[class.dialog-slide-out]': '_config.slideOut',
+        tabindex: '-1',
+        'aria-modal': 'true',
+        '[attr.id]': '_id',
+        '[attr.role]': '_config.role',
+        '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
+        '[attr.aria-label]': '_config.ariaLabel',
+        '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
+        '[style.width]': '_config.slideOut && isSlideOutConfig(_config.slideOut) ? _config.slideOut.width : null',
+        '[@dialogContainer]': '{ value: _state, params: _config.slideOut && isSlideOutConfig(_config.slideOut) ? { width: _config.slideOut.width || "15rem", time: _config.slideOut.time || "1s" } : { width: "15rem", time: "1s" } }',
+        '(@dialogContainer.start)': '_onAnimationStart($event)',
+        '(@dialogContainer.done)': '_onAnimationDone($event)',
+    },
+    standalone: false
 })
 export class SdsDialogContainerComponent extends BasePortalOutlet {
   /** The portal outlet inside of this container into which the dialog content will be loaded. */

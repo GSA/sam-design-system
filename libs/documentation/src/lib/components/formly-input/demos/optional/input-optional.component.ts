@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './input-optional.component.html',
-  styleUrls: ['./input-optional.component.scss'],
-  selector: `sds-formly-input-optional-demo`,
+    templateUrl: './input-optional.component.html',
+    styleUrls: ['./input-optional.component.scss'],
+    selector: `sds-formly-input-optional-demo`,
+    standalone: false
 })
 export class InputOptional {
   form = new UntypedFormGroup({});

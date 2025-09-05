@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
-  templateUrl: './templateoption-tags.component.html',
-  selector: `sds-templateoptions-tags-demo`,
+    templateUrl: './templateoption-tags.component.html',
+    selector: `sds-templateoptions-tags-demo`,
+    standalone: false
 })
 export class TemplateOptionsTags {
   form = new UntypedFormGroup({});

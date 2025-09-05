@@ -36,19 +36,20 @@ export type SdsAccordionItemState = 'expanded' | 'collapsed';
 let uniqueId = 0;
 
 @Component({
-  selector: 'sds-accordion-item',
-  exportAs: 'sdsAccordionItem',
-  templateUrl: 'accordion-item.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: ['disabled', 'expanded'],
-  outputs: ['opened', 'closed', 'expandedChange'],
-  animations: [sdsExpansionAnimations.bodyExpansion],
-  host: {
-    class: 'sds-accordion__item',
-    '[class.sds-accordion__item--expanded]': 'expanded',
-    '[class._sds-animation-noopable]': '_animationMode === "NoopAnimations"',
-  },
+    selector: 'sds-accordion-item',
+    exportAs: 'sdsAccordionItem',
+    templateUrl: 'accordion-item.component.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: ['disabled', 'expanded'],
+    outputs: ['opened', 'closed', 'expandedChange'],
+    animations: [sdsExpansionAnimations.bodyExpansion],
+    host: {
+        class: 'sds-accordion__item',
+        '[class.sds-accordion__item--expanded]': 'expanded',
+        '[class._sds-animation-noopable]': '_animationMode === "NoopAnimations"',
+    },
+    standalone: false
 })
 export class SdsAccordionItemComponent extends CdkAccordionItem implements AfterContentInit, OnChanges, OnDestroy {
   private _document: Document;

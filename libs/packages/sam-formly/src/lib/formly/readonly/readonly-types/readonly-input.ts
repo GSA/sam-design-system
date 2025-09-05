@@ -1,8 +1,8 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: `sds-readonly-input`,
-  template: `
+    selector: `sds-readonly-input`,
+    template: `
     <ng-container
       *ngIf="valueTemplate; else defaultValue"
       [ngTemplateOutlet]="valueTemplate"
@@ -13,6 +13,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
       <span class="text-bold">{{ value ? value : '&mdash;' }}</span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlyInputComponent {
   @Input() value: any;

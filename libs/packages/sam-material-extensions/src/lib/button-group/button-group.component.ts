@@ -12,13 +12,14 @@ import {
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 @Component({
-  selector: 'sds-button-group-option',
-  styleUrls: ['./button-group.component.scss'],
-  template: `
+    selector: 'sds-button-group-option',
+    styleUrls: ['./button-group.component.scss'],
+    template: `
     <ng-template #buttonGroupTemplate>
       <ng-content #content></ng-content>
     </ng-template>
   `,
+    standalone: false
 })
 export class SdsButtonGroupOptionComponent {
   @ViewChild('buttonGroupTemplate') buttonGroupTemplate: TemplateRef<any>;
@@ -29,13 +30,14 @@ export class SdsButtonGroupOptionComponent {
 }
 
 @Component({
-  selector: 'sds-button-group',
-  templateUrl: './button-group.component.html',
-  styleUrls: ['./button-group.component.scss'],
-  host: {
-    class: 'sds-button-group--segmented',
-    '[class.sds-button-group--modular]': 'modularDashboard',
-  },
+    selector: 'sds-button-group',
+    templateUrl: './button-group.component.html',
+    styleUrls: ['./button-group.component.scss'],
+    host: {
+        class: 'sds-button-group--segmented',
+        '[class.sds-button-group--modular]': 'modularDashboard',
+    },
+    standalone: false
 })
 export class SdsButtonGroupComponent implements OnInit {
   ngOnInit(): void {

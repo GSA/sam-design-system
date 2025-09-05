@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-field-input',
-  template: `
+    selector: 'sds-formly-field-input',
+    template: `
     <div class="usa-input-group maxw-mobile-lg">
       <div *ngIf="props.prefix || props.prefixIcon" class="usa-input-prefix" aria-hidden="true">
         <span *ngIf="props.prefixIcon && !props.prefix" (click)="onPrefixClick($event)">
@@ -45,6 +45,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       </div>
     </div>
   `,
+    standalone: false
 })
 export class FormlyFieldInputComponent extends FieldType<FieldTypeConfig> {
   onClear() {

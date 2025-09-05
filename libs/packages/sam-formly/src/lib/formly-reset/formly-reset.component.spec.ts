@@ -114,10 +114,11 @@ describe('SDS Formly Reset', () => {
 });
 
 @Component({
-  template: ` <form [formGroup]="form">
+    template: ` <form [formGroup]="form">
     <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
     <sds-formly-reset [options]="options"></sds-formly-reset>
   </form>`,
+    standalone: false
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

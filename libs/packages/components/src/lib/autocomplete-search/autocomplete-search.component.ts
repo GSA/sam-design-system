@@ -23,10 +23,11 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'sds-search-autocomplete',
-  templateUrl: './autocomplete-search.component.html',
-  styleUrls: ['./autocomplete-search.component.scss'],
-  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
+    selector: 'sds-search-autocomplete',
+    templateUrl: './autocomplete-search.component.html',
+    styleUrls: ['./autocomplete-search.component.scss'],
+    providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
+    standalone: false
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}

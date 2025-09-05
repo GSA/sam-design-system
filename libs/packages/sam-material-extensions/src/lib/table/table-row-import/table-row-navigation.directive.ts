@@ -2,7 +2,8 @@ import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } fr
 import { Router } from '@angular/router';
 
 @Directive({
-  selector: 'tr[mat-row][sdsTableRowNavigation]',
+    selector: 'tr[mat-row][sdsTableRowNavigation]',
+    standalone: false
 })
 export class TableRowNavigationDirective {
   private readonly hoverClass = 'sds-table__row--hovered';

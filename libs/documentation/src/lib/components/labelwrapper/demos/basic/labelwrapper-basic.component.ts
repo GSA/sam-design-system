@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './labelwrapper-basic.component.html',
-  selector: `sds-labelwrapper-basic-demo`,
+    templateUrl: './labelwrapper-basic.component.html',
+    selector: `sds-labelwrapper-basic-demo`,
+    standalone: false
 })
 export class LabelWrapperBasic {
   @ViewChild('labelTemplate') labelTemplate: TemplateRef<any>;

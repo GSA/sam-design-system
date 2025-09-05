@@ -4,7 +4,8 @@ import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<div [sdsPopup] position="bottom-center" placement="out"></div>',
+    template: '<div [sdsPopup] position="bottom-center" placement="out"></div>',
+    standalone: false
 })
 class TestPopupSampleComponent {}
 

@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 
 @Component({
-  templateUrl: './result-list-basic.component.html',
-  selector: `sds-result-list-basic-demo`,
+    templateUrl: './result-list-basic.component.html',
+    selector: `sds-result-list-basic-demo`,
+    standalone: false
 })
 export class ResultListBasic {
   @ViewChild('templateModel') messagesTemplate;

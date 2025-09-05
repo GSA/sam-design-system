@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  templateUrl: './result-list-component.component.html',
-  selector: `sds-result-list-component-demo`,
+    templateUrl: './result-list-component.component.html',
+    selector: `sds-result-list-component-demo`,
+    standalone: false
 })
 export class ResultListComponent {
   constructor(private change: ChangeDetectorRef) {}
