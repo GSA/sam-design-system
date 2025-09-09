@@ -1,0 +1,35 @@
+/* istanbul ignore else -- @preserve */
+
+/* istanbul ignore else: This is always true because otherwise it would not register a reducer callback. -- @preserve */
+
+/* istanbul ignore if -- @preserve */
+
+/* istanbul ignore if: paranoid check -- @preserve */
+
+/* istanbul ignore next -- @preserve */
+
+/* istanbul ignore next: static function definition -- @preserve */
+
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+/**
+ * @license Angular v19.2.14
+ * (c) 2010-2025 Google LLC. https://angular.io/
+ * License: MIT
+ */
+
+/**
+ * @license Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+
+/**
+ * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-licensing-options
+ */
