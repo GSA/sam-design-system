@@ -3,6 +3,7 @@ import { DialogWidthTypeTemplate } from './dialog-template.component';
 import { SdsDialogService } from '@gsa-sam/components';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-width',
   templateUrl: './dialog-width.component.html',
 })

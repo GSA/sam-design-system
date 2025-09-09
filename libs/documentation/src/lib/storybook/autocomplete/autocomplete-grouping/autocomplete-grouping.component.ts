@@ -4,6 +4,7 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
+	standalone: false,
   templateUrl: './autocomplete-grouping.component.html',
   selector: `sds-autocomplete-grouping-demo`,
   providers: [AutocompleteSampleDataService],

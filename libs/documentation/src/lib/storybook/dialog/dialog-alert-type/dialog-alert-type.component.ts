@@ -3,6 +3,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { DialogAlertTypeTemplate } from './dialog-template.component';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-alert-type',
   templateUrl: './dialog-alert-type.component.html',
 })

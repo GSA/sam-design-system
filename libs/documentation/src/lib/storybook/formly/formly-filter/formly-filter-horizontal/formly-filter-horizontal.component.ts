@@ -5,6 +5,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { Observable, of } from 'rxjs';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-filter-horizontal',
   templateUrl: './formly-filter-horizontal.component.html',
   providers: []

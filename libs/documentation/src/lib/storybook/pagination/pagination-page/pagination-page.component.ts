@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-pagination-page',
   templateUrl: './pagination-page.component.html',
 })

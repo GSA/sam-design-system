@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { data } from '../services/TreeTableData';
 
 @Component({
+	standalone: false,
   selector: 'sds-tree-table-basic',
   templateUrl: './tree-table-basic.component.html',
 })

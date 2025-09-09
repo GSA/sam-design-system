@@ -5,6 +5,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { StepperAdvancedService } from './stepper-advanced.service';
 
 @Component({
+	standalone: false,
   selector: `subawardee-demo`,
   templateUrl: './subawardee.component.html',
 })
@@ -34,6 +35,7 @@ export class SubawardeeDemoComponent {
 }
 
 @Component({
+	standalone: false,
   selector: `add-subawardee-dialog-demo`,
   template: `
     <div sds-dialog-title>

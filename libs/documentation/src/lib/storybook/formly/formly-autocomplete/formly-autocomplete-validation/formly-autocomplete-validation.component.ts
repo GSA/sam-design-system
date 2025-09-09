@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 @Component({
+	standalone: false,
   templateUrl: './formly-autocomplete-validation.component.html',
   selector: `sds-formly-autocomplete-validation`,
   providers: [AutocompleteSampleDataService],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-table-sticky-column',
   templateUrl: './table-sticky-column.component.html',
 })

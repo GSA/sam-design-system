@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 @Component({
+	standalone: false,
   selector: 'sds-rich-text-editor-max-height',
   templateUrl: './rich-text-editor-max-height.component.html',
 })

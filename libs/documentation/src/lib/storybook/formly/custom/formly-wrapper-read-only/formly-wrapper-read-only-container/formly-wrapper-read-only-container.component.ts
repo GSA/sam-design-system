@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-wrapper-read-only-container',
   templateUrl: './formly-wrapper-read-only-container.component.html',
 })

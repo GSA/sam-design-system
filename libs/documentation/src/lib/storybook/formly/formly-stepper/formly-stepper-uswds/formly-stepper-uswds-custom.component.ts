@@ -2,6 +2,7 @@ import { AfterContentInit, Component, Input } from '@angular/core';
 import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 
 @Component({
+	standalone: false,
   selector: `uswds-custom-stepper-demo`,
   templateUrl: './formly-stepper-uswds-custom.component.html',
   providers: [{ provide: SdsStepper, useExisting: USWDSCustomStepperComponent }],

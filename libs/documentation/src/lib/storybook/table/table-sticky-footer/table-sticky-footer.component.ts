@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-table-sticky-footer',
   templateUrl: './table-sticky-footer.component.html',
 })
