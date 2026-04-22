@@ -57,7 +57,7 @@
     "@angular/router": "^19.2.14",
     "@ckeditor/ckeditor5-angular": "^9.1.0",
     "@compodoc/compodoc": "^1.1.19",
-    "@gsa-sam/sam-styles": "^3.0.23",
+    "@gsa-sam/sam-styles": "^3.0.25",
     "@ngx-formly/core": "^6.3.12",
     "@ngx-formly/schematics": "^6.3.12",
     "@popperjs/core": "^2.11.8",
