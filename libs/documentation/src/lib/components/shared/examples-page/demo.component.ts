@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'documentation-widget-demo',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'documentation-widget-demo',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './demo.component.html',
+    styleUrls: ['./demo.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DocumentationWidgetDemoComponent {
   @Input() demoTitle: string;

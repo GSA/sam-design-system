@@ -5,7 +5,8 @@ import { TableRowNavigationDirective } from './table-row-navigation.directive';
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
-  template: ` <tr mat-row sdsTableRowNavigation [highlightOnHover]="true"></tr> `,
+    template: ` <tr mat-row sdsTableRowNavigation [highlightOnHover]="true"></tr> `,
+    standalone: false
 })
 class TestHoverFocusComponent {}
 

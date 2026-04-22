@@ -150,7 +150,7 @@ const MOCK_DATA = [
 ];
 
 @Component({
-  template: `
+    template: `
     <sds-table [data]="data">
       <sds-table-column sdsColumnName="id">
         <ng-template #sdsHeaderCell>ID</ng-template>
@@ -184,7 +184,8 @@ const MOCK_DATA = [
       <sds-row [displayedColumns]="displayedColumns"></sds-row> </sds-table
     >,
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 class WrapperComponent {
   @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;

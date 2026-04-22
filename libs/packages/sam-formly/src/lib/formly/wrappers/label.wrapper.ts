@@ -10,7 +10,7 @@ import { FieldWrapper } from '@ngx-formly/core';
  *
  */
 @Component({
-  template: `
+    template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
       <label
         class="usa-label"
@@ -63,6 +63,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       </div>
     </div>
   `,
+    standalone: false
 })
 export class FormlyLabelWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

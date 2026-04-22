@@ -2,9 +2,10 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-  templateUrl: './slide-out-template-ref.component.html',
-  selector: `sds-slide-out-template-ref-demo`,
-  styleUrls: ['../basic/slide-out-template.scss'],
+    templateUrl: './slide-out-template-ref.component.html',
+    selector: `sds-slide-out-template-ref-demo`,
+    styleUrls: ['../basic/slide-out-template.scss'],
+    standalone: false
 })
 export class SlideOutTemplateRefComponent {
   @ViewChild('templateRef') ref: TemplateRef<any>;

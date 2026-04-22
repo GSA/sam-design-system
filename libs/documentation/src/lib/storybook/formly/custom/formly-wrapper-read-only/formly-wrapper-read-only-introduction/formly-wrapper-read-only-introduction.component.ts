@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-wrapper-read-only-introduction',
   templateUrl: './formly-wrapper-read-only-introduction.component.html',
 })

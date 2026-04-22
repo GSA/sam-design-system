@@ -23,10 +23,11 @@ const Autocomplete_Autocomplete_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'sds-search-autocomplete',
-  templateUrl: './autocomplete-search.component.html',
-  styleUrls: ['./autocomplete-search.component.scss'],
-  providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
+    selector: 'sds-search-autocomplete',
+    templateUrl: './autocomplete-search.component.html',
+    styleUrls: ['./autocomplete-search.component.scss'],
+    providers: [Autocomplete_Autocomplete_VALUE_ACCESSOR],
+    standalone: false
 })
 export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
@@ -228,7 +229,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
           const customItem = this.createFreeTextItem();
           this.selectItem(customItem);
         }
-      } else if (this.model.items.length > 0) {
+      } else if (this.model?.items?.length > 0) {
         this.inputValue = this.getObjectValue(this.model.items[0], this.configuration.primaryTextField);
       } else {
         this.inputValue = '';
@@ -511,7 +512,7 @@ export class SDSAutocompleteSearchComponent implements ControlValueAccessor {
    * @param result
    */
   checkItemSelected(result: any) {
-    const selectedItem = this.model.items.filter(
+    const selectedItem = this.model?.items.filter(
       (item) => item[this.configuration.primaryKeyField] === result[this.configuration.primaryKeyField]
     );
     return selectedItem.length > 0 ? true : false;

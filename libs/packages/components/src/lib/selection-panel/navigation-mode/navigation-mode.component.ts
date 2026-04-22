@@ -4,9 +4,10 @@ import { NavigationLink, SideNavigationModel } from '../../side-navigation/model
 import { SelectionPanelModel } from '../model/selection-panel.model';
 
 @Component({
-  selector: 'sds-selection-panel-navigation-mode',
-  templateUrl: './navigation-mode.component.html',
-  styleUrls: ['./navigation-mode.component.scss'],
+    selector: 'sds-selection-panel-navigation-mode',
+    templateUrl: './navigation-mode.component.html',
+    styleUrls: ['./navigation-mode.component.scss'],
+    standalone: false
 })
 export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   @Input() model: SelectionPanelModel;

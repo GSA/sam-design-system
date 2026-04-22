@@ -14,8 +14,8 @@ import { FieldWrapper } from '@ngx-formly/core';
  */
 
 @Component({
-  selector: 'sds-formly-wrapper-form-field',
-  template: `
+    selector: 'sds-formly-wrapper-form-field',
+    template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
       <label
         class="usa-label"
@@ -41,6 +41,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       </div>
     </div>
   `,
+    standalone: false
 })
 export class FormlyWrapperFormFieldComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

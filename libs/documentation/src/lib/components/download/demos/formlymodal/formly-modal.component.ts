@@ -10,9 +10,10 @@ import {
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
-  templateUrl: 'formly-modal.component.html',
-  selector: `sds-formly-dialog-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: 'formly-modal.component.html',
+    selector: `sds-formly-dialog-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class FormlyDialog {
   updatedModel: any = {};

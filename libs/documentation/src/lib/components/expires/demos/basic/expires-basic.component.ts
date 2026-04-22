@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: `expires-basic-demo`,
-  templateUrl: './expires-basic.component.html',
+    selector: `expires-basic-demo`,
+    templateUrl: './expires-basic.component.html',
+    standalone: false
 })
 export class ExpiresBasicComponent implements OnInit, OnDestroy {
   expireFifteenSeconds: string;

@@ -6,10 +6,11 @@ import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 
 @Component({
-  templateUrl: './autocomplete-basic.component.html',
-  styleUrls: ['./autocomplete-basic.component.scss'],
-  selector: `sds-formly-autocomplete-basic-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-basic.component.html',
+    styleUrls: ['./autocomplete-basic.component.scss'],
+    selector: `sds-formly-autocomplete-basic-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class FormlyAutocompleteBasic implements OnInit {
   results: any;

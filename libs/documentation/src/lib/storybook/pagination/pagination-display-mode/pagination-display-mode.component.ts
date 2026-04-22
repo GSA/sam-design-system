@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaginationDisplayMode } from '@gsa-sam/components';
 
 @Component({
+	standalone: false,
   selector: 'sds-pagination-display-mode',
   templateUrl: './pagination-display-mode.component.html',
 })

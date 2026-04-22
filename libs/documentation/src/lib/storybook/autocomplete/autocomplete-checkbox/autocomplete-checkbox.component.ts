@@ -4,6 +4,7 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
+	standalone: false,
   templateUrl: './autocomplete-checkbox.component.html',
   selector: `sds-autocomplete-checkbox-demo`,
   providers: [AutocompleteSampleDataService],

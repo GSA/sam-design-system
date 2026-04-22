@@ -102,12 +102,15 @@
       "prefix": "sds",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/apps/sam-design-system-site",
+            "outputPath": {
+              "base": "dist/apps/sam-design-system-site"
+            },
             "index": "apps/sam-design-system-site/src/index.html",
-            "main": "apps/sam-design-system-site/src/main.ts",
-            "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
+            "polyfills": [
+              "apps/sam-design-system-site/src/polyfills.ts"
+            ],
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
             "allowedCommonJsDependencies": ["lodash"],
             "assets": [
@@ -142,11 +145,10 @@
               "node_modules/accessible-html5-video-player/js/strings.js"
             ],
             "aot": false,
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "apps/sam-design-system-site/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -162,8 +164,6 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -265,6 +265,7 @@
     "warnings": {
       "versionMismatch": false
     },
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": false
   }
 }

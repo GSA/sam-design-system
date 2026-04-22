@@ -5,7 +5,8 @@ import { Directive, TemplateRef } from '@angular/core';
  * after the accordion item is opened for the first time.
  */
 @Directive({
-  selector: 'ng-template[sdsAccordionItemContent]',
+    selector: 'ng-template[sdsAccordionItemContent]',
+    standalone: false
 })
 export class SdsAccordionItemContentDirective {
   constructor(public _template: TemplateRef<any>) {}

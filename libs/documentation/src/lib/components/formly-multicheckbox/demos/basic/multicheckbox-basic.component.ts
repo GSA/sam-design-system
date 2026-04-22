@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './multicheckbox-basic.component.html',
-  styleUrls: ['./multicheckbox-basic.component.scss'],
-  selector: `sds-formly-multicheckbox-basic-demo`,
+    templateUrl: './multicheckbox-basic.component.html',
+    styleUrls: ['./multicheckbox-basic.component.scss'],
+    selector: `sds-formly-multicheckbox-basic-demo`,
+    standalone: false
 })
 export class MultiCheckboxBasic {
   form = new UntypedFormGroup({});

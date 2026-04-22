@@ -100,7 +100,10 @@ describe('Formly Field button Component', () => {
   });
 });
 
-@Component({ selector: 'formly-form-button', template: '' })
+@Component({
+    selector: 'formly-form-button', template: '',
+    standalone: false
+})
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 

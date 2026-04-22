@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { GlobalConfig, ToastrService } from 'ngx-toastr';
 
 @Component({
+	standalone: false,
   selector: 'sds-toasts-configurable',
   templateUrl: './toasts-configurable.component.html',
 })

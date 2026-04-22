@@ -61,7 +61,7 @@ describe('SdsAccordionItem', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <sds-accordion-item
       [expanded]="expanded"
       [disabled]="disabled"
@@ -72,6 +72,7 @@ describe('SdsAccordionItem', () => {
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </sds-accordion-item>
   `,
+    standalone: false
 })
 class AccordionItem {
   expanded = false;

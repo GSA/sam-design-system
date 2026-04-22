@@ -35,7 +35,7 @@
 
 <ng-template #inputTemplate>
   <div
-    class="position-relative grid-col-12 suffix-icon"
+    class="position-relative grid-col-12 suffix-icon search-input "
     [ngClass]="{
       'tablet:grid-col': hasDropdown()
     }"
@@ -47,7 +47,7 @@
       [ngClass]="[searchSettings?.inputClass ? searchSettings?.inputClass : '', !hasDropdown() ? 'no-drop' : '']"
       [attr.id]="searchSettings.id"
       type="search"
-      class="usa-input sds-min-width-160"
+      class="usa-input sds-min-width-160 "
       name="search"
       [placeholder]="searchSettings.placeholder ? searchSettings.placeholder : 'type here'"
       [attr.aria-label]="searchSettings.ariaLabel"

@@ -2,6 +2,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
+	standalone: false,
   selector: 'sds-tabs-dynamic-generation',
   templateUrl: './tabs-dynamic-generation.component.html',
   styleUrls: ['./tabs-dynamic-generation.component.scss'],

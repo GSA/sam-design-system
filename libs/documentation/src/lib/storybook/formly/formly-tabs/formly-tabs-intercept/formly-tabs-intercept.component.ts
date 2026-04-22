@@ -5,6 +5,7 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-tabs-intercept',
   templateUrl: './formly-tabs-intercept.component.html',
 })

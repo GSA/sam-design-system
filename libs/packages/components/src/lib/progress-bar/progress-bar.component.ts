@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'sds-progress-bar',
-  templateUrl: 'progress-bar.component.html',
+    selector: 'sds-progress-bar',
+    templateUrl: 'progress-bar.component.html',
+    standalone: false
 })
 export class SdsProgressBarComponent {
   /**

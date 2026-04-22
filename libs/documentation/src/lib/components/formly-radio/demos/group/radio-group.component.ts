@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './radio-group.component.html',
-  selector: `sds-formly-radio-group-demo`,
+    templateUrl: './radio-group.component.html',
+    selector: `sds-formly-radio-group-demo`,
+    standalone: false
 })
 export class RadioGroupComponent {
   form = new UntypedFormGroup({});

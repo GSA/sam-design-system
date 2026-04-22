@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-radio-horizontal',
   templateUrl: './formly-radio-horizontal.component.html',
 })

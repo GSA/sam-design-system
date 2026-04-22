@@ -14,7 +14,8 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
  * example: 2021:01013T22:30:59.000+5:00 // Eastern time
  */
 @Directive({
-  selector: '[expires]',
+    selector: '[expires]',
+    standalone: false
 })
 export class SdsExpiresDirective {
   /**

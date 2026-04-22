@@ -14,16 +14,18 @@ import {
 import { SdsTreeTableData } from './tree-table.model';
 
 @Directive({
-  selector: `[sdsTreeTableRow]`,
+    selector: `[sdsTreeTableRow]`,
+    standalone: false
 })
 export class SdsTreeTableRow {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 @Component({
-  selector: `sds-tree-table`,
-  templateUrl: `./tree-table.component.html`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: `sds-tree-table`,
+    templateUrl: `./tree-table.component.html`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SdsTreeTableComponent {
   /** Rows of table tada to display */

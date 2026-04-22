@@ -3,7 +3,7 @@ import { FieldWrapper, FormlyFieldConfig } from '@ngx-formly/core';
 import { Subscription } from 'rxjs';
 
 @Component({
-  template: `
+    template: `
     <label [attr.for]="id" class="usa-label text-bold text-base-dark">{{ props.label }}</label>
     <p [innerHTML]="props.description"></p>
     <div class="sds-filter-keywords">
@@ -27,7 +27,7 @@ import { Subscription } from 'rxjs';
       </ng-template>
     </div>
   `,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormlyTabsWrapperComponent extends FieldWrapper implements OnInit, OnDestroy {
   _initialModel: any;

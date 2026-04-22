@@ -4,10 +4,10 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-customtemplate.component.html',
-
-  selector: `sds-autocomplete-customtemplate-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-customtemplate.component.html',
+    selector: `sds-autocomplete-customtemplate-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteCustomTemplate {
   private data = SampleAutocompleteData;

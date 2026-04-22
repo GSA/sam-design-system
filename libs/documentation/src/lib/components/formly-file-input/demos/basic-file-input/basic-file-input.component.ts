@@ -4,8 +4,9 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'basic-file-input-demo',
-  templateUrl: './basic-file-input.component.html',
+    selector: 'basic-file-input-demo',
+    templateUrl: './basic-file-input.component.html',
+    standalone: false
 })
 export class BasicFileInputComponent {
   fields: FormlyFieldConfig[] = [

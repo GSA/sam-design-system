@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './sort.component.html',
-  selector: `sds-table-sort-demo`,
+    templateUrl: './sort.component.html',
+    selector: `sds-table-sort-demo`,
+    standalone: false
 })
 export class TableSortComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];

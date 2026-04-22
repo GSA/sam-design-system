@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'expires-expires',
   templateUrl: './expires-expires.component.html',
 })

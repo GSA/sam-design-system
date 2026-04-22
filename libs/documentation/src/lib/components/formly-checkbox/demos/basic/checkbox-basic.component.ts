@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './checkbox-basic.component.html',
-  styleUrls: ['./checkbox-basic.component.scss'],
-  selector: `sds-formly-checkbox-demo`,
+    templateUrl: './checkbox-basic.component.html',
+    styleUrls: ['./checkbox-basic.component.scss'],
+    selector: `sds-formly-checkbox-demo`,
+    standalone: false
 })
 export class CheckboxBasic {
   form = new UntypedFormGroup({});

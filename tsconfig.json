@@ -3,14 +3,15 @@
   "compilerOptions": {
     "sourceMap": true,
     "declaration": false,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "es2015",
+    "module": "es2022",
     "moduleResolution": "node",
    "types": ["node"],
     "lib": [
-      "es2017",
+      "ES2024",
       "dom"
     ],
     "baseUrl": ".",

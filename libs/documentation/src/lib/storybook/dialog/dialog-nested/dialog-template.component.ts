@@ -3,6 +3,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { SecondNestedDialogComponent } from './second-nested-dialog.component';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-nested-template',
   templateUrl: './dialog-template.component.html',
 })

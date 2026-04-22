@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
-  templateUrl: './templateoption-hideOptional.component.html',
-  selector: `sds-templateoptions-hideoptional-demo`,
+    templateUrl: './templateoption-hideOptional.component.html',
+    selector: `sds-templateoptions-hideoptional-demo`,
+    standalone: false
 })
 export class TemplateOptionHideOptional {
   form = new UntypedFormGroup({});

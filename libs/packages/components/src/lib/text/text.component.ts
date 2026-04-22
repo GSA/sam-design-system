@@ -2,8 +2,8 @@ import { Component, forwardRef, ChangeDetectionStrategy, ChangeDetectorRef, Inpu
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'sds-text',
-  template: `
+    selector: 'sds-text',
+    template: `
     <div>
       <input #searchInput class="usa-input display-inline-block" [attr.aria-label]="label" />
       <button
@@ -22,14 +22,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     <h4>Child Component Items <small>(click to remove)</small></h4>
     <sds-text-child [(items)]="items" (itemsChange)="updateItems($event)"></sds-text-child>
   `,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SdsTextComponent),
-      multi: true,
-    },
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SdsTextComponent),
+            multi: true,
+        },
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SdsTextComponent implements ControlValueAccessor {
   items = [];

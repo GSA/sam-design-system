@@ -7,19 +7,20 @@ import { SDS_ACCORDION, SdsAccordionBase, SdsAccordionDisplayMode } from './acco
 import { SdsAccordionItemHeaderComponent } from './accordion-item-header.component';
 
 @Directive({
-  selector: 'sds-accordion',
-  exportAs: 'sdsAccordion',
-  inputs: ['multi'],
-  providers: [
-    {
-      provide: SDS_ACCORDION,
-      useExisting: SdsAccordionDirective,
+    selector: 'sds-accordion',
+    exportAs: 'sdsAccordion',
+    inputs: ['multi'],
+    providers: [
+        {
+            provide: SDS_ACCORDION,
+            useExisting: SdsAccordionDirective,
+        },
+    ],
+    host: {
+        class: 'sds-accordion',
+        '[class.sds-accordion--basic]': 'displayMode === "basic"',
     },
-  ],
-  host: {
-    class: 'sds-accordion',
-    '[class.sds-accordion--basic]': 'displayMode === "basic"',
-  },
+    standalone: false
 })
 export class SdsAccordionDirective extends CdkAccordion implements SdsAccordionBase, AfterContentInit {
   private _keyManager: FocusKeyManager<SdsAccordionItemHeaderComponent>;

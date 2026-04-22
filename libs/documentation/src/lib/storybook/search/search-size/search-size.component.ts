@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   templateUrl: './search-size.component.html',
   selector: `sds-search-size`,
 })

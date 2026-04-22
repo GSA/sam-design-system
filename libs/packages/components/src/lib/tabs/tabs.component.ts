@@ -23,8 +23,9 @@ const LEFT_ARROW = 37;
 const RIGHT_ARROW = 39;
 
 @Component({
-  selector: `sds-tabs`,
-  templateUrl: `./tabs.component.html`,
+    selector: `sds-tabs`,
+    templateUrl: `./tabs.component.html`,
+    standalone: false
 })
 export class TabsComponent implements OnInit, OnChanges, AfterContentInit {
   /**

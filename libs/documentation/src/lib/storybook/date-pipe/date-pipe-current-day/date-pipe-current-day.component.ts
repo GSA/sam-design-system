@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-date-pipe-current-day',
   templateUrl: './date-pipe-current-day.component.html',
 })

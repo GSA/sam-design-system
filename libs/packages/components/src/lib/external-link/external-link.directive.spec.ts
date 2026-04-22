@@ -6,7 +6,7 @@ import { ExternalLinkDirective } from './external-link.directive';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Component({
-  template: `
+    template: `
     <a id="test" href="google.com">Google </a>
     <a id="test2" [hideIcon]="true" href="google.com" aria-label="test aria label - opens in a new window">Google </a>
     <a id="test3">Not Google </a>
@@ -15,6 +15,7 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
     <a id="test6" [hideIcon]="true" href="google.com">Google <span>test element</span></a>
     <a id="test7" href="mailto:google.com">Email Google</a>
   `,
+    standalone: false
 })
 class TestComponent {
   constructor() {}

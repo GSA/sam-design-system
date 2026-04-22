@@ -4,26 +4,26 @@ import { Component } from '@angular/core';
 import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';
 
 @Component({
-  selector: 'sds-toast',
-  styles: [
-    `
+    selector: 'sds-toast',
+    styles: [
+        `
       :host {
         position: relative;
       }
     `,
-  ],
-  templateUrl: './toast-single.component.html',
-  animations: [
-    trigger('flyInOut', [
-      state('inactive', style({ opacity: 0 })),
-      state('active', style({ opacity: 1 })),
-      state('removed', style({ opacity: 0 })),
-      transition('inactive => active', animate('{{ easeTime }}ms {{ easing }}')),
-      transition('active => removed', animate('{{ easeTime }}ms {{ easing }}')),
-    ]),
-  ],
-
-  preserveWhitespaces: false,
+    ],
+    templateUrl: './toast-single.component.html',
+    animations: [
+        trigger('flyInOut', [
+            state('inactive', style({ opacity: 0 })),
+            state('active', style({ opacity: 1 })),
+            state('removed', style({ opacity: 0 })),
+            transition('inactive => active', animate('{{ easeTime }}ms {{ easing }}')),
+            transition('active => removed', animate('{{ easeTime }}ms {{ easing }}')),
+        ]),
+    ],
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class SdsToastComponent extends Toast {
   constructor(protected toastrService: ToastrService, public toastPackage: ToastPackage) {

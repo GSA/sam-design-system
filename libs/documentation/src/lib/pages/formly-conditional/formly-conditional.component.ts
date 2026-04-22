@@ -12,8 +12,9 @@ interface Model {
 }
 
 @Component({
-  selector: 'sds-formly-conditional',
-  templateUrl: './formly-conditional.component.html',
+    selector: 'sds-formly-conditional',
+    templateUrl: './formly-conditional.component.html',
+    standalone: false
 })
 export class FormlyConditionalComponent implements OnInit {
   results: any;

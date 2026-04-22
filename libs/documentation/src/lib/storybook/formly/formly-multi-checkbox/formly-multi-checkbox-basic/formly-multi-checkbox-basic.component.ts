@@ -4,6 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { multiCheckboxRequired } from '@gsa-sam/sam-formly';
 
 @Component({
+	standalone: false,
   templateUrl: './formly-multi-checkbox-basic.component.html',
   selector: 'sds-formly-multi-checkbox-basic',
 })

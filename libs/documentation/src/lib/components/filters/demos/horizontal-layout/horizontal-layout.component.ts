@@ -32,9 +32,10 @@ export class AutocompleteDropdownMenu implements SDSAutocompleteServiceInterface
 }
 
 @Component({
-  selector: 'gsa-sam-horizontal-layout',
-  templateUrl: './horizontal-layout.component.html',
-  providers: [AutocompleteDropdownMenu],
+    selector: 'gsa-sam-horizontal-layout',
+    templateUrl: './horizontal-layout.component.html',
+    providers: [AutocompleteDropdownMenu],
+    standalone: false
 })
 export class HorizontalLayoutComponent {
   public settings = new SDSAutocompletelConfiguration();

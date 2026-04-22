@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'sds-roadmap',
-  templateUrl: './roadmap.component.html',
-  styleUrls: ['roadmap.component.scss'],
+    selector: 'sds-roadmap',
+    templateUrl: './roadmap.component.html',
+    styleUrls: ['roadmap.component.scss'],
+    standalone: false
 })
 export class RoadmapComponent {
   readonly DONE = 'DONE';

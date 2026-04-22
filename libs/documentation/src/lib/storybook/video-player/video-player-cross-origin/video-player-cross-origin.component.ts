@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-video-player-cross-origin',
   templateUrl: './video-player-cross-origin.component.html',
 })
