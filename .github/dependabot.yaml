@@ -28,7 +28,7 @@ updates:
         update-types: [ "version-update:semver-major" ]
     # Labels to apply to npm PRs
     labels:
-      - "dependencies"
+      - "Dependencies"
       - "npm"
     cooldown:
       default-days: 5
@@ -45,7 +45,7 @@ updates:
           - "*"
     # Labels to apply to npm PRs
     labels:
-      - "dependencies"
+      - "Dependencies"
       - "npm"
       - "components"
     cooldown:
@@ -63,7 +63,7 @@ updates:
           - "*"
     # Labels to apply to npm PRs
     labels:
-      - "dependencies"
+      - "Dependencies"
       - "npm"
       - "sam-formly"
     cooldown:
@@ -81,7 +81,7 @@ updates:
           - "*"
     # Labels to apply to npm PRs
     labels:
-      - "dependencies"
+      - "Dependencies"
       - "npm"
       - "material-extensions"
     cooldown:
@@ -99,7 +99,7 @@ updates:
           - "*"
     # Labels to apply to npm PRs
     labels:
-      - "dependencies"
+      - "Dependencies"
       - "npm"
       - "experimental"
     cooldown:
@@ -112,7 +112,7 @@ updates:
       interval: "monthly"
     # Labels to apply to GitHub Actions PRs
     labels:
-      - "dependencies"
+      - "Dependencies"
       - "github-actions"
     cooldown:
       default-days: 5
