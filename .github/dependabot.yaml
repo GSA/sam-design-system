@@ -1,0 +1,118 @@
+---
+version: 2
+updates:
+  # Keep npm dependencies up to date
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Group all updates together to avoid excessive PRs
+    groups:
+      angular-dependencies:
+        patterns:
+          - "@angular*"
+        update-types:
+          - "minor"
+          - "patch"
+      storybook-dependencies:
+        patterns:
+          - "@storybook*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Limit the number of open pull requests to avoid noise
+    open-pull-requests-limit: 10
+    # Ignore major updates to avoid breaking changes unless reviewed manually
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
+    # Labels to apply to npm PRs
+    labels:
+      - "dependencies"
+      - "npm"
+    cooldown:
+      default-days: 5
+
+  # Keep npm dependencies up to date for components package
+  - package-ecosystem: "npm"
+    directory: "/libs/packages/components"
+    schedule:
+      interval: "weekly"
+    # Group all updates together
+    groups:
+      components-dependencies:
+        patterns:
+          - "*"
+    # Labels to apply to npm PRs
+    labels:
+      - "dependencies"
+      - "npm"
+      - "components"
+    cooldown:
+      default-days: 5
+
+  # Keep npm dependencies up to date for sam-formly package
+  - package-ecosystem: "npm"
+    directory: "/libs/packages/sam-formly"
+    schedule:
+      interval: "weekly"
+    # Group all updates together
+    groups:
+      formly-dependencies:
+        patterns:
+          - "*"
+    # Labels to apply to npm PRs
+    labels:
+      - "dependencies"
+      - "npm"
+      - "sam-formly"
+    cooldown:
+      default-days: 5
+
+  # Keep npm dependencies up to date for material-extensions package
+  - package-ecosystem: "npm"
+    directory: "/libs/packages/sam-material-extensions"
+    schedule:
+      interval: "weekly"
+    # Group all updates together
+    groups:
+      material-ext-dependencies:
+        patterns:
+          - "*"
+    # Labels to apply to npm PRs
+    labels:
+      - "dependencies"
+      - "npm"
+      - "material-extensions"
+    cooldown:
+      default-days: 5
+
+  # Keep npm dependencies up to date for experimental package
+  - package-ecosystem: "npm"
+    directory: "/libs/packages/experimental"
+    schedule:
+      interval: "weekly"
+    # Group all updates together
+    groups:
+      experimental-dependencies:
+        patterns:
+          - "*"
+    # Labels to apply to npm PRs
+    labels:
+      - "dependencies"
+      - "npm"
+      - "experimental"
+    cooldown:
+      default-days: 5
+
+  # Keep GitHub Actions up to date
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    # Labels to apply to GitHub Actions PRs
+    labels:
+      - "dependencies"
+      - "github-actions"
+    cooldown:
+      default-days: 5
