@@ -12,6 +12,21 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
         pr-number: ${{ github.event.number }}
+  Test:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install Node Packages
+        run: npm ci
+      - name: Run tests
+        run: npm test
   Deploy-Storybook:
     runs-on: ubuntu-latest
     if: ${{ !failure() }}
@@ -19,15 +34,15 @@ jobs:
     steps:
         # Only needed because rossjrw/pr-preview-action needs to run in a git repo
       - name: Check out repository code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Download Storybook Assets
         # If closing PR, build will not occur so nothing to download
         if: github.event.action != 'closed'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: storybook-assets
           path: ./storybook-static
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1
+        uses: rossjrw/pr-preview-action@ffa7509e91a3ec8dfc2e5536c4d5c1acdf7a6de9 # v1.8.1
         with:
           source-dir: ./storybook-static/

@@ -34,6 +34,10 @@ testem.log
 /documentation
 apps/sam-design-system-site/src/assets/stackblitzes
 
+# Storybook build output — CI generates and uploads this as an artifact,
+# it should never be committed (see .github/workflows/build.yml)
+/storybook-static
+
 # System Files
 .DS_Store
 Thumbs.db
