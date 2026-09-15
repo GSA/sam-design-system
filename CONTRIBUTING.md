@@ -43,7 +43,7 @@ High level file structure and notable file locations.
    ├── package-lock.json
    ├── package.json
    ├── tsconfig.json
-   └── tslint.json
+   └── eslint.config.mjs
    ```
 
 ## Application
@@ -291,4 +291,4 @@ The overall library documentation module is where we register all of the example
 - `package-lock.json` &rarr; Pre-processsed project dependencies
 - `package.json` &rarr; Project version, dependencies, and scripts
 - `tsconfig.json` &rarr; Typescript configuration
-- `tslint.json` &rarr; Typescript linter configuration
+- `eslint.config.mjs` &rarr; ESLint linter configuration (root; each of the five projects lints via `ng lint <project>`, see `eslint-baseline.json`)
