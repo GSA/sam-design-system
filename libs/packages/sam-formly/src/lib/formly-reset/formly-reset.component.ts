@@ -22,11 +22,15 @@ export class SdsFormlyResetComponent {
   @Output() resetClicked = new EventEmitter();
 
   resetAll() {
-    if (this.defaultModel) {
-      this.options.resetModel(this.defaultModel);
+    if (Object.keys(this.options).length === 0) {
+      this.resetClicked.emit(true);
     } else {
-      this.options.resetModel();
+      if (this.defaultModel) {
+        this.options.resetModel(this.defaultModel);
+      } else {
+        this.options.resetModel();
+      }
+      this.resetClicked.emit(false);
     }
-    this.resetClicked.emit();
   }
 }

@@ -68,7 +68,7 @@ export class FormlyUtilsService {
   ) {
     if (field.props && (options.convertAll || Object.values(SdsReadonlyTypes).includes(field.type as any))) {
       const label = field.props.label;
-      const value = model[field.key as string];
+      const value = model ? model[field.key as string] : {};
       const readonlyOptions: ReadonlyOptions = {
         providedOptions: field.props.options as any,
         autocompleteOptions: field.props.configuration,
@@ -84,8 +84,8 @@ export class FormlyUtilsService {
 
       if (field.type === SdsFormlyTypes.DATERANGEPICKER || field.type === SdsFormlyTypes.DATERANGEPICKERV2) {
         readonlyOptions.daterangepickerOptions = {
-          fromDateKey: field.fieldGroup[0].key as string,
-          toDateKey: field.fieldGroup[1].key as string,
+          fromDateKey: field.fieldGroup ? (field.fieldGroup[0].key as string) : (field.key as string),
+          toDateKey: field.fieldGroup ? (field.fieldGroup[1].key as string) : (field.key as string),
         };
         return;
       }
