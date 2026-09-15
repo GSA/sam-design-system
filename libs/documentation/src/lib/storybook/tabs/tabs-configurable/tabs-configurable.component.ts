@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { TabPanelComponent } from '@gsa-sam/components';
 
 @Component({
+	standalone: false,
   selector: 'sds-tabs-configurable',
   templateUrl: './tabs-configurable.component.html',
   styleUrls: ['./tabs-configurable.component.scss'],

@@ -6,6 +6,7 @@ import { Options } from '@popperjs/core';
 import { filter } from 'rxjs';
 
 @Component({
+	standalone: false,
   selector: 'sds-table-select-rows',
   templateUrl: './table-select-rows.component.html',
   styleUrls: ['./table-select-rows.component.scss'],

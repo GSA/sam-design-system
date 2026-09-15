@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: `sds-readonly-select`,
-  template: `
+    selector: `sds-readonly-select`,
+    template: `
     <ng-container
       *ngIf="valueTemplate; else defaultValue"
       [ngTemplateOutlet]="valueTemplate"
@@ -13,6 +13,7 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
       <span [innerHTML]="displayValue.label" class="text-bold"></span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlySelectComponent implements OnInit {
   @Input() value: any;

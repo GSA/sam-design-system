@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 @Component({
-  templateUrl: './pagination-basic.component.html',
-  styleUrls: ['./pagination-basic.component.scss'],
-  selector: `sds-pagination-basic-demo`,
+    templateUrl: './pagination-basic.component.html',
+    styleUrls: ['./pagination-basic.component.scss'],
+    selector: `sds-pagination-basic-demo`,
+    standalone: false
 })
 export class PaginationBasic implements OnInit {
   page = {

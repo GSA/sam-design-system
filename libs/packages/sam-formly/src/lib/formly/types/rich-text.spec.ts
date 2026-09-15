@@ -44,7 +44,12 @@ describe('Formly Field Rich Text Editor Component', () => {
       testRTEComponent = {
         form: new UntypedFormGroup({}),
         options: {},
-        model: {},
+        // Must supply a defined (string) value for the `editor` field. If it stays `undefined`,
+        // CKEditorComponent#writeValue() (which only guards against `null`) stores it and later
+        // hands it to DataController#set() once the async editor finishes initializing, which
+        // calls Object.keys(undefined) and throws "Cannot convert undefined or null to object" —
+        // asynchronously, so it can surface in a later spec or in `afterAll` and looks flaky.
+        model: { editor: '' },
       };
     });
 
@@ -95,7 +100,10 @@ describe('Formly Field Rich Text Editor Component', () => {
   });
 });
 
-@Component({ selector: 'formly-form-test', template: '' })
+@Component({
+    selector: 'formly-form-test', template: '',
+    standalone: false
+})
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 

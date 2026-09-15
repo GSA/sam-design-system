@@ -3,14 +3,15 @@ import { AbstractSdsFormly } from '../sds-formly';
 import { SdsStepArrowComponent } from '@gsa-sam/components';
 
 @Component({
-  selector: 'sds-formly-field-autocomplete',
-  template: `
+    selector: 'sds-formly-field-autocomplete',
+    template: `
     <div class="grid-row">
       <sds-step-arrow [number]="props.number" [status]="props.status"></sds-step-arrow>
       <h3 class="margin-top-1">{{ props.stepTitle }}</h3>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormlyFieldStepArrowComponent extends AbstractSdsFormly {
   @ViewChild(SdsStepArrowComponent, { static: true }) public template: SdsStepArrowComponent;

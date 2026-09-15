@@ -3,6 +3,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { DialogConfigurableTemplateComponent } from './dialog-configurable-template.component';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-configurable',
   templateUrl: './dialog-configurable.component.html',
 })

@@ -11,8 +11,9 @@ interface tabsDesc {
 }
 
 @Component({
-  selector: 'docs-component-wrapper',
-  templateUrl: 'component-wrapper.component.html',
+    selector: 'docs-component-wrapper',
+    templateUrl: 'component-wrapper.component.html',
+    standalone: false
 })
 export class ComponentWrapperComponent {
   activeTab = 'examples';

@@ -7,8 +7,9 @@ import { FormlyFieldConfig, FormlyModule, FormlyFormOptions } from '@ngx-formly/
 import { FormlyFieldTextAreaComponent } from './textarea';
 
 @Component({
-  selector: 'formly-test-textarea',
-  template: ` <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form> `,
+    selector: 'formly-test-textarea',
+    template: ` <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form> `,
+    standalone: false
 })
 class FormlyTextAreaComponent {
   form = new UntypedFormGroup({});

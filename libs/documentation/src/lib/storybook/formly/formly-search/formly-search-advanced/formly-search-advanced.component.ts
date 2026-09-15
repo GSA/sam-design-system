@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-search-advanced',
   styleUrls: ['./formly-search-advanced.component.scss'],
   templateUrl: './formly-search-advanced.component.html',

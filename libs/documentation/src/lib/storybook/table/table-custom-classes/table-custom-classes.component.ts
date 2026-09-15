@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-table-custom-classes',
   templateUrl: './table-custom-classes.component.html',
 })

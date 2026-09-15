@@ -3,6 +3,7 @@ import { SelectionPanelModel } from '@gsa-sam/components';
 import { selectionPanelConfig } from './selection-panel-selected.config';
 
 @Component({
+	standalone: false,
   selector: 'sds-selection-panel-selected',
   templateUrl: './selection-panel-selected.component.html',
 })

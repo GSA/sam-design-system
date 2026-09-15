@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-actions-model-trigger',
   templateUrl: './actions-model-trigger.component.html',
   preserveWhitespaces: true,

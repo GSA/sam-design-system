@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-checkbox-label',
   templateUrl: './formly-checkbox-label.component.html',
 })

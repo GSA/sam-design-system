@@ -150,7 +150,7 @@ const MOCK_DATA = [
 ];
 
 @Component({
-  template: `
+    template: `
     <sds-table
       [data]="data"
       [borderless]="borderlessToggle"
@@ -240,6 +240,7 @@ const MOCK_DATA = [
       <sds-footer-row [displayedColumns]="displayedColumns" [sticky]="true"></sds-footer-row>
     </sds-table>
   `,
+    standalone: false
 })
 class WrapperComponent {
   @ViewChild(SdsTableComponent) sdsTableComponentRef: SdsTableComponent;

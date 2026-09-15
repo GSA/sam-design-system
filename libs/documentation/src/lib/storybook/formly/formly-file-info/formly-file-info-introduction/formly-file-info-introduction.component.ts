@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-file-info-introduction',
   templateUrl: './formly-file-info-introduction.component.html',
 })

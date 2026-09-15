@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './radio-basic.component.html',
-  styleUrls: ['./radio-basic.component.scss'],
-  selector: `sds-formly-radio-basic-demo`,
+    templateUrl: './radio-basic.component.html',
+    styleUrls: ['./radio-basic.component.scss'],
+    selector: `sds-formly-radio-basic-demo`,
+    standalone: false
 })
 export class RadioBasic {
   form = new UntypedFormGroup({});

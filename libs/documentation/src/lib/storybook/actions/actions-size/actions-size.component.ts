@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-actions-size',
   templateUrl: './actions-size.component.html',
 })

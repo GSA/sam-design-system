@@ -3,6 +3,7 @@ import { SdsSideNavigationComponent, SdsDialogConfig, SideNavigationModel, SdsDi
 import { navigationConfig } from '../side-navigation-filters/side-navigation-filters.config';
 
 @Component({
+	standalone: false,
   selector: 'sds-side-navigation-links',
   templateUrl: './side-navigation-links.component.html',
 })

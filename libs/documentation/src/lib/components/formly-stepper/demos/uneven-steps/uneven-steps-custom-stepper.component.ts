@@ -2,9 +2,10 @@ import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 
 @Component({
-  selector: `uneven-steps-custom-stepper-demo`,
-  templateUrl: './uneven-steps-custom-stepper.component.html',
-  providers: [{ provide: SdsStepper, useExisting: UnevenStepsCustomStepperComponent }],
+    selector: `uneven-steps-custom-stepper-demo`,
+    templateUrl: './uneven-steps-custom-stepper.component.html',
+    providers: [{ provide: SdsStepper, useExisting: UnevenStepsCustomStepperComponent }],
+    standalone: false
 })
 export class UnevenStepsCustomStepperComponent extends SdsStepper implements AfterContentInit {
   stepLabels = [];

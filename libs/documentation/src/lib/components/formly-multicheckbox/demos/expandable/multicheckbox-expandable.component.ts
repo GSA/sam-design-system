@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './multicheckbox-expandable.component.html',
-  selector: `sds-formly-multicheckbox-expandable-demo`,
+    templateUrl: './multicheckbox-expandable.component.html',
+    selector: `sds-formly-multicheckbox-expandable-demo`,
+    standalone: false
 })
 export class MultiCheckboxExpandable {
   form = new UntypedFormGroup({});

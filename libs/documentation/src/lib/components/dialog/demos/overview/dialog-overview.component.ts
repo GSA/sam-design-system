@@ -12,8 +12,9 @@ export interface AlertData {
 }
 
 @Component({
-  selector: 'sds-dialog-sample-data',
-  templateUrl: './overview-template.html',
+    selector: 'sds-dialog-sample-data',
+    templateUrl: './overview-template.html',
+    standalone: false
 })
 export class DialogOverviewExampleDialog {
   constructor(
@@ -31,8 +32,9 @@ export class DialogOverviewExampleDialog {
  * ================================================
  */
 @Component({
-  selector: 'sds-modal-sample',
-  templateUrl: './dialog-overview.component.html',
+    selector: 'sds-modal-sample',
+    templateUrl: './dialog-overview.component.html',
+    standalone: false
 })
 export class DialogOverView {
   animal: string;

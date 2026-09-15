@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './descriptionwrapper-basic.component.html',
-  selector: `sds-descriptionwrapper-demo`,
+    templateUrl: './descriptionwrapper-basic.component.html',
+    selector: `sds-descriptionwrapper-demo`,
+    standalone: false
 })
 export class DescriptionWrapperBasic {
   form = new UntypedFormGroup({});

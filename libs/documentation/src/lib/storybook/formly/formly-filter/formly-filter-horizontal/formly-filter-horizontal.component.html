@@ -1,19 +1,32 @@
 <div class="sds-card--shadowed sds-card--bordered margin-bottom-2 bg-base-lighter padding-2 width-tablet-lg">
-  <h4 class="sds-card__title display-block margin-bottom-2">Horizontal Filters</h4>
+  <h4 class="sds-card__title display-block margin-bottom-2">Horizontal Filters Test</h4>
   <div class="sds-card__content">
     <sds-filters
-      [advancedFilters]="true"
+    
       [fields]="fields"
       [model]="model"
       [horizontal]="true"
+      [displayChips]="true"
+      [enableSearchfield]="true"
+
       (filterChange)="onFilterChange($event)"
       [enableSearchfield]="true"
       [horizontalSearchPlaceholder]="'Search'"
     >
+      <!-- <sds-search
+        [searchSettings]="{ isSuffixSearchIcon: true, placeholder: 'Keyword', ariaLabel: 'Keyword Search' }"
+        [(ngModel)]="model.searchModel"
+        (ngModelChange)="onSearchModelChange($event)"
+      >
+      </sds-search> -->
     </sds-filters>
   </div>
 </div>
 
 <pre
   >{{ model | json }}
+</pre>
+
+<pre
+  >{{ updatedModel | json }}
 </pre>

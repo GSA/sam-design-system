@@ -4,6 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 @Component({
+	standalone: false,
   templateUrl: './formly-autocomplete-count.component.html',
   selector: `sds-formly-autocomplete-count`,
   providers: [AutocompleteSampleDataService],

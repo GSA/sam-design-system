@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-list-component',
   templateUrl: './list-component.component.html',
 })

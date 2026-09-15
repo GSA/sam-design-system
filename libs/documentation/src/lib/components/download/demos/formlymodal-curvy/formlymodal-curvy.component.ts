@@ -10,9 +10,10 @@ import {
 import { AutocompleteSampleDataService } from '../formlymodal/autocomplete-sample.service';
 
 @Component({
-  selector: 'gsa-sam-formlymodal-curvy',
-  templateUrl: './formlymodal-curvy.component.html',
-  providers: [AutocompleteSampleDataService],
+    selector: 'gsa-sam-formlymodal-curvy',
+    templateUrl: './formlymodal-curvy.component.html',
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class FormlyCurvyDialog {
   updatedModel: any = {};

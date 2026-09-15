@@ -38,20 +38,19 @@ import { Subscription } from 'rxjs';
 let nextId = 0;
 
 @Component({
-  selector: 'sds-popover-window',
-  standalone: true,
-  imports: [NgTemplateOutlet, NgIf],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: ['popover.scss'],
-  host: {
-    '[class]': '"popover" + (popoverClass ? " " + popoverClass : "")',
-    '[class.fade]': 'animation',
-    role: 'tooltip',
-    '[id]': 'id',
-    style: 'position: absolute;',
-  },
-  template: ` <div class="popover-arrow" data-popper-arrow></div>
+    selector: 'sds-popover-window',
+    imports: [NgTemplateOutlet, NgIf],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['popover.scss'],
+    host: {
+        '[class]': '"popover" + (popoverClass ? " " + popoverClass : "")',
+        '[class.fade]': 'animation',
+        role: 'tooltip',
+        '[id]': 'id',
+        style: 'position: absolute;',
+    },
+    template: ` <div class="popover-arrow" data-popper-arrow></div>
     <h3 class="popover-header" *ngIf="title">
       <ng-template #simpleTitle>{{ title }}</ng-template>
       <ng-template
@@ -59,7 +58,7 @@ let nextId = 0;
         [ngTemplateOutletContext]="context"
       ></ng-template>
     </h3>
-    <div class="popover-body"><ng-content></ng-content></div>`,
+    <div class="popover-body"><ng-content></ng-content></div>`
 })
 export class SdsPopoverWindow {
   @Input() animation: boolean;

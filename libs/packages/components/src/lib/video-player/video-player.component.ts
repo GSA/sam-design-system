@@ -32,10 +32,11 @@ declare class InitPxVideo {
 }
 
 @Component({
-  selector: 'sds-video-player',
-  templateUrl: './video-player.component.html',
-  styleUrls: ['./css/px-video.css'],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'sds-video-player',
+    templateUrl: './video-player.component.html',
+    styleUrls: ['./css/px-video.css'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit, OnDestroy {
   @Input() VPConfiguration: VPInterface;

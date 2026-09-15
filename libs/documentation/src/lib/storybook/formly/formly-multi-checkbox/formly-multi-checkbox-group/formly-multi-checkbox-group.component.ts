@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   templateUrl: './formly-multi-checkbox-group.component.html',
   selector: 'sds-formly-multi-checkbox-group',
 })

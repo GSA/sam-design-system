@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-tooltip-configurable',
   templateUrl: './tooltip-configurable.component.html',
 })

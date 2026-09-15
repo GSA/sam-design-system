@@ -24,24 +24,27 @@ import * as _ from 'lodash-es';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: `[sdsStepHeader]`,
-  template: `<ng-content></ng-content>`,
+    selector: `[sdsStepHeader]`,
+    template: `<ng-content></ng-content>`,
+    standalone: false
 })
 export class SdsStepHeaderComponent {}
 
 @Component({
-  selector: `[sdsStepFooter]`,
-  template: '<ng-content></ng-content>',
+    selector: `[sdsStepFooter]`,
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class SdsStepFooterComponent {}
 
 let nextId = 0;
 
 @Component({
-  selector: `sds-step`,
-  exportAs: `sdsStep`,
-  templateUrl: `./sds-step.component.html`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: `sds-step`,
+    exportAs: `sdsStep`,
+    templateUrl: `./sds-step.component.html`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SdsStepComponent {
   /**
@@ -206,8 +209,9 @@ export class SdsStepComponent {
 }
 
 @Directive({
-  selector: `[sdsStepper]`,
-  exportAs: 'sdsStepper',
+    selector: `[sdsStepper]`,
+    exportAs: 'sdsStepper',
+    standalone: false
 })
 export class SdsStepper {
   @ContentChildren(SdsStepComponent) stepTemplates: QueryList<SdsStepComponent>;

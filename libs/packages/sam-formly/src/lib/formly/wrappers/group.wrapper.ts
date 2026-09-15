@@ -13,7 +13,7 @@ import { filter } from 'rxjs/operators';
  *
  */
 @Component({
-  template: `
+    template: `
     <ng-container *ngIf="!props.readonlyMode; else defaultTemplate">
       <ng-container [ngSwitch]="props.group">
         <ng-container *ngSwitchCase="'accordion'">
@@ -51,6 +51,7 @@ import { filter } from 'rxjs/operators';
       <ng-container #fieldComponent></ng-container>
     </ng-template>
   `,
+    standalone: false
 })
 export class FormlyGroupWrapperComponent extends FieldWrapper implements AfterViewInit, OnDestroy {
   @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;

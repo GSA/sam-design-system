@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 @Component({
+	standalone: false,
   selector: 'sds-button-group-modular',
   templateUrl: './button-group-modular.component.html',
 })

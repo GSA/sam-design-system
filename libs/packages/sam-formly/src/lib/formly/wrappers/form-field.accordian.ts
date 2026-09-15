@@ -11,8 +11,8 @@ import { filter } from 'rxjs/operators';
  */
 
 @Component({
-  selector: 'sam-formly-accordian-form-field',
-  template: `
+    selector: 'sam-formly-accordian-form-field',
+    template: `
     <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
       <usa-accordion-item [expanded]="modelHasValue()" ]>
         <ng-template UsaAccordionHeader>
@@ -24,6 +24,7 @@ import { filter } from 'rxjs/operators';
       </usa-accordion-item>
     </usa-accordion>
   `,
+    standalone: false
 })
 export class FormlyAccordianFormFieldComponent extends FieldWrapper implements AfterViewInit, OnDestroy {
   @ViewChild('fieldComponent', { read: ViewContainerRef }) fieldComponent: ViewContainerRef;

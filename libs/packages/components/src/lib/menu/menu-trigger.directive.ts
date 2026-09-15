@@ -24,7 +24,8 @@ import { merge, Subscription } from 'rxjs';
 import { SdsMenuInterface, SdsMenuComponent, MenuPositionX, MenuPositionY } from './menu.component';
 
 @Directive({
-  selector: '[sdsMenuTriggerFor]',
+    selector: '[sdsMenuTriggerFor]',
+    standalone: false
 })
 export class SdsMenuTriggerForDirective implements OnDestroy {
   /** ARIA haspopup for the menu trigger. */

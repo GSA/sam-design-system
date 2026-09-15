@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: `sds-search-optional-demo`,
-  templateUrl: './search-optional.component.html',
+    selector: `sds-search-optional-demo`,
+    templateUrl: './search-optional.component.html',
+    standalone: false
 })
 export class SearchOptional {
   form = new UntypedFormGroup({});

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'expires-configurable',
   templateUrl: './expires-configurable.component.html',
 })

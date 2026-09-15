@@ -24,7 +24,7 @@ export function getSource(pkg, type, name) {
 }
 
 @Component({
-  template: `
+    template: `
     <ng-container *ngFor="let item of items">
       <ng-container *ngIf="item.sourceCode">
         <p class="margin-bottom-0">
@@ -35,6 +35,7 @@ export function getSource(pkg, type, name) {
       </ng-container>
     </ng-container>
   `,
+    standalone: false
 })
 export class DocumentationSourcePage {
   items: any = [];

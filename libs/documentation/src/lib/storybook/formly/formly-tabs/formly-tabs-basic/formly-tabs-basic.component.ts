@@ -5,6 +5,7 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-tabs-basic',
   templateUrl: './formly-tabs-basic.component.html',
 })

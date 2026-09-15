@@ -4,9 +4,10 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 @Component({
-  templateUrl: './autocomplete-mincharacter.component.html',
-  selector: `sds-formly-mincharacter-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-mincharacter.component.html',
+    selector: `sds-formly-mincharacter-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class FormlyAutocompleteMinCharacter {
   results: any;

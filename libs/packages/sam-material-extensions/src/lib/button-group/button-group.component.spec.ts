@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, DebugElement, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { By } from '@angular/platform-browser';
 
 import { SdsButtonGroupComponent, SdsButtonGroupOptionComponent } from './button-group.component';
 
 @Component({
-  template: `
+    template: `
     <sds-button-group #buttonGroup [mode]="'radio'" class="sds-button-group">
       <sds-button-group-option value="reports">
         Reports
@@ -19,14 +19,15 @@ import { SdsButtonGroupComponent, SdsButtonGroupOptionComponent } from './button
       </sds-button-group-option>
     </sds-button-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 class RadioWrapperComponent {
   @ViewChild('buttonGroup') accordionComponentRef: SdsButtonGroupComponent;
 }
 
 @Component({
-  template: `
+    template: `
     <sds-button-group #buttonGroup [mode]="'checkbox'" class="sds-button-group sds-button-group--secondary">
       <sds-button-group-option value="reports">
         Reports
@@ -39,7 +40,8 @@ class RadioWrapperComponent {
       </sds-button-group-option>
     </sds-button-group>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 class CheckboxWrapperComponent {
   @ViewChild('buttonGroup') accordionComponentRef: SdsButtonGroupComponent;

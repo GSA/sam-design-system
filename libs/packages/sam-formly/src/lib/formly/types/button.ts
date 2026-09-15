@@ -3,8 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFormBuilder } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-field-button',
-  template: `
+    selector: 'sds-formly-field-button',
+    template: `
     <button
       *ngIf="!hideButton && !additionalField"
       class="usa-button"
@@ -20,6 +20,7 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFormBuilder } from
       <formly-field class="margin-top-0" [field]="additionalField"></formly-field>
     </ng-container>
   `,
+    standalone: false
 })
 export class FormlyFieldButtonComponent extends FieldType<FieldTypeConfig> {
   additionalField: FormlyFieldConfig | null = null;

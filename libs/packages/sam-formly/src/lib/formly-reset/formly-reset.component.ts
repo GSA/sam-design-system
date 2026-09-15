@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-reset',
-  templateUrl: './formly-reset.component.html',
-  styleUrls: ['./formly-reset.component.scss'],
+    selector: 'sds-formly-reset',
+    templateUrl: './formly-reset.component.html',
+    styleUrls: ['./formly-reset.component.scss'],
+    standalone: false
 })
 export class SdsFormlyResetComponent {
   /**

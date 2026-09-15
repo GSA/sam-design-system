@@ -4,8 +4,9 @@ import { SdsFormlyDialogData, SdsFormlyDialogComponent } from '@gsa-sam/sam-form
 import { SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-  templateUrl: 'download.component.html',
-  selector: `sds-download-demo`,
+    templateUrl: 'download.component.html',
+    selector: `sds-download-demo`,
+    standalone: false
 })
 export class DownloadComponent {
   updatedModel: any = {};

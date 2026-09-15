@@ -4,9 +4,10 @@ import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } fr
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-inputreadonly.component.html',
-  selector: `sds-autocomplete-inputreadonly-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-inputreadonly.component.html',
+    selector: `sds-autocomplete-inputreadonly-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteInputReadOnly implements OnInit {
   public inputReadOnlySettings = new SDSAutocompletelConfiguration();

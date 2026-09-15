@@ -3,9 +3,10 @@ import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } fr
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
-  templateUrl: './autocomplete-selectgroup.component.html',
-  selector: `sds-autocomplete-selectgroup-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-selectgroup.component.html',
+    selector: `sds-autocomplete-selectgroup-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class AutocompleteSelectGroup {
   public settings = new SDSAutocompletelConfiguration();

@@ -6,8 +6,8 @@ import { By } from '@angular/platform-browser';
 import { SDSClickOutsideDirective } from './click-outside.directive';
 
 @Component({
-  selector: 'test-cmp',
-  template: `
+    selector: 'test-cmp',
+    template: `
     <div #var sds-click-outside (clickOutside)="clickOutsideHandler()">
       <p class="test">
         test content
@@ -17,6 +17,7 @@ import { SDSClickOutsideDirective } from './click-outside.directive';
       click outside target content
     </p>
   `,
+    standalone: false
 })
 class TestComponent {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();

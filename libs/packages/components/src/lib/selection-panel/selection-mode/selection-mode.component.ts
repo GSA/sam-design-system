@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NavigationLink, SideNavigationModel } from '../..//side-navigation/model/side-navigation-model';
 
 @Component({
-  selector: 'sds-selection-panel-selection-mode',
-  templateUrl: './selection-mode.component.html',
-  styleUrls: ['./selection-mode.component.scss'],
+    selector: 'sds-selection-panel-selection-mode',
+    templateUrl: './selection-mode.component.html',
+    styleUrls: ['./selection-mode.component.scss'],
+    standalone: false
 })
 export class SdsSelectionPanelSelectionModeComponent {
   @Input()

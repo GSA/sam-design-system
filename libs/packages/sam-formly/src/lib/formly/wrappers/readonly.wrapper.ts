@@ -5,7 +5,7 @@ import { SdsFormlyTypes } from '../models/formly-types';
  * @param string [props.required] Makes the field required
  */
 @Component({
-  template: `
+    template: `
     <div
       *ngIf="field.type === sdsFormlyTypes.READONLY || props.readonlyMode; else passThrough"
       [ngClass]="props.readonlyClass"
@@ -19,6 +19,7 @@ import { SdsFormlyTypes } from '../models/formly-types';
       <ng-container #fieldComponent></ng-container>
     </ng-template>
   `,
+    standalone: false
 })
 export class FormlyReadonlyWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

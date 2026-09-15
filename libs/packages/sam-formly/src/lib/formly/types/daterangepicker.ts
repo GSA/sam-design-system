@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-field-daterangepicker',
-  template: `
+    selector: 'sds-formly-field-daterangepicker',
+    template: `
     <div *ngIf="!field.hide" class="display-flex">
       <mat-date-range-input
         [formGroup]="formControl"
@@ -42,11 +42,12 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       <mat-date-range-picker [startAt]="to.startDate" #picker></mat-date-range-picker>
     </div>
   `,
-  styles: [
-    '.mat-date-range-input-start-wrapper {overflow: unset !important; }',
-    '.mat-date-range-input-end-wrapper {flex-grow: unset !important; }',
-    'table.mat-calendar-table td, table.mat-calendar-table th {border-style: none; background-color: unset; }',
-  ],
-  encapsulation: ViewEncapsulation.None,
+    styles: [
+        '.mat-date-range-input-start-wrapper {overflow: unset !important; }',
+        '.mat-date-range-input-end-wrapper {flex-grow: unset !important; }',
+        'table.mat-calendar-table td, table.mat-calendar-table th {border-style: none; background-color: unset; }',
+    ],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class FormlyFieldDateRangePickerComponent extends FieldType<FieldTypeConfig> {}

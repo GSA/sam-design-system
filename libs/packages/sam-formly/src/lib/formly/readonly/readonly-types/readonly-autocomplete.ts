@@ -2,8 +2,8 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { SDSAutocompletelConfiguration } from '@gsa-sam/components';
 
 @Component({
-  selector: `sds-readonly-autocomplete`,
-  template: `
+    selector: `sds-readonly-autocomplete`,
+    template: `
     <ng-container
       *ngIf="valueTemplate; else defaultValue"
       [ngTemplateOutlet]="valueTemplate"
@@ -14,6 +14,7 @@ import { SDSAutocompletelConfiguration } from '@gsa-sam/components';
       <span class="text-bold" [innerHTML]="displayValue"></span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlyAutocompleteComponent implements OnInit {
   @Input() value: any;

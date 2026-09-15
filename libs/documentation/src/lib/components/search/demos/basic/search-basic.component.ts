@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './search-basic.component.html',
-  styleUrls: ['./search-basic.component.scss'],
-  selector: `sds-search-basic-demo`,
+    templateUrl: './search-basic.component.html',
+    styleUrls: ['./search-basic.component.scss'],
+    selector: `sds-search-basic-demo`,
+    standalone: false
 })
 export class SearchBasic {
   model = {};

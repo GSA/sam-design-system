@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 @Component({
-  templateUrl: './templateoption-expand.component.html',
-  selector: `sds-templateoptions-expand-demo`,
+    templateUrl: './templateoption-expand.component.html',
+    selector: `sds-templateoptions-expand-demo`,
+    standalone: false
 })
 export class TemplateOptionExpand {
   form = new UntypedFormGroup({});

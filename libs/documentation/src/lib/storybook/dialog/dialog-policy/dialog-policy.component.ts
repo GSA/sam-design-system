@@ -3,6 +3,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { DialogTemplateComponent } from './official-template.component';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-policy',
   templateUrl: './dialog-policy.component.html',
 })

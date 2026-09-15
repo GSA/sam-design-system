@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: `sds-search-submit-demo`,
-  templateUrl: './search-handle-submit.component.html',
+    selector: `sds-search-submit-demo`,
+    templateUrl: './search-handle-submit.component.html',
+    standalone: false
 })
 export class SearchHandleSubmit {
   form = new UntypedFormGroup({});

@@ -3,6 +3,7 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-stepper-basic',
   templateUrl: './formly-stepper-basic.component.html',
 })

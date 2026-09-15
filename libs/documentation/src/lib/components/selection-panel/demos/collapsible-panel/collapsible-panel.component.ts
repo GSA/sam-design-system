@@ -3,8 +3,9 @@ import { NavigationLink, SelectionPanelModel } from '@gsa-sam/components';
 import { selectionPanelConfig } from './navigation.config';
 
 @Component({
-  selector: `sds-selection-panel-collapsible-demo`,
-  templateUrl: './collapsible-panel.component.html',
+    selector: `sds-selection-panel-collapsible-demo`,
+    templateUrl: './collapsible-panel.component.html',
+    standalone: false
 })
 export class CollapsiblePanelComponent {
   selectionPanelModel: SelectionPanelModel = {

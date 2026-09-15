@@ -3,9 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './select-basic.component.html',
-  styleUrls: ['./select-basic.component.scss'],
-  selector: `sds-formly-select-demo`,
+    templateUrl: './select-basic.component.html',
+    styleUrls: ['./select-basic.component.scss'],
+    selector: `sds-formly-select-demo`,
+    standalone: false
 })
 export class SelectBasic {
   form = new UntypedFormGroup({});

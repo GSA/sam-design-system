@@ -15,11 +15,12 @@ import { SDS_MENU_TOKEN, SdsMenuInterface } from './menu.component';
 import { SdsMenuHeaderComponent } from './menu-header.component';
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: '[sds-menu-item]',
-  template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+    // tslint:disable-next-line: component-selector
+    selector: '[sds-menu-item]',
+    template: '<ng-content></ng-content>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   /** Menu item class */

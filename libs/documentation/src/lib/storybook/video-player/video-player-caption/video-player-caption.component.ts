@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-video-player-caption',
   templateUrl: './video-player-caption.component.html',
 })

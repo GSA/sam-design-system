@@ -7,9 +7,10 @@ export interface SdsTruncateTextData {
 }
 
 @Component({
-  selector: 'sds-truncated-text-container',
-  template: ` <div class="sds-overlay maxw-mobile radius-overlay padding-2">{{ data.text }}</div> `,
-  animations: [sdsTruncateTextAnimations.container],
+    selector: 'sds-truncated-text-container',
+    template: ` <div class="sds-overlay maxw-mobile radius-overlay padding-2">{{ data.text }}</div> `,
+    animations: [sdsTruncateTextAnimations.container],
+    standalone: false
 })
 export class SdsTruncatedTextContainerComponent {
   @HostBinding('@container') _animationState = 'void';

@@ -8,6 +8,7 @@ import { FilterService } from './filter.service';
 import { navigationConfig } from './side-navigation-filters.config';
 
 @Component({
+	standalone: false,
   selector: 'sds-side-navigation-filters',
   templateUrl: './side-navigation-filters.component.html',
 })

@@ -4,9 +4,10 @@ import { INavigationLink, NavigationMode } from '../common-navigation/common-nav
 import { NavigationHelper } from '../common-navigation/navigation-helper';
 
 @Component({
-  selector: 'sds-side-navigation',
-  templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.scss'],
+    selector: 'sds-side-navigation',
+    templateUrl: './side-navigation.component.html',
+    styleUrls: ['./side-navigation.component.scss'],
+    standalone: false
 })
 export class SdsSideNavigationComponent {
   /**

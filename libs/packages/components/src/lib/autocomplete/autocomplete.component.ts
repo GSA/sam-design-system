@@ -27,11 +27,12 @@ const Autocomplete_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'sds-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss'],
-  providers: [Autocomplete_VALUE_ACCESSOR],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sds-autocomplete',
+    templateUrl: './autocomplete.component.html',
+    styleUrls: ['./autocomplete.component.scss'],
+    providers: [Autocomplete_VALUE_ACCESSOR],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SDSAutocompleteComponent implements ControlValueAccessor, OnInit, OnDestroy {
   /**

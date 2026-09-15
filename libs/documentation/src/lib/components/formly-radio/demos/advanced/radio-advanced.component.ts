@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
-  selector: 'gsa-sam-radio-advanced',
-  templateUrl: './radio-advanced.component.html',
+    selector: 'gsa-sam-radio-advanced',
+    templateUrl: './radio-advanced.component.html',
+    standalone: false
 })
 export class RadioAdvancedComponent {
   form = new UntypedFormGroup({});

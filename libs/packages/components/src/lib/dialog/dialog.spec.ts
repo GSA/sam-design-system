@@ -1391,22 +1391,27 @@ describe('SdsDialog with default options', () => {
   }));
 });
 
-@Directive({ selector: 'dir-with-view-container' })
+@Directive({
+    selector: 'dir-with-view-container',
+    standalone: false
+})
 class DirectiveWithViewContainer {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: 'hello',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: 'hello',
+    standalone: false
 })
 class ComponentWithOnPushViewContainer {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
-  selector: 'arbitrary-component',
-  template: `<dir-with-view-container></dir-with-view-container>`,
+    selector: 'arbitrary-component',
+    template: `<dir-with-view-container></dir-with-view-container>`,
+    standalone: false
 })
 class ComponentWithChildViewContainer {
   @ViewChild(DirectiveWithViewContainer, { static: false }) childWithViewContainer: DirectiveWithViewContainer;
@@ -1417,10 +1422,11 @@ class ComponentWithChildViewContainer {
 }
 
 @Component({
-  selector: 'arbitrary-component-with-template-ref',
-  template: `<ng-template let-data let-dialogRef="dialogRef">
+    selector: 'arbitrary-component-with-template-ref',
+    template: `<ng-template let-data let-dialogRef="dialogRef">
     Cheese {{ localValue }} {{ data?.value }}{{ setDialogRef(dialogRef) }}</ng-template
   >`,
+    standalone: false
 })
 class ComponentWithTemplateRef {
   localValue: string;
@@ -1435,7 +1441,10 @@ class ComponentWithTemplateRef {
 }
 
 /** Simple component for testing ComponentPortal. */
-@Component({ template: '<p>Pizza</p> <input> <button>Close</button>' })
+@Component({
+    template: '<p>Pizza</p> <input> <button>Close</button>',
+    standalone: false
+})
 class PizzaMsg {
   constructor(
     public dialogRef: SdsDialogRef<PizzaMsg>,
@@ -1445,7 +1454,7 @@ class PizzaMsg {
 }
 
 @Component({
-  template: `
+    template: `
     <h1 sds-dialog-title>This is the title</h1>
     <sds-dialog-content>Lorem ipsum dolor sit amet.</sds-dialog-content>
     <sds-dialog-actions>
@@ -1455,11 +1464,12 @@ class PizzaMsg {
       <div sds-dialog-close>Should not close</div>
     </sds-dialog-actions>
   `,
+    standalone: false
 })
 class ContentElementDialog {}
 
 @Component({
-  template: `
+    template: `
     <ng-template>
       <h1 sds-dialog-title>This is the title</h1>
       <sds-dialog-content>Lorem ipsum dolor sit amet.</sds-dialog-content>
@@ -1471,26 +1481,34 @@ class ContentElementDialog {}
       </sds-dialog-actions>
     </ng-template>
   `,
+    standalone: false
 })
 class ComponentWithContentElementTemplateRef {
   @ViewChild(TemplateRef, { static: false }) templateRef: TemplateRef<any>;
 }
 
 @Component({
-  template: '',
-  providers: [SdsDialogService],
+    template: '',
+    providers: [SdsDialogService],
+    standalone: false
 })
 class ComponentThatProvidesSdsDialog {
   constructor(public dialog: SdsDialogService) {}
 }
 
 /** Simple component for testing ComponentPortal. */
-@Component({ template: '' })
+@Component({
+    template: '',
+    standalone: false
+})
 class DialogWithInjectedData {
   constructor(@Inject(SDS_DIALOG_DATA) public data: any) {}
 }
 
-@Component({ template: '<p>Pasta</p>' })
+@Component({
+    template: '<p>Pasta</p>',
+    standalone: false
+})
 class DialogWithoutFocusableElements {}
 
 // Create a real (non-test) NgModule as a workaround for

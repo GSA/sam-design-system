@@ -4,10 +4,11 @@ import { allIcons } from '@gsa-sam/ngx-uswds-icons';
 import * as _ from 'lodash';
 
 @Component({
-  templateUrl: './icons-basic.component.html',
-  styleUrls: ['./icons-basic.component.scss'],
-  selector: `sds-icons-basic-demo`,
-  preserveWhitespaces: true,
+    templateUrl: './icons-basic.component.html',
+    styleUrls: ['./icons-basic.component.scss'],
+    selector: `sds-icons-basic-demo`,
+    preserveWhitespaces: true,
+    standalone: false
 })
 export class IconsBasic {
   appendPrefix(iconsObject: { [key: string]: string }, prefix: string): Object {

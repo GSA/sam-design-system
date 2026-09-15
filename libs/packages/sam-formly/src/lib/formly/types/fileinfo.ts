@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-field-file',
-  template: `
+    selector: 'sds-formly-field-file',
+    template: `
     <div class="grid-row grid-gap margin-top-1">
       <div *ngFor="let option of props.options | formlySelectOptions: field | async; let i = index">
         <div
@@ -39,14 +39,15 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       </div>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .sds-card-selected {
         border-color: #2672de !important;
         border-width: 2px !important;
       }
     `,
-  ],
+    ],
+    standalone: false
 })
 export class FormlyFieldFileInfoComponent extends FieldType<FieldTypeConfig> {
   isSelected: boolean = false;

@@ -9,8 +9,9 @@ import { BehaviorSubject } from 'rxjs';
 import { navigationConfig } from './navigation.config';
 
 @Component({
-  selector: 'filter-side-navigation',
-  templateUrl: './filter-side-navigation.component.html',
+    selector: 'filter-side-navigation',
+    templateUrl: './filter-side-navigation.component.html',
+    standalone: false
 })
 export class FilterSideNavigationComponent implements OnInit, AfterViewInit {
   @ViewChild('filters') filterComponent: SdsFiltersComponent;

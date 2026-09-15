@@ -7,8 +7,9 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
 import { startWith, tap } from 'rxjs';
 
 @Component({
-  selector: 'sds-formly-dialog',
-  templateUrl: './formly-dialog.component.html',
+    selector: 'sds-formly-dialog',
+    templateUrl: './formly-dialog.component.html',
+    standalone: false
 })
 export class SdsFormlyDialogComponent implements OnInit {
   form: UntypedFormGroup;

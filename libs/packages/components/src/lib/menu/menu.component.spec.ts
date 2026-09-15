@@ -429,7 +429,7 @@ describe('SdsMenu', () => {
 });
 
 @Component({
-  template: `
+    template: `
     <button [sdsMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
     <sds-menu #menu="sdsMenu" [class]="panelClass" (closed)="closeCallback($event)">
       <button sds-menu-item>Item</button>
@@ -441,6 +441,7 @@ describe('SdsMenu', () => {
       <button *ngFor="let item of extraItems" sds-menu-item>{{ item }}</button>
     </sds-menu>
   `,
+    standalone: false
 })
 class SimpleMenuComponent {
   @ViewChild(SdsMenuTriggerForDirective, { static: false })
@@ -454,18 +455,20 @@ class SimpleMenuComponent {
 }
 
 @Component({
-  selector: 'sds-fake-icon',
-  template: '<ng-content></ng-content>',
+    selector: 'sds-fake-icon',
+    template: '<ng-content></ng-content>',
+    standalone: false
 })
 class FakeIconComponent {}
 
 @Component({
-  template: `
+    template: `
     <button [sdsMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
     <sds-menu [xPosition]="xPosition" [yPosition]="yPosition" #menu="sdsMenu">
       <button sds-menu-item>Positioned Content</button>
     </sds-menu>
   `,
+    standalone: false
 })
 class PositionedMenuComponent {
   @ViewChild(SdsMenuTriggerForDirective, { static: false })

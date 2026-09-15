@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-date-pipe-non-current-year',
   templateUrl: './date-pipe-non-current-year.component.html',
 })

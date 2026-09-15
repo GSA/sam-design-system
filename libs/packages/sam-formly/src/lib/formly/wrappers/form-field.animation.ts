@@ -69,17 +69,18 @@ const SlideInOutAnimation = [
 ];
 
 @Component({
-  selector: 'sam-formly-wrapper-animation',
-  template: `
+    selector: 'sam-formly-wrapper-animation',
+    template: `
     <div [@slideInOut]="field.hide ? 'out' : 'in'">
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
-  // styles: [`
-  //   ::ng-deep formly-field {
-  //     display: block !important;
-  //   }
-  // `],
-  animations: [SlideInOutAnimation],
+    // styles: [`
+    //   ::ng-deep formly-field {
+    //     display: block !important;
+    //   }
+    // `],
+    animations: [SlideInOutAnimation],
+    standalone: false
 })
 export class AnimationWrapperComponent extends FieldWrapper {}

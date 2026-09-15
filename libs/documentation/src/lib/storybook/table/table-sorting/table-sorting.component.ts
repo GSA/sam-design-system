@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-table-sorting',
   templateUrl: './table-sorting.component.html',
 })

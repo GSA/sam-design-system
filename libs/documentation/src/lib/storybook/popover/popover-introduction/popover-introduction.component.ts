@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-popover-introduction',
   templateUrl: './popover-introduction.component.html',
   preserveWhitespaces: true,

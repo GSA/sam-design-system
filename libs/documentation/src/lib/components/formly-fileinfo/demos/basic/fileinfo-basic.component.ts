@@ -3,8 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  templateUrl: './fileinfo-basic.component.html',
-  selector: `sds-formly-fileinfo-demo`,
+    templateUrl: './fileinfo-basic.component.html',
+    selector: `sds-formly-fileinfo-demo`,
+    standalone: false
 })
 export class FormlyFileInfoBasic {
   results: any = {};

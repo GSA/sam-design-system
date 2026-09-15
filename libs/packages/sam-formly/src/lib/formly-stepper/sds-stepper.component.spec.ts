@@ -22,8 +22,8 @@ import { By } from '@angular/platform-browser';
 import { SdsStepper } from './sds-stepper';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 @Component({
-  selector: `custom-test-stepper`,
-  template: `<div class="grid-row">
+    selector: `custom-test-stepper`,
+    template: `<div class="grid-row">
       <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3 margin-right-2">
         <div class="sds-card">
           <div class="sds-card__body sds-card__body--accent-cool">
@@ -129,13 +129,14 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
         </ng-container>
       </span>
     </ng-template> `,
-  providers: [{ provide: SdsStepper, useExisting: CustomTestStepper }],
+    providers: [{ provide: SdsStepper, useExisting: CustomTestStepper }],
+    standalone: false
 })
 export class CustomTestStepper extends SdsStepper {}
 
 @Component({
-  selector: `stepper-test`,
-  template: `
+    selector: `stepper-test`,
+    template: `
     <custom-test-stepper #stepper id="stepperTestId" [model]="model" [stepValidityMap]="stepValidityMap">
       <sds-step id="step1" text="Step 1" [fieldConfig]="fieldConfigStep1"></sds-step>
       <sds-step id="step2" text="Step 2" [editable]="false">
@@ -148,6 +149,7 @@ export class CustomTestStepper extends SdsStepper {}
       <span>Test template</span>
     </ng-template>
   `,
+    standalone: false
 })
 class StepperTestComponent {
   @ViewChild(CustomTestStepper) stepper: CustomTestStepper;

@@ -2,8 +2,9 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-field-multicheckbox',
-  templateUrl: './multicheckbox.html',
+    selector: 'sds-formly-field-multicheckbox',
+    templateUrl: './multicheckbox.html',
+    standalone: false
 })
 export class FormlyFieldMultiCheckboxComponent extends FieldType<FieldTypeConfig> implements OnInit {
   defaultOptions = {

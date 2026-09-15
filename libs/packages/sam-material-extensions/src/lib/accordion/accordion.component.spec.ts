@@ -13,7 +13,7 @@ import {
 
 // detail rows
 @Component({
-  template: `
+    template: `
     <sds-accordion-next [multi]="multi" #sdsAccordionDemo>
       <sds-accordion-item #first>
         <sds-accordion-title>Chief Financial Officers Council Grants Training</sds-accordion-title>
@@ -45,7 +45,8 @@ import {
       </sds-accordion-item>
     </sds-accordion-next>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 class WrapperComponent {
   @ViewChild(SdsAccordionComponent)

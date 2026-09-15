@@ -5,9 +5,10 @@ import { DataService } from './data.service';
 import { delay, tap } from 'rxjs/operators';
 
 @Component({
-  templateUrl: './full.component.html',
-  styleUrls: ['./full.component.scss'],
-  selector: `sds-table-full-demo`,
+    templateUrl: './full.component.html',
+    styleUrls: ['./full.component.scss'],
+    selector: `sds-table-full-demo`,
+    standalone: false
 })
 export class TableFullComponent {
   constructor(private dataService: DataService) {

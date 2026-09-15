@@ -5,7 +5,7 @@ import { FieldWrapper } from '@ngx-formly/core';
  *
  */
 @Component({
-  template: `
+    template: `
     <div>
       <ng-container *ngIf="props.descriptionTemplate" [ngTemplateOutlet]="props.descriptionTemplate"> </ng-container>
       <ng-container *ngIf="!props.descriptionTemplate">
@@ -21,6 +21,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
+    standalone: false
 })
 export class FormlyDescriptionWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

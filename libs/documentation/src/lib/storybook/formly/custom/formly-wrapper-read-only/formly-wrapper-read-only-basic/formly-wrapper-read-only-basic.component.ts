@@ -6,6 +6,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-wrapper-read-only-basic',
   templateUrl: './formly-wrapper-read-only-basic.component.html',
   providers: [AutocompleteSampleDataService],

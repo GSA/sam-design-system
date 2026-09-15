@@ -29,18 +29,18 @@ export class SearchSettings {
   public isSuffixSearchIcon?: boolean = false;
 }
 @Component({
-  selector: 'sds-search',
-  templateUrl: 'search.component.html',
-  styleUrls: ['search.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SdsSearchComponent),
-      multi: true,
-    },
-  ],
-
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sds-search',
+    templateUrl: 'search.component.html',
+    styleUrls: ['search.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SdsSearchComponent),
+            multi: true,
+        },
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild('inputEl', { read: ElementRef, static: false })

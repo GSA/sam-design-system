@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SdsTableHeaderColor } from '@gsa-sam/sam-material-extensions';
 
 @Component({
+	standalone: false,
   selector: 'sds-table-header-color',
   templateUrl: './table-header-color.component.html',
   styleUrls: ['table-header-color.component.scss'],

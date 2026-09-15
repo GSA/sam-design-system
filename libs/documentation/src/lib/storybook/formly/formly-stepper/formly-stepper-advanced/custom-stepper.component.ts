@@ -4,6 +4,7 @@ import { SdsStepper } from '@gsa-sam/sam-formly';
 import { FormlyForm } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: `custom-stepper-demo`,
   templateUrl: `./custom-stepper.component.html`,
   providers: [{ provide: SdsStepper, useExisting: CustomStepperDemo }],

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'sds-formly-field-select',
-  template: `
+    selector: 'sds-formly-field-select',
+    template: `
     <select
       *ngIf="props.multiple; else singleSelect"
       multiple
@@ -41,6 +41,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       </select>
     </ng-template>
   `,
+    standalone: false
 })
 export class FormlyFieldSelectComponent extends FieldType<FieldTypeConfig> {
   defaultOptions = {

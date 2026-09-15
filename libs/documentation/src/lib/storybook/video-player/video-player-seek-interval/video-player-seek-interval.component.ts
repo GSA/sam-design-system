@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-video-player-seek-interval',
   templateUrl: './video-player-seek-interval.component.html',
 })

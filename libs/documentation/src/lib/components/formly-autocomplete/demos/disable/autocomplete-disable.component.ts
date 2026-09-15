@@ -7,9 +7,10 @@ import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } fr
 import { SampleAutocompleteData } from './autocomplete-sample.data';
 
 @Component({
-  templateUrl: './autocomplete-disable.component.html',
-  selector: `sds-formly-autocomplete-disable-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-disable.component.html',
+    selector: `sds-formly-autocomplete-disable-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class FormlyAutocompleteDisable {
   results: any;

@@ -4,6 +4,7 @@ import { StepperAdvancedService } from './stepper-advanced.service';
 import { FormlyForm } from '@ngx-formly/core';
 
 @Component({
+	standalone: false,
   selector: `stepper-advanced-demo`,
   templateUrl: `./formly-stepper-advanced.component.html`,
   providers: [StepperAdvancedService, SdsStepper],

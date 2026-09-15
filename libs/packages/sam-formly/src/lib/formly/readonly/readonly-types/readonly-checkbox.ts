@@ -1,8 +1,8 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: `sds-readonly-checkbox`,
-  template: `
+    selector: `sds-readonly-checkbox`,
+    template: `
     <ng-container
       *ngIf="valueTemplate; else defaultValue"
       [ngTemplateOutlet]="valueTemplate"
@@ -13,6 +13,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
       <span class="text-bold">{{ value ? 'Checked' : 'Unchecked' }}</span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlyCheckboxComponent {
   @Input() value: any;

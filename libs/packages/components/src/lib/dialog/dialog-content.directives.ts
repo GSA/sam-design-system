@@ -9,14 +9,15 @@ let dialogElementUid = 0;
  * Button that will close the current dialog.
  */
 @Directive({
-  selector: `button[sds-dialog-close], button[sdsDialogClose]`,
-  exportAs: 'sdsDialogClose',
-  // tslint:disable-next-line: use-host-property-decorator
-  host: {
-    '(click)': 'dialogRef.close(dialogResult)',
-    '[attr.aria-label]': 'ariaLabel || null',
-    type: 'button', // Prevents accidental form submits.
-  },
+    selector: `button[sds-dialog-close], button[sdsDialogClose]`,
+    exportAs: 'sdsDialogClose',
+    // tslint:disable-next-line: use-host-property-decorator
+    host: {
+        '(click)': 'dialogRef.close(dialogResult)',
+        '[attr.aria-label]': 'ariaLabel || null',
+        type: 'button', // Prevents accidental form submits.
+    },
+    standalone: false
 })
 export class SdsDialogCloseDirective implements OnInit, OnChanges {
   /** Screenreader label for the button. */
@@ -57,13 +58,14 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
  * Title of a dialog element. Stays fixed to the top of the dialog when scrolling.
  */
 @Directive({
-  selector: '[sds-dialog-title], [sdsDialogTitle]',
-  exportAs: 'sdsDialogTitle',
-  // tslint:disable-next-line: use-host-property-decorator
-  host: {
-    '[class.sds-dialog-title]': 'true',
-    '[id]': 'id',
-  },
+    selector: '[sds-dialog-title], [sdsDialogTitle]',
+    exportAs: 'sdsDialogTitle',
+    // tslint:disable-next-line: use-host-property-decorator
+    host: {
+        '[class.sds-dialog-title]': 'true',
+        '[id]': 'id',
+    },
+    standalone: false
 })
 export class SdsDialogTitleDirective implements OnInit {
   @Input() id = `sds-dialog-title-${dialogElementUid++}`;
@@ -95,9 +97,10 @@ export class SdsDialogTitleDirective implements OnInit {
  * SubTitle of a dialog element
  */
 @Directive({
-  selector: `[sds-dialog-subtitle], sds-dialog-subtitle, [sdsDialogSubtitle]`,
-  // tslint:disable-next-line: use-host-property-decorator
-  host: { '[class.sds-dialog-subtitle]': 'true' },
+    selector: `[sds-dialog-subtitle], sds-dialog-subtitle, [sdsDialogSubtitle]`,
+    // tslint:disable-next-line: use-host-property-decorator
+    host: { '[class.sds-dialog-subtitle]': 'true' },
+    standalone: false
 })
 export class SdsDialogSubtitleDirective {}
 
@@ -105,9 +108,10 @@ export class SdsDialogSubtitleDirective {}
  * Scrollable content container of a dialog.
  */
 @Directive({
-  selector: `[sds-dialog-content], sds-dialog-content, [sdsDialogContent]`,
-  // tslint:disable-next-line: use-host-property-decorator
-  host: { '[class.sds-dialog-content]': 'true' },
+    selector: `[sds-dialog-content], sds-dialog-content, [sdsDialogContent]`,
+    // tslint:disable-next-line: use-host-property-decorator
+    host: { '[class.sds-dialog-content]': 'true' },
+    standalone: false
 })
 export class SdsDialogContentDirective {}
 
@@ -116,9 +120,10 @@ export class SdsDialogContentDirective {}
  * Stays fixed to the bottom when scrolling.
  */
 @Directive({
-  selector: `[sds-dialog-actions], sds-dialog-actions, [sdsDialogActions]`,
-  // tslint:disable-next-line: use-host-property-decorator
-  host: { '[class.sds-dialog-actions]': 'true' },
+    selector: `[sds-dialog-actions], sds-dialog-actions, [sdsDialogActions]`,
+    // tslint:disable-next-line: use-host-property-decorator
+    host: { '[class.sds-dialog-actions]': 'true' },
+    standalone: false
 })
 export class SdsDialogActionsDirective {}
 

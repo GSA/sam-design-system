@@ -4,13 +4,14 @@ import { SdsStepper } from '@gsa-sam/sam-formly';
 import { FormlyForm } from '@ngx-formly/core';
 
 @Component({
-  selector: `custom-stepper-demo`,
-  templateUrl: `./custom-stepper.component.html`,
-  providers: [{ provide: SdsStepper, useExisting: CustomStepperDemo }],
-  styles: [
-    '.justify-content-space-between {justify-content: space-between; }',
-    '.usa-sidenav__item--disabled {cursor: default; hover:none; opacity: 60%; pointer-events: none}',
-  ],
+    selector: `custom-stepper-demo`,
+    templateUrl: `./custom-stepper.component.html`,
+    providers: [{ provide: SdsStepper, useExisting: CustomStepperDemo }],
+    styles: [
+        '.justify-content-space-between {justify-content: space-between; }',
+        '.usa-sidenav__item--disabled {cursor: default; hover:none; opacity: 60%; pointer-events: none}',
+    ],
+    standalone: false
 })
 export class CustomStepperDemo extends SdsStepper {
   @Output()

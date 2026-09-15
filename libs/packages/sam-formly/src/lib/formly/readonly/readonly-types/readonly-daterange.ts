@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: `sds-readonly-daterange`,
-  template: `
+    selector: `sds-readonly-daterange`,
+    template: `
     <ng-container
       *ngIf="valueTemplate; else defaultValue"
       [ngTemplateOutlet]="valueTemplate"
@@ -16,6 +16,7 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
       </span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlyDaterangeComponent implements OnInit {
   @Input() value: any;

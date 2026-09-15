@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: `sds-readonly-fileinfo`,
-  template: `
+    selector: `sds-readonly-fileinfo`,
+    template: `
     <ng-container
       *ngIf="valueTemplate; else defaultValue"
       [ngTemplateOutlet]="valueTemplate"
@@ -13,6 +13,7 @@ import { Component, Input, OnChanges, OnInit, TemplateRef } from '@angular/core'
       <span class="text-bold">{{ displayValue }}</span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlyFileinfoComponent implements OnInit, OnChanges {
   @Input() value: any;

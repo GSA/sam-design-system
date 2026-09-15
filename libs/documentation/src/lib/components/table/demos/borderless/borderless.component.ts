@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  templateUrl: './borderless.component.html',
-  selector: `sds-table-borderless-demo`,
+    templateUrl: './borderless.component.html',
+    selector: `sds-table-borderless-demo`,
+    standalone: false
 })
 export class TableBorderlessComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];

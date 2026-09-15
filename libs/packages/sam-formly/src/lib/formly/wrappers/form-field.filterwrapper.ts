@@ -6,8 +6,8 @@ import { FieldWrapper } from '@ngx-formly/core';
  * @param string [props.label] Text to be shown for the label
  */
 @Component({
-  selector: 'sam-formly-filter-wrapper-form-field',
-  template: `
+    selector: 'sam-formly-filter-wrapper-form-field',
+    template: `
     <div class="wrapper-body">
       <div class="sds-accordion__trigger header-label" [attr.aria-hidden]="props.ariaHidden ? 'false' : 'true'">
         {{ props.label }}
@@ -15,6 +15,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
+    standalone: false
 })
 export class FormlyFormFieldFilterWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

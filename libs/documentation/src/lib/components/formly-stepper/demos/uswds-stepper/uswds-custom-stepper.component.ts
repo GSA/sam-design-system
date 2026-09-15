@@ -2,9 +2,10 @@ import { AfterContentInit, Component, Input } from '@angular/core';
 import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 
 @Component({
-  selector: `uswds-custom-stepper-demo`,
-  templateUrl: './uswds-custom-stepper.component.html',
-  providers: [{ provide: SdsStepper, useExisting: USWDSCustomStepperComponent }],
+    selector: `uswds-custom-stepper-demo`,
+    templateUrl: './uswds-custom-stepper.component.html',
+    providers: [{ provide: SdsStepper, useExisting: USWDSCustomStepperComponent }],
+    standalone: false
 })
 export class USWDSCustomStepperComponent extends SdsStepper implements AfterContentInit {
   stepLabels = [];

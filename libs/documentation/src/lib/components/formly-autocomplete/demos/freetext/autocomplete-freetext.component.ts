@@ -5,9 +5,10 @@ import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 
 @Component({
-  templateUrl: './autocomplete-freetext.component.html',
-  selector: `sds-formly-autocomplete-freetext-demo`,
-  providers: [AutocompleteSampleDataService],
+    templateUrl: './autocomplete-freetext.component.html',
+    selector: `sds-formly-autocomplete-freetext-demo`,
+    providers: [AutocompleteSampleDataService],
+    standalone: false
 })
 export class FormlyAutocompleteFreetext {
   results: any;

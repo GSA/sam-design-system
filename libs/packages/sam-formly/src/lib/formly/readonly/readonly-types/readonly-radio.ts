@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: `sds-readonly-radio`,
-  template: `
+    selector: `sds-readonly-radio`,
+    template: `
     <span *ngIf="!value; else definedValues" class="text-bold">&mdash;</span>
 
     <ng-template #definedValues>
@@ -21,6 +21,7 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
       </span>
     </ng-template>
   `,
+    standalone: false
 })
 export class ReadonlyRadioComponent implements OnInit {
   @Input() value: any;

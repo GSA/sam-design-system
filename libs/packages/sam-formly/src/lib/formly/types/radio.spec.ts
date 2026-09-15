@@ -80,7 +80,10 @@ describe('Formly Field Radio Component', () => {
   });
 });
 
-@Component({ selector: 'formly-form-test', template: '' })
+@Component({
+    selector: 'formly-form-test', template: '',
+    standalone: false
+})
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 

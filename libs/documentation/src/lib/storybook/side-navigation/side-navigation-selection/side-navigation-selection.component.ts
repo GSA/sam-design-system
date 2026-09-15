@@ -3,6 +3,7 @@ import { NavigationLink, SelectionPanelModel } from '@gsa-sam/components';
 import { navigationConfig } from './side-navigation-selection.config';
 
 @Component({
+	standalone: false,
   selector: 'sds-side-navigation-selection',
   templateUrl: './side-navigation-selection.component.html',
 })

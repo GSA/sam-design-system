@@ -3,8 +3,9 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: 'gsa-sam-uswds-stepper',
-  templateUrl: './uswds-stepper.component.html',
+    selector: 'gsa-sam-uswds-stepper',
+    templateUrl: './uswds-stepper.component.html',
+    standalone: false
 })
 export class UswdsStepperComponent {
   stepOne: FormlyFieldConfig = {

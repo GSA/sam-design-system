@@ -3,15 +3,14 @@
   "compilerOptions": {
     "outDir": "../../../dist/out-tsc",
     "declarationMap": true,
-    "module": "es2015",
-    "moduleResolution": "node",
+    "module": "es2022",
     "declaration": true,
     "sourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "types": [],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "es2024"]
   },
   "angularCompilerOptions": {
     "annotateForClosureCompiler": true,

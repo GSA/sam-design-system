@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-formly-autocomplete-introduction',
   templateUrl: './formly-autocomplete-introduction.component.html',
 })

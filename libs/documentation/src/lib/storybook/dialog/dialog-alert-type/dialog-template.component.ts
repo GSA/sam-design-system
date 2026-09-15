@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-alert-type-template',
   templateUrl: './dialog-template.component.html',
 })

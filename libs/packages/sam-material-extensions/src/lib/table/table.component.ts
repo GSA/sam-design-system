@@ -44,8 +44,9 @@ export enum SdsTableHeaderColor {
 }
 
 @Component({
-  selector: 'sds-row',
-  template: ` <ng-content></ng-content> `,
+    selector: 'sds-row',
+    template: ` <ng-content></ng-content> `,
+    standalone: false
 })
 export class SdsTableRowComponent {
   @Input() displayedColumns: Array<string>;
@@ -55,8 +56,9 @@ export class SdsTableRowComponent {
 }
 
 @Component({
-  selector: 'sds-header-row',
-  template: ` <ng-content></ng-content> `,
+    selector: 'sds-header-row',
+    template: ` <ng-content></ng-content> `,
+    standalone: false
 })
 export class SdsTableHeaderRowComponent {
   @Input() displayedColumns: Array<string>;
@@ -64,26 +66,36 @@ export class SdsTableHeaderRowComponent {
 }
 
 @Component({
-  selector: 'sds-footer-row',
-  template: ` <ng-content></ng-content> `,
+    selector: 'sds-footer-row',
+    template: ` <ng-content></ng-content> `,
+    standalone: false
 })
 export class SdsTableFooterRowComponent {
   @Input() displayedColumns: Array<string>;
   @Input() sticky: boolean;
 }
 
-@Directive({ selector: 'sds-table-headercell' })
+@Directive({
+    selector: 'sds-table-headercell',
+    standalone: false
+})
 export class SdsTableHeaderCellDirective {}
 
-@Directive({ selector: 'sds-table-cell' })
+@Directive({
+    selector: 'sds-table-cell',
+    standalone: false
+})
 export class SdsTableCellDirective {}
 
-@Directive({ selector: 'sds-table-footercell' })
+@Directive({
+    selector: 'sds-table-footercell',
+    standalone: false
+})
 export class SdsTableFooterCellDirective {}
 
 @Component({
-  selector: 'sds-table-column',
-  template: `
+    selector: 'sds-table-column',
+    template: `
     <ng-template #columnHeaderCell let-element="element">
       <ng-container *ngTemplateOutlet="headerCellTemplate; context: { element: element }"></ng-container>
     </ng-template>
@@ -96,6 +108,7 @@ export class SdsTableFooterCellDirective {}
       <ng-container *ngTemplateOutlet="footerCellTemplate; context: { element: element }"></ng-container>
     </ng-template>
   `,
+    standalone: false
 })
 export class SdsTableColumnDefComponent implements AfterContentInit {
   @ViewChild('columnHeaderCell', { static: true }) columnHeaderCell: TemplateRef<any>;
@@ -122,16 +135,17 @@ export class SdsTableColumnDefComponent implements AfterContentInit {
 }
 
 @Component({
-  selector: 'sds-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+    selector: 'sds-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({ height: '0px', minHeight: '0' })),
+            state('expanded', style({ height: '*' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
+    standalone: false
 })
 export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
   /**

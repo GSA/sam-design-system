@@ -3,6 +3,7 @@ import { SdsDialogService } from '@gsa-sam/components';
 import { DialogDataReturnTemplateComponent } from './dialog-template.component';
 
 @Component({
+	standalone: false,
   selector: 'sds-dialog-data-return',
   templateUrl: './dialog-data-return.component.html',
 })

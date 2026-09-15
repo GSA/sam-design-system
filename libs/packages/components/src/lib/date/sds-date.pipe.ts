@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Pipe({
-  name: 'sdsDate',
+    name: 'sdsDate',
+    standalone: false
 })
 export class SdsDatePipe implements PipeTransform {
   constructor(private datePipe: DatePipe) {}

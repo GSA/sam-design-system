@@ -4,7 +4,7 @@ import { FieldWrapper } from '@ngx-formly/core';
  * @param string [props.required] Makes the field required
  */
 @Component({
-  template: `
+    template: `
     <ng-container #fieldComponent></ng-container>
     <div
       *ngIf="showError"
@@ -17,6 +17,7 @@ import { FieldWrapper } from '@ngx-formly/core';
       <formly-validation-message [field]="field"></formly-validation-message>
     </div>
   `,
+    standalone: false
 })
 export class FormlyValidationWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

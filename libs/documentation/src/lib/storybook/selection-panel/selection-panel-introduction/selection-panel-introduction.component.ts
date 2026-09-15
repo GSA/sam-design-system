@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
+	standalone: false,
   selector: 'sds-selection-panel-introduction',
   templateUrl: './selection-panel-introduction.component.html',
 })
