@@ -37,10 +37,9 @@
     "demo:stackblitzes-federalist": "ts-node --project misc/tsconfig.json misc/generate-stackblitzes.ts --federalist",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "ng run sam-design-system-site:storybook",
-    "build-storybook": "npm run docs:json && storybook build",
+    "build-storybook": "npm run docs:json && ng run sam-design-system-site:build-storybook",
     "check-prettier": "npx prettier -c \"libs\" \"apps\"",
-    "fix-prettier": "npx prettier --write \"libs\" \"apps\"",
-    "build-storybook-ng": "ng run sam-design-system-site:build-storybook"
+    "fix-prettier": "npx prettier --write \"libs\" \"apps\""
   },
   "private": true,
   "dependencies": {
@@ -60,6 +59,8 @@
     "@angular/router": "^19.2.14",
     "@ckeditor/ckeditor5-angular": "^9.1.0",
     "@compodoc/compodoc": "^1.1.19",
+    "@gsa-sam/ngx-uswds": "^18.0.0",
+    "@gsa-sam/ngx-uswds-icons": "^18.0.0",
     "@gsa-sam/sam-styles": "^3.0.25",
     "@ngx-formly/core": "^6.3.12",
     "@ngx-formly/schematics": "^6.3.12",
@@ -73,6 +74,7 @@
     "fs-extra": "^9.1.0",
     "lodash-es": "^4.17.15",
     "lodash.camelcase": "4.3.0",
+    "marked": "^15.0.0",
     "minimist": "^1.2.5",
     "ngx-bootstrap-icons": "^1.7.2",
     "ngx-markdown": "^19.0.0",

@@ -220,7 +220,8 @@
         "build-storybook": {
           "builder": "@storybook/angular:build-storybook",
           "options": {
-            "browserTarget": "sam-design-system-site:build"
+            "browserTarget": "sam-design-system-site:build",
+            "compodoc": false
           }
         }
       }
