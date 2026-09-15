@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DebugElement, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { By } from '@angular/platform-browser';
 
