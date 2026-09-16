@@ -10,7 +10,7 @@ module.exports = function (config) {
     ...baseConfig,
     coverageIstanbulReporter: {
       ...baseConfig.coverageIstanbulReporter,
-      dir: join(__dirname, '../../../coverage/libs/packages/sam-material-extensions'),
+      dir: join(__dirname, '../../../coverage/libs/sam-material-extensions'),
       files: ['../../../node_modules/@angular/cdk/overlay-prebuilt.css'],
     },
   });

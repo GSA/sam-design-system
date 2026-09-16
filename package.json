@@ -8,10 +8,12 @@
   "scripts": {
     "start": "ng serve --configuration development",
     "build": "ng build",
-    "test": "npm run test:components && npm run test:material-extensions && npm run test:sam-formly",
+    "test": "npm run test:components && npm run test:material-extensions && npm run test:sam-formly && npm run test:documentation && npm run test:site",
     "test:components": "ng test components --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:material-extensions": "ng test sam-material-extensions --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:sam-formly": "ng test sam-formly --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
+    "test:documentation": "ng test documentation --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
+    "test:site": "ng test sam-design-system-site --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI --source-map=false",
     "test:prettier": "npx prettier -c \"libs\" \"apps\"",
     "lint": "npm run lint:components && npm run lint:sam-formly && npm run lint:sam-material-extensions && npm run lint:sam-design-system-site && npm run lint:documentation",
     "lint:components": "ng lint components",
