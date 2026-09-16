@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { Component, DebugElement, ViewChild } from '@angular/core';
 import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm, FormlyFieldConfig } from '@ngx-formly/core';
-import { SdsTabsModule, SelectionMode } from 'libs/packages/components/src/lib/public-api';
+import { SdsTabsModule, SelectionMode } from '@gsa-sam/components';
 import { SdsFormlyTypes } from '../models/formly-types';
 import { SdsFormlyModule } from '../formly.module';
 import { FormlyTabsWrapperComponent } from './tabs.wrapper';
