@@ -14,6 +14,7 @@ test('PR template enforces the current contribution and quality gates', () => {
     'expected both the "I have read" and reviewer-checklist items to link to this repo\'s CONTRIBUTING.md',
   );
   assert.doesNotMatch(template, /Internet Explorer 11/i);
+  assert.doesNotMatch(template, /\bIE\s*11\b/i);
   for (const browser of ['Edge', 'Chrome', 'Firefox', 'Safari']) {
     assert.match(template, new RegExp(`- \\[ \\] ${browser}\\b`));
   }
