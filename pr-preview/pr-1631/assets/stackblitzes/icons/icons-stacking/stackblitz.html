@@ -85,21 +85,16 @@
 /** IE10 and IE11 requires the following to support `@angular/animation`. */
 // import &#39;web-animations-js&#39;;  // Run `npm install --save web-animations-js`.
 
-
 /** Evergreen browsers require these. **/
 import &#39;core-js/es/reflect&#39;;
-
 
 /** ALL Firefox browsers require the following to support `@angular/animation`. **/
 // import &#39;web-animations-js&#39;;  // Run `npm install --save web-animations-js`.
 
-
-
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-import &#39;zone.js&#39;;  // Included with Angular CLI.
-
+import &#39;zone.js&#39;; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
@@ -125,13 +120,8 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
     &#34;moduleResolution&#34;: &#34;node&#34;,
     &#34;importHelpers&#34;: true,
     &#34;target&#34;: &#34;es2015&#34;,
-    &#34;typeRoots&#34;: [
-      &#34;node_modules/@types&#34;
-    ],
-    &#34;lib&#34;: [
-      &#34;es2018&#34;,
-      &#34;dom&#34;
-    ]
+    &#34;typeRoots&#34;: [&#34;node_modules/@types&#34;],
+    &#34;lib&#34;: [&#34;es2018&#34;, &#34;dom&#34;]
   },
   &#34;angularCompilerOptions&#34;: {
     &#34;enableIvy&#34;: true,
@@ -161,18 +151,13 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
             &#34;main&#34;: &#34;src/main.ts&#34;,
             &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
             &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
-            &#34;assets&#34;: [
-            ],
-            &#34;styles&#34;: [
-            ],
+            &#34;assets&#34;: [],
+            &#34;styles&#34;: [],
             &#34;scripts&#34;: []
           },
           &#34;configurations&#34;: {
             &#34;production&#34;: {
-              &#34;fileReplacements&#34;: [
-                {
-                }
-              ],
+              &#34;fileReplacements&#34;: [{}],
               &#34;optimization&#34;: true,
               &#34;outputHashing&#34;: &#34;all&#34;,
               &#34;sourceMap&#34;: false,
@@ -207,22 +192,16 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
           &#34;options&#34;: {
             &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
             &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
-            &#34;styles&#34;: [
-            ],
+            &#34;styles&#34;: [],
             &#34;scripts&#34;: [],
-            &#34;assets&#34;: [
-            ]
+            &#34;assets&#34;: []
           }
         },
         &#34;lint&#34;: {
           &#34;builder&#34;: &#34;@angular-devkit/build-angular:tslint&#34;,
           &#34;options&#34;: {
-            &#34;tsConfig&#34;: [
-              &#34;tsconfig.json&#34;
-            ],
-            &#34;exclude&#34;: [
-              &#34;**/node_modules/**&#34;
-            ]
+            &#34;tsConfig&#34;: [&#34;tsconfig.json&#34;],
+            &#34;exclude&#34;: [&#34;**/node_modules/**&#34;]
           }
         }
       }
@@ -351,7 +330,7 @@ export class IconsStackingModule {}
     <input type="hidden" name="project[files][src/app/icons-stacking.component.ts]" value="import { Component } from &#39;@angular/core&#39;;
 
 @Component({
-	standalone: false,
+  standalone: false,
   templateUrl: &#39;./icons-stacking.component.html&#39;,
   selector: `usa-icon-stacking-demo`,
   preserveWhitespaces: true,
@@ -363,7 +342,7 @@ export class IconsStackingComponent {}
   In order to stack two or more icons, &lt;code&gt;StackedIconModule&lt;/code&gt; must be imported into the module where you wish to
   use a stacked icon.
 &lt;/p&gt;
-&lt;p style=&#34;max-width: unset;&#34;&gt;
+&lt;p style=&#34;max-width: unset&#34;&gt;
   &lt;code&gt;import &amp;#123; NgxBootstrapIconsModule, square &amp;#125; from &#39;ngx-bootstrap-icons&#39;;&lt;/code&gt;&lt;br /&gt;
   &lt;code&gt;import &amp;#123; add, IconModule, StackedIconModule &amp;#125; from &#39;&amp;#64;gsa-sam/ngx-uswds-icons&#39;;&lt;/code&gt;
 &lt;/p&gt;
@@ -392,7 +371,7 @@ export class IconsStackingComponent {}
   In order for the stacking css to work, make sure that the class &lt;code&gt;usa-stack-icon&lt;/code&gt; is applied to the icons
   you are stacking.
 &lt;/p&gt;
-&lt;p style=&#34;max-width: unset;&#34;&gt;
+&lt;p style=&#34;max-width: unset&#34;&gt;
   &lt;code
     &gt;&amp;#060;usa-stacked-icon [size]=&#34;&#39;sm&#39;&#34;&amp;#062;&lt;br /&gt;
     &amp;emsp;&amp;#060;usa-icon class=&#34;usa-stack-icon&#34; [size]=&#34;&#39;2x&#39;&#34; [icon]=&#34;&#39;square-fill&#39;&#34;&amp;#062;&amp;#060;/usa-icon&amp;#062;&lt;br /&gt;
@@ -401,22 +380,22 @@ export class IconsStackingComponent {}
     &amp;#060;/usa-stacked-icon&amp;#062;
   &lt;/code&gt;
 &lt;/p&gt;
-&lt;div style=&#34;display: flex; align-items: flex-end;&#34;&gt;
-  &lt;div style=&#34;padding-right: 1em; text-align: center;&#34;&gt;
+&lt;div style=&#34;display: flex; align-items: flex-end&#34;&gt;
+  &lt;div style=&#34;padding-right: 1em; text-align: center&#34;&gt;
     &lt;usa-stacked-icon [size]=&#34;&#39;sm&#39;&#34;&gt;
       &lt;usa-icon class=&#34;usa-stack-icon&#34; [size]=&#34;&#39;2x&#39;&#34; [icon]=&#34;&#39;square-fill&#39;&#34;&gt;&lt;/usa-icon&gt;
       &lt;usa-icon class=&#34;usa-stack-icon text-base-lightest&#34; [size]=&#34;&#39;lg&#39;&#34; [icon]=&#34;&#39;hand-thumbs-down&#39;&#34;&gt;&lt;/usa-icon&gt;
     &lt;/usa-stacked-icon&gt;
     &lt;p&gt;sm&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div style=&#34;padding-right: 1em; text-align: center;&#34;&gt;
+  &lt;div style=&#34;padding-right: 1em; text-align: center&#34;&gt;
     &lt;usa-stacked-icon [size]=&#34;&#39;2x&#39;&#34;&gt;
       &lt;usa-icon class=&#34;usa-stack-icon&#34; [size]=&#34;&#39;2x&#39;&#34; [icon]=&#34;&#39;circle-fill&#39;&#34;&gt;&lt;/usa-icon&gt;
       &lt;usa-icon class=&#34;usa-stack-icon text-warning&#34; [size]=&#34;&#39;lg&#39;&#34; [icon]=&#34;&#39;cone&#39;&#34;&gt;&lt;/usa-icon&gt;
     &lt;/usa-stacked-icon&gt;
     &lt;p&gt;2x&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div style=&#34;padding-right: 1em; text-align: center;&#34;&gt;
+  &lt;div style=&#34;padding-right: 1em; text-align: center&#34;&gt;
     &lt;usa-stacked-icon [size]=&#34;&#39;4x&#39;&#34;&gt;
       &lt;usa-icon class=&#34;usa-stack-icon text-secondary-dark&#34; [size]=&#34;&#39;2x&#39;&#34; [icon]=&#34;&#39;diamond-fill&#39;&#34;&gt;&lt;/usa-icon&gt;
       &lt;usa-icon class=&#34;usa-stack-icon text-base-lightest&#34; [size]=&#34;&#39;lg&#39;&#34; [icon]=&#34;&#39;diamond&#39;&#34;&gt;&lt;/usa-icon&gt;
