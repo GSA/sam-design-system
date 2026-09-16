@@ -28,6 +28,8 @@ jobs:
           cache: npm
       - name: Install Node Packages
         run: npm ci
+      - name: Generate API docs (apidoc)
+        run: npm run demo:docs
       - name: Run tests
         run: npm test
   Deploy-Storybook:
