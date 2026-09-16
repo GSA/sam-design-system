@@ -18,6 +18,8 @@ jobs:
           cache: npm
       - name: Install Node Packages
         run: npm ci
+      - name: Generate API docs (apidoc)
+        run: npm run demo:docs
       - name: Build Stackblitz HTMLs
         run: npm run demo:stackblitzes
       - name: Build Storybook Assets

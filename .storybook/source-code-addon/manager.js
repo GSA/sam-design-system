@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { AddonPanel, Placeholder } from '@storybook/components';
-import { useParameter, addons, types } from '@storybook/manager-api';
+import { AddonPanel, Placeholder } from 'storybook/internal/components';
+import { useParameter, addons, types } from 'storybook/manager-api';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { themes } from '@storybook/theming';
+import { themes } from 'storybook/theming';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './source-code.css';
