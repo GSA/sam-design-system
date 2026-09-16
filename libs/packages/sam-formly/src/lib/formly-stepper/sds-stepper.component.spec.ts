@@ -12,7 +12,7 @@ import {
   slashCircleFill,
   checkCircleFill,
 } from 'ngx-bootstrap-icons';
-import { NavigationMode } from 'libs/packages/components/src/lib/public-api';
+import { NavigationMode } from '@gsa-sam/components';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsStepperModule } from './sds-stepper.module';
 import { Component, ViewChild } from '@angular/core';
