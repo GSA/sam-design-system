@@ -1,4 +1,5 @@
 # Generated documentation and StackBlitz assets
+documentation.json
 libs/documentation/src/lib/apidoc/**
 apps/sam-design-system-site/src/assets/stackblitzes/**
 misc/stackblitzes-templates/styles.css
