@@ -4,7 +4,7 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-file-input-table',
   templateUrl: './formly-file-input-table.component.html',
 })

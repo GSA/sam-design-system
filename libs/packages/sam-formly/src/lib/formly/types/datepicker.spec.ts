@@ -69,7 +69,7 @@ describe('Formly Field Datepicker Component', () => {
       ];
 
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>'
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
       );
       //Checks created
       expect(fixture).toBeTruthy();
@@ -90,8 +90,9 @@ describe('Formly Field Datepicker Component', () => {
 });
 
 @Component({
-    selector: 'formly-form-test', template: '',
-    standalone: false
+  selector: 'formly-form-test',
+  template: '',
+  standalone: false,
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

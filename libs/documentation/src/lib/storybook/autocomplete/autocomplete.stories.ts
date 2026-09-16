@@ -212,7 +212,7 @@ const autocompleteSettingsFunction = (
   isGroupingEnabled,
   isSelectableGroup,
   hideChips,
-  hideCloseIcon
+  hideCloseIcon,
 ): SDSAutocompletelConfiguration => {
   const base = new SDSAutocompletelConfiguration();
   base.primaryKeyField = primaryKeyField ?? 'id';
@@ -282,7 +282,7 @@ export const Configurable = (args) => {
     isGroupingEnabled,
     isSelectableGroup,
     hideChips,
-    hideCloseIcon
+    hideCloseIcon,
   );
   return {
     template: `
@@ -344,7 +344,7 @@ SelectionMode.parameters = {
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-selection-mode',
     'AutocompleteSelectionModeModule',
-    'sds-autocomplete-selection-mode-demo'
+    'sds-autocomplete-selection-mode-demo',
   ),
   stackblitzLink: generateStackblitzLink('autocomplete', 'selection-mode'),
 };
@@ -364,7 +364,7 @@ Grouping.parameters = {
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-grouping',
     'AutocompleteGroupModule',
-    'sds-autocomplete-grouping-demo'
+    'sds-autocomplete-grouping-demo',
   ),
   stackblitzLink: generateStackblitzLink('autocomplete', 'grouping'),
 };
@@ -384,7 +384,7 @@ FreeText.parameters = {
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-free-text',
     'AutocompleteFreeTextModule',
-    'sds-autocomplete-free-text-demo'
+    'sds-autocomplete-free-text-demo',
   ),
   stackblitzLink: generateStackblitzLink('autocomplete', 'free-text'),
 };
@@ -404,7 +404,7 @@ CheckBox.parameters = {
   preview: generateConfig(
     'storybook/autocomplete/autocomplete-checkbox',
     'AutocompleteCheckboxModule',
-    'sds-autocomplete-checkbox-demo'
+    'sds-autocomplete-checkbox-demo',
   ),
   stackblitzLink: generateStackblitzLink('autocomplete', 'checkbox'),
 };

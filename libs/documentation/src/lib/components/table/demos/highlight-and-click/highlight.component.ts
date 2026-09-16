@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './highlight.component.html',
-    selector: `sds-table-highlight-demo`,
-    standalone: false
+  templateUrl: './highlight.component.html',
+  selector: `sds-table-highlight-demo`,
+  standalone: false,
 })
 export class TableHighlightComponent {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'requests', 'date'];

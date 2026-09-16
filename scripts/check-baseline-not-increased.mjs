@@ -19,21 +19,19 @@
  * Usage:
  *   node scripts/check-baseline-not-increased.mjs <base-baseline.json> <head-baseline.json>
  */
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const [baseArg, headArg] = process.argv.slice(2);
 
 if (!baseArg || !headArg) {
-  console.error(
-    "Usage: node scripts/check-baseline-not-increased.mjs <base-baseline.json> <head-baseline.json>"
-  );
+  console.error('Usage: node scripts/check-baseline-not-increased.mjs <base-baseline.json> <head-baseline.json>');
   process.exit(1);
 }
 
 function loadBaselines(label, path) {
   try {
-    return JSON.parse(readFileSync(resolve(path), "utf8"));
+    return JSON.parse(readFileSync(resolve(path), 'utf8'));
   } catch (error) {
     console.error(`✖ Could not read ${label} baselines at ${path}`);
     console.error(`  ${error.message}`);
@@ -41,8 +39,8 @@ function loadBaselines(label, path) {
   }
 }
 
-const base = loadBaselines("base-branch", baseArg);
-const head = loadBaselines("pull-request", headArg);
+const base = loadBaselines('base-branch', baseArg);
+const head = loadBaselines('pull-request', headArg);
 
 let hasIncrease = false;
 
@@ -57,9 +55,7 @@ for (const workspace of Object.keys(head)) {
   const headValue = head[workspace];
 
   if (!Number.isFinite(baseValue) || !Number.isFinite(headValue)) {
-    console.error(
-      `✖ ${workspace}: invalid baseline value (base: ${baseValue}, head: ${headValue})`
-    );
+    console.error(`✖ ${workspace}: invalid baseline value (base: ${baseValue}, head: ${headValue})`);
     hasIncrease = true;
     continue;
   }
@@ -67,8 +63,8 @@ for (const workspace of Object.keys(head)) {
   if (headValue > baseValue) {
     console.error(
       `✖ ${workspace}: baseline increased ${baseValue} → ${headValue}. ` +
-        "The accepted warning ceiling can only go down (via --bump), never up. " +
-        "Revert this change to eslint-baseline.json."
+        'The accepted warning ceiling can only go down (via --bump), never up. ' +
+        'Revert this change to eslint-baseline.json.',
     );
     hasIncrease = true;
   }
@@ -78,6 +74,4 @@ if (hasIncrease) {
   process.exit(1);
 }
 
-console.log(
-  "✓ eslint-baseline.json: no workspace's warning ceiling increased vs. the base branch."
-);
+console.log("✓ eslint-baseline.json: no workspace's warning ceiling increased vs. the base branch.");

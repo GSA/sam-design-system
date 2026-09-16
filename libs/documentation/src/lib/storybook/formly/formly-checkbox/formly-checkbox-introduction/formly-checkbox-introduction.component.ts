@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-checkbox-introduction',
   templateUrl: './formly-checkbox-introduction.component.html',
 })

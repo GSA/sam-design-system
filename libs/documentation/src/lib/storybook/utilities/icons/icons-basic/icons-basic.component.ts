@@ -4,7 +4,7 @@ import { allIcons } from '@gsa-sam/ngx-uswds-icons';
 import * as _ from 'lodash';
 
 @Component({
-	standalone: false,
+  standalone: false,
   templateUrl: './icons-basic.component.html',
   selector: `sds-icons-basic-demo`,
   preserveWhitespaces: true,

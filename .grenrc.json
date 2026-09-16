@@ -1,8 +1,8 @@
 {
-    "dataSource": "prs",
-    "onlyMilestones": false,
-    "groupBy": "label",
-    "changelogFilename": "CHANGELOG.md",
-    "ignoreLabels": ["gren-ignore"],
-    "ignoreIssuesWith": ["gren-ignore"]
+  "dataSource": "prs",
+  "onlyMilestones": false,
+  "groupBy": "label",
+  "changelogFilename": "CHANGELOG.md",
+  "ignoreLabels": ["gren-ignore"],
+  "ignoreIssuesWith": ["gren-ignore"]
 }

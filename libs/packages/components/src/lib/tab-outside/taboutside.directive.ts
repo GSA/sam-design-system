@@ -1,8 +1,8 @@
 import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
-    selector: '[sds-tab-outside]',
-    standalone: false
+  selector: '[sds-tab-outside]',
+  standalone: false,
 })
 export class SDSTabOutsideDirective {
   /**

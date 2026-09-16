@@ -5,10 +5,10 @@ import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 
 @Component({
-    templateUrl: './autocomplete-readonly.component.html',
-    selector: `sds-formly-readonly-demo`,
-    providers: [AutocompleteSampleDataService],
-    standalone: false
+  templateUrl: './autocomplete-readonly.component.html',
+  selector: `sds-formly-readonly-demo`,
+  providers: [AutocompleteSampleDataService],
+  standalone: false,
 })
 export class FormlyAutocompleteReadOnly {
   results: any;

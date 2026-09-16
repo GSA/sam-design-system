@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
-    selector: `sds-readonly-multicheckbox`,
-    template: `
+  selector: `sds-readonly-multicheckbox`,
+  template: `
     <span *ngIf="!value; else definedValues" class="text-bold">&mdash;</span>
 
     <ng-template #definedValues>
@@ -21,7 +21,7 @@ import { Component, Input, OnInit, TemplateRef } from '@angular/core';
       </span>
     </ng-template>
   `,
-    standalone: false
+  standalone: false,
 })
 export class ReadonlyMulticheckboxComponent implements OnInit {
   @Input() value: any;

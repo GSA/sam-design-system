@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PaginationDisplayMode } from '@gsa-sam/components';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-pagination-total-items',
   templateUrl: './pagination-total-items.component.html',
 })

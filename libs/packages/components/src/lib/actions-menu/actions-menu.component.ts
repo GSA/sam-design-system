@@ -2,9 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ActionMenuModel, ActionMenuMode } from './action-menu.model';
 
 @Component({
-    selector: 'sds-actions-menu',
-    templateUrl: 'actions-menu.component.html',
-    standalone: false
+  selector: 'sds-actions-menu',
+  templateUrl: 'actions-menu.component.html',
+  standalone: false,
 })
 export class SdsActionsMenuComponent {
   actionModes = ActionMenuMode;

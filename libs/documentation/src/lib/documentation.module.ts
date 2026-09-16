@@ -271,7 +271,7 @@ export const ROUTES: Routes = [
     RichTextModule,
     FormlyRichTextEditorModule,
     NgxBootstrapIconsModule.pick(
-      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'), _.cloneDeep(uswdsAllIcons))
+      Object.assign(_.cloneDeep(allIcons), appendPrefix(_.cloneDeep(sdsAllIcons), 'sds'), _.cloneDeep(uswdsAllIcons)),
     ),
     IconModule,
   ],

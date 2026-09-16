@@ -38,11 +38,11 @@ export class FormlyUtilsService {
   public static formlyConfigToReadonlyData(
     fields: FormlyFieldConfig[],
     model: any,
-    options = { convertAll: false }
+    options = { convertAll: false },
   ): ReadonlyDataType[] {
     const readonlyData = [];
     fields.forEach((field) => {
-      this, this._formlyConfigToReadonlyData(field, model, readonlyData, options);
+      (this, this._formlyConfigToReadonlyData(field, model, readonlyData, options));
     });
 
     return readonlyData;
@@ -64,11 +64,11 @@ export class FormlyUtilsService {
     field: FormlyFieldConfig,
     model: any,
     readonlyData: any[],
-    options: { convertAll: boolean }
+    options: { convertAll: boolean },
   ) {
     if (field.props && (options.convertAll || Object.values(SdsReadonlyTypes).includes(field.type as any))) {
       const label = field.props.label;
-      let value = undefined
+      let value = undefined;
       if (model) {
         value = model[field.key as string];
       } else {

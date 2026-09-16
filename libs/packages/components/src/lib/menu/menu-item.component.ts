@@ -15,12 +15,12 @@ import { SDS_MENU_TOKEN, SdsMenuInterface } from './menu.component';
 import { SdsMenuHeaderComponent } from './menu-header.component';
 
 @Component({
-    // tslint:disable-next-line: component-selector
-    selector: '[sds-menu-item]',
-    template: '<ng-content></ng-content>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    standalone: false
+  // tslint:disable-next-line: component-selector
+  selector: '[sds-menu-item]',
+  template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
   /** Menu item class */
@@ -49,7 +49,7 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
     private _focusMonitor: FocusMonitor,
     @Inject(SDS_MENU_TOKEN)
     private _parentMenu: SdsMenuInterface<SdsMenuItemComponent>,
-    @Optional() private _parentMenuHeader: SdsMenuHeaderComponent
+    @Optional() private _parentMenuHeader: SdsMenuHeaderComponent,
   ) {
     // Start listening to focus changes
     _focusMonitor.monitor(this._elementRef, false);

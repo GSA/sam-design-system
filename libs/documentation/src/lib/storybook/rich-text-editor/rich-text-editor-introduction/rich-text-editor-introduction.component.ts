@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-rich-text-editor-introduction',
   templateUrl: './rich-text-editor-introduction.component.html',
 })

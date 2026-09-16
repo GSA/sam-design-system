@@ -16,18 +16,11 @@ const asWarnings = (configs) =>
       .flatMap((config) => Object.entries(config.rules || {}))
       .map(([rule, setting]) => [
         rule,
-        setting === 'off' || setting === 0
-          ? 'off'
-          : Array.isArray(setting)
-            ? ['warn', ...setting.slice(1)]
-            : 'warn',
-      ])
+        setting === 'off' || setting === 0 ? 'off' : Array.isArray(setting) ? ['warn', ...setting.slice(1)] : 'warn',
+      ]),
   );
 
-const recommendedTypeScriptWarnings = asWarnings([
-  ...tseslint.configs.recommended,
-  ...angular.configs.tsRecommended,
-]);
+const recommendedTypeScriptWarnings = asWarnings([...tseslint.configs.recommended, ...angular.configs.tsRecommended]);
 
 // Template accessibility (ADR-0006): warn-first across the whole workspace,
 // including libs/documentation, so the gate exists everywhere immediately
@@ -63,58 +56,34 @@ export default tseslint.config(
   {
     files: ['libs/packages/components/**/*.ts'],
     rules: {
-      '@angular-eslint/directive-selector': [
-        'warn',
-        { type: 'attribute', prefix: 'sds', style: 'camelCase' },
-      ],
-      '@angular-eslint/component-selector': [
-        'warn',
-        { type: 'element', prefix: 'sds', style: 'kebab-case' },
-      ],
+      '@angular-eslint/directive-selector': ['warn', { type: 'attribute', prefix: 'sds', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['warn', { type: 'element', prefix: 'sds', style: 'kebab-case' }],
     },
   },
   {
     files: ['libs/packages/sam-material-extensions/**/*.ts'],
     rules: {
-      '@angular-eslint/directive-selector': [
-        'warn',
-        { type: 'attribute', prefix: 'sds', style: 'camelCase' },
-      ],
-      '@angular-eslint/component-selector': [
-        'warn',
-        { type: 'element', prefix: 'sds', style: 'kebab-case' },
-      ],
+      '@angular-eslint/directive-selector': ['warn', { type: 'attribute', prefix: 'sds', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['warn', { type: 'element', prefix: 'sds', style: 'kebab-case' }],
     },
   },
   {
     files: ['libs/packages/sam-formly/**/*.ts', 'apps/sam-design-system-site/**/*.ts'],
     rules: {
-      '@angular-eslint/directive-selector': [
-        'warn',
-        { type: 'attribute', prefix: 'sam', style: 'camelCase' },
-      ],
-      '@angular-eslint/component-selector': [
-        'warn',
-        { type: 'element', prefix: 'sam', style: 'kebab-case' },
-      ],
+      '@angular-eslint/directive-selector': ['warn', { type: 'attribute', prefix: 'sam', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['warn', { type: 'element', prefix: 'sam', style: 'kebab-case' }],
     },
   },
   {
     files: ['libs/documentation/**/*.ts'],
     rules: {
-      '@angular-eslint/directive-selector': [
-        'warn',
-        { type: 'attribute', prefix: 'docs', style: 'camelCase' },
-      ],
-      '@angular-eslint/component-selector': [
-        'warn',
-        { type: 'element', prefix: 'docs', style: 'kebab-case' },
-      ],
+      '@angular-eslint/directive-selector': ['warn', { type: 'attribute', prefix: 'docs', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['warn', { type: 'element', prefix: 'docs', style: 'kebab-case' }],
     },
   },
   {
     files: ['**/*.html'],
     extends: angular.configs.templateAccessibility,
     rules: accessibilityWarnings,
-  }
+  },
 );

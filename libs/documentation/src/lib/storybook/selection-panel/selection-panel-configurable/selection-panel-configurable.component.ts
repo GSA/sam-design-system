@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavigationLink, SelectionPanelModel } from '@gsa-sam/components';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-selection-panel-configurable',
   templateUrl: './selection-panel-configurable.component.html',
 })

@@ -10,7 +10,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from '../../../autocomplete/services/autocomplete-sample.service';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-dialog-basic',
   templateUrl: './formly-dialog-basic.component.html',
   providers: [AutocompleteSampleDataService],
@@ -91,7 +91,10 @@ export class FormlyDialogBasicComponent {
       },
     },
   ];
-  constructor(public service: AutocompleteSampleDataService, public dialog: SdsDialogService) {
+  constructor(
+    public service: AutocompleteSampleDataService,
+    public dialog: SdsDialogService,
+  ) {
     this.setup();
   }
   changes(value) {

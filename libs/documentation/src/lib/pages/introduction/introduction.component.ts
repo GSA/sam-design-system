@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 declare var require: any;
 @Component({
-    templateUrl: './introduction.component.html',
-    standalone: false
+  templateUrl: './introduction.component.html',
+  standalone: false,
 })
 export class IntroductionComponent implements OnInit {
   packages: any = {};

@@ -61,7 +61,7 @@ describe('SdsDialog', () => {
       mockLocation = l as SpyLocation;
       overlayContainer = oc;
       overlayContainerElement = oc.getContainerElement();
-    }
+    },
   ));
 
   afterEach(() => {
@@ -139,7 +139,7 @@ describe('SdsDialog', () => {
 
     expect(dialogRef.componentInstance.dialogRef).toBe(dialogRef);
     expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer)).toBeTruthy(
-      'Expected the dialog component to be created with the injector from the viewContainerRef.'
+      'Expected the dialog component to be created with the injector from the viewContainerRef.',
     );
   });
 
@@ -208,8 +208,8 @@ describe('SdsDialog', () => {
 
         expect(beforeCloseCallback).toHaveBeenCalledTimes(1);
         expect(afterCloseCallback).toHaveBeenCalledTimes(1);
-      })
-    )
+      }),
+    ),
   );
 
   it('should close a dialog and get back a result before it is closed', fakeAsync(() => {
@@ -221,7 +221,7 @@ describe('SdsDialog', () => {
     // beforeClose should emit before dialog container is destroyed
     const beforeCloseHandler = jasmine.createSpy('beforeClose callback').and.callFake(() => {
       expect(overlayContainerElement.querySelector('sds-dialog-container')).not.toBeNull(
-        'dialog container exists when beforeClose is called'
+        'dialog container exists when beforeClose is called',
       );
     });
 
@@ -261,7 +261,7 @@ describe('SdsDialog', () => {
 
     expect(overlayContainerElement.querySelectorAll('sds-dialog-container').length).toBe(
       1,
-      'Expected one open dialog.'
+      'Expected one open dialog.',
     );
 
     dialogRef.close();
@@ -271,7 +271,7 @@ describe('SdsDialog', () => {
 
     expect(overlayContainerElement.querySelectorAll('sds-dialog-container').length).toBe(
       0,
-      'Expected no open dialogs.'
+      'Expected no open dialogs.',
     );
   }));
 
@@ -336,7 +336,7 @@ describe('SdsDialog', () => {
       expect(
         dialog.open(PizzaMsg, {
           viewContainerRef: testViewContainerRef,
-        })
+        }),
       ).toBe(ref);
     });
   });
@@ -606,7 +606,7 @@ describe('SdsDialog', () => {
   it('should set the proper animation states', () => {
     let dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
     let dialogContainer: SdsDialogContainerComponent = viewContainerFixture.debugElement.query(
-      By.directive(SdsDialogContainerComponent)
+      By.directive(SdsDialogContainerComponent),
     ).componentInstance;
 
     expect(dialogContainer._state).toBe('enter');
@@ -790,7 +790,7 @@ describe('SdsDialog', () => {
     expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to be hidden');
     expect(overlayContainerElement.hasAttribute('aria-hidden')).toBe(
       false,
-      'Expected overlay container not to be hidden.'
+      'Expected overlay container not to be hidden.',
     );
 
     dialogRef.close();
@@ -980,7 +980,7 @@ describe('SdsDialog', () => {
 
       expect(document.activeElement!.tagName).toBe(
         'BUTTON',
-        'Expected first tabbable element (button) in the dialog to be focused.'
+        'Expected first tabbable element (button) in the dialog to be focused.',
       );
     }));
 
@@ -1011,13 +1011,13 @@ describe('SdsDialog', () => {
 
       expect(document.activeElement!.id).not.toBe(
         'dialog-trigger',
-        'Expected the focus to change when dialog was opened.'
+        'Expected the focus to change when dialog was opened.',
       );
 
       dialogRef.close();
       expect(document.activeElement!.id).not.toBe(
         'dialog-trigger',
-        'Expcted the focus not to have changed before the animation finishes.'
+        'Expcted the focus not to have changed before the animation finishes.',
       );
 
       flushMicrotasks();
@@ -1026,7 +1026,7 @@ describe('SdsDialog', () => {
 
       expect(document.activeElement!.id).toBe(
         'dialog-trigger',
-        'Expected that the trigger was refocused after the dialog is closed.'
+        'Expected that the trigger was refocused after the dialog is closed.',
       );
 
       document.body.removeChild(button);
@@ -1058,7 +1058,7 @@ describe('SdsDialog', () => {
 
       expect(document.activeElement!.id).toBe(
         'input-to-be-focused',
-        'Expected that the trigger was refocused after the dialog is closed.'
+        'Expected that the trigger was refocused after the dialog is closed.',
       );
 
       document.body.removeChild(button);
@@ -1083,7 +1083,7 @@ describe('SdsDialog', () => {
 
       expect(document.activeElement!.id).not.toBe(
         'dialog-trigger',
-        'Expected the focus to change when dialog was opened.'
+        'Expected the focus to change when dialog was opened.',
       );
 
       dialogRef.close();
@@ -1177,7 +1177,7 @@ describe('SdsDialog', () => {
         expect(title.id).toBeTruthy('Expected title element to have an id.');
         expect(container.getAttribute('aria-labelledby')).toBe(
           title.id,
-          'Expected the aria-labelledby to match the title id.'
+          'Expected the aria-labelledby to match the title id.',
         );
       }));
     }
@@ -1260,7 +1260,7 @@ describe('SdsDialog with a parent SdsDialog', () => {
 
     expect(overlayContainerElement.textContent!.trim()).toBe(
       '',
-      'Expected closeAll on child SdsDialog to close dialog opened by parent'
+      'Expected closeAll on child SdsDialog to close dialog opened by parent',
     );
   }));
 
@@ -1276,7 +1276,7 @@ describe('SdsDialog with a parent SdsDialog', () => {
 
     expect(overlayContainerElement.textContent!.trim()).toBe(
       '',
-      'Expected closeAll on parent SdsDialog to close dialog opened by child'
+      'Expected closeAll on parent SdsDialog to close dialog opened by child',
     );
   }));
 
@@ -1392,26 +1392,26 @@ describe('SdsDialog with default options', () => {
 });
 
 @Directive({
-    selector: 'dir-with-view-container',
-    standalone: false
+  selector: 'dir-with-view-container',
+  standalone: false,
 })
 class DirectiveWithViewContainer {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: 'hello',
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: 'hello',
+  standalone: false,
 })
 class ComponentWithOnPushViewContainer {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
-    selector: 'arbitrary-component',
-    template: `<dir-with-view-container></dir-with-view-container>`,
-    standalone: false
+  selector: 'arbitrary-component',
+  template: `<dir-with-view-container></dir-with-view-container>`,
+  standalone: false,
 })
 class ComponentWithChildViewContainer {
   @ViewChild(DirectiveWithViewContainer, { static: false }) childWithViewContainer: DirectiveWithViewContainer;
@@ -1422,11 +1422,11 @@ class ComponentWithChildViewContainer {
 }
 
 @Component({
-    selector: 'arbitrary-component-with-template-ref',
-    template: `<ng-template let-data let-dialogRef="dialogRef">
+  selector: 'arbitrary-component-with-template-ref',
+  template: `<ng-template let-data let-dialogRef="dialogRef">
     Cheese {{ localValue }} {{ data?.value }}{{ setDialogRef(dialogRef) }}</ng-template
   >`,
-    standalone: false
+  standalone: false,
 })
 class ComponentWithTemplateRef {
   localValue: string;
@@ -1442,19 +1442,19 @@ class ComponentWithTemplateRef {
 
 /** Simple component for testing ComponentPortal. */
 @Component({
-    template: '<p>Pizza</p> <input> <button>Close</button>',
-    standalone: false
+  template: '<p>Pizza</p> <input> <button>Close</button>',
+  standalone: false,
 })
 class PizzaMsg {
   constructor(
     public dialogRef: SdsDialogRef<PizzaMsg>,
     public dialogInjector: Injector,
-    public directionality: Directionality
+    public directionality: Directionality,
   ) {}
 }
 
 @Component({
-    template: `
+  template: `
     <h1 sds-dialog-title>This is the title</h1>
     <sds-dialog-content>Lorem ipsum dolor sit amet.</sds-dialog-content>
     <sds-dialog-actions>
@@ -1464,12 +1464,12 @@ class PizzaMsg {
       <div sds-dialog-close>Should not close</div>
     </sds-dialog-actions>
   `,
-    standalone: false
+  standalone: false,
 })
 class ContentElementDialog {}
 
 @Component({
-    template: `
+  template: `
     <ng-template>
       <h1 sds-dialog-title>This is the title</h1>
       <sds-dialog-content>Lorem ipsum dolor sit amet.</sds-dialog-content>
@@ -1481,16 +1481,16 @@ class ContentElementDialog {}
       </sds-dialog-actions>
     </ng-template>
   `,
-    standalone: false
+  standalone: false,
 })
 class ComponentWithContentElementTemplateRef {
   @ViewChild(TemplateRef, { static: false }) templateRef: TemplateRef<any>;
 }
 
 @Component({
-    template: '',
-    providers: [SdsDialogService],
-    standalone: false
+  template: '',
+  providers: [SdsDialogService],
+  standalone: false,
 })
 class ComponentThatProvidesSdsDialog {
   constructor(public dialog: SdsDialogService) {}
@@ -1498,16 +1498,16 @@ class ComponentThatProvidesSdsDialog {
 
 /** Simple component for testing ComponentPortal. */
 @Component({
-    template: '',
-    standalone: false
+  template: '',
+  standalone: false,
 })
 class DialogWithInjectedData {
   constructor(@Inject(SDS_DIALOG_DATA) public data: any) {}
 }
 
 @Component({
-    template: '<p>Pasta</p>',
-    standalone: false
+  template: '<p>Pasta</p>',
+  standalone: false,
 })
 class DialogWithoutFocusableElements {}
 

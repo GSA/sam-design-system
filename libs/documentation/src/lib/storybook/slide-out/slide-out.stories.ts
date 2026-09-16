@@ -69,7 +69,7 @@ CustomTemplate.parameters = {
   preview: generateConfig(
     'storybook/slide-out/slide-out-custom-template',
     'SlideOutCustomTemplateModule',
-    'sds-slide-out-custom-template'
+    'sds-slide-out-custom-template',
   ),
   stackblitzLink: generateStackblitzLink('slide-out', 'custom-template'),
 };

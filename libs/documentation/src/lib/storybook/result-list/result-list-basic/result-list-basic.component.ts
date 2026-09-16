@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-result-list-basic',
   templateUrl: './result-list-basic.component.html',
 })

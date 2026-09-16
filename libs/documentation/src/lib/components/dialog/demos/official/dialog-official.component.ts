@@ -6,9 +6,9 @@ import { SdsDialogService } from '@gsa-sam/components';
  * ================================================
  */
 @Component({
-    selector: 'sds-dialog-sample-official',
-    templateUrl: './official-template.html',
-    standalone: false
+  selector: 'sds-dialog-sample-official',
+  templateUrl: './official-template.html',
+  standalone: false,
 })
 export class OfficialComponent {}
 
@@ -17,9 +17,9 @@ export class OfficialComponent {}
  * ================================================
  */
 @Component({
-    selector: 'sds-modal-sample',
-    templateUrl: './dialog-official.component.html',
-    standalone: false
+  selector: 'sds-modal-sample',
+  templateUrl: './dialog-official.component.html',
+  standalone: false,
 })
 export class DialogOfficial {
   constructor(public dialog: SdsDialogService) {}

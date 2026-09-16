@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GlobalConfig, ToastrService } from 'ngx-toastr';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-toasts-type',
   templateUrl: './toasts-type.component.html',
 })

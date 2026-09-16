@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-dialog-configurable-template',
   templateUrl: './dialog-configurable-template.component.html',
 })

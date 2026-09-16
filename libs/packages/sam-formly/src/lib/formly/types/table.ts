@@ -38,9 +38,9 @@ export interface SdsTableColumn {
 }
 
 @Component({
-    selector: `sds-formly-field-table`,
-    templateUrl: './table.html',
-    standalone: false
+  selector: `sds-formly-field-table`,
+  templateUrl: './table.html',
+  standalone: false,
 })
 export class FormlyFieldTableComponent extends FieldType<FieldTypeConfig> implements OnInit {
   // Referenced in html

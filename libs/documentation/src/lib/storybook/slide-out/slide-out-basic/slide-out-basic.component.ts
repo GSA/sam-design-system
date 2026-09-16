@@ -3,14 +3,17 @@ import { Component } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-slide-out-basic',
   templateUrl: './slide-out-basic.component.html',
 })
 export class SlideOutBasicComponent {
   openedDialogRef: SdsDialogRef<any>;
 
-  constructor(public dialog: SdsDialogService, private options: ScrollStrategyOptions) {}
+  constructor(
+    public dialog: SdsDialogService,
+    private options: ScrollStrategyOptions,
+  ) {}
 
   buttonClicked() {
     if (!this.openedDialogRef) {
@@ -25,7 +28,7 @@ export class SlideOutBasicComponent {
   }
 }
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-slide-out-template',
   templateUrl: './template.html',
   styleUrls: ['template.scss'],

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GlobalConfig, ToastrService } from 'ngx-toastr';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-toasts-timeout',
   templateUrl: './toasts-timeout.component.html',
 })

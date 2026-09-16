@@ -38,19 +38,19 @@ import { Subscription } from 'rxjs';
 let nextId = 0;
 
 @Component({
-    selector: 'sds-popover-window',
-    imports: [NgTemplateOutlet, NgIf],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    styleUrls: ['popover.scss'],
-    host: {
-        '[class]': '"popover" + (popoverClass ? " " + popoverClass : "")',
-        '[class.fade]': 'animation',
-        role: 'tooltip',
-        '[id]': 'id',
-        style: 'position: absolute;',
-    },
-    template: ` <div class="popover-arrow" data-popper-arrow></div>
+  selector: 'sds-popover-window',
+  imports: [NgTemplateOutlet, NgIf],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['popover.scss'],
+  host: {
+    '[class]': '"popover" + (popoverClass ? " " + popoverClass : "")',
+    '[class.fade]': 'animation',
+    role: 'tooltip',
+    '[id]': 'id',
+    style: 'position: absolute;',
+  },
+  template: ` <div class="popover-arrow" data-popper-arrow></div>
     <h3 class="popover-header" *ngIf="title">
       <ng-template #simpleTitle>{{ title }}</ng-template>
       <ng-template
@@ -58,7 +58,7 @@ let nextId = 0;
         [ngTemplateOutletContext]="context"
       ></ng-template>
     </h3>
-    <div class="popover-body"><ng-content></ng-content></div>`
+    <div class="popover-body"><ng-content></ng-content></div>`,
 })
 export class SdsPopoverWindow {
   @Input() animation: boolean;
@@ -237,7 +237,7 @@ export class SdsPopover implements OnInit, OnDestroy, OnChanges {
     private _ngZone: NgZone,
     @Inject(DOCUMENT) private _document: any,
     private _changeDetector: ChangeDetectorRef,
-    applicationRef: ApplicationRef
+    applicationRef: ApplicationRef,
   ) {
     this.animation = config.animation;
     this.autoClose = config.autoClose;
@@ -256,7 +256,7 @@ export class SdsPopover implements OnInit, OnDestroy, OnChanges {
       viewContainerRef,
       _renderer,
       this._ngZone,
-      applicationRef
+      applicationRef,
     );
   }
 
@@ -272,7 +272,7 @@ export class SdsPopover implements OnInit, OnDestroy, OnChanges {
       const { windowRef, transition$ } = this._popupService.open(
         this.sdsPopover as string | TemplateRef<any>,
         context ?? this.popoverContext,
-        this.animation
+        this.animation,
       );
       this._windowRef = windowRef;
       this._windowRef.setInput('animation', this.animation);
@@ -372,7 +372,7 @@ export class SdsPopover implements OnInit, OnDestroy, OnChanges {
       this.open.bind(this),
       this.close.bind(this),
       +this.openDelay,
-      +this.closeDelay
+      +this.closeDelay,
     );
   }
 

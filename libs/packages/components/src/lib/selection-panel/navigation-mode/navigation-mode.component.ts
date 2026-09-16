@@ -4,10 +4,10 @@ import { NavigationLink, SideNavigationModel } from '../../side-navigation/model
 import { SelectionPanelModel } from '../model/selection-panel.model';
 
 @Component({
-    selector: 'sds-selection-panel-navigation-mode',
-    templateUrl: './navigation-mode.component.html',
-    styleUrls: ['./navigation-mode.component.scss'],
-    standalone: false
+  selector: 'sds-selection-panel-navigation-mode',
+  templateUrl: './navigation-mode.component.html',
+  styleUrls: ['./navigation-mode.component.scss'],
+  standalone: false,
 })
 export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
   @Input() model: SelectionPanelModel;
@@ -18,7 +18,10 @@ export class SdsSelectionPanelNavigationModeComponent implements OnChanges {
 
   @Output() panelSelected = new EventEmitter<NavigationLink>();
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.model && this.currentSelection && changes.currentSelection) {

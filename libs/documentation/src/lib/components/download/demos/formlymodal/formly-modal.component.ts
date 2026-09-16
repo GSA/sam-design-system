@@ -10,10 +10,10 @@ import {
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
-    templateUrl: 'formly-modal.component.html',
-    selector: `sds-formly-dialog-demo`,
-    providers: [AutocompleteSampleDataService],
-    standalone: false
+  templateUrl: 'formly-modal.component.html',
+  selector: `sds-formly-dialog-demo`,
+  providers: [AutocompleteSampleDataService],
+  standalone: false,
 })
 export class FormlyDialog {
   updatedModel: any = {};
@@ -91,7 +91,10 @@ export class FormlyDialog {
       },
     },
   ];
-  constructor(public service: AutocompleteSampleDataService, public dialog: SdsDialogService) {
+  constructor(
+    public service: AutocompleteSampleDataService,
+    public dialog: SdsDialogService,
+  ) {
     this.setup();
   }
   changes(value) {

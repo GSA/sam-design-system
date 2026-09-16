@@ -25,7 +25,7 @@
                 *ngFor="let step of stepTemplates; let i = index"
                 class="usa-sidenav__item"
                 [ngClass]="{
-                  'usa-current': selectedStep?.id === step.id
+                  'usa-current': selectedStep?.id === step.id,
                 }"
               >
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: step }">
@@ -44,7 +44,7 @@
     <div [ngTemplateOutlet]="selectedStep ? selectedStep.content : null"></div>
   </div>
 </div>
-<hr style="width: 100%;" class="fine" />
+<hr style="width: 100%" class="fine" />
 <div class="grid-row grid-gap margin-top-4">
   <div class="flex-10 flex-justify-start">
     <button class="usa-button usa-button--base usa-button--outline radius-pill">

@@ -4,7 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { OptionalSearchModel } from './optional-classes';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-result-list-messages',
   templateUrl: './result-list-messages.component.html',
 })

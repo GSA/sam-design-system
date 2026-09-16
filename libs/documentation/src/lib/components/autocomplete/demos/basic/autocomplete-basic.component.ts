@@ -4,11 +4,11 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-    templateUrl: './autocomplete-basic.component.html',
-    styleUrls: ['./autocomplete-basic.component.scss'],
-    selector: `sds-autocomplete-basic-demo`,
-    providers: [AutocompleteSampleDataService],
-    standalone: false
+  templateUrl: './autocomplete-basic.component.html',
+  styleUrls: ['./autocomplete-basic.component.scss'],
+  selector: `sds-autocomplete-basic-demo`,
+  providers: [AutocompleteSampleDataService],
+  standalone: false,
 })
 export class AutocompleteBasic implements OnInit {
   private data = SampleAutocompleteData;

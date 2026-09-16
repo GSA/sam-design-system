@@ -13,7 +13,7 @@ import {
 
 // detail rows
 @Component({
-    template: `
+  template: `
     <sds-accordion-next [multi]="multi" #sdsAccordionDemo>
       <sds-accordion-item #first>
         <sds-accordion-title>Chief Financial Officers Council Grants Training</sds-accordion-title>
@@ -45,8 +45,8 @@ import {
       </sds-accordion-item>
     </sds-accordion-next>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 class WrapperComponent {
   @ViewChild(SdsAccordionComponent)
@@ -64,20 +64,18 @@ describe('SdsAccordionComponent', () => {
   let fixture: ComponentFixture<WrapperComponent>;
   let accordionDe: DebugElement;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          SdsAccordionComponent,
-          SdsAccordionItemComponent,
-          SdsAccordionTitleDirective,
-          SdsAccordionContentDirective,
-          WrapperComponent,
-        ],
-        imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        SdsAccordionComponent,
+        SdsAccordionItemComponent,
+        SdsAccordionTitleDirective,
+        SdsAccordionContentDirective,
+        WrapperComponent,
+      ],
+      imports: [CommonModule, MatExpansionModule, BrowserAnimationsModule],
+    }).compileComponents();
+  }));
 
   // expandable rows
   describe('Accordion', () => {
@@ -91,12 +89,9 @@ describe('SdsAccordionComponent', () => {
       wrapper = wrapperComponent;
     });
 
-    it(
-      'should create',
-      waitForAsync(() => {
-        expect(component).toBeTruthy();
-      })
-    );
+    it('should create', waitForAsync(() => {
+      expect(component).toBeTruthy();
+    }));
 
     it('should have 4 items', () => {
       expect(component.accordionItems.length).toEqual(4);

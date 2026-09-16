@@ -3,9 +3,9 @@ import { TableDataSource } from '@gsa-sam/ngx-uswds';
 import { SdsTreeTableComponent } from 'libs/packages/components/src/lib/public-api';
 
 @Component({
-    selector: `tree-table-basic`,
-    templateUrl: `./tree-table-basic.component.html`,
-    standalone: false
+  selector: `tree-table-basic`,
+  templateUrl: `./tree-table-basic.component.html`,
+  standalone: false,
 })
 export class TreeTableBasicComponent {
   @ViewChild(SdsTreeTableComponent) treeTable: SdsTreeTableComponent;

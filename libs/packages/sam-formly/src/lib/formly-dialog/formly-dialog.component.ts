@@ -7,9 +7,9 @@ import { SdsAdvancedFiltersService } from '../formly-filters/advanced-filters/sd
 import { startWith, tap } from 'rxjs';
 
 @Component({
-    selector: 'sds-formly-dialog',
-    templateUrl: './formly-dialog.component.html',
-    standalone: false
+  selector: 'sds-formly-dialog',
+  templateUrl: './formly-dialog.component.html',
+  standalone: false,
 })
 export class SdsFormlyDialogComponent implements OnInit {
   form: UntypedFormGroup;
@@ -30,7 +30,7 @@ export class SdsFormlyDialogComponent implements OnInit {
     public advancedFiltersService: SdsAdvancedFiltersService,
     private cdr: ChangeDetectorRef,
     public dialogRef: SdsDialogRef<SdsFormlyDialogComponent>,
-    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData
+    @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData,
   ) {}
 
   public ngOnInit() {

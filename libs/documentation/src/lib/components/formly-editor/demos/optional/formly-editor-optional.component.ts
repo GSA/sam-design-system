@@ -3,9 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    templateUrl: './formly-editor-optional.component.html',
-    selector: `sds-formly-editor-optional-demo`,
-    standalone: false
+  templateUrl: './formly-editor-optional.component.html',
+  selector: `sds-formly-editor-optional-demo`,
+  standalone: false,
 })
 export class EditorOptional {
   form = new UntypedFormGroup({});

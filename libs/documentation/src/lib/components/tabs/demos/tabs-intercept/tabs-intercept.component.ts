@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { TabPanelComponent } from '@gsa-sam/components';
 
 @Component({
-    templateUrl: './tabs-intercept.component.html',
-    selector: `sds-tabs-intercept-demo`,
-    standalone: false
+  templateUrl: './tabs-intercept.component.html',
+  selector: `sds-tabs-intercept-demo`,
+  standalone: false,
 })
 export class TabsInterceptComponent {
   selectedTab: TabPanelComponent;
