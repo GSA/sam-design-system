@@ -6,18 +6,14 @@ import { By } from '@angular/platform-browser';
 import { SDSClickOutsideDirective } from './click-outside.directive';
 
 @Component({
-    selector: 'test-cmp',
-    template: `
+  selector: 'test-cmp',
+  template: `
     <div #var sds-click-outside (clickOutside)="clickOutsideHandler()">
-      <p class="test">
-        test content
-      </p>
+      <p class="test">test content</p>
     </div>
-    <p class="test2">
-      click outside target content
-    </p>
+    <p class="test2">click outside target content</p>
   `,
-    standalone: false
+  standalone: false,
 })
 class TestComponent {
   @Output() action: EventEmitter<any> = new EventEmitter<any>();

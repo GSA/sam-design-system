@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-table-highlight-row',
   templateUrl: './table-highlight-row.component.html',
 })

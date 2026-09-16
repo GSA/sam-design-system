@@ -3,9 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    templateUrl: './filters-showInactiveFilterValues.component.html',
-    selector: `sds-inactive-filters-demo`,
-    standalone: false
+  templateUrl: './filters-showInactiveFilterValues.component.html',
+  selector: `sds-inactive-filters-demo`,
+  standalone: false,
 })
 export class FiltersShowInactiveFilterValues {
   form = new UntypedFormGroup({});

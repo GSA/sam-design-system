@@ -3,7 +3,7 @@ import { SdsTreeTableComponent } from '@gsa-sam/components';
 import { data } from '../services/TreeTableData';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-tree-table-programmatic-control',
   templateUrl: './tree-table-programmatic-control.component.html',
 })

@@ -4,9 +4,9 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'gsa-sam-formly-tabs-intercept',
-    templateUrl: './formly-tabs-intercept.component.html',
-    standalone: false
+  selector: 'gsa-sam-formly-tabs-intercept',
+  templateUrl: './formly-tabs-intercept.component.html',
+  standalone: false,
 })
 export class FormlyTabsInterceptComponent {
   selectedTab: TabPanelComponent = null;

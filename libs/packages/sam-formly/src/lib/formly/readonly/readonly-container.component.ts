@@ -4,16 +4,16 @@ import { SdsFormlyTypes } from '../models/formly-types';
 import { ReadonlyOptions } from './readonly-options.model';
 
 @Directive({
-    selector: '[sdsReadonlyLabel]',
-    standalone: false
+  selector: '[sdsReadonlyLabel]',
+  standalone: false,
 })
 export class ReadonlyLabelDirective {
   constructor(public templateRef: TemplateRef<any>) {}
 }
 
 @Directive({
-    selector: '[sdsReadonlyValue]',
-    standalone: false
+  selector: '[sdsReadonlyValue]',
+  standalone: false,
 })
 export class ReadonlyValueDirective {
   constructor(public templateRef: TemplateRef<any>) {}
@@ -23,9 +23,9 @@ export class ReadonlyValueDirective {
  * Wrapper level component for displaying readonly format for each formly types
  */
 @Component({
-    selector: `sds-readonly-container`,
-    templateUrl: './readonly-container.component.html',
-    standalone: false
+  selector: `sds-readonly-container`,
+  templateUrl: './readonly-container.component.html',
+  standalone: false,
 })
 export class ReadonlyContainerComponent implements OnInit {
   @ContentChild(ReadonlyLabelDirective) labelTemplate: ReadonlyLabelDirective;

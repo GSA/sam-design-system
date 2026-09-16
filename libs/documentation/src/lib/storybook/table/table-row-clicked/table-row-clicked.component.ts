@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-table-row-clicked',
   templateUrl: './table-row-clicked.component.html',
 })

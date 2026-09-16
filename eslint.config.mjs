@@ -20,7 +20,7 @@ const asWarnings = (configs) =>
       .map(([rule, setting]) => [
         rule,
         setting === 'off' || setting === 0 ? 'off' : Array.isArray(setting) ? ['warn', ...setting.slice(1)] : 'warn',
-      ])
+      ]),
   );
 
 const recommendedTypeScriptWarnings = asWarnings([...tseslint.configs.recommended, ...angular.configs.tsRecommended]);
@@ -88,5 +88,5 @@ export default tseslint.config(
     extends: angular.configs.templateAccessibility,
     rules: accessibilityWarnings,
   },
-  storybook.configs['flat/recommended']
+  storybook.configs['flat/recommended'],
 );

@@ -4,7 +4,7 @@ import { SampleAutocompleteData } from '../services/autocomplete-sample.data';
 import { AutocompleteSampleDataService } from '../services/autocomplete-sample.service';
 
 @Component({
-	standalone: false,
+  standalone: false,
   templateUrl: './autocomplete-free-text.component.html',
   selector: `sds-autocomplete-free-text-demo`,
   providers: [AutocompleteSampleDataService],

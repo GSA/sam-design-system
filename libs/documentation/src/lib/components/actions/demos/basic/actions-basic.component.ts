@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: 'actions-basic.component.html',
-    selector: `sds-actions-basic-demo`,
-    standalone: false
+  templateUrl: 'actions-basic.component.html',
+  selector: `sds-actions-basic-demo`,
+  standalone: false,
 })
 export class ActionsBasic {
   constructor() {}

@@ -2,22 +2,20 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-rich-text-editor-min-height',
   templateUrl: './rich-text-editor-min-height.component.html',
 })
 export class RichTextEditorMinHeightComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Changes')
+    console.log('Changes');
     console.log(this.data);
   }
   public data = 'Min';
   //fc: UntypedFormControl = new UntypedFormControl('<p>this is a test PRogeess</p>');
 
-
-
   ngOnInit() {
-    console.log('ngOnInit')
+    console.log('ngOnInit');
     console.log(this.data);
     //   this.fc.registerOnChange(i => {
 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './search-optional.component.html',
-    selector: `sds-search-optional-demo`,
-    standalone: false
+  templateUrl: './search-optional.component.html',
+  selector: `sds-search-optional-demo`,
+  standalone: false,
 })
 export class SearchOptional {
   ddmodel = {};

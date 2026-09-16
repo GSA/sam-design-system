@@ -2,9 +2,9 @@ import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core'
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'sds-formly-field-checkbox',
-    templateUrl: './checkbox.html',
-    standalone: false
+  selector: 'sds-formly-field-checkbox',
+  templateUrl: './checkbox.html',
+  standalone: false,
 })
 export class FormlyFieldCheckboxComponent extends FieldType<FieldTypeConfig> implements AfterViewInit {
   @ViewChild('defaultTemplate') defaultTemplate: TemplateRef<any>;

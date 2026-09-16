@@ -4,7 +4,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { filterFields } from './fields';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-filter-nested',
   templateUrl: './formly-filter-nested.component.html',
 })

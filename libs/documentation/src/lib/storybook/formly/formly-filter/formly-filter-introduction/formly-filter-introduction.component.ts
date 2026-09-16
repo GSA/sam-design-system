@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-filter-introduction',
   templateUrl: './formly-filter-introduction.component.html',
   preserveWhitespaces: true,

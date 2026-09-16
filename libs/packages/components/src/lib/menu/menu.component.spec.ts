@@ -26,7 +26,7 @@ describe('SdsMenu', () => {
   function createComponent<T>(
     component: Type<T>,
     providers: Provider[] = [],
-    declarations: any[] = []
+    declarations: any[] = [],
   ): ComponentFixture<T> {
     TestBed.configureTestingModule({
       imports: [SdsMenuModule, NoopAnimationsModule],
@@ -263,7 +263,7 @@ describe('SdsMenu', () => {
       SimpleMenuComponent,
       [],
       // tslint:disable-next-line: no-use-before-declare
-      [FakeIconComponent]
+      [FakeIconComponent],
     );
     fixture.detectChanges();
     const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
@@ -407,7 +407,7 @@ describe('SdsMenu', () => {
       fixture.detectChanges();
       expect(Math.floor(panel.getBoundingClientRect().bottom)).toBe(
         Math.floor(trigger.getBoundingClientRect().top),
-        'Expected menu to open above'
+        'Expected menu to open above',
       );
 
       fixture.componentInstance.trigger.closeMenu();
@@ -422,14 +422,14 @@ describe('SdsMenu', () => {
 
       expect(Math.floor(panel.getBoundingClientRect().top)).toBe(
         Math.floor(trigger.getBoundingClientRect().bottom),
-        'Expected menu to open below'
+        'Expected menu to open below',
       );
     });
   });
 });
 
 @Component({
-    template: `
+  template: `
     <button [sdsMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
     <sds-menu #menu="sdsMenu" [class]="panelClass" (closed)="closeCallback($event)">
       <button sds-menu-item>Item</button>
@@ -441,7 +441,7 @@ describe('SdsMenu', () => {
       <button *ngFor="let item of extraItems" sds-menu-item>{{ item }}</button>
     </sds-menu>
   `,
-    standalone: false
+  standalone: false,
 })
 class SimpleMenuComponent {
   @ViewChild(SdsMenuTriggerForDirective, { static: false })
@@ -455,20 +455,20 @@ class SimpleMenuComponent {
 }
 
 @Component({
-    selector: 'sds-fake-icon',
-    template: '<ng-content></ng-content>',
-    standalone: false
+  selector: 'sds-fake-icon',
+  template: '<ng-content></ng-content>',
+  standalone: false,
 })
 class FakeIconComponent {}
 
 @Component({
-    template: `
+  template: `
     <button [sdsMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
     <sds-menu [xPosition]="xPosition" [yPosition]="yPosition" #menu="sdsMenu">
       <button sds-menu-item>Positioned Content</button>
     </sds-menu>
   `,
-    standalone: false
+  standalone: false,
 })
 class PositionedMenuComponent {
   @ViewChild(SdsMenuTriggerForDirective, { static: false })

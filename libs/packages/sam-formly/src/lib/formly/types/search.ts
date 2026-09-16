@@ -3,12 +3,12 @@ import { AbstractSdsFormly } from '../sds-formly';
 import { SdsSearchComponent } from '@gsa-sam/components';
 
 @Component({
-    selector: 'sds-formly-field-search',
-    template: `
-    <sds-search  [formControl]="formControl" (submit)="props.submitHandler && props.submitHandler($event)"></sds-search>
+  selector: 'sds-formly-field-search',
+  template: `
+    <sds-search [formControl]="formControl" (submit)="props.submitHandler && props.submitHandler($event)"></sds-search>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FormlyFieldSearchComponent extends AbstractSdsFormly {
   @ViewChild(SdsSearchComponent, { static: true }) public template: SdsSearchComponent;

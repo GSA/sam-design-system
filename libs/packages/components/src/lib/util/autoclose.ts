@@ -38,7 +38,7 @@ export function sdsAutoClose(
   closed$: Observable<any>,
   insideElements: HTMLElement[],
   ignoreElements?: HTMLElement[],
-  insideSelector?: string
+  insideSelector?: string,
 ) {
   // closing on ESC and outside clicks
   if (type) {
@@ -61,28 +61,27 @@ export function sdsAutoClose(
         const escapes$ = fromEvent<KeyboardEvent>(document, 'keydown').pipe(
           takeUntil(closed$),
           filter((e) => e.which === Key.Escape),
-          tap((e) => e.preventDefault())
+          tap((e) => e.preventDefault()),
         );
 
         // we have to pre-calculate 'shouldCloseOnClick' on 'mousedown',
         // because on 'mouseup' DOM nodes might be detached
         const mouseDowns$ = fromEvent<MouseEvent>(document, 'mousedown').pipe(
           map(shouldCloseOnClick),
-          takeUntil(closed$)
+          takeUntil(closed$),
         );
 
         const closeableClicks$ = fromEvent<MouseEvent>(document, 'mouseup').pipe(
           withLatestFrom(mouseDowns$),
           filter(([_, shouldClose]) => shouldClose),
           delay(0),
-          takeUntil(closed$)
+          takeUntil(closed$),
         ) as Observable<MouseEvent>;
 
-        race([
-          escapes$.pipe(map((_) => SOURCE.ESCAPE)),
-          closeableClicks$.pipe(map((_) => SOURCE.CLICK)),
-        ]).subscribe((source: SOURCE) => zone.run(() => close(source)));
-      })
+        race([escapes$.pipe(map((_) => SOURCE.ESCAPE)), closeableClicks$.pipe(map((_) => SOURCE.CLICK))]).subscribe(
+          (source: SOURCE) => zone.run(() => close(source)),
+        );
+      }),
     );
   }
 }

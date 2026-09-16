@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <docs-api-component
       [pkg]="item.pkg"
       [type]="item.type"
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
       *ngFor="let item of items"
     ></docs-api-component>
   `,
-    standalone: false
+  standalone: false,
 })
 export class DocumentationAPIPage {
   items: any = [];

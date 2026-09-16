@@ -40,19 +40,22 @@ export function parseDemo(globPath: string): Map<string, DemoMetadata> {
             if (textDecorator.startsWith('@NgModule')) {
               const matches = BOOTSTRAP_REGEX.exec(textDecorator);
               if (matches) {
-                modules.set(
-                    sourceFile.fileName,
-                    {moduleClassName: className, bootstrap: {selector: '', fileName: '', className: matches[1]}});
+                modules.set(sourceFile.fileName, {
+                  moduleClassName: className,
+                  bootstrap: { selector: '', fileName: '', className: matches[1] },
+                });
               }
             }
 
             if (textDecorator.startsWith('@Component')) {
               const matches = SELECTOR_REGEX.exec(textDecorator);
               if (matches) {
-                if(components.has(className)){
-                  throw new Error(`COMPONENT NAME COLLISION: Component Name ${className} already exists. Stackblitz will render wrong component if not corrected!`)
+                if (components.has(className)) {
+                  throw new Error(
+                    `COMPONENT NAME COLLISION: Component Name ${className} already exists. Stackblitz will render wrong component if not corrected!`,
+                  );
                 }
-                components.set(className, {selector: matches[1], fileName: path.basename(sourceFile.fileName)});
+                components.set(className, { selector: matches[1], fileName: path.basename(sourceFile.fileName) });
               }
             }
           }
@@ -66,7 +69,7 @@ export function parseDemo(globPath: string): Map<string, DemoMetadata> {
   const files = glob.sync(globPath);
   const program = ts.createProgram(files, {});
   program.getTypeChecker();
-  files.forEach(file => processFile(program.getSourceFile(file)));
+  files.forEach((file) => processFile(program.getSourceFile(file)));
 
   // checks
   if (modules.size === 0) {

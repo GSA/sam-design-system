@@ -3,9 +3,9 @@ import { SelectionPanelModel } from '@gsa-sam/components';
 import { selectionPanelConfig } from './navigation.config';
 
 @Component({
-    selector: `sds-default-selection-panel-demo`,
-    templateUrl: './default-selection-panel.component.html',
-    standalone: false
+  selector: `sds-default-selection-panel-demo`,
+  templateUrl: './default-selection-panel.component.html',
+  standalone: false,
 })
 export class DefaultSelectionPanelComponent {
   title = 'Pre-Selected Selection Panel';

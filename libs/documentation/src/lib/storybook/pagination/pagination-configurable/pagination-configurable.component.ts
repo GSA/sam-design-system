@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PaginationModel } from 'libs/packages/components/src/lib/pagination/model/paginationModel';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-pagination-configurable',
   templateUrl: './pagination-configurable.component.html',
 })

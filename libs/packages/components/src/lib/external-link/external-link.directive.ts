@@ -14,8 +14,8 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
-    selector: 'a[href]',
-    standalone: false
+  selector: 'a[href]',
+  standalone: false,
 })
 export class ExternalLinkDirective implements OnChanges {
   @HostBinding('attr.rel') relAttr = '';
@@ -28,9 +28,7 @@ export class ExternalLinkDirective implements OnChanges {
   @Input() public hideIcon: boolean = false;
 
   /** Treat these domains as internal links */
-  private internalLinks = [
-    /** 'fsd.gov' - Removed until fsd.gov contains proper route back to sam.gov */
-  ];
+  private internalLinks = [/** 'fsd.gov' - Removed until fsd.gov contains proper route back to sam.gov */];
 
   private readonly emailLinkKeyword = 'mailto';
 
@@ -38,7 +36,7 @@ export class ExternalLinkDirective implements OnChanges {
     @Inject(PLATFORM_ID) private platformId: string,
     private el: ElementRef,
     private vc: ViewContainerRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
   ) {}
 
   public ngOnChanges() {

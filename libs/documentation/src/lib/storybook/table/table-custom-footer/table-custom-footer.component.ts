@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-table-custom-footer',
   templateUrl: './table-custom-footer.component.html',
 })

@@ -64,7 +64,9 @@
     "storybook": "ng run sam-design-system-site:storybook",
     "build-storybook": "npm run docs:json && ng run sam-design-system-site:build-storybook",
     "check-prettier": "npx prettier -c \"libs\" \"apps\"",
-    "fix-prettier": "npx prettier --write \"libs\" \"apps\""
+    "fix-prettier": "npx prettier --write \"libs\" \"apps\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "private": true,
   "overrides": {
@@ -144,7 +146,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^19.2.2",
     "postcss": "^8.3.5",
-    "prettier": "2.0.4",
+    "prettier": "3.9.6",
     "react": "^18.3.1",
     "react-copy-to-clipboard": "^5.1.1",
     "react-dom": "^18.3.1",

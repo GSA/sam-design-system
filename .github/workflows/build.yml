@@ -24,7 +24,7 @@ jobs:
         run: npm run demo:stackblitzes
       - name: Build Storybook Assets
         env:
-          NODE_OPTIONS: "--max_old_space_size=4096"
+          NODE_OPTIONS: '--max_old_space_size=4096'
           pr: ${{ inputs.pr-number }}
         run: GH_PAGES=true PR=$pr npm run build-storybook
       - name: Add .nojekyll file to allow for node_modules to be included in bundle

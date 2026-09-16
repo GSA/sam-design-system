@@ -10,7 +10,7 @@ import { FieldWrapper } from '@ngx-formly/core';
  *
  */
 @Component({
-    template: `
+  template: `
     <div class="usa-form-group" [class.usa-form-group--error]="showError">
       <label
         class="usa-label"
@@ -21,7 +21,7 @@ import { FieldWrapper } from '@ngx-formly/core';
             this.field?.props?.label && !this.field?.props?.hideLabel && this.field?.parent?.fieldGroup?.length === 1,
           'usa-sr-only':
             props.hideLabel ||
-            ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
+            ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group'),
         }"
       >
         <span
@@ -54,16 +54,16 @@ import { FieldWrapper } from '@ngx-formly/core';
 
       <div
         [ngClass]="{
-'{{props.labelContentClass}}': props.labelContentClass,
-         'single-form-control':
-              ((props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group')
-          }"
+          '{{props.labelContentClass}}': props.labelContentClass,
+          'single-form-control':
+            (props.group === 'panel' || props.group === 'accordion') && field?.parent?.type !== 'formly-group',
+        }"
       >
         <ng-container #fieldComponent></ng-container>
       </div>
     </div>
   `,
-    standalone: false
+  standalone: false,
 })
 export class FormlyLabelWrapperComponent extends FieldWrapper {
   @ViewChild('fieldComponent', { read: ViewContainerRef })

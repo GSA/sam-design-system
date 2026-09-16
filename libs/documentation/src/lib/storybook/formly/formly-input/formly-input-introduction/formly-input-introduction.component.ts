@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-input-introduction',
   templateUrl: './formly-input-introduction.component.html',
 })

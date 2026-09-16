@@ -3,15 +3,18 @@ import { Component } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-    templateUrl: './slide-out-basic.component.html',
-    styleUrls: ['./slide-out-basic.component.scss'],
-    selector: `sds-slide-out-basic-demo`,
-    standalone: false
+  templateUrl: './slide-out-basic.component.html',
+  styleUrls: ['./slide-out-basic.component.scss'],
+  selector: `sds-slide-out-basic-demo`,
+  standalone: false,
 })
 export class SlideOutBasicComponent {
   openedDialogRef: SdsDialogRef<any>;
 
-  constructor(public dialog: SdsDialogService, private options: ScrollStrategyOptions) {}
+  constructor(
+    public dialog: SdsDialogService,
+    private options: ScrollStrategyOptions,
+  ) {}
 
   buttonClicked() {
     if (!this.openedDialogRef) {
@@ -29,10 +32,10 @@ export class SlideOutBasicComponent {
 }
 
 @Component({
-    selector: 'sds-slide-out-template',
-    templateUrl: './slide-out-template.html',
-    styleUrls: ['slide-out-template.scss'],
-    standalone: false
+  selector: 'sds-slide-out-template',
+  templateUrl: './slide-out-template.html',
+  styleUrls: ['slide-out-template.scss'],
+  standalone: false,
 })
 export class SlideOutTemplateComponent {
   constructor() {}

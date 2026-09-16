@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-popover-close-behavior',
   templateUrl: './popover-close-behavior.component.html',
 })

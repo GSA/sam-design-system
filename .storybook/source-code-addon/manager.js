@@ -32,7 +32,7 @@ addons.register('my/panel', () => {
                 <button
                   key={index}
                   onClick={() => handleTabClick(item.tab)}
-                  className={item.tab === selectedTab ? "activeTabButton" : "tabButton"}
+                  className={item.tab === selectedTab ? 'activeTabButton' : 'tabButton'}
                 >
                   {item.tab}
                 </button>

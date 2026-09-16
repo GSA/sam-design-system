@@ -5,7 +5,7 @@ import { AutocompleteSampleDataService } from '../services/autocomplete-sample.s
 import { SDSAutocompletelConfiguration, SDSSelectedItemModel, SelectionMode } from '@gsa-sam/components';
 
 @Component({
-	standalone: false,
+  standalone: false,
   templateUrl: './formly-autocomplete-free-text.component.html',
   selector: `sds-formly-autocomplete-freetext`,
   providers: [AutocompleteSampleDataService],
