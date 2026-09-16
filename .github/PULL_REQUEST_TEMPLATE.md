@@ -26,7 +26,6 @@
 
 ## Which browsers have you tested?
 
-- [ ] Internet Explorer 11
 - [ ] Edge
 - [ ] Chrome
 - [ ] Firefox
@@ -37,12 +36,13 @@
 <!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
-- [ ] I have read the (https://github.comv/GSA/sam-ui-elements/blob/CONTRIBUTING.md)[CONTRIBUTING.md] document.
-- [ ] My code passes the automated linter.
-- [ ] This code has been reviewed by another team member and passes the reviewer checklist found in (https://github.comv/GSA/sam-ui-elements/blob/CONTRIBUTING.md)[CONTRIBUTING.md]
+- [ ] I have read the [CONTRIBUTING.md](https://github.com/GSA/sam-design-system/blob/master/CONTRIBUTING.md) document.
+- [ ] My code passes the automated a11y lint gate.
+- [ ] This code has been reviewed by another team member and passes the reviewer checklist found in [CONTRIBUTING.md](https://github.com/GSA/sam-design-system/blob/master/CONTRIBUTING.md).
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
 - [ ] I have added tests to cover my changes.
-- [ ] All new and existing tests passed.
-- [ ] My code is 508 compliant as tested by AMP and JAWS
+- [ ] All new and existing tests pass; the coverage floor has not regressed.
+- [ ] Lint baseline not raised.
+- [ ] My code conforms to WCAG 2.1 AA.
 - [ ] Any dependent changes have been merged and published in downstream modules
