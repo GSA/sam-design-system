@@ -122,13 +122,13 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/jest": "^23.0.0",
     "@types/node": "^20.12.4",
-    "angular-eslint": "^19.8.1",
+    "angular-eslint": "19.8.1",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.2.0",
     "dotenv": "6.2.0",
     "ejs": "3.1.7",
     "esbuild": "^0.19.5",
-    "eslint": "^9.39.5",
+    "eslint": "9.39.5",
     "github-release-notes": "^0.17.0",
     "jasmine-core": "~5.1.1",
     "jasmine-spec-reporter": "~5.0.0",
@@ -147,6 +147,6 @@
     "storybook": "^8.0.0",
     "string-replace-loader": "^3.1.0",
     "ts-node": "~7.0.0",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "8.70.0"
   }
 }
