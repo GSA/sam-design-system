@@ -251,25 +251,6 @@
         }
       }
     },
-    "sam-design-system-site-e2e": {
-      "root": "apps/sam-design-system-site-e2e",
-      "projectType": "application",
-      "prefix": "sds",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "apps/sam-design-system-site-e2e/protractor.conf.js",
-            "devServerTarget": "sam-design-system-site:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "sam-design-system-site:serve:production"
-            }
-          }
-        }
-      }
-    },
     "documentation": {
       "root": "libs/documentation",
       "sourceRoot": "libs/documentation/src",
