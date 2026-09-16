@@ -39,6 +39,7 @@
     "lint:baseline:bump:documentation": "npm run lint:report:documentation && node scripts/check-lint-baseline.mjs --bump documentation eslint-report-documentation.json",
     "test:scripts": "node --test scripts/*.test.mjs",
     "test:e2e": "playwright test",
+    "validate:security-workflow": "node scripts/validate-security-workflow.mjs",
     "update": "ng update",
     "update:check": "ng update",
     "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --configuration production --base-href=$BASEURL/ && npm run demo:stackblitzes-federalist && npm run build:docs",

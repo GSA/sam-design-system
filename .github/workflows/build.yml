@@ -5,6 +5,10 @@ on:
       pr-number:
         required: false
         type: string
+
+permissions:
+  contents: read
+
 jobs:
   Build-Storybook-Assets:
     runs-on: ubuntu-latest

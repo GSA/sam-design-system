@@ -139,7 +139,10 @@ export class SdsAdvancedFiltersService {
       };
       if (field.formControl) {
         field.formControl.reset();
-      } else {
+      } else if (typeof field.key === 'string' && !['__proto__', 'constructor', 'prototype'].includes(field.key)) {
+        // Guard against prototype pollution (CodeQL js/prototype-polluting-assignment):
+        // `field.key` can originate from consumer-supplied FormlyFieldConfig, so reject the
+        // well-known dangerous keys before using it to index into `model`.
         model[field.key] = null;
       }
     }

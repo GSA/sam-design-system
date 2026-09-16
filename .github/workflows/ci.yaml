@@ -31,6 +31,8 @@ jobs:
           node scripts/check-baseline-not-increased.mjs /tmp/base-eslint-baseline.json eslint-baseline.json
       - name: Run lint baseline scripts' own tests
         run: npm run test:scripts
+      - name: Validate security CI policy
+        run: npm run validate:security-workflow
       - name: Check formatting
         run: npm run format:check
       - name: Run lint

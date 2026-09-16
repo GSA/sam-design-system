@@ -5,9 +5,13 @@ on:
       - master
 jobs:
   Build-Storybook:
+    permissions:
+      contents: read
     uses: ./.github/workflows/build.yml
   Deploy-Storybook:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: ${{ success() }}
     needs: Build-Storybook
     steps:

@@ -1,0 +1,2 @@
+# ZAP exceptions: rule-id<TAB>IGNORE<TAB>scope<TAB>issue-url<TAB>owner<TAB>expiry(YYYY-MM-DD)<TAB>rationale
+10055	IGNORE	*	https://github.com/GSA/sam-design-system/issues/1633	sam-design-system maintainers	2027-03-01	Storybook 8 manager UI injects inline <style> blocks that require style-src 'unsafe-inline' to render; toolchain output, not authored component styling. Mirrors GSA/sam-ui-elements#679/#614. Revisit alongside the Storybook 8->10 upgrade (#1608).
