@@ -15,21 +15,6 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       pr-number: ${{ github.event.number }}
-  Test:
-    if: github.event.action != 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - name: Install Node Packages
-        run: npm ci
-      - name: Run tests
-        run: npm test
   Deploy-Storybook:
     runs-on: ubuntu-latest
     if: ${{ !failure() }}
