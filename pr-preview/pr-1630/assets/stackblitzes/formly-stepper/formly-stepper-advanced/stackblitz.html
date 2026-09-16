@@ -85,21 +85,16 @@
 /** IE10 and IE11 requires the following to support `@angular/animation`. */
 // import &#39;web-animations-js&#39;;  // Run `npm install --save web-animations-js`.
 
-
 /** Evergreen browsers require these. **/
 import &#39;core-js/es/reflect&#39;;
-
 
 /** ALL Firefox browsers require the following to support `@angular/animation`. **/
 // import &#39;web-animations-js&#39;;  // Run `npm install --save web-animations-js`.
 
-
-
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-import &#39;zone.js&#39;;  // Included with Angular CLI.
-
+import &#39;zone.js&#39;; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
@@ -125,13 +120,8 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
     &#34;moduleResolution&#34;: &#34;node&#34;,
     &#34;importHelpers&#34;: true,
     &#34;target&#34;: &#34;es2015&#34;,
-    &#34;typeRoots&#34;: [
-      &#34;node_modules/@types&#34;
-    ],
-    &#34;lib&#34;: [
-      &#34;es2018&#34;,
-      &#34;dom&#34;
-    ]
+    &#34;typeRoots&#34;: [&#34;node_modules/@types&#34;],
+    &#34;lib&#34;: [&#34;es2018&#34;, &#34;dom&#34;]
   },
   &#34;angularCompilerOptions&#34;: {
     &#34;enableIvy&#34;: true,
@@ -161,18 +151,13 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
             &#34;main&#34;: &#34;src/main.ts&#34;,
             &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
             &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
-            &#34;assets&#34;: [
-            ],
-            &#34;styles&#34;: [
-            ],
+            &#34;assets&#34;: [],
+            &#34;styles&#34;: [],
             &#34;scripts&#34;: []
           },
           &#34;configurations&#34;: {
             &#34;production&#34;: {
-              &#34;fileReplacements&#34;: [
-                {
-                }
-              ],
+              &#34;fileReplacements&#34;: [{}],
               &#34;optimization&#34;: true,
               &#34;outputHashing&#34;: &#34;all&#34;,
               &#34;sourceMap&#34;: false,
@@ -207,22 +192,16 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
           &#34;options&#34;: {
             &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
             &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
-            &#34;styles&#34;: [
-            ],
+            &#34;styles&#34;: [],
             &#34;scripts&#34;: [],
-            &#34;assets&#34;: [
-            ]
+            &#34;assets&#34;: []
           }
         },
         &#34;lint&#34;: {
           &#34;builder&#34;: &#34;@angular-devkit/build-angular:tslint&#34;,
           &#34;options&#34;: {
-            &#34;tsConfig&#34;: [
-              &#34;tsconfig.json&#34;
-            ],
-            &#34;exclude&#34;: [
-              &#34;**/node_modules/**&#34;
-            ]
+            &#34;tsConfig&#34;: [&#34;tsconfig.json&#34;],
+            &#34;exclude&#34;: [&#34;**/node_modules/**&#34;]
           }
         }
       }
@@ -327,7 +306,7 @@ import { FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
 import { StepperAdvancedService } from &#39;./stepper-advanced.service&#39;;
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `subawardee-demo`,
   templateUrl: &#39;./subawardee.component.html&#39;,
 })
@@ -357,7 +336,7 @@ export class SubawardeeDemoComponent {
 }
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `add-subawardee-dialog-demo`,
   template: `
     &lt;div sds-dialog-title&gt;
@@ -380,7 +359,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
   constructor(
     public dialogRef: SdsDialogRef&lt;AddSubawardeeDialogDemo&gt;,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData,
-    private stepperAdvancedService: StepperAdvancedService
+    private stepperAdvancedService: StepperAdvancedService,
   ) {}
 
   ngOnInit() {
@@ -415,9 +394,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
       /&gt;
     &lt;/div&gt;
     &lt;div class=&#34;grid-col padding-left-3 padding-top-3&#34;&gt;
-      &lt;button class=&#34;usa-button&#34; type=&#34;button&#34; (click)=&#34;onAddSubawardee(input.value)&#34;&gt;
-        Add Subawardee
-      &lt;/button&gt;
+      &lt;button class=&#34;usa-button&#34; type=&#34;button&#34; (click)=&#34;onAddSubawardee(input.value)&#34;&gt;Add Subawardee&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -427,9 +404,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
     &lt;h2 class=&#34;sds-card__title&#34;&gt;No Subawardees&lt;/h2&gt;
   &lt;/div&gt;
   &lt;div class=&#34;sds-card__body&#34;&gt;
-    &lt;p&gt;
-      To add a subawardee, begin by entering a subawardee Unique Entity ID above.
-    &lt;/p&gt;
+    &lt;p&gt;To add a subawardee, begin by entering a subawardee Unique Entity ID above.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1020,7 +995,7 @@ import { StepperAdvancedService } from &#39;./stepper-advanced.service&#39;;
 import { FormlyForm } from &#39;@ngx-formly/core&#39;;
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `stepper-advanced-demo`,
   templateUrl: `./formly-stepper-advanced.component.html`,
   providers: [StepperAdvancedService, SdsStepper],
@@ -1100,9 +1075,7 @@ export class StepperAdvancedDemoComponent {
 }
 ">
     
-    <input type="hidden" name="project[files][src/app/formly-stepper-advanced.component.html]" value="&lt;button class=&#34;usa-button margin-bottom-3&#34; (click)=&#34;toggleLinearMode()&#34;&gt;
-  Toggle Linear Mode
-&lt;/button&gt;
+    <input type="hidden" name="project[files][src/app/formly-stepper-advanced.component.html]" value="&lt;button class=&#34;usa-button margin-bottom-3&#34; (click)=&#34;toggleLinearMode()&#34;&gt;Toggle Linear Mode&lt;/button&gt;
 
 &lt;custom-stepper-demo
   #stepper
@@ -1184,14 +1157,10 @@ export class StepperAdvancedDemoComponent {
 
 &lt;!-- Custom Templates --&gt;
 &lt;ng-template #gatherInformation&gt;
-  &lt;h1 class=&#34;margin-top-0&#34;&gt;
-    Gather Your Information
-  &lt;/h1&gt;
+  &lt;h1 class=&#34;margin-top-0&#34;&gt;Gather Your Information&lt;/h1&gt;
   &lt;div class=&#34;sds-card&#34;&gt;
     &lt;div class=&#34;sds-card__header&#34;&gt;
-      &lt;h2&gt;
-        U.S. REGISTRANTS:
-      &lt;/h2&gt;
+      &lt;h2&gt;U.S. REGISTRANTS:&lt;/h2&gt;
     &lt;/div&gt;
     &lt;div class=&#34;sds-card__body&#34;&gt;
       &lt;ul class=&#34;usa-list usa-list--unstyled&#34;&gt;
@@ -1268,7 +1237,7 @@ import { SdsStepper } from &#39;@gsa-sam/sam-formly&#39;;
 import { FormlyForm } from &#39;@ngx-formly/core&#39;;
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `custom-stepper-demo`,
   templateUrl: `./custom-stepper.component.html`,
   providers: [{ provide: SdsStepper, useExisting: CustomStepperDemo }],
@@ -1351,7 +1320,7 @@ export class CustomStepperDemo extends SdsStepper {
                 *ngFor=&#34;let step of stepTemplates; let i = index&#34;
                 class=&#34;usa-sidenav__item&#34;
                 [ngClass]=&#34;{
-                  &#39;usa-current&#39;: selectedStep?.id === step.id
+                  &#39;usa-current&#39;: selectedStep?.id === step.id,
                 }&#34;
               &gt;
                 &lt;ng-container [ngTemplateOutlet]=&#34;sidenavItem&#34; [ngTemplateOutletContext]=&#34;{ $implicit: step }&#34;&gt;
@@ -1423,7 +1392,7 @@ export class CustomStepperDemo extends SdsStepper {
       class=&#34;display-flex justify-content-space-between&#34;
       [ngClass]=&#34;{
         &#39;usa-sidenav__item--disabled&#39;:
-          step.disabled || (step.isReview &amp;&amp; !canReviewWithErrors &amp;&amp; _isReviewAndSubmitDisabled)
+          step.disabled || (step.isReview &amp;&amp; !canReviewWithErrors &amp;&amp; _isReviewAndSubmitDisabled),
       }&#34;
     &gt;
       &lt;span&gt;

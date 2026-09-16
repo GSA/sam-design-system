@@ -85,21 +85,16 @@
 /** IE10 and IE11 requires the following to support `@angular/animation`. */
 // import &#39;web-animations-js&#39;;  // Run `npm install --save web-animations-js`.
 
-
 /** Evergreen browsers require these. **/
 import &#39;core-js/es/reflect&#39;;
-
 
 /** ALL Firefox browsers require the following to support `@angular/animation`. **/
 // import &#39;web-animations-js&#39;;  // Run `npm install --save web-animations-js`.
 
-
-
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-import &#39;zone.js&#39;;  // Included with Angular CLI.
-
+import &#39;zone.js&#39;; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
@@ -125,13 +120,8 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
     &#34;moduleResolution&#34;: &#34;node&#34;,
     &#34;importHelpers&#34;: true,
     &#34;target&#34;: &#34;es2015&#34;,
-    &#34;typeRoots&#34;: [
-      &#34;node_modules/@types&#34;
-    ],
-    &#34;lib&#34;: [
-      &#34;es2018&#34;,
-      &#34;dom&#34;
-    ]
+    &#34;typeRoots&#34;: [&#34;node_modules/@types&#34;],
+    &#34;lib&#34;: [&#34;es2018&#34;, &#34;dom&#34;]
   },
   &#34;angularCompilerOptions&#34;: {
     &#34;enableIvy&#34;: true,
@@ -161,18 +151,13 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
             &#34;main&#34;: &#34;src/main.ts&#34;,
             &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
             &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
-            &#34;assets&#34;: [
-            ],
-            &#34;styles&#34;: [
-            ],
+            &#34;assets&#34;: [],
+            &#34;styles&#34;: [],
             &#34;scripts&#34;: []
           },
           &#34;configurations&#34;: {
             &#34;production&#34;: {
-              &#34;fileReplacements&#34;: [
-                {
-                }
-              ],
+              &#34;fileReplacements&#34;: [{}],
               &#34;optimization&#34;: true,
               &#34;outputHashing&#34;: &#34;all&#34;,
               &#34;sourceMap&#34;: false,
@@ -207,22 +192,16 @@ import &#39;zone.js&#39;;  // Included with Angular CLI.
           &#34;options&#34;: {
             &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
             &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
-            &#34;styles&#34;: [
-            ],
+            &#34;styles&#34;: [],
             &#34;scripts&#34;: [],
-            &#34;assets&#34;: [
-            ]
+            &#34;assets&#34;: []
           }
         },
         &#34;lint&#34;: {
           &#34;builder&#34;: &#34;@angular-devkit/build-angular:tslint&#34;,
           &#34;options&#34;: {
-            &#34;tsConfig&#34;: [
-              &#34;tsconfig.json&#34;
-            ],
-            &#34;exclude&#34;: [
-              &#34;**/node_modules/**&#34;
-            ]
+            &#34;tsConfig&#34;: [&#34;tsconfig.json&#34;],
+            &#34;exclude&#34;: [&#34;**/node_modules/**&#34;]
           }
         }
       }
@@ -341,7 +320,7 @@ import { FormGroup } from &#39;@angular/forms&#39;;
 import { FormlyFormOptions, FormlyFieldConfig } from &#39;@ngx-formly/core&#39;;
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: &#39;sds-formly-input-description&#39;,
   templateUrl: &#39;./formly-input-description.component.html&#39;,
 })
