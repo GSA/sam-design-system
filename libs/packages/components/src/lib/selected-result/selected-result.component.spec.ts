@@ -15,20 +15,18 @@ describe('SDSSelectedResultComponent', () => {
   let component: SDSSelectedResultComponent;
   let fixture: ComponentFixture<SDSSelectedResultComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [SDSSelectedResultComponent],
-        imports: [
-          CommonModule,
-          FormsModule,
-          RouterModule,
-          IconModule,
-          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SDSSelectedResultComponent],
+      imports: [
+        CommonModule,
+        FormsModule,
+        RouterModule,
+        IconModule,
+        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SDSSelectedResultComponent);
@@ -57,7 +55,7 @@ describe('SDSSelectedResultComponent', () => {
       { id: '1', parentId: null, name: 'Level 1', subtext: 'id 1', type: 'Level 1' },
       'id',
       SelectionMode.SINGLE,
-      component.model
+      component.model,
     );
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
@@ -69,13 +67,13 @@ describe('SDSSelectedResultComponent', () => {
       { id: '1', parentId: null, name: 'Level 1', subtext: 'id 1', type: 'Level 1' },
       'id',
       SelectionMode.SINGLE,
-      component.model
+      component.model,
     );
     SDSSelectedItemModelHelper.addItem(
       { id: '2', parentId: null, name: 'Level 2', subtext: 'id 2', type: 'Level 2' },
       'id',
       SelectionMode.SINGLE,
-      component.model
+      component.model,
     );
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
@@ -88,13 +86,13 @@ describe('SDSSelectedResultComponent', () => {
       { id: '1', parentId: null, name: 'Level 1', subtext: 'id 1', type: 'Level 1' },
       'id',
       SelectionMode.MULTIPLE,
-      component.model
+      component.model,
     );
     SDSSelectedItemModelHelper.addItem(
       { id: '2', parentId: null, name: 'Level 2', subtext: 'id 2', type: 'Level 2' },
       'id',
       SelectionMode.MULTIPLE,
-      component.model
+      component.model,
     );
     fixture.detectChanges();
     const list = fixture.debugElement.query(By.css('.sds-autocomplete-selected'));
@@ -108,7 +106,7 @@ describe('SDSSelectedResultComponent', () => {
       { id: '1', parentId: null, name: 'Level 1', subtext: 'id 1', type: 'Level 1' },
       'id',
       SelectionMode.MULTIPLE,
-      component.model
+      component.model,
     );
     SDSSelectedItemModelHelper.addItem(item2, 'id', SelectionMode.MULTIPLE, component.model);
     fixture.detectChanges();

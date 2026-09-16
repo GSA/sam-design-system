@@ -7,7 +7,7 @@ const parseArgs = require('minimist');
 
 main();
 
-function main () {
+function main() {
   const args = parseArgs(process.argv.slice(2));
   const rootDir = resolve(__dirname, '../../');
   const angularJsonPath = resolve(__dirname, '../../angular.json');
@@ -18,7 +18,7 @@ function main () {
 
   const libNames = findPublishableLibs(angularJson);
 
-  libNames.forEach(lib => {
+  libNames.forEach((lib) => {
     const distDir = resolve(rootDir, `dist/libs/${lib}/`);
     execSync(`ng build ${lib} --configuration production`, { stdio: 'inherit' });
     execSync(`npm pack`, { cwd: distDir, stdio: 'inherit' });
@@ -33,24 +33,22 @@ function main () {
       tarballError.code = 1;
       handleError(tarballError);
     }
-
   });
 }
 
-function findPublishableLibs (angularJson) {
+function findPublishableLibs(angularJson) {
   const projectNames = Object.keys(angularJson.projects);
 
-  const libNames = projectNames.filter(name => {
+  const libNames = projectNames.filter((name) => {
     const metadata = angularJson.projects[name];
     // Returns true if lib is a library and uses the ng-packagr schematic (indicates intent to publish)
-    return metadata.projectType === 'library'
-      && metadata.architect.build;
+    return metadata.projectType === 'library' && metadata.architect.build;
   });
 
   return libNames;
 }
 
-function findTarball (directory) {
+function findTarball(directory) {
   const { error, files } = loadDir(directory);
   handleError(error);
 
@@ -64,19 +62,19 @@ function findTarball (directory) {
   return tarball;
 }
 
-function loadDir (path) {
+function loadDir(path) {
   let error, files;
 
   try {
     files = readDirSync(path, 'utf-8');
   } catch (e) {
-    error = e
+    error = e;
   }
 
-  return { error, files }
+  return { error, files };
 }
 
-function loadJson (path) {
+function loadJson(path) {
   let error, contents;
 
   try {
@@ -90,7 +88,7 @@ function loadJson (path) {
   return { error, contents };
 }
 
-function handleError (error) {
+function handleError(error) {
   if (error) {
     console.error(error.message);
     process.exit(error.code);

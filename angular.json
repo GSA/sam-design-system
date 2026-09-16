@@ -125,10 +125,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "apps/sam-design-system-site/src/**/*.ts",
-              "apps/sam-design-system-site/src/**/*.html"
-            ]
+            "lintFilePatterns": ["apps/sam-design-system-site/src/**/*.ts", "apps/sam-design-system-site/src/**/*.html"]
           }
         },
         "build": {
@@ -138,9 +135,7 @@
               "base": "dist/apps/sam-design-system-site"
             },
             "index": "apps/sam-design-system-site/src/index.html",
-            "polyfills": [
-              "apps/sam-design-system-site/src/polyfills.ts"
-            ],
+            "polyfills": ["apps/sam-design-system-site/src/polyfills.ts"],
             "tsConfig": "apps/sam-design-system-site/tsconfig.app.json",
             "allowedCommonJsDependencies": ["lodash"],
             "assets": [

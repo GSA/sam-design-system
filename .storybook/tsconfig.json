@@ -1,9 +1,7 @@
 {
   "extends": "../apps/sam-design-system-site/tsconfig.app.json",
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
@@ -14,12 +12,6 @@
     "../libs/**/*.spec.ts",
     "../libs/documentation/src/sandbox/templates/*"
   ],
-  "include": [
-    "../apps/**/*",
-    "../libs/**/*",
-  ],
-  "files": [
-    "./typings.d.ts",
-    "../apps/sam-design-system-site/src/polyfills.ts"
-  ]
+  "include": ["../apps/**/*", "../libs/**/*"],
+  "files": ["./typings.d.ts", "../apps/sam-design-system-site/src/polyfills.ts"]
 }

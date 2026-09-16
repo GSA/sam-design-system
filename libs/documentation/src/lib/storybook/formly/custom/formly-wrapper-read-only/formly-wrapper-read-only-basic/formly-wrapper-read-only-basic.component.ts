@@ -6,7 +6,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-wrapper-read-only-basic',
   templateUrl: './formly-wrapper-read-only-basic.component.html',
   providers: [AutocompleteSampleDataService],
@@ -347,7 +347,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
           this.readonlyModes.autocompleteSingleSelectType = !this.readonlyModes.autocompleteSingleSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteSingleSelectType,
-            this.autocompleteSingleSelectFields
+            this.autocompleteSingleSelectFields,
           );
         },
       },
@@ -381,7 +381,7 @@ export class FormlyWrapperReadOnlyBasicComponent {
           this.readonlyModes.autocompleteMultiSelectType = !this.readonlyModes.autocompleteMultiSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteMultiSelectType,
-            this.autocompleteMultiSelectFields
+            this.autocompleteMultiSelectFields,
           );
         },
       },

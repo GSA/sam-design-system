@@ -1,9 +1,9 @@
 import { Component, ChangeDetectorRef, Input } from '@angular/core';
 
 @Component({
-    selector: 'item-sample',
-    templateUrl: './item.component.html',
-    standalone: false
+  selector: 'item-sample',
+  templateUrl: './item.component.html',
+  standalone: false,
 })
 export class ResultListItemSampleComponent {
   constructor(private change: ChangeDetectorRef) {}

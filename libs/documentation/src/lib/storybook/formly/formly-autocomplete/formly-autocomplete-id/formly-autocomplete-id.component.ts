@@ -6,7 +6,7 @@ import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-formly-autocomplete-id',
   templateUrl: './formly-autocomplete-id.component.html',
   providers: [AutocompleteSampleDataService],

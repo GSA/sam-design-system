@@ -63,7 +63,7 @@ describe('Formly Field Select Component', () => {
         },
       ];
       const fixture = createTestComponent(
-        '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
+        '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>',
       );
       fixture.detectChanges();
       expect(fixture).toBeTruthy();
@@ -72,8 +72,9 @@ describe('Formly Field Select Component', () => {
 });
 
 @Component({
-    selector: 'formly-form-test', template: '',
-    standalone: false
+  selector: 'formly-form-test',
+  template: '',
+  standalone: false,
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

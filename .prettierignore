@@ -1,4 +1,10 @@
-# Add files here to ignore them from prettier formatting
+# Generated documentation and StackBlitz assets
+libs/documentation/src/lib/apidoc/**
+apps/sam-design-system-site/src/assets/stackblitzes/**
+misc/stackblitzes-templates/styles.css
 
-libs/documentation/src/lib/apidoc/*
-apps/sam-design-system-site/src/assets/stackblitzes/*
+# Generated build and test output
+.angular/
+coverage/
+dist/
+storybook-static/

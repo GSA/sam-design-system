@@ -9,17 +9,11 @@
     "target": "ES2022",
     "module": "es2022",
     "moduleResolution": "node",
-   "types": ["node"],
-    "lib": [
-      "ES2024",
-      "dom"
-    ],
+    "types": ["node"],
+    "lib": ["ES2024", "dom"],
     "baseUrl": ".",
     "rootDir": ".",
     "useDefineForClassFields": false
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ],
+  "exclude": ["node_modules", "tmp"]
 }

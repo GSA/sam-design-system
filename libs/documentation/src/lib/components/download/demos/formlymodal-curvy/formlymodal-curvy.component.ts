@@ -10,10 +10,10 @@ import {
 import { AutocompleteSampleDataService } from '../formlymodal/autocomplete-sample.service';
 
 @Component({
-    selector: 'gsa-sam-formlymodal-curvy',
-    templateUrl: './formlymodal-curvy.component.html',
-    providers: [AutocompleteSampleDataService],
-    standalone: false
+  selector: 'gsa-sam-formlymodal-curvy',
+  templateUrl: './formlymodal-curvy.component.html',
+  providers: [AutocompleteSampleDataService],
+  standalone: false,
 })
 export class FormlyCurvyDialog {
   updatedModel: any = {};
@@ -43,7 +43,10 @@ export class FormlyCurvyDialog {
       ],
     },
   ];
-  constructor(public service: AutocompleteSampleDataService, public dialog: SdsDialogService) {
+  constructor(
+    public service: AutocompleteSampleDataService,
+    public dialog: SdsDialogService,
+  ) {
     this.setup();
   }
   changes(value) {

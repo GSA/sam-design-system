@@ -13,8 +13,8 @@ import DOMPurify from 'dompurify';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'sds-editor',
-    template: `
+  selector: 'sds-editor',
+  template: `
     <div
       #searchInput
       [attr.id]="id"
@@ -24,23 +24,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
       (blur)="validateOnBlur && onBlur($event.target.innerHTML)"
     ></div>
   `,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SdsEditorComponent),
-            multi: true,
-        },
-    ],
-    styles: [
-        `
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SdsEditorComponent),
+      multi: true,
+    },
+  ],
+  styles: [
+    `
       ::ng-deep mark {
         background-color: red;
         color: white;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SdsEditorComponent implements ControlValueAccessor {
   @ViewChild('searchInput', { read: ElementRef, static: true }) searchInput: ElementRef;
@@ -54,7 +54,10 @@ export class SdsEditorComponent implements ControlValueAccessor {
   private _onChange = (_: any) => {};
   private _onTouched = () => {};
 
-  constructor(private cd: ChangeDetectorRef, @Inject(DOCUMENT) private _document: any) {}
+  constructor(
+    private cd: ChangeDetectorRef,
+    @Inject(DOCUMENT) private _document: any,
+  ) {}
 
   // Helper method to programatically update a value of the model on blur
   onBlur(value) {
@@ -78,8 +81,7 @@ export class SdsEditorComponent implements ControlValueAccessor {
 
   // Validate regex and highlight first charecter of the failure
   validateRegex(value: string) {
-    const rawValue = value
-      .replaceAll(/(?:<\/?mark[^>]*>)|(?:<\/?span[^>]*>)|(?:<\/?font[^>]*>)/g, '');
+    const rawValue = value.replaceAll(/(?:<\/?mark[^>]*>)|(?:<\/?span[^>]*>)|(?:<\/?font[^>]*>)/g, '');
     const regex = new RegExp(this.regex, 'g');
     let res = rawValue;
     let result = regex.exec(rawValue);

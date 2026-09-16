@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   templateUrl: './button-group-modes.component.html',
   selector: `sds-button-group-modes`,
 })

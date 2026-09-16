@@ -6,10 +6,10 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { AutocompleteSampleDataService } from './autocomplete-sample.service';
 
 @Component({
-    selector: 'sds-readonly-basic-demo',
-    templateUrl: './readonly-basic.component.html',
-    providers: [AutocompleteSampleDataService],
-    standalone: false
+  selector: 'sds-readonly-basic-demo',
+  templateUrl: './readonly-basic.component.html',
+  providers: [AutocompleteSampleDataService],
+  standalone: false,
 })
 export class ReadonlyBasicComponent implements OnInit {
   autocompleteSingleSelectSettings = new SDSAutocompletelConfiguration();
@@ -347,7 +347,7 @@ export class ReadonlyBasicComponent implements OnInit {
           this.readonlyModes.autocompleteSingleSelectType = !this.readonlyModes.autocompleteSingleSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteSingleSelectType,
-            this.autocompleteSingleSelectFields
+            this.autocompleteSingleSelectFields,
           );
         },
       },
@@ -381,7 +381,7 @@ export class ReadonlyBasicComponent implements OnInit {
           this.readonlyModes.autocompleteMultiSelectType = !this.readonlyModes.autocompleteMultiSelectType;
           FormlyUtilsService.setReadonlyMode(
             this.readonlyModes.autocompleteMultiSelectType,
-            this.autocompleteMultiSelectFields
+            this.autocompleteMultiSelectFields,
           );
         },
       },

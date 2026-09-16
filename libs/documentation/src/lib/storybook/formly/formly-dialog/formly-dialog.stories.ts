@@ -79,14 +79,14 @@ Download.parameters = {
       createCodePreviewTabData(
         'storybook/formly/formly-dialog/formly-dialog-download/autocomplete-sample.service.ts',
         'ts',
-        false
+        false,
       ),
       createCodePreviewTabData(
         'storybook/formly/formly-dialog/formly-dialog-download/autocomplete-sample.data.ts',
         'ts',
-        false
+        false,
       ),
-    ]
+    ],
   ),
   stackblitzLink: generateStackblitzLink('formly-dialog', 'download'),
 };
@@ -104,7 +104,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-dialog/formly-dialog-basic',
     'FormlyDialogBasicModule',
-    'sds-formly-dialog-basic'
+    'sds-formly-dialog-basic',
   ),
   stackblitzLink: generateStackblitzLink('formly-dialog', 'basic'),
 };

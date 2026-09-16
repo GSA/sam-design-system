@@ -2,9 +2,9 @@ import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { UsaAccordionComponent, UsaAccordionItem } from '@gsa-sam/ngx-uswds';
 
 @Component({
-    templateUrl: 'accordion-basic.component.html',
-    selector: `sds-accordion-basic-demo`,
-    standalone: false
+  templateUrl: 'accordion-basic.component.html',
+  selector: `sds-accordion-basic-demo`,
+  standalone: false,
 })
 export class AccordionBasic {
   @ViewChild(UsaAccordionComponent) sdsAccordionDemo: UsaAccordionComponent;

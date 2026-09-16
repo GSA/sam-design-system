@@ -11,7 +11,7 @@ const SlideInOutAnimation = [
         'max-height': 'auto',
         opacity: '1',
         visibility: 'visible',
-      })
+      }),
     ),
     state(
       'out',
@@ -19,7 +19,7 @@ const SlideInOutAnimation = [
         'max-height': '0px',
         opacity: '0',
         visibility: 'hidden',
-      })
+      }),
     ),
     transition('in => out', [
       group([
@@ -27,19 +27,19 @@ const SlideInOutAnimation = [
           '400ms ease-in-out',
           style({
             opacity: '0',
-          })
+          }),
         ),
         animate(
           '600ms ease-in-out',
           style({
             'max-height': '0px',
-          })
+          }),
         ),
         animate(
           '700ms ease-in-out',
           style({
             visibility: 'hidden',
-          })
+          }),
         ),
       ]),
     ]),
@@ -49,19 +49,19 @@ const SlideInOutAnimation = [
           '1ms ease-in-out',
           style({
             visibility: 'visible',
-          })
+          }),
         ),
         animate(
           '600ms ease-in-out',
           style({
             'max-height': '500px',
-          })
+          }),
         ),
         animate(
           '800ms ease-in-out',
           style({
             opacity: '1',
-          })
+          }),
         ),
       ]),
     ]),
@@ -69,18 +69,18 @@ const SlideInOutAnimation = [
 ];
 
 @Component({
-    selector: 'sam-formly-wrapper-animation',
-    template: `
+  selector: 'sam-formly-wrapper-animation',
+  template: `
     <div [@slideInOut]="field.hide ? 'out' : 'in'">
       <ng-container #fieldComponent></ng-container>
     </div>
   `,
-    // styles: [`
-    //   ::ng-deep formly-field {
-    //     display: block !important;
-    //   }
-    // `],
-    animations: [SlideInOutAnimation],
-    standalone: false
+  // styles: [`
+  //   ::ng-deep formly-field {
+  //     display: block !important;
+  //   }
+  // `],
+  animations: [SlideInOutAnimation],
+  standalone: false,
 })
 export class AnimationWrapperComponent extends FieldWrapper {}

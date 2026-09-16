@@ -9,15 +9,15 @@ let dialogElementUid = 0;
  * Button that will close the current dialog.
  */
 @Directive({
-    selector: `button[sds-dialog-close], button[sdsDialogClose]`,
-    exportAs: 'sdsDialogClose',
-    // tslint:disable-next-line: use-host-property-decorator
-    host: {
-        '(click)': 'dialogRef.close(dialogResult)',
-        '[attr.aria-label]': 'ariaLabel || null',
-        type: 'button', // Prevents accidental form submits.
-    },
-    standalone: false
+  selector: `button[sds-dialog-close], button[sdsDialogClose]`,
+  exportAs: 'sdsDialogClose',
+  // tslint:disable-next-line: use-host-property-decorator
+  host: {
+    '(click)': 'dialogRef.close(dialogResult)',
+    '[attr.aria-label]': 'ariaLabel || null',
+    type: 'button', // Prevents accidental form submits.
+  },
+  standalone: false,
 })
 export class SdsDialogCloseDirective implements OnInit, OnChanges {
   /** Screenreader label for the button. */
@@ -31,7 +31,7 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
   constructor(
     @Optional() public dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService
+    private _dialog: SdsDialogService,
   ) {}
 
   ngOnInit() {
@@ -58,14 +58,14 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
  * Title of a dialog element. Stays fixed to the top of the dialog when scrolling.
  */
 @Directive({
-    selector: '[sds-dialog-title], [sdsDialogTitle]',
-    exportAs: 'sdsDialogTitle',
-    // tslint:disable-next-line: use-host-property-decorator
-    host: {
-        '[class.sds-dialog-title]': 'true',
-        '[id]': 'id',
-    },
-    standalone: false
+  selector: '[sds-dialog-title], [sdsDialogTitle]',
+  exportAs: 'sdsDialogTitle',
+  // tslint:disable-next-line: use-host-property-decorator
+  host: {
+    '[class.sds-dialog-title]': 'true',
+    '[id]': 'id',
+  },
+  standalone: false,
 })
 export class SdsDialogTitleDirective implements OnInit {
   @Input() id = `sds-dialog-title-${dialogElementUid++}`;
@@ -73,7 +73,7 @@ export class SdsDialogTitleDirective implements OnInit {
   constructor(
     @Optional() private _dialogRef: SdsDialogRef<any>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService
+    private _dialog: SdsDialogService,
   ) {}
 
   ngOnInit() {
@@ -97,10 +97,10 @@ export class SdsDialogTitleDirective implements OnInit {
  * SubTitle of a dialog element
  */
 @Directive({
-    selector: `[sds-dialog-subtitle], sds-dialog-subtitle, [sdsDialogSubtitle]`,
-    // tslint:disable-next-line: use-host-property-decorator
-    host: { '[class.sds-dialog-subtitle]': 'true' },
-    standalone: false
+  selector: `[sds-dialog-subtitle], sds-dialog-subtitle, [sdsDialogSubtitle]`,
+  // tslint:disable-next-line: use-host-property-decorator
+  host: { '[class.sds-dialog-subtitle]': 'true' },
+  standalone: false,
 })
 export class SdsDialogSubtitleDirective {}
 
@@ -108,10 +108,10 @@ export class SdsDialogSubtitleDirective {}
  * Scrollable content container of a dialog.
  */
 @Directive({
-    selector: `[sds-dialog-content], sds-dialog-content, [sdsDialogContent]`,
-    // tslint:disable-next-line: use-host-property-decorator
-    host: { '[class.sds-dialog-content]': 'true' },
-    standalone: false
+  selector: `[sds-dialog-content], sds-dialog-content, [sdsDialogContent]`,
+  // tslint:disable-next-line: use-host-property-decorator
+  host: { '[class.sds-dialog-content]': 'true' },
+  standalone: false,
 })
 export class SdsDialogContentDirective {}
 
@@ -120,10 +120,10 @@ export class SdsDialogContentDirective {}
  * Stays fixed to the bottom when scrolling.
  */
 @Directive({
-    selector: `[sds-dialog-actions], sds-dialog-actions, [sdsDialogActions]`,
-    // tslint:disable-next-line: use-host-property-decorator
-    host: { '[class.sds-dialog-actions]': 'true' },
-    standalone: false
+  selector: `[sds-dialog-actions], sds-dialog-actions, [sdsDialogActions]`,
+  // tslint:disable-next-line: use-host-property-decorator
+  host: { '[class.sds-dialog-actions]': 'true' },
+  standalone: false,
 })
 export class SdsDialogActionsDirective {}
 

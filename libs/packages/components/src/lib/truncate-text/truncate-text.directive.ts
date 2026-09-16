@@ -18,8 +18,8 @@ import { SdsTruncatedTextContainerComponent } from './truncate-text-container.co
 import { SDS_TRUNCATED_TEXT_DATA } from './truncates-text-base';
 
 @Directive({
-    selector: '[sdsTruncateTextByLine]',
-    standalone: false
+  selector: '[sdsTruncateTextByLine]',
+  standalone: false,
 })
 export class SdsTruncateTextByLineDirective implements OnInit, OnDestroy, AfterViewInit {
   /** Maximum lines of text limit */
@@ -55,7 +55,7 @@ export class SdsTruncateTextByLineDirective implements OnInit, OnDestroy, AfterV
     private _injector: Injector,
     private _element: ElementRef,
     private _viewportRuler: ViewportRuler,
-    private _viewContainerRef: ViewContainerRef
+    private _viewContainerRef: ViewContainerRef,
   ) {}
 
   ngOnInit() {
@@ -123,7 +123,7 @@ export class SdsTruncateTextByLineDirective implements OnInit, OnDestroy, AfterV
   private _attachContainer(overlay: OverlayRef) {
     const injector = new PortalInjector(
       this._injector,
-      new WeakMap([[SDS_TRUNCATED_TEXT_DATA, { text: this.initialText }]])
+      new WeakMap([[SDS_TRUNCATED_TEXT_DATA, { text: this.initialText }]]),
     );
     const containerPortal = new ComponentPortal(SdsTruncatedTextContainerComponent, this._viewContainerRef, injector);
     const containerRef = overlay.attach(containerPortal);

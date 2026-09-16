@@ -29,10 +29,10 @@ import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig'
 import { JsonPipe } from '@angular/common';
 
 @Component({
-    selector: 'sds-filters',
-    templateUrl: './sds-filters.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'sds-filters',
+  templateUrl: './sds-filters.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SdsFiltersComponent implements OnInit, OnChanges {
   @ViewChild('horizontalFiltersDialog')
@@ -186,8 +186,8 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     private formlyDialogService: SdsDialogService,
     private cdr: ChangeDetectorRef,
     @Optional()
-    private filterUpdateModelService: SDSFormlyUpdateModelService
-  ) { }
+    private filterUpdateModelService: SDSFormlyUpdateModelService,
+  ) {}
 
   ngOnDestroy() {
     this.unsubscribe$.next();
@@ -224,7 +224,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       this.checkForHide();
     }
   }
-
 
   /**
    * This is for getting the model which has a value.
@@ -295,7 +294,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   reset() {
-
     this.model = JSON.parse(JSON.stringify(this.defaultModel));
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(this.model);
@@ -507,7 +505,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       return;
     }
 
-
     if (chip.formlyType === SdsFormlyTypes.DATERANGEPICKER || chip.formlyType === SdsFormlyTypes.DATERANGEPICKERV2) {
       const fromDateControl = field.fieldGroup[0].formControl;
       const toDateControl = field.fieldGroup[1].formControl;
@@ -520,17 +517,16 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     // value of the form will be after this chip has been removed, and update the form control accordingly
 
     const chipsWithSameKey = this.chips.filter(
-      (exisingChip) => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey
+      (exisingChip) => chip != exisingChip && chip.formlyKey === exisingChip.formlyKey,
     );
     const existingValues = chipsWithSameKey.map((chipWithSameKey) => chipWithSameKey.value);
-
 
     if (Array.isArray(field.formControl.value)) {
       let updatedValue = [];
       existingValues.forEach((value) => {
         updatedValue = updatedValue.concat(value);
       });
-      field.formControl.patchValue(updatedValue)
+      field.formControl.patchValue(updatedValue);
       this.setParentWithProperty(this.model, field.key.toString(), updatedValue);
       this.filterChange.emit(this.model);
       this.generateChips(this.model, this.fields);
@@ -542,12 +538,10 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
     if (field.type === 'multicheckbox') {
       existingValues.forEach((value) => {
         Object.assign(objectValue, value);
-
       });
     } else {
       Object.assign(objectValue, ...existingValues);
     }
-
 
     field.formControl.patchValue(objectValue);
     this.setParentWithProperty(this.model, field.key.toString(), objectValue);
@@ -559,8 +553,6 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   setParentWithProperty(item: object, propertyName: string, newValue: object) {
-
-
     if (item.hasOwnProperty(propertyName)) {
       if (Object.keys(newValue).length === 0) {
         //removes empty objects
@@ -573,11 +565,9 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
       propertyList.forEach((key) => {
         const child = item[key];
         if (typeof child === 'object') {
-          this.setParentWithProperty(child, propertyName, newValue)
+          this.setParentWithProperty(child, propertyName, newValue);
         }
-
       });
     }
   }
 }
-

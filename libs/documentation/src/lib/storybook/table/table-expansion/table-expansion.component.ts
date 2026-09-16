@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-table-expansion',
   templateUrl: './table-expansion.component.html',
 })

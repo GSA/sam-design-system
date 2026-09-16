@@ -3,10 +3,10 @@ import { AbstractSdsFormly } from '../sds-formly';
 import { SDSAutocompleteComponent } from '@gsa-sam/components';
 
 @Component({
-    selector: 'sds-formly-field-autocomplete',
-    template: ` <sds-autocomplete [formControl]="formControl"></sds-autocomplete> `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'sds-formly-field-autocomplete',
+  template: ` <sds-autocomplete [formControl]="formControl"></sds-autocomplete> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implements AfterViewInit {
   @ViewChild(SDSAutocompleteComponent, { static: true }) public template: SDSAutocompleteComponent;
@@ -22,7 +22,7 @@ export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implemen
   ngAfterViewInit(): void {
     if (this.template.configuration.id !== undefined && this.template.configuration.id !== this.id) {
       console.warn(
-        `Formly Autocomplete ID mismatch: Formly Autocomplete ID(${this.id}) does not match Autocomplete Configuration ID (${this.template.configuration.id})`
+        `Formly Autocomplete ID mismatch: Formly Autocomplete ID(${this.id}) does not match Autocomplete Configuration ID (${this.template.configuration.id})`,
       );
     }
     if (!this.template.configuration.id) {

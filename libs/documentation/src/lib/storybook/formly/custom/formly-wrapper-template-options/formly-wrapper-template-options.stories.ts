@@ -59,7 +59,7 @@ Blur.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-blur',
     'FormlyWrapperTemplateOptionsBlurModule',
-    'sds-formly-wrapper-template-options-blur'
+    'sds-formly-wrapper-template-options-blur',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'blur'),
 };
@@ -77,7 +77,7 @@ UpdateOn.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-updateon',
     'FormlyWrapperTemplateOptionsUpdateonModule',
-    'sds-formly-wrapper-template-options-template'
+    'sds-formly-wrapper-template-options-template',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'updateon'),
 };
@@ -95,7 +95,7 @@ Hideoptional.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-hideoptional',
     'FormlyWrapperTemplateOptionsHideoptionalModule',
-    'sds-formly-wrapper-template-options-hideoptional'
+    'sds-formly-wrapper-template-options-hideoptional',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'hideoptional'),
 };
@@ -113,7 +113,7 @@ AnnounceLabel.parameters = {
   preview: generateConfig(
     'storybook/formly/custom/formly-wrapper-template-options/formly-wrapper-template-options-announce-label',
     'FormlyWrapperTemplateOptionsAnnounceLabelModule',
-    'sds-formly-wrapper-template-options-announce-label'
+    'sds-formly-wrapper-template-options-announce-label',
   ),
   stackblitzLink: generateStackblitzLink('formly-wrapper-template-options', 'announc-label'),
 };

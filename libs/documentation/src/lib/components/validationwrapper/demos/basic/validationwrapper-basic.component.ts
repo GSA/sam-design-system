@@ -3,9 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    templateUrl: './validationwrapper-basic.component.html',
-    selector: `sds-validationwrapper-basic-demo`,
-    standalone: false
+  templateUrl: './validationwrapper-basic.component.html',
+  selector: `sds-validationwrapper-basic-demo`,
+  standalone: false,
 })
 export class ValidationWrapperBasic {
   form = new UntypedFormGroup({});

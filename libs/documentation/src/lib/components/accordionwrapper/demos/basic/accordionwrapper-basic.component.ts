@@ -3,10 +3,10 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    templateUrl: './accordionwrapper-basic.component.html',
-    styleUrls: ['./accordionwrapper-basic.component.scss'],
-    selector: `sds-accordionwrapper-basic-demo`,
-    standalone: false
+  templateUrl: './accordionwrapper-basic.component.html',
+  styleUrls: ['./accordionwrapper-basic.component.scss'],
+  selector: `sds-accordionwrapper-basic-demo`,
+  standalone: false,
 })
 export class AccordionWrapperBasic {
   form = new UntypedFormGroup({});

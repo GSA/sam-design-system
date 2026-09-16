@@ -2,7 +2,7 @@ import { AfterContentInit, Component, Input } from '@angular/core';
 import { SdsStepComponent, SdsStepper } from '@gsa-sam/sam-formly';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `uswds-custom-stepper-demo`,
   templateUrl: './formly-stepper-uswds-custom.component.html',
   providers: [{ provide: SdsStepper, useExisting: USWDSCustomStepperComponent }],
@@ -49,7 +49,7 @@ export class USWDSCustomStepperComponent extends SdsStepper implements AfterCont
        * With incrementing you'd get 1 / 2 = 50%
        */
       this.stepLabels[mainStepIndex].completionPercent = Math.round(
-        ((subStepIndex + 1) / (this.stepTemplates.get(mainStepIndex).children.length + 1)) * 100
+        ((subStepIndex + 1) / (this.stepTemplates.get(mainStepIndex).children.length + 1)) * 100,
       );
       // If main step
     } else {

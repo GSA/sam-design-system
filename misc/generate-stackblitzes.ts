@@ -123,7 +123,7 @@ modulesInfo.forEach((value, demoModule) => {
   });
   for (const file of demoFiles) {
     const destFile = path.basename(file);
-    if(path.extname(destFile) !== ''){
+    if (path.extname(destFile) !== '') {
       try {
         stackblitzData.files.push({
           name: `src/app/${destFile}`,
@@ -131,7 +131,7 @@ modulesInfo.forEach((value, demoModule) => {
         });
       } catch (exception) {
         console.log(file);
-        console.error(exception)
+        console.error(exception);
       }
     }
 

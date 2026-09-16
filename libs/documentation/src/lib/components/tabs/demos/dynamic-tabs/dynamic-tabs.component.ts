@@ -3,9 +3,9 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TabPanelComponent } from '@gsa-sam/components';
 
 @Component({
-    selector: `sds-dynamic-tabs-demo`,
-    templateUrl: './dynamic-tabs.component.html',
-    standalone: false
+  selector: `sds-dynamic-tabs-demo`,
+  templateUrl: './dynamic-tabs.component.html',
+  standalone: false,
 })
 export class DynamicTabsComponet {
   additionalTabs: { header: string | TemplateRef<any>; content: string | TemplateRef<any> }[] = [];

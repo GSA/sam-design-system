@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-rich-text-editor-max-height',
   templateUrl: './rich-text-editor-max-height.component.html',
 })
@@ -11,18 +11,13 @@ export class RichTextEditorMaxHeightComponent implements OnInit, OnChanges {
 
   fc: UntypedFormControl = new UntypedFormControl('<p>this is a test Max</p>');
   //fc: UntypedFormControl = new UntypedFormControl('<p>this is a test PRogeess</p>');
-  ngOnChanges(changes: SimpleChanges): void {
-
-  }
-
+  ngOnChanges(changes: SimpleChanges): void {}
 
   ngOnInit() {
-    this.fc.valueChanges.subscribe(value => {
-      console.log('Component valueChanges')
-      console.log(value)
+    this.fc.valueChanges.subscribe((value) => {
+      console.log('Component valueChanges');
+      console.log(value);
     });
-
-
 
     //   this.fc.registerOnChange(i => {
 

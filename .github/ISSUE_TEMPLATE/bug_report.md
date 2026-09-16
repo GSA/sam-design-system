@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **Components Involved**
@@ -28,5 +27,3 @@ IAE-XYZ
 
 **Additional context**
 Screenshots / recordings, minimal reproduction on stackblitz, steps to reproduce, code snippets, etc.
-
-

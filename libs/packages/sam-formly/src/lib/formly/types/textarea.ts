@@ -2,13 +2,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'sds-formly-field-textarea',
-    template: `
+  selector: 'sds-formly-field-textarea',
+  template: `
     <div
       [ngClass]="{
         'sds-textarea-small': props.maxLength && props.size === 'small',
         'sds-textarea-medium': props.maxLength && props.size === 'medium',
-        'sds-textarea-large': props.maxLength && props.size === 'large'
+        'sds-textarea-large': props.maxLength && props.size === 'large',
       }"
     >
       <textarea
@@ -32,7 +32,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       </span>
     </div>
   `,
-    standalone: false
+  standalone: false,
 })
 export class FormlyFieldTextAreaComponent extends FieldType<FieldTypeConfig> implements OnInit {
   @ViewChild('textarea', { static: true }) textareaRef: ElementRef;

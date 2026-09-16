@@ -14,10 +14,10 @@ import { PaginationConfigurationModel, PaginationModel } from './model/paginatio
 export type PaginationDisplayMode = 'default' | 'results';
 
 @Component({
-    selector: 'sds-pagination',
-    templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss'],
-    standalone: false
+  selector: 'sds-pagination',
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.scss'],
+  standalone: false,
 })
 export class PaginationComponent implements OnInit {
   ngOnInit(): void {

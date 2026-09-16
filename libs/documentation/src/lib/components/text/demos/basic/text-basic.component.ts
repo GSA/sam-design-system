@@ -3,9 +3,9 @@ import { UntypedFormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    templateUrl: './text-basic.component.html',
-    selector: `sds-text-demo`,
-    standalone: false
+  templateUrl: './text-basic.component.html',
+  selector: `sds-text-demo`,
+  standalone: false,
 })
 export class TextBasic {
   textModel = 'test';

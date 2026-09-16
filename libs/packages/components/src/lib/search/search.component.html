@@ -26,8 +26,9 @@
         [value]="item.value"
         [selected]="model.searchCategory == item.value"
         [disabled]="item.disabled"
-        >{{ item.label }}</option
       >
+        {{ item.label }}
+      </option>
     </ng-container>
   </select>
   <ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
@@ -35,9 +36,9 @@
 
 <ng-template #inputTemplate>
   <div
-    class="position-relative grid-col-12 suffix-icon search-input "
+    class="position-relative grid-col-12 suffix-icon search-input"
     [ngClass]="{
-      'tablet:grid-col': hasDropdown()
+      'tablet:grid-col': hasDropdown(),
     }"
   >
     <label class="usa-sr-only" [attr.for]="searchSettings.id">Search</label>
@@ -47,7 +48,7 @@
       [ngClass]="[searchSettings?.inputClass ? searchSettings?.inputClass : '', !hasDropdown() ? 'no-drop' : '']"
       [attr.id]="searchSettings.id"
       type="search"
-      class="usa-input sds-min-width-160 "
+      class="usa-input sds-min-width-160"
       name="search"
       [placeholder]="searchSettings.placeholder ? searchSettings.placeholder : 'type here'"
       [attr.aria-label]="searchSettings.ariaLabel"

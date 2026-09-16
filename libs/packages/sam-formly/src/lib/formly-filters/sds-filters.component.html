@@ -73,7 +73,7 @@
         [fields]="fields"
         [options]="options"
         [model]="model"
-    [isInactiveValueFieldShown]="isInactiveValueFieldShown"
+        [isInactiveValueFieldShown]="isInactiveValueFieldShown"
         [enablePopover]="horizontal"
         (showInactiveFiltersChange)="handleInactiveFilterChange($event)"
       >
@@ -122,7 +122,8 @@
       </sds-readonly-container>
     </div>
 
-    <button *ngIf="chip.label" 
+    <button
+      *ngIf="chip.label"
       [attr.aria-label]="'Remove Item ' + chip.label + ' ' + chip.srValue"
       aria-hidden="false"
       class="sds-tag__close position-static"

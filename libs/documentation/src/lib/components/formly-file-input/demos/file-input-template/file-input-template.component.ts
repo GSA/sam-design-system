@@ -4,9 +4,9 @@ import { SdsFormlyTypes } from '@gsa-sam/sam-formly';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-    selector: 'gsa-sam-file-input-template',
-    templateUrl: './file-input-template.component.html',
-    standalone: false
+  selector: 'gsa-sam-file-input-template',
+  templateUrl: './file-input-template.component.html',
+  standalone: false,
 })
 export class FileInputTemplateComponent implements AfterViewInit {
   @ViewChild('replacementTemplate') replacementTemplate: TemplateRef<any>;

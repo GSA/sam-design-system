@@ -14,7 +14,7 @@
 
 #### Documentation
 
-- [**Documentation**][**bugfix**] Expand option changes and  document added with different examples. [#258](https://github.com/GSA/sam-design-system/pull/258)
+- [**Documentation**][**bugfix**] Expand option changes and document added with different examples. [#258](https://github.com/GSA/sam-design-system/pull/258)
 - [**Documentation**] Removed search from Filter demo and History configuration demo changes [#263](https://github.com/GSA/sam-design-system/pull/263)
 - [**Documentation**][**bugfix**] Updated documentation form autocomplete [#259](https://github.com/GSA/sam-design-system/pull/259)
 - [**Documentation**] Label, Description, Validation Wrappers documentation added [#262](https://github.com/GSA/sam-design-system/pull/262)
@@ -28,7 +28,7 @@
 
 - [**closed**] Fix wrappers for non form control formly components [#260](https://github.com/GSA/sam-design-system/pull/260)
 - [**closed**] documentation for date added [#257](https://github.com/GSA/sam-design-system/pull/257)
-- [**closed**] Documentation  group options [#255](https://github.com/GSA/sam-design-system/pull/255)
+- [**closed**] Documentation group options [#255](https://github.com/GSA/sam-design-system/pull/255)
 - [**closed**] Test advanced filters (IAE-35524) [#254](https://github.com/GSA/sam-design-system/pull/254)
 - [**closed**] added optional group [#256](https://github.com/GSA/sam-design-system/pull/256)
 - [**closed**] Add new angular devs [#253](https://github.com/GSA/sam-design-system/pull/253)
@@ -65,14 +65,14 @@
 
 #### enhancement
 
-- [**enhancement**] History configurable and sds-formly shareable  [#247](https://github.com/GSA/sam-design-system/pull/247)
+- [**enhancement**] History configurable and sds-formly shareable [#247](https://github.com/GSA/sam-design-system/pull/247)
 - [**enhancement**] Autocomplete tags [#242](https://github.com/GSA/sam-design-system/pull/242)
 - [**enhancement**] Search formly [#232](https://github.com/GSA/sam-design-system/pull/232)
 - [**enhancement**] Autocomplete dropdown with configurable input readonly [#236](https://github.com/GSA/sam-design-system/pull/236)
 
 #### feat
 
-- [**feat**] Create Advanced Filters Dialog component and sample [iae-32619]  [#225](https://github.com/GSA/sam-design-system/pull/225)
+- [**feat**] Create Advanced Filters Dialog component and sample [iae-32619] [#225](https://github.com/GSA/sam-design-system/pull/225)
 - [**feat**] Documentation update for autocomplete [#241](https://github.com/GSA/sam-design-system/pull/241)
 - [**feat**] Side nav on sds filter refresh [#244](https://github.com/GSA/sam-design-system/pull/244)
 
@@ -81,15 +81,15 @@
 ## v0.6.13 (28/04/2020)
 
 #### closed
- - [**Minor breaking change**] 
-There is a minor change in the  sds-autocomplete model earlier its an object with items array now its a direct array.
-Ex:
- Previously - {
-items:[]
- }
+
+- [**Minor breaking change**]
+  There is a minor change in the sds-autocomplete model earlier its an object with items array now its a direct array.
+  Ex:
+  Previously - {
+  items:[]
+  }
 
 Now : []
-
 
 - [**closed**] Autocomplete validation changes [#228](https://github.com/GSA/sam-design-system/pull/228)
 - [**closed**] external link super script changes [#229](https://github.com/GSA/sam-design-system/pull/229)
@@ -117,7 +117,7 @@ Now : []
 #### closed
 
 - [**closed**] added options and expand is configurable [#196](https://github.com/GSA/sam-design-system/pull/196)
-- [**closed**] URL History tracking  and expand accordion changes [#195](https://github.com/GSA/sam-design-system/pull/195)
+- [**closed**] URL History tracking and expand accordion changes [#195](https://github.com/GSA/sam-design-system/pull/195)
 - [**closed**] Video player issues [#191](https://github.com/GSA/sam-design-system/pull/191)
 - [**closed**] Updated sam-style v0.0.58 [#194](https://github.com/GSA/sam-design-system/pull/194)
 - [**closed**] updated selectionmode issue [#190](https://github.com/GSA/sam-design-system/pull/190)
@@ -197,7 +197,7 @@ Now : []
 - [**closed**] bump sam styles to 0.0.51 [#152](https://github.com/GSA/sam-design-system/pull/152)
 - [**closed**] IAE-29063 Updated Aria label for the remove item [#151](https://github.com/GSA/sam-design-system/pull/151)
 - [**closed**] Initial commit SDS [#138](https://github.com/GSA/sam-design-system/pull/138)
-- [**closed**] Change name  from dual-display to list-result-child [#147](https://github.com/GSA/sam-design-system/pull/147)
+- [**closed**] Change name from dual-display to list-result-child [#147](https://github.com/GSA/sam-design-system/pull/147)
 - [**closed**] Created new branch for collapse component [#146](https://github.com/GSA/sam-design-system/pull/146)
 - [**closed**] Update package.json [#145](https://github.com/GSA/sam-design-system/pull/145)
 
@@ -228,7 +228,8 @@ Now : []
 ---
 
 ## v0.6.4 (12/12/2019)
-*No changelog for this release.*
+
+_No changelog for this release._
 
 ---
 
@@ -244,7 +245,7 @@ Now : []
 - [**closed**] Menu component ui updates [#100](https://github.com/GSA/sam-design-system/pull/100)
 - [**closed**] refactor(search): simplifies search component [#98](https://github.com/GSA/sam-design-system/pull/98)
 - [**closed**] Update header to use base href path [#96](https://github.com/GSA/sam-design-system/pull/96)
-- [**closed**] IAE-25090 Autocomplete Amp issue with ARIA 1.1  [#94](https://github.com/GSA/sam-design-system/pull/94)
+- [**closed**] IAE-25090 Autocomplete Amp issue with ARIA 1.1 [#94](https://github.com/GSA/sam-design-system/pull/94)
 - [**closed**] Update codeowners [#95](https://github.com/GSA/sam-design-system/pull/95)
 - [**closed**] Update header component to match new styles [#93](https://github.com/GSA/sam-design-system/pull/93)
 - [**closed**] Updated to match sam-styles adjustments [#92](https://github.com/GSA/sam-design-system/pull/92)
@@ -252,7 +253,7 @@ Now : []
 - [**closed**] IAE-24147 added drawer content for the sub header [#91](https://github.com/GSA/sam-design-system/pull/91)
 - [**closed**] Iae 23773 Date picker [#84](https://github.com/GSA/sam-design-system/pull/84)
 - [**closed**] Create Code Owners File [#88](https://github.com/GSA/sam-design-system/pull/88)
-- [**closed**] IAE-24037- loading image autocomplete  [#87](https://github.com/GSA/sam-design-system/pull/87)
+- [**closed**] IAE-24037- loading image autocomplete [#87](https://github.com/GSA/sam-design-system/pull/87)
 - [**closed**] Autocomplete enhancements [#86](https://github.com/GSA/sam-design-system/pull/86)
 - [**closed**] side menu filter sample changes [#85](https://github.com/GSA/sam-design-system/pull/85)
 - [**closed**] Adds config to change trigger class in actions menu [#82](https://github.com/GSA/sam-design-system/pull/82)
@@ -292,7 +293,7 @@ Now : []
 - [**closed**] Filter [#62](https://github.com/GSA/sam-design-system/pull/62)
 - [**closed**] Remove autocomplete styles [#65](https://github.com/GSA/sam-design-system/pull/65)
 - [**closed**] Autocomplete results icon [#64](https://github.com/GSA/sam-design-system/pull/64)
-- [**closed**] fixing spelling issue and update test coverage  [#61](https://github.com/GSA/sam-design-system/pull/61)
+- [**closed**] fixing spelling issue and update test coverage [#61](https://github.com/GSA/sam-design-system/pull/61)
 - [**closed**] IAE-21640 side navigation enhancement [#57](https://github.com/GSA/sam-design-system/pull/57)
 - [**closed**] Filter auto [#59](https://github.com/GSA/sam-design-system/pull/59)
 - [**closed**] Fix autocomplete styles [#63](https://github.com/GSA/sam-design-system/pull/63)
@@ -301,7 +302,7 @@ Now : []
 - [**closed**] PR for Filter wrap example added to design system [#56](https://github.com/GSA/sam-design-system/pull/56)
 - [**closed**] Add dialog component and sample page [#55](https://github.com/GSA/sam-design-system/pull/55)
 - [**closed**] Move Icon library to sam-styles [#54](https://github.com/GSA/sam-design-system/pull/54)
-- [**closed**] IAE-21644 Autocomplete Component  [#28](https://github.com/GSA/sam-design-system/pull/28)
+- [**closed**] IAE-21644 Autocomplete Component [#28](https://github.com/GSA/sam-design-system/pull/28)
 
 ---
 
@@ -320,11 +321,11 @@ Now : []
 #### closed
 
 - [**closed**] IAE-19418 filter output added [#50](https://github.com/GSA/sam-design-system/pull/50)
-- [**closed**] IAE-19418 sds-filters component added  [#46](https://github.com/GSA/sam-design-system/pull/46)
+- [**closed**] IAE-19418 sds-filters component added [#46](https://github.com/GSA/sam-design-system/pull/46)
 - [**closed**] Clean up of search results layout custom page [#49](https://github.com/GSA/sam-design-system/pull/49)
 - [**closed**] Fix subheader title alignment [#47](https://github.com/GSA/sam-design-system/pull/47)
 - [**closed**] IAE-19417 for Formly filters with side menu [#42](https://github.com/GSA/sam-design-system/pull/42)
-- [**closed**] IAE-19416 Feedback  [#45](https://github.com/GSA/sam-design-system/pull/45)
+- [**closed**] IAE-19416 Feedback [#45](https://github.com/GSA/sam-design-system/pull/45)
 
 ---
 
@@ -364,7 +365,7 @@ Now : []
 
 #### closed
 
-- [**closed**] Fix publish scripts  [#21](https://github.com/GSA/sam-design-system/pull/21)
+- [**closed**] Fix publish scripts [#21](https://github.com/GSA/sam-design-system/pull/21)
 - [**closed**] Move component scss to sam-styles package [#20](https://github.com/GSA/sam-design-system/pull/20)
 - [**closed**] Add images to banner, header & footer [#18](https://github.com/GSA/sam-design-system/pull/18)
 - [**closed**] Iae 16657 [#11](https://github.com/GSA/sam-design-system/pull/11)

@@ -17,18 +17,13 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.json",
-            "assets": [
-            ],
-            "styles": [
-            ],
+            "assets": [],
+            "styles": [],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                }
-              ],
+              "fileReplacements": [{}],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -63,22 +58,16 @@
           "options": {
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.json",
-            "styles": [
-            ],
+            "styles": [],
             "scripts": [],
-            "assets": [
-            ]
+            "assets": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

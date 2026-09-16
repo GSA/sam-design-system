@@ -32,11 +32,11 @@ declare class InitPxVideo {
 }
 
 @Component({
-    selector: 'sds-video-player',
-    templateUrl: './video-player.component.html',
-    styleUrls: ['./css/px-video.css'],
-    encapsulation: ViewEncapsulation.None,
-    standalone: false
+  selector: 'sds-video-player',
+  templateUrl: './video-player.component.html',
+  styleUrls: ['./css/px-video.css'],
+  encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit, OnDestroy {
   @Input() VPConfiguration: VPInterface;
@@ -51,7 +51,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
     private elementRef: ElementRef,
     private renderer2: Renderer2,
     private cdr: ChangeDetectorRef,
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: any,
   ) {}
 
   ngOnDestroy() {

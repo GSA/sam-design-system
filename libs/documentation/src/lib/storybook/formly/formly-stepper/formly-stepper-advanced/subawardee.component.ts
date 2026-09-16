@@ -5,7 +5,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { StepperAdvancedService } from './stepper-advanced.service';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `subawardee-demo`,
   templateUrl: './subawardee.component.html',
 })
@@ -35,7 +35,7 @@ export class SubawardeeDemoComponent {
 }
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: `add-subawardee-dialog-demo`,
   template: `
     <div sds-dialog-title>
@@ -58,7 +58,7 @@ export class AddSubawardeeDialogDemo implements OnInit {
   constructor(
     public dialogRef: SdsDialogRef<AddSubawardeeDialogDemo>,
     @Inject(SDS_DIALOG_DATA) public data: SdsFormlyDialogData,
-    private stepperAdvancedService: StepperAdvancedService
+    private stepperAdvancedService: StepperAdvancedService,
   ) {}
 
   ngOnInit() {

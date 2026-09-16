@@ -22,8 +22,8 @@ import { By } from '@angular/platform-browser';
 import { SdsStepper } from './sds-stepper';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 @Component({
-    selector: `custom-test-stepper`,
-    template: `<div class="grid-row">
+  selector: `custom-test-stepper`,
+  template: `<div class="grid-row">
       <div class="desktop:grid-col-4 tablet-lg:grid-col-12 mobile-lg:grid-col-12 margin-bottom-3 margin-right-2">
         <div class="sds-card">
           <div class="sds-card__body sds-card__body--accent-cool">
@@ -32,7 +32,7 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
                 *ngFor="let step of stepTemplates; let i = index"
                 class="usa-sidenav__item"
                 [ngClass]="{
-                  'usa-current': selectedStep?.id === step.id
+                  'usa-current': selectedStep?.id === step.id,
                 }"
               >
                 <ng-container [ngTemplateOutlet]="sidenavItem" [ngTemplateOutletContext]="{ $implicit: step }">
@@ -129,14 +129,14 @@ import { IconModule } from '@gsa-sam/ngx-uswds-icons';
         </ng-container>
       </span>
     </ng-template> `,
-    providers: [{ provide: SdsStepper, useExisting: CustomTestStepper }],
-    standalone: false
+  providers: [{ provide: SdsStepper, useExisting: CustomTestStepper }],
+  standalone: false,
 })
 export class CustomTestStepper extends SdsStepper {}
 
 @Component({
-    selector: `stepper-test`,
-    template: `
+  selector: `stepper-test`,
+  template: `
     <custom-test-stepper #stepper id="stepperTestId" [model]="model" [stepValidityMap]="stepValidityMap">
       <sds-step id="step1" text="Step 1" [fieldConfig]="fieldConfigStep1"></sds-step>
       <sds-step id="step2" text="Step 2" [editable]="false">
@@ -149,7 +149,7 @@ export class CustomTestStepper extends SdsStepper {}
       <span>Test template</span>
     </ng-template>
   `,
-    standalone: false
+  standalone: false,
 })
 class StepperTestComponent {
   @ViewChild(CustomTestStepper) stepper: CustomTestStepper;
@@ -224,19 +224,16 @@ describe('SdsStepperComponent', () => {
     expect(invalidSteps.length).toEqual(0);
   });
 
-  it(
-    'Should move to next step when next button is clicked',
-    waitForAsync(() => {
-      expect(stepper.currentStepId).toEqual('step1');
-      const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
-      nextButton.triggerEventHandler('click', null);
-      fixture.detectChanges();
+  it('Should move to next step when next button is clicked', waitForAsync(() => {
+    expect(stepper.currentStepId).toEqual('step1');
+    const nextButton = fixture.debugElement.query(By.css('#stepperTestId-nextBtn'));
+    nextButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
 
-      fixture.whenStable().then(() => {
-        expect(stepper.currentStepId).toEqual('step1');
-      });
-    })
-  );
+    fixture.whenStable().then(() => {
+      expect(stepper.currentStepId).toEqual('step1');
+    });
+  }));
 
   it('Should mark invalid step when moving to next step', () => {
     expect(stepper.currentStepId).toEqual('step1');
@@ -260,17 +257,14 @@ describe('SdsStepperComponent', () => {
     expect(stepper.stepValidityMap['step1']).toEqual(false);
   });
 
-  it(
-    'Should jump to step 1 when clicking from side navigation',
-    waitForAsync(() => {
-      const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
-      sidenavLinks[2].triggerEventHandler('click', null);
-      fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        expect(stepper.currentStepId).toEqual('step1');
-      });
-    })
-  );
+  it('Should jump to step 1 when clicking from side navigation', waitForAsync(() => {
+    const sidenavLinks = fixture.debugElement.queryAll(By.css('li a'));
+    sidenavLinks[2].triggerEventHandler('click', null);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(stepper.currentStepId).toEqual('step1');
+    });
+  }));
 
   it('Should prepopulate with correct model and validity when provided', () => {
     component.model = {

@@ -7,14 +7,14 @@ export interface DialogData {
 }
 
 @Component({
-    selector: 'sds-dialog-sample-data',
-    templateUrl: './overview-template.html',
-    standalone: false
+  selector: 'sds-dialog-sample-data',
+  templateUrl: './overview-template.html',
+  standalone: false,
 })
 export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: SdsDialogRef<DialogOverviewExampleDialog>,
-    @Inject(SDS_DIALOG_DATA) public data: DialogData
+    @Inject(SDS_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onNoClick(): void {
@@ -27,13 +27,9 @@ export class DialogOverviewExampleDialog {
  * ================================================
  */
 @Component({
-    selector: 'sds-dialog-sample-nested',
-    template: `
-    <button class="usa-button" (click)="openDialog()">
-      Open another dialog
-    </button>
-  `,
-    standalone: false
+  selector: 'sds-dialog-sample-nested',
+  template: ` <button class="usa-button" (click)="openDialog()">Open another dialog</button> `,
+  standalone: false,
 })
 export class NestedDialogComponent {
   animal: string;
@@ -56,9 +52,9 @@ export class NestedDialogComponent {
  * ================================================
  */
 @Component({
-    selector: 'sds-modal-sample',
-    templateUrl: './dialog-nested.component.html',
-    standalone: false
+  selector: 'sds-modal-sample',
+  templateUrl: './dialog-nested.component.html',
+  standalone: false,
 })
 export class DialogNested {
   constructor(public dialog: SdsDialogService) {}

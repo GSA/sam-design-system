@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-	standalone: false,
+  standalone: false,
   templateUrl: './popover-title.component.html',
   selector: `popover-title`,
 })

@@ -63,7 +63,7 @@ Basic.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-basic',
     'FormlyCheckboxBasicModule',
-    'sds-formly-checkbox-basic'
+    'sds-formly-checkbox-basic',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'basic'),
 };
@@ -81,7 +81,7 @@ Nested.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-nested',
     'FormlyCheckboxNestedModule',
-    'sds-formly-checkbox-nested'
+    'sds-formly-checkbox-nested',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'nested'),
 };
@@ -99,7 +99,7 @@ Template.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-template',
     'FormlyCheckboxTemplateModule',
-    'sds-formly-checkbox-template'
+    'sds-formly-checkbox-template',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'template'),
 };
@@ -117,7 +117,7 @@ Required.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-required',
     'FormlyCheckboxRequiredModule',
-    'sds-formly-checkbox-required'
+    'sds-formly-checkbox-required',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'required'),
 };
@@ -135,7 +135,7 @@ Tooltip.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-tooltip',
     'FormlyCheckboxTooltipModule',
-    'sds-formly-checkbox-tooltip'
+    'sds-formly-checkbox-tooltip',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'tooltip'),
 };
@@ -153,7 +153,7 @@ Label.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-label',
     'FormlyCheckboxLabelModule',
-    'sds-formly-checkbox-label'
+    'sds-formly-checkbox-label',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'label'),
 };
@@ -171,7 +171,7 @@ Description.parameters = {
   preview: generateConfig(
     'storybook/formly/formly-checkbox/formly-checkbox-description',
     'FormlyCheckboxDescriptionModule',
-    'sds-formly-checkbox-description'
+    'sds-formly-checkbox-description',
   ),
   stackblitzLink: generateStackblitzLink('formly-checkbox', 'description'),
 };

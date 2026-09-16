@@ -62,7 +62,7 @@ describe('Formly Field button Component', () => {
         },
       ];
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
       const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
@@ -88,7 +88,7 @@ describe('Formly Field button Component', () => {
         },
       ];
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>'
+          '<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>',
         ),
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
       const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
@@ -101,8 +101,9 @@ describe('Formly Field button Component', () => {
 });
 
 @Component({
-    selector: 'formly-form-button', template: '',
-    standalone: false
+  selector: 'formly-form-button',
+  template: '',
+  standalone: false,
 })
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;

@@ -2,10 +2,10 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-    templateUrl: './custom-header.component.html',
-    selector: `sds-slide-out-custom-header`,
-    styleUrls: ['../basic/slide-out-template.scss'],
-    standalone: false
+  templateUrl: './custom-header.component.html',
+  selector: `sds-slide-out-custom-header`,
+  styleUrls: ['../basic/slide-out-template.scss'],
+  standalone: false,
 })
 export class SlideOutCustomHeaderComponent {
   @ViewChild('templateRefCustom') ref: TemplateRef<any>;

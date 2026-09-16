@@ -3,7 +3,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { SdsDialogRef, SdsDialogService } from '@gsa-sam/components';
 
 @Component({
-	standalone: false,
+  standalone: false,
   selector: 'sds-slide-out-custom-template',
   templateUrl: './slide-out-custom-template.component.html',
 })
@@ -12,7 +12,10 @@ export class SlideOutCustomTemplateComponent {
 
   openedDialogRef: SdsDialogRef<any>;
 
-  constructor(public dialog: SdsDialogService, private options: ScrollStrategyOptions) {}
+  constructor(
+    public dialog: SdsDialogService,
+    private options: ScrollStrategyOptions,
+  ) {}
 
   buttonClicked() {
     if (!this.openedDialogRef) {
