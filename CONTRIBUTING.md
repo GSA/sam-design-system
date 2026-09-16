@@ -22,7 +22,6 @@ High level file structure and notable file locations.
 ```
 sam-design-system
 ├── apps
-│   ├── sam-design-system-site-e2e
 │   └── sam-design-system-site
 ├── dist
 ├── libs
@@ -57,7 +56,6 @@ High level file structure for the documentation library.
 ```
 documentation/src/lib
 ├── apidoc
-│   ├── sam-design-system-site-e2e
 │   └── sam-design-system-site
 ├── components
 │   ├── example-component
