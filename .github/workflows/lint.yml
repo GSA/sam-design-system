@@ -33,7 +33,10 @@ jobs:
           node scripts/check-baseline-not-increased.mjs /tmp/base-eslint-baseline.json eslint-baseline.json
       - name: Run lint baseline scripts' own tests
         run: npm run test:scripts
-      - name: Lint all five projects
-        run: npm run lint
-      - name: Guard per-project ESLint warning baselines
+      - name: Check code formatting (Prettier)
+        run: npm run check-prettier
+      # `npm run lint:baseline` already runs `ng lint` (via lint:report) for
+      # every project before checking the ceiling, so a separate `npm run
+      # lint` step here would lint each project twice.
+      - name: Lint all five projects against their warning baselines
         run: npm run lint:baseline

@@ -52,15 +52,63 @@ export default tseslint.config(
     files: ['**/*.ts'],
     extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
+    rules: recommendedTypeScriptWarnings,
+  },
+  // Selector prefixes are project-specific and were enforced per-project by
+  // the old per-project tslint.json overrides (see the deleted files this PR
+  // removes): sds for components/sam-material-extensions, sam for
+  // sam-formly/sam-design-system-site, docs for documentation. Keep that
+  // contract intact rather than unioning every prefix across every project,
+  // which would let e.g. a `sam-` component slip into `components` unflagged.
+  {
+    files: ['libs/packages/components/**/*.ts'],
     rules: {
-      ...recommendedTypeScriptWarnings,
       '@angular-eslint/directive-selector': [
         'warn',
-        { type: 'attribute', prefix: ['sds', 'sam'], style: 'camelCase' },
+        { type: 'attribute', prefix: 'sds', style: 'camelCase' },
       ],
       '@angular-eslint/component-selector': [
         'warn',
-        { type: 'element', prefix: ['sds', 'sam', 'gsa-sam', 'docs'], style: 'kebab-case' },
+        { type: 'element', prefix: 'sds', style: 'kebab-case' },
+      ],
+    },
+  },
+  {
+    files: ['libs/packages/sam-material-extensions/**/*.ts'],
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'warn',
+        { type: 'attribute', prefix: 'sds', style: 'camelCase' },
+      ],
+      '@angular-eslint/component-selector': [
+        'warn',
+        { type: 'element', prefix: 'sds', style: 'kebab-case' },
+      ],
+    },
+  },
+  {
+    files: ['libs/packages/sam-formly/**/*.ts', 'apps/sam-design-system-site/**/*.ts'],
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'warn',
+        { type: 'attribute', prefix: 'sam', style: 'camelCase' },
+      ],
+      '@angular-eslint/component-selector': [
+        'warn',
+        { type: 'element', prefix: 'sam', style: 'kebab-case' },
+      ],
+    },
+  },
+  {
+    files: ['libs/documentation/**/*.ts'],
+    rules: {
+      '@angular-eslint/directive-selector': [
+        'warn',
+        { type: 'attribute', prefix: 'docs', style: 'camelCase' },
+      ],
+      '@angular-eslint/component-selector': [
+        'warn',
+        { type: 'element', prefix: 'docs', style: 'kebab-case' },
       ],
     },
   },

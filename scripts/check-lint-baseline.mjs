@@ -3,8 +3,8 @@
  * Ratcheting warning-baseline gate for ESLint (run via the `ng lint`
  * @angular-eslint/builder).
  *
- * The ESLint migration (#566) intentionally warn-first'd a large amount of
- * pre-existing lint debt (see #580) rather than blocking on it immediately.
+ * The ESLint migration (#1605) intentionally warn-first'd a large amount of
+ * pre-existing lint debt (see #1624) rather than blocking on it immediately.
  * `ng lint`'s own `maxWarnings` option only supports a single fixed number,
  * which can't ratchet down as debt is paid off without editing CI config on
  * every cleanup PR. This script enforces a *ceiling* per workspace, recorded
