@@ -10,9 +10,15 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
+    "@angular/animations": ">=19.0.0 <20.0.0",
     "@angular/common": ">=19.0.0 <20.0.0",
     "@angular/core": ">=19.0.0 <20.0.0",
+    "@angular/material": ">=19.0.0 <20.0.0",
+    "@angular/platform-browser": ">=19.0.0 <20.0.0",
+    "@angular/router": ">=19.0.0 <20.0.0",
+    "@gsa-sam/components": "^19.0.0",
+    "@gsa-sam/ngx-uswds-icons": "^18.0.0",
     "ngx-bootstrap-icons": "^1.7.2",
-    "@gsa-sam/components": ">=19.0.0"
+    "rxjs": "^7.5.0"
   }
 }

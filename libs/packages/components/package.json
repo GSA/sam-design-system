@@ -11,10 +11,22 @@
   },
   "homepage": "https://github.com/GSA/sam-design-system/tree/master/libs/packages/components",
   "peerDependencies": {
+    "@angular/animations": ">=19.0.0 <20.0.0",
+    "@angular/cdk": ">=19.0.0 <20.0.0",
     "@angular/common": ">=19.0.0 <20.0.0",
     "@angular/core": ">=19.0.0 <20.0.0",
+    "@angular/forms": ">=19.0.0 <20.0.0",
+    "@angular/platform-browser": ">=19.0.0 <20.0.0",
+    "@angular/router": ">=19.0.0 <20.0.0",
+    "@ckeditor/ckeditor5-angular": "^9.1.0",
+    "@gsa-sam/ngx-uswds": "^18.0.0",
+    "@gsa-sam/ngx-uswds-icons": "^18.0.0",
+    "@popperjs/core": "^2.11.8",
     "accessible-html5-video-player": "^1.0.6",
+    "ckeditor5": "^45.1.0",
+    "dompurify": "^3.4.1",
     "ngx-bootstrap-icons": "^1.7.2",
-    "@popperjs/core": "^2.11.8"
+    "ngx-toastr": ">=18.0.0 <20.0.0",
+    "rxjs": "^7.5.0"
   }
 }
