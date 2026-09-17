@@ -61,3 +61,10 @@ documentation.json
 /playwright-report
 /blob-report
 /playwright/.cache
+
+# OWASP ZAP scan output from the security workflow (scripts/serve-security-scan.mjs
+# and the DAST job in .github/workflows/security.yml)
+/report_json.json
+/report_html.html
+/report_md.md
+/zap.yaml

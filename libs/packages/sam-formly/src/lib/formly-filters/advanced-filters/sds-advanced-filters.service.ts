@@ -139,9 +139,24 @@ export class SdsAdvancedFiltersService {
       };
       if (field.formControl) {
         field.formControl.reset();
-      } else {
+      } else if (this.isSafeModelKey(field.key)) {
         model[field.key] = null;
       }
     }
+  }
+
+  /**
+   * Guard against prototype pollution (CodeQL js/prototype-polluting-assignment).
+   *
+   * `field.key` originates from consumer-supplied FormlyFieldConfig, so it must not
+   * be used to index into `model` when it names a prototype slot. Formly keys are
+   * `string | number | (string | number)[]`, and numeric keys are legitimate for
+   * array-shaped models, so numbers are accepted as-is: only the well-known
+   * dangerous string keys are rejected. This preserves the original assignment
+   * behaviour for every key a caller could reasonably supply.
+   */
+  private isSafeModelKey(key: unknown): key is string | number {
+    if (typeof key === 'number') return Number.isFinite(key);
+    return typeof key === 'string' && !['__proto__', 'constructor', 'prototype'].includes(key);
   }
 }

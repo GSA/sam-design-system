@@ -1,0 +1,7 @@
+# ZAP exceptions: rule-id<TAB>IGNORE<TAB>scope<TAB>issue-url<TAB>owner<TAB>expiry(YYYY-MM-DD)<TAB>rationale
+# scope = a URL substring the exception is limited to (narrowest available scope), or * for rule-wide (must be justified).
+# Low-risk alerts are reported but do not block the medium/high gate; only rows below are suppressed.
+#
+# Baselined from the first scan run on this PR (#1634) -- see docs/security-scanning.md
+# "Initial baseline and triage" for the triage process these follow.
+10055	IGNORE	*	https://github.com/GSA/sam-design-system/issues/1633	sam-design-system maintainers	2027-03-01	ZAP flags the scan harness's own CSP header, not a finding in any page, so it re-reports on every scanned URL and a URL-scoped row cannot suppress it. A strict CSP is unattainable for this toolchain and was verified as such: hash-pinning Storybook's inline <style> blocks does clear 10055, but Storybook additionally requires inline <script> to boot, and Angular's JIT compiler then fails with EvalError unless 'unsafe-eval' is also allowed -- a strictly worse policy than 'unsafe-inline' on style-src alone. This is Storybook/Angular-JIT toolchain behavior on an unpublished docs build, not styling authored in the shipped @gsa-sam packages. Same finding baselined in GSA/ngx-uswds#272 and GSA/sam-ui-elements#679. Revisit alongside the Storybook 8->10 upgrade and AOT story compilation, which remove the JIT eval requirement.
