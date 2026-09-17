@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook';
+
 import tseslint from 'typescript-eslint';
 import angular from 'angular-eslint';
 
@@ -46,8 +49,7 @@ export default tseslint.config(
     extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
     rules: recommendedTypeScriptWarnings,
-  },
-  // Selector prefixes are project-specific and were enforced per-project by
+  }, // Selector prefixes are project-specific and were enforced per-project by
   // the old per-project tslint.json overrides (see the deleted files this PR
   // removes): sds for components/sam-material-extensions, sam for
   // sam-formly/sam-design-system-site, docs for documentation. Keep that
@@ -86,4 +88,5 @@ export default tseslint.config(
     extends: angular.configs.templateAccessibility,
     rules: accessibilityWarnings,
   },
+  storybook.configs['flat/recommended'],
 );

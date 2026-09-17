@@ -1,7 +1,9 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../libs/documentation/**/*.stories.ts'],
 
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', './source-code-addon/manager.js'],
+  addons: ['@storybook/addon-links', path.join(__dirname, 'source-code-addon'), '@storybook/addon-docs'],
 
   staticDirs: [
     '../node_modules/accessible-html5-video-player/js',
@@ -16,9 +18,6 @@ module.exports = {
     options: {},
   },
 
-  docs: {
-    autodocs: false,
-  },
   webpackFinal: async (config) => {
     if (process.env.GH_PAGES) {
       const assetsPath = process.env.pr
