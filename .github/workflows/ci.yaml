@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install Node Packages
+        run: npm ci
+      - name: Guard against a raised ESLint warning baseline
+        if: github.event_name == 'pull_request'
+        run: |
+          git show "${{ github.event.pull_request.base.sha }}:eslint-baseline.json" > /tmp/base-eslint-baseline.json 2>/dev/null || echo '{}' > /tmp/base-eslint-baseline.json
+          node scripts/check-baseline-not-increased.mjs /tmp/base-eslint-baseline.json eslint-baseline.json
+      - name: Run lint baseline scripts' own tests
+        run: npm run test:scripts
+      - name: Check formatting
+        run: npm run format:check
+      - name: Run lint
+        run: npm run lint:baseline
+
+  build_and_run_tests:
+    name: Build and Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install Node Packages
+        run: npm ci
+      - name: Build components library
+        run: npx ng build components --configuration production
+      - name: Build SAM Material Extensions library
+        run: npx ng build sam-material-extensions --configuration production
+      - name: Build SAM Formly library
+        run: npx ng build sam-formly --configuration production
+      - name: Test components library with coverage
+        id: components_tests
+        run: npm run test:components
+      - name: Upload components coverage
+        if: ${{ always() && steps.components_tests.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: components-coverage
+          path: coverage/libs/components
+          if-no-files-found: error
+      - name: Test SAM Formly library with coverage
+        id: sam_formly_tests
+        run: npm run test:sam-formly
+      - name: Upload SAM Formly coverage
+        if: ${{ always() && steps.sam_formly_tests.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sam-formly-coverage
+          path: coverage/libs/sam-formly
+          if-no-files-found: error
+      - name: Test SAM Material Extensions library with coverage
+        id: sam_material_extensions_tests
+        run: npm run test:material-extensions
+      - name: Upload SAM Material Extensions coverage
+        if: ${{ always() && steps.sam_material_extensions_tests.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sam-material-extensions-coverage
+          path: coverage/libs/sam-material-extensions
+          if-no-files-found: error
