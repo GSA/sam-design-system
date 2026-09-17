@@ -5,7 +5,7 @@
 //  $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 //  @include cdk-overlay;
 
-@import '~@angular/cdk/overlay-prebuilt.css'; // Import the Angular CDK overlay styles
+@import '@angular/cdk/overlay-prebuilt.css'; // Import the Angular CDK overlay styles
 $cdk-overlay-dark-backdrop-background: rgba(14, 52, 88, 0.7);
 
 // Demo pages only
