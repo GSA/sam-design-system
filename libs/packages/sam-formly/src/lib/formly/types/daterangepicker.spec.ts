@@ -3,13 +3,12 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 
 import { Component, ViewChild } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule, FormlyForm } from '@ngx-formly/core';
+import { FormlyModule, FormlyForm, ConfigOption } from '@ngx-formly/core';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormlyFieldDateRangePickerComponent } from './daterangepicker';
 import { dateRangeValidator } from '../formly.validators';
-import { TypeOption } from '@ngx-formly/core/lib/models';
 import { MatInputModule } from '@angular/material/input';
 
 const createTestComponent = (html: string) =>
@@ -24,7 +23,7 @@ export function createGenericTestComponent<T>(html: string, type: { new (...args
 
 let testComponentInputs;
 
-let dateRangePickerType: TypeOption = {
+let dateRangePickerType: ConfigOption['types'][number] = {
   name: 'daterangepickerv2',
   component: FormlyFieldDateRangePickerComponent,
   defaultOptions: {

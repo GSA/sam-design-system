@@ -35,8 +35,8 @@ import { JsonPipe } from '@angular/common';
 interface FormlyValueChangeEvent {
   field: Partial<FormlyFieldConfig>;
   type: string;
-  value: any;
-  [meta: string]: any;
+  value: unknown;
+  [meta: string]: unknown;
 }
 
 @Component({

@@ -22,7 +22,7 @@ describe('SdsSearchResultListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsSearchResultListComponent);
     component = fixture.componentInstance;
-    location = TestBed.inject(Location);
+    location = TestBed.inject(Location) as unknown as SpyLocation;
     el = fixture.debugElement;
   });
 
