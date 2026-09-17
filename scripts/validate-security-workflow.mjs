@@ -8,6 +8,18 @@ const serverPath = 'scripts/serve-security-scan.mjs';
 const rulesPath = '.zap/rules.tsv';
 const documentationPath = 'docs/security-scanning.md';
 
+/**
+ * Accept only a real calendar date in YYYY-MM-DD form. A plain regex would let
+ * 2027-02-30 or 9999-99-99 through, so the value must also round-trip through
+ * Date without being normalised to a different day.
+ */
+function isRealIsoDate(value) {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value.trim())) return false;
+  const trimmed = value.trim();
+  const parsed = new Date(`${trimmed}T00:00:00Z`);
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === trimmed;
+}
+
 function contents(path) {
   return existsSync(path) ? readFileSync(path, 'utf8') : '';
 }
@@ -43,12 +55,47 @@ if (!workflow) {
 if (!/npm run validate:security-workflow/.test(contents(ciWorkflowPath))) {
   failures.push('runs the policy validator in the CI workflow');
 }
-if (!contents(severityGatePath).includes('Number(alert.riskcode) < 2'))
-  failures.push('provides a medium/high ZAP severity gate');
+if (!contents(severityGatePath).includes('riskcodeOf(alert) >= 2'))
+  failures.push('blocks ZAP medium- and high-risk alerts by JSON riskcode');
+if (!contents(severityGatePath).includes('Number.isNaN(riskcodeOf(alert))'))
+  failures.push('fails closed on a missing or non-numeric riskcode');
 if (!contents(serverPath).includes('Content-Security-Policy')) failures.push('provides the security-header server');
-if (!existsSync(rulesPath)) failures.push('provides the reviewed ZAP exception baseline');
+
+// Every reviewed exception must stay auditable: a parseable row, a narrowest
+// available scope (or an explicit, justified `*`), a tracking issue in this
+// repository, a named owner, a real and unexpired calendar expiry, and a
+// rationale. An expired row is a reviewable CI failure, not a silent reopening
+// of the gate.
+if (!existsSync(rulesPath)) {
+  failures.push('provides the reviewed ZAP exception baseline');
+} else {
+  const today = new Date().toISOString().slice(0, 10);
+  const exceptionRows = contents(rulesPath)
+    .split(/\r?\n/)
+    .filter((line) => line.trim() && !line.startsWith('#'));
+  for (const row of exceptionRows) {
+    const [ruleId, action, scope, issue, owner, expiry, rationale, ...extra] = row.split('\t');
+    if (
+      !/^\d+$/.test(ruleId ?? '') ||
+      action !== 'IGNORE' ||
+      !scope?.trim() ||
+      !/^https:\/\/github\.com\/GSA\/sam-design-system\/issues\/\d+$/.test(issue ?? '') ||
+      !owner?.trim() ||
+      !isRealIsoDate(expiry) ||
+      expiry.trim() < today ||
+      !rationale?.trim() ||
+      extra.length > 0
+    ) {
+      failures.push(`valid, unexpired ZAP exception row: ${row}`);
+    }
+  }
+}
+
 if (!/CodeQL[\s\S]*DAST[\s\S]*Required status checks/.test(contents(documentationPath))) {
   failures.push('documents CodeQL and required DAST status-check administration');
+}
+if (!/rationale[\s\S]*expir/i.test(contents(documentationPath))) {
+  failures.push('documents the exception rationale and expiry policy');
 }
 
 if (failures.length) {
