@@ -8,9 +8,14 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2022",
-    "moduleResolution": "node",
-    "types": ["node"],
-    "lib": ["ES2024", "dom"],
+    "moduleResolution": "bundler",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES2024",
+      "dom"
+    ],
     "baseUrl": ".",
     "rootDir": ".",
     "useDefineForClassFields": false

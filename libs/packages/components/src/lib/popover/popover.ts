@@ -20,8 +20,9 @@ import {
   TemplateRef,
   ViewContainerRef,
   ViewEncapsulation,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 
 import { listenToTriggers } from '../util/triggers';
 import { sdsAutoClose } from '../util/autoclose';

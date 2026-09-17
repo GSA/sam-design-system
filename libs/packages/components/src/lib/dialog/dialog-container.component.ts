@@ -10,8 +10,9 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectionStrategy,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { AnimationEvent } from '@angular/animations';
 import { sdsDialogAnimations } from './dialog-animations';
 import { BasePortalOutlet, ComponentPortal, CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';

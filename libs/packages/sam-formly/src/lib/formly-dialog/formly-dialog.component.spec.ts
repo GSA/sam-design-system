@@ -35,8 +35,8 @@ describe('SdsFormlyDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsFormlyDialogComponent);
     component = fixture.componentInstance;
-    dialogRef = TestBed.get(SdsDialogRef);
-    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService);
+    dialogRef = TestBed.inject(SdsDialogRef);
+    advancedFiltersService = TestBed.inject(SdsAdvancedFiltersService);
     fixture.detectChanges();
   });
 

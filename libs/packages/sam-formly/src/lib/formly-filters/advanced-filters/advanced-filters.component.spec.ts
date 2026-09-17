@@ -35,7 +35,7 @@ describe('Advanced Filteres Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvancedFiltersComponent);
     component = fixture.componentInstance;
-    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService);
+    advancedFiltersService = TestBed.inject(SdsAdvancedFiltersService);
     modalServiceSpy.open.and.returnValue(dialogRefSpyObj);
   });
 
