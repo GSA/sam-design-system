@@ -1,6 +1,6 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
-import { ComponentPortal, ComponentType, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
 import { Location } from '@angular/common';
 import {
   Inject,
@@ -10,6 +10,7 @@ import {
   OnDestroy,
   Optional,
   SkipSelf,
+  StaticProvider,
   TemplateRef,
 } from '@angular/core';
 import { defer, Observable, of as observableOf, Subject } from 'rxjs';
@@ -230,7 +231,10 @@ export class SdsDialogService implements OnDestroy {
    */
   private _attachDialogContainer(overlay: OverlayRef, config: SdsDialogConfig): SdsDialogContainerComponent {
     const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
-    const injector = new PortalInjector(userInjector || this._injector, new WeakMap([[SdsDialogConfig, config]]));
+    const injector = Injector.create({
+      parent: userInjector || this._injector,
+      providers: [{ provide: SdsDialogConfig, useValue: config }],
+    });
     const containerPortal = new ComponentPortal(SdsDialogContainerComponent, config.viewContainerRef, injector);
     const containerRef = overlay.attach<SdsDialogContainerComponent>(containerPortal);
 
@@ -294,27 +298,33 @@ export class SdsDialogService implements OnDestroy {
     config: SdsDialogConfig,
     dialogRef: SdsDialogRef<T>,
     dialogContainer: SdsDialogContainerComponent,
-  ): PortalInjector {
+  ): Injector {
     const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
 
     // The SdsDialogContainerComponent is injected in the portal as the SdsDialogContainerComponent and the dialog's
     // content are created out of the same ViewContainerRef and as such, are siblings for injector
     // purposes. To allow the hierarchy that is expected, the SdsDialogContainerComponent is explicitly
     // added to the injection tokens.
-    const injectionTokens = new WeakMap<any, any>([
-      [SdsDialogContainerComponent, dialogContainer],
-      [SDS_DIALOG_DATA, config.data],
-      [SdsDialogRef, dialogRef],
-    ]);
+    const providers: StaticProvider[] = [
+      { provide: SdsDialogContainerComponent, useValue: dialogContainer },
+      { provide: SDS_DIALOG_DATA, useValue: config.data },
+      { provide: SdsDialogRef, useValue: dialogRef },
+    ];
 
     if (config.direction && (!userInjector || !userInjector.get<Directionality | null>(Directionality, null))) {
-      injectionTokens.set(Directionality, {
-        value: config.direction,
-        change: observableOf(),
+      providers.push({
+        provide: Directionality,
+        useValue: {
+          value: config.direction,
+          change: observableOf(),
+        },
       });
     }
 
-    return new PortalInjector(userInjector || this._injector, injectionTokens);
+    return Injector.create({
+      parent: userInjector || this._injector,
+      providers,
+    });
   }
 
   /**
