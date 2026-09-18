@@ -20,8 +20,9 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
   ViewChild,
+  DOCUMENT,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';
 import { Subject } from 'rxjs';
 import { filter, startWith, take, distinctUntilChanged } from 'rxjs/operators';

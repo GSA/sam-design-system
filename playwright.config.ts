@@ -15,11 +15,9 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    // The demo Angular app currently fails to build/serve on its own
-    // (pre-existing `~@angular/cdk/overlay-prebuilt.css` esbuild resolution
-    // error, unrelated to this change). Storybook already builds and serves
-    // that same app content via its Angular framework integration, so the
-    // smoke test boots the built Storybook static output instead.
+    // Storybook already builds and serves the same app content via its
+    // Angular framework integration, and pins the E2E smoke test to a
+    // static, deterministic artifact rather than the live dev server.
     command: 'npm run build-storybook && npx http-server storybook-static -p 4310 -s',
     url: 'http://127.0.0.1:4310',
     reuseExistingServer: !process.env.CI,

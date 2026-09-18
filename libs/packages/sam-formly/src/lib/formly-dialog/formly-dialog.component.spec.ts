@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { UntypedFormGroup, ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { SdsDialogRef, SDS_DIALOG_DATA, SdsDialogService } from '@gsa-sam/components';
+import { SdsDialogRef, SDS_DIALOG_DATA } from '@gsa-sam/components';
 
 import { SdsFormlyDialogComponent } from './formly-dialog.component';
 import { SdsFormlyModule } from '../formly/formly.module';
@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 describe('SdsFormlyDialogComponent', () => {
   let component: SdsFormlyDialogComponent;
   let fixture: ComponentFixture<SdsFormlyDialogComponent>;
-  let dialogRef: SdsDialogService;
+  let dialogRef: SdsDialogRef<any>;
   let advancedFiltersService: SdsAdvancedFiltersService;
 
   beforeEach(waitForAsync(() => {
@@ -35,8 +35,8 @@ describe('SdsFormlyDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SdsFormlyDialogComponent);
     component = fixture.componentInstance;
-    dialogRef = TestBed.get(SdsDialogRef);
-    advancedFiltersService = TestBed.get(SdsAdvancedFiltersService);
+    dialogRef = TestBed.inject(SdsDialogRef);
+    advancedFiltersService = TestBed.inject(SdsAdvancedFiltersService);
     fixture.detectChanges();
   });
 

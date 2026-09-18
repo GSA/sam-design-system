@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -16,6 +15,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewChild,
+  DOCUMENT,
 } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';

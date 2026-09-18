@@ -8,7 +8,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2022",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "types": ["node"],
     "lib": ["ES2024", "dom"],
     "baseUrl": ".",

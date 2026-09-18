@@ -1,5 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Injectable, Inject, DOCUMENT } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class NgbRTL {

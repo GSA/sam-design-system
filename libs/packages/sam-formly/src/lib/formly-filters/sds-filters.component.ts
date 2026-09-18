@@ -25,8 +25,19 @@ import { FormlyUtilsService, ReadonlyDataType } from '../formly/services/formly-
 import { SdsFormlyTypes } from '../formly/models/formly-types';
 import { SdsDialogRef, SdsDialogService, SDS_DIALOG_DATA } from '@gsa-sam/components';
 import { cloneDeep } from 'lodash-es';
-import { FormlyValueChangeEvent } from '@ngx-formly/core/lib/models/fieldconfig';
 import { JsonPipe } from '@angular/common';
+
+/**
+ * Mirrors `@ngx-formly/core`'s internal `FormlyValueChangeEvent` shape
+ * (previously imported from the non-public `@ngx-formly/core/lib/models/fieldconfig`
+ * subpath, which is no longer resolvable under `moduleResolution: bundler`).
+ */
+interface FormlyValueChangeEvent {
+  field: Partial<FormlyFieldConfig>;
+  type: string;
+  value: unknown;
+  [meta: string]: unknown;
+}
 
 @Component({
   selector: 'sds-filters',

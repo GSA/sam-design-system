@@ -11,11 +11,11 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   Inject,
+  DOCUMENT,
 } from '@angular/core';
 import { GLOBAL_STRINGS } from 'accessible-html5-video-player/js/strings.js';
 import * as InitPxVideo from 'accessible-html5-video-player/js/px-video.js';
 import { VPInterface } from './video-player';
-import { DOCUMENT } from '@angular/common';
 
 interface InitPxVideoConfig {
   videoId: string;
