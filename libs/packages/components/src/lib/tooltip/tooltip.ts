@@ -20,9 +20,8 @@ import {
   TemplateRef,
   ViewContainerRef,
   ViewEncapsulation,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
-
 
 import { listenToTriggers } from '../util/triggers';
 import { sdsAutoClose } from '../util/autoclose';

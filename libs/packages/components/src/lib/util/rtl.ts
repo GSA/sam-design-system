@@ -1,6 +1,5 @@
 import { Injectable, Inject, DOCUMENT } from '@angular/core';
 
-
 @Injectable({ providedIn: 'root' })
 export class NgbRTL {
   private _element: HTMLHtmlElement;

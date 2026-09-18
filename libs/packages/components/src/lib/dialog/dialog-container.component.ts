@@ -10,7 +10,7 @@ import {
   ViewChild,
   ViewEncapsulation,
   ChangeDetectionStrategy,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
 
 import { AnimationEvent } from '@angular/animations';

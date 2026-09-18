@@ -20,7 +20,7 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
   ViewChild,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
 
 import { ANIMATION_MODULE_TYPE } from '@angular/platform-browser/animations';

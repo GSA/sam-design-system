@@ -20,7 +20,7 @@ import {
   TemplateRef,
   ViewContainerRef,
   ViewEncapsulation,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 

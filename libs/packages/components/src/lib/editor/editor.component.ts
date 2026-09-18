@@ -1,4 +1,3 @@
-
 import {
   Component,
   forwardRef,
@@ -8,7 +7,7 @@ import {
   ViewChild,
   ElementRef,
   Inject,
-  DOCUMENT
+  DOCUMENT,
 } from '@angular/core';
 import DOMPurify from 'dompurify';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
