@@ -1,8 +1,10 @@
-# All files — sam-shared-frontend team owns this repo
-* @GSA/sam-shared-frontend
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
 
-# Changes to GitHub Actions workflows and repo configuration require
-# DevSecOps (sam-shared-frontend-admin) review in addition to the
-# default owners. This is a merge-time guardrail against unauthorized
-# modifications to dependency automation and repository configuration.
-/.github/ @GSA/sam-shared-frontend-admin @christyhermansen
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# @global-owner1 and @global-owner2 will be requested for
+# review when someone opens a pull request.
+*       @davereed @christyhermansen @yerramshilpa @shayan-roshan @cwolf10 
+/libs/documentation @victoriatighe @carlosvalle @davereed @christyhermansen @yerramshilpa @shayan-roshan @cwolf10
+/libs/packages/layout @victoriatighe @carlosvalle @davereed @christyhermansen @yerramshilpa @shayan-roshan @cwolf10
