@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
 import { By } from '@angular/platform-browser';
-import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service.spec';
+import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service';
 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
@@ -200,7 +200,7 @@ describe('SamAutocompleteComponent', () => {
     const downEvent = {
       key: 'Down',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.onKeydown(downEvent);
     tick();
@@ -212,7 +212,7 @@ describe('SamAutocompleteComponent', () => {
     const upEvent = {
       key: 'Up',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.onKeydown(upEvent);
     tick();
@@ -233,7 +233,7 @@ describe('SamAutocompleteComponent', () => {
     const downEvent = {
       key: 'Up',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.onKeydown(downEvent);
     tick();
@@ -265,7 +265,7 @@ describe('SamAutocompleteComponent', () => {
     const downEvent = {
       key: 'Down',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.onKeydown(downEvent);
     tick();
@@ -286,7 +286,7 @@ describe('SamAutocompleteComponent', () => {
     const downEvent = {
       key: 'Down',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.onKeydown(downEvent);
     tick();
@@ -297,7 +297,7 @@ describe('SamAutocompleteComponent', () => {
     const upEvent = {
       key: 'Up',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.highlightedChildIndex = 3;
     component.onKeydown(upEvent);
@@ -338,7 +338,7 @@ describe('SamAutocompleteComponent', () => {
     const upEvent = {
       key: 'Down',
       target: { value: 'id' },
-      preventDefault: jasmine.createSpy(),
+      preventDefault: vi.fn(),
     };
     component.onKeydown(upEvent);
     tick();

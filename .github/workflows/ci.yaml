@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: components-coverage
-          path: coverage/libs/components
+          path: coverage-reports/components
           if-no-files-found: error
       - name: Test SAM Formly library with coverage
         id: sam_formly_tests
@@ -75,7 +75,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sam-formly-coverage
-          path: coverage/libs/sam-formly
+          path: coverage-reports/sam-formly
           if-no-files-found: error
       - name: Test SAM Material Extensions library with coverage
         id: sam_material_extensions_tests
@@ -85,5 +85,11 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sam-material-extensions-coverage
-          path: coverage/libs/sam-material-extensions
+          path: coverage-reports/sam-material-extensions
           if-no-files-found: error
+      - name: Test documentation library
+        run: npm run demo:docs && npm run test:documentation
+      - name: Test site app
+        run: npm run test:site
+      - name: Check coverage ratchet
+        run: npm run coverage:check

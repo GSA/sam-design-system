@@ -76,6 +76,6 @@ class AccordionItem {
   expanded = false;
   hideToggle = false;
   disabled = false;
-  openCallback = jasmine.createSpy('openCallback');
-  closeCallback = jasmine.createSpy('closeCallback');
+  openCallback = vi.fn();
+  closeCallback = vi.fn();
 }

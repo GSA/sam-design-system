@@ -56,7 +56,7 @@ describe('Selection Panel Navigation Mode Component', () => {
   });
 
   it('Should emit event when panel item is clicked', () => {
-    const panelSelectedEventSpy = spyOn(component.panelSelected, 'emit');
+    const panelSelectedEventSpy = vi.spyOn(component.panelSelected, 'emit');
 
     const anchorElement = fixture.debugElement.query(By.css('a'));
     anchorElement.triggerEventHandler('click', null);

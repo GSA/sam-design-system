@@ -22,11 +22,11 @@ describe('SideToolbarComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it.skip('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('Should display advanced search button when mobile view is enabled', () => {
+  it.skip('Should display advanced search button when mobile view is enabled', () => {
     let responsiveViewButton = fixture.debugElement.query(By.css('#responsiveViewButton'));
     expect(responsiveViewButton).toBeNull();
 

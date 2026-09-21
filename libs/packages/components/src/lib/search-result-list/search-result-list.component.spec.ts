@@ -42,7 +42,7 @@ describe('SdsSearchResultListComponent', () => {
     fixture.detectChanges();
     const testResult = component.updateModel.results[0];
     const testResults = component.updateModel.results;
-    expect(testResult).toBeTruthy('Could not find');
+    expect(testResult).toBeTruthy();
     expect(testResults.length).toBeGreaterThan(0);
     expect(testResult.title).toEqual('First');
   }));
@@ -63,7 +63,7 @@ describe('SdsSearchResultListComponent', () => {
 
   it('should go back to previous page on go back button click', () => {
     component.model = [];
-    spyOn(location, 'back');
+    vi.spyOn(location, 'back');
     component.goBack();
     expect(location.back).toHaveBeenCalled();
   });

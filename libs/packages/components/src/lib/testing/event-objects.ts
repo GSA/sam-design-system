@@ -8,27 +8,23 @@
 
 /** Creates a browser MouseEvent with the specified options. */
 export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
-  const event = document.createEvent('MouseEvent');
+  const event = new MouseEvent(type, {
+    bubbles: true,
+    cancelable: false,
+    detail: 0,
+    screenX: x,
+    screenY: y,
+    clientX: x,
+    clientY: y,
+    ctrlKey: false,
+    altKey: false,
+    shiftKey: false,
+    metaKey: false,
+    button,
+    relatedTarget: null,
+  });
 
-  event.initMouseEvent(
-    type,
-    true /* canBubble */,
-    false /* cancelable */,
-    window /* view */,
-    0 /* detail */,
-    x /* screenX */,
-    y /* screenY */,
-    x /* clientX */,
-    y /* clientY */,
-    false /* ctrlKey */,
-    false /* altKey */,
-    false /* shiftKey */,
-    false /* metaKey */,
-    button /* button */,
-    null /* relatedTarget */,
-  );
-
-  // `initMouseEvent` doesn't allow us to pass the `buttons` and
+  // `MouseEvent`'s constructor doesn't allow us to pass the `buttons` and
   // defaults it to 0 which looks like a fake event.
   Object.defineProperty(event, 'buttons', { get: () => 1 });
 
@@ -57,15 +53,11 @@ export function createTouchEvent(type: string, pageX = 0, pageY = 0) {
 
 /** Dispatches a keydown event from an element. */
 export function createKeyboardEvent(type: string, keyCode: number, target?: Element, key?: string) {
-  let event = document.createEvent('KeyboardEvent') as any;
-  let originalPreventDefault = event.preventDefault;
-
-  // Firefox does not support `initKeyboardEvent`, but supports `initKeyEvent`.
-  if (event.initKeyEvent) {
-    event.initKeyEvent(type, true, true, window, 0, 0, 0, 0, 0, keyCode);
-  } else {
-    event.initKeyboardEvent(type, true, true, window, 0, key, 0, '', false);
-  }
+  const event = new KeyboardEvent(type, {
+    bubbles: true,
+    cancelable: true,
+    key,
+  });
 
   // Webkit Browsers don't set the keyCode when calling the init function.
   // See related bug https://bugs.webkit.org/show_bug.cgi?id=16735
@@ -74,12 +66,6 @@ export function createKeyboardEvent(type: string, keyCode: number, target?: Elem
     key: { get: () => key },
     target: { get: () => target },
   });
-
-  // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
-  event.preventDefault = function () {
-    Object.defineProperty(event, 'defaultPrevented', { get: () => true });
-    return originalPreventDefault.apply(this, arguments);
-  };
 
   return event;
 }

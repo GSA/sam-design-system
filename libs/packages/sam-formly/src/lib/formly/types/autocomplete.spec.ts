@@ -79,7 +79,7 @@ describe('Formly Field Select Component', () => {
       testAutocompleteComponent.settings.debounceTime = 0;
     });
 
-    xit('should correctly bind to a static array of data', () => {
+    it.skip('should correctly bind to a static array of data', () => {
       testAutocompleteComponent.fields = [
         {
           key: 'firstName',

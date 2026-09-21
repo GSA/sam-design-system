@@ -7,7 +7,7 @@ class IntiPxVideoObj {
   InitPxVideo(options) {}
 }
 
-xdescribe('VideoPlayerComponent', () => {
+describe.skip('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
   let fixture: ComponentFixture<SdsVideoPlayerComponent>;
   //let de: DebugElement = new DebugElement();

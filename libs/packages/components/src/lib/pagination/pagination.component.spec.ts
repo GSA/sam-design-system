@@ -73,7 +73,7 @@ describe('PaginationComponent', () => {
   }));
 
   it('select change', () => {
-    spyOn(component.pageChange, 'emit');
+    vi.spyOn(component.pageChange, 'emit');
     component.onSelectChange();
     expect(component.pageChange.emit).toHaveBeenCalledWith(component.page);
   });

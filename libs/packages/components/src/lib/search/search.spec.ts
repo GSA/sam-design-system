@@ -3,6 +3,8 @@ import { SdsSearchComponent } from './search.component';
 import { By } from '@angular/platform-browser';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { NgxBootstrapIconsModule, x, search } from 'ngx-bootstrap-icons';
 
 class TestComponent {
   inputState = {
@@ -18,6 +20,7 @@ describe('SearchComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchComponent],
+      imports: [IconModule, NgxBootstrapIconsModule.pick({ x, search })],
       providers: [FocusMonitor, ViewportRuler],
     }).compileComponents();
   }));
@@ -26,6 +29,21 @@ describe('SearchComponent', () => {
     fixture = TestBed.createComponent(SdsSearchComponent);
     component = fixture.componentInstance;
     component.searchSettings.size = 'large';
+    // jsdom always reports 0 for layout geometry (no real rendering engine).
+    // A real browser measures a rendered, visible input/button with nonzero
+    // width; stub `getBoundingClientRect` so `isInputVisible()` /
+    // `calculateInputWidth()` behave the way they do under Karma/Chrome.
+    vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue({
+      width: 100,
+      height: 20,
+      top: 0,
+      left: 0,
+      bottom: 20,
+      right: 100,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    } as DOMRect);
     fixture.detectChanges();
   });
 
@@ -68,7 +86,7 @@ describe('SearchComponent', () => {
   it('Should emit on submit output on click event', () => {
     const model = { searchText: 'abc' };
     component.model = model;
-    spyOn(component.submit, 'emit');
+    vi.spyOn(component.submit, 'emit');
     component.handleClick({ preventDefault: () => {} });
     expect(component.submit.emit).toHaveBeenCalledWith(model);
   });

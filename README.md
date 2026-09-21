@@ -100,7 +100,51 @@ Run `ng build --project=myapp` to build the project. The build artifacts will be
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests for all five projects. The three
+publishable libraries (`components`, `sam-formly`, `sam-material-extensions`)
+run on [Vitest](https://vitest.dev) via Angular's `@angular/build:unit-test`
+builder; `documentation` and the `sam-design-system-site` demo app remain on
+[Karma](https://karma-runner.github.io) (see "Documentation and site app test
+runner" below for why).
+
+Each of the three libraries carries its own ratcheting coverage floor in
+`coverage-floor.json`. Run `npm run coverage:check` after `npm run
+test:components && npm run test:material-extensions && npm run
+test:sam-formly` to verify none of the three has regressed below its
+committed floor; run `npm run coverage:bump` to raise a floor to the currently
+measured coverage after a genuine improvement (never to make a failing gate
+pass — that's a code smell, not a fix). Floors only ever move up per library,
+independently of the other two, so a regression in one library can't hide
+behind a gain in another.
+
+### Documentation and site app test runner
+
+`documentation` (2 specs) and `sam-design-system-site` (1 spec) stay on Karma.
+Both surfaces build all of the demo/example code inline via webpack's
+`raw-loader!` syntax (`require('!!raw-loader!./some-demo.component')`, used
+across ~50 files to show component source in the docs site), which only
+resolves under Karma's webpack-based test bundler. `@angular/build:unit-test`
+builds specs through esbuild via the `@angular/build:application` builder,
+which has no equivalent loader and fails to resolve those imports. Since
+karma survives through Angular 21 (`@angular-devkit/build-angular@21` still
+ships the karma builder) and these two projects have only 3 trivial specs
+between them, migrating them to Vitest is deferred rather than blocking the
+rest of the migration; see GSA/sam-design-system#1616 for the decision record.
+
+### Vitest test-setup shims
+
+Each of the three Vitest-migrated libraries has its own `src/test-setup.ts`
+(all three are copies of the same file) that:
+
+- wraps Vitest's `it`/`test`/`beforeEach`/etc. in a Zone.js ProxyZone, which
+  Angular's `fakeAsync()`/`waitForAsync()` helpers require and which the
+  `@angular/build:unit-test` builder does not provide out of the box;
+- polyfills `ResizeObserver`, which jsdom does not implement;
+- polyfills `HTMLElement.prototype.innerText` (jsdom has no real layout
+  engine, so it never implements `innerText`);
+- stubs a nonzero `offsetWidth`/`offsetHeight` on `HTMLElement.prototype`, so
+  Angular CDK's `InteractivityChecker` (used by dialog/menu focus-trapping)
+  doesn't treat every element as invisible under jsdom's zero-geometry DOM.
 
 ## Running end-to-end tests
 

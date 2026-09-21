@@ -1,10 +1,8 @@
-/* tslint:disable */
 import { Observable, of } from 'rxjs';
 import {
   SDSAutocompleteServiceInterface,
   SDSHiercarchicalServiceResult,
 } from './models/SDSAutocompleteServiceInterface';
-import { map } from 'rxjs/operators';
 import { GropupSampleAutocompleteData } from './autocomplete-sample.data';
 
 export class AutoCompleteSampleDataService implements SDSAutocompleteServiceInterface {
@@ -12,17 +10,17 @@ export class AutoCompleteSampleDataService implements SDSAutocompleteServiceInte
   constructor() {
     const data = GropupSampleAutocompleteData;
     for (let i = 0; i < data.length; i++) {
-      let item = data[i];
-      let results = data.filter((it) => it.element_id === item.element_id);
+      const item = data[i];
+      const results = data.filter((it) => it.element_id === item.element_id);
       item['childCount'] = results.length;
     }
     this.loadedData = data;
   }
 
   getDataByText(currentItems: number, searchValue?: string): Observable<SDSHiercarchicalServiceResult> {
-    let itemIncrease = 25;
-    let data = of(this.loadedData);
-    let itemsOb: Observable<Object[]>;
+    const itemIncrease = 25;
+    const data = of(this.loadedData);
+    let itemsOb: Observable<object[]>;
 
     if (searchValue) {
       const filteredData = [];
@@ -37,20 +35,20 @@ export class AutoCompleteSampleDataService implements SDSAutocompleteServiceInte
     } else {
       itemsOb = data;
     }
-    let items: object[] = this.itemsListOutofObservable(itemsOb);
-    let totalItemCount = items.length;
+    const items: object[] = this.itemsListOutofObservable(itemsOb);
+    const totalItemCount = items.length;
 
-    let maxSectionPosition = this.getMaxSectionPosition(currentItems, itemIncrease, totalItemCount);
-    let subItemsitems = items.slice(currentItems, maxSectionPosition);
+    const maxSectionPosition = this.getMaxSectionPosition(currentItems, itemIncrease, totalItemCount);
+    const subItemsitems = items.slice(currentItems, maxSectionPosition);
 
-    let returnItem = {
+    const returnItem = {
       items: subItemsitems,
       totalItems: totalItemCount,
     };
     return of(returnItem);
   }
 
-  private itemsListOutofObservable(itemsOb: any) {
+  private itemsListOutofObservable(itemsOb: Observable<object[]>) {
     let items: object[];
     itemsOb.subscribe((result) => {
       items = result;

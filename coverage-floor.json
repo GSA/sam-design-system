@@ -1,0 +1,20 @@
+{
+  "components": {
+    "statements": 70,
+    "branches": 87,
+    "functions": 51,
+    "lines": 70
+  },
+  "sam-formly": {
+    "statements": 67,
+    "branches": 66,
+    "functions": 14,
+    "lines": 67
+  },
+  "sam-material-extensions": {
+    "statements": 48,
+    "branches": 76,
+    "functions": 6,
+    "lines": 48
+  }
+}
