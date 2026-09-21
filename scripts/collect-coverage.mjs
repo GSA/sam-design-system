@@ -23,12 +23,31 @@
  * Example:
  *   node scripts/collect-coverage.mjs components
  */
-import { existsSync, mkdirSync, readdirSync, renameSync, rmSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+
+// `project` is used to build a path that this script then recursively
+// deletes (`destination`, below) before the rename. It must never be taken
+// from the caller uninspected: a value like `..` would resolve `destination`
+// to the repository root, and the existing-destination cleanup would delete
+// the checkout out from under CI. Restrict it to the five known npm-script
+// callers (see the `test:*` scripts in package.json) rather than trying to
+// sanitize an arbitrary path.
+const KNOWN_PROJECTS = [
+  'components',
+  'sam-formly',
+  'sam-material-extensions',
+  'documentation',
+  'sam-design-system-site',
+];
 
 const project = process.argv[2];
 if (!project) {
   console.error('Usage: node scripts/collect-coverage.mjs <project-name>');
+  process.exit(1);
+}
+if (!KNOWN_PROJECTS.includes(project)) {
+  console.error(`✖ Unknown project "${project}". Known projects: ${KNOWN_PROJECTS.join(', ')}`);
   process.exit(1);
 }
 
@@ -50,27 +69,88 @@ renameSync(source, destination);
 // The lcov html reporter mirrors Vitest's virtual module names (e.g.
 // `angular:script/global:scripts.js.html`) verbatim into file/directory
 // names on disk. Colons are invalid in `actions/upload-artifact` uploads
-// (and on some filesystems), so sanitize them out of the copied tree.
-sanitizeColonsInPlace(destination);
+// (and on some filesystems), so sanitize them out of the copied tree. The
+// generated HTML itself still links to the *original* colon-bearing names
+// (istanbul-reports computes hrefs from the report tree it built in memory,
+// not from what ends up on disk), so every renamed path needs its links
+// rewritten too, or "All files" -> that file's report becomes a dead link.
+const renames = collectColonRenames(destination);
+applyRenames(destination, renames);
+rewriteHtmlLinks(destination, renames);
 
 console.log(`✓ Moved coverage report to ${destination}`);
 
 /**
- * Recursively renames any file or directory under `dir` whose name contains
- * a colon, replacing each colon with a hyphen.
+ * Recursively finds every file or directory under `dir` whose name contains
+ * a colon, returning `{ from, to }` pairs (both absolute paths, deepest
+ * entries first) with colons replaced by hyphens. Doesn't rename anything
+ * itself, so the original tree — and the original names any HTML in it
+ * still links to — stays intact until `applyRenames` runs.
  */
-function sanitizeColonsInPlace(dir) {
+function collectColonRenames(dir, acc = []) {
   for (const entry of readdirSync(dir)) {
     const entryPath = join(dir, entry);
-    const isDirectory = statSync(entryPath).isDirectory();
-
-    if (isDirectory) {
-      sanitizeColonsInPlace(entryPath);
+    if (statSync(entryPath).isDirectory()) {
+      collectColonRenames(entryPath, acc);
     }
-
     if (entry.includes(':')) {
-      const sanitizedPath = join(dir, entry.replaceAll(':', '-'));
-      renameSync(entryPath, sanitizedPath);
+      acc.push({ from: entryPath, to: join(dir, entry.replaceAll(':', '-')) });
     }
   }
+  return acc;
+}
+
+/**
+ * Performs the renames `collectColonRenames` found. Deepest paths are
+ * renamed first (children before parents) so a parent rename never
+ * invalidates an already-computed child path.
+ */
+function applyRenames(dir, renames) {
+  for (const { from, to } of renames) {
+    renameSync(from, to);
+  }
+}
+
+/**
+ * Rewrites every `.html` file under `dir` in place, replacing any literal
+ * occurrence of a renamed path's *original* basename with its sanitized
+ * basename. istanbul's html reporter always links to a sibling/descendant by
+ * that basename (as an `href`, or as a sortable `data-value`), so a plain
+ * string replacement fixes every reference without needing an HTML parser.
+ * Longest basenames are replaced first so a shorter renamed name that
+ * happens to be a substring of a longer one can't partially clobber it.
+ */
+function rewriteHtmlLinks(dir, renames) {
+  const basenameRenames = renames
+    .map(({ from, to }) => ({ from: basenameOf(from), to: basenameOf(to) }))
+    .sort((a, b) => b.from.length - a.from.length);
+  if (basenameRenames.length === 0) {
+    return;
+  }
+  for (const htmlFile of findHtmlFiles(dir)) {
+    const original = readFileSync(htmlFile, 'utf8');
+    let rewritten = original;
+    for (const { from, to } of basenameRenames) {
+      rewritten = rewritten.split(from).join(to);
+    }
+    if (rewritten !== original) {
+      writeFileSync(htmlFile, rewritten);
+    }
+  }
+}
+
+function basenameOf(path) {
+  return path.slice(path.lastIndexOf('/') + 1);
+}
+
+function findHtmlFiles(dir, acc = []) {
+  for (const entry of readdirSync(dir)) {
+    const entryPath = join(dir, entry);
+    if (statSync(entryPath).isDirectory()) {
+      findHtmlFiles(entryPath, acc);
+    } else if (entry.endsWith('.html')) {
+      acc.push(entryPath);
+    }
+  }
+  return acc;
 }

@@ -107,7 +107,9 @@ via Angular's `@angular/build:unit-test` builder against jsdom. Karma and
 Jasmine are no longer dependencies of this repo.
 
 Each of the three publishable libraries carries its own ratcheting coverage
-floor in `coverage-floor.json`. Run `npm run coverage:check` after `npm run
+floor in its own `libs/packages/<library>/coverage-floor.json` — not one
+shared root-level file — so a coverage bump to one library never conflicts
+with unrelated work on another. Run `npm run coverage:check` after `npm run
 test:components && npm run test:material-extensions && npm run
 test:sam-formly` to verify none of the three has regressed below its
 committed floor; run `npm run coverage:bump` to raise a floor to the currently

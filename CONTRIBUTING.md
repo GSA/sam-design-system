@@ -36,7 +36,6 @@ sam-design-system
 │       └── update-libs-version.js
 ├── angular.json
 ├── CODEOWNERS
-├── coverage-floor.json
 ├── nx.json
 ├── package-lock.json
 ├── package.json
@@ -300,7 +299,7 @@ packages
 
 - `angular.json` &rarr; Angular CLI configuration
 - `CODEOWNERS` &rarr; Github pull request approvers
-- `coverage-floor.json` &rarr; Per-project ratcheting code-coverage floors enforced by `npm run coverage:check` (see `scripts/check-coverage.mjs`)
+- `libs/packages/<library>/coverage-floor.json` &rarr; Per-library ratcheting code-coverage floor, one file per publishable library, enforced by `npm run coverage:check` (see `scripts/check-coverage.mjs`)
 - `nx.json` &rarr; NX Workspace monorepo configuration and dependency tagging
 - `package-lock.json` &rarr; Pre-processsed project dependencies
 - `package.json` &rarr; Project version, dependencies, and scripts

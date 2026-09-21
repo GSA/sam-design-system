@@ -13,23 +13,26 @@
  * every run — a per-library path *inside* `coverage/` would get wiped out by
  * the next library's test run).
  *
- * Policy: the committed floors live in `coverage-floor.json`, one object keyed
- * by project name, and are a *ratchet per project* — a library's own floors
- * may only ever move up, independently of the other two. This is deliberately
- * three floors, not one pooled number: a single shared floor would let a
- * regression in one library hide behind a gain in another, and it would make
- * every parallel coverage PR contend over one shared file.
+ * Policy: each library owns its own floor file,
+ * `libs/packages/<library>/coverage-floor.json`, and each is a *ratchet per
+ * project* — a library's own floor may only ever move up, independently of
+ * the other two. This is deliberately three separate files, not one pooled
+ * number or one shared root file: a single shared floor would let a
+ * regression in one library hide behind a gain in another, and a single
+ * shared *file* (even with per-project keys inside it) would still make
+ * every parallel coverage PR touching a different library contend over the
+ * same file.
  *
- * Feature and test PRs should NOT edit the floor file; they just need to keep
+ * Feature and test PRs should NOT edit a floor file; they just need to keep
  * each library's current coverage at or above its own floor. When coverage
  * has genuinely improved, lock the gain in with a dedicated bump:
  *
  *     npm run coverage:bump
  *
- * which rewrites `coverage-floor.json` to the current measured values across
- * all three libraries in one pass. Commit that on its own (ideally a small
- * standalone PR) so the only shared file parallel work touches changes in
- * isolation and rarely conflicts.
+ * which rewrites the floor file(s) for the requested project(s) (all three,
+ * with no arguments) to the current measured values. Commit that on its own
+ * (ideally a small standalone PR) so each library's floor file changes in
+ * isolation and rarely conflicts with unrelated work on another library.
  *
  * Usage:
  *   node scripts/check-coverage.mjs
@@ -40,20 +43,31 @@
  * With no project arguments, all three projects below are checked/bumped.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 const METRICS = ['statements', 'branches', 'functions', 'lines'];
 
-/** Project name -> path (relative to repo root) to its coverage-summary.json. */
+/**
+ * Project name -> { summaryPath, floorPath }, both relative to the current
+ * working directory (this script is always run via an `npm run` script, so
+ * that's the repo root in practice). Each project's floor lives alongside
+ * its library, not in one shared root-level file, so unrelated coverage
+ * bumps never touch the same file.
+ */
 const PROJECTS = {
-  components: 'coverage-reports/components/coverage-summary.json',
-  'sam-formly': 'coverage-reports/sam-formly/coverage-summary.json',
-  'sam-material-extensions': 'coverage-reports/sam-material-extensions/coverage-summary.json',
+  components: {
+    summaryPath: 'coverage-reports/components/coverage-summary.json',
+    floorPath: 'libs/packages/components/coverage-floor.json',
+  },
+  'sam-formly': {
+    summaryPath: 'coverage-reports/sam-formly/coverage-summary.json',
+    floorPath: 'libs/packages/sam-formly/coverage-floor.json',
+  },
+  'sam-material-extensions': {
+    summaryPath: 'coverage-reports/sam-material-extensions/coverage-summary.json',
+    floorPath: 'libs/packages/sam-material-extensions/coverage-floor.json',
+  },
 };
-
-const scriptDir = dirname(fileURLToPath(import.meta.url));
-const floorPath = resolve(scriptDir, '..', 'coverage-floor.json');
 
 const args = process.argv.slice(2);
 const bump = args.includes('--bump');
@@ -67,21 +81,22 @@ for (const project of projects) {
   }
 }
 
-let floors;
-try {
-  floors = JSON.parse(readFileSync(floorPath, 'utf8'));
-} catch (error) {
-  console.error(`✖ Could not read coverage floors at ${floorPath}`);
-  console.error(`  ${error.message}`);
-  process.exit(1);
+function readFloor(project) {
+  const floorPath = resolve(PROJECTS[project].floorPath);
+  try {
+    return { floorPath, floor: JSON.parse(readFileSync(floorPath, 'utf8')) };
+  } catch (error) {
+    console.error(`✖ [${project}] Could not read coverage floor at ${floorPath}`);
+    console.error(`  ${error.message}`);
+    return { floorPath, floor: null };
+  }
 }
 
 if (bump) {
   let anyRaised = false;
-  const nextFloors = { ...floors };
 
   for (const project of projects) {
-    const summaryPath = resolve(PROJECTS[project]);
+    const summaryPath = resolve(PROJECTS[project].summaryPath);
     let total;
     try {
       total = JSON.parse(readFileSync(summaryPath, 'utf8')).total;
@@ -91,7 +106,11 @@ if (bump) {
       process.exit(1);
     }
 
-    const currentFloors = floors[project] ?? {};
+    const { floorPath, floor } = readFloor(project);
+    if (floor === null) {
+      process.exit(1);
+    }
+
     const next = {};
     let raised = false;
     console.log(`${project}:`);
@@ -102,7 +121,7 @@ if (bump) {
         process.exit(1);
       }
       const floored = Math.floor(pct);
-      const rawCurrent = currentFloors[metric];
+      const rawCurrent = floor[metric];
       // Treat a missing or malformed floor as 0 so a corrupt coverage-floor.json
       // can never poison the ratchet with NaN/null values.
       const current = Number.isFinite(rawCurrent) ? rawCurrent : 0;
@@ -117,7 +136,8 @@ if (bump) {
     }
     if (raised) {
       anyRaised = true;
-      nextFloors[project] = next;
+      writeFileSync(floorPath, `${JSON.stringify(next, null, 2)}\n`);
+      console.log(`  ✓ Wrote raised floor to ${floorPath}.`);
     }
   }
 
@@ -125,14 +145,13 @@ if (bump) {
     console.log('\n✓ Floors already at or above current coverage; nothing to bump.');
     process.exit(0);
   }
-  writeFileSync(floorPath, `${JSON.stringify(nextFloors, null, 2)}\n`);
-  console.log(`\n✓ Wrote raised floors to ${floorPath}. Commit this change on its own.`);
+  console.log('\n✓ Commit the raised floor file(s) on their own.');
   process.exit(0);
 }
 
 let anyFailures = false;
 for (const project of projects) {
-  const summaryPath = resolve(PROJECTS[project]);
+  const summaryPath = resolve(PROJECTS[project].summaryPath);
   let total;
   try {
     total = JSON.parse(readFileSync(summaryPath, 'utf8')).total;
@@ -146,9 +165,8 @@ for (const project of projects) {
     continue;
   }
 
-  const projectFloors = floors[project];
-  if (!projectFloors) {
-    console.error(`✖ [${project}] No floors recorded in coverage-floor.json`);
+  const { floorPath, floor: projectFloors } = readFloor(project);
+  if (projectFloors === null) {
     anyFailures = true;
     continue;
   }
@@ -159,7 +177,7 @@ for (const project of projects) {
     const floor = projectFloors[metric];
     const pct = total?.[metric]?.pct;
     if (!Number.isFinite(floor)) {
-      failures.push(`${metric}: missing or invalid in coverage-floor.json`);
+      failures.push(`${metric}: missing or invalid in ${floorPath}`);
       continue;
     }
     if (typeof pct !== 'number') {
@@ -185,8 +203,7 @@ for (const project of projects) {
 
 if (anyFailures) {
   console.error(
-    '\nCoverage dropped below the committed ratchet in coverage-floor.json.\n' +
-      'Add tests to restore it — do not lower the floors to go green.',
+    '\nCoverage dropped below a committed ratchet.\n' + 'Add tests to restore it — do not lower a floor to go green.',
   );
   process.exit(1);
 }

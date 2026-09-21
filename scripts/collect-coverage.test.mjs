@@ -11,7 +11,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, existsSync, rmSync, mkdirSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -96,6 +96,19 @@ test('fails when no project name is given', () => {
   assert.match(stderr, /Usage:/);
 });
 
+test('rejects a project name outside the known allowlist without touching the filesystem', () => {
+  withTempDir((dir) => {
+    seedCoverageDir(dir);
+    writeFileSync(join(dir, 'sentinel.txt'), 'must survive');
+    const { status, stderr } = run(['..'], dir);
+    assert.equal(status, 1);
+    assert.match(stderr, /Unknown project/);
+    // The destructive rename must never have run.
+    assert.equal(existsSync(join(dir, 'coverage')), true);
+    assert.equal(existsSync(join(dir, 'sentinel.txt')), true);
+  });
+});
+
 test('sanitizes colons out of nested lcov html file and directory names', () => {
   withTempDir((dir) => {
     seedCoverageDir(dir);
@@ -110,5 +123,41 @@ test('sanitizes colons out of nested lcov html file and directory names', () => 
     assert.equal(existsSync(join(dir, 'coverage-reports', 'components', 'lcov-report', 'angular:script')), false);
     assert.equal(existsSync(sanitizedDir), true);
     assert.equal(existsSync(join(sanitizedDir, 'global-scripts.js.html')), true);
+  });
+});
+
+test('rewrites HTML links so a renamed index page can still be followed', () => {
+  withTempDir((dir) => {
+    seedCoverageDir(dir);
+    const lcovRoot = join(dir, 'coverage', 'lcov-report');
+    const nestedDir = join(lcovRoot, 'angular:script');
+    mkdirSync(nestedDir, { recursive: true });
+    // A parent index page links to the nested directory's index.html and to
+    // a leaf report inside it, exactly as istanbul-reports' html reporter
+    // does — using the pre-sanitization, colon-bearing names.
+    writeFileSync(join(lcovRoot, 'index.html'), '<a href="angular:script/index.html">angular:script</a>');
+    writeFileSync(
+      join(nestedDir, 'index.html'),
+      '<a href="../index.html">up</a> <a href="global:scripts.js.html">global:scripts.js</a>',
+    );
+    writeFileSync(join(nestedDir, 'global:scripts.js.html'), '<html>leaf report</html>');
+
+    const { status } = run(['components'], dir);
+    assert.equal(status, 0);
+
+    const reportRoot = join(dir, 'coverage-reports', 'components', 'lcov-report');
+
+    // Follow the root index's link to the renamed nested directory.
+    const rootHtml = readFileSync(join(reportRoot, 'index.html'), 'utf8');
+    const rootLink = rootHtml.match(/href="([^"]+)"/)[1];
+    const nestedIndexPath = join(reportRoot, rootLink);
+    assert.equal(existsSync(nestedIndexPath), true, `root index links to a path that doesn't exist: ${rootLink}`);
+
+    // Follow that page's link to the renamed leaf report.
+    const nestedHtml = readFileSync(nestedIndexPath, 'utf8');
+    const leafLink = nestedHtml.match(/href="(?!\.\.\/)([^"]+)"/)[1];
+    const leafPath = join(dirname(nestedIndexPath), leafLink);
+    assert.equal(existsSync(leafPath), true, `nested index links to a path that doesn't exist: ${leafLink}`);
+    assert.equal(readFileSync(leafPath, 'utf8'), '<html>leaf report</html>');
   });
 });

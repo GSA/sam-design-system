@@ -48,21 +48,49 @@ if (typeof (globalThis as any).ResizeObserver === 'undefined') {
 // (used by FocusTrap to find the first tabbable element in a dialog) treats
 // that as "the element has no geometry" and therefore invisible/unfocusable,
 // which breaks every dialog-autofocus assertion under jsdom. Stub a nonzero
-// geometry so CDK's visibility check passes, matching what a real browser
-// reports for a rendered element.
+// geometry for elements that are actually connected and not `display: none`
+// (on themselves or an ancestor), matching what a real browser reports for a
+// rendered element — and keep detached/`display: none` elements at zero
+// geometry, so `InteractivityChecker.isVisible()` (which also separately
+// checks `visibility`) can't be fooled into treating a `[hidden]` or
+// `display: none` control as focusable the way an unconditional nonzero
+// stub would.
 if (typeof HTMLElement !== 'undefined') {
   Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
     configurable: true,
     get() {
-      return 100;
+      return isRenderedForGeometryMock(this) ? 100 : 0;
     },
   });
   Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
     configurable: true,
     get() {
-      return 40;
+      return isRenderedForGeometryMock(this) ? 40 : 0;
     },
   });
+}
+
+/**
+ * An element only gets the mocked nonzero geometry above if it's actually
+ * connected to the document and neither it nor any ancestor has
+ * `display: none`. Detached elements (e.g. ones a spec builds with
+ * `document.createElement()` but never attaches) and elements hidden via
+ * `display: none`/the `hidden` attribute keep the real, honest jsdom answer
+ * of zero — only `visibility: hidden` (which still occupies layout space in
+ * a real browser) gets nonzero geometry, exactly as a browser would report.
+ */
+function isRenderedForGeometryMock(element: Element): boolean {
+  if (!element.isConnected) {
+    return false;
+  }
+  let current: Element | null = element;
+  while (current && current.nodeType === 1) {
+    if (getComputedStyle(current).display === 'none') {
+      return false;
+    }
+    current = current.parentElement;
+  }
+  return true;
 }
 
 // jsdom intentionally does not implement `innerText` (it requires a real
