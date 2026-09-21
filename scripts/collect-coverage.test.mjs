@@ -95,3 +95,20 @@ test('fails when no project name is given', () => {
   assert.equal(status, 1);
   assert.match(stderr, /Usage:/);
 });
+
+test('sanitizes colons out of nested lcov html file and directory names', () => {
+  withTempDir((dir) => {
+    seedCoverageDir(dir);
+    const lcovDir = join(dir, 'coverage', 'lcov-report', 'angular:script');
+    mkdirSync(lcovDir, { recursive: true });
+    writeFileSync(join(lcovDir, 'global:scripts.js.html'), '<html></html>');
+
+    const { status } = run(['components'], dir);
+    assert.equal(status, 0);
+
+    const sanitizedDir = join(dir, 'coverage-reports', 'components', 'lcov-report', 'angular-script');
+    assert.equal(existsSync(join(dir, 'coverage-reports', 'components', 'lcov-report', 'angular:script')), false);
+    assert.equal(existsSync(sanitizedDir), true);
+    assert.equal(existsSync(join(sanitizedDir, 'global-scripts.js.html')), true);
+  });
+});

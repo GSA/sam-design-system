@@ -23,8 +23,8 @@
  * Example:
  *   node scripts/collect-coverage.mjs components
  */
-import { existsSync, mkdirSync, renameSync, rmSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { existsSync, mkdirSync, readdirSync, renameSync, rmSync, statSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 
 const project = process.argv[2];
 if (!project) {
@@ -47,4 +47,30 @@ if (existsSync(destination)) {
 mkdirSync(dirname(destination), { recursive: true });
 renameSync(source, destination);
 
+// The lcov html reporter mirrors Vitest's virtual module names (e.g.
+// `angular:script/global:scripts.js.html`) verbatim into file/directory
+// names on disk. Colons are invalid in `actions/upload-artifact` uploads
+// (and on some filesystems), so sanitize them out of the copied tree.
+sanitizeColonsInPlace(destination);
+
 console.log(`✓ Moved coverage report to ${destination}`);
+
+/**
+ * Recursively renames any file or directory under `dir` whose name contains
+ * a colon, replacing each colon with a hyphen.
+ */
+function sanitizeColonsInPlace(dir) {
+  for (const entry of readdirSync(dir)) {
+    const entryPath = join(dir, entry);
+    const isDirectory = statSync(entryPath).isDirectory();
+
+    if (isDirectory) {
+      sanitizeColonsInPlace(entryPath);
+    }
+
+    if (entry.includes(':')) {
+      const sanitizedPath = join(dir, entry.replaceAll(':', '-'));
+      renameSync(entryPath, sanitizedPath);
+    }
+  }
+}

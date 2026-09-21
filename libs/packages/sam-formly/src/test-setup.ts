@@ -139,3 +139,12 @@ if (zone) {
     }
   }
 }
+
+// Presence of an import/export makes this a module, scoping `const zone`
+// (and everything else above) to this file instead of the global script
+// scope. Without this, Storybook's webpack/TypeScript build — which
+// compiles all three libraries' identical test-setup.ts copies into one
+// program even though none of them are ever imported by app code — treats
+// the three files as three declarations of the same global `zone`, and
+// fails with TS2451 ("Cannot redeclare block-scoped variable").
+export {};
