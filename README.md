@@ -100,41 +100,28 @@ Run `ng build --project=myapp` to build the project. The build artifacts will be
 
 ## Running unit tests
 
-Run `npm test` to execute the unit tests for all five projects. The three
-publishable libraries (`components`, `sam-formly`, `sam-material-extensions`)
-run on [Vitest](https://vitest.dev) via Angular's `@angular/build:unit-test`
-builder; `documentation` and the `sam-design-system-site` demo app remain on
-[Karma](https://karma-runner.github.io) (see "Documentation and site app test
-runner" below for why).
+Run `npm test` to execute the unit tests for all five projects. Every project
+(`components`, `sam-formly`, `sam-material-extensions`, `documentation`, and
+the `sam-design-system-site` demo app) runs on [Vitest](https://vitest.dev)
+via Angular's `@angular/build:unit-test` builder against jsdom. Karma and
+Jasmine are no longer dependencies of this repo.
 
-Each of the three libraries carries its own ratcheting coverage floor in
-`coverage-floor.json`. Run `npm run coverage:check` after `npm run
+Each of the three publishable libraries carries its own ratcheting coverage
+floor in `coverage-floor.json`. Run `npm run coverage:check` after `npm run
 test:components && npm run test:material-extensions && npm run
 test:sam-formly` to verify none of the three has regressed below its
 committed floor; run `npm run coverage:bump` to raise a floor to the currently
 measured coverage after a genuine improvement (never to make a failing gate
 pass — that's a code smell, not a fix). Floors only ever move up per library,
 independently of the other two, so a regression in one library can't hide
-behind a gain in another.
+behind a gain in another. `documentation` and `sam-design-system-site` run
+their specs and report coverage but carry no floor, since they're not
+published and have 3 trivial specs between them.
 
-### Documentation and site app test runner
+### Vitest test setup
 
-`documentation` (2 specs) and `sam-design-system-site` (1 spec) stay on Karma.
-Both surfaces build all of the demo/example code inline via webpack's
-`raw-loader!` syntax (`require('!!raw-loader!./some-demo.component')`, used
-across ~50 files to show component source in the docs site), which only
-resolves under Karma's webpack-based test bundler. `@angular/build:unit-test`
-builds specs through esbuild via the `@angular/build:application` builder,
-which has no equivalent loader and fails to resolve those imports. Since
-karma survives through Angular 21 (`@angular-devkit/build-angular@21` still
-ships the karma builder) and these two projects have only 3 trivial specs
-between them, migrating them to Vitest is deferred rather than blocking the
-rest of the migration; see GSA/sam-design-system#1616 for the decision record.
-
-### Vitest test-setup shims
-
-Each of the three Vitest-migrated libraries has its own `src/test-setup.ts`
-(all three are copies of the same file) that:
+All five projects share a single `testing/vitest-setup.ts` (wired via each
+project's `test` target `setupFiles` in `angular.json`) that:
 
 - wraps Vitest's `it`/`test`/`beforeEach`/etc. in a Zone.js ProxyZone, which
   Angular's `fakeAsync()`/`waitForAsync()` helpers require and which the
@@ -144,7 +131,26 @@ Each of the three Vitest-migrated libraries has its own `src/test-setup.ts`
   engine, so it never implements `innerText`);
 - stubs a nonzero `offsetWidth`/`offsetHeight` on `HTMLElement.prototype`, so
   Angular CDK's `InteractivityChecker` (used by dialog/menu focus-trapping)
-  doesn't treat every element as invisible under jsdom's zero-geometry DOM.
+  doesn't treat every element as invisible under jsdom's zero-geometry DOM;
+- stubs out webpack's inline `raw-loader!` requires (see below).
+
+### `raw-loader!` in the documentation library
+
+The `documentation` library's ~50 demo modules load their own source code as
+display strings for the docs site's "view source" tab using webpack's inline
+loader syntax: `require('!!raw-loader!./demos/foo.component')`. esbuild (which
+backs `@angular/build:application`, and therefore the `unit-test` builder) has
+no equivalent loader, so `documentation:build-test` marks `!!raw-loader!*` as
+an external dependency and `testing/vitest-setup.ts` patches Node's module
+loader to resolve those requests to an empty string. No spec asserts on the
+_content_ of those strings — they only need importing a demo module not to
+throw.
+
+Note that this only affects the _test_ build. `ng build
+sam-design-system-site` has the same esbuild limitation and already fails on
+`master` for the same reason; the site is deployed as Storybook
+(`npm run build-storybook`, which still uses webpack), so this is pre-existing
+and out of scope here.
 
 ## Running end-to-end tests
 

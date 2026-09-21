@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any -- Zone.js's internal test-patching API (`Zone.__symbol__`, `withProxyZone`) is untyped; casting through `any` here is the standard pattern this shared test-setup file borrows from the analogous ngx-uswds/sam-ui-elements Vitest migrations. */
 /**
- * Vitest test setup, shared by the components, sam-formly, and
- * sam-material-extensions libraries.
+ * Vitest test setup, shared by every project in the workspace
+ * (`components`, `sam-formly`, `sam-material-extensions`, `documentation`,
+ * and `sam-design-system-site`). Referenced directly from each project's
+ * `test` target `setupFiles` in `angular.json`.
  *
  * The `@angular/build:unit-test` builder initialises the Angular TestBed and
  * cleanup hooks, but it does not wrap Vitest's `beforeEach`/`it` callbacks in a
@@ -10,9 +12,27 @@
  * using the `withProxyZone` helper that zone.js/testing exposes on the global
  * `Zone`.
  *
- * We also polyfill `ResizeObserver`, which jsdom does not implement but some
- * components depend on at runtime.
+ * We also polyfill several DOM APIs jsdom does not implement (see the
+ * individual comments below), and stub out webpack's inline `raw-loader!`
+ * requires that the `documentation` library's demo modules rely on.
  */
+
+// The `documentation` library's ~50 demo modules load their own source code as
+// display strings via webpack's inline `raw-loader!` syntax
+// (`require('!!raw-loader!./demos/foo.component')`). esbuild has no equivalent
+// loader, so `documentation:build-test` marks `!!raw-loader!*` external and
+// the `require` call survives into the bundle, where Node can't resolve it
+// either. Stub those requires out: the *content* of the demo source strings
+// is only ever rendered into the docs site's "view source" tab, and no spec
+// asserts on it — the specs only need importing a demo module not to throw.
+const nodeModule = require('node:module');
+const originalModuleLoad = nodeModule._load;
+nodeModule._load = function (request: string, ...rest: unknown[]) {
+  if (request.startsWith('!!raw-loader!')) {
+    return { default: '' };
+  }
+  return originalModuleLoad.call(this, request, ...rest);
+};
 
 // jsdom does not provide ResizeObserver; provide a no-op implementation.
 if (typeof (globalThis as any).ResizeObserver === 'undefined') {
@@ -140,11 +160,11 @@ if (zone) {
   }
 }
 
-// Presence of an import/export makes this a module, scoping `const zone`
-// (and everything else above) to this file instead of the global script
-// scope. Without this, Storybook's webpack/TypeScript build — which
-// compiles all three libraries' identical test-setup.ts copies into one
-// program even though none of them are ever imported by app code — treats
-// the three files as three declarations of the same global `zone`, and
-// fails with TS2451 ("Cannot redeclare block-scoped variable").
+// Presence of an import/export makes this a module, scoping the top-level
+// `const` declarations above to this file instead of the global script scope.
+// Without this, Storybook's webpack/TypeScript build — which compiles every
+// .ts file it discovers into one TypeScript program, even ones no story
+// imports — would treat them as global declarations and fail with TS2451
+// ("Cannot redeclare block-scoped variable") once more than one setup file
+// exists.
 export {};
