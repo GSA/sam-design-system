@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    // "types": ["jasmine", "node"],
     // "typeRoots": ["node_modules/@types"],
     "paths": {
       "@gsa-sam/components": ["dist/libs/components", "libs/packages/components/src/index.ts"],
@@ -16,13 +15,13 @@
   },
   "references": [
     {
-      "path": "libs/packages/components"
+      "path": "../../libs/packages/components"
     },
     {
-      "path": "libs/packages/sam-material-extensions"
+      "path": "../../libs/packages/sam-material-extensions"
     },
     {
-      "path": "libs/packages/sam-formly"
+      "path": "../../libs/packages/sam-formly"
     }
   ],
   "include": ["**/*.ts"]

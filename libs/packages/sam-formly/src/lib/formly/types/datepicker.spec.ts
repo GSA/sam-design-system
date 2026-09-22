@@ -10,6 +10,8 @@ import { FormlyFieldDatePickerComponent } from './datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { NgxBootstrapIconsModule, calendar } from 'ngx-bootstrap-icons';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -33,6 +35,8 @@ describe('Formly Field Datepicker Component', () => {
         MatNativeDateModule,
         MatDatepickerModule,
         MatInputModule,
+        IconModule,
+        NgxBootstrapIconsModule.pick({ calendar }),
         FormlyModule.forRoot({
           types: [
             {

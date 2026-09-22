@@ -28,16 +28,32 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        "build-test": {
+          "builder": "@angular/build:application",
           "options": {
-            "main": "libs/packages/components/src/test.ts",
+            "outputPath": "dist/components-test",
+            "index": false,
+            "browser": "libs/packages/components/src/test-main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "libs/packages/components/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/components/karma.conf.js",
+            "optimization": false,
+            "aot": false,
+            "progress": false,
             "scripts": [
               "node_modules/accessible-html5-video-player/js/px-video.js",
               "node_modules/accessible-html5-video-player/js/strings.js"
             ]
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "components:build-test",
+            "tsConfig": "libs/packages/components/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["testing/vitest-setup.ts"],
+            "codeCoverage": true,
+            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
       }
@@ -70,12 +86,28 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        "build-test": {
+          "builder": "@angular/build:application",
           "options": {
-            "main": "libs/packages/sam-material-extensions/src/test.ts",
+            "outputPath": "dist/sam-material-extensions-test",
+            "index": false,
+            "browser": "libs/packages/sam-material-extensions/src/test-main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/sam-material-extensions/karma.conf.js"
+            "optimization": false,
+            "aot": false,
+            "progress": false
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "sam-material-extensions:build-test",
+            "tsConfig": "libs/packages/sam-material-extensions/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["testing/vitest-setup.ts"],
+            "codeCoverage": true,
+            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
       }
@@ -105,17 +137,32 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        "build-test": {
+          "builder": "@angular/build:application",
           "options": {
-            "main": "libs/packages/sam-formly/src/test.ts",
+            "outputPath": "dist/sam-formly-test",
+            "index": false,
+            "browser": "libs/packages/sam-formly/src/test-main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
-            "karmaConfig": "libs/packages/sam-formly/karma.conf.js"
+            "optimization": false,
+            "aot": false,
+            "progress": false
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "sam-formly:build-test",
+            "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["testing/vitest-setup.ts"],
+            "codeCoverage": true,
+            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
       }
     },
-
     "sam-design-system-site": {
       "root": "apps/sam-design-system-site/",
       "sourceRoot": "apps/sam-design-system-site/src",
@@ -225,14 +272,14 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "apps/sam-design-system-site/src/test.ts",
-            "polyfills": "apps/sam-design-system-site/src/polyfills.ts",
+            "buildTarget": "sam-design-system-site:build-test",
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
-            "karmaConfig": "apps/sam-design-system-site/karma.conf.js",
-            "scripts": [],
-            "assets": ["apps/sam-design-system-site/src/favicon.ico", "apps/sam-design-system-site/src/assets"]
+            "runner": "vitest",
+            "setupFiles": ["testing/vitest-setup.ts"],
+            "codeCoverage": true,
+            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         },
         "storybook": {
@@ -247,6 +294,19 @@
           "options": {
             "browserTarget": "sam-design-system-site:build",
             "compodoc": false
+          }
+        },
+        "build-test": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "dist/sam-design-system-site-test",
+            "index": false,
+            "browser": "apps/sam-design-system-site/src/test-main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
+            "optimization": false,
+            "aot": false,
+            "progress": false
           }
         }
       }
@@ -264,11 +324,28 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "libs/documentation/src/test.ts",
+            "buildTarget": "documentation:build-test",
             "tsConfig": "libs/documentation/tsconfig.spec.json",
-            "karmaConfig": "libs/documentation/karma.conf.js"
+            "runner": "vitest",
+            "setupFiles": ["testing/vitest-setup.ts"],
+            "codeCoverage": true,
+            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
+          }
+        },
+        "build-test": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "dist/documentation-test",
+            "index": false,
+            "browser": "libs/documentation/src/test-main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "libs/documentation/tsconfig.spec.json",
+            "optimization": false,
+            "aot": false,
+            "progress": false,
+            "externalDependencies": ["!!raw-loader!*"]
           }
         }
       }

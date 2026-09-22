@@ -36,8 +36,6 @@ sam-design-system
 │       └── update-libs-version.js
 ├── angular.json
 ├── CODEOWNERS
-├── jest.conf.js
-├── karma.conf.js
 ├── nx.json
 ├── package-lock.json
 ├── package.json
@@ -301,8 +299,7 @@ packages
 
 - `angular.json` &rarr; Angular CLI configuration
 - `CODEOWNERS` &rarr; Github pull request approvers
-- `jest.conf.js` &rarr; JEST testing framework configuration
-- `karma.conf.js` &rarr; Karma test runner framework configuration
+- `libs/packages/<library>/coverage-floor.json` &rarr; Per-library ratcheting code-coverage floor, one file per publishable library, enforced by `npm run coverage:check` (see `scripts/check-coverage.mjs`)
 - `nx.json` &rarr; NX Workspace monorepo configuration and dependency tagging
 - `package-lock.json` &rarr; Pre-processsed project dependencies
 - `package.json` &rarr; Project version, dependencies, and scripts

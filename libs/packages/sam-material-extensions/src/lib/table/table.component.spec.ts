@@ -293,7 +293,7 @@ describe('SdsTableComponent Full', () => {
     }).compileComponents();
   }));
 
-  xdescribe('Table Component', () => {
+  describe.skip('Table Component', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(WrapperComponent);
       const wrapperComponent = fixture.debugElement.componentInstance;

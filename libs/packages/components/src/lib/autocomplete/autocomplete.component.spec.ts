@@ -1,7 +1,7 @@
 /* tslint:disable */
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { SDSAutocompleteComponent } from './autocomplete.component';
-import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomplete-seach-test-service.spec';
+import { AutoCompleteSampleDataService } from '../autocomplete-search/autocomplete-seach-test-service';
 import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfiguration.model';
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { FormsModule } from '@angular/forms';

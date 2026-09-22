@@ -12,7 +12,7 @@ describe('Component: SdsToastComponent', () => {
   let toastPackageMock: {
     toastId: number;
     toastType: string;
-    afterActivate: jasmine.Spy;
+    afterActivate: ReturnType<typeof vi.fn>;
     config: { toastClass: string };
     message: string;
     title: string;
@@ -59,7 +59,7 @@ describe('Component: SdsToastComponent', () => {
     toastPackageMock = {
       toastId: 1,
       toastType: 'sds-toast--success',
-      afterActivate: jasmine.createSpy('afterActivate'),
+      afterActivate: vi.fn(),
       config: { toastClass: 'custom-toast' },
       message: 'test message',
       title: 'test title',

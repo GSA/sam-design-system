@@ -175,10 +175,10 @@ describe('SdsMenu', () => {
 
     const menuPanel = overlayContainerElement.querySelector('.sds-overlay');
 
-    expect(menuPanel).toBeTruthy('Expected to find a menu panel.');
+    expect(menuPanel).toBeTruthy();
 
     const role = menuPanel ? menuPanel.getAttribute('role') : '';
-    expect(role).toBe('menu', 'Expected panel to have the "menu" role.');
+    expect(role).toBe('menu');
   });
 
   it('should set the "menuitem" role on the items by default', () => {
@@ -201,7 +201,7 @@ describe('SdsMenu', () => {
   it('should set the proper focus origin when opening by mouse', fakeAsync(() => {
     const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
-    spyOn(fixture.componentInstance.items.first, 'focus').and.callThrough();
+    vi.spyOn(fixture.componentInstance.items.first, 'focus');
 
     const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
 
@@ -216,7 +216,7 @@ describe('SdsMenu', () => {
   it('should set the proper focus origin when opening by touch', fakeAsync(() => {
     const fixture = createComponent(SimpleMenuComponent, [], [FakeIconComponent]);
     fixture.detectChanges();
-    spyOn(fixture.componentInstance.items.first, 'focus').and.callThrough();
+    vi.spyOn(fixture.componentInstance.items.first, 'focus');
 
     const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
 
@@ -297,7 +297,7 @@ describe('SdsMenu', () => {
     items[items.length - 1].focus();
     fixture.detectChanges();
 
-    spyOn(items[0], 'focus').and.callThrough();
+    vi.spyOn(items[0], 'focus');
 
     const event = dispatchKeyboardEvent(panel, 'keydown', HOME);
     fixture.detectChanges();
@@ -318,7 +318,7 @@ describe('SdsMenu', () => {
     const items = Array.from(panel.querySelectorAll('.sds-menu__item')) as HTMLElement[];
     items.forEach(patchElementFocus);
 
-    spyOn(items[items.length - 1], 'focus').and.callThrough();
+    vi.spyOn(items[items.length - 1], 'focus');
 
     const event = dispatchKeyboardEvent(panel, 'keydown', END);
     fixture.detectChanges();
@@ -405,10 +405,7 @@ describe('SdsMenu', () => {
 
       let panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
       fixture.detectChanges();
-      expect(Math.floor(panel.getBoundingClientRect().bottom)).toBe(
-        Math.floor(trigger.getBoundingClientRect().top),
-        'Expected menu to open above',
-      );
+      expect(Math.floor(panel.getBoundingClientRect().bottom)).toBe(Math.floor(trigger.getBoundingClientRect().top));
 
       fixture.componentInstance.trigger.closeMenu();
       fixture.detectChanges();
@@ -420,10 +417,7 @@ describe('SdsMenu', () => {
       fixture.detectChanges();
       panel = overlayContainerElement.querySelector('.sds-overlay') as HTMLElement;
 
-      expect(Math.floor(panel.getBoundingClientRect().top)).toBe(
-        Math.floor(trigger.getBoundingClientRect().bottom),
-        'Expected menu to open below',
-      );
+      expect(Math.floor(panel.getBoundingClientRect().top)).toBe(Math.floor(trigger.getBoundingClientRect().bottom));
     });
   });
 });
@@ -450,7 +444,7 @@ class SimpleMenuComponent {
   @ViewChild(SdsMenuComponent, { static: false }) menu: SdsMenuComponent;
   @ViewChildren(SdsMenuItemComponent) items: QueryList<SdsMenuItemComponent>;
   extraItems: string[] = [];
-  closeCallback = jasmine.createSpy('menu closed callback');
+  closeCallback = vi.fn();
   panelClass: string;
 }
 

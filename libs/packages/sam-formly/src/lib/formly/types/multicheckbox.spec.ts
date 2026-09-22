@@ -127,7 +127,7 @@ describe('Formly Field multicheckbox Component', () => {
       checkboxes[0].nativeElement.dispatchEvent(new Event('click'));
     });
 
-    xit('should check the select all when option is seleceted', () => {
+    it.skip('should check the select all when option is seleceted', () => {
       testComponentInputs.fields = [
         {
           key: 'multi-checkbox',
@@ -167,7 +167,7 @@ describe('Formly Field multicheckbox Component', () => {
       expect(labels[0].nativeElement.getAttribute('aria-checked')).toBe('mixed');
     });
 
-    xit('on change group check', () => {
+    it.skip('on change group check', () => {
       testComponentInputs.fields = [
         {
           key: 'multi-checkbox',

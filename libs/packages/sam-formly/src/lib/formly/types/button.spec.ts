@@ -67,7 +67,7 @@ describe('Formly Field button Component', () => {
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
       const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
-      const spy = spyOn(buttonField?.nativeElement, 'click');
+      const spy = vi.spyOn(buttonField?.nativeElement, 'click');
       buttonField.nativeElement.click();
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();
@@ -93,7 +93,7 @@ describe('Formly Field button Component', () => {
         trigger = fixture.nativeElement.querySelector('ng-star-inserted');
       const buttonField: any = fixture.debugElement.query(By.css('.usa-button'));
 
-      const spy = spyOn(buttonField?.nativeElement, 'click');
+      const spy = vi.spyOn(buttonField?.nativeElement, 'click');
       buttonField.nativeElement.click();
       buttonField.nativeElement.dispatchEvent(new Event('onClick'));
     });

@@ -52,7 +52,7 @@ describe('Formly Field Select Component', () => {
       };
     });
 
-    xit('should correctly bind to a object of data', () => {
+    it.skip('should correctly bind to a object of data', () => {
       testSearchComponent.fields = [
         {
           key: 'firstName',

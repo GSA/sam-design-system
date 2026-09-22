@@ -13,6 +13,7 @@ import {
   SdsTableHeaderCellDirective,
   SdsTableFooterCellDirective,
 } from './table.component';
+import { TableRowNavigationDirective } from './table-row-import/table-row-navigation.directive';
 import { PaginationModule } from '@gsa-sam/components';
 
 import { MatSortModule } from '@angular/material/sort';
@@ -222,6 +223,7 @@ describe('SdsTableComponent Basic', () => {
         SdsTableCellDirective,
         SdsTableHeaderCellDirective,
         SdsTableFooterCellDirective,
+        TableRowNavigationDirective,
         WrapperComponent,
       ],
       imports: [

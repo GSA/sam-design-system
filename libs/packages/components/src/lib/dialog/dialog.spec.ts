@@ -115,7 +115,7 @@ describe('SdsDialog', () => {
 
   it('should emit when dialog opening animation is complete', fakeAsync(() => {
     const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
-    const spy = jasmine.createSpy('afterOpen spy');
+    const spy = vi.fn();
 
     dialogRef.afterOpened().subscribe(spy);
 
@@ -138,9 +138,7 @@ describe('SdsDialog', () => {
     let dialogInjector = dialogRef.componentInstance.dialogInjector;
 
     expect(dialogRef.componentInstance.dialogRef).toBe(dialogRef);
-    expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer)).toBeTruthy(
-      'Expected the dialog component to be created with the injector from the viewContainerRef.',
-    );
+    expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer)).toBeTruthy();
   });
 
   it('should open a dialog with a component and no ViewContainerRef', () => {
@@ -177,7 +175,7 @@ describe('SdsDialog', () => {
 
   it('should close a dialog and get back a result', fakeAsync(() => {
     let dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
-    let afterCloseCallback = jasmine.createSpy('afterClose callback');
+    let afterCloseCallback = vi.fn();
 
     dialogRef.afterClosed().subscribe(afterCloseCallback);
     dialogRef.close('Charmander');
@@ -196,8 +194,8 @@ describe('SdsDialog', () => {
           viewContainerRef: testViewContainerRef,
           scrollStrategy: overlay.scrollStrategies.close(),
         });
-        const beforeCloseCallback = jasmine.createSpy('beforeClosed callback');
-        const afterCloseCallback = jasmine.createSpy('afterClosed callback');
+        const beforeCloseCallback = vi.fn();
+        const afterCloseCallback = vi.fn();
 
         dialogRef.beforeClosed().subscribe(beforeCloseCallback);
         dialogRef.afterClosed().subscribe(afterCloseCallback);
@@ -219,10 +217,8 @@ describe('SdsDialog', () => {
     viewContainerFixture.detectChanges();
 
     // beforeClose should emit before dialog container is destroyed
-    const beforeCloseHandler = jasmine.createSpy('beforeClose callback').and.callFake(() => {
-      expect(overlayContainerElement.querySelector('sds-dialog-container')).not.toBeNull(
-        'dialog container exists when beforeClose is called',
-      );
+    const beforeCloseHandler = vi.fn().mockImplementation(() => {
+      expect(overlayContainerElement.querySelector('sds-dialog-container')).not.toBeNull();
     });
 
     dialogRef.beforeClosed().subscribe(beforeCloseHandler);
@@ -259,20 +255,14 @@ describe('SdsDialog', () => {
     onPushFixture.detectChanges();
     flushMicrotasks();
 
-    expect(overlayContainerElement.querySelectorAll('sds-dialog-container').length).toBe(
-      1,
-      'Expected one open dialog.',
-    );
+    expect(overlayContainerElement.querySelectorAll('sds-dialog-container').length).toBe(1);
 
     dialogRef.close();
     flushMicrotasks();
     onPushFixture.detectChanges();
     tick(500);
 
-    expect(overlayContainerElement.querySelectorAll('sds-dialog-container').length).toBe(
-      0,
-      'Expected no open dialogs.',
-    );
+    expect(overlayContainerElement.querySelectorAll('sds-dialog-container').length).toBe(0);
   }));
 
   it('should close when clicking on the overlay backdrop', fakeAsync(() => {
@@ -296,7 +286,7 @@ describe('SdsDialog', () => {
       viewContainerRef: testViewContainerRef,
     });
 
-    const spy = jasmine.createSpy('backdropClick spy');
+    const spy = vi.fn();
     dialogRef.backdropClick().subscribe(spy);
 
     viewContainerFixture.detectChanges();
@@ -317,7 +307,7 @@ describe('SdsDialog', () => {
   it('should emit the keyboardEvent stream when key events target the overlay', fakeAsync(() => {
     const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
 
-    const spy = jasmine.createSpy('keyboardEvent spy');
+    const spy = vi.fn();
     dialogRef.keydownEvents().subscribe(spy);
 
     viewContainerFixture.detectChanges();
@@ -344,7 +334,7 @@ describe('SdsDialog', () => {
   it('should notify the observers if all open dialogs have finished closing', fakeAsync(() => {
     const ref1 = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
     const ref2 = dialog.open(ContentElementDialog, { viewContainerRef: testViewContainerRef });
-    const spy = jasmine.createSpy('afterAllClosed spy');
+    const spy = vi.fn();
 
     dialog.afterAllClosed.subscribe(spy);
 
@@ -361,7 +351,7 @@ describe('SdsDialog', () => {
   }));
 
   it('should emit the afterAllClosed stream on subscribe if there are no open dialogs', () => {
-    const spy = jasmine.createSpy('afterAllClosed spy');
+    const spy = vi.fn();
 
     dialog.afterAllClosed.subscribe(spy);
 
@@ -411,7 +401,7 @@ describe('SdsDialog', () => {
 
     let overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
 
-    expect(overlayPane.style.maxWidth).toBe('80vw', 'Expected dialog to set a default max-width on overlay pane');
+    expect(overlayPane.style.maxWidth).toBe('80vw');
 
     dialogRef.close();
 
@@ -657,8 +647,8 @@ describe('SdsDialog', () => {
   }));
 
   it('should complete open and close streams when the injectable is destroyed', fakeAsync(() => {
-    const afterOpenedSpy = jasmine.createSpy('after opened spy');
-    const afterAllClosedSpy = jasmine.createSpy('after all closed spy');
+    const afterOpenedSpy = vi.fn();
+    const afterAllClosedSpy = vi.fn();
     const afterOpenedSubscription = dialog.afterOpened.subscribe({ complete: afterOpenedSpy });
     const afterAllClosedSubscription = dialog.afterAllClosed.subscribe({
       complete: afterAllClosedSpy,
@@ -688,7 +678,7 @@ describe('SdsDialog', () => {
 
   it('should have the componentInstance available in the afterClosed callback', fakeAsync(() => {
     let dialogRef = dialog.open(PizzaMsg);
-    let spy = jasmine.createSpy('afterClosed spy');
+    let spy = vi.fn();
 
     flushMicrotasks();
     viewContainerFixture.detectChanges();
@@ -696,7 +686,7 @@ describe('SdsDialog', () => {
 
     dialogRef.afterClosed().subscribe(() => {
       spy();
-      expect(dialogRef.componentInstance).toBeTruthy('Expected component instance to be defined.');
+      expect(dialogRef.componentInstance).toBeTruthy();
     });
 
     dialogRef.close();
@@ -712,7 +702,7 @@ describe('SdsDialog', () => {
   it('should be able to attach a custom scroll strategy', fakeAsync(() => {
     const scrollStrategy: ScrollStrategy = {
       attach: () => {},
-      enable: jasmine.createSpy('scroll strategy enable spy'),
+      enable: vi.fn(),
       disable: () => {},
     };
 
@@ -752,7 +742,7 @@ describe('SdsDialog', () => {
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(dialogRef.componentInstance).toBeFalsy('Expected reference to have been cleared.');
+    expect(dialogRef.componentInstance).toBeFalsy();
   }));
 
   it('should assign a unique id to each dialog', () => {
@@ -787,17 +777,14 @@ describe('SdsDialog', () => {
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to be hidden');
-    expect(overlayContainerElement.hasAttribute('aria-hidden')).toBe(
-      false,
-      'Expected overlay container not to be hidden.',
-    );
+    expect(sibling.getAttribute('aria-hidden')).toBe('true');
+    expect(overlayContainerElement.hasAttribute('aria-hidden')).toBe(false);
 
     dialogRef.close();
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(sibling.hasAttribute('aria-hidden')).toBe(false, 'Expected sibling to no longer be hidden.');
+    expect(sibling.hasAttribute('aria-hidden')).toBe(false);
     sibling.parentNode!.removeChild(sibling);
   }));
 
@@ -811,13 +798,13 @@ describe('SdsDialog', () => {
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to be hidden.');
+    expect(sibling.getAttribute('aria-hidden')).toBe('true');
 
     dialogRef.close();
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to remain hidden.');
+    expect(sibling.getAttribute('aria-hidden')).toBe('true');
     sibling.parentNode!.removeChild(sibling);
   }));
 
@@ -831,7 +818,7 @@ describe('SdsDialog', () => {
     viewContainerFixture.detectChanges();
     flush();
 
-    expect(sibling.hasAttribute('aria-hidden')).toBe(false, 'Expected live element not to be hidden.');
+    expect(sibling.hasAttribute('aria-hidden')).toBe(false);
     sibling.parentNode!.removeChild(sibling);
   }));
 
@@ -842,13 +829,13 @@ describe('SdsDialog', () => {
     });
 
     const pane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
-    expect(pane.classList).not.toContain('custom-class-one', 'Expected class to be initially missing');
+    expect(pane.classList).not.toContain('custom-class-one');
 
     dialogRef.addPanelClass('custom-class-one');
-    expect(pane.classList).toContain('custom-class-one', 'Expected class to be added');
+    expect(pane.classList).toContain('custom-class-one');
 
     dialogRef.removePanelClass('custom-class-one');
-    expect(pane.classList).not.toContain('custom-class-one', 'Expected class to be removed');
+    expect(pane.classList).not.toContain('custom-class-one');
   });
 
   describe('disableClose option', () => {
@@ -978,10 +965,7 @@ describe('SdsDialog', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement!.tagName).toBe(
-        'BUTTON',
-        'Expected first tabbable element (button) in the dialog to be focused.',
-      );
+      expect(document.activeElement!.tagName).toBe('BUTTON');
     }));
 
     it('should allow disabling focus of the first tabbable element', fakeAsync(() => {
@@ -1009,25 +993,16 @@ describe('SdsDialog', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement!.id).not.toBe(
-        'dialog-trigger',
-        'Expected the focus to change when dialog was opened.',
-      );
+      expect(document.activeElement!.id).not.toBe('dialog-trigger');
 
       dialogRef.close();
-      expect(document.activeElement!.id).not.toBe(
-        'dialog-trigger',
-        'Expcted the focus not to have changed before the animation finishes.',
-      );
+      expect(document.activeElement!.id).not.toBe('dialog-trigger');
 
       flushMicrotasks();
       viewContainerFixture.detectChanges();
       tick(500);
 
-      expect(document.activeElement!.id).toBe(
-        'dialog-trigger',
-        'Expected that the trigger was refocused after the dialog is closed.',
-      );
+      expect(document.activeElement!.id).toBe('dialog-trigger');
 
       document.body.removeChild(button);
     }));
@@ -1056,10 +1031,7 @@ describe('SdsDialog', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement!.id).toBe(
-        'input-to-be-focused',
-        'Expected that the trigger was refocused after the dialog is closed.',
-      );
+      expect(document.activeElement!.id).toBe('input-to-be-focused');
 
       document.body.removeChild(button);
       document.body.removeChild(input);
@@ -1081,17 +1053,14 @@ describe('SdsDialog', () => {
       viewContainerFixture.detectChanges();
       flushMicrotasks();
 
-      expect(document.activeElement!.id).not.toBe(
-        'dialog-trigger',
-        'Expected the focus to change when dialog was opened.',
-      );
+      expect(document.activeElement!.id).not.toBe('dialog-trigger');
 
       dialogRef.close();
       flushMicrotasks();
       viewContainerFixture.detectChanges();
       tick(500);
 
-      expect(document.activeElement!.id).not.toBe('dialog-trigger', 'Expected focus not to have been restored.');
+      expect(document.activeElement!.id).not.toBe('dialog-trigger');
 
       document.body.removeChild(button);
     }));
@@ -1157,7 +1126,7 @@ describe('SdsDialog', () => {
       });
 
       it('should return the [sds-dialog-close] result when clicking the close button', fakeAsync(() => {
-        let afterCloseCallback = jasmine.createSpy('afterClose callback');
+        let afterCloseCallback = vi.fn();
         dialogRef.afterClosed().subscribe(afterCloseCallback);
 
         (overlayContainerElement.querySelector('button.close-with-true') as HTMLElement).click();
@@ -1174,11 +1143,8 @@ describe('SdsDialog', () => {
         flush();
         viewContainerFixture.detectChanges();
 
-        expect(title.id).toBeTruthy('Expected title element to have an id.');
-        expect(container.getAttribute('aria-labelledby')).toBe(
-          title.id,
-          'Expected the aria-labelledby to match the title id.',
-        );
+        expect(title.id).toBeTruthy();
+        expect(container.getAttribute('aria-labelledby')).toBe(title.id);
       }));
     }
   });
@@ -1252,32 +1218,26 @@ describe('SdsDialog with a parent SdsDialog', () => {
     fixture.detectChanges();
     flush();
 
-    expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+    expect(overlayContainerElement.textContent).toContain('Pizza');
 
     childDialog.closeAll();
     fixture.detectChanges();
     flush();
 
-    expect(overlayContainerElement.textContent!.trim()).toBe(
-      '',
-      'Expected closeAll on child SdsDialog to close dialog opened by parent',
-    );
+    expect(overlayContainerElement.textContent!.trim()).toBe('');
   }));
 
   it('should close dialogs opened by a child when calling closeAll on a parent SdsDialog', fakeAsync(() => {
     childDialog.open(PizzaMsg);
     fixture.detectChanges();
 
-    expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+    expect(overlayContainerElement.textContent).toContain('Pizza');
 
     parentDialog.closeAll();
     fixture.detectChanges();
     flush();
 
-    expect(overlayContainerElement.textContent!.trim()).toBe(
-      '',
-      'Expected closeAll on parent SdsDialog to close dialog opened by child',
-    );
+    expect(overlayContainerElement.textContent!.trim()).toBe('');
   }));
 
   it('should close the top dialog via the escape key', fakeAsync(() => {
@@ -1295,13 +1255,13 @@ describe('SdsDialog with a parent SdsDialog', () => {
     fixture.detectChanges();
     flush();
 
-    expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+    expect(overlayContainerElement.textContent).toContain('Pizza');
 
     childDialog.ngOnDestroy();
     fixture.detectChanges();
     flush();
 
-    expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+    expect(overlayContainerElement.textContent).toContain('Pizza');
   }));
 });
 

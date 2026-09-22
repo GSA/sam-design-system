@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: components-coverage
-          path: coverage/libs/components
+          path: coverage-reports/components
           if-no-files-found: error
       - name: Test SAM Formly library with coverage
         id: sam_formly_tests
@@ -75,7 +75,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sam-formly-coverage
-          path: coverage/libs/sam-formly
+          path: coverage-reports/sam-formly
           if-no-files-found: error
       - name: Test SAM Material Extensions library with coverage
         id: sam_material_extensions_tests
@@ -85,5 +85,62 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sam-material-extensions-coverage
-          path: coverage/libs/sam-material-extensions
+          path: coverage-reports/sam-material-extensions
           if-no-files-found: error
+      - name: Test documentation library
+        id: documentation_tests
+        run: npm run demo:docs && npm run test:documentation
+      - name: Upload documentation coverage
+        if: ${{ always() && steps.documentation_tests.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: documentation-coverage
+          path: coverage-reports/documentation
+          if-no-files-found: error
+      - name: Test site app
+        id: site_tests
+        run: npm run test:site
+      - name: Upload site app coverage
+        if: ${{ always() && steps.site_tests.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: sam-design-system-site-coverage
+          path: coverage-reports/sam-design-system-site
+          if-no-files-found: error
+
+  coverage_gate:
+    name: Coverage Gate
+    needs: build_and_run_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install Node Packages
+        run: npm ci
+      # This runs as its own job (rather than a step inside "Build and Run
+      # Tests") so a GitHub ruleset can require it by name: rulesets can
+      # only require job/check-run names, not individual steps within a job,
+      # so a step-level gate could never be registered as its own required
+      # status check.
+      - name: Download components coverage
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: components-coverage
+          path: coverage-reports/components
+      - name: Download SAM Formly coverage
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: sam-formly-coverage
+          path: coverage-reports/sam-formly
+      - name: Download SAM Material Extensions coverage
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: sam-material-extensions-coverage
+          path: coverage-reports/sam-material-extensions
+      - name: Check coverage ratchet
+        run: npm run coverage:check

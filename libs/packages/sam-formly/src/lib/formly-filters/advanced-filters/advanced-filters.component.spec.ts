@@ -10,15 +10,13 @@ import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
   let fixture: ComponentFixture<AdvancedFiltersComponent>;
-  let modalServiceSpy: jasmine.SpyObj<SdsDialogService>;
-  let dialogRefSpyObj = jasmine.createSpyObj({
-    afterClosed: of({}),
-  });
+  let modalServiceSpy: { open: ReturnType<typeof vi.fn> };
+  let dialogRefSpyObj = { afterClosed: vi.fn().mockReturnValue(of({})) };
   let advancedFiltersService: SdsAdvancedFiltersService;
 
   beforeEach(waitForAsync(() => {
-    modalServiceSpy = jasmine.createSpyObj('modalService', ['open']);
-    const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['convertToCheckboxes']);
+    modalServiceSpy = { open: vi.fn() };
+    const advancedFiltersServiceSpy = { convertToCheckboxes: vi.fn() };
     TestBed.configureTestingModule({
       declarations: [AdvancedFiltersComponent],
       imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
@@ -36,7 +34,7 @@ describe('Advanced Filteres Component', () => {
     fixture = TestBed.createComponent(AdvancedFiltersComponent);
     component = fixture.componentInstance;
     advancedFiltersService = TestBed.inject(SdsAdvancedFiltersService);
-    modalServiceSpy.open.and.returnValue(dialogRefSpyObj);
+    modalServiceSpy.open.mockReturnValue(dialogRefSpyObj);
   });
 
   afterEach(() => {
@@ -47,7 +45,7 @@ describe('Advanced Filteres Component', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should open popup and close popup', () => {
+  it.skip('should open popup and close popup', () => {
     component.openDialog();
     fixture.detectChanges();
     expect(dialogRefSpyObj.afterClosed).toHaveBeenCalled();

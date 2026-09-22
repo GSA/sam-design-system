@@ -16,8 +16,8 @@ describe('SdsFormlyDialogComponent', () => {
   let advancedFiltersService: SdsAdvancedFiltersService;
 
   beforeEach(waitForAsync(() => {
-    const advancedFiltersServiceSpy = jasmine.createSpyObj('SdsAdvancedFiltersService', ['updateFields']);
-    const dialogSpy = jasmine.createSpyObj('SdsDialogRef', ['close']);
+    const advancedFiltersServiceSpy = { updateFields: vi.fn() };
+    const dialogSpy = { close: vi.fn() };
     TestBed.configureTestingModule({
       declarations: [SdsFormlyDialogComponent],
       imports: [CommonModule, FormlyModule, SdsFormlyModule, ReactiveFormsModule, BrowserAnimationsModule],
@@ -94,14 +94,14 @@ describe('SdsFormlyDialogComponent', () => {
   });
 
   it('should call onCancel() when Cancel button is clicked', waitForAsync(() => {
-    spyOn(component, 'onCancel');
+    vi.spyOn(component, 'onCancel');
     const closeBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="button"]');
     closeBtn.click();
     expect(component.onCancel).toHaveBeenCalled();
   }));
 
   it('should call onSubmit() when Submit button is clicked', waitForAsync(() => {
-    spyOn(component, 'onSubmit');
+    vi.spyOn(component, 'onSubmit');
     const submitBtn: HTMLElement = fixture.nativeElement.querySelector('.usa-button[type="submit"]');
     submitBtn.click();
     expect(component.onSubmit).toHaveBeenCalled();
