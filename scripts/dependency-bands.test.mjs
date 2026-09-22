@@ -109,3 +109,22 @@ test('each library peerDependencies pins its Angular peers to >=21.0.0 <22.0.0',
     }
   }
 });
+
+test('@gsa-sam/ngx-uswds and ngx-uswds-icons are pinned to ^21.0.0 in root deps and lib peers', () => {
+  assert.equal(rootPackageJson.dependencies['@gsa-sam/ngx-uswds'], '^21.0.0');
+  assert.equal(rootPackageJson.dependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
+
+  const componentsManifest = readJson(LIB_MANIFESTS.components);
+  assert.equal(componentsManifest.peerDependencies['@gsa-sam/ngx-uswds'], '^21.0.0');
+  assert.equal(componentsManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
+
+  const samFormlyManifest = readJson(LIB_MANIFESTS['sam-formly']);
+  assert.equal(samFormlyManifest.peerDependencies['@gsa-sam/ngx-uswds'], '^21.0.0');
+  assert.equal(samFormlyManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
+
+  const samMaterialExtensionsManifest = readJson(LIB_MANIFESTS['sam-material-extensions']);
+  assert.equal(
+    samMaterialExtensionsManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'],
+    '^21.0.0',
+  );
+});
