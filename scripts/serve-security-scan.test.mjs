@@ -42,6 +42,16 @@ test('serves built content with security headers', async () => {
   assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
 });
 
+test('sends expected CSP directives including style-src unsafe-inline exception (#1633)', async () => {
+  const response = await fetch(baseUrl);
+  const csp = response.headers.get('content-security-policy') ?? '';
+  assert.match(csp, /default-src 'self'/);
+  assert.match(csp, /style-src 'self' 'unsafe-inline'/);
+  assert.match(csp, /object-src 'none'/);
+  assert.match(csp, /base-uri 'self'/);
+  assert.match(csp, /frame-ancestors 'none'/);
+});
+
 test('serves assets and uses the SPA fallback without exposing traversed files', async () => {
   assert.match((await fetch(`${baseUrl}/main.js`)).headers.get('content-type') ?? '', /javascript/);
   assert.match(await (await fetch(`${baseUrl}/a/client/route`)).text(), /SAM site/);
