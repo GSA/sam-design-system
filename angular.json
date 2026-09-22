@@ -52,8 +52,8 @@
             "tsConfig": "libs/packages/components/tsconfig.spec.json",
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
-            "codeCoverage": true,
-            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
+            "coverage": true,
+            "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
       }
@@ -106,8 +106,8 @@
             "tsConfig": "libs/packages/sam-material-extensions/tsconfig.spec.json",
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
-            "codeCoverage": true,
-            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
+            "coverage": true,
+            "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
       }
@@ -157,8 +157,8 @@
             "tsConfig": "libs/packages/sam-formly/tsconfig.spec.json",
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
-            "codeCoverage": true,
-            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
+            "coverage": true,
+            "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
       }
@@ -278,8 +278,8 @@
             "tsConfig": "apps/sam-design-system-site/tsconfig.spec.json",
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
-            "codeCoverage": true,
-            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
+            "coverage": true,
+            "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         },
         "storybook": {
@@ -330,8 +330,8 @@
             "tsConfig": "libs/documentation/tsconfig.spec.json",
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
-            "codeCoverage": true,
-            "codeCoverageReporters": ["text-summary", "lcov", "json-summary"]
+            "coverage": true,
+            "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         },
         "build-test": {
