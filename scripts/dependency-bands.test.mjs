@@ -128,3 +128,7 @@ test('@gsa-sam/ngx-uswds and ngx-uswds-icons are pinned to ^21.0.0 in root deps 
     '^21.0.0',
   );
 });
+
+test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
+  assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
+});
