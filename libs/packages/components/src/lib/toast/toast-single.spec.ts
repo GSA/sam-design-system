@@ -1,10 +1,22 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { SdsToastComponent } from './toast-single.component';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ToastPackage, ToastRef, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('Component: SdsToastComponent', () => {
   let component: SdsToastComponent;
@@ -22,12 +34,10 @@ describe('Component: SdsToastComponent', () => {
   beforeEach(() => {
     initMockProviders();
     TestBed.configureTestingModule({
-      declarations: [SdsToastComponent],
+      declarations: [SdsToastComponent, UsaIconStubComponent],
       imports: [
-        IconModule,
         ToastrModule.forRoot(),
         BrowserAnimationsModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
       ],
       providers: [{ provide: ToastPackage, useValue: toastPackageMock }],
     });

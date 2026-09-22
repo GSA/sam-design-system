@@ -1,11 +1,23 @@
+import { Component as StubComponent, Input } from '@angular/core';
+
+@StubComponent({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { SdsDialogService } from '@gsa-sam/components';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
 
 describe('Advanced Filteres Component', () => {
   let component: AdvancedFiltersComponent;
@@ -18,8 +30,8 @@ describe('Advanced Filteres Component', () => {
     modalServiceSpy = { open: vi.fn() };
     const advancedFiltersServiceSpy = { convertToCheckboxes: vi.fn() };
     TestBed.configureTestingModule({
-      declarations: [AdvancedFiltersComponent],
-      imports: [IconModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
+      declarations: [AdvancedFiltersComponent, UsaIconStubComponent],
+      imports: [],
       providers: [
         { provide: SdsDialogService, useValue: modalServiceSpy },
         {

@@ -1,3 +1,17 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 /* tslint:disable */
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { SDSAutocompleteSearchComponent } from './autocomplete-search.component';
@@ -9,8 +23,6 @@ import { By } from '@angular/platform-browser';
 import { AutoCompleteSampleDataService } from './autocomplete-seach-test-service';
 
 import { OverlayModule } from '@angular/cdk/overlay';
-import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SamAutocompleteComponent', () => {
   let component: SDSAutocompleteSearchComponent;
@@ -18,13 +30,12 @@ describe('SamAutocompleteComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SDSAutocompleteSearchComponent],
+      declarations: [SDSAutocompleteSearchComponent, UsaIconStubComponent],
 
       imports: [
         FormsModule,
         OverlayModule,
-        IconModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+        
       ],
     }).compileComponents();
   }));

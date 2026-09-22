@@ -1,3 +1,17 @@
+import { Component as StubComponent, Input } from '@angular/core';
+
+@StubComponent({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 
@@ -10,8 +24,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormlyFieldDateRangePickerComponent } from './daterangepicker';
 import { dateRangeValidator } from '../formly.validators';
 import { MatInputModule } from '@angular/material/input';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-import { NgxBootstrapIconsModule, calendar } from 'ngx-bootstrap-icons';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -52,15 +64,14 @@ let dateRangePickerType: ConfigOption['types'][number] = {
 describe('Formly Field DateRangePicker Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, FormlyFieldDateRangePickerComponent],
+      declarations: [TestComponent, FormlyFieldDateRangePickerComponent, UsaIconStubComponent],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
         MatNativeDateModule,
         MatDatepickerModule,
         MatInputModule,
-        IconModule,
-        NgxBootstrapIconsModule.pick({ calendar }),
+        
         FormlyModule.forRoot({
           types: [dateRangePickerType],
         }),

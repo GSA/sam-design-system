@@ -1,3 +1,51 @@
+import { Component, Input, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+@Component({
+  selector: 'sds-search-autocomplete',
+  template: '',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SDSAutocompleteSearchStubComponent),
+      multi: true,
+    },
+  ],
+  standalone: false,
+})
+class SDSAutocompleteSearchStubComponent implements ControlValueAccessor {
+  @Input() disabled: boolean;
+  @Input() essentialModelFields: any;
+  @Input() service: any;
+  @Input() configuration: any;
+  @Input() itemTemplate: any;
+  writeValue(obj: any): void {}
+  registerOnChange(fn: any): void {}
+  registerOnTouched(fn: any): void {}
+  setDisabledState?(isDisabled: boolean): void {}
+}
+
+@Component({
+  selector: 'sds-selected-result',
+  template: '',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SDSSelectedResultStubComponent),
+      multi: true,
+    },
+  ],
+  standalone: false,
+})
+class SDSSelectedResultStubComponent implements ControlValueAccessor {
+  @Input() disabled: boolean;
+  @Input() configuration: any;
+  @Input() itemTemplate: any;
+  writeValue(obj: any): void {}
+  registerOnChange(fn: any): void {}
+  registerOnTouched(fn: any): void {}
+  setDisabledState?(isDisabled: boolean): void {}
+}
 /* tslint:disable */
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { SDSAutocompleteComponent } from './autocomplete.component';
@@ -6,10 +54,6 @@ import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfigur
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { FormsModule } from '@angular/forms';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
-import { SdsSelectedResultsModule } from '../selected-result/selected-result.module';
-import { SdsAutocompleteSearchModule } from '../autocomplete-search/autocomplete-search.module';
-import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SDSAutocompleteComponent', () => {
   let component: SDSAutocompleteComponent;
@@ -17,13 +61,8 @@ describe('SDSAutocompleteComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SDSAutocompleteComponent],
-      imports: [
-        FormsModule,
-        SdsSelectedResultsModule,
-        SdsAutocompleteSearchModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
-      ],
+      declarations: [SDSAutocompleteComponent, SDSAutocompleteSearchStubComponent, SDSSelectedResultStubComponent],
+      imports: [FormsModule],
     }).compileComponents();
   }));
 
