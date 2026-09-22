@@ -17,8 +17,7 @@ class UsaIconStubComponent {
 import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsFormlyModule } from '../formly/formly.module';
-import {
-  } from 'ngx-bootstrap-icons';
+import {} from 'ngx-bootstrap-icons';
 import { NavigationMode } from '@gsa-sam/components';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsStepperModule } from './sds-stepper.module';
@@ -191,22 +190,14 @@ describe('SdsStepperComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        SdsFormlyModule,
-        
-        RouterTestingModule,
-        SdsStepperModule,
-        NoopAnimationsModule,
-      ],
+      imports: [CommonModule, SdsFormlyModule, RouterTestingModule, SdsStepperModule, NoopAnimationsModule],
       declarations: [StepperTestComponent, CustomTestStepper, UsaIconStubComponent],
     });
 
-    
     TestBed.overrideComponent(FormlyFieldInputComponent, {
       set: {
-        template: '<input [id]=id [formControl]=formControl />'
-      }
+        template: '<input [id]=id [formControl]=formControl />',
+      },
     });
     fixture = TestBed.createComponent(StepperTestComponent);
 

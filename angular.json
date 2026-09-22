@@ -53,6 +53,7 @@
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
             "coverage": true,
+            "coverageExclude": ["**/*.html"],
             "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
@@ -107,6 +108,7 @@
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
             "coverage": true,
+            "coverageExclude": ["**/*.html"],
             "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
@@ -158,6 +160,7 @@
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
             "coverage": true,
+            "coverageExclude": ["**/*.html"],
             "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         }
@@ -279,6 +282,7 @@
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
             "coverage": true,
+            "coverageExclude": ["**/*.html"],
             "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         },
@@ -331,6 +335,7 @@
             "runner": "vitest",
             "setupFiles": ["testing/vitest-setup.ts"],
             "coverage": true,
+            "coverageExclude": ["**/*.html"],
             "coverageReporters": ["text-summary", "lcov", "json-summary"]
           }
         },

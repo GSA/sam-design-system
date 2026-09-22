@@ -35,10 +35,7 @@ describe('Component: SdsToastComponent', () => {
     initMockProviders();
     TestBed.configureTestingModule({
       declarations: [SdsToastComponent, UsaIconStubComponent],
-      imports: [
-        ToastrModule.forRoot(),
-        BrowserAnimationsModule,
-      ],
+      imports: [ToastrModule.forRoot(), BrowserAnimationsModule],
       providers: [{ provide: ToastPackage, useValue: toastPackageMock }],
     });
 

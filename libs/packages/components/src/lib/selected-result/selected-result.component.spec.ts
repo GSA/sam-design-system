@@ -30,12 +30,7 @@ describe('SDSSelectedResultComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SDSSelectedResultComponent, UsaIconStubComponent],
-      imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule,
-        
-      ],
+      imports: [CommonModule, FormsModule, RouterModule],
     }).compileComponents();
   }));
 

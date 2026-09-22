@@ -120,6 +120,34 @@ behind a gain in another. `documentation` and `sam-design-system-site` run
 their specs and report coverage but carry no floor, since they're not
 published and have 3 trivial specs between them.
 
+Each `test` target sets `coverageExclude: ["**/*.html"]`. Angular 21's
+unit-test builder instruments component templates as coverage targets, but a
+template has no executable statements a unit test can meaningfully "cover", so
+every `.html` file lands at 0% and only dilutes the metric. Excluding them
+keeps the floors measuring TypeScript logic, which is what they were always
+intended to gate.
+
+**Note on the Angular 21 re-baseline.** These floors were re-seeded from
+scratch during the Angular 20 &rarr; 21 upgrade (#1617), because the v21
+unit-test builder measures a structurally different denominator than v20 did
+and the old numbers were not comparable:
+
+- v20 reported coverage against the **bundled/transpiled** `dist/test-out`
+  output remapped through sourcemaps; v21 instruments the **original source
+  file** directly. The same file yields very different statement counts under
+  each (e.g. `sds-stepper.ts`: 581 statements under v20, 263 under v21).
+- v20's per-library report **leaked in files from other libraries** — the
+  `sam-formly` report counted `components`' `autocomplete-search.component.ts`,
+  `key-helper.ts`, `dialog.ts`, and `sam-material-extensions`'
+  `table.component.ts` toward `sam-formly`'s aggregate, inflating it with
+  coverage actually earned by the `components` suite. v21 scopes each report to
+  that library's own sources.
+
+The v21 numbers are lower but honest: no bundling artifacts and no
+cross-library double-counting. The same 462 specs pass before and after; no
+test was removed or skipped to reach them. Raising these floors back up by
+adding real tests is tracked in the post-migration coverage epic (#1640).
+
 ### Vitest test setup
 
 All five projects share a single `testing/vitest-setup.ts` (wired via each

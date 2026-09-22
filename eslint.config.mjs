@@ -25,6 +25,29 @@ const asWarnings = (configs) =>
 
 const recommendedTypeScriptWarnings = asWarnings([...tseslint.configs.recommended, ...angular.configs.tsRecommended]);
 
+// angular-eslint 21 added `prefer-inject` and `prefer-standalone` to its
+// `tsRecommended` set (both at `error`, which `asWarnings` downgrades to
+// `warn`). Enabling them here would add ~800 warnings across the workspace
+// purely from the toolchain bump — 154 in components, 88 in sam-formly, 19 in
+// sam-material-extensions, 555 in documentation — none of which correspond to
+// a code change in this PR. That would blow every per-project ceiling in
+// eslint-baseline.json, and `scripts/check-baseline-not-increased.mjs`
+// correctly refuses to let a PR raise a ceiling to accommodate its own new
+// warnings.
+//
+// Both rules flag real modernization work (constructor DI -> `inject()`,
+// NgModule declarations -> standalone components), but that is a deliberate
+// refactor across every component in the repo, not something to smuggle into
+// an LTS upgrade. Turn them off here so the existing baselines keep gating
+// actual regressions, and burn them down under the follow-up epic where the
+// migration can be reviewed on its own terms.
+//
+// TODO(#1640): re-enable per project as `inject()`/standalone migrations land.
+const angular21DeferredModernizationRules = {
+  '@angular-eslint/prefer-inject': 'off',
+  '@angular-eslint/prefer-standalone': 'off',
+};
+
 // Template accessibility (ADR-0006): warn-first across the whole workspace,
 // including libs/documentation, so the gate exists everywhere immediately
 // rather than excluding the largest template surface in the repo. Tightened
@@ -48,7 +71,7 @@ export default tseslint.config(
     files: ['**/*.ts'],
     extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
     processor: angular.processInlineTemplates,
-    rules: recommendedTypeScriptWarnings,
+    rules: { ...recommendedTypeScriptWarnings, ...angular21DeferredModernizationRules },
   }, // Selector prefixes are project-specific and were enforced per-project by
   // the old per-project tslint.json overrides (see the deleted files this PR
   // removes): sds for components/sam-material-extensions, sam for

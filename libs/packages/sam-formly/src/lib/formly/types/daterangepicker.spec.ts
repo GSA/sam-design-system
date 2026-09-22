@@ -71,7 +71,7 @@ describe('Formly Field DateRangePicker Component', () => {
         MatNativeDateModule,
         MatDatepickerModule,
         MatInputModule,
-        
+
         FormlyModule.forRoot({
           types: [dateRangePickerType],
         }),

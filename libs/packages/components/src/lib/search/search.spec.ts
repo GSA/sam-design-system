@@ -32,7 +32,7 @@ describe('SearchComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SdsSearchComponent, UsaIconStubComponent],
-      
+
       providers: [FocusMonitor, ViewportRuler],
     }).compileComponents();
   }));

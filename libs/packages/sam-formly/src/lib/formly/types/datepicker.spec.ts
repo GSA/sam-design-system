@@ -47,7 +47,7 @@ describe('Formly Field Datepicker Component', () => {
         MatNativeDateModule,
         MatDatepickerModule,
         MatInputModule,
-        
+
         FormlyModule.forRoot({
           types: [
             {

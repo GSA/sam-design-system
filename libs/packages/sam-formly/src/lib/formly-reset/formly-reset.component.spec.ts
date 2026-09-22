@@ -28,18 +28,13 @@ describe('SDS Formly Reset', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SdsFormlyResetComponent, TestComponent, UsaIconStubComponent],
-      imports: [
-        NoopAnimationsModule,
-        SdsFormlyModule,
-        ReactiveFormsModule,
-        FormlyModule.forRoot({}),
-      ],
+      imports: [NoopAnimationsModule, SdsFormlyModule, ReactiveFormsModule, FormlyModule.forRoot({})],
     }).compileComponents();
 
-        TestBed.overrideComponent(FormlyFieldInputComponent, {
+    TestBed.overrideComponent(FormlyFieldInputComponent, {
       set: {
-        template: '<input [id]=id [formControl]=formControl />'
-      }
+        template: '<input [id]=id [formControl]=formControl />',
+      },
     });
     fixture = TestBed.createComponent(TestComponent);
     testComp = fixture.componentInstance;

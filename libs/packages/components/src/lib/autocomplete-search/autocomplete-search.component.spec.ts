@@ -32,11 +32,7 @@ describe('SamAutocompleteComponent', () => {
     TestBed.configureTestingModule({
       declarations: [SDSAutocompleteSearchComponent, UsaIconStubComponent],
 
-      imports: [
-        FormsModule,
-        OverlayModule,
-        
-      ],
+      imports: [FormsModule, OverlayModule],
     }).compileComponents();
   }));
 
