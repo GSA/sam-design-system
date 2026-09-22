@@ -60,3 +60,52 @@ test('root package.json pins @angular/cdk and @angular/material to the 21 line',
     );
   }
 });
+
+const LIB_MANIFESTS = {
+  components: 'libs/packages/components/package.json',
+  'sam-formly': 'libs/packages/sam-formly/package.json',
+  'sam-material-extensions': 'libs/packages/sam-material-extensions/package.json',
+};
+
+const ANGULAR_PEER_KEYS = {
+  components: [
+    '@angular/animations',
+    '@angular/cdk',
+    '@angular/common',
+    '@angular/core',
+    '@angular/forms',
+    '@angular/platform-browser',
+    '@angular/router',
+  ],
+  'sam-formly': [
+    '@angular/animations',
+    '@angular/common',
+    '@angular/core',
+    '@angular/forms',
+    '@angular/material',
+    '@angular/platform-browser',
+    '@angular/router',
+  ],
+  'sam-material-extensions': [
+    '@angular/animations',
+    '@angular/common',
+    '@angular/core',
+    '@angular/material',
+    '@angular/platform-browser',
+    '@angular/router',
+  ],
+};
+
+test('each library peerDependencies pins its Angular peers to >=21.0.0 <22.0.0', () => {
+  for (const [lib, manifestPath] of Object.entries(LIB_MANIFESTS)) {
+    const manifest = readJson(manifestPath);
+    for (const key of ANGULAR_PEER_KEYS[lib]) {
+      const band = manifest.peerDependencies[key];
+      assert.equal(
+        band,
+        '>=21.0.0 <22.0.0',
+        `expected ${lib}'s ${key} peer band to be ">=21.0.0 <22.0.0", got ${band}`,
+      );
+    }
+  }
+});
