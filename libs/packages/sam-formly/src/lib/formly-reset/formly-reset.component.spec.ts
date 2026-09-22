@@ -1,3 +1,18 @@
+import { FormlyFieldInputComponent } from '../formly/types/input';
+import { Component as StubComponent, Input } from '@angular/core';
+
+@StubComponent({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, ViewChild } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -5,8 +20,6 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
-import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SDS Formly Reset', () => {
   let testComp: TestComponent;
@@ -14,17 +27,15 @@ describe('SDS Formly Reset', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SdsFormlyResetComponent, TestComponent],
-      imports: [
-        IconModule,
-        NoopAnimationsModule,
-        SdsFormlyModule,
-        ReactiveFormsModule,
-        FormlyModule.forRoot({}),
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
-      ],
+      declarations: [SdsFormlyResetComponent, TestComponent, UsaIconStubComponent],
+      imports: [NoopAnimationsModule, SdsFormlyModule, ReactiveFormsModule, FormlyModule.forRoot({})],
     }).compileComponents();
 
+    TestBed.overrideComponent(FormlyFieldInputComponent, {
+      set: {
+        template: '<input [id]=id [formControl]=formControl />',
+      },
+    });
     fixture = TestBed.createComponent(TestComponent);
     testComp = fixture.componentInstance;
 

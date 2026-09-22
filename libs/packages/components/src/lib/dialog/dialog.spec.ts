@@ -1,3 +1,17 @@
+import { Input } from '@angular/core';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { ComponentFixture, fakeAsync, flushMicrotasks, inject, TestBed, tick, flush } from '@angular/core/testing';
 import {
   ChangeDetectionStrategy,
@@ -24,8 +38,8 @@ import { SDS_DIALOG_DATA, SdsDialogService, SDS_DIALOG_DEFAULT_OPTIONS } from '.
 import { SdsDialogRef } from './dialog-ref';
 import { SdsDialogModule } from './dialog.module';
 import { Subject } from 'rxjs';
-import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { IconModule } from '@gsa-sam/ngx-uswds-icons';
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SdsDialog', () => {
   let dialog: SdsDialogService;
@@ -39,7 +53,7 @@ describe('SdsDialog', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      imports: [SdsDialogModule, DialogTestModule, NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons))],
+      imports: [SdsDialogModule, DialogTestModule],
       providers: [
         { provide: Location, useClass: SpyLocation },
         {
@@ -51,6 +65,10 @@ describe('SdsDialog', () => {
       ],
     });
 
+    TestBed.overrideModule(SdsDialogModule, {
+      remove: { imports: [IconModule, NgxBootstrapIconsModule] },
+      add: { declarations: [UsaIconStubComponent], exports: [UsaIconStubComponent] },
+    });
     TestBed.compileComponents();
   }));
 
@@ -1198,6 +1216,10 @@ describe('SdsDialog with a parent SdsDialog', () => {
       ],
     });
 
+    TestBed.overrideModule(SdsDialogModule, {
+      remove: { imports: [IconModule, NgxBootstrapIconsModule] },
+      add: { declarations: [UsaIconStubComponent], exports: [UsaIconStubComponent] },
+    });
     TestBed.compileComponents();
   }));
 
@@ -1291,6 +1313,10 @@ describe('SdsDialog with default options', () => {
       providers: [{ provide: SDS_DIALOG_DEFAULT_OPTIONS, useValue: defaultConfig }],
     });
 
+    TestBed.overrideModule(SdsDialogModule, {
+      remove: { imports: [IconModule, NgxBootstrapIconsModule] },
+      add: { declarations: [UsaIconStubComponent], exports: [UsaIconStubComponent] },
+    });
     TestBed.compileComponents();
   }));
 

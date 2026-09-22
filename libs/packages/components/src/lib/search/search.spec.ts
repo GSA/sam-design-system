@@ -1,10 +1,22 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsSearchComponent } from './search.component';
 import { By } from '@angular/platform-browser';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ViewportRuler } from '@angular/cdk/overlay';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-import { NgxBootstrapIconsModule, x, search } from 'ngx-bootstrap-icons';
 
 class TestComponent {
   inputState = {
@@ -19,8 +31,8 @@ describe('SearchComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SdsSearchComponent],
-      imports: [IconModule, NgxBootstrapIconsModule.pick({ x, search })],
+      declarations: [SdsSearchComponent, UsaIconStubComponent],
+
       providers: [FocusMonitor, ViewportRuler],
     }).compileComponents();
   }));

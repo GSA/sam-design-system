@@ -1,17 +1,23 @@
+import { FormlyFieldInputComponent } from '../formly/types/input';
+import { Component as StubComponent, Input } from '@angular/core';
+
+@StubComponent({
+  selector: 'usa-icon',
+  template: '<i class="bi bi-{{icon}}"></i>',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
+
 import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SdsFormlyModule } from '../formly/formly.module';
-import {
-  NgxBootstrapIconsModule,
-  chevronLeft,
-  chevronRight,
-  x,
-  question,
-  save,
-  circle,
-  slashCircleFill,
-  checkCircleFill,
-} from 'ngx-bootstrap-icons';
+import {} from 'ngx-bootstrap-icons';
 import { NavigationMode } from '@gsa-sam/components';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsStepperModule } from './sds-stepper.module';
@@ -20,7 +26,6 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { SdsStepper } from './sds-stepper';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 @Component({
   selector: `custom-test-stepper`,
   template: `<div class="grid-row">
@@ -185,28 +190,17 @@ describe('SdsStepperComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        SdsFormlyModule,
-        NgxBootstrapIconsModule.pick({
-          chevronLeft,
-          chevronRight,
-          circle,
-          slashCircleFill,
-          checkCircleFill,
-          question,
-          save,
-          x,
-        }),
-        RouterTestingModule,
-        SdsStepperModule,
-        NoopAnimationsModule,
-        IconModule,
-      ],
-      declarations: [StepperTestComponent, CustomTestStepper],
+      imports: [CommonModule, SdsFormlyModule, RouterTestingModule, SdsStepperModule, NoopAnimationsModule],
+      declarations: [StepperTestComponent, CustomTestStepper, UsaIconStubComponent],
     });
 
+    TestBed.overrideComponent(FormlyFieldInputComponent, {
+      set: {
+        template: '<input [id]=id [formControl]=formControl />',
+      },
+    });
     fixture = TestBed.createComponent(StepperTestComponent);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
     stepper = component.stepper;

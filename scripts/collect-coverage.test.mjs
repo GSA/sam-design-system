@@ -58,6 +58,20 @@ test('moves ./coverage to coverage-reports/<project>', () => {
   });
 });
 
+test('moves nested ./coverage/<project> directly to coverage-reports/<project>', () => {
+  withTempDir((dir) => {
+    const nestedDir = join(dir, 'coverage', 'components');
+    mkdirSync(nestedDir, { recursive: true });
+    writeFileSync(join(nestedDir, 'coverage-summary.json'), JSON.stringify({ total: {} }));
+
+    const { status, stdout } = run(['components'], dir);
+    assert.equal(status, 0);
+    assert.match(stdout, /Moved coverage report/);
+    assert.equal(existsSync(join(dir, 'coverage')), false);
+    assert.equal(existsSync(join(dir, 'coverage-reports', 'components', 'coverage-summary.json')), true);
+  });
+});
+
 test('overwrites a pre-existing destination for the same project', () => {
   withTempDir((dir) => {
     mkdirSync(join(dir, 'coverage-reports', 'components'), { recursive: true });

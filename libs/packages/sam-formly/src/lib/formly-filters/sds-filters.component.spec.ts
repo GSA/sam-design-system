@@ -3,16 +3,63 @@ import { CommonModule } from '@angular/common';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SdsFiltersModule } from './sds-filters.module';
+import { FormlyModule } from '@ngx-formly/core';
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFiltersComponent } from './sds-filters.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DebugElement } from '@angular/core';
+import { Component as StubComponent, DebugElement, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { SDSFormlyUpdateComunicationService } from './service/sds-filters-comunication.service';
-import { allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
+import { FormlyFieldInputComponent } from '../formly/types/input';
+
+@StubComponent({
+  selector: 'usa-icon',
+  template: '<i class="bi bi-{{icon}}"></i>',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
+
+@StubComponent({
+  selector: 'sds-advanced-filters',
+  template: '',
+  standalone: false,
+})
+class SdsAdvancedFiltersStubComponent {
+  @Input() form: any;
+  @Input() sortMoreFilterBy: any;
+  @Input() fields: any;
+  @Input() options: any;
+  @Input() model: any;
+  @Input() isInactiveValueFieldShown: any;
+  @Input() enablePopover: any;
+  @Output() showInactiveFiltersChange = new EventEmitter<any>();
+}
+
+@StubComponent({
+  selector: 'sds-formly-reset',
+  template: '<button (click)="resetAll()" class="sds-button--circle">Reset</button>',
+  standalone: false,
+})
+class SdsFormlyResetStubComponent {
+  @Input() options: any;
+  @Input() defaultModel: any;
+  @Output() resetClicked = new EventEmitter<any>();
+  resetAll() {
+    if (this.defaultModel) {
+      this.options?.resetModel?.(this.defaultModel);
+    } else {
+      this.options?.resetModel?.();
+    }
+    this.resetClicked.emit();
+  }
+}
 
 describe('The Sam Filters Component', () => {
   describe('rendered tests', () => {
@@ -28,10 +75,21 @@ describe('The Sam Filters Component', () => {
           BrowserAnimationsModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
-          SdsFiltersModule,
-          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+          FormlyModule,
+        ],
+        declarations: [
+          SdsFiltersComponent,
+          UsaIconStubComponent,
+          SdsAdvancedFiltersStubComponent,
+          SdsFormlyResetStubComponent,
         ],
         providers: [SDSFormlyUpdateComunicationService],
+      });
+      TestBed.overrideComponent(FormlyFieldInputComponent, {
+        set: {
+          template:
+            '<input [id]="id" [formControl]="formControl" [type]="props.inputType ? props.inputType : \'text\'" class="usa-input" />',
+        },
       });
       router = TestBed.inject(Router);
       location = TestBed.inject(Location);
@@ -123,7 +181,7 @@ describe('The Sam Filters Component', () => {
       // for the same "no navigation happened" state — an artifact of the
       // headless jsdom environment, not a behavioral difference in the
       // component. See the analogous Karma → Vitest note in dialog.spec.ts.
-      expect(location.path()).toBe('/');
+      expect(['', '/']).toContain(location.path());
     }));
     it('should call coominication service', () => {
       component.model = {
@@ -187,9 +245,20 @@ describe('The Sam Filters Component', () => {
           BrowserAnimationsModule,
           RouterTestingModule.withRoutes([]),
           SdsFormlyModule,
-          SdsFiltersModule,
-          NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
+          FormlyModule,
         ],
+        declarations: [
+          SdsFiltersComponent,
+          UsaIconStubComponent,
+          SdsAdvancedFiltersStubComponent,
+          SdsFormlyResetStubComponent,
+        ],
+      });
+      TestBed.overrideComponent(FormlyFieldInputComponent, {
+        set: {
+          template:
+            '<input [id]="id" [formControl]="formControl" [type]="props.inputType ? props.inputType : \'text\'" class="usa-input" />',
+        },
       });
 
       fixture = TestBed.createComponent(SdsFiltersComponent);

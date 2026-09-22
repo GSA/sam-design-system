@@ -64,7 +64,13 @@ if (existsSync(destination)) {
 }
 
 mkdirSync(dirname(destination), { recursive: true });
-renameSync(source, destination);
+const nestedProjectDir = join(source, project);
+if (existsSync(nestedProjectDir) && statSync(nestedProjectDir).isDirectory()) {
+  renameSync(nestedProjectDir, destination);
+  rmSync(source, { recursive: true, force: true });
+} else {
+  renameSync(source, destination);
+}
 
 // The lcov html reporter mirrors Vitest's virtual module names (e.g.
 // `angular:script/global:scripts.js.html`) verbatim into file/directory

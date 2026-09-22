@@ -1,3 +1,17 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SDSSelectedResultComponent } from './selected-result.component';
@@ -8,8 +22,6 @@ import { SDSSelectedResultConfiguration } from './models/SDSSelectedResultConfig
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { IconModule, allIcons as sdsAllIcons } from '@gsa-sam/ngx-uswds-icons';
-import { allIcons, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 describe('SDSSelectedResultComponent', () => {
   let component: SDSSelectedResultComponent;
@@ -17,14 +29,8 @@ describe('SDSSelectedResultComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SDSSelectedResultComponent],
-      imports: [
-        CommonModule,
-        FormsModule,
-        RouterModule,
-        IconModule,
-        NgxBootstrapIconsModule.pick(Object.assign(allIcons, sdsAllIcons)),
-      ],
+      declarations: [SDSSelectedResultComponent, UsaIconStubComponent],
+      imports: [CommonModule, FormsModule, RouterModule],
     }).compileComponents();
   }));
 

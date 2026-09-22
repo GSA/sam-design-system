@@ -1,3 +1,17 @@
+import { Component as StubComponent, Input } from '@angular/core';
+
+@StubComponent({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -10,8 +24,6 @@ import { FormlyFieldDatePickerComponent } from './datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
-import { NgxBootstrapIconsModule, calendar } from 'ngx-bootstrap-icons';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -28,15 +40,14 @@ let testComponentInputs;
 describe('Formly Field Datepicker Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, FormlyFieldDatePickerComponent],
+      declarations: [TestComponent, FormlyFieldDatePickerComponent, UsaIconStubComponent],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
         MatNativeDateModule,
         MatDatepickerModule,
         MatInputModule,
-        IconModule,
-        NgxBootstrapIconsModule.pick({ calendar }),
+
         FormlyModule.forRoot({
           types: [
             {
