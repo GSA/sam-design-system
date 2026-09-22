@@ -140,3 +140,20 @@ test('no protractor builder or "ng e2e" target remains in the workspace', () => 
     'expected no protractor-backed e2e script in root package.json',
   );
 });
+
+test('lockfile resolves @gsa-sam/* and @angular/* packages from the public npm registry', () => {
+  const lockfile = readJson('package-lock.json');
+  let checked = 0;
+  for (const [pkgPath, entry] of Object.entries(lockfile.packages)) {
+    if (!pkgPath || !entry.resolved) continue;
+    const name = pkgPath.replace(/^node_modules\//, '');
+    if (!name.startsWith('@gsa-sam/') && !name.startsWith('@angular/')) continue;
+    checked += 1;
+    assert.match(
+      entry.resolved,
+      /^https:\/\/registry\.npmjs\.org\//,
+      `expected ${name} to resolve from the public npm registry, got ${entry.resolved}`,
+    );
+  }
+  assert.ok(checked > 0, 'expected at least one @gsa-sam/* or @angular/* entry to check');
+});
