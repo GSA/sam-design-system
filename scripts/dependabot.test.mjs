@@ -27,7 +27,11 @@ test('dependabot.yml is present and matches the team standard', () => {
     /patch:\s*\n\s+patterns:\s*\n\s+-\s*['"]?\*['"]?\s*\n\s+update-types:\s*\n\s+-\s*['"]patch['"]/,
     'patch group must exist',
   );
-  assert.doesNotMatch(raw, /update-types:\s*\n\s+-\s*['"]major['"]/, 'major updates must NOT be grouped');
+  assert.doesNotMatch(raw, /^\s*major:\s*$/m, 'major group must NOT exist');
+  const updateTypesBlocks = raw.match(/update-types:\s*(?:\n\s+-\s*['"]?[^\n]+)+/g) ?? [];
+  for (const block of updateTypesBlocks) {
+    assert.doesNotMatch(block, /['"]?major['"]?/, 'major updates must NOT be grouped in any update-types list');
+  }
 
   // github-actions
   assert.match(raw, /package-ecosystem:\s*['"]github-actions['"]/, 'must configure github-actions ecosystem');
