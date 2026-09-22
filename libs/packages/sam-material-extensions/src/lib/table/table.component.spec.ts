@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Component, ViewChild, DebugElement } from '@angular/core';
+import { Component, ViewChild, DebugElement, Input, SimpleChange } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { vi } from 'vitest';
 
 import { PaginationModule } from '@gsa-sam/components';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 
 import {
   SdsTableComponent,
@@ -16,9 +16,23 @@ import {
   SdsTableHeaderCellDirective,
   SdsTableFooterCellDirective,
 } from './table.component';
+import { TableRowNavigationDirective } from './table-row-import/table-row-navigation.directive';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 
 const MOCK_DATA = [
   {
@@ -156,7 +170,7 @@ const MOCK_DATA = [
       [borderless]="borderlessToggle"
       [expansion]="expansionToggle"
       sort
-      pagination
+      [pagination]="true"
       class="maxh-mobile overflow-auto"
     >
       <sds-table-column sdsColumnName="id" sticky="true">
@@ -280,28 +294,22 @@ describe('SdsTableComponent Full', () => {
         SdsTableCellDirective,
         SdsTableHeaderCellDirective,
         SdsTableFooterCellDirective,
+        TableRowNavigationDirective,
+        UsaIconStubComponent,
         WrapperComponent,
       ],
-      imports: [
-        MatTableModule,
-        IconModule,
-        MatSortModule,
-        MatPaginatorModule,
-        BrowserAnimationsModule,
-        PaginationModule,
-      ],
+      imports: [MatTableModule, MatSortModule, MatPaginatorModule, BrowserAnimationsModule, PaginationModule],
     }).compileComponents();
   }));
 
-  describe.skip('Table Component', () => {
+  describe('Table Component', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(WrapperComponent);
       const wrapperComponent = fixture.debugElement.componentInstance;
+      fixture.detectChanges();
       component = wrapperComponent.sdsTableComponentRef;
       tableDe = fixture.debugElement;
       wrapper = wrapperComponent;
-
-      fixture.detectChanges();
     });
 
     it('should create', waitForAsync(() => {
@@ -336,5 +344,111 @@ describe('SdsTableComponent Full', () => {
     it('default number sort should return lowercase', waitForAsync(() => {
       expect(component.defaultSort(component.data[0], 'requests')).toBe(1);
     }));
+
+    it('should set top and bottom id when tableName is provided', () => {
+      component.tableName = 'myTestTable';
+      component.ngOnInit();
+      expect(component.top.id).toBe('myTestTableTop');
+      expect(component.bottom.id).toBe('myTestTableBottom');
+    });
+
+    it('should get and set borderless correctly', () => {
+      component.borderless = true;
+      expect(component.borderless).toBe(true);
+      component.borderless = false;
+      expect(component.borderless).toBe(false);
+    });
+
+    it('should toggle expansion on onExpansionClicked', () => {
+      const mockRow = MOCK_DATA[0];
+      let emittedElement: any;
+      component.expansionClicked.subscribe((el) => (emittedElement = el));
+
+      component.rowConfig.expandOnClick = false;
+      component.onExpansionClicked(mockRow);
+      expect(component.expandedElement).toBe(mockRow);
+      expect(emittedElement).toBe(mockRow);
+
+      component.onExpansionClicked(mockRow);
+      expect(component.expandedElement).toBeNull();
+      expect(emittedElement).toBeNull();
+    });
+
+    it('should not toggle expansion on onExpansionClicked if expandOnClick is true', () => {
+      const mockRow = MOCK_DATA[0];
+      component.rowConfig.expandOnClick = true;
+      component.expandedElement = null;
+
+      component.onExpansionClicked(mockRow);
+      expect(component.expandedElement).toBeNull();
+    });
+
+    it('should check if columns are clickable', () => {
+      expect(component.columnsClickable).toBe(false);
+      if (component.sdsColumnItems.first) {
+        component.sdsColumnItems.first.isClickable = true;
+        expect(component.columnsClickable).toBe(true);
+        component.sdsColumnItems.first.isClickable = false;
+      }
+    });
+
+    it('should update dataSource, sort, and pagination on ngOnChanges when data changes', () => {
+      const newData = [MOCK_DATA[0], MOCK_DATA[1]];
+      const sortSpy = vi.fn((data, sortHeaderId) => data[sortHeaderId]);
+      component.sortFn = sortSpy;
+      component.sort = 'true';
+
+      component.ngOnChanges({
+        data: new SimpleChange(null, newData, false),
+      });
+
+      expect(component.dataSource.data).toEqual(newData);
+      expect(component.dataSource.sortingDataAccessor).toBe(sortSpy);
+      expect(component.dataSource.sort).toBe(component.matSort);
+      expect(component.dataSource.paginator).toBe(component.matPaginator);
+    });
+
+    it('should use defaultSort on ngOnChanges when sortFn is not provided', () => {
+      const newData = [MOCK_DATA[0]];
+      component.sortFn = null;
+      component.sort = 'true';
+
+      component.ngOnChanges({
+        data: new SimpleChange(null, newData, false),
+      });
+
+      expect(component.dataSource.sortingDataAccessor).toBe(component.defaultSort);
+    });
+
+    it('should return correct type from typeOf', () => {
+      expect(component.typeOf('string')).toBe('string');
+      expect(component.typeOf(123)).toBe('number');
+      expect(component.typeOf({})).toBe('object');
+    });
+
+    it('should configure sort on ngOnChanges when sort is an array of column names or empty string', () => {
+      component.sort = ['firstName', 'lastName'] as any;
+      component.ngOnChanges({
+        data: new SimpleChange(null, [MOCK_DATA[0]], false),
+      });
+      expect(component.dataSource.sort).toBe(component.matSort);
+
+      component.sort = '';
+      component.ngOnChanges({
+        data: new SimpleChange(null, [MOCK_DATA[0]], false),
+      });
+      expect(component.dataSource.sort).toBe(component.matSort);
+    });
+
+    it('should not add expandedIndicator again if already present or if displayedColumns is undefined', () => {
+      component.expansion = true;
+      component.sdsTableRowComponent.displayedColumns = ['expandedIndicator', 'id', 'firstName'];
+      component.ngAfterContentInit();
+      expect(component.rowConfig.displayedColumns.filter((c) => c === 'expandedIndicator').length).toBe(1);
+
+      component.sdsTableRowComponent.displayedColumns = undefined as any;
+      component.ngAfterContentInit();
+      expect(component.rowConfig.displayedColumns).toBeUndefined();
+    });
   });
 });

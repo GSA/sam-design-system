@@ -303,6 +303,9 @@ export class SdsTableComponent implements OnInit, AfterContentInit, AfterViewIni
       this.dataSource.paginator = this.matPaginator;
       this.dataSource.paginator.initialized.subscribe((value) => {
         setTimeout(() => {
+          if (!this.dataSource?.paginator) {
+            return;
+          }
           this.page = {
             pageNumber: this.dataSource.paginator.pageIndex + 1,
             pageSize: this.dataSource.paginator.pageSize,
