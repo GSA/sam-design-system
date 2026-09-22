@@ -132,3 +132,11 @@ test('@gsa-sam/ngx-uswds and ngx-uswds-icons are pinned to ^21.0.0 in root deps 
 test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
 });
+
+test('no protractor builder or "ng e2e" target remains in the workspace', () => {
+  assert.doesNotMatch(JSON.stringify(readJson('angular.json')), /protractor/i);
+  assert.ok(
+    !rootPackageJson.scripts['e2e'] && !rootPackageJson.scripts['test:e2e']?.includes('protractor'),
+    'expected no protractor-backed e2e script in root package.json',
+  );
+});
