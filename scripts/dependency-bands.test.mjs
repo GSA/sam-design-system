@@ -152,6 +152,45 @@ test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
 });
 
+// marked 16 dropped the prebuilt `marked.min.js` UMD bundle from the published
+// tarball; only `lib/marked.esm.js` and `lib/marked.umd.js` ship now. The
+// site's `build` target listed that file under `scripts`, which is a hard
+// webpack resolve, so bumping marked to 17 (required by ngx-markdown 21) broke
+// `build-storybook` with "Can't resolve 'node_modules/marked/marked.min.js'"
+// and cascaded into the E2E job, whose Playwright webServer builds Storybook.
+//
+// The global was dead weight regardless: nothing in first-party source reads a
+// `window.marked`, and the only consumer of marked is ngx-markdown, which
+// imports it as an ES module. Dropping the entry fixes the build without
+// changing behavior. This test keeps it from being reintroduced.
+test('the site build does not inject marked as a global script', () => {
+  const angularJson = readJson('angular.json');
+  const scripts = angularJson.projects['sam-design-system-site'].architect.build.options.scripts ?? [];
+  for (const entry of scripts) {
+    const path = typeof entry === 'string' ? entry : entry.input;
+    assert.doesNotMatch(
+      path,
+      /marked/,
+      `expected no marked global-script entry in the site build target, got ${path}. ` +
+        'marked is consumed as an ES module via ngx-markdown, and marked >=16 no longer ' +
+        'publishes marked.min.js, so a global-script entry breaks the Storybook build.',
+    );
+  }
+});
+
+test('marked and ngx-markdown are on the versions ngx-markdown 21 requires', () => {
+  assert.match(
+    rootPackageJson.dependencies['marked'],
+    /^17\./,
+    `expected marked to be pinned to the 17.x line (ngx-markdown 21 peer), got ${rootPackageJson.dependencies['marked']}`,
+  );
+  assert.match(
+    rootPackageJson.dependencies['ngx-markdown'],
+    /^21\./,
+    `expected ngx-markdown to be pinned to the 21.x line, got ${rootPackageJson.dependencies['ngx-markdown']}`,
+  );
+});
+
 test('no protractor builder or "ng e2e" target remains in the workspace', () => {
   assert.doesNotMatch(JSON.stringify(readJson('angular.json')), /protractor/i);
   assert.ok(
