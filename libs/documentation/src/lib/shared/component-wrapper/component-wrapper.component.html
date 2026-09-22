@@ -1,6 +1,6 @@
 <div class="grid-container">
   <div class="tablet:grid-col-12">
-    <div class="h1 text-ink line-height-sans-2 margin-y-3" aria-role="heading">
+    <div class="h1 text-ink line-height-sans-2 margin-y-3" role="heading" aria-level="1">
       {{ title | titlecase }}
       <span *ngIf="deprecatedVersion" class="sds-tag sds-tag--outline--warning float-right"
         ><i class="sds-status sds-status--sm sds-status--warning"></i>Deprecated: {{ deprecatedVersion }}</span

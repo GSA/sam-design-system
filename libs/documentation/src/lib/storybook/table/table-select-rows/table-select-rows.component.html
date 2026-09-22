@@ -44,12 +44,13 @@
         </div>
       </ng-template>
       <ng-template #sdsCell let-element="element">
-        <div class="usa-checkbox" (click)="onSingleRowSelect(element)">
+        <div class="usa-checkbox">
           <input
             class="usa-checkbox__input"
             id="check-select-{{ element.id }}"
             type="checkbox"
-            [(ngModel)]="element.checked"
+            [ngModel]="element.checked"
+            (change)="onSingleRowSelect(element)"
           />
           <label class="usa-checkbox__label" for="check-select-{{ element.id }}"
             ><span class="usa-sr-only">Select Row {{ element.id }}</span></label
