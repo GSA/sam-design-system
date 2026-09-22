@@ -39,11 +39,7 @@ test('root package.json pins every @angular/* core package to the 21 line', () =
   for (const name of ANGULAR_CORE_PACKAGES) {
     const version = rootPackageJson.dependencies[name];
     assert.ok(version, `expected ${name} to be listed in root dependencies`);
-    assert.match(
-      version,
-      /^21\./,
-      `expected ${name} to be pinned to the 21.x line, got ${version}`,
-    );
+    assert.match(version, /^21\./, `expected ${name} to be pinned to the 21.x line, got ${version}`);
   }
 });
 
@@ -53,11 +49,7 @@ test('root package.json pins @angular/cdk and @angular/material to the 21 line',
   for (const name of ANGULAR_UI_PACKAGES) {
     const version = rootPackageJson.dependencies[name];
     assert.ok(version, `expected ${name} to be listed in root dependencies`);
-    assert.match(
-      version,
-      /^21\./,
-      `expected ${name} to be pinned to the 21.x line, got ${version}`,
-    );
+    assert.match(version, /^21\./, `expected ${name} to be pinned to the 21.x line, got ${version}`);
   }
 });
 
@@ -123,10 +115,7 @@ test('@gsa-sam/ngx-uswds and ngx-uswds-icons are pinned to ^21.0.0 in root deps 
   assert.equal(samFormlyManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
 
   const samMaterialExtensionsManifest = readJson(LIB_MANIFESTS['sam-material-extensions']);
-  assert.equal(
-    samMaterialExtensionsManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'],
-    '^21.0.0',
-  );
+  assert.equal(samMaterialExtensionsManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
 });
 
 test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
