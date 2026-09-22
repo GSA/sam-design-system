@@ -46,3 +46,17 @@ test('root package.json pins every @angular/* core package to the 21 line', () =
     );
   }
 });
+
+const ANGULAR_UI_PACKAGES = ['@angular/cdk', '@angular/material'];
+
+test('root package.json pins @angular/cdk and @angular/material to the 21 line', () => {
+  for (const name of ANGULAR_UI_PACKAGES) {
+    const version = rootPackageJson.dependencies[name];
+    assert.ok(version, `expected ${name} to be listed in root dependencies`);
+    assert.match(
+      version,
+      /^21\./,
+      `expected ${name} to be pinned to the 21.x line, got ${version}`,
+    );
+  }
+});
