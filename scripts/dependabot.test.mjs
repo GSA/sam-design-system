@@ -20,12 +20,12 @@ test('dependabot.yml is present and matches the team standard', () => {
   assert.match(
     raw,
     /minor:\s*\n\s+patterns:\s*\n\s+-\s*['"]?\*['"]?\s*\n\s+update-types:\s*\n\s+-\s*['"]minor['"]/,
-    'minor group must exist'
+    'minor group must exist',
   );
   assert.match(
     raw,
     /patch:\s*\n\s+patterns:\s*\n\s+-\s*['"]?\*['"]?\s*\n\s+update-types:\s*\n\s+-\s*['"]patch['"]/,
-    'patch group must exist'
+    'patch group must exist',
   );
   assert.doesNotMatch(raw, /update-types:\s*\n\s+-\s*['"]major['"]/, 'major updates must NOT be grouped');
 
@@ -34,7 +34,7 @@ test('dependabot.yml is present and matches the team standard', () => {
   assert.match(
     raw,
     /github-actions:\s*\n\s+patterns:\s*\n\s+-\s*['"]?\*['"]?/,
-    'must configure grouped github-actions'
+    'must configure grouped github-actions',
   );
 });
 
@@ -47,28 +47,28 @@ test('dependabot-auto-merge.yml is present, gated, and least-privilege', () => {
   assert.match(
     raw,
     /permissions:\s*\n\s+contents:\s*write\s*\n\s+pull-requests:\s*write/,
-    'least-privilege write permissions'
+    'least-privilege write permissions',
   );
   assert.match(raw, /if:\s*github\.actor\s*==\s*['"]dependabot\[bot\]['"]/, 'must gate job on dependabot[bot]');
   assert.match(
     raw,
     /uses:\s*dependabot\/fetch-metadata@[0-9a-f]{40}\s+#\s*v3\.1\.0/,
-    'must use SHA-pinned fetch-metadata'
+    'must use SHA-pinned fetch-metadata',
   );
   assert.match(
     raw,
     /steps\.metadata\.outputs\.update-type\s*==\s*['"]version-update:semver-minor['"]/,
-    'must allow semver-minor'
+    'must allow semver-minor',
   );
   assert.match(
     raw,
     /steps\.metadata\.outputs\.update-type\s*==\s*['"]version-update:semver-patch['"]/,
-    'must allow semver-patch'
+    'must allow semver-patch',
   );
   assert.doesNotMatch(
     raw,
     /steps\.metadata\.outputs\.update-type\s*==\s*['"]version-update:semver-major['"]/,
-    'must NOT allow semver-major'
+    'must NOT allow semver-major',
   );
   assert.match(raw, /gh pr merge --auto --squash/, 'must execute gh pr merge --auto --squash');
 });
