@@ -53,6 +53,36 @@ test('root package.json pins @angular/cdk and @angular/material to the 21 line',
   }
 });
 
+const ANGULAR_TOOLCHAIN_PACKAGES = ['@angular/build', '@angular/language-service', 'ng-packagr'];
+const ANGULAR_DEVKIT_PACKAGES = ['@angular-devkit/build-angular'];
+
+test('root package.json pins the Angular 21 toolchain and TypeScript 5.9', () => {
+  for (const name of ANGULAR_TOOLCHAIN_PACKAGES) {
+    const version = rootPackageJson.dependencies[name] ?? rootPackageJson.devDependencies[name];
+    assert.ok(version, `expected ${name} to be listed in root dependencies or devDependencies`);
+    assert.match(version, /^21\./, `expected ${name} to be pinned to the 21.x line, got ${version}`);
+  }
+
+  for (const name of ANGULAR_DEVKIT_PACKAGES) {
+    const version = rootPackageJson.dependencies[name];
+    assert.ok(version, `expected ${name} to be listed in root dependencies`);
+    assert.match(version, /^21\./, `expected ${name} to be pinned to the Angular 21 DevKit line, got ${version}`);
+  }
+
+  assert.match(
+    rootPackageJson.dependencies['@angular-devkit/architect'],
+    /^0\.2102\./,
+    `expected @angular-devkit/architect to be pinned to the Angular 21.2 line, got ${rootPackageJson.dependencies['@angular-devkit/architect']}`,
+  );
+
+  const typescriptVersion = rootPackageJson.dependencies.typescript ?? rootPackageJson.devDependencies.typescript;
+  assert.match(
+    typescriptVersion,
+    /^5\.9\./,
+    `expected TypeScript to be pinned to the 5.9.x line, got ${typescriptVersion}`,
+  );
+});
+
 const LIB_MANIFESTS = {
   components: 'libs/packages/components/package.json',
   'sam-formly': 'libs/packages/sam-formly/package.json',
