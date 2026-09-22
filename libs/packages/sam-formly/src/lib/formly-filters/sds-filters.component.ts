@@ -102,7 +102,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
    * assigned to the model input during component init
    * or defaultValue provided in formly config
    */
-  @Input() defaultModel: any = {};
+  @Input() defaultModel: any;
 
   /**
    * Toggle layout for filters - when horizontal is toggled,
@@ -305,7 +305,7 @@ export class SdsFiltersComponent implements OnInit, OnChanges {
   }
 
   reset() {
-    this.model = JSON.parse(JSON.stringify(this.defaultModel));
+    this.model = this.defaultModel ? cloneDeep(this.defaultModel) : this.model;
     if (this.formlyUpdateComunicationService) {
       this.formlyUpdateComunicationService.updateFilter(this.model);
     }
