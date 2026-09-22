@@ -39,10 +39,8 @@ const recommendedTypeScriptWarnings = asWarnings([...tseslint.configs.recommende
 // NgModule declarations -> standalone components), but that is a deliberate
 // refactor across every component in the repo, not something to smuggle into
 // an LTS upgrade. Turn them off here so the existing baselines keep gating
-// actual regressions, and burn them down under the follow-up epic where the
-// migration can be reviewed on its own terms.
-//
-// TODO(#1640): re-enable per project as `inject()`/standalone migrations land.
+// actual regressions; re-enable each rule per project under its dedicated
+// modernization issue.
 const angular21DeferredModernizationRules = {
   '@angular-eslint/prefer-inject': 'off',
   '@angular-eslint/prefer-standalone': 'off',

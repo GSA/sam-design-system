@@ -201,17 +201,25 @@ test('no protractor builder or "ng e2e" target remains in the workspace', () => 
 
 test('lockfile resolves @gsa-sam/* and @angular/* packages from the public npm registry', () => {
   const lockfile = readJson('package-lock.json');
-  let checked = 0;
+  let checkedAngular = 0;
+  let checkedGsaSam = 0;
   for (const [pkgPath, entry] of Object.entries(lockfile.packages)) {
-    if (!pkgPath || !entry.resolved) continue;
+    if (!pkgPath) continue;
     const name = pkgPath.replace(/^node_modules\//, '');
-    if (!name.startsWith('@gsa-sam/') && !name.startsWith('@angular/')) continue;
-    checked += 1;
+    const isAngular = name.startsWith('@angular/');
+    const isGsaSam = name.startsWith('@gsa-sam/');
+    if (!isAngular && !isGsaSam) continue;
+
+    assert.ok(entry.resolved, `expected ${name} (${pkgPath}) to have a resolved URL in package-lock.json`);
     assert.match(
       entry.resolved,
       /^https:\/\/registry\.npmjs\.org\//,
       `expected ${name} to resolve from the public npm registry, got ${entry.resolved}`,
     );
+
+    if (isAngular) checkedAngular += 1;
+    if (isGsaSam) checkedGsaSam += 1;
   }
-  assert.ok(checked > 0, 'expected at least one @gsa-sam/* or @angular/* entry to check');
+  assert.ok(checkedAngular > 0, `expected at least one @angular/* entry to check, found ${checkedAngular}`);
+  assert.ok(checkedGsaSam > 0, `expected at least one @gsa-sam/* entry to check, found ${checkedGsaSam}`);
 });
