@@ -352,9 +352,47 @@ export class RichTextEditorMaxHeightComponent implements OnInit, OnChanges {
 }
 ">
     
+    <input type="hidden" name="project[files][src/app/rich-text-editor-max-height.component.spec.ts]" value="import { ComponentFixture, TestBed } from &#39;@angular/core/testing&#39;;
+import { FormsModule, ReactiveFormsModule } from &#39;@angular/forms&#39;;
+import { By } from &#39;@angular/platform-browser&#39;;
+import { SdsRichTextComponent, SdsRichTextModule } from &#39;@gsa-sam/components&#39;;
+
+import { RichTextEditorMaxHeightComponent } from &#39;./rich-text-editor-max-height.component&#39;;
+
+describe(&#39;RichTextEditorMaxHeightComponent&#39;, () =&gt; {
+  let component: RichTextEditorMaxHeightComponent;
+  let fixture: ComponentFixture&lt;RichTextEditorMaxHeightComponent&gt;;
+
+  beforeEach(async () =&gt; {
+    await TestBed.configureTestingModule({
+      declarations: [RichTextEditorMaxHeightComponent],
+      imports: [FormsModule, ReactiveFormsModule, SdsRichTextModule],
+    }).compileComponents();
+  });
+
+  beforeEach(() =&gt; {
+    fixture = TestBed.createComponent(RichTextEditorMaxHeightComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it(&#39;should create&#39;, () =&gt; {
+    expect(component).toBeTruthy();
+  });
+
+  it(&#39;should bind maxHeight to 6 and not bind minHeight&#39;, () =&gt; {
+    const richTextDebugEl = fixture.debugElement.query(By.directive(SdsRichTextComponent));
+    expect(richTextDebugEl).toBeTruthy();
+    const richTextInstance = richTextDebugEl.componentInstance as SdsRichTextComponent;
+    expect(richTextInstance.maxHeight).toBe(6);
+    expect(richTextInstance.minHeight).toBeUndefined();
+  });
+});
+">
+    
     <input type="hidden" name="project[files][src/app/rich-text-editor-max-height.component.html]" value="&lt;div style=&#34;padding-top: 5rem&#34;&gt;
-  &lt;sds-rich-text [formControl]=&#34;fc&#34; [minHeight]=&#34;10&#34;&gt;&lt;/sds-rich-text&gt;
-  &lt;!--   [(ngModel)]=&#34;data&#34;--&gt;
+  &lt;sds-rich-text [formControl]=&#34;fc&#34; [maxHeight]=&#34;6&#34;&gt;&lt;/sds-rich-text&gt;
+
   &lt;p&gt;Rich Text Editor Value: {{ fc.value }}&lt;/p&gt;
 &lt;/div&gt;
 ">
