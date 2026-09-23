@@ -428,6 +428,136 @@ export class TableSelectRowsComponent implements AfterViewInit {
 }
 ">
     
+    <input type="hidden" name="project[files][src/app/table-select-rows.component.spec.ts]" value="import { Component, Input } from &#39;@angular/core&#39;;
+import { ComponentFixture, TestBed, waitForAsync } from &#39;@angular/core/testing&#39;;
+import { NoopAnimationsModule } from &#39;@angular/platform-browser/animations&#39;;
+import { IconModule } from &#39;@gsa-sam/ngx-uswds-icons&#39;;
+import { NgxBootstrapIconsModule } from &#39;ngx-bootstrap-icons&#39;;
+
+import { TableSelectRowsComponent } from &#39;./table-select-rows.component&#39;;
+import { TableSelectRowsModule } from &#39;./table-select-rows.module&#39;;
+
+// The real `usa-icon` chain (`IconModule` -&gt; `NgxBootstrapIconsModule`) needs
+// its `Icons` provider populated via `NgxBootstrapIconsModule.pick(...)`, which
+// this component&#39;s own module already does for the icons it actually uses
+// (`caretDownFill`, `chevronRight`). Rather than duplicate that wiring here,
+// swap in a lightweight stub for `usa-icon` (same approach `dialog.spec.ts`
+// uses), since no spec below asserts on icon rendering.
+@Component({ selector: &#39;usa-icon&#39;, template: &#39;&#39;, standalone: false })
+class UsaIconStubComponent {
+  @Input() icon = &#39;&#39;;
+  @Input() size = &#39;lg&#39;;
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: unknown;
+}
+
+describe(&#39;TableSelectRowsComponent&#39;, () =&gt; {
+  let component: TableSelectRowsComponent;
+  let fixture: ComponentFixture&lt;TableSelectRowsComponent&gt;;
+
+  beforeEach(waitForAsync(() =&gt; {
+    TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule, TableSelectRowsModule],
+    });
+
+    TestBed.overrideModule(TableSelectRowsModule, {
+      remove: { imports: [IconModule, NgxBootstrapIconsModule] },
+      add: { declarations: [UsaIconStubComponent], exports: [UsaIconStubComponent] },
+    });
+
+    TestBed.compileComponents();
+  }));
+
+  beforeEach(() =&gt; {
+    fixture = TestBed.createComponent(TableSelectRowsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it(&#39;should create&#39;, () =&gt; {
+    expect(component).toBeTruthy();
+  });
+
+  it(&#39;selects and deselects a row via the checkbox change event&#39;, () =&gt; {
+    // Locate the first rendered row&#39;s checkbox input
+    const rowCheckbox: HTMLInputElement | null = fixture.nativeElement.querySelector(&#39;tbody tr input[type=&#34;checkbox&#34;]&#39;);
+    expect(rowCheckbox).toBeTruthy();
+
+    const targetRow = component.data[0] as { checked?: boolean };
+
+    // Trigger change event to select the row
+    rowCheckbox!.checked = true;
+    rowCheckbox!.dispatchEvent(new Event(&#39;change&#39;));
+    fixture.detectChanges();
+
+    expect(component.selectedRows).toContain(targetRow as any);
+    expect(targetRow.checked).toBe(true);
+
+    // Trigger change event again to deselect
+    rowCheckbox!.checked = false;
+    rowCheckbox!.dispatchEvent(new Event(&#39;change&#39;));
+    fixture.detectChanges();
+
+    expect(component.selectedRows).not.toContain(targetRow as any);
+    expect(targetRow.checked).toBe(false);
+  });
+
+  it(&#39;disables the delete button when no rows are selected and enables it when rows are selected&#39;, () =&gt; {
+    const deleteButton: HTMLButtonElement | null = fixture.nativeElement.querySelector(&#39;button.usa-button--primary&#39;);
+    expect(deleteButton).toBeTruthy();
+    expect(component.deleteButtonEnabled).toBe(true);
+    expect(deleteButton!.disabled).toBe(true);
+
+    // Select a row via the checkbox
+    const rowCheckbox: HTMLInputElement | null = fixture.nativeElement.querySelector(&#39;tbody tr input[type=&#34;checkbox&#34;]&#39;);
+    rowCheckbox!.checked = true;
+    rowCheckbox!.dispatchEvent(new Event(&#39;change&#39;));
+    fixture.detectChanges();
+
+    expect(component.deleteButtonEnabled).toBe(false);
+    expect(deleteButton!.disabled).toBe(false);
+  });
+
+  it(&#39;selects and deselects all rows via onSelectAllRows&#39;, () =&gt; {
+    // Initially no rows selected
+    expect(component.selectedRows.length).toBe(0);
+    expect(component.selectAllChecked).toBe(false);
+
+    // Call select all
+    component.onSelectAllRows();
+    expect(component.selectAllChecked).toBe(true);
+    expect(component.selectedRows.length).toBe(component.numberOfRows);
+    component.selectedRows.forEach((row: { checked?: boolean }) =&gt; {
+      expect(row.checked).toBe(true);
+    });
+
+    // Call select all again to clear
+    component.onSelectAllRows();
+    expect(component.selectAllChecked).toBe(false);
+    expect(component.selectedRows.length).toBe(0);
+  });
+
+  it(&#39;selects only rows matching a specific status via onSelectAllStatus&#39;, () =&gt; {
+    // Collect the status of the first page&#39;s rows
+    const firstPageRows = component.data.slice(0, component.numberOfRows) as Array&lt;{
+      status?: string;
+      checked?: boolean;
+    }&gt;;
+    const draftRows = firstPageRows.filter((r) =&gt; r.status === &#39;Draft&#39;);
+
+    component.onSelectAllStatus(&#39;Draft&#39;);
+
+    expect(component.selectAllChecked).toBe(true);
+    expect(component.selectedRows.length).toBe(draftRows.length);
+    component.selectedRows.forEach((row: { status?: string; checked?: boolean }) =&gt; {
+      expect(row.status).toBe(&#39;Draft&#39;);
+      expect(row.checked).toBe(true);
+    });
+  });
+});
+">
+    
     <input type="hidden" name="project[files][src/app/table-select-rows.component.scss]" value=".usa-checkbox__label:not(.header-checkbox) {
   &amp;::before {
     margin-top: -1rem;
@@ -509,12 +639,13 @@ sds-table {
         &lt;/div&gt;
       &lt;/ng-template&gt;
       &lt;ng-template #sdsCell let-element=&#34;element&#34;&gt;
-        &lt;div class=&#34;usa-checkbox&#34; (click)=&#34;onSingleRowSelect(element)&#34;&gt;
+        &lt;div class=&#34;usa-checkbox&#34;&gt;
           &lt;input
             class=&#34;usa-checkbox__input&#34;
             id=&#34;check-select-{{ element.id }}&#34;
             type=&#34;checkbox&#34;
-            [(ngModel)]=&#34;element.checked&#34;
+            [ngModel]=&#34;element.checked&#34;
+            (change)=&#34;onSingleRowSelect(element)&#34;
           /&gt;
           &lt;label class=&#34;usa-checkbox__label&#34; for=&#34;check-select-{{ element.id }}&#34;
             &gt;&lt;span class=&#34;usa-sr-only&#34;&gt;Select Row {{ element.id }}&lt;/span&gt;&lt;/label
