@@ -31,7 +31,14 @@ export function buildProjectInventory(report) {
     totalWarnings += file.warningCount ?? 0;
     for (const msg of file.messages ?? []) {
       const ruleId = msg.ruleId || 'unknown';
-      rules[ruleId] = (rules[ruleId] || 0) + 1;
+      if (!rules[ruleId]) {
+        rules[ruleId] = { warnings: 0, errors: 0 };
+      }
+      if (msg.severity === 2) {
+        rules[ruleId].errors += 1;
+      } else {
+        rules[ruleId].warnings += 1;
+      }
     }
   }
 
@@ -55,7 +62,11 @@ function formatMarkdown(inventory) {
     lines.push(`- **Errors**: ${data.totalErrors}`);
     lines.push('');
 
-    const sortedRules = Object.entries(data.rules).sort((a, b) => b[1] - a[1]);
+    const sortedRules = Object.entries(data.rules).sort((a, b) => {
+      const totalA = a[1].warnings + a[1].errors;
+      const totalB = b[1].warnings + b[1].errors;
+      return totalB - totalA;
+    });
     if (sortedRules.length === 0) {
       lines.push('*No violations (0 warnings, 0 errors).*\n');
       continue;
@@ -63,8 +74,15 @@ function formatMarkdown(inventory) {
 
     lines.push('| Rule | Count | Severity |');
     lines.push('|---|---|---|');
-    for (const [rule, count] of sortedRules) {
-      lines.push(`| \`${rule}\` | ${count} | warn |`);
+    for (const [rule, counts] of sortedRules) {
+      const count = counts.warnings + counts.errors;
+      const severity =
+        counts.warnings > 0 && counts.errors > 0
+          ? `mixed (${counts.warnings} warn, ${counts.errors} error)`
+          : counts.errors > 0
+            ? 'error'
+            : 'warn';
+      lines.push(`| \`${rule}\` | ${count} | ${severity} |`);
     }
     lines.push('');
   }
@@ -76,9 +94,20 @@ function formatTerminal(inventory) {
   const lines = [];
   for (const [project, data] of Object.entries(inventory)) {
     lines.push(`=== ${project} (Warnings: ${data.totalWarnings}, Errors: ${data.totalErrors}) ===`);
-    const sortedRules = Object.entries(data.rules).sort((a, b) => b[1] - a[1]);
-    for (const [rule, count] of sortedRules) {
-      lines.push(`  ${count.toString().padStart(4)}: ${rule}`);
+    const sortedRules = Object.entries(data.rules).sort((a, b) => {
+      const totalA = a[1].warnings + a[1].errors;
+      const totalB = b[1].warnings + b[1].errors;
+      return totalB - totalA;
+    });
+    for (const [rule, counts] of sortedRules) {
+      const total = counts.warnings + counts.errors;
+      const details =
+        counts.warnings > 0 && counts.errors > 0
+          ? ` (${counts.warnings} warn, ${counts.errors} error)`
+          : counts.errors > 0
+            ? ' (error)'
+            : '';
+      lines.push(`  ${total.toString().padStart(4)}: ${rule}${details}`);
     }
     if (sortedRules.length === 0) {
       lines.push('  (0 violations)');

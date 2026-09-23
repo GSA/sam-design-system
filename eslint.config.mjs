@@ -120,7 +120,11 @@ export default tseslint.config(
   {
     files: ['apps/sam-design-system-site/**/*.ts'],
     extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
-    rules: { ...angular21DeferredModernizationRules },
+    rules: {
+      ...angular21DeferredModernizationRules,
+      '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'sam', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: 'sam', style: 'kebab-case' }],
+    },
   },
   {
     files: ['apps/sam-design-system-site/**/*.html'],

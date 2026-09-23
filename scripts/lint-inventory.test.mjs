@@ -60,13 +60,13 @@ test('generates inventory from explicit project report arguments', (t) => {
   const inventory = JSON.parse(result.stdout);
   assert.equal(inventory.projA.totalWarnings, 3);
   assert.equal(inventory.projA.totalErrors, 0);
-  assert.equal(inventory.projA.rules['rule-1'], 2);
-  assert.equal(inventory.projA.rules['rule-2'], 1);
+  assert.deepEqual(inventory.projA.rules['rule-1'], { warnings: 2, errors: 0 });
+  assert.deepEqual(inventory.projA.rules['rule-2'], { warnings: 1, errors: 0 });
 
   assert.equal(inventory.projB.totalWarnings, 1);
   assert.equal(inventory.projB.totalErrors, 1);
-  assert.equal(inventory.projB.rules['rule-3'], 1);
-  assert.equal(inventory.projB.rules['rule-2'], 1);
+  assert.deepEqual(inventory.projB.rules['rule-3'], { warnings: 0, errors: 1 });
+  assert.deepEqual(inventory.projB.rules['rule-2'], { warnings: 1, errors: 0 });
 });
 
 test('generates markdown output with --markdown', (t) => {
@@ -74,12 +74,19 @@ test('generates markdown output with --markdown', (t) => {
   t.after(() => rmSync(dir, { recursive: true, force: true }));
 
   const rep = join(dir, 'rep.json');
-  writeReport(rep, [{ ruleId: 'prefer-const', severity: 1, message: 'use const' }]);
+  writeReport(rep, [
+    { ruleId: 'prefer-const', severity: 1, message: 'use const' },
+    { ruleId: 'no-var', severity: 2, message: 'do not use var' },
+    { ruleId: 'mixed-rule', severity: 1, message: 'warning instance' },
+    { ruleId: 'mixed-rule', severity: 2, message: 'error instance' },
+  ]);
 
   const result = run(['--markdown', `components=${rep}`]);
   assert.equal(result.status, 0);
   assert.match(result.stdout, /### components/);
-  assert.match(result.stdout, /prefer-const/);
+  assert.match(result.stdout, /\| `prefer-const` \| 1 \| warn \|/);
+  assert.match(result.stdout, /\| `no-var` \| 1 \| error \|/);
+  assert.match(result.stdout, /\| `mixed-rule` \| 2 \| mixed \(1 warn, 1 error\) \|/);
 });
 
 test('fails with clear error if report file does not exist', () => {
