@@ -118,7 +118,7 @@
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "21.2.24",
+    "@angular/build": "22.0.8",
     "@angular/language-service": "21.2.23",
     "@playwright/test": "1.63.0",
     "@storybook/addon-docs": "^10.6.0",
