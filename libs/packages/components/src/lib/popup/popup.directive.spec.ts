@@ -30,6 +30,7 @@ describe('PopupDirective', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestPopupSampleComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
     de = fixture.debugElement.query(By.directive(SdsPopupDirective));
   });
 

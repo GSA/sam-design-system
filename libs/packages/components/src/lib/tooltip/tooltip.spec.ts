@@ -449,7 +449,7 @@ describe('SdsTooltip', () => {
       expect(comp.tooltip.isOpen()).toBe(true);
     }));
 
-    it('should close on inside click when autoClose is true or "inside"', fakeAsync(() => {
+    it('should close on inside click when autoClose is "inside"', fakeAsync(() => {
       comp.autoClose = 'inside';
       fixture.detectChanges();
 
@@ -460,6 +460,35 @@ describe('SdsTooltip', () => {
 
       const tooltipWindow = document.querySelector('sds-tooltip-window') as HTMLElement;
       dispatchInsideOrOutsideClick(tooltipWindow);
+      fixture.detectChanges();
+      tick(10);
+
+      expect(comp.tooltip.isOpen()).toBe(false);
+    }));
+
+    it('should close on inside and outside click when autoClose is true', fakeAsync(() => {
+      comp.autoClose = true;
+      fixture.detectChanges();
+
+      comp.tooltip.open();
+      fixture.detectChanges();
+      tick();
+      expect(comp.tooltip.isOpen()).toBe(true);
+
+      const tooltipWindow = document.querySelector('sds-tooltip-window') as HTMLElement;
+      dispatchInsideOrOutsideClick(tooltipWindow);
+      fixture.detectChanges();
+      tick(10);
+
+      expect(comp.tooltip.isOpen()).toBe(false);
+
+      comp.tooltip.open();
+      fixture.detectChanges();
+      tick();
+      expect(comp.tooltip.isOpen()).toBe(true);
+
+      const outsideEl = document.querySelector('#outside-element') as HTMLElement;
+      dispatchInsideOrOutsideClick(outsideEl);
       fixture.detectChanges();
       tick(10);
 

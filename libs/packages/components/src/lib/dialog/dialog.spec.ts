@@ -445,9 +445,9 @@ describe('SdsDialog', () => {
     const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
     templateRefFixture.detectChanges();
     const templateRef = templateRefFixture.componentInstance.templateRef;
-    expect(() =>
-      container.attachTemplatePortal(new TemplatePortal(templateRef, testViewContainerRef)),
-    ).toThrowError(/Attempting to attach dialog content after content is already attached/);
+    expect(() => container.attachTemplatePortal(new TemplatePortal(templateRef, testViewContainerRef))).toThrowError(
+      /Attempting to attach dialog content after content is already attached/,
+    );
   });
 
   it('should override the height of the overlay pane', () => {

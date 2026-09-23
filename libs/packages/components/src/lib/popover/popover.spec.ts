@@ -487,7 +487,7 @@ describe('SdsPopover', () => {
       expect(comp.popover.isOpen()).toBe(true);
     }));
 
-    it('should close on inside click when autoClose is true or "inside"', fakeAsync(() => {
+    it('should close on inside click when autoClose is "inside"', fakeAsync(() => {
       comp.autoClose = 'inside';
       fixture.detectChanges();
 
@@ -498,6 +498,35 @@ describe('SdsPopover', () => {
 
       const popoverWindow = document.querySelector('sds-popover-window') as HTMLElement;
       dispatchInsideOrOutsideClick(popoverWindow);
+      fixture.detectChanges();
+      tick(10);
+
+      expect(comp.popover.isOpen()).toBe(false);
+    }));
+
+    it('should close on inside and outside click when autoClose is true', fakeAsync(() => {
+      comp.autoClose = true;
+      fixture.detectChanges();
+
+      comp.popover.open();
+      fixture.detectChanges();
+      tick();
+      expect(comp.popover.isOpen()).toBe(true);
+
+      const popoverWindow = document.querySelector('sds-popover-window') as HTMLElement;
+      dispatchInsideOrOutsideClick(popoverWindow);
+      fixture.detectChanges();
+      tick(10);
+
+      expect(comp.popover.isOpen()).toBe(false);
+
+      comp.popover.open();
+      fixture.detectChanges();
+      tick();
+      expect(comp.popover.isOpen()).toBe(true);
+
+      const outsideEl = document.querySelector('#outside-element') as HTMLElement;
+      dispatchInsideOrOutsideClick(outsideEl);
       fixture.detectChanges();
       tick(10);
 

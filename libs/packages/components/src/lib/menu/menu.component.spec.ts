@@ -471,9 +471,7 @@ describe('SdsMenu', () => {
       fixture.componentInstance.trigger.openMenu();
       fixture.detectChanges();
 
-      const closeButton = overlayContainerElement.querySelector(
-        '.sds-menu__header button[aria-label="Close Menu"]',
-      );
+      const closeButton = overlayContainerElement.querySelector('.sds-menu__header button[aria-label="Close Menu"]');
       expect(closeButton).toBeNull();
 
       fixture.componentInstance.trigger.closeMenu();
