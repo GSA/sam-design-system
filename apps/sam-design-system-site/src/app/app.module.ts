@@ -10,7 +10,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { ToastrModule } from 'ngx-toastr';
-import { SdsToastComponent, SdsToastModule, SdsToastSettings } from '@gsa-sam/components';
+import { SdsToastModule, SdsToastSettings } from '@gsa-sam/components';
 import { NgxBootstrapIconsModule, github } from 'ngx-bootstrap-icons';
 import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 

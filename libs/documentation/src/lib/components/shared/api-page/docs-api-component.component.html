@@ -10,9 +10,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let input of api.inputs">
-      <td scope="row" valign="top" class="api-label">
+      <th scope="row" valign="top" class="api-label">
         <p><code class="text-magenta bg-white" [innerHTML]="input.name"></code></p>
-      </td>
+      </th>
       <td valign="top" class="api-content">
         <div [innerHTML]="input.description"></div>
         <p>
@@ -36,9 +36,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let output of api.outputs">
-      <td scope="row" valign="top" class="api-label">
+      <th scope="row" valign="top" class="api-label">
         <p><code class="text-magenta bg-white" [innerHTML]="output.name"></code></p>
-      </td>
+      </th>
       <td valign="top" class="api-content">
         <div [innerHTML]="output.description"></div>
         <p>
@@ -62,9 +62,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let method of api.methods">
-      <td scope="row" valign="top" class="api-label">
+      <th scope="row" valign="top" class="api-label">
         <p><code class="text-magenta bg-white" [innerHTML]="method.name"></code></p>
-      </td>
+      </th>
       <td valign="top" class="api-content">
         <p>
           <code class="text-magenta bg-white">{{ method.name }}({{ getArgs(method) }})</code
@@ -89,9 +89,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let property of api.properties">
-      <td scope="row" valign="top" class="api-label">
+      <th scope="row" valign="top" class="api-label">
         <p><code class="text-magenta bg-white" [innerHTML]="property.name"></code></p>
-      </td>
+      </th>
       <td valign="top" class="api-content">
         <div [innerHTML]="property.description"></div>
         <p *ngIf="property.type">
@@ -115,9 +115,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let wrapper of wrappers">
-      <td scope="row" valign="top" class="api-label">
+      <th scope="row" valign="top" class="api-label">
         <p><code class="text-magenta bg-white" [innerHTML]="wrapper"></code></p>
-      </td>
+      </th>
       <td valign="top" class="api-content">
         <p class="margin-bottom-0"><span class="text-italic text-semibold font-sans-3xs">Template: </span></p>
         <docs-highlight [sourceCode]="getWrapper(wrapper).template"></docs-highlight>
@@ -137,9 +137,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let tag of getTags(getWrapper(wrapper).jsdoctags)">
-              <td scope="row" valign="top" class="api-label">
+              <th scope="row" valign="top" class="api-label">
                 <code class="text-magenta bg-white" [innerHTML]="tag.name"></code>
-              </td>
+              </th>
               <td valign="top" class="api-content">
                 <code class="text-indigo bg-white" [innerHTML]="tag.comment"></code>
               </td>

@@ -109,5 +109,26 @@ export default tseslint.config(
     extends: angular.configs.templateAccessibility,
     rules: accessibilityWarnings,
   },
+  // libs/documentation: template accessibility was cleared of all 14 legacy
+  // warnings in #1624; promote template accessibility to `error`.
+  {
+    files: ['libs/documentation/**/*.html'],
+    extends: angular.configs.templateAccessibility,
+  },
+  // apps/sam-design-system-site: fully burned down to 0 warnings in #1624;
+  // promote all TypeScript and template rules to `error`.
+  {
+    files: ['apps/sam-design-system-site/**/*.ts'],
+    extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
+    rules: {
+      ...angular21DeferredModernizationRules,
+      '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'sam', style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: 'sam', style: 'kebab-case' }],
+    },
+  },
+  {
+    files: ['apps/sam-design-system-site/**/*.html'],
+    extends: angular.configs.templateAccessibility,
+  },
   storybook.configs['flat/recommended'],
 );
