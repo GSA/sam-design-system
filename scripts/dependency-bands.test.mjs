@@ -152,6 +152,49 @@ test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
 });
 
+test('root and all three libraries maintain lockstep 21.0.0 versioning', () => {
+  assert.equal(rootPackageJson.version, '21.0.0', 'root package.json version must be 21.0.0');
+
+  for (const [lib, manifestPath] of Object.entries(LIB_MANIFESTS)) {
+    const manifest = readJson(manifestPath);
+    assert.equal(manifest.version, '21.0.0', `expected ${lib} manifest version to be 21.0.0, got ${manifest.version}`);
+  }
+});
+
+test('internal @gsa-sam peer ranges point at the lockstep 21.0.0 version', () => {
+  const samMaterialExtensionsManifest = readJson(LIB_MANIFESTS['sam-material-extensions']);
+  assert.equal(
+    samMaterialExtensionsManifest.peerDependencies['@gsa-sam/components'],
+    '^21.0.0',
+    'sam-material-extensions must peer @gsa-sam/components at ^21.0.0',
+  );
+
+  const samFormlyManifest = readJson(LIB_MANIFESTS['sam-formly']);
+  assert.equal(
+    samFormlyManifest.peerDependencies['@gsa-sam/components'],
+    '^21.0.0',
+    'sam-formly must peer @gsa-sam/components at ^21.0.0',
+  );
+  assert.equal(
+    samFormlyManifest.peerDependencies['@gsa-sam/sam-material-extensions'],
+    '^21.0.0',
+    'sam-formly must peer @gsa-sam/sam-material-extensions at ^21.0.0',
+  );
+});
+
+test('each library manifest declares repository metadata matching GSA/sam-design-system (ADR-0011)', () => {
+  for (const [lib, manifestPath] of Object.entries(LIB_MANIFESTS)) {
+    const manifest = readJson(manifestPath);
+    assert.ok(manifest.repository, `expected ${lib} to define repository`);
+    const url = typeof manifest.repository === 'string' ? manifest.repository : manifest.repository.url;
+    assert.match(
+      url,
+      /^git\+https:\/\/github\.com\/GSA\/sam-design-system(\.git)?$|^https:\/\/github\.com\/GSA\/sam-design-system(\.git)?$/,
+      `expected ${lib} repository to point at GSA/sam-design-system, got ${url}`,
+    );
+  }
+});
+
 // marked 16 dropped the prebuilt `marked.min.js` UMD bundle from the published
 // tarball; only `lib/marked.esm.js` and `lib/marked.umd.js` ship now. The
 // site's `build` target listed that file under `scripts`, which is a hard

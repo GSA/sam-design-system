@@ -3,43 +3,26 @@ const readFileSync = require('fs').readFileSync;
 const writeFileSync = require('fs').writeFileSync;
 const resolve = require('path').resolve;
 
-main();
+const INTERNAL_PACKAGES = ['@gsa-sam/components', '@gsa-sam/sam-formly', '@gsa-sam/sam-material-extensions'];
 
-function main() {
-  const rootDir = resolve(__dirname, '../../');
-  const angularJsonPath = resolve(__dirname, '../../angular.json');
+function updatePackageVersion(packageJson, newVersion = process.env.npm_package_version) {
+  const clone = JSON.parse(JSON.stringify(packageJson));
+  if (!newVersion) {
+    return clone;
+  }
 
-  console.log('Loading angular.json...');
-  const { error: angularJsonError, contents: angularJson } = loadJson(angularJsonPath);
-  handleError(angularJsonError);
+  clone.version = newVersion;
 
-  const projectNames = Object.keys(angularJson.projects);
-  const libNames = projectNames.filter(
-    (name) => angularJson.projects[name].projectType === 'library' && angularJson.projects[name].architect.build,
-  );
+  const peers = clone.peerDependencies;
+  if (!peers) {
+    return clone;
+  }
 
-  console.log('Bumping lib versions...');
-  libNames.forEach((lib) => {
-    const libRootDir = angularJson.projects[lib].root;
-    const libPackagePath = resolve(rootDir, libRootDir, 'package.json');
-
-    console.log(`Loading ${lib} package...`);
-    const { error: libPackageError, contents: libPackage } = loadJson(libPackagePath);
-    handleError(libPackageError);
-
-    const updatedPackage = updatePackageVersion(libPackage);
-
-    console.log(`Writing version bump for ${lib} package...`);
-    const { error, contents } = writeJson(libPackagePath, updatedPackage);
-    handleError(error);
-    console.log(`Successfully bumped ${lib}!`);
-  });
-}
-
-function updatePackageVersion(packageJson) {
-  const clone = Object.assign({}, packageJson);
-
-  clone.version = process.env.npm_package_version;
+  for (const pkg of INTERNAL_PACKAGES) {
+    if (pkg in peers) {
+      peers[pkg] = `^${newVersion}`;
+    }
+  }
 
   return clone;
 }
@@ -62,7 +45,7 @@ function writeJson(path, json) {
   let error, value;
 
   try {
-    const value = writeFileSync(path, JSON.stringify(json, null, 2));
+    value = writeFileSync(path, JSON.stringify(json, null, 2) + '\n');
   } catch (e) {
     error = new Error(e);
     error.code = 1;
@@ -74,6 +57,46 @@ function writeJson(path, json) {
 function handleError(error) {
   if (error) {
     console.error(error.message);
-    process.exit(error.code);
+    process.exit(error.code || 1);
   }
 }
+
+function main(rootDir = resolve(__dirname, '../../'), targetVersion = process.env.npm_package_version) {
+  const angularJsonPath = resolve(rootDir, 'angular.json');
+
+  console.log('Loading angular.json...');
+  const { error: angularJsonError, contents: angularJson } = loadJson(angularJsonPath);
+  handleError(angularJsonError);
+
+  const projectNames = Object.keys(angularJson.projects);
+  const libNames = projectNames.filter(
+    (name) => angularJson.projects[name].projectType === 'library' && angularJson.projects[name].architect?.build,
+  );
+
+  console.log('Bumping lib versions...');
+  libNames.forEach((lib) => {
+    const libRootDir = angularJson.projects[lib].root;
+    const libPackagePath = resolve(rootDir, libRootDir, 'package.json');
+
+    console.log(`Loading ${lib} package...`);
+    const { error: libPackageError, contents: libPackage } = loadJson(libPackagePath);
+    handleError(libPackageError);
+
+    const updatedPackage = updatePackageVersion(libPackage, targetVersion);
+
+    console.log(`Writing version bump for ${lib} package...`);
+    const { error } = writeJson(libPackagePath, updatedPackage);
+    handleError(error);
+    console.log(`Successfully bumped ${lib}!`);
+  });
+}
+
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  INTERNAL_PACKAGES,
+  updatePackageVersion,
+  main,
+};
