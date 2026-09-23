@@ -790,11 +790,15 @@ describe('SdsStepperComponent', () => {
       const navigateSpy = vi.spyOn(router, 'navigate');
 
       stepper.isRouteEnabled = true;
-      component.step1Route = 'step1-route';
-      stepper.flatSteps[0].route = 'step1-route';
+      stepper.flatSteps[1].route = 'step2Child1-route';
 
       await stepper.changeStep('step2Child1');
-      expect(navigateSpy).toHaveBeenCalled();
+      expect(navigateSpy).toHaveBeenCalledWith(['step2Child1-route'], {
+        queryParams: {
+          sdsStepId: 'step2Child1',
+        },
+        queryParamsHandling: 'merge',
+      });
     });
 
     it('Should not navigate via router when isRouteEnabled is false', async () => {
@@ -833,7 +837,7 @@ describe('SdsStepperComponent', () => {
 
       stepper.ngAfterViewInit();
       await new Promise((resolve) => setTimeout(resolve, 10));
-      expect(updateValSpy).toBeDefined();
+      expect(updateValSpy).toHaveBeenCalled();
 
       stepper.validateStepsOnInit = ['step2Child1'];
       stepper.currentStepId = 'step1';
@@ -867,14 +871,15 @@ describe('SdsStepperComponent', () => {
       const routeStepper = new SdsStepper(TestBed.inject(Router), mockRoute, stepper.cdr);
       routeStepper.stepTemplates = stepper.stepTemplates;
       routeStepper.stepValidityMap = null as any;
-      routeStepper.linear = true;
+      routeStepper.linear = false;
       routeStepper.isRouteEnabled = true;
 
       routeStepper.ngAfterContentInit();
       expect(routeStepper.stepValidityMap).toEqual({});
+      expect(routeStepper.currentStepId).toBe('step2Child1');
 
       await new Promise((resolve) => setTimeout(resolve, 20));
-      expect(routeStepper.currentStepId).toBeDefined();
+      expect(routeStepper.currentStepId).toBe('step3');
     });
   });
 });
