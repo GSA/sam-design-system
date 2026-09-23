@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsRichTextModule } from '@gsa-sam/components';
 import { FormlyForm, FormlyModule } from '@ngx-formly/core';
+import { By } from '@angular/platform-browser';
 import { FormlyFieldRichTextEditorComponent } from './rich-text';
+import { FormlyValidationWrapperComponent } from '../wrappers/validation.wrapper';
 
 const createTestComponent = (html: string) =>
   createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -16,12 +18,12 @@ export function createGenericTestComponent<T>(html: string, type: { new (...args
   return fixture as ComponentFixture<T>;
 }
 
-let testRTEComponent;
+let testRTEComponent: any;
 
 describe('Formly Field Rich Text Editor Component', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, FormlyFieldRichTextEditorComponent],
+      declarations: [TestComponent, FormlyFieldRichTextEditorComponent, FormlyValidationWrapperComponent],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -32,6 +34,13 @@ describe('Formly Field Rich Text Editor Component', () => {
             {
               name: 'rich-text',
               component: FormlyFieldRichTextEditorComponent,
+              wrappers: ['validation'],
+            },
+          ],
+          wrappers: [
+            {
+              name: 'validation',
+              component: FormlyValidationWrapperComponent,
             },
           ],
         }),
@@ -39,7 +48,7 @@ describe('Formly Field Rich Text Editor Component', () => {
     });
   });
 
-  describe('', () => {
+  describe('rich-text functionality', () => {
     beforeEach(() => {
       testRTEComponent = {
         form: new UntypedFormGroup({}),
@@ -58,7 +67,6 @@ describe('Formly Field Rich Text Editor Component', () => {
         {
           key: 'editor',
           type: 'rich-text',
-
           modelOptions: {
             updateOn: 'change',
           },
@@ -66,13 +74,14 @@ describe('Formly Field Rich Text Editor Component', () => {
       ];
 
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="{editor:123}" [options]="options"></formly-form>',
-        ),
-        trigger = fixture.debugElement.nativeElement.querySelector('ckeditor');
+        '<formly-form [form]="form" [fields]="fields" [model]="{editor:123}" [options]="options"></formly-form>',
+      );
+      const trigger = fixture.debugElement.nativeElement.querySelector('ckeditor');
 
       fixture.detectChanges();
       expect(trigger).toBeTruthy();
     });
+
     it('template options should apply expected classes', () => {
       testRTEComponent.fields = [
         {
@@ -82,20 +91,148 @@ describe('Formly Field Rich Text Editor Component', () => {
             minHeight: 10,
             maxHeight: 31,
           },
-
           modelOptions: {
             updateOn: 'change',
           },
         },
       ];
       const fixture = createTestComponent(
-          '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
-        ),
-        trigger = fixture.debugElement.nativeElement.querySelector('ckeditor');
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+      );
+      const trigger = fixture.debugElement.nativeElement.querySelector('ckeditor');
 
       fixture.detectChanges();
       expect(trigger.classList).toContain('min-height-10');
       expect(trigger.classList).toContain('max-height-31');
+    });
+
+    it('should bind placeholder and configuration properties to SdsRichTextComponent', () => {
+      testRTEComponent.fields = [
+        {
+          key: 'editor',
+          type: 'rich-text',
+          props: {
+            placeholder: 'Type something here...',
+            minHeight: 15,
+            maxHeight: 40,
+          },
+        },
+      ];
+
+      const fixture = createTestComponent(
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+      );
+      fixture.detectChanges();
+
+      const rteEl = fixture.debugElement.query(By.directive(FormlyFieldRichTextEditorComponent));
+      const compInstance = rteEl.componentInstance as FormlyFieldRichTextEditorComponent;
+
+      expect(compInstance.template).toBeTruthy();
+      expect(compInstance.template.placeholder).toBe('Type something here...');
+      expect(compInstance.template.minHeight).toBe(15);
+      expect(compInstance.template.maxHeight).toBe(40);
+    });
+
+    it('should handle user input change and touch events', () => {
+      testRTEComponent.fields = [
+        {
+          key: 'editor',
+          type: 'rich-text',
+        },
+      ];
+
+      const fixture = createTestComponent(
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+      );
+      fixture.detectChanges();
+
+      const rteEl = fixture.debugElement.query(By.directive(FormlyFieldRichTextEditorComponent));
+      const compInstance = rteEl.componentInstance as FormlyFieldRichTextEditorComponent;
+      const control = testRTEComponent.form.get('editor');
+
+      // Simulate editor change event
+      const fakeChangeEvent = {
+        editor: {
+          getData: () => '<p>Updated content</p>',
+        },
+      };
+      compInstance.template.onChange(fakeChangeEvent as any);
+      fixture.detectChanges();
+
+      expect(control.value).toBe('<p>Updated content</p>');
+
+      // Simulate editor blur/touch event
+      expect(control.touched).toBe(false);
+      const fakeBlurEvent = {
+        editor: {
+          getData: () => '<p>Updated content</p>',
+        },
+      };
+      compInstance.template.onTouched(fakeBlurEvent as any);
+      fixture.detectChanges();
+
+      expect(control.touched).toBe(true);
+    });
+
+    it('should handle disabled state transitions', () => {
+      testRTEComponent.fields = [
+        {
+          key: 'editor',
+          type: 'rich-text',
+        },
+      ];
+
+      const fixture = createTestComponent(
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+      );
+      fixture.detectChanges();
+
+      const control = testRTEComponent.form.get('editor');
+      expect(control.disabled).toBe(false);
+
+      control.disable();
+      fixture.detectChanges();
+      expect(control.disabled).toBe(true);
+
+      control.enable();
+      fixture.detectChanges();
+      expect(control.disabled).toBe(false);
+    });
+
+    it('should render error state when invalid and touched, and clear error when resolved', () => {
+      testRTEComponent.model = { editor: '' };
+      testRTEComponent.fields = [
+        {
+          key: 'editor',
+          type: 'rich-text',
+          validators: {
+            validation: [Validators.required],
+          },
+          props: {
+            label: 'Rich Text Required',
+          },
+        },
+      ];
+
+      const fixture = createTestComponent(
+        '<formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>',
+      );
+      fixture.detectChanges();
+
+      const control = testRTEComponent.form.get('editor');
+      expect(control.invalid).toBe(true);
+      expect(fixture.nativeElement.querySelector('.usa-error-message')).toBeNull();
+
+      control.markAsTouched();
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.usa-error-message')).not.toBeNull();
+
+      control.setValue('<p>Valid text</p>');
+      fixture.detectChanges();
+
+      expect(control.valid).toBe(true);
+      expect(fixture.nativeElement.querySelector('.usa-error-message')).toBeNull();
     });
   });
 });
@@ -108,8 +245,16 @@ describe('Formly Field Rich Text Editor Component', () => {
 class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
 
-  fields = testRTEComponent.fields;
-  form: UntypedFormGroup = testRTEComponent.form;
-  model = testRTEComponent.model || {};
-  options = testRTEComponent.options;
+  get fields() {
+    return testRTEComponent.fields;
+  }
+  get form() {
+    return testRTEComponent.form;
+  }
+  get model() {
+    return testRTEComponent.model || {};
+  }
+  get options() {
+    return testRTEComponent.options;
+  }
 }
