@@ -233,6 +233,7 @@ describe('Formly Field Autocomplete Component', () => {
     testAutocompleteComponent.form.get('firstName').setValue(newSelection);
     fixture.detectChanges();
 
+    expect(changedValue).toEqual(newSelection);
     expect(testAutocompleteComponent.model.firstName).toEqual(newSelection);
   });
 

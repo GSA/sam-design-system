@@ -407,10 +407,14 @@ describe('Formly Field multicheckbox Component', () => {
       testComponentInputs.form.get('multi-checkbox').disable();
       fixture.detectChanges();
       expect(testComponentInputs.form.get('multi-checkbox').disabled).toBe(true);
+      expect(checkboxes[0].nativeElement.disabled).toBe(true);
+      expect(checkboxes[1].nativeElement.disabled).toBe(true);
 
       testComponentInputs.form.get('multi-checkbox').enable();
       fixture.detectChanges();
       expect(testComponentInputs.form.get('multi-checkbox').disabled).toBe(false);
+      expect(checkboxes[0].nativeElement.disabled).toBe(false);
+      expect(checkboxes[1].nativeElement.disabled).toBe(true);
     });
 
     it('should render error state when invalid and touched, and clear error when resolved', () => {

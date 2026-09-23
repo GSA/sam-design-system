@@ -51,6 +51,7 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   buttonEl: ElementRef;
 
   @Input() searchSettings: SearchSettings = new SearchSettings();
+  @Input() disabled: boolean = false;
   @Output() submit: EventEmitter<{ searchText: string }> = new EventEmitter(null);
 
   model: any = {};
@@ -120,6 +121,10 @@ export class SdsSearchComponent implements AfterViewInit, ControlValueAccessor {
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
+  }
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    this.cd.markForCheck();
   }
 
   isInputVisible(): boolean {

@@ -178,15 +178,20 @@ describe('Formly Field Search Component', () => {
     fixture.detectChanges();
 
     const control = testSearchComponent.form.get('searchField');
+    const input = fixture.nativeElement.querySelector('input[type="search"]') as HTMLInputElement;
+
     expect(control.disabled).toBe(false);
+    expect(input.disabled).toBe(false);
 
     control.disable();
     fixture.detectChanges();
     expect(control.disabled).toBe(true);
+    expect(input.disabled).toBe(true);
 
     control.enable();
     fixture.detectChanges();
     expect(control.disabled).toBe(false);
+    expect(input.disabled).toBe(false);
   });
 
   it('should render error state when invalid and touched, and clear error when resolved', () => {

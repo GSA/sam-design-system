@@ -37,6 +37,7 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   @Input() maxHeight: number;
   @ViewChild('editor') editorComponent: CKEditorComponent;
   @Input() placeholder: string = '';
+  @Input() disabled: boolean = false;
 
   model: string;
 
@@ -69,6 +70,10 @@ export class SdsRichTextComponent implements ControlValueAccessor {
   }
   registerOnTouched(fn: any) {
     this._onTouched = fn;
+  }
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    this.changeDetector.detectChanges();
   }
 
   constructor(private changeDetector: ChangeDetectorRef) {}

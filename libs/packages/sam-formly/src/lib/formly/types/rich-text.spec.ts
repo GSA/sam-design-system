@@ -187,16 +187,26 @@ describe('Formly Field Rich Text Editor Component', () => {
       );
       fixture.detectChanges();
 
+      const rteEl = fixture.debugElement.query(By.directive(FormlyFieldRichTextEditorComponent));
+      const compInstance = rteEl.componentInstance as FormlyFieldRichTextEditorComponent;
+      const ckeditor = fixture.nativeElement.querySelector('ckeditor');
       const control = testRTEComponent.form.get('editor');
+
       expect(control.disabled).toBe(false);
+      expect(compInstance.template.disabled).toBe(false);
+      expect(ckeditor.hasAttribute('disabled')).toBe(false);
 
       control.disable();
       fixture.detectChanges();
       expect(control.disabled).toBe(true);
+      expect(compInstance.template.disabled).toBe(true);
+      expect(ckeditor.hasAttribute('disabled')).toBe(true);
 
       control.enable();
       fixture.detectChanges();
       expect(control.disabled).toBe(false);
+      expect(compInstance.template.disabled).toBe(false);
+      expect(ckeditor.hasAttribute('disabled')).toBe(false);
     });
 
     it('should render error state when invalid and touched, and clear error when resolved', () => {

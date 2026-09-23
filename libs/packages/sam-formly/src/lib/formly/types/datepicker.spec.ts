@@ -23,7 +23,7 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { FormlyFieldDatePickerComponent } from './datepicker';
 import { FormlyValidationWrapperComponent } from '../wrappers/validation.wrapper';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule, MatDatepickerInput } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 
 const createTestComponent = (html: string) =>
@@ -115,7 +115,7 @@ describe('Formly Field Datepicker Component', () => {
       expect(testComponentInputs.model.entityDate).toEqual(new Date(2019, 11, 25));
     });
 
-    it('should call props.change callback on input change events', () => {
+    it('should call props.change callback on date change events', () => {
       const changeSpy = vi.fn();
       testComponentInputs.fields = [
         {
@@ -133,9 +133,9 @@ describe('Formly Field Datepicker Component', () => {
       );
       fixture.detectChanges();
 
-      const inputEl = fixture.nativeElement.querySelector('input.usa-input');
-      inputEl.value = '12/25/2020';
-      inputEl.dispatchEvent(new Event('input'));
+      const inputDebug = fixture.debugElement.query(By.directive(MatDatepickerInput));
+      const datepickerInput = inputDebug.injector.get(MatDatepickerInput);
+      datepickerInput.dateChange.emit({ value: new Date(2020, 11, 25) } as any);
       fixture.detectChanges();
 
       expect(changeSpy).toHaveBeenCalled();

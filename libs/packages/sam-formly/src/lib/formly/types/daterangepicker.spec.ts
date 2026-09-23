@@ -14,13 +14,14 @@ class UsaIconStubComponent {
 }
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { Component, ViewChild } from '@angular/core';
 import { UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule, FormlyForm, ConfigOption } from '@ngx-formly/core';
 
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule, MatStartDate, MatEndDate } from '@angular/material/datepicker';
 import { FormlyFieldDateRangePickerComponent } from './daterangepicker';
 import { FormlyValidationWrapperComponent } from '../wrappers/validation.wrapper';
 import { dateRangeValidator } from '../formly.validators';
@@ -224,17 +225,16 @@ describe('Formly Field DateRangePicker Component', () => {
     );
     fixture.detectChanges();
 
-    const inputs = fixture.nativeElement.querySelectorAll('mat-date-range-input input');
-    const startInput = inputs[0] as HTMLInputElement;
-    const endInput = inputs[1] as HTMLInputElement;
+    const startInputDebug = fixture.debugElement.query(By.directive(MatStartDate));
+    const endInputDebug = fixture.debugElement.query(By.directive(MatEndDate));
+    const startDateDirective = startInputDebug.injector.get(MatStartDate);
+    const endDateDirective = endInputDebug.injector.get(MatEndDate);
 
-    startInput.value = '10/10/2020';
-    startInput.dispatchEvent(new Event('input'));
+    startDateDirective.dateChange.emit({ value: new Date(2020, 9, 10) } as any);
     fixture.detectChanges();
     expect(fromChangeSpy).toHaveBeenCalled();
 
-    endInput.value = '10/20/2020';
-    endInput.dispatchEvent(new Event('input'));
+    endDateDirective.dateChange.emit({ value: new Date(2020, 9, 20) } as any);
     fixture.detectChanges();
     expect(toChangeSpy).toHaveBeenCalled();
   });
@@ -257,15 +257,17 @@ describe('Formly Field DateRangePicker Component', () => {
     );
     fixture.detectChanges();
 
-    const inputs = fixture.nativeElement.querySelectorAll('mat-date-range-input input');
-    const startInput = inputs[0] as HTMLInputElement;
-    const endInput = inputs[1] as HTMLInputElement;
+    const startInputDebug = fixture.debugElement.query(By.directive(MatStartDate));
+    const endInputDebug = fixture.debugElement.query(By.directive(MatEndDate));
+    const startDateDirective = startInputDebug.injector.get(MatStartDate);
+    const endDateDirective = endInputDebug.injector.get(MatEndDate);
 
-    startInput.value = '10/10/2020';
-    startInput.dispatchEvent(new Event('input'));
-    endInput.value = '10/20/2020';
-    endInput.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    expect(() => {
+      startDateDirective.dateChange.emit({ value: new Date(2020, 9, 10) } as any);
+      endDateDirective.dateChange.emit({ value: new Date(2020, 9, 20) } as any);
+      fixture.detectChanges();
+    }).not.toThrow();
+
     expect(fixture).toBeTruthy();
   });
 
