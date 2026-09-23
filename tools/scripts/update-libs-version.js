@@ -7,15 +7,20 @@ const INTERNAL_PACKAGES = ['@gsa-sam/components', '@gsa-sam/sam-formly', '@gsa-s
 
 function updatePackageVersion(packageJson, newVersion = process.env.npm_package_version) {
   const clone = JSON.parse(JSON.stringify(packageJson));
+  if (!newVersion) {
+    return clone;
+  }
 
-  if (newVersion) {
-    clone.version = newVersion;
-    if (clone.peerDependencies) {
-      for (const internalPkg of INTERNAL_PACKAGES) {
-        if (clone.peerDependencies[internalPkg]) {
-          clone.peerDependencies[internalPkg] = `^${newVersion}`;
-        }
-      }
+  clone.version = newVersion;
+
+  const peers = clone.peerDependencies;
+  if (!peers) {
+    return clone;
+  }
+
+  for (const pkg of INTERNAL_PACKAGES) {
+    if (pkg in peers) {
+      peers[pkg] = `^${newVersion}`;
     }
   }
 
