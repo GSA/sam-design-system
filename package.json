@@ -76,7 +76,7 @@
     "@uswds/uswds": "3.11.0"
   },
   "dependencies": {
-    "@angular-devkit/architect": "0.2102.24",
+    "@angular-devkit/architect": "0.2201.8",
     "@angular-devkit/build-angular": "21.2.24",
     "@angular/animations": "21.2.23",
     "@angular/cdk": "21.2.14",
@@ -115,7 +115,7 @@
     "rxjs": ">=7.5.0",
     "tslib": "^2.0.0",
     "typescript": "5.9.3",
-    "zone.js": "^0.15.1"
+    "zone.js": "^0.16.3"
   },
   "devDependencies": {
     "@angular/build": "21.2.24",
