@@ -133,6 +133,7 @@ export class SdsVideoPlayerComponent implements AfterViewInit, OnChanges, OnInit
       // Edge case - if the button to toggle video source does not exist in dom, then add in the
       // video source and let the browser decide when to fetch video data
       this.loadVideoSource = true;
+      this.cdr.detectChanges();
     } else {
       playButton.onclick = loadVideo;
       restartButton.onclick = loadVideo;
