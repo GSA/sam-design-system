@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 import { SdsObserveWidthDirective } from './observe-width.directive';
 
 @Component({
-  template: ` <div [sdsObserveWidth] (sdsObserveWidth)="onWidthChange($event)">Target Element</div> `,
+  template: ` <div sdsObserveWidth (sdsObserveWidth)="onWidthChange($event)">Target Element</div> `,
   standalone: false,
 })
 class TestHostComponent {

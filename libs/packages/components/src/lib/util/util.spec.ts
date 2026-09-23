@@ -191,6 +191,7 @@ describe('general utilities (util.ts)', () => {
       btn.focus();
 
       expect(getActiveElement(document)).toBe(btn);
+      expect(getActiveElement()).toBe(btn);
       btn.remove();
     });
 
@@ -199,23 +200,12 @@ describe('general utilities (util.ts)', () => {
     });
 
     it('should find active element inside shadow root recursively', () => {
-      const host = document.createElement('div');
-      document.body.appendChild(host);
+      const shadowBtn = document.createElement('button');
+      const shadow = { activeElement: shadowBtn } as unknown as ShadowRoot;
+      const host = { shadowRoot: shadow } as unknown as Element;
+      const rootStub = { activeElement: host } as unknown as Document;
 
-      if (host.attachShadow) {
-        const shadow = host.attachShadow({ mode: 'open' });
-        const shadowBtn = document.createElement('button');
-        shadow.appendChild(shadowBtn);
-
-        // Mock shadow active element
-        Object.defineProperty(host, 'shadowRoot', { value: shadow, configurable: true });
-        Object.defineProperty(shadow, 'activeElement', { value: shadowBtn, configurable: true });
-        Object.defineProperty(document, 'activeElement', { value: host, configurable: true });
-
-        expect(getActiveElement(document)).toBe(shadowBtn);
-      }
-
-      host.remove();
+      expect(getActiveElement(rootStub)).toBe(shadowBtn);
     });
   });
 });

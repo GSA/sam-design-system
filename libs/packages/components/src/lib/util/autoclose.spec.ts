@@ -14,6 +14,7 @@ describe('sdsAutoClose', () => {
   let ignoreEl: HTMLElement;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({});
     zone = TestBed.inject(NgZone);
     closed$ = new Subject<void>();
     closeSpy = vi.fn();
