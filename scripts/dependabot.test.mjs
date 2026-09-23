@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
+import yaml from 'js-yaml';
 
 const WORKFLOW_PATH = '.github/workflows/dependabot-auto-merge.yml';
 const CONFIG_PATH = '.github/dependabot.yml';
@@ -41,11 +42,19 @@ test('dependabot.yml is present and matches the team standard', () => {
     'must configure grouped github-actions',
   );
 
-  // Angular 21 toolchain pin: architect uses 0.x so semver treats 0.2201 as minor
-  assert.match(
-    raw,
-    /dependency-name:\s*['"]@angular-devkit\/architect['"]\s*\n\s+versions:\s*\[['"]>= 0\.2200\.0['"]\]/,
-    'must ignore @angular-devkit/architect >= 0.2200.0 while pinned to Angular 21',
+  // Angular 21 toolchain pin: architect uses 0.x so semver treats 0.2201 as minor.
+  // Verify that the ignore rule is specifically configured on the npm ecosystem update block.
+  const parsed = yaml.load(raw);
+  const npmUpdate = parsed?.updates?.find((entry) => entry?.['package-ecosystem'] === 'npm');
+  assert.ok(npmUpdate, 'npm update configuration must exist in updates');
+  const architectIgnore = npmUpdate?.ignore?.find(
+    (entry) => entry?.['dependency-name'] === '@angular-devkit/architect',
+  );
+  assert.ok(architectIgnore, 'npm update block must have an ignore entry for @angular-devkit/architect');
+  assert.deepEqual(
+    architectIgnore?.versions,
+    ['>= 0.2200.0'],
+    'must ignore @angular-devkit/architect versions >= 0.2200.0 in npm updates while pinned to Angular 21',
   );
 });
 
