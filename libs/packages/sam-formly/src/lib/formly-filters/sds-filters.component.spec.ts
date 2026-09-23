@@ -379,5 +379,42 @@ describe('The Sam Filters Component', () => {
       fixture.detectChanges();
       expect(component.model).toEqual({ filters: '67890' });
     });
+
+    it('Should reset to Formly initial model when defaultModel is omitted', () => {
+      component.fields = [
+        {
+          key: 'keyword',
+          type: 'input',
+          props: {
+            label: 'Keyword',
+          },
+        },
+      ];
+
+      // Formly captures initial model on first change detection
+      component.model = { keyword: 'initialKeyword' };
+      fixture.detectChanges();
+
+      // User changes model
+      component.model.keyword = 'changedKeyword';
+      component.form.get('keyword')?.setValue('changedKeyword');
+      fixture.detectChanges();
+
+      const resetAllButton = fixture.nativeElement.querySelector('button');
+      resetAllButton.click();
+      fixture.detectChanges();
+      expect(component.model).toEqual({ keyword: 'initialKeyword' });
+    });
+
+    it('Should preserve Date instance when reset() is called with defaultModel containing Date', () => {
+      const resetDate = new Date('2025-06-01T12:00:00Z');
+      component.defaultModel = { filterDate: resetDate };
+      component.model = { filterDate: new Date('2020-01-01T00:00:00Z') };
+
+      component.reset();
+
+      expect(component.model.filterDate).toBeInstanceOf(Date);
+      expect(component.model.filterDate.getTime()).toBe(resetDate.getTime());
+    });
   });
 });

@@ -122,12 +122,35 @@ describe('SDS Formly Reset', () => {
       nested: { nestedInput: 'nested value set' },
     });
   });
+
+  it('should reset to defaultModel and preserve Date instance when defaultModel is provided', () => {
+    const defaultDate = new Date('2025-05-01T00:00:00Z');
+    testComp.defaultModel = {
+      flat: 'default flat',
+      nested: { nestedInput: defaultDate },
+    };
+
+    testComp.model = {
+      flat: 'current flat',
+      nested: { nestedInput: new Date('2020-01-01T00:00:00Z') },
+    };
+
+    fixture.detectChanges();
+
+    const resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click();
+    fixture.detectChanges();
+
+    expect(testComp.model.flat).toBe('default flat');
+    expect(testComp.model.nested.nestedInput).toBeInstanceOf(Date);
+    expect(testComp.model.nested.nestedInput.getTime()).toBe(defaultDate.getTime());
+  });
 });
 
 @Component({
   template: ` <form [formGroup]="form">
     <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
-    <sds-formly-reset [options]="options"></sds-formly-reset>
+    <sds-formly-reset [options]="options" [defaultModel]="defaultModel"></sds-formly-reset>
   </form>`,
   standalone: false,
 })
@@ -135,6 +158,7 @@ class TestComponent {
   @ViewChild(FormlyForm, { static: false }) formlyForm: FormlyForm;
   form = new UntypedFormGroup({});
   options = {};
+  defaultModel: any;
   fields = [
     {
       key: 'flat',
@@ -150,5 +174,5 @@ class TestComponent {
       ],
     },
   ];
-  model = {};
+  model: any = {};
 }
