@@ -79,7 +79,7 @@
     "@uswds/uswds": "3.11.0"
   },
   "dependencies": {
-    "@angular-devkit/architect": "0.2102.24",
+    "@angular-devkit/architect": "0.2201.8",
     "@angular-devkit/build-angular": "21.2.24",
     "@angular/animations": "21.2.23",
     "@angular/cdk": "21.2.14",
@@ -118,7 +118,7 @@
     "rxjs": ">=7.5.0",
     "tslib": "^2.0.0",
     "typescript": "5.9.3",
-    "zone.js": "^0.15.1"
+    "zone.js": "^0.16.3"
   },
   "devDependencies": {
     "@angular/build": "21.2.24",
@@ -129,11 +129,11 @@
     "@storybook/angular": "^10.6.0",
     "@types/node": "^20.12.4",
     "@types/react": "^18.3.31",
-    "@types/react-dom": "^19.2.3",
+    "@types/react-dom": "^19.3.0",
     "@vitest/coverage-v8": "4.1.11",
     "angular-eslint": "21.4.0",
     "ejs": "6.0.1",
-    "eslint": "10.8.0",
+    "eslint": "10.10.0",
     "eslint-plugin-storybook": "10.6.0",
     "github-release-notes": "^0.17.0",
     "http-server": "14.1.1",
@@ -142,7 +142,7 @@
     "prettier": "3.9.8",
     "react": "^18.3.1",
     "react-copy-to-clipboard": "^5.1.1",
-    "react-dom": "^19.2.8",
+    "react-dom": "^19.3.0",
     "react-syntax-highlighter": "^15.5.0",
     "storybook": "^10.6.0",
     "string-replace-loader": "^3.1.0",
