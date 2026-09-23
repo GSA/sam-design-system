@@ -89,7 +89,7 @@
     "@angular/material": "21.2.14",
     "@angular/platform-browser": "21.2.23",
     "@angular/platform-browser-dynamic": "21.2.23",
-    "@angular/router": "21.2.23",
+    "@angular/router": "22.0.8",
     "@ckeditor/ckeditor5-angular": "^9.1.0",
     "@compodoc/compodoc": "^1.1.19",
     "@gsa-sam/ngx-uswds": "^21.0.0",
