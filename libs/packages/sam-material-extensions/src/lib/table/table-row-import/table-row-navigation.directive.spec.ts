@@ -43,4 +43,13 @@ describe('TableRowNavigationDirective', () => {
     trEl.triggerEventHandler('mouseleave', null);
     expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
   });
+
+  it('should not add hover class when highlightOnHover is false', () => {
+    const directive = trEl.injector.get(TableRowNavigationDirective);
+    directive.highlightOnHover = false;
+    trEl.triggerEventHandler('mouseenter', null);
+    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+    trEl.triggerEventHandler('mouseleave', null);
+    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+  });
 });

@@ -107,4 +107,14 @@ describe('ButtonGroupComponent', () => {
       expect(usaButtonsDe[2].classes['usa-button--outline']).toBeTruthy();
     });
   });
+
+  describe('Modular Dashboard', () => {
+    it('should set mode to radio when modularDashboard is true', () => {
+      const bg = new SdsButtonGroupComponent();
+      bg.mode = 'checkbox';
+      bg.modularDashboard = true;
+      bg.ngOnInit();
+      expect(bg.mode).toBe('radio');
+    });
+  });
 });
