@@ -23,6 +23,7 @@ class SDSAutocompleteSearchStubComponent implements ControlValueAccessor {
   registerOnChange(fn: any): void {}
   registerOnTouched(fn: any): void {}
   setDisabledState?(isDisabled: boolean): void {}
+  selectItem(item: any): void {}
 }
 
 @Component({
@@ -54,6 +55,7 @@ import { SDSAutocompletelConfiguration } from './models/SDSAutocompletelConfigur
 import { SDSSelectedItemModel } from '../selected-result/models/sds-selectedItem.model';
 import { FormsModule } from '@angular/forms';
 import { SelectionMode } from '../selected-result/models/sds-selected-item-model-helper';
+import { Subject } from 'rxjs';
 
 describe('SDSAutocompleteComponent', () => {
   let component: SDSAutocompleteComponent;
@@ -141,5 +143,63 @@ describe('SDSAutocompleteComponent', () => {
     let item = {};
     component.registerOnTouched(item);
     expect(component.onTouched).toBe(item);
+  });
+
+  it('should trigger onTouched handler', () => {
+    const fn = vi.fn();
+    component.registerOnTouched(fn);
+    component.onTouched();
+    expect(fn).toHaveBeenCalled();
+  });
+
+  it('should return a shallow copy of items from getModel', () => {
+    const items = [{ id: '1' }, { id: '2' }];
+    component.model.items = items;
+    const modelCopy = component.getModel();
+    expect(modelCopy).toEqual(items);
+    expect(modelCopy).not.toBe(items);
+  });
+
+  it('should emit onChange with model copy when updateItems is called', () => {
+    const changeSpy = vi.fn();
+    component.registerOnChange(changeSpy);
+    component.model.items = [{ id: 'item1', name: 'Alpha' }];
+    component.updateItems({});
+    expect(changeSpy).toHaveBeenCalledWith([{ id: 'item1', name: 'Alpha' }]);
+  });
+
+  it('should delegate addItem and addItems to autocompleteSearch.selectItem', () => {
+    const selectSpy = vi.spyOn(component.autocompleteSearch, 'selectItem');
+    const item1 = { id: '1', name: 'First' };
+    const item2 = { id: '2', name: 'Second' };
+
+    component.addItem(item1);
+    expect(selectSpy).toHaveBeenCalledWith(item1);
+
+    component.addItems([item1, item2]);
+    expect(selectSpy).toHaveBeenCalledWith(item1);
+    expect(selectSpy).toHaveBeenCalledWith(item2);
+  });
+
+  it('should subscribe to registerChanges$ on init and unsubscribe on destroy', () => {
+    const subject = new Subject<void>();
+    component.configuration.registerChanges$ = subject.asObservable();
+    const cdSpy = vi.spyOn((component as any).cd, 'detectChanges');
+
+    component.ngOnInit();
+    subject.next();
+    expect(cdSpy).toHaveBeenCalled();
+
+    const unsubSpy = vi.spyOn(component._subscriptions, 'unsubscribe');
+    component.ngOnDestroy();
+    expect(unsubSpy).toHaveBeenCalled();
+  });
+
+  it('should handle writeValue when model is null or contains nested items object', () => {
+    (component as any).model = null;
+    component.writeValue({ items: [{ id: 'nested', name: 'Nested' }] });
+    expect(component.model instanceof SDSSelectedItemModel).toBe(true);
+    expect(component.model.items.length).toBe(1);
+    expect((component.model.items[0] as any).id).toBe('nested');
   });
 });

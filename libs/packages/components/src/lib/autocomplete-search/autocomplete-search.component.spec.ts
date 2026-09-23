@@ -586,4 +586,437 @@ describe('SamAutocompleteComponent', () => {
     const input = fixture.debugElement.query(By.css('.usa-input'));
     expect(input.nativeElement.value).toBe('a');
   }));
+
+  it('should debounce search dispatch and fetch results asynchronously', fakeAsync(() => {
+    component.configuration.debounceTime = 200;
+    component.configuration.minimumCharacterCountSearch = 2;
+    component.input.nativeElement.value = 'Form';
+    component.input.nativeElement.focus();
+
+    const event = {
+      preventDefault: vi.fn(),
+      target: component.input.nativeElement,
+    };
+    component.textChange(event);
+    fixture.detectChanges();
+
+    // Before debounce elapsed
+    tick(100);
+    expect(component.showResults).toBe(false);
+
+    // After debounce elapsed
+    tick(100);
+    fixture.detectChanges();
+    expect(component.showResults).toBe(true);
+    expect(component.results.length).toBeGreaterThan(0);
+    expect(component.srOnlyText).toContain('results available');
+  }));
+
+  it('should cancel pending search timer if new textChange occurs', fakeAsync(() => {
+    component.configuration.debounceTime = 200;
+    component.configuration.minimumCharacterCountSearch = 2;
+    component.input.nativeElement.focus();
+
+    component.input.nativeElement.value = 'First';
+    component.textChange({ preventDefault: vi.fn(), target: component.input.nativeElement });
+    tick(100);
+
+    // User types more before first timer fires
+    component.input.nativeElement.value = 'Second';
+    component.textChange({ preventDefault: vi.fn(), target: component.input.nativeElement });
+    tick(100);
+    expect(component.showResults).toBe(false);
+
+    tick(100);
+    fixture.detectChanges();
+    expect(component.showResults).toBe(true);
+  }));
+
+  it('should not search if event target is not activeElement', () => {
+    const preventSpy = vi.fn();
+    const otherElement = document.createElement('input');
+    const event = {
+      preventDefault: preventSpy,
+      target: otherElement,
+    };
+    component.textChange(event);
+    expect(preventSpy).toHaveBeenCalled();
+  });
+
+  it('should handle Alt keydown by opening/focusing search', () => {
+    const focusSpy = vi.spyOn(component, 'inputFocusHandler');
+    const event = {
+      key: 'Alt',
+      preventDefault: vi.fn(),
+    };
+    component.onKeydown(event);
+    expect(event.preventDefault).toHaveBeenCalled();
+    expect(focusSpy).toHaveBeenCalled();
+  });
+
+  it('should handle Tab keydown by returning early', () => {
+    const event = {
+      key: 'Tab',
+      preventDefault: vi.fn(),
+    };
+    component.onKeydown(event);
+    expect(event.preventDefault).not.toHaveBeenCalled();
+  });
+
+  it('should stopPropagation on Escape key when results are open', fakeAsync(() => {
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+    expect(component.showResults).toBe(true);
+
+    const stopPropagationSpy = vi.fn();
+    const event = {
+      key: 'Escape',
+      stopPropagation: stopPropagationSpy,
+      preventDefault: vi.fn(),
+    };
+    component.onKeydown(event);
+    expect(stopPropagationSpy).toHaveBeenCalled();
+    expect(component.showResults).toBe(false);
+  }));
+
+  it('should not decrement highlightedIndex below 0 on arrow up', fakeAsync(() => {
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+    component.highlightedIndex = 0;
+
+    const upEvent = {
+      key: 'Up',
+      preventDefault: vi.fn(),
+    };
+    component.onKeydown(upEvent);
+    expect(component.highlightedIndex).toBe(0);
+  }));
+
+  it('should not increment highlightedIndex past end on arrow down', fakeAsync(() => {
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+    const flat = component.getFlatElements();
+    component.highlightedIndex = flat.length - 1;
+
+    const downEvent = {
+      key: 'Down',
+      preventDefault: vi.fn(),
+    };
+    component.onKeydown(downEvent);
+    expect(component.highlightedIndex).toBe(flat.length - 1);
+  }));
+
+  it('should handle Space key to select highlighted item when useCheckBoxes is enabled', fakeAsync(() => {
+    component.configuration.useCheckBoxes = true;
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+
+    component.inputValue = '';
+    component.highlightedIndex = 0;
+    const itemToSelect = component.results[0];
+    (component as any).highlightedItem = itemToSelect;
+
+    const spaceEvent = {
+      key: ' ',
+      preventDefault: vi.fn(),
+    };
+    component.onKeydown(spaceEvent);
+    expect(spaceEvent.preventDefault).toHaveBeenCalled();
+    expect(component.model.items.length).toBe(1);
+  }));
+
+  it('should unselect already selected item in MULTIPLE mode when useCheckBoxes is enabled', fakeAsync(() => {
+    component.configuration.useCheckBoxes = true;
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+
+    const item = component.results[0];
+    component.selectItem(item);
+    expect(component.checkItemSelected(item)).toBe(true);
+    expect(component.model.items.length).toBe(1);
+
+    // Select again to unselect
+    component.selectItem(item);
+    expect(component.checkItemSelected(item)).toBe(false);
+    expect(component.model.items.length).toBe(0);
+  }));
+
+  it('should keep results open and update highlightedIndex when selecting in MULTIPLE mode without tag mode', fakeAsync(() => {
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    component.configuration.isTagModeEnabled = false;
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+
+    const flat = component.getFlatElements();
+    const itemToSelect = flat[2];
+    component.selectItem(itemToSelect);
+
+    expect(component.showResults).toBe(true);
+    expect(component.highlightedIndex).toBe(2);
+    expect(component.inputValue).toBe('');
+  }));
+
+  it('unselectItem should remove item and propagate change', () => {
+    const changeSpy = vi.fn();
+    component.registerOnChange(changeSpy);
+    const item = { element_id: 'abc', value: 'Abc' };
+    component.model.items = [item];
+
+    component.unselectItem(item);
+    expect(component.model.items.length).toBe(0);
+    expect(changeSpy).toHaveBeenCalledWith(component.model);
+  });
+
+  it('tabOutside should close results and remove focus when useCheckBoxes is false', () => {
+    component.configuration.useCheckBoxes = false;
+    component.showResults = true;
+    component.tabOutside({});
+    expect(component.showResults).toBe(false);
+  });
+
+  it('tabOutside should not close results when useCheckBoxes is true', () => {
+    component.configuration.useCheckBoxes = true;
+    component.showResults = true;
+    component.tabOutside({});
+    expect(component.showResults).toBe(true);
+  });
+
+  it('focusRemoved should restore inputValue from model in SINGLE mode when not free text', () => {
+    component.configuration.selectionMode = SelectionMode.SINGLE;
+    component.configuration.isFreeTextEnabled = false;
+    component.model.items = [{ element_id: '1', value: 'Existing Value' }];
+    component.inputValue = 'dirty edited input';
+
+    component.checkForFocus({});
+    expect(component.inputValue).toBe('Existing Value');
+  });
+
+  it('focusRemoved should clear inputValue in SINGLE mode when model has no items and not free text', () => {
+    component.configuration.selectionMode = SelectionMode.SINGLE;
+    component.configuration.isFreeTextEnabled = false;
+    component.model.items = [];
+    component.inputValue = 'some text';
+
+    component.checkForFocus({});
+    expect(component.inputValue).toBe('');
+  });
+
+  it('focusRemoved should clear inputValue in MULTIPLE mode', () => {
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    component.inputValue = 'some text';
+
+    component.checkForFocus({});
+    expect(component.inputValue).toBe('');
+  });
+
+  it('focusRemoved with freeText in SINGLE mode should replace changed item with free text', () => {
+    component.configuration.selectionMode = SelectionMode.SINGLE;
+    component.configuration.isFreeTextEnabled = true;
+    component.model.items = [{ element_id: 'old', name: 'old', value: 'old' }];
+    component.inputValue = 'new free text';
+
+    component.checkForFocus({});
+    expect(component.model.items.length).toBe(1);
+    expect((component.model.items[0] as any).value).toBe('new free text');
+  });
+
+  it('focusRemoved with freeText in SINGLE mode should add free text item if model is empty', () => {
+    component.configuration.selectionMode = SelectionMode.SINGLE;
+    component.configuration.isFreeTextEnabled = true;
+    component.model.items = [];
+    component.inputValue = 'custom item';
+
+    component.checkForFocus({});
+    expect(component.model.items.length).toBe(1);
+    expect((component.model.items[0] as any).value).toBe('custom item');
+  });
+
+  it('focusRemoved with freeText in SINGLE mode should do nothing if inputValue is empty', () => {
+    component.configuration.selectionMode = SelectionMode.SINGLE;
+    component.configuration.isFreeTextEnabled = true;
+    component.model.items = [];
+    component.inputValue = '';
+
+    component.checkForFocus({});
+    expect(component.model.items.length).toBe(0);
+  });
+
+  it('clearInput should clear model items and propagate change in SINGLE mode', () => {
+    component.configuration.selectionMode = SelectionMode.SINGLE;
+    component.model.items = [{ element_id: '1', value: 'One' }];
+    const changeSpy = vi.fn();
+    component.registerOnChange(changeSpy);
+
+    component.clearInput();
+    expect(component.model.items.length).toBe(0);
+    expect(component.inputValue).toBe('');
+    expect(changeSpy).toHaveBeenCalledWith(component.model);
+  });
+
+  it('openOptions should focus input and invoke inputFocusHandler', () => {
+    const focusHandlerSpy = vi.spyOn(component, 'inputFocusHandler');
+    component.openOptions();
+    expect(focusHandlerSpy).toHaveBeenCalled();
+  });
+
+  it('getClass should return hide-cursor when inputReadOnly is true', () => {
+    component.configuration.inputReadOnly = true;
+    expect(component.getClass()).toBe('hide-cursor');
+    component.configuration.inputReadOnly = false;
+    expect(component.getClass()).toBe('');
+  });
+
+  it('isClearIconVisible should reflect disabled, hideCloseIcon, and inputValue states', () => {
+    component.inputValue = 'something';
+    component.disabled = false;
+    expect(component.isClearIconVisible()).toBeTruthy();
+
+    component.disabled = true;
+    expect(component.isClearIconVisible()).toBeFalsy();
+
+    component.disabled = false;
+    component.inputValue = '';
+    expect(component.isClearIconVisible()).toBeFalsy();
+
+    component.inputValue = 'val';
+    component.configuration.hideCloseIcon = true;
+    component.model.items = [{ element_id: '1' }];
+    expect(component.isClearIconVisible()).toBe(false);
+  });
+
+  it('showFreeText should return false if inputValue matches existing results or model items', fakeAsync(() => {
+    component.configuration.isFreeTextEnabled = true;
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+
+    // Match an existing result item
+    component.inputValue = component.results[0]['value'];
+    expect(component.showFreeText()).toBe(false);
+
+    // Empty input
+    component.inputValue = '';
+    expect(component.showFreeText()).toBe(false);
+
+    // Match an item in model
+    component.results = [];
+    component.model.items = [{ element_id: '99', value: 'In Model' }];
+    component.inputValue = 'In Model';
+    expect(component.showFreeText()).toBe(false);
+
+    // Completely new input
+    component.inputValue = 'Unique New Text';
+    expect(component.showFreeText()).toBe(true);
+  }));
+
+  it('setHighlightedItem should handle undefined/null item with announcement', () => {
+    component.results = [{ element_id: '1', value: 'One' }];
+    (component as any).setHighlightedItem(null);
+    expect((component as any).highlightedItem).toBeUndefined();
+    expect(component.srOnlyText).toBe('No item selected');
+  });
+
+  it('setHighlightedItem should include secondary text when available', () => {
+    component.results = [{ element_id: '1', value: 'One', description: 'Desc' }];
+    (component as any).setHighlightedItem(component.results[0]);
+    expect(component.srOnlyText).toBe('One: Desc');
+  });
+
+  it('onScroll should fetch additional results when scroll reaches threshold', fakeAsync(() => {
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+
+    // Start with a subset of results so additional items can be fetched
+    component.results = component.results.slice(0, 5);
+    (component as any).maxResults = 16;
+    const initialCount = component.results.length;
+
+    // Emulate results container dimensions
+    const resultsNative = component.resultsListElement.nativeElement;
+    Object.defineProperty(resultsNative, 'offsetHeight', { value: 100, configurable: true });
+    Object.defineProperty(resultsNative, 'scrollTop', { value: 150, configurable: true });
+    Object.defineProperty(resultsNative, 'scrollHeight', { value: 300, configurable: true });
+
+    component.onScroll();
+    tick();
+    fixture.detectChanges();
+
+    expect(component.results.length).toBeGreaterThan(initialCount);
+    expect(component.showLoad).toBe(false);
+  }));
+
+  it('onScroll should not fetch additional results if not scrolled far enough', () => {
+    component.results = [{ element_id: '1' }];
+    (component as any).maxResults = 50;
+    (component as any).resultsListElement = {
+      nativeElement: {
+        offsetHeight: 100,
+        scrollTop: 10,
+        scrollHeight: 500,
+      },
+    };
+    const getAdditionalSpy = vi.spyOn(component as any, 'getAdditionalResults');
+    component.onScroll();
+    expect(getAdditionalSpy).not.toHaveBeenCalled();
+  });
+
+  it('should reset inputValue in MULTIPLE mode when tag mode is enabled during selectItem', () => {
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    component.configuration.isTagModeEnabled = true;
+    component.inputValue = 'some tag text';
+
+    component.selectItem({ element_id: 't1', value: 'Tag Item 1' });
+    expect(component.inputValue).toBe('');
+    expect(component.showResults).toBe(false);
+  });
+
+  it('should attach scroll listener when autocomplete is within modal dialog', () => {
+    const dialogDiv = document.createElement('div');
+    dialogDiv.className = 'sds-dialog-content';
+    document.body.appendChild(dialogDiv);
+
+    try {
+      expect(component.isAutocompleteWithinModal()).toBe(true);
+      const addListenerSpy = vi.spyOn(component, 'addListener');
+      component.inputFocusHandler();
+      expect(addListenerSpy).toHaveBeenCalled();
+
+      // Trigger scroll event on dialog with parent style.bottom to cover both branches
+      const dropdownParent = document.createElement('div');
+      dropdownParent.style.bottom = '100px';
+      const dropdownDiv = document.createElement('div');
+      dropdownDiv.className = 'sds-autocomplete';
+      dropdownParent.appendChild(dropdownDiv);
+      document.body.appendChild(dropdownParent);
+      try {
+        dialogDiv.dispatchEvent(new Event('scroll'));
+        dropdownParent.style.bottom = '';
+        dialogDiv.dispatchEvent(new Event('scroll'));
+      } finally {
+        dropdownParent.remove();
+      }
+    } finally {
+      dialogDiv.remove();
+    }
+  });
+
+  it('scrollToSelectedItem should handle checkbox class selector', fakeAsync(() => {
+    component.configuration.useCheckBoxes = true;
+    component.inputFocusHandler();
+    tick();
+    fixture.detectChanges();
+
+    component.highlightedIndex = 1;
+    (component as any).scrollToSelectedItem();
+    expect(component.highlightedIndex).toBe(1);
+  }));
 });
