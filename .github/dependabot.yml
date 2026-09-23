@@ -8,6 +8,9 @@ updates:
     cooldown:
       default-days: 5
       semver-major-days: 60
+    ignore:
+      - dependency-name: '@angular-devkit/architect'
+        versions: ['>= 0.2200.0']
     groups:
       minor:
         patterns:

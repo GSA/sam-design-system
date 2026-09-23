@@ -40,6 +40,13 @@ test('dependabot.yml is present and matches the team standard', () => {
     /github-actions:\s*\n\s+patterns:\s*\n\s+-\s*['"]?\*['"]?/,
     'must configure grouped github-actions',
   );
+
+  // Angular 21 toolchain pin: architect uses 0.x so semver treats 0.2201 as minor
+  assert.match(
+    raw,
+    /dependency-name:\s*['"]@angular-devkit\/architect['"]\s*\n\s+versions:\s*\[['"]>= 0\.2200\.0['"]\]/,
+    'must ignore @angular-devkit/architect >= 0.2200.0 while pinned to Angular 21',
+  );
 });
 
 test('dependabot-auto-merge.yml is present, gated, and least-privilege', () => {
