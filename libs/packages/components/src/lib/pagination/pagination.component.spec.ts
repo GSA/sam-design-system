@@ -125,8 +125,10 @@ describe('PaginationComponent', () => {
 
     selectEl.nativeElement.value = selectEl.nativeElement.options[1].value;
     selectEl.nativeElement.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
 
     expect(spy).toHaveBeenCalled();
+    expect(component.page.pageSize).toBe(50);
     expect(component.page.pageNumber).toBe(1);
   });
 

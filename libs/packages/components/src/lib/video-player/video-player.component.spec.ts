@@ -1,10 +1,42 @@
+vi.mock('accessible-html5-video-player/js/px-video.js', () => {
+  return {
+    default: class MockInitPxVideo {
+      constructor(options: any) {
+        if ((globalThis as any).__mockPxVideoControlsDisabled) {
+          return;
+        }
+        const el = document.getElementById(options?.videoId);
+        if (el) {
+          if (!el.querySelector('.px-video-play')) {
+            const play = document.createElement('button');
+            play.className = 'px-video-play';
+            el.appendChild(play);
+          }
+          if (!el.querySelector('.px-video-restart')) {
+            const restart = document.createElement('button');
+            restart.className = 'px-video-restart';
+            el.appendChild(restart);
+          }
+          if (!el.querySelector('progress')) {
+            const prog = document.createElement('progress');
+            el.appendChild(prog);
+          }
+        }
+      }
+    },
+  };
+});
+
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
 
-class MockInitPxVideo {
+class MockInitPxVideoGlobal {
   constructor(public options: any) {
-    const el = document.getElementById(options.videoId);
+    if ((globalThis as any).__mockPxVideoControlsDisabled) {
+      return;
+    }
+    const el = document.getElementById(options?.videoId);
     if (el) {
       if (!el.querySelector('.px-video-play')) {
         const play = document.createElement('button');
@@ -23,8 +55,8 @@ class MockInitPxVideo {
     }
   }
 }
-(globalThis as any).InitPxVideo = MockInitPxVideo;
-(window as any).InitPxVideo = MockInitPxVideo;
+(globalThis as any).InitPxVideo = MockInitPxVideoGlobal;
+(window as any).InitPxVideo = MockInitPxVideoGlobal;
 
 describe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
@@ -37,6 +69,7 @@ describe('VideoPlayerComponent', () => {
   });
 
   beforeEach(() => {
+    (globalThis as any).__mockPxVideoControlsDisabled = false;
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     component = fixture.componentInstance;
     component.VPConfiguration = {
@@ -53,6 +86,10 @@ describe('VideoPlayerComponent', () => {
       description: 'Sample Video',
     };
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    (globalThis as any).__mockPxVideoControlsDisabled = false;
   });
 
   it('Should get same video Height, Width, poster and Preload value as an Input', () => {
@@ -76,13 +113,17 @@ describe('VideoPlayerComponent', () => {
   });
 
   it('Video and Source element should be get same value as Input value', () => {
-    const element = fixture.debugElement.query(By.css('source'));
-    if (element) {
-      element.nativeElement.setAttribute('src', component.VPConfiguration.sourceMp4);
-      expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceMp4);
-      element.nativeElement.setAttribute('src', component.VPConfiguration.sourceWebm);
-      expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceWebm);
-    }
+    component.VPConfiguration.sourceMp4 = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+    component.VPConfiguration.sourceWebm = 'https://media.w3.org/2010/05/sintel/trailer.webm';
+    component.loadVideoSource = true;
+    fixture.detectChanges();
+
+    const sources = fixture.debugElement.queryAll(By.css('source'));
+    expect(sources.length).toBe(2);
+    expect(sources[0].nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceMp4);
+    expect(sources[0].nativeElement.getAttribute('type')).toBe('video/mp4');
+    expect(sources[1].nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceWebm);
+    expect(sources[1].nativeElement.getAttribute('type')).toBe('video/webm');
   });
 
   it('should accept pxVideo width form Input', () => {
@@ -153,6 +194,8 @@ describe('VideoPlayerComponent', () => {
   }));
 
   it('should fallback to loadVideoSource=true when controls buttons are absent', () => {
+    (globalThis as any).__mockPxVideoControlsDisabled = true;
+
     const fallbackFixture = TestBed.createComponent(SdsVideoPlayerComponent);
     const fallbackComp = fallbackFixture.componentInstance;
     fallbackComp.VPConfiguration = {
@@ -161,16 +204,8 @@ describe('VideoPlayerComponent', () => {
       preload: 'none',
     };
 
-    // Remove controls before view init so buttons are absent
-    (globalThis as any).InitPxVideo = class {
-      constructor() {}
-    };
-
     fallbackFixture.detectChanges();
     expect(fallbackComp.loadVideoSource).toBe(true);
-
-    // restore mock
-    (globalThis as any).InitPxVideo = MockInitPxVideo;
   });
 
   it('should set crossorigin attribute initially and on changes', () => {

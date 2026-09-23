@@ -38,7 +38,7 @@ describe('SdsActionsMenuComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [SdsMenuModule, NoopAnimationsModule],
-      declarations: [SdsActionsMenuComponent, UsaIconStubComponent],
+      declarations: [SdsActionsMenuComponent],
     });
 
     TestBed.overrideModule(SdsMenuModule, {
@@ -80,8 +80,9 @@ describe('SdsActionsMenuComponent', () => {
     expect(() => component.ngOnInit()).not.toThrow();
   });
 
-  it('getDisabled should return true when called', () => {
+  it('getDisabled should return true for DISABLED and false otherwise', () => {
     expect(component.getDisabled(ActionMenuMode.DISABLED)).toBe(true);
+    expect(component.getDisabled(ActionMenuMode.SHOWN)).toBe(false);
   });
 
   it('should render trigger button with default circular class when label is not provided', () => {
