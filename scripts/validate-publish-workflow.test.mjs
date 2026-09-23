@@ -29,6 +29,18 @@ test('validateWorkflowContent enforces quality gates', () => {
   for (const gate of REQUIRED_QUALITY_GATES) {
     const stripped = workflow.replace(gate, '# removed');
     const failures = validateWorkflowContent(stripped);
-    assert.ok(failures.some((f) => f.includes(`quality gates must run: ${gate}`)));
+    assert.ok(failures.some((f) => f.includes(`quality gates must actively run: ${gate}`)));
   }
+});
+
+test('validateWorkflowContent rejects commented-out quality gate steps', () => {
+  const commentedWorkflow = workflow.replace('run: npm run test:e2e', 'run: # npm run test:e2e');
+  const failures = validateWorkflowContent(commentedWorkflow);
+  assert.ok(failures.some((f) => f.includes('quality gates must actively run: npm run test:e2e')));
+});
+
+test('validateWorkflowContent enforces publish job depends on quality-gates', () => {
+  const missingNeeds = workflow.replace('needs: [quality-gates]', '');
+  const failures = validateWorkflowContent(missingNeeds);
+  assert.ok(failures.some((f) => f.includes('jobs.publish must declare needs: [quality-gates]')));
 });

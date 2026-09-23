@@ -53,11 +53,11 @@ name: Publish to npm
 #   Manual workflow_dispatch runs are always rehearsal-only, regardless of
 #   DRY_RUN, and cannot perform a live publish.
 #
-# Note on workflow_dispatch rehearsals: a manual dry-run against an
-# already-published version will verify the tarball and THEN fail with npm's
-# "cannot publish over previously published version" error. That's expected —
-# the packaging check still ran. Bump to an unpublished version to see a fully
-# clean dry-run.
+# Note on workflow_dispatch rehearsals: npm publish --dry-run performs local
+# packaging, manifest, and tarball validation only. It does NOT contact the
+# remote npm registry, so it cannot verify registry authorization, package
+# permissions, or version availability / collisions. A dry-run succeeding
+# confirms package contents and build integrity locally.
 
 on:
   release:
@@ -84,6 +84,21 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+
+      - name: Validate trigger safety and release ancestry
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry-run }}" != "true" ]; then
+            echo "::error::Manual workflow_dispatch runs are rehearsal-only and must specify dry-run=true."
+            exit 1
+          fi
+          if [ "${{ github.event_name }}" = "release" ]; then
+            git fetch origin master
+            if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/master; then
+              echo "::error::Release commit $GITHUB_SHA is not an ancestor of origin/master. Releases must be cut from master."
+              exit 1
+            fi
+            echo "Verified release commit $GITHUB_SHA is an ancestor of origin/master."
+          fi
 
       - name: Setup Node
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -175,7 +190,12 @@ jobs:
           fi
 
       - name: Run ADR-0011 preflight validation (loop across all three manifests)
-        run: node scripts/validate-publish-package.mjs
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            node scripts/validate-publish-package.mjs --tag "${{ github.event.release.tag_name }}"
+          else
+            node scripts/validate-publish-package.mjs
+          fi
 
       - name: Build all three libraries
         run: |
@@ -191,7 +211,12 @@ jobs:
           done
 
       - name: Verify built dist packages
-        run: node scripts/validate-publish-package.mjs
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            node scripts/validate-publish-package.mjs --tag "${{ github.event.release.tag_name }}"
+          else
+            node scripts/validate-publish-package.mjs
+          fi
 
       - name: Determine dry-run mode
         id: mode

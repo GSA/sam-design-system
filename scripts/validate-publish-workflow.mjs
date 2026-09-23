@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import yaml from 'js-yaml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -62,10 +63,42 @@ export function validateWorkflowContent(workflowContent) {
     }
   }
 
+  let doc;
+  try {
+    doc = yaml.load(workflowContent);
+  } catch (err) {
+    failures.push(`Failed to parse workflow YAML: ${err.message}`);
+    return failures;
+  }
+
+  const qualityGatesJob = doc?.jobs?.['quality-gates'];
+  if (!qualityGatesJob) {
+    failures.push('jobs.quality-gates must exist');
+    return failures;
+  }
+
+  const qualityGatesSteps = qualityGatesJob.steps || [];
+  const activeRunCommands = qualityGatesSteps
+    .map((step) => (typeof step?.run === 'string' ? step.run.trim() : ''))
+    .filter(Boolean);
+
   for (const gate of REQUIRED_QUALITY_GATES) {
-    if (!workflowContent.includes(gate)) {
-      failures.push(`quality gates must run: ${gate}`);
+    const isRun = activeRunCommands.some((cmd) => cmd === gate || cmd.split('\n').some((line) => line.trim() === gate));
+    if (!isRun) {
+      failures.push(`quality gates must actively run: ${gate}`);
     }
+  }
+
+  const publishJob = doc?.jobs?.publish;
+  if (!publishJob) {
+    failures.push('jobs.publish must exist');
+    return failures;
+  }
+
+  const publishNeeds = Array.isArray(publishJob.needs) ? publishJob.needs : publishJob.needs ? [publishJob.needs] : [];
+
+  if (!publishNeeds.includes('quality-gates')) {
+    failures.push('jobs.publish must declare needs: [quality-gates]');
   }
 
   return failures;

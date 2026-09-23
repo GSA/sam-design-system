@@ -7,6 +7,7 @@ import {
   validatePublishableProjects,
   validateManifest,
   validateDistPackage,
+  validateAll,
 } from './validate-publish-package.mjs';
 
 test('EXPECTED_PACKAGES specifies the exact three published packages', () => {
@@ -111,4 +112,57 @@ test('validateManifest flags outdated internal peerDependencies', () => {
   const errors = validateManifest('sam-formly', manifest, '21.0.0');
   assert.ok(errors.some((e) => e.includes('sam-formly peerDependency @gsa-sam/components is "^19.0.0"')));
   assert.ok(errors.some((e) => e.includes('sam-formly peerDependency @gsa-sam/sam-material-extensions is "^19.0.0"')));
+});
+
+test('validateManifest flags incorrect package identity name', () => {
+  const manifest = {
+    name: '@gsa-sam/wrong-name',
+    version: '21.0.0',
+    repository: { type: 'git', url: 'https://github.com/GSA/sam-design-system.git' },
+  };
+
+  const errors = validateManifest('components', manifest, '21.0.0');
+  assert.ok(
+    errors.some((e) =>
+      e.includes('Package name in manifest (@gsa-sam/wrong-name) must match expected "@gsa-sam/components"'),
+    ),
+  );
+});
+
+test('validateAll ignores branch GITHUB_REF_NAME when event is not release', () => {
+  const prevEvent = process.env.GITHUB_EVENT_NAME;
+  const prevRef = process.env.GITHUB_REF_NAME;
+
+  try {
+    process.env.GITHUB_EVENT_NAME = 'workflow_dispatch';
+    process.env.GITHUB_REF_NAME = 'gh-1618-tag-gated-oidc-publish-workflow-lockstep-21-0-0-acr';
+
+    // Must pass without treating branch ref name as release tag
+    assert.equal(validateAll(), true);
+  } finally {
+    if (prevEvent === undefined) delete process.env.GITHUB_EVENT_NAME;
+    else process.env.GITHUB_EVENT_NAME = prevEvent;
+
+    if (prevRef === undefined) delete process.env.GITHUB_REF_NAME;
+    else process.env.GITHUB_REF_NAME = prevRef;
+  }
+});
+
+test('validateAll enforces tag match when GITHUB_EVENT_NAME is release', () => {
+  const prevEvent = process.env.GITHUB_EVENT_NAME;
+  const prevRef = process.env.GITHUB_REF_NAME;
+
+  try {
+    process.env.GITHUB_EVENT_NAME = 'release';
+    process.env.GITHUB_REF_NAME = 'v99.0.0';
+
+    // Must fail because v99.0.0 != 21.0.0
+    assert.equal(validateAll(), false);
+  } finally {
+    if (prevEvent === undefined) delete process.env.GITHUB_EVENT_NAME;
+    else process.env.GITHUB_EVENT_NAME = prevEvent;
+
+    if (prevRef === undefined) delete process.env.GITHUB_REF_NAME;
+    else process.env.GITHUB_REF_NAME = prevRef;
+  }
 });

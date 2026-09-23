@@ -66,13 +66,19 @@ If the approver clicks **Reject**, the job is cancelled and nothing is published
 
 Per **ADR-0013**, npm authorization is **per package**. npm answers unauthorized PUT requests with `404 Not Found` rather than `403 Forbidden`. Under lockstep, partial authorization could burn versions for failed packages while succeeding on others.
 
-Therefore, **confirm Trusted Publisher registration for all three packages by name** before cutting any release tag:
+Therefore, **confirm Trusted Publisher registration for all three packages by name** before cutting any release tag.
+
+### Maintainer access check (CLI)
+
+Verify that the publishing identity or organization owns all three packages on npm:
 
 ```bash
 for p in components sam-material-extensions sam-formly; do
   npm view @gsa-sam/$p maintainers --userconfig /dev/null --registry https://registry.npmjs.org
 done
 ```
+
+_(Note: This check verifies account maintainer access only; Trusted Publisher OIDC configuration must be inspected and confirmed via npmjs.com settings below)._
 
 ### 1. `release` environment configuration
 
@@ -85,13 +91,13 @@ Location: `https://github.com/GSA/sam-design-system/settings/environments`
 
 ### 2. npm Trusted Publisher registration (three packages)
 
-Log in to npmjs.com as the `@gsa-sam` maintainer / org owner and register each package:
+Log in to npmjs.com as the `@gsa-sam` maintainer / org owner and register each package individually. Inspect `https://www.npmjs.com/package/@gsa-sam/<pkg>/access` (or package **Settings** → **Trusted Publishers**) for all three:
 
 - Target packages:
   1. `@gsa-sam/components`
   2. `@gsa-sam/sam-material-extensions`
   3. `@gsa-sam/sam-formly`
-- In each package → **Settings** → **Trusted Publishers** → Add GitHub Actions:
+- Verify that each package displays an active GitHub Actions Trusted Publisher with:
   - **Organization:** `GSA`
   - **Repository:** `sam-design-system`
   - **Workflow filename:** `publish.yml`
@@ -110,5 +116,5 @@ Until registration is complete across all three packages:
 
 1. Trigger a manual rehearsal dry-run: **Actions → Publish to npm → Run workflow** → leave `dry-run: true` → **Run workflow**.
 2. Watch the run: after `quality-gates` pass, the `publish` job pauses with **Waiting for review** under the `release` environment.
-3. DevSecOps approves. The job proceeds, packs all three tarballs, runs `npm publish <tarball> --dry-run` for each, and verifies npm packaging acceptance.
-4. Trigger a negative rehearsal test: **Actions → Publish to npm → Run workflow** → enter `dry-run: false` → **Run workflow**. The run fails immediately with `workflow_dispatch runs must use dry-run=true`.
+3. DevSecOps approves. The job proceeds, packs all three tarballs, runs `npm publish <tarball> --dry-run` for each, and verifies npm packaging acceptance. _(Note: `--dry-run` verifies packaging, manifest formatting, and file inclusions locally; it does not contact npmjs to test authorization or name collisions)._
+4. Trigger a negative rehearsal test: **Actions → Publish to npm → Run workflow** → enter `dry-run: false` → **Run workflow**. The run fails immediately in the initial `quality-gates` step before triggering notifications or waiting for `release` environment review.

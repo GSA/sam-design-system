@@ -42,6 +42,11 @@ export function validatePublishableProjects(angularJson) {
 export function validateManifest(pkgName, manifest, expectedVersion, normalizedTag = null) {
   const errors = [];
 
+  const expectedPkgName = `@gsa-sam/${pkgName}`;
+  if (manifest.name !== expectedPkgName) {
+    errors.push(`Package name in manifest (${manifest.name}) must match expected "${expectedPkgName}".`);
+  }
+
   if (manifest.version !== expectedVersion) {
     errors.push(`Package ${pkgName} version (${manifest.version}) does not match root version (${expectedVersion}).`);
   }
@@ -126,7 +131,13 @@ export function validateAll(rootDir = DEFAULT_REPO_ROOT, explicitTag = null) {
   const rootPackageJson = JSON.parse(readFileSync(rootPackageJsonPath, 'utf8'));
   const angularJson = JSON.parse(readFileSync(angularJsonPath, 'utf8'));
 
-  const rawTag = explicitTag || process.env.GITHUB_REF_NAME || null;
+  // Only treat GITHUB_REF_NAME as a release tag if the event is 'release'
+  // or if an explicit tag was supplied via CLI argument.
+  // Workflow dispatch or local runs from a branch should not validate against branch name as tag.
+  let rawTag = explicitTag;
+  if (!rawTag && process.env.GITHUB_EVENT_NAME === 'release') {
+    rawTag = process.env.GITHUB_REF_NAME;
+  }
   const normalizedTag = normalizeTag(rawTag);
 
   console.log(`Validating lockstep publish packages (root version: ${rootPackageJson.version})...`);
