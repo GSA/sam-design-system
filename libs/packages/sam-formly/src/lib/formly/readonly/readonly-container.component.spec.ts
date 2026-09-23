@@ -299,7 +299,44 @@ describe('ReadonlyContainerComponent', () => {
       expect(daterangeComp.nativeElement.textContent).toContain('Jan 10, 2025');
     });
 
-    it('should handle DATERANGEPICKERV2 type', () => {
+    it('should handle DATERANGEPICKERV2 type extracting fieldGroup keys', () => {
+      host.fieldConfig = {
+        type: SdsFormlyTypes.DATERANGEPICKERV2,
+        props: { label: 'Date Range V2 Field' },
+        fieldGroup: [{ key: 'start' }, { key: 'end' }] as any,
+        formControl: new UntypedFormControl({
+          start: new Date(2025, 2, 1),
+          end: new Date(2025, 2, 15),
+        }),
+      };
+      fixture.detectChanges();
+
+      const daterangeComp = fixture.debugElement.query(By.css('sds-readonly-daterange'));
+      expect(daterangeComp).toBeTruthy();
+      expect(daterangeComp.nativeElement.textContent).toContain('Mar 1, 2025');
+      expect(daterangeComp.nativeElement.textContent).toContain('Mar 15, 2025');
+    });
+
+    it('should handle DATERANGEPICKERV2 type with default keys when fieldGroup is not defined', () => {
+      host.fieldConfig = {
+        type: SdsFormlyTypes.DATERANGEPICKERV2,
+        props: { label: 'Date Range V2 Field' },
+        formControl: new UntypedFormControl({
+          fromDate: new Date(2025, 2, 1),
+          toDate: new Date(2025, 2, 15),
+        }),
+      };
+      fixture.detectChanges();
+
+      const daterangeComp = fixture.debugElement.query(By.css('sds-readonly-daterange'));
+      expect(daterangeComp).toBeTruthy();
+      expect(daterangeComp.nativeElement.textContent).toContain('Mar 1, 2025');
+      expect(daterangeComp.nativeElement.textContent).toContain('Mar 15, 2025');
+    });
+  });
+
+  describe('direct inputs without formlyFieldConfig', () => {
+    it('should handle direct inputs when formlyFieldConfig is not provided', () => {
       host.formlyType = SdsFormlyTypes.DATERANGEPICKERV2;
       host.label = 'Range V2';
       host.value = {
