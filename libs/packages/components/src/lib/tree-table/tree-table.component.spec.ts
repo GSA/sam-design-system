@@ -106,7 +106,7 @@ describe('SdsTreeTableComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [SdsTreeTableModule],
-      declarations: [TestHostComponent, UsaIconStubComponent],
+      declarations: [TestHostComponent],
     });
 
     TestBed.overrideModule(SdsTreeTableModule, {
@@ -459,8 +459,9 @@ describe('SdsTreeTableComponent', () => {
       // Unsupported key
       const tabEvent = new KeyboardEvent('keydown', { key: 'Tab' });
       Object.defineProperty(tabEvent, 'target', { value: firstRowEl });
+      const tabPreventSpy = vi.spyOn(tabEvent, 'preventDefault');
       treeTableComponent.onKeyDown(tabEvent, firstRowEl);
-      expect(preventSpy).not.toHaveBeenCalled();
+      expect(tabPreventSpy).not.toHaveBeenCalled();
     });
   });
 
