@@ -1,7 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, DebugElement, Input, SimpleChange } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { vi } from 'vitest';
 
 import { PaginationModule } from '@gsa-sam/components';
@@ -298,7 +299,14 @@ describe('SdsTableComponent Full', () => {
         UsaIconStubComponent,
         WrapperComponent,
       ],
-      imports: [MatTableModule, MatSortModule, MatPaginatorModule, BrowserAnimationsModule, PaginationModule],
+      imports: [
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule,
+        PaginationModule,
+        RouterTestingModule,
+      ],
     }).compileComponents();
   }));
 
@@ -450,5 +458,31 @@ describe('SdsTableComponent Full', () => {
       component.ngAfterContentInit();
       expect(component.rowConfig.displayedColumns).toBeUndefined();
     });
+
+    it('should safely early-return when paginator is removed before initialized timer fires', fakeAsync(() => {
+      component.pagination = true;
+      component.showPagination = false;
+      component.ngAfterViewInit();
+
+      // Remove the paginator before the queued callback runs
+      component.dataSource.paginator = null as any;
+
+      // Advance the timer; verify the callback completes without throwing
+      expect(() => tick()).not.toThrow();
+      expect(component.showPagination).toBe(false);
+    }));
+
+    it('should cancel paginator timer and not run callback after component is destroyed', fakeAsync(() => {
+      component.pagination = true;
+      component.showPagination = false;
+      component.ngAfterViewInit();
+
+      // Destroy the component before the queued callback runs
+      component.ngOnDestroy();
+
+      // Advance the timer; verify callback does not execute or throw
+      expect(() => tick()).not.toThrow();
+      expect(component.showPagination).toBe(false);
+    }));
   });
 });
