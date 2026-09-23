@@ -24,12 +24,21 @@ function main() {
     execFileSync(process.execPath, [angularCliPath, 'build', lib, '--configuration', 'production'], {
       stdio: 'inherit',
     });
+    // Clean up pre-existing tarballs in distDir before packing
+    const existingTarball = findTarball(distDir);
+    if (existingTarball) {
+      const fs = require('fs');
+      try {
+        fs.unlinkSync(resolve(distDir, existingTarball));
+      } catch (_) {}
+    }
+
     execFileSync('npm', ['pack'], { cwd: distDir, stdio: 'inherit' });
 
     const tarballPath = findTarball(distDir);
 
     if (tarballPath) {
-      const publishArgs = ['publish', tarballPath];
+      const publishArgs = ['publish', tarballPath, '--access', 'public', '--registry', 'https://registry.npmjs.org'];
       if (args['dry-run']) publishArgs.push('--dry-run');
       execFileSync('npm', publishArgs, { cwd: distDir, stdio: 'inherit' });
     } else {

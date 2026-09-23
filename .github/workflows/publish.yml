@@ -1,0 +1,244 @@
+name: Publish to npm
+
+# Publishes @gsa-sam/components, @gsa-sam/sam-material-extensions, and
+# @gsa-sam/sam-formly to the public npm registry in lockstep.
+#
+# Trigger: a full GitHub Release is published (activity type `released`,
+# which points at a version tag, e.g. v21.0.0). Manual dispatch is also
+# allowed for dry-run rehearsals only.
+#
+# Why `released` and not `published`: `published` also fires for
+# pre-releases (e.g. v21.0.0-beta.1). Because we publish with npm's
+# default `latest` dist-tag, a pre-release firing `published` would land as
+# `latest` and be picked up by every consumer by default — not what we
+# want. `released` fires only for full, non-prerelease Releases, so it
+# structurally prevents an accidental beta-as-latest publish. Revisit with
+# explicit dist-tag handling if we ever want beta channels.
+#
+# Why key on Release (not a raw `push: tags`): publishing a Release is a
+# deliberate, auditable act. It gives DevSecOps a clear HITL approval point
+# and pairs with the `release` environment's required reviewers. A raw
+# tag push is quiet and unauthenticated by comparison, so the live
+# `npm publish` only happens on a published *Release*.
+#
+# Security model (locked-down access):
+#   - Runs only in the `release` GitHub Actions environment, which
+#     DevSecOps can gate with required reviewers / protection rules.
+#   - Uses npm Trusted Publishing (OIDC) — no long-lived token stored in
+#     the repo. The `id-token: write` permission mints a short-lived
+#     credential that npm trusts because this repo + workflow filename are
+#     registered as the package's Trusted Publisher.
+#     (npmjs.com → package → Settings → Trusted Publisher:
+#        Publisher = GitHub Actions
+#        Organization = GSA, Repository = sam-design-system
+#        Workflow filename = publish.yml
+#        Environment name = release)
+#     NOTE: Per ADR-0013, authorization is PER PACKAGE. DevSecOps must
+#     register Trusted Publishers for all three packages by name:
+#       1. @gsa-sam/components
+#       2. @gsa-sam/sam-material-extensions
+#       3. @gsa-sam/sam-formly
+#   - Quality gates (format, lint, three builds, tests + coverage floors,
+#     Playwright smoke test) must pass before publish.
+#
+# HITL handoff to DevSecOps:
+#   Until the Trusted Publisher connections are live, this workflow runs
+#   `npm publish --dry-run` only (DRY_RUN defaults to "true"). DevSecOps:
+#     1. Creates the `release` environment with required reviewers and tag
+#        policy `v[0-9]*.[0-9]*.[0-9]*` (ADR-0011).
+#     2. Registers the Trusted Publisher on npmjs for all three packages.
+#     3. Flips the workflow to a live publish by setting the repo/environment
+#        variable DRY_RUN = false (Settings → Secrets and variables →
+#        Actions → Variables), or edits the default below.
+#   Manual workflow_dispatch runs are always rehearsal-only, regardless of
+#   DRY_RUN, and cannot perform a live publish.
+#
+# Note on workflow_dispatch rehearsals: a manual dry-run against an
+# already-published version will verify the tarball and THEN fail with npm's
+# "cannot publish over previously published version" error. That's expected —
+# the packaging check still ran. Bump to an unpublished version to see a fully
+# clean dry-run.
+
+on:
+  release:
+    types: [released]
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Run npm publish in --dry-run mode (no upload)'
+        type: boolean
+        default: true
+
+# Least-privilege at the top level; the publish job opts into id-token.
+permissions:
+  contents: read
+
+jobs:
+  quality-gates:
+    name: Quality Gates
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint:baseline
+
+      - name: Validate security CI policy
+        run: npm run validate:security-workflow
+
+      - name: Validate publish workflow policy
+        run: npm run validate:publish-workflow
+
+      - name: Run script tests
+        run: npm run test:scripts
+
+      - name: Build components library
+        run: npx ng build components --configuration production
+
+      - name: Build SAM Material Extensions library
+        run: npx ng build sam-material-extensions --configuration production
+
+      - name: Build SAM Formly library
+        run: npx ng build sam-formly --configuration production
+
+      - name: Test components library with coverage
+        run: npm run test:components
+
+      - name: Test SAM Formly library with coverage
+        run: npm run test:sam-formly
+
+      - name: Test SAM Material Extensions library with coverage
+        run: npm run test:material-extensions
+
+      - name: Check coverage ratchet
+        run: npm run coverage:check
+
+      - name: Generate API docs
+        run: npm run demo:docs
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Playwright smoke test
+        run: npm run test:e2e
+
+  publish:
+    name: Publish to npm
+    needs: [quality-gates]
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write # required for npm Trusted Publishing (OIDC)
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Trusted Publishing needs npm >= 11.5.1. Pin the floor rather than
+      # pulling an unpinned @latest on this security-sensitive job.
+      - name: Ensure npm supports Trusted Publishing
+        run: |
+          NPM_MIN="11.5.1"
+          CURRENT="$(npm --version)"
+          if [ "$(printf '%s\n' "$NPM_MIN" "$CURRENT" | sort -V | head -n1)" != "$NPM_MIN" ]; then
+            echo "npm $CURRENT < $NPM_MIN; upgrading"
+            npm install -g "npm@$NPM_MIN"
+          else
+            echo "npm $CURRENT satisfies >= $NPM_MIN"
+          fi
+
+      - name: Run ADR-0011 preflight validation (loop across all three manifests)
+        run: node scripts/validate-publish-package.mjs
+
+      - name: Build all three libraries
+        run: |
+          npx ng build components --configuration production
+          npx ng build sam-material-extensions --configuration production
+          npx ng build sam-formly --configuration production
+
+      - name: Pack release tarballs
+        run: |
+          for lib in components sam-material-extensions sam-formly; do
+            echo "Packing @gsa-sam/$lib..."
+            (cd dist/libs/$lib && npm pack)
+          done
+
+      - name: Verify built dist packages
+        run: node scripts/validate-publish-package.mjs
+
+      - name: Determine dry-run mode
+        id: mode
+        run: |
+          # Priority: workflow_dispatch input > repo/env variable DRY_RUN > default true.
+          # Manual dispatch is rehearsal-only; only a published Release may
+          # perform a live publish.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            DRY="${{ inputs.dry-run }}"
+            if [ "$DRY" != "true" ]; then
+              echo "::error::workflow_dispatch runs must use dry-run=true. Publish a GitHub Release to run a live publish."
+              exit 1
+            fi
+          else
+            DRY="${{ vars.DRY_RUN }}"
+          fi
+          # Default to the safe mode when unset.
+          DRY="${DRY:-true}"
+          # Normalize case so True/FALSE/etc. behave predictably.
+          DRY="$(echo "$DRY" | tr '[:upper:]' '[:lower:]')"
+          # Fail loudly on anything that isn't an explicit boolean, so a
+          # release never silently no-ops (neither dry-run nor live).
+          if [ "$DRY" != "true" ] && [ "$DRY" != "false" ]; then
+            echo "::error::DRY_RUN must be 'true' or 'false' (got '$DRY')"
+            exit 1
+          fi
+          echo "dry-run=$DRY" >> "$GITHUB_OUTPUT"
+          echo "Publish dry-run mode: $DRY"
+
+      - name: Publish (dry-run)
+        if: steps.mode.outputs['dry-run'] == 'true'
+        run: |
+          for lib in components sam-material-extensions sam-formly; do
+            tarball="$(find dist/libs/$lib -name '*.tgz' -maxdepth 1 | head -n 1)"
+            echo "Publishing $tarball in dry-run mode..."
+            npm publish "$tarball" --dry-run --access public --registry https://registry.npmjs.org
+          done
+
+      # Live publish via OIDC Trusted Publishing. No token env is set — npm
+      # mints a short-lived OIDC credential trusted because this repo +
+      # workflow are registered as the package's Trusted Publisher. This is
+      # the only supported publish path; there is no long-lived-token fallback.
+      - name: Publish (live, OIDC Trusted Publishing)
+        if: github.event_name == 'release' && steps.mode.outputs['dry-run'] == 'false'
+        run: |
+          for lib in components sam-material-extensions sam-formly; do
+            tarball="$(find dist/libs/$lib -name '*.tgz' -maxdepth 1 | head -n 1)"
+            echo "Live publishing $tarball via OIDC Trusted Publishing..."
+            npm publish "$tarball" --access public --registry https://registry.npmjs.org
+          done

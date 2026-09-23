@@ -33,6 +33,8 @@ jobs:
         run: npm run test:scripts
       - name: Validate security CI policy
         run: npm run validate:security-workflow
+      - name: Validate publish workflow policy
+        run: npm run validate:publish-workflow
       - name: Check formatting
         run: npm run format:check
       - name: Run lint

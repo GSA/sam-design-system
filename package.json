@@ -1,6 +1,6 @@
 {
   "name": "sam-design-system",
-  "version": "18.0.4",
+  "version": "21.0.0",
   "license": "MIT",
   "engines": {
     "node": ">=24.0.0 <25"
@@ -42,6 +42,8 @@
     "test:scripts": "node --test scripts/*.test.mjs",
     "test:e2e": "playwright test",
     "validate:security-workflow": "node scripts/validate-security-workflow.mjs",
+    "validate:publish": "node scripts/validate-publish-package.mjs",
+    "validate:publish-workflow": "node scripts/validate-publish-workflow.mjs",
     "update": "ng update",
     "update:check": "ng update",
     "federalist": "npm install --only=dev && npm run demo:docs && ng build --project=sam-design-system-site --configuration production --base-href=$BASEURL/ && npm run demo:stackblitzes-federalist && npm run build:docs",
