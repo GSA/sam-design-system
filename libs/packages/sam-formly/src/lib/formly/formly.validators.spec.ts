@@ -40,39 +40,25 @@ describe('sam-formly custom validators', () => {
       expect(minDateValidator(control, field)).toBeNull();
     });
 
-    it('should return minDate error when value time is less than and equals minDate and maxDate is not set', () => {
-      const val = new Date('2025-01-01');
-      let callCount = 0;
-      vi.spyOn(val, 'getTime').mockImplementation(() => {
-        callCount++;
-        return callCount === 1 ? 100 : 200;
-      });
+    it('should return null when value and minDate are equal', () => {
+      const control = new UntypedFormControl(new Date('2025-01-01'));
+      const field: FormlyFieldConfig = { props: { minDate: new Date('2025-01-01') } };
+      expect(minDateValidator(control, field)).toBeNull();
+    });
 
-      const minDate = new Date('2025-01-02');
-      vi.spyOn(minDate, 'getTime').mockReturnValue(200);
-
-      const control = new UntypedFormControl(val);
-      const field: FormlyFieldConfig = { props: { minDate } };
+    it('should return minDate error when value is before minDate and maxDate is not set', () => {
+      const control = new UntypedFormControl(new Date('2025-01-01'));
+      const field: FormlyFieldConfig = { props: { minDate: new Date('2025-01-02') } };
 
       const result = minDateValidator(control, field);
       expect(result).toEqual({ minDate: true });
     });
 
-    it('should return betweenDate error when value time is less than and equals minDate and maxDate is set', () => {
-      const val = new Date('2025-01-01');
-      let callCount = 0;
-      vi.spyOn(val, 'getTime').mockImplementation(() => {
-        callCount++;
-        return callCount === 1 ? 100 : 200;
-      });
-
-      const minDate = new Date('2025-01-02');
-      vi.spyOn(minDate, 'getTime').mockReturnValue(200);
-
-      const control = new UntypedFormControl(val);
+    it('should return betweenDate error when value is before minDate and maxDate is set', () => {
+      const control = new UntypedFormControl(new Date('2025-01-01'));
       const field: FormlyFieldConfig = {
         props: {
-          minDate,
+          minDate: new Date('2025-01-02'),
           maxDate: new Date('2025-12-31'),
         },
       };
@@ -113,39 +99,25 @@ describe('sam-formly custom validators', () => {
       expect(maxDateValidator(control, field)).toBeNull();
     });
 
-    it('should return maxDate error when value time is greater than and equals maxDate and minDate is not set', () => {
-      const val = new Date('2025-06-01');
-      let callCount = 0;
-      vi.spyOn(val, 'getTime').mockImplementation(() => {
-        callCount++;
-        return callCount === 1 ? 300 : 200;
-      });
+    it('should return null when value and maxDate are equal', () => {
+      const control = new UntypedFormControl(new Date('2025-06-01'));
+      const field: FormlyFieldConfig = { props: { maxDate: new Date('2025-06-01') } };
+      expect(maxDateValidator(control, field)).toBeNull();
+    });
 
-      const maxDate = new Date('2025-05-01');
-      vi.spyOn(maxDate, 'getTime').mockReturnValue(200);
-
-      const control = new UntypedFormControl(val);
-      const field: FormlyFieldConfig = { props: { maxDate } };
+    it('should return maxDate error when value is after maxDate and minDate is not set', () => {
+      const control = new UntypedFormControl(new Date('2025-06-01'));
+      const field: FormlyFieldConfig = { props: { maxDate: new Date('2025-05-01') } };
 
       const result = maxDateValidator(control, field);
       expect(result).toEqual({ maxDate: true });
     });
 
-    it('should return betweenDate error when value time is greater than and equals maxDate and minDate is set', () => {
-      const val = new Date('2025-06-01');
-      let callCount = 0;
-      vi.spyOn(val, 'getTime').mockImplementation(() => {
-        callCount++;
-        return callCount === 1 ? 300 : 200;
-      });
-
-      const maxDate = new Date('2025-05-01');
-      vi.spyOn(maxDate, 'getTime').mockReturnValue(200);
-
-      const control = new UntypedFormControl(val);
+    it('should return betweenDate error when value is after maxDate and minDate is set', () => {
+      const control = new UntypedFormControl(new Date('2025-06-01'));
       const field: FormlyFieldConfig = {
         props: {
-          maxDate,
+          maxDate: new Date('2025-05-01'),
           minDate: new Date('2025-01-01'),
         },
       };
