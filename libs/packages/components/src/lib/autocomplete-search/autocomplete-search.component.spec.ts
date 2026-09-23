@@ -643,7 +643,7 @@ describe('SamAutocompleteComponent', () => {
     expect(preventSpy).toHaveBeenCalled();
   });
 
-  it('should handle Alt keydown by opening/focusing search', () => {
+  it('should handle Alt keydown by opening/focusing search', fakeAsync(() => {
     const focusSpy = vi.spyOn(component, 'inputFocusHandler');
     const event = {
       key: 'Alt',
@@ -652,7 +652,8 @@ describe('SamAutocompleteComponent', () => {
     component.onKeydown(event);
     expect(event.preventDefault).toHaveBeenCalled();
     expect(focusSpy).toHaveBeenCalled();
-  });
+    tick();
+  }));
 
   it('should handle Tab keydown by returning early', () => {
     const event = {
@@ -861,11 +862,12 @@ describe('SamAutocompleteComponent', () => {
     expect(changeSpy).toHaveBeenCalledWith(component.model);
   });
 
-  it('openOptions should focus input and invoke inputFocusHandler', () => {
+  it('openOptions should focus input and invoke inputFocusHandler', fakeAsync(() => {
     const focusHandlerSpy = vi.spyOn(component, 'inputFocusHandler');
     component.openOptions();
     expect(focusHandlerSpy).toHaveBeenCalled();
-  });
+    tick();
+  }));
 
   it('getClass should return hide-cursor when inputReadOnly is true', () => {
     component.configuration.inputReadOnly = true;
@@ -979,7 +981,7 @@ describe('SamAutocompleteComponent', () => {
     expect(component.showResults).toBe(false);
   });
 
-  it('should attach scroll listener when autocomplete is within modal dialog', () => {
+  it('should attach scroll listener when autocomplete is within modal dialog', fakeAsync(() => {
     const dialogDiv = document.createElement('div');
     dialogDiv.className = 'sds-dialog-content';
     document.body.appendChild(dialogDiv);
@@ -989,6 +991,7 @@ describe('SamAutocompleteComponent', () => {
       const addListenerSpy = vi.spyOn(component, 'addListener');
       component.inputFocusHandler();
       expect(addListenerSpy).toHaveBeenCalled();
+      tick();
 
       // Trigger scroll event on dialog with parent style.bottom to cover both branches
       const dropdownParent = document.createElement('div');
@@ -1007,16 +1010,22 @@ describe('SamAutocompleteComponent', () => {
     } finally {
       dialogDiv.remove();
     }
-  });
+  }));
 
-  it('scrollToSelectedItem should handle checkbox class selector', fakeAsync(() => {
+  it('scrollToSelectedItem should handle checkbox class selector and scroll position', fakeAsync(() => {
     component.configuration.useCheckBoxes = true;
     component.inputFocusHandler();
     tick();
     fixture.detectChanges();
 
     component.highlightedIndex = 1;
+    const dom = component.resultsListElement.nativeElement;
+    const mockSelectedChild = { offsetTop: 100 } as HTMLElement;
+    const querySpy = vi.spyOn(dom, 'querySelector').mockReturnValue(mockSelectedChild as any);
+    vi.spyOn(dom, 'getBoundingClientRect').mockReturnValue({ height: 40 } as DOMRect);
+
     (component as any).scrollToSelectedItem();
-    expect(component.highlightedIndex).toBe(1);
+    expect(querySpy).toHaveBeenCalledWith('.sds-autocomplete__checkbox--highlighted');
+    expect(dom.scrollTop).toBe(80);
   }));
 });

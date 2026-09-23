@@ -311,7 +311,8 @@ describe('SDSSelectedItemModelHelper', () => {
     SDSSelectedItemModelHelper.removeItem(notInList, 'id', model);
     expect(model.items.length).toBe(2);
 
-    SDSSelectedItemModelHelper.removeItem(item1, 'id', model);
+    const distinctItem1 = { id: '1', otherProp: 'different object' };
+    SDSSelectedItemModelHelper.removeItem(distinctItem1, 'id', model);
     expect(model.items.length).toBe(1);
     expect(model.items[0]).toEqual(item2);
   });
