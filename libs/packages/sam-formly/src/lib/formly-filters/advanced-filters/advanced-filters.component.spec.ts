@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { SdsDialogService, SdsPopoverModule } from '@gsa-sam/components';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
 
 import { AdvancedFiltersComponent } from './advanced-filters.component';
 import { SdsAdvancedFiltersService } from './sds-advanced-filters.service';
@@ -52,7 +52,7 @@ describe('AdvancedFiltersComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, SdsPopoverModule],
+      imports: [ReactiveFormsModule, SdsPopoverModule, FormlyModule.forRoot()],
       declarations: [AdvancedFiltersComponent, UsaIconStubComponent],
       providers: [{ provide: SdsDialogService, useValue: modalServiceSpy }, SdsAdvancedFiltersService],
     }).compileComponents();
