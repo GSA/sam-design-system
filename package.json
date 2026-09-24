@@ -127,7 +127,7 @@
     "@storybook/addon-docs": "^10.6.0",
     "@storybook/addon-links": "^10.6.0",
     "@storybook/angular": "^10.6.0",
-    "@types/node": "^20.12.4",
+    "@types/node": "^26.1.1",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^19.3.0",
     "@vitest/coverage-v8": "4.1.11",
