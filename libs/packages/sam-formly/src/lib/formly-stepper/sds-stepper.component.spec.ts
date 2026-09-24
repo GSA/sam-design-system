@@ -25,7 +25,7 @@ class UsaStepIndicatorStubComponent {
 }
 
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { SdsFormlyModule } from '../formly/formly.module';
 import {} from 'ngx-bootstrap-icons';
 import { NavigationMode } from '@gsa-sam/components';
@@ -830,23 +830,23 @@ describe('SdsStepperComponent', () => {
       expect(() => unselectedStepper.ngOnChanges({})).not.toThrow();
     });
 
-    it('Should handle validateStepsOnInit with specific array of step IDs', async () => {
+    it('Should handle validateStepsOnInit with specific array of step IDs', fakeAsync(() => {
       stepper.validateStepsOnInit = ['step1'];
       stepper.currentStepId = 'step1';
       const updateValSpy = vi.spyOn(stepper, 'updateValidation');
 
       stepper.ngAfterViewInit();
-      await new Promise((resolve) => setTimeout(resolve, 10));
+      tick(10);
       expect(updateValSpy).toHaveBeenCalled();
 
       stepper.validateStepsOnInit = ['step2Child1'];
       stepper.currentStepId = 'step1';
       stepper.ngAfterViewInit();
-      await new Promise((resolve) => setTimeout(resolve, 10));
+      tick(10);
 
       stepper.validateStepsOnInit = ['non-matching-id'];
       expect(() => stepper.ngAfterViewInit()).not.toThrow();
-    });
+    }));
 
     it('Should evaluate onSaveClicked in linear mode and updateValidity with null step', async () => {
       stepper.linear = true;
@@ -863,7 +863,7 @@ describe('SdsStepperComponent', () => {
       expect(clean.count).toEqual(5);
     });
 
-    it('Should initialize stepper with snapshot queryParams and queryParams subscription in ngAfterContentInit', async () => {
+    it('Should initialize stepper with snapshot queryParams and queryParams subscription in ngAfterContentInit', fakeAsync(() => {
       const mockRoute = {
         snapshot: { queryParams: { sdsStepId: 'step2Child1' } },
         queryParams: of({ sdsStepId: 'step3' }),
@@ -878,8 +878,8 @@ describe('SdsStepperComponent', () => {
       expect(routeStepper.stepValidityMap).toEqual({});
       expect(routeStepper.currentStepId).toBe('step2Child1');
 
-      await new Promise((resolve) => setTimeout(resolve, 20));
+      tick(20);
       expect(routeStepper.currentStepId).toBe('step3');
-    });
+    }));
   });
 });
