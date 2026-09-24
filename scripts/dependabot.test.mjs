@@ -51,7 +51,7 @@ test('dependabot.yml is present and matches the team standard', () => {
   const EXPECTED_IGNORES = [
     { name: '@angular-devkit/architect', versions: ['>= 0.2200.0'] },
     { name: '@angular/*', versions: ['>= 22.0.0'] },
-    { name: '@angular-devkit/*', versions: ['>= 22.0.0'] },
+    { name: '@angular-devkit/*', versions: ['>= 0.2200.0 < 1.0.0', '>= 22.0.0'] },
     { name: '@gsa-sam/*', versions: ['>= 22.0.0'] },
     { name: 'angular-eslint', versions: ['>= 22.0.0'] },
     { name: 'ng-packagr', versions: ['>= 22.0.0'] },

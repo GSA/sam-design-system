@@ -14,7 +14,7 @@ updates:
       - dependency-name: '@angular/*'
         versions: ['>= 22.0.0']
       - dependency-name: '@angular-devkit/*'
-        versions: ['>= 22.0.0']
+        versions: ['>= 0.2200.0 < 1.0.0', '>= 22.0.0']
       - dependency-name: '@gsa-sam/*'
         versions: ['>= 22.0.0']
       - dependency-name: 'angular-eslint'
