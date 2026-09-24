@@ -131,7 +131,7 @@
     "@types/react": "^18.3.31",
     "@types/react-dom": "^19.3.0",
     "@vitest/coverage-v8": "4.1.11",
-    "angular-eslint": "21.4.0",
+    "angular-eslint": "22.1.0",
     "ejs": "6.0.1",
     "eslint": "10.11.0",
     "eslint-plugin-storybook": "10.6.0",
