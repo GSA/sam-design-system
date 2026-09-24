@@ -28,7 +28,6 @@ import { CommonModule } from '@angular/common';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { SdsFormlyModule } from '../formly/formly.module';
 import {} from 'ngx-bootstrap-icons';
-import { NavigationMode } from '@gsa-sam/components';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SdsStepperModule } from './sds-stepper.module';
 import { Component, ViewChild } from '@angular/core';
@@ -36,7 +35,7 @@ import { FormlyFieldConfig } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { of, Subject } from 'rxjs';
+import { of } from 'rxjs';
 import { vi } from 'vitest';
 import { SdsStepper, SdsStepComponent, SdsStepHeaderComponent, SdsStepFooterComponent } from './sds-stepper';
 import {
@@ -207,8 +206,6 @@ export class CustomTestStepper extends SdsStepper {}
 class StepperTestComponent {
   @ViewChild(CustomTestStepper) stepper: CustomTestStepper;
 
-  navigationMode = NavigationMode;
-
   fieldConfigStep1: FormlyFieldConfig = {
     key: 'step1Input',
     type: 'input',
@@ -265,7 +262,7 @@ class StepperTestComponent {
         [validateOnBlur]="true"
         (modelChange)="onModelChange($event)"
       ></sds-step>
-      <sds-step id="blurStep2" text="Blur Step 2" [fieldConfig]="fieldConfigStep2"></sds-step>
+      <sds-step id="blurStep2" text="Blur Step 2" [fieldConfig]="fieldConfigStep2" [validateOnBlur]="true"></sds-step>
     </custom-test-stepper>
   `,
   standalone: false,
@@ -354,6 +351,7 @@ describe('SdsStepperComponent', () => {
   });
 
   it('Should trigger validation on save click', () => {
+    stepper.selectedStep.options = { showError: () => false };
     // Triggers min length of 5 validation in example component
     stepper.flatSteps[0].fieldConfig.formControl.setValue('test');
 
@@ -620,6 +618,8 @@ describe('SdsStepperComponent', () => {
     });
 
     it('SdsStepperPreviousDirective should handle click and disabled state correctly', () => {
+      stepper.selectedStepIndex = 1;
+      stepper.selectedStep = stepper.flatSteps[1];
       const prevDir = new SdsStepperPreviousDirective(stepper);
       const prevSpy = vi.spyOn(stepper, 'onPreviousStep');
       prevDir._handleClick();
@@ -716,6 +716,8 @@ describe('SdsStepperComponent', () => {
       blurStepper.onNextStep();
       expect(updateValidationSpy).toHaveBeenCalled();
 
+      blurStepper.selectedStepIndex = 1;
+      blurStepper.selectedStep = blurStepper.flatSteps[1];
       blurStepper.onPreviousStep();
       expect(updateValidationSpy).toHaveBeenCalled();
     });
