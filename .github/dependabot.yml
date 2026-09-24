@@ -11,6 +11,20 @@ updates:
     ignore:
       - dependency-name: '@angular-devkit/architect'
         versions: ['>= 0.2200.0']
+      - dependency-name: '@angular/*'
+        versions: ['>= 22.0.0']
+      - dependency-name: '@angular-devkit/*'
+        versions: ['>= 22.0.0']
+      - dependency-name: '@gsa-sam/*'
+        versions: ['>= 22.0.0']
+      - dependency-name: 'angular-eslint'
+        versions: ['>= 22.0.0']
+      - dependency-name: 'ng-packagr'
+        versions: ['>= 22.0.0']
+      - dependency-name: 'ngx-markdown'
+        versions: ['>= 22.0.0']
+      - dependency-name: 'typescript'
+        versions: ['>= 6.0.0']
     groups:
       minor:
         patterns:
