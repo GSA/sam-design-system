@@ -29,6 +29,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Location } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';
 import { Directionality } from '@angular/cdk/bidi';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { SdsDialogContainerComponent } from './dialog-container.component';
 import { OverlayContainer, ScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
@@ -386,6 +387,67 @@ describe('SdsDialog', () => {
     let overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
 
     expect(overlayPane.style.width).toBe('500px');
+  });
+
+  it('should support standard width presets (small, medium, large)', fakeAsync(() => {
+    let dialogRef = dialog.open(PizzaMsg, { width: 'small' });
+    viewContainerFixture.detectChanges();
+    let overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+    expect(overlayPane.style.width).toBe('370px');
+    dialogRef.close();
+    viewContainerFixture.detectChanges();
+    flush();
+
+    dialogRef = dialog.open(PizzaMsg, { width: 'medium' });
+    viewContainerFixture.detectChanges();
+    overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+    expect(overlayPane.style.width).toBe('730px');
+    dialogRef.close();
+    viewContainerFixture.detectChanges();
+    flush();
+
+    dialogRef = dialog.open(PizzaMsg, { width: 'large' });
+    viewContainerFixture.detectChanges();
+    overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+    expect(overlayPane.style.width).toBe('960px');
+    dialogRef.close();
+    viewContainerFixture.detectChanges();
+    flush();
+  }));
+
+  it('should support slideOut boolean and SlideOutConfig', fakeAsync(() => {
+    let dialogRef = dialog.open(PizzaMsg, { slideOut: true });
+    viewContainerFixture.detectChanges();
+    let container = overlayContainerElement.querySelector('sds-dialog-container') as HTMLElement;
+    expect(container.classList.contains('dialog-slide-out')).toBe(true);
+    dialogRef.close();
+    viewContainerFixture.detectChanges();
+    flush();
+
+    dialogRef = dialog.open(PizzaMsg, { slideOut: { width: '20rem', time: '500ms' } });
+    viewContainerFixture.detectChanges();
+    container = overlayContainerElement.querySelector('sds-dialog-container') as HTMLElement;
+    expect(container.classList.contains('dialog-slide-out')).toBe(true);
+    expect(container.style.width).toBe('20rem');
+    dialogRef.close();
+    viewContainerFixture.detectChanges();
+    flush();
+  }));
+
+  it('should throw error when attaching portal after content is already attached', () => {
+    const dialogRef = dialog.open(PizzaMsg);
+    viewContainerFixture.detectChanges();
+    const container = dialogRef._containerInstance;
+    expect(() => container.attachComponentPortal(new ComponentPortal(PizzaMsg))).toThrowError(
+      /Attempting to attach dialog content after content is already attached/,
+    );
+
+    const templateRefFixture = TestBed.createComponent(ComponentWithTemplateRef);
+    templateRefFixture.detectChanges();
+    const templateRef = templateRefFixture.componentInstance.templateRef;
+    expect(() => container.attachTemplatePortal(new TemplatePortal(templateRef, testViewContainerRef))).toThrowError(
+      /Attempting to attach dialog content after content is already attached/,
+    );
   });
 
   it('should override the height of the overlay pane', () => {
