@@ -1,19 +1,33 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement, ElementRef, Renderer2 } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TableRowNavigationDirective } from './table-row-navigation.directive';
 import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
-  template: ` <tr mat-row sdsTableRowNavigation [highlightOnHover]="true"></tr> `,
+  template: `
+    <table>
+      <tbody>
+        <tr mat-row sdsTableRowNavigation [highlightOnHover]="highlightFirst" tabindex="0">
+          <td>Row 1</td>
+        </tr>
+        <tr mat-row sdsTableRowNavigation [highlightOnHover]="highlightSecond" tabindex="0">
+          <td>Row 2</td>
+        </tr>
+      </tbody>
+    </table>
+  `,
   standalone: false,
 })
-class TestHoverFocusComponent {}
+class TestHoverFocusComponent {
+  highlightFirst = true;
+  highlightSecond = false;
+}
 
 describe('TableRowNavigationDirective', () => {
   let component: TestHoverFocusComponent;
   let fixture: ComponentFixture<TestHoverFocusComponent>;
-  let trEl: DebugElement;
+  let trElements: DebugElement[];
 
   beforeEach(() => {
     fixture = TestBed.configureTestingModule({
@@ -22,34 +36,66 @@ describe('TableRowNavigationDirective', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).createComponent(TestHoverFocusComponent);
     component = fixture.componentInstance;
-    trEl = fixture.debugElement.query(By.css('tr'));
     fixture.detectChanges(); // initial binding
+    trElements = fixture.debugElement.queryAll(By.directive(TableRowNavigationDirective));
   });
 
   it('should create an instance of component', () => {
     expect(component).toBeTruthy();
+    expect(trElements.length).toBe(2);
   });
 
   it('should not contain hover class by default', () => {
-    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
   });
-  it('should contain hover class when hovered', () => {
-    trEl.triggerEventHandler('mouseenter', null);
-    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeTruthy();
+
+  it('should contain hover class when hovered with highlightOnHover=true', () => {
+    trElements[0].triggerEventHandler('mouseenter', null);
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeTruthy();
   });
+
   it('should not contain hover class after mouse has left row', () => {
-    trEl.triggerEventHandler('mouseenter', null);
-    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeTruthy();
-    trEl.triggerEventHandler('mouseleave', null);
-    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+    trElements[0].triggerEventHandler('mouseenter', null);
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeTruthy();
+    trElements[0].triggerEventHandler('mouseleave', null);
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+  });
+
+  it('should not add hover class when hovered with highlightOnHover=false', () => {
+    trElements[1].triggerEventHandler('mouseenter', null);
+    expect(trElements[1].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+    trElements[1].triggerEventHandler('mouseleave', null);
+    expect(trElements[1].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+  });
+
+  it('should support direct addHoverClass and removeHoverClass calls', () => {
+    const directive = trElements[0].injector.get(TableRowNavigationDirective);
+    directive.addHoverClass();
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeTruthy();
+    directive.removeHoverClass();
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+  });
+
+  it('should not alter row focus on ArrowDown keydown event since directive only handles hover', () => {
+    const firstRow: HTMLTableRowElement = trElements[0].nativeElement;
+    const secondRow: HTMLTableRowElement = trElements[1].nativeElement;
+
+    firstRow.focus();
+    expect(document.activeElement).toBe(firstRow);
+
+    // TableRowNavigationDirective manages row hover states and does not implement arrow navigation.
+    const downEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', code: 'ArrowDown', bubbles: true });
+    firstRow.dispatchEvent(downEvent);
+    expect(document.activeElement).toBe(firstRow);
+    expect(document.activeElement).not.toBe(secondRow);
   });
 
   it('should not add hover class when highlightOnHover is false', () => {
-    const directive = trEl.injector.get(TableRowNavigationDirective);
+    const directive = trElements[0].injector.get(TableRowNavigationDirective);
     directive.highlightOnHover = false;
-    trEl.triggerEventHandler('mouseenter', null);
-    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
-    trEl.triggerEventHandler('mouseleave', null);
-    expect(trEl.nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+    trElements[0].triggerEventHandler('mouseenter', null);
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
+    trElements[0].triggerEventHandler('mouseleave', null);
+    expect(trElements[0].nativeElement.classList.contains('sds-table__row--hovered')).toBeFalsy();
   });
 });
