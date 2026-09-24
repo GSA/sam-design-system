@@ -42,20 +42,32 @@ test('dependabot.yml is present and matches the team standard', () => {
     'must configure grouped github-actions',
   );
 
-  // Angular 21 toolchain pin: architect uses 0.x so semver treats 0.2201 as minor.
-  // Verify that the ignore rule is specifically configured on the npm ecosystem update block.
+  // Angular 21 toolchain pins: ignore Angular 22 and TypeScript 6+ while pinned to Angular 21.
+  // Verify that ignore rules are specifically configured on the npm ecosystem update block.
   const parsed = yaml.load(raw);
   const npmUpdate = parsed?.updates?.find((entry) => entry?.['package-ecosystem'] === 'npm');
   assert.ok(npmUpdate, 'npm update configuration must exist in updates');
-  const architectIgnore = npmUpdate?.ignore?.find(
-    (entry) => entry?.['dependency-name'] === '@angular-devkit/architect',
-  );
-  assert.ok(architectIgnore, 'npm update block must have an ignore entry for @angular-devkit/architect');
-  assert.deepEqual(
-    architectIgnore?.versions,
-    ['>= 0.2200.0'],
-    'must ignore @angular-devkit/architect versions >= 0.2200.0 in npm updates while pinned to Angular 21',
-  );
+
+  const EXPECTED_IGNORES = [
+    { name: '@angular-devkit/architect', versions: ['>= 0.2200.0'] },
+    { name: '@angular/*', versions: ['>= 22.0.0'] },
+    { name: '@angular-devkit/*', versions: ['>= 0.2200.0 < 1.0.0', '>= 22.0.0'] },
+    { name: '@gsa-sam/*', versions: ['>= 22.0.0'] },
+    { name: 'angular-eslint', versions: ['>= 22.0.0'] },
+    { name: 'ng-packagr', versions: ['>= 22.0.0'] },
+    { name: 'ngx-markdown', versions: ['>= 22.0.0'] },
+    { name: 'typescript', versions: ['>= 6.0.0'] },
+  ];
+
+  for (const { name, versions } of EXPECTED_IGNORES) {
+    const entry = npmUpdate?.ignore?.find((item) => item?.['dependency-name'] === name);
+    assert.ok(entry, `npm update block must have an ignore entry for ${name}`);
+    assert.deepEqual(
+      entry?.versions,
+      versions,
+      `must ignore ${name} versions ${versions.join(', ')} in npm updates while pinned to Angular 21`,
+    );
+  }
 });
 
 test('dependabot-auto-merge.yml is present, gated, and least-privilege', () => {
