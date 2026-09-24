@@ -346,6 +346,10 @@ describe('SdsAdvancedFiltersService', () => {
   });
 
   describe('updateSingleField', () => {
+    afterEach(() => {
+      delete (Object.prototype as any).polluted;
+    });
+
     it('should unhide field when fieldSelected is true', () => {
       const field: FormlyFieldConfig = { key: 'sample', hide: true };
       service.updateSingleField(field, true, {});
@@ -380,18 +384,22 @@ describe('SdsAdvancedFiltersService', () => {
     });
 
     it('should guard against prototype pollution keys', () => {
-      const targetModel: any = {};
-      const dangerousKeys = ['__proto__', 'constructor', 'prototype'];
+      try {
+        const targetModel: any = {};
+        const dangerousKeys = ['__proto__', 'constructor', 'prototype'];
 
-      dangerousKeys.forEach((key) => {
-        const field: any = { key, hide: false };
-        service.updateSingleField(field, false, targetModel);
-        expect(field.hide).toBe(true);
-      });
+        dangerousKeys.forEach((key) => {
+          const field: any = { key, hide: false };
+          service.updateSingleField(field, false, targetModel);
+          expect(field.hide).toBe(true);
+        });
 
-      // Verify Object prototype has not been polluted
-      expect((Object.prototype as any).polluted).toBeUndefined();
-      expect(({} as any).polluted).toBeUndefined();
+        // Verify Object prototype has not been polluted
+        expect((Object.prototype as any).polluted).toBeUndefined();
+        expect(({} as any).polluted).toBeUndefined();
+      } finally {
+        delete (Object.prototype as any).polluted;
+      }
     });
   });
 });
