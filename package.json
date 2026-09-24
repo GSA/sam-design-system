@@ -86,7 +86,7 @@
     "@angular/cli": "21.2.24",
     "@angular/common": "21.2.23",
     "@angular/compiler": "21.2.23",
-    "@angular/compiler-cli": "21.2.23",
+    "@angular/compiler-cli": "22.0.8",
     "@angular/core": "21.2.23",
     "@angular/forms": "21.2.23",
     "@angular/material": "21.2.14",
