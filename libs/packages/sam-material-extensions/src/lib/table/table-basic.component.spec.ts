@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, DebugElement, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import {
   SdsTableComponent,
@@ -17,9 +18,21 @@ import { TableRowNavigationDirective } from './table-row-import/table-row-naviga
 import { PaginationModule } from '@gsa-sam/components';
 
 import { MatSortModule } from '@angular/material/sort';
-import { IconModule } from '@gsa-sam/ngx-uswds-icons';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
+@Component({
+  selector: 'usa-icon',
+  template: '',
+  standalone: false,
+})
+class UsaIconStubComponent {
+  @Input() icon = '';
+  @Input() size = 'lg';
+  @Input() rotate = 0;
+  @Input() classes?: string[];
+  @Input() skew?: any;
+}
 
 const MOCK_DATA = [
   {
@@ -152,7 +165,7 @@ const MOCK_DATA = [
 
 @Component({
   template: `
-    <sds-table [data]="data">
+    <sds-table [data]="data" (rowClicked)="onRowClicked($event)">
       <sds-table-column sdsColumnName="id">
         <ng-template #sdsHeaderCell>ID</ng-template>
         <ng-template #sdsCell let-element="element">{{ element.id }}</ng-template>
@@ -182,8 +195,9 @@ const MOCK_DATA = [
         <ng-template #sdsCell let-element="element">{{ element.date | date }}</ng-template>
       </sds-table-column>
 
-      <sds-row [displayedColumns]="displayedColumns"></sds-row> </sds-table
-    >,
+      <sds-header-row [displayedColumns]="displayedColumns"></sds-header-row>
+      <sds-row [displayedColumns]="displayedColumns"></sds-row>
+    </sds-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
@@ -201,9 +215,11 @@ class WrapperComponent {
 
   data = MOCK_DATA;
 
-  sortToggle = true;
-  expansionToggle = true;
-  borderlessToggle = false;
+  clickedRowIndex: number | null = null;
+
+  onRowClicked(index: number) {
+    this.clickedRowIndex = index;
+  }
 }
 
 describe('SdsTableComponent Basic', () => {
@@ -224,33 +240,107 @@ describe('SdsTableComponent Basic', () => {
         SdsTableHeaderCellDirective,
         SdsTableFooterCellDirective,
         TableRowNavigationDirective,
+        UsaIconStubComponent,
         WrapperComponent,
       ],
       imports: [
         MatTableModule,
-        IconModule,
         MatSortModule,
         MatPaginatorModule,
         BrowserAnimationsModule,
         PaginationModule,
+        RouterModule.forRoot([]),
       ],
     }).compileComponents();
   }));
 
-  describe('Table Component', () => {
-    beforeEach(() => {
-      fixture = TestBed.createComponent(WrapperComponent);
-      const wrapperComponent = fixture.debugElement.componentInstance;
-      wrapperComponent.cdr.detectChanges();
-      component = wrapperComponent.sdsTableComponentRef;
-      tableDe = fixture.debugElement;
-      wrapper = wrapperComponent;
+  beforeEach(() => {
+    fixture = TestBed.createComponent(WrapperComponent);
+    wrapper = fixture.debugElement.componentInstance;
+    wrapper.cdr.detectChanges();
+    fixture.detectChanges();
+    component = wrapper.sdsTableComponentRef;
+    tableDe = fixture.debugElement;
+  });
 
-      fixture.detectChanges();
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render header cells with expected column titles', () => {
+    const headers = tableDe.queryAll(By.css('th[mat-header-cell]'));
+    expect(headers.length).toBe(wrapper.displayedColumns.length);
+
+    const headerTexts = headers.map((h) => h.nativeElement.textContent.trim());
+    expect(headerTexts).toEqual(['ID', 'First', 'Last', 'Email', 'Requests', 'Date']);
+  });
+
+  it('should render rows matching data length', () => {
+    const rows = tableDe.queryAll(By.css('tr.sds-table__row'));
+    expect(rows.length).toBe(MOCK_DATA.length);
+
+    const firstRowCells = rows[0].queryAll(By.css('td[mat-cell]'));
+    expect(firstRowCells[0].nativeElement.textContent.trim()).toBe('1');
+    expect(firstRowCells[1].nativeElement.textContent.trim()).toBe('Gregorius');
+    expect(firstRowCells[2].nativeElement.textContent.trim()).toBe('Matthews');
+  });
+
+  it('should emit rowClicked when a row is clicked', () => {
+    const rows = tableDe.queryAll(By.css('tr.sds-table__row'));
+    rows[2].nativeElement.click();
+    fixture.detectChanges();
+
+    expect(wrapper.clickedRowIndex).toBe(2);
+  });
+
+  it('should maintain row focus without shifting when ArrowDown is dispatched', () => {
+    // SdsTableComponent does not implement arrow navigation; focus remains on the active row.
+    const rows = tableDe.queryAll(By.css('tr.sds-table__row'));
+    const firstRow: HTMLTableRowElement = rows[0].nativeElement;
+    const secondRow: HTMLTableRowElement = rows[1].nativeElement;
+
+    firstRow.setAttribute('tabindex', '0');
+    secondRow.setAttribute('tabindex', '0');
+
+    firstRow.focus();
+    expect(document.activeElement).toBe(firstRow);
+
+    const arrowDown = new KeyboardEvent('keydown', { key: 'ArrowDown', code: 'ArrowDown', bubbles: true });
+    firstRow.dispatchEvent(arrowDown);
+    expect(document.activeElement).toBe(firstRow);
+    expect(document.activeElement).not.toBe(secondRow);
+  });
+
+  it('should update rendered rows when data changes in OnPush component', () => {
+    const updatedData = [
+      {
+        id: 999,
+        firstName: 'UpdatedFirst',
+        lastName: 'UpdatedLast',
+        email: 'u@test.com',
+        requests: 0,
+        date: '2026-01-01',
+      },
+    ];
+    wrapper.data = updatedData as any;
+    wrapper.cdr.detectChanges();
+    fixture.detectChanges();
+
+    // Trigger ngOnChanges on sds-table
+    component.ngOnChanges({
+      data: {
+        previousValue: MOCK_DATA,
+        currentValue: updatedData,
+        firstChange: false,
+        isFirstChange: () => false,
+      },
     });
+    fixture.detectChanges();
 
-    it('should create', waitForAsync(() => {
-      expect(component).toBeTruthy();
-    }));
+    const rows = tableDe.queryAll(By.css('tr.sds-table__row'));
+    expect(rows.length).toBe(1);
+    const cells = rows[0].queryAll(By.css('td[mat-cell]'));
+    expect(cells[0].nativeElement.textContent.trim()).toBe('999');
+    expect(cells[1].nativeElement.textContent.trim()).toBe('UpdatedFirst');
   });
 });
