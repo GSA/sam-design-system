@@ -30,8 +30,12 @@ export class ReadonlyDaterangeComponent implements OnInit {
   constructor(private datePipe: DatePipe) {}
 
   ngOnInit() {
-    let fromDate = this.datePipe.transform(this.value[this.daterangepickerOptions.fromDateKey], 'mediumDate');
-    let toDate = this.datePipe.transform(this.value[this.daterangepickerOptions.toDateKey], 'mediumDate');
+    const options = this.daterangepickerOptions || {
+      fromDateKey: 'fromDate',
+      toDateKey: 'toDate',
+    };
+    let fromDate = this.value ? this.datePipe.transform(this.value[options.fromDateKey], 'mediumDate') : null;
+    let toDate = this.value ? this.datePipe.transform(this.value[options.toDateKey], 'mediumDate') : null;
     this.displayValue = `${fromDate ? fromDate : '--'} ${toDate ? ' - ' + toDate : ''}`;
   }
 }
