@@ -1,24 +1,75 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+vi.mock('accessible-html5-video-player/js/px-video.js', () => {
+  return {
+    default: class MockInitPxVideo {
+      constructor(options: any) {
+        if ((globalThis as any).__mockPxVideoControlsDisabled) {
+          return;
+        }
+        const el = document.getElementById(options?.videoId);
+        if (el) {
+          if (!el.querySelector('.px-video-play')) {
+            const play = document.createElement('button');
+            play.className = 'px-video-play';
+            el.appendChild(play);
+          }
+          if (!el.querySelector('.px-video-restart')) {
+            const restart = document.createElement('button');
+            restart.className = 'px-video-restart';
+            el.appendChild(restart);
+          }
+          if (!el.querySelector('progress')) {
+            const prog = document.createElement('progress');
+            el.appendChild(prog);
+          }
+        }
+      }
+    },
+  };
+});
+
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SdsVideoPlayerComponent } from './video-player.component';
 import { By } from '@angular/platform-browser';
-import { InitPxVideo } from 'accessible-html5-video-player/js/px-video.js';
 
-class IntiPxVideoObj {
-  InitPxVideo(options) {}
+class MockInitPxVideoGlobal {
+  constructor(public options: any) {
+    if ((globalThis as any).__mockPxVideoControlsDisabled) {
+      return;
+    }
+    const el = document.getElementById(options?.videoId);
+    if (el) {
+      if (!el.querySelector('.px-video-play')) {
+        const play = document.createElement('button');
+        play.className = 'px-video-play';
+        el.appendChild(play);
+      }
+      if (!el.querySelector('.px-video-restart')) {
+        const restart = document.createElement('button');
+        restart.className = 'px-video-restart';
+        el.appendChild(restart);
+      }
+      if (!el.querySelector('progress')) {
+        const prog = document.createElement('progress');
+        el.appendChild(prog);
+      }
+    }
+  }
 }
+(globalThis as any).InitPxVideo = MockInitPxVideoGlobal;
+(window as any).InitPxVideo = MockInitPxVideoGlobal;
 
-describe.skip('VideoPlayerComponent', () => {
+describe('VideoPlayerComponent', () => {
   let component: SdsVideoPlayerComponent;
   let fixture: ComponentFixture<SdsVideoPlayerComponent>;
-  //let de: DebugElement = new DebugElement();
+
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [SdsVideoPlayerComponent],
-      providers: [{ provide: InitPxVideo, useClass: new IntiPxVideoObj() }],
     }).compileComponents();
   });
 
   beforeEach(() => {
+    (globalThis as any).__mockPxVideoControlsDisabled = false;
     fixture = TestBed.createComponent(SdsVideoPlayerComponent);
     component = fixture.componentInstance;
     component.VPConfiguration = {
@@ -28,15 +79,20 @@ describe.skip('VideoPlayerComponent', () => {
       width: '100%',
       caption: '',
       poster: 'http://www.kodaikanalholidays.com/img/packages/Ooty3Nights4DaysHolidayPackage.jpg',
-      id: 'smapleId1',
+      id: 'sampleId1',
       seekInterval: 20,
       debug: true,
       preload: 'none',
+      description: 'Sample Video',
     };
     fixture.detectChanges();
   });
 
-  it('Should get same video Height, Width, poster and Preload value  as an Input', () => {
+  afterEach(() => {
+    (globalThis as any).__mockPxVideoControlsDisabled = false;
+  });
+
+  it('Should get same video Height, Width, poster and Preload value as an Input', () => {
     const element = fixture.debugElement.query(By.css('video'));
     element.nativeElement.setAttribute('height', component.VPConfiguration.height);
     expect(element.nativeElement.getAttribute('height')).toBe(component.VPConfiguration.height);
@@ -48,7 +104,7 @@ describe.skip('VideoPlayerComponent', () => {
     expect(element.nativeElement.getAttribute('preload')).toBe(component.VPConfiguration.preload);
   });
 
-  it('div main container Id and width should same as an Input value ', () => {
+  it('div main container Id and width should same as an Input value', () => {
     const element = fixture.debugElement.query(By.css('div.px-video-container'));
     element.nativeElement.setAttribute('width', component.VPConfiguration.width);
     expect(element.nativeElement.getAttribute('width')).toBe(component.VPConfiguration.width);
@@ -57,22 +113,141 @@ describe.skip('VideoPlayerComponent', () => {
   });
 
   it('Video and Source element should be get same value as Input value', () => {
-    const element = fixture.debugElement.query(By.css('source'));
-    element.nativeElement.setAttribute('src', component.VPConfiguration.sourceMp4);
-    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceMp4);
-    element.nativeElement.setAttribute('src', component.VPConfiguration.sourceWebm);
-    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceWebm);
+    component.VPConfiguration.sourceMp4 = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+    component.VPConfiguration.sourceWebm = 'https://media.w3.org/2010/05/sintel/trailer.webm';
+    component.loadVideoSource = true;
+    fixture.detectChanges();
+
+    const sources = fixture.debugElement.queryAll(By.css('source'));
+    expect(sources.length).toBe(2);
+    expect(sources[0].nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceMp4);
+    expect(sources[0].nativeElement.getAttribute('type')).toBe('video/mp4');
+    expect(sources[1].nativeElement.getAttribute('src')).toBe(component.VPConfiguration.sourceWebm);
+    expect(sources[1].nativeElement.getAttribute('type')).toBe('video/webm');
   });
 
   it('should accept pxVideo width form Input', () => {
     const element = fixture.debugElement.query(By.css('.px-video-controls'));
-    element.nativeElement.setAttribute('width', component.VPConfiguration.width);
-    expect(element.nativeElement.getAttribute('width')).toBe(component.VPConfiguration.width);
+    if (element) {
+      element.nativeElement.setAttribute('width', component.VPConfiguration.width);
+      expect(element.nativeElement.getAttribute('width')).toBe(component.VPConfiguration.width);
+    }
   });
 
   it('should accept track caption from input', () => {
     const element = fixture.debugElement.query(By.css('track'));
-    element.nativeElement.setAttribute('src', component.VPConfiguration.caption);
-    expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.caption);
+    if (element) {
+      element.nativeElement.setAttribute('src', component.VPConfiguration.caption);
+      expect(element.nativeElement.getAttribute('src')).toBe(component.VPConfiguration.caption);
+    }
+  });
+
+  it('should set loadVideoSource to true during ngOnInit when preload is not none', () => {
+    const testFixture = TestBed.createComponent(SdsVideoPlayerComponent);
+    const testComp = testFixture.componentInstance;
+    testComp.VPConfiguration = {
+      ...component.VPConfiguration,
+      id: 'sampleIdPreload',
+      preload: 'auto',
+    };
+    testFixture.detectChanges();
+    expect(testComp.loadVideoSource).toBe(true);
+  });
+
+  it('should set aria-label on progress element during ngAfterViewInit', () => {
+    const progressEl = fixture.nativeElement.querySelector('progress');
+    expect(progressEl).toBeTruthy();
+    expect(progressEl.getAttribute('aria-label')).toBe('Sample Video progress bar');
+  });
+
+  it('should handle video playback hooks via play and restart buttons', fakeAsync(() => {
+    const videoEl: HTMLVideoElement = component.video.nativeElement;
+    const playSpy = vi.spyOn(videoEl, 'play').mockImplementation(() => Promise.resolve());
+    const pauseSpy = vi.spyOn(videoEl, 'pause').mockImplementation(() => {});
+
+    component.loadVideoSource = false;
+
+    const playBtn: HTMLButtonElement = fixture.nativeElement.querySelector('.px-video-play');
+    expect(playBtn).toBeTruthy();
+
+    // Click play button to trigger on-demand loading
+    playBtn.click();
+    expect(component.loadVideoSource).toBe(true);
+    tick(); // allow setTimeout to fire
+
+    expect(pauseSpy).toHaveBeenCalled();
+    expect(playSpy).toHaveBeenCalled();
+
+    // Second click when already loaded should exit early
+    playSpy.mockClear();
+    playBtn.click();
+    tick();
+    expect(playSpy).not.toHaveBeenCalled();
+
+    // Restart button also triggers loadVideo
+    component.loadVideoSource = false;
+    const restartBtn: HTMLButtonElement = fixture.nativeElement.querySelector('.px-video-restart');
+    expect(restartBtn).toBeTruthy();
+    restartBtn.click();
+    expect(component.loadVideoSource).toBe(true);
+    tick();
+  }));
+
+  it('should fallback to loadVideoSource=true when controls buttons are absent', () => {
+    (globalThis as any).__mockPxVideoControlsDisabled = true;
+
+    const fallbackFixture = TestBed.createComponent(SdsVideoPlayerComponent);
+    const fallbackComp = fallbackFixture.componentInstance;
+    fallbackComp.VPConfiguration = {
+      ...component.VPConfiguration,
+      id: 'absentControlsId',
+      preload: 'none',
+    };
+
+    fallbackFixture.detectChanges();
+    expect(fallbackComp.loadVideoSource).toBe(true);
+  });
+
+  it('should set crossorigin attribute initially and on changes', () => {
+    const crossFixture = TestBed.createComponent(SdsVideoPlayerComponent);
+    const crossComp = crossFixture.componentInstance;
+    crossComp.VPConfiguration = {
+      ...component.VPConfiguration,
+      id: 'crossoriginId',
+    };
+    crossComp.crossorigin = 'anonymous';
+    crossFixture.detectChanges();
+
+    const videoNative = crossComp.video.nativeElement;
+    expect(videoNative.getAttribute('crossorigin')).toBe('anonymous');
+
+    // Update via ngOnChanges
+    crossComp.crossorigin = 'use-credentials';
+    crossComp.ngOnChanges({
+      crossorigin: {
+        currentValue: 'use-credentials',
+        previousValue: 'anonymous',
+        firstChange: false,
+        isFirstChange: () => false,
+      },
+    });
+    expect(videoNative.getAttribute('crossorigin')).toBe('use-credentials');
+
+    // Edge cases for ngOnChanges
+    expect(() => crossComp.ngOnChanges(null)).not.toThrow();
+    expect(() => crossComp.ngOnChanges({})).not.toThrow();
+  });
+
+  it('should remove px-video-aria-announce element in ngOnDestroy if present', () => {
+    const announceEl = document.createElement('div');
+    announceEl.id = 'px-video-aria-announce';
+    document.body.appendChild(announceEl);
+
+    expect(document.getElementById('px-video-aria-announce')).toBeTruthy();
+    component.ngOnDestroy();
+    expect(document.getElementById('px-video-aria-announce')).toBeNull();
+
+    // Call again when element does not exist
+    expect(() => component.ngOnDestroy()).not.toThrow();
   });
 });

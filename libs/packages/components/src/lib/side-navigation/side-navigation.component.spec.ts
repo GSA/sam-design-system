@@ -212,4 +212,22 @@ describe('SdsSideNavigationComponent', () => {
     link.queryParams = { 'item space': '1 space' };
     expect(component.urlBuilder(link)).toBe(link.route + '?item%20space=1%20space');
   });
+
+  it('handles deselect when model or navigationLinks is null/undefined', () => {
+    component.model = null;
+    expect(() => component.deselect()).not.toThrow();
+
+    component.model = { navigationLinks: null };
+    expect(() => component.deselect()).not.toThrow();
+
+    component.model = { navigationLinks: [] };
+    expect(() => component.deselect()).not.toThrow();
+  });
+
+  it('handles select with non-existent id gracefully', () => {
+    component.model = model;
+    component.select('non-existent-id');
+    expect(component.model.navigationLinks[0].selected).toBeFalsy();
+    expect(component.model.navigationLinks[0].children[0].selected).toBeFalsy();
+  });
 });
