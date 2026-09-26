@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewChild, ChangeDetectorRef, AfterViewInit, OnInit } from '@angular/core';
 import { AbstractSdsFormly } from '../sds-formly';
 import { SDSAutocompleteComponent } from '@gsa-sam/components';
 
@@ -8,7 +8,7 @@ import { SDSAutocompleteComponent } from '@gsa-sam/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
-export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implements AfterViewInit {
+export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implements OnInit, AfterViewInit {
   @ViewChild(SDSAutocompleteComponent, { static: true }) public template: SDSAutocompleteComponent;
   defaultOptions = {
     props: {
@@ -18,6 +18,14 @@ export class FormlyFieldAutoCompleteComponent extends AbstractSdsFormly implemen
   constructor(_cdr: ChangeDetectorRef) {
     super(); /* istanbul ignore next */
     this.cdr = _cdr;
+  }
+  override ngOnInit(): void {
+    super.ngOnInit();
+    if (this.props?.change && this.formControl) {
+      this.formControl.valueChanges.subscribe(() => {
+        this.props.change(this.field);
+      });
+    }
   }
   ngAfterViewInit(): void {
     if (this.template.configuration.id !== undefined && this.template.configuration.id !== this.id) {

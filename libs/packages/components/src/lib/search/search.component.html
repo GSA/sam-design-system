@@ -8,6 +8,7 @@
     aria-label="Search Options"
     class="usa-select grid-col-12 tablet:grid-col-auto"
     [attr.id]="searchSettings.dropdown.id"
+    [disabled]="disabled"
     (change)="writeValueToModel()"
   >
     <ng-container *ngFor="let item of searchSettings.dropdown.options">
@@ -52,6 +53,7 @@
       name="search"
       [placeholder]="searchSettings.placeholder ? searchSettings.placeholder : 'type here'"
       [attr.aria-label]="searchSettings.ariaLabel"
+      [disabled]="disabled"
       (blur)="focusChange()"
       (input)="writeValueToModel()"
     />
@@ -89,6 +91,7 @@
       class="usa-button"
       type="submit"
       [attr.aria-label]="searchSettings.ariaLabel ? searchSettings.ariaLabel : 'Search'"
+      [disabled]="disabled"
       (click)="handleClick($event)"
     >
       <usa-icon class="text-white" [icon]="'search'"></usa-icon>

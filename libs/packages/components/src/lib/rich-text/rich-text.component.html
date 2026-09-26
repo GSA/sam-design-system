@@ -10434,13 +10434,15 @@
       max-width: 795px;
   }
 </style>
-<div>
+<div [class.disabled]="disabled">
   <ckeditor
     #editor
     *ngIf="isLayoutReady"
     [editor]="Editor"
     [config]="config"
     [(ngModel)]="model"
+    [disabled]="disabled"
+    [attr.disabled]="disabled ? '' : null"
     (change)="onChange($event)"
     (blur)="onTouched($event)"
     class="{{ minHeightClass }} {{ maxHeightClass }}"
