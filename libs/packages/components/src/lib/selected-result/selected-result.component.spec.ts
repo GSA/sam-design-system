@@ -160,4 +160,166 @@ describe('SDSSelectedResultComponent', () => {
     let data2 = { level1: '1' };
     expect(component.getObjectValue(data2, 'level1,sub.level2')).toBe('1');
   });
+
+  it('should remove chip when close button is clicked in template', () => {
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    const item1 = { id: '1', name: 'Item 1', subtext: 'first' };
+    const item2 = { id: '2', name: 'Item 2', subtext: 'second' };
+    component.model.items = [item1, item2];
+    fixture.detectChanges();
+
+    const closeButtons = fixture.debugElement.queryAll(By.css('.sds-tag__close'));
+    expect(closeButtons.length).toBe(2);
+
+    closeButtons[0].nativeElement.click();
+    fixture.detectChanges();
+
+    expect(component.model.items.length).toBe(1);
+    expect((component.model.items[0] as any).id).toBe('2');
+  });
+
+  it('should remove chip when Enter key is pressed on close button', () => {
+    component.configuration.selectionMode = SelectionMode.MULTIPLE;
+    const item1 = { id: '1', name: 'Item 1', subtext: 'first' };
+    component.model.items = [item1];
+    fixture.detectChanges();
+
+    const closeButton = fixture.debugElement.query(By.css('.sds-tag__close'));
+    closeButton.triggerEventHandler('keyup.enter', {});
+    fixture.detectChanges();
+
+    expect(component.model.items.length).toBe(0);
+  });
+
+  it('should not allow chip removal when component is disabled', () => {
+    const item1 = { id: '1', name: 'Item 1', subtext: 'first' };
+    component.model.items = [item1];
+    component.setDisabledState(true);
+    fixture.detectChanges();
+
+    const closeButton = fixture.debugElement.query(By.css('.sds-tag__close'));
+    expect(closeButton).toBeNull();
+
+    const tag = fixture.debugElement.query(By.css('.sds-tag'));
+    expect(tag.nativeElement.classList.contains('sds-tag--disabled')).toBe(true);
+
+    const changeSpy = vi.fn();
+    const touchSpy = vi.fn();
+    component.registerOnChange(changeSpy);
+    component.registerOnTouched(touchSpy);
+
+    component.removeItem(item1);
+    expect(component.model.items.length).toBe(1);
+    expect(changeSpy).not.toHaveBeenCalled();
+    expect(touchSpy).not.toHaveBeenCalled();
+  });
+
+  it('should apply displayModifierFn when defined on configuration', () => {
+    component.configuration.displayModifierFn = (val: string, index?: number) => {
+      return `Chip #${index}: ${val.toUpperCase()}`;
+    };
+    const item = { id: '1', name: 'test item' };
+    const display = component.getObjectValue(item, 'name', 3);
+    expect(display).toBe('Chip #3: TEST ITEM');
+  });
+
+  it('should render secondary text when secondaryTextField is configured and present', () => {
+    const item = { id: '1', name: 'Primary Title', subtext: 'Secondary Subtitle' };
+    component.model.items = [item];
+    fixture.detectChanges();
+
+    const textElements = fixture.debugElement.query(By.css('.sds--tag__item'));
+    expect(textElements.nativeElement.textContent).toContain('Primary Title');
+    expect(textElements.nativeElement.textContent).toContain('Secondary Subtitle');
+  });
+});
+
+describe('SDSSelectedItemModelHelper', () => {
+  let model: SDSSelectedItemModel;
+
+  beforeEach(() => {
+    model = new SDSSelectedItemModel();
+  });
+
+  it('addItem should replace existing item when selectionMode is SINGLE', () => {
+    const item1 = { id: '1', name: 'First' };
+    const item2 = { id: '2', name: 'Second' };
+    SDSSelectedItemModelHelper.addItem(item1, 'id', SelectionMode.SINGLE, model);
+    expect(model.items.length).toBe(1);
+    expect(model.items[0]).toEqual(item1);
+
+    SDSSelectedItemModelHelper.addItem(item2, 'id', SelectionMode.SINGLE, model);
+    expect(model.items.length).toBe(1);
+    expect(model.items[0]).toEqual(item2);
+  });
+
+  it('addItem should append items when selectionMode is MULTIPLE', () => {
+    const item1 = { id: '1', name: 'First' };
+    const item2 = { id: '2', name: 'Second' };
+    SDSSelectedItemModelHelper.addItem(item1, 'id', SelectionMode.MULTIPLE, model);
+    SDSSelectedItemModelHelper.addItem(item2, 'id', SelectionMode.MULTIPLE, model);
+    expect(model.items.length).toBe(2);
+    expect(model.items).toEqual([item1, item2]);
+  });
+
+  it('addItem should not add duplicate items by keyField', () => {
+    const item1 = { id: '1', name: 'First' };
+    const item1Duplicate = { id: '1', name: 'First Duplicate' };
+    SDSSelectedItemModelHelper.addItem(item1, 'id', SelectionMode.MULTIPLE, model);
+    SDSSelectedItemModelHelper.addItem(item1Duplicate, 'id', SelectionMode.MULTIPLE, model);
+    expect(model.items.length).toBe(1);
+    expect((model.items[0] as any).name).toBe('First');
+  });
+
+  it('addItems should add multiple non-duplicate items', () => {
+    const items = [
+      { id: '1', name: 'Item 1' },
+      { id: '2', name: 'Item 2' },
+      { id: '1', name: 'Item 1 Duplicate' },
+      { id: '3', name: 'Item 3' },
+    ];
+    SDSSelectedItemModelHelper.addItems(items, 'id', SelectionMode.MULTIPLE, model);
+    expect(model.items.length).toBe(3);
+    expect(model.items.map((i: any) => i.id)).toEqual(['1', '2', '3']);
+  });
+
+  it('replaceItems should clear existing items and add the new collection', () => {
+    model.items = [{ id: '99', name: 'Old Item' }];
+    const newItems = [
+      { id: '1', name: 'New 1' },
+      { id: '2', name: 'New 2' },
+    ];
+    SDSSelectedItemModelHelper.replaceItems(newItems, 'id', SelectionMode.MULTIPLE, model);
+    expect(model.items.length).toBe(2);
+    expect(model.items.map((i: any) => i.id)).toEqual(['1', '2']);
+  });
+
+  it('containsItem should return true if item exists, false otherwise', () => {
+    model.items = [{ id: '10' }, { id: '20' }];
+    expect(SDSSelectedItemModelHelper.containsItem('10', 'id', model.items)).toBe(true);
+    expect(SDSSelectedItemModelHelper.containsItem('20', 'id', model.items)).toBe(true);
+    expect(SDSSelectedItemModelHelper.containsItem('30', 'id', model.items)).toBe(false);
+    expect(SDSSelectedItemModelHelper.containsItem('10', 'id', [])).toBe(false);
+  });
+
+  it('removeItem should remove matching item and do nothing if item does not exist', () => {
+    const item1 = { id: '1' };
+    const item2 = { id: '2' };
+    const notInList = { id: '99' };
+    model.items = [item1, item2];
+
+    SDSSelectedItemModelHelper.removeItem(notInList, 'id', model);
+    expect(model.items.length).toBe(2);
+
+    const distinctItem1 = { id: '1', otherProp: 'different object' };
+    SDSSelectedItemModelHelper.removeItem(distinctItem1, 'id', model);
+    expect(model.items.length).toBe(1);
+    expect(model.items[0]).toEqual(item2);
+  });
+
+  it('clearItems should remove all items from array', () => {
+    const items = [{ id: '1' }, { id: '2' }, { id: '3' }];
+    SDSSelectedItemModelHelper.clearItems(items);
+    expect(items.length).toBe(0);
+  });
 });
