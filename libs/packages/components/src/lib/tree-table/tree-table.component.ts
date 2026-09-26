@@ -179,13 +179,16 @@ export class SdsTreeTableComponent {
     return false;
   }
 
-  private findRow(allRows: any[], id: string) {
+  private findRow(allRows: any[], id: string): SdsTreeTableData | null {
     for (let i = 0; i < allRows.length; i++) {
       const row = allRows[i];
       if (row.id === id) {
         return row;
       } else if (row.children) {
-        return this.findRow(allRows, id);
+        const childRow = this.findRow(row.children, id);
+        if (childRow) {
+          return childRow;
+        }
       }
     }
     return null;
