@@ -52,8 +52,9 @@ export class SDSSelectedItemModelHelper {
    * @param items
    */
   public static removeItem(item: object, keyField: string, model: SDSSelectedItemModel) {
-    if (SDSSelectedItemModelHelper.containsItem(item[keyField], keyField, model.items)) {
-      model.items.splice(model.items.indexOf(item), 1);
+    const index = model.items.findIndex((o) => o[keyField] === item[keyField]);
+    if (index !== -1) {
+      model.items.splice(index, 1);
     }
   }
 
