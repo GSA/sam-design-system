@@ -5,7 +5,7 @@ import { SelectionPanelModel } from '../model/selection-panel.model';
 import { SdsSelectionPanelSelectionModeComponent } from './selection-mode.component';
 
 describe('Selection Panel Selection Mode Component', () => {
-  let model: SelectionPanelModel = {
+  const createModel = (): SelectionPanelModel => ({
     navigationLinks: [
       {
         text: 'Parent 1',
@@ -30,9 +30,21 @@ describe('Selection Panel Selection Mode Component', () => {
           },
         ],
       },
+      {
+        text: 'Parent 2',
+        id: 'linkp2',
+        route: '/parent-2',
+        mode: NavigationMode.INTERNAL,
+      },
+      {
+        text: 'Parent 3',
+        id: 'linkp3',
+        route: '/parent-3',
+        mode: NavigationMode.INTERNAL,
+      },
     ],
-    selectionMode: 'NAVIGATION',
-  };
+    selectionMode: 'SELECTION',
+  });
 
   let fixture: ComponentFixture<SdsSelectionPanelSelectionModeComponent>;
   let component: SdsSelectionPanelSelectionModeComponent;
@@ -43,21 +55,54 @@ describe('Selection Panel Selection Mode Component', () => {
     }).compileComponents();
     fixture = TestBed.createComponent(SdsSelectionPanelSelectionModeComponent);
     component = fixture.componentInstance;
-    component.model = model;
+    component.model = createModel();
     fixture.detectChanges();
   });
 
-  it('Should include only parent link from input model', () => {
+  it('should include only top-level parent links from input model', () => {
     const liElements = fixture.debugElement.queryAll(By.css('li'));
-    expect(liElements.length).toEqual(1);
+    expect(liElements.length).toEqual(3);
+
+    const anchorTexts = fixture.debugElement.queryAll(By.css('a')).map((a) => a.nativeElement.textContent.trim());
+    expect(anchorTexts).toEqual(['Parent 1', 'Parent 2', 'Parent 3']);
   });
 
-  it('Should emit event when panel item is clicked', () => {
+  it('should emit event and set currentSelection when panel item is clicked', () => {
     const panelSelectedEventSpy = vi.spyOn(component.panelSelected, 'emit');
 
-    const anchorElement = fixture.debugElement.query(By.css('a'));
-    anchorElement.triggerEventHandler('click', null);
+    const anchors = fixture.debugElement.queryAll(By.css('a'));
+    anchors[1].triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(panelSelectedEventSpy).toHaveBeenCalled();
+
+    const expectedItem = component.model.navigationLinks[1];
+    expect(component.currentSelection).toBe(expectedItem);
+    expect(panelSelectedEventSpy).toHaveBeenCalledWith(expectedItem);
+
+    const currentLi = fixture.debugElement.query(By.css('li.usa-current'));
+    expect(currentLi).toBeTruthy();
+    expect(currentLi.nativeElement.textContent.trim()).toBe('Parent 2');
+  });
+
+  it('should highlight initial currentSelection item with usa-current class', () => {
+    component.currentSelection = component.model.navigationLinks[0];
+    fixture.detectChanges();
+
+    const liElements = fixture.debugElement.queryAll(By.css('li'));
+    expect(liElements[0].nativeElement.classList.contains('usa-current')).toBe(true);
+    expect(liElements[1].nativeElement.classList.contains('usa-current')).toBe(false);
+    expect(liElements[2].nativeElement.classList.contains('usa-current')).toBe(false);
+  });
+
+  it('should not apply usa-current class when currentSelection does not match any id', () => {
+    component.currentSelection = {
+      text: 'Other',
+      id: 'unknown-id',
+      route: '/other',
+      mode: NavigationMode.INTERNAL,
+    };
+    fixture.detectChanges();
+
+    const currentLis = fixture.debugElement.queryAll(By.css('li.usa-current'));
+    expect(currentLis.length).toBe(0);
   });
 });
