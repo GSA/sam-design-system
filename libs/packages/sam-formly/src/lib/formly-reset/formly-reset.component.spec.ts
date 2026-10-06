@@ -20,6 +20,7 @@ import { FormlyModule, FormlyForm } from '@ngx-formly/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SdsFormlyModule } from '../formly/formly.module';
 import { SdsFormlyResetComponent } from './formly-reset.component';
+import { SdsFormlyResetModule } from './formly-reset.module';
 
 describe('SDS Formly Reset', () => {
   let testComp: TestComponent;
@@ -145,12 +146,84 @@ describe('SDS Formly Reset', () => {
     expect(testComp.model.nested.nestedInput).toBeInstanceOf(Date);
     expect(testComp.model.nested.nestedInput.getTime()).toBe(defaultDate.getTime());
   });
+
+  it('should emit resetClicked event when reset button is clicked', () => {
+    const resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click();
+    fixture.detectChanges();
+
+    expect(testComp.onResetClicked).toHaveBeenCalledTimes(1);
+  });
+
+  it('should apply custom classes to reset button when classes input is provided', () => {
+    testComp.classes = ['my-custom-class', 'usa-button--big'];
+    fixture.detectChanges();
+
+    const resetEl = fixture.nativeElement.querySelector('button');
+    expect(resetEl.classList.contains('my-custom-class')).toBe(true);
+    expect(resetEl.classList.contains('usa-button--big')).toBe(true);
+  });
+
+  it('should restore form control pristine and untouched state after reset', () => {
+    const flatControl = testComp.form.get('flat');
+    flatControl.setValue('modified value');
+    flatControl.markAsDirty();
+    flatControl.markAsTouched();
+
+    expect(flatControl.dirty).toBe(true);
+    expect(flatControl.touched).toBe(true);
+
+    const resetEl = fixture.nativeElement.querySelector('.usa-button');
+    resetEl.click();
+    fixture.detectChanges();
+
+    expect(flatControl.pristine).toBe(true);
+    expect(flatControl.untouched).toBe(true);
+  });
+
+  describe('SdsFormlyResetComponent isolated unit tests', () => {
+    it('should call options.resetModel with defaultModel when defaultModel is provided', () => {
+      const comp = new SdsFormlyResetComponent();
+      const resetSpy = vi.fn();
+      comp.options = { resetModel: resetSpy } as any;
+      comp.defaultModel = { name: 'test' };
+      const emitSpy = vi.spyOn(comp.resetClicked, 'emit');
+
+      comp.resetAll();
+
+      expect(resetSpy).toHaveBeenCalledWith({ name: 'test' });
+      expect(emitSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call options.resetModel without args when defaultModel is not provided', () => {
+      const comp = new SdsFormlyResetComponent();
+      const resetSpy = vi.fn();
+      comp.options = { resetModel: resetSpy } as any;
+      comp.defaultModel = null;
+      const emitSpy = vi.spyOn(comp.resetClicked, 'emit');
+
+      comp.resetAll();
+
+      expect(resetSpy).toHaveBeenCalledWith();
+      expect(emitSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should initialize SdsFormlyResetModule', () => {
+      const module = new SdsFormlyResetModule();
+      expect(module).toBeTruthy();
+    });
+  });
 });
 
 @Component({
   template: ` <form [formGroup]="form">
     <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options"></formly-form>
-    <sds-formly-reset [options]="options" [defaultModel]="defaultModel"></sds-formly-reset>
+    <sds-formly-reset
+      [options]="options"
+      [defaultModel]="defaultModel"
+      [classes]="classes"
+      (resetClicked)="onResetClicked()"
+    ></sds-formly-reset>
   </form>`,
   standalone: false,
 })
@@ -159,6 +232,7 @@ class TestComponent {
   form = new UntypedFormGroup({});
   options = {};
   defaultModel: any;
+  classes: string[] = ['usa-button', 'usa-button--unstyled'];
   fields = [
     {
       key: 'flat',
@@ -175,4 +249,5 @@ class TestComponent {
     },
   ];
   model: any = {};
+  onResetClicked = vi.fn();
 }
