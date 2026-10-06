@@ -25,6 +25,6 @@ export class SdsActionsMenuComponent {
   }
 
   getDisabled(mode) {
-    return (mode = this.actionModes.DISABLED) ? true : false;
+    return mode === this.actionModes.DISABLED;
   }
 }
