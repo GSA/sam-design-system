@@ -36,7 +36,8 @@ export class ReadonlyFileinfoComponent implements OnInit, OnChanges {
     const selectedOption = this.fileInfoOptions.find((option) => option.value === this.value);
     if (!selectedOption) {
       this.displayValue = '&mdash;';
+    } else {
+      this.displayValue = selectedOption.label + ' - ' + selectedOption.value;
     }
-    this.displayValue = selectedOption.label + ' - ' + selectedOption.value;
   }
 }

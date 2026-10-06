@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReadonlyInputComponent } from './readonly-types/readonly-input';
 import { ReadonlyDatepickerComponent } from './readonly-types/readonly-datepicker';
@@ -46,5 +46,6 @@ import {
     ReadonlyLabelDirective,
     ReadonlyValueDirective,
   ],
+  providers: [DatePipe],
 })
 export class SdsReadonlyModule {}

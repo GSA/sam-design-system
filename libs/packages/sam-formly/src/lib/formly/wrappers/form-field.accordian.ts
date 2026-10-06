@@ -14,7 +14,7 @@ import { filter } from 'rxjs/operators';
   selector: 'sam-formly-accordian-form-field',
   template: `
     <usa-accordion #groupAccordion [singleSelect]="!multi" class="sds-accordion--filters">
-      <usa-accordion-item [expanded]="modelHasValue()" ]>
+      <usa-accordion-item [expanded]="modelHasValue()">
         <ng-template UsaAccordionHeader>
           <span [attr.class]="props.labelClass">{{ props.label }}</span>
         </ng-template>
