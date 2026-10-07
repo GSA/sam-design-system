@@ -147,7 +147,7 @@
     "storybook": "^10.6.0",
     "string-replace-loader": "^3.1.0",
     "ts-node": "~10.9.2",
-    "typescript-eslint": "8.70.1",
+    "typescript-eslint": "8.71.0",
     "vitest": "4.1.11"
   }
 }
