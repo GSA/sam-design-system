@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Accordion-collapse-icon-small">
+            <g id="Group">
+                <path d="M16,32 C24.836556,32 32,24.836556 32,16 C32,7.163444 24.836556,0 16,0 C7.163444,0 0,7.163444 0,16 C0,19.2375395 0.961581184,22.2504897 2.6147243,24.7688313 C4.05578964,26.9641009 6.0223608,28.7835261 8.33557728,30.0482464 C10.6115897,31.292626 13.2231868,32 16,32 Z" id="Oval-Copy-6" fill="#F5F5F0"></path>
+                <g id="Group-2" transform="translate(9.845902, 10.000000)" stroke="#112F4E" stroke-linecap="square">
+                    <line x1="0" y1="5.5" x2="12" y2="5.5" id="Line-4"></line>
+                    <line x1="6" y1="4.16333634e-17" x2="6" y2="12" id="Line-4"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
