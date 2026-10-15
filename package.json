@@ -123,7 +123,7 @@
   "devDependencies": {
     "@angular/build": "21.2.24",
     "@angular/language-service": "21.2.24",
-    "@playwright/test": "1.63.0",
+    "@playwright/test": "1.64.0",
     "@storybook/addon-docs": "^10.6.0",
     "@storybook/addon-links": "^10.6.0",
     "@storybook/angular": "^10.6.0",
@@ -133,7 +133,7 @@
     "@vitest/coverage-v8": "4.1.11",
     "angular-eslint": "21.4.0",
     "ejs": "6.0.1",
-    "eslint": "10.11.0",
+    "eslint": "10.12.0",
     "eslint-plugin-storybook": "10.6.0",
     "github-release-notes": "^0.17.0",
     "http-server": "14.1.1",
@@ -147,7 +147,7 @@
     "storybook": "^10.6.0",
     "string-replace-loader": "^3.1.0",
     "ts-node": "~10.9.2",
-    "typescript-eslint": "8.70.1",
+    "typescript-eslint": "8.71.1",
     "vitest": "4.1.11"
   }
 }
