@@ -17,6 +17,7 @@ import {
   SdsDialogService,
 } from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
+import { SDS_DIALOG_REGISTRY } from './dialog-tokens';
 import { IconModule, alertError } from '@gsa-sam/ngx-uswds-icons';
 
 import {
@@ -59,6 +60,11 @@ import {
     SdsDialogActionsDirective,
     SdsDialogContentDirective,
   ],
-  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER],
+  providers: [
+    SdsDialogService,
+    { provide: SDS_DIALOG_REGISTRY, useExisting: SdsDialogService },
+    SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
+    SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
+  ],
 })
 export class SdsDialogModule {}

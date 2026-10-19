@@ -59,6 +59,8 @@ jobs:
         run: npx ng build sam-material-extensions --configuration production
       - name: Build SAM Formly library
         run: npx ng build sam-formly --configuration production
+      - name: Validate published library packages
+        run: npm run validate:publish
       - name: Test components library with coverage
         id: components_tests
         run: npm run test:components

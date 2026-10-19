@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -62,6 +62,12 @@ export function validateManifest(pkgName, manifest, expectedVersion, normalizedT
     );
   }
 
+  if (manifest.scripts?.prepublishOnly) {
+    errors.push(
+      `Package ${pkgName} must not contain scripts.prepublishOnly; it indicates ng-packagr built the package in full compilation mode.`,
+    );
+  }
+
   const peerDeps = manifest.peerDependencies || {};
   if (pkgName === 'sam-material-extensions') {
     const expected = `^${expectedVersion}`;
@@ -89,6 +95,23 @@ export function validateManifest(pkgName, manifest, expectedVersion, normalizedT
   return errors;
 }
 
+export function validateIvyBundle(pkgName, bundle) {
+  const partialMarkers = bundle.match(/ɵɵngDeclare\w+\s*\(/g) || [];
+  const fullMarkers = bundle.match(/ɵɵdefine\w+\s*\(/g) || [];
+  const errors = [];
+
+  if (partialMarkers.length === 0) {
+    errors.push(`Package ${pkgName} fesm2022 contains no partial-Ivy declaration marker (ɵɵngDeclare*).`);
+  }
+  if (fullMarkers.length > 0) {
+    errors.push(
+      `Package ${pkgName} fesm2022 contains ${fullMarkers.length} full-Ivy definition marker(s) (ɵɵdefine*); published libraries must use partial Ivy.`,
+    );
+  }
+
+  return errors;
+}
+
 export function validateDistPackage(pkgName, distDir, expectedVersion) {
   const distPkgPath = resolve(distDir, 'package.json');
   if (!existsSync(distPkgPath)) {
@@ -99,6 +122,19 @@ export function validateDistPackage(pkgName, distDir, expectedVersion) {
   const manifestErrors = validateManifest(pkgName, distManifest, expectedVersion);
   if (manifestErrors.length > 0) {
     throw new Error(`Built package ${pkgName} failed manifest validation:\n- ${manifestErrors.join('\n- ')}`);
+  }
+
+  const fesmDir = resolve(distDir, 'fesm2022');
+  const bundles = existsSync(fesmDir) ? readdirSync(fesmDir).filter((file) => file.endsWith('.mjs')) : [];
+  if (bundles.length === 0) {
+    throw new Error(`Built package ${pkgName} has no fesm2022 .mjs bundles to validate.`);
+  }
+
+  const ivyErrors = bundles.flatMap((bundle) =>
+    validateIvyBundle(pkgName, readFileSync(resolve(fesmDir, bundle), 'utf8')),
+  );
+  if (ivyErrors.length > 0) {
+    throw new Error(`Built package ${pkgName} failed Ivy compilation validation:\n- ${ivyErrors.join('\n- ')}`);
   }
 
   const output = execFileSync('npm', ['pack', '--dry-run', '--json'], {

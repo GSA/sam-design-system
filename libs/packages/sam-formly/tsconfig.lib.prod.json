@@ -6,5 +6,8 @@
       "@gsa-sam/components": ["dist/libs/components"],
       "@gsa-sam/sam-material-extensions": ["dist/libs/sam-material-extensions"]
     }
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
   }
 }

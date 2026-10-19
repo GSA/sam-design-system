@@ -18,6 +18,7 @@ import { startWith } from 'rxjs/operators';
 import { SdsDialogConfig } from './dialog-config';
 import { SdsDialogContainerComponent } from './dialog-container.component';
 import { SdsDialogRef } from './dialog-ref';
+import { SDS_DIALOG_REF, SDS_DIALOG_REGISTRY } from './dialog-tokens';
 
 /** Injection token that can be used to access the data that was passed in to a dialog. */
 export const SDS_DIALOG_DATA = new InjectionToken<any>('SdsDialogData');
@@ -309,6 +310,8 @@ export class SdsDialogService implements OnDestroy {
       { provide: SdsDialogContainerComponent, useValue: dialogContainer },
       { provide: SDS_DIALOG_DATA, useValue: config.data },
       { provide: SdsDialogRef, useValue: dialogRef },
+      { provide: SDS_DIALOG_REF, useValue: dialogRef },
+      { provide: SDS_DIALOG_REGISTRY, useValue: this },
     ];
 
     if (config.direction && (!userInjector || !userInjector.get<Directionality | null>(Directionality, null))) {

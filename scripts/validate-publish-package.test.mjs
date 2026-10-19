@@ -6,6 +6,7 @@ import {
   normalizeTag,
   validatePublishableProjects,
   validateManifest,
+  validateIvyBundle,
   validateDistPackage,
   validateAll,
 } from './validate-publish-package.mjs';
@@ -62,6 +63,18 @@ test('validateManifest passes when manifest matches root version, tag, repo, and
 
   const errors = validateManifest('sam-formly', manifest, '21.0.0', '21.0.0');
   assert.deepEqual(errors, []);
+});
+
+test('validateManifest rejects ng-packagr full-compilation prepublishOnly guard', () => {
+  const manifest = {
+    name: '@gsa-sam/components',
+    version: '21.0.0',
+    repository: { type: 'git', url: 'https://github.com/GSA/sam-design-system.git' },
+    scripts: { prepublishOnly: 'echo do not publish' },
+  };
+
+  const errors = validateManifest('components', manifest, '21.0.0');
+  assert.ok(errors.some((error) => error.includes('Package components must not contain scripts.prepublishOnly')));
 });
 
 test('validateManifest flags version mismatch against root or tag', () => {
@@ -126,6 +139,23 @@ test('validateManifest flags incorrect package identity name', () => {
     errors.some((e) =>
       e.includes('Package name in manifest (@gsa-sam/wrong-name) must match expected "@gsa-sam/components"'),
     ),
+  );
+});
+
+test('validateIvyBundle accepts partial-Ivy declarations without full-Ivy definitions', () => {
+  assert.deepEqual(validateIvyBundle('components', 'ɵɵngDeclareComponent({}); ɵɵngDeclareDirective({});'), []);
+});
+
+test('validateIvyBundle rejects a full-Ivy definition bundle', () => {
+  const errors = validateIvyBundle('sam-formly', 'ɵɵdefineComponent({});');
+  assert.ok(errors.some((error) => error.includes('sam-formly fesm2022 contains no partial-Ivy declaration marker')));
+  assert.ok(errors.some((error) => error.includes('sam-formly fesm2022 contains 1 full-Ivy definition marker')));
+});
+
+test('validateIvyBundle rejects a bundle mixing partial and full-Ivy markers', () => {
+  const errors = validateIvyBundle('sam-material-extensions', 'ɵɵngDeclareComponent({}); ɵɵdefineComponent({});');
+  assert.ok(
+    errors.some((error) => error.includes('sam-material-extensions fesm2022 contains 1 full-Ivy definition marker')),
   );
 });
 

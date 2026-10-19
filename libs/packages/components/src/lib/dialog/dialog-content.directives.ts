@@ -1,6 +1,5 @@
-import { Directive, Input, OnChanges, OnInit, Optional, SimpleChanges, ElementRef } from '@angular/core';
-import { SdsDialogService } from './dialog';
-import { SdsDialogRef } from './dialog-ref';
+import { Directive, Input, OnChanges, OnInit, Optional, SimpleChanges, ElementRef, Inject } from '@angular/core';
+import { SDS_DIALOG_REF, SDS_DIALOG_REGISTRY, SdsDialogRefLike, SdsDialogRegistry } from './dialog-tokens';
 
 /** Counter used to generate unique IDs for dialog elements. */
 let dialogElementUid = 0;
@@ -29,9 +28,9 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
   @Input('sdsDialogClose') _sdsDialogClose: any;
 
   constructor(
-    @Optional() public dialogRef: SdsDialogRef<any>,
+    @Optional() @Inject(SDS_DIALOG_REF) public dialogRef: SdsDialogRefLike<unknown>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService,
+    @Inject(SDS_DIALOG_REGISTRY) private _dialog: SdsDialogRegistry,
   ) {}
 
   ngOnInit() {
@@ -71,9 +70,9 @@ export class SdsDialogTitleDirective implements OnInit {
   @Input() id = `sds-dialog-title-${dialogElementUid++}`;
 
   constructor(
-    @Optional() private _dialogRef: SdsDialogRef<any>,
+    @Optional() @Inject(SDS_DIALOG_REF) private _dialogRef: SdsDialogRefLike<unknown>,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialog: SdsDialogService,
+    @Inject(SDS_DIALOG_REGISTRY) private _dialog: SdsDialogRegistry,
   ) {}
 
   ngOnInit() {
@@ -132,7 +131,7 @@ export class SdsDialogActionsDirective {}
  * @param element Element relative to which to look for a dialog.
  * @param openDialogs References to the currently-open dialogs.
  */
-function getClosestDialog(element: ElementRef<HTMLElement>, openDialogs: SdsDialogRef<any>[]) {
+function getClosestDialog(element: ElementRef<HTMLElement>, openDialogs: SdsDialogRefLike<unknown>[]) {
   let parent: HTMLElement | null = element.nativeElement.parentElement;
 
   while (parent && !parent.classList.contains('sds-dialog__container')) {

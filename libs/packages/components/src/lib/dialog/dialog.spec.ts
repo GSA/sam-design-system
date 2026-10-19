@@ -192,6 +192,29 @@ describe('SdsDialog', () => {
     expect(dialogContainerElement.getAttribute('aria-describedby')).toBe('description-element');
   });
 
+  it('should render the default close button and close its dialog when clicked', fakeAsync(() => {
+    dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    const closeButton = overlayContainerElement.querySelector(
+      'button.close-btn[aria-label="Close Modal"]',
+    ) as HTMLButtonElement;
+    expect(closeButton).toBeTruthy();
+
+    closeButton.click();
+    viewContainerFixture.detectChanges();
+    flush();
+
+    expect(overlayContainerElement.querySelector('sds-dialog-container')).toBeNull();
+  }));
+
+  it('should hide the default close button when displayCloseBtn is false', () => {
+    dialog.open(PizzaMsg, { displayCloseBtn: false, viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    expect(overlayContainerElement.querySelector('button.close-btn[aria-label="Close Modal"]')).toBeNull();
+  });
+
   it('should close a dialog and get back a result', fakeAsync(() => {
     let dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
     let afterCloseCallback = vi.fn();
