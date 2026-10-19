@@ -39,6 +39,7 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
     return this._dialogRef as SdsDialogRef<any>;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Preserve the public getter's writable `SdsDialogRef<any>` API.
   set dialogRef(dialogRef: SdsDialogRef<any>) {
     this._dialogRef = dialogRef;
   }
