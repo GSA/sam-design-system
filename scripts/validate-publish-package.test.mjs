@@ -6,7 +6,7 @@ import {
   normalizeTag,
   validatePublishableProjects,
   validateManifest,
-  validateIvyBundle,
+  validateIvyBundles,
   validateDistPackage,
   validateAll,
 } from './validate-publish-package.mjs';
@@ -142,20 +142,39 @@ test('validateManifest flags incorrect package identity name', () => {
   );
 });
 
-test('validateIvyBundle accepts partial-Ivy declarations without full-Ivy definitions', () => {
-  assert.deepEqual(validateIvyBundle('components', 'ɵɵngDeclareComponent({}); ɵɵngDeclareDirective({});'), []);
+test('validateIvyBundles accepts namespace-aliased partial-Ivy declarations across declaration and helper bundles', () => {
+  const errors = validateIvyBundles('components', [
+    { name: 'gsa-sam-components.mjs', contents: 'i0.ɵɵngDeclareComponent ({ });\ni0.ɵɵngDeclareDirective({});' },
+    { name: 'gsa-sam-components-testing.mjs', contents: 'export const answer=42;' },
+  ]);
+
+  assert.deepEqual(errors, []);
 });
 
-test('validateIvyBundle rejects a full-Ivy definition bundle', () => {
-  const errors = validateIvyBundle('sam-formly', 'ɵɵdefineComponent({});');
-  assert.ok(errors.some((error) => error.includes('sam-formly fesm2022 contains no partial-Ivy declaration marker')));
-  assert.ok(errors.some((error) => error.includes('sam-formly fesm2022 contains 1 full-Ivy definition marker')));
-});
+test('validateIvyBundles rejects a full-Ivy marker in any bundle, including minified output', () => {
+  const errors = validateIvyBundles('sam-formly', [
+    { name: 'gsa-sam-sam-formly.mjs', contents: 'i0.ɵɵngDeclareComponent({});' },
+    { name: 'gsa-sam-sam-formly-extra.mjs', contents: 'i0.ɵɵdefineComponent({});' },
+  ]);
 
-test('validateIvyBundle rejects a bundle mixing partial and full-Ivy markers', () => {
-  const errors = validateIvyBundle('sam-material-extensions', 'ɵɵngDeclareComponent({}); ɵɵdefineComponent({});');
   assert.ok(
-    errors.some((error) => error.includes('sam-material-extensions fesm2022 contains 1 full-Ivy definition marker')),
+    errors.some((error) =>
+      error.includes('sam-formly fesm2022 bundle gsa-sam-sam-formly-extra.mjs contains 1 full-Ivy'),
+    ),
+  );
+});
+
+test('validateIvyBundles requires a partial-Ivy marker across the package, not every bundle', () => {
+  const errors = validateIvyBundles('sam-material-extensions', [
+    { name: 'gsa-sam-sam-material-extensions.mjs', contents: 'export{};' },
+    { name: 'gsa-sam-sam-material-extensions-extra.mjs', contents: 'i0.ɵɵdefineDirective ({ });' },
+  ]);
+
+  assert.ok(errors.some((error) => error.includes('contains no partial-Ivy declaration marker')));
+  assert.ok(
+    errors.some((error) =>
+      error.includes('bundle gsa-sam-sam-material-extensions-extra.mjs contains 1 full-Ivy definition marker'),
+    ),
   );
 });
 

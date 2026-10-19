@@ -95,18 +95,24 @@ export function validateManifest(pkgName, manifest, expectedVersion, normalizedT
   return errors;
 }
 
-export function validateIvyBundle(pkgName, bundle) {
-  const partialMarkers = bundle.match(/ɵɵngDeclare\w+\s*\(/g) || [];
-  const fullMarkers = bundle.match(/ɵɵdefine\w+\s*\(/g) || [];
+export function validateIvyBundles(pkgName, bundles) {
+  const partialMarkerCount = bundles.reduce(
+    (count, { contents }) => count + (contents.match(/ɵɵngDeclare\w+\s*\(/g) || []).length,
+    0,
+  );
   const errors = [];
 
-  if (partialMarkers.length === 0) {
+  if (partialMarkerCount === 0) {
     errors.push(`Package ${pkgName} fesm2022 contains no partial-Ivy declaration marker (ɵɵngDeclare*).`);
   }
-  if (fullMarkers.length > 0) {
-    errors.push(
-      `Package ${pkgName} fesm2022 contains ${fullMarkers.length} full-Ivy definition marker(s) (ɵɵdefine*); published libraries must use partial Ivy.`,
-    );
+
+  for (const { name, contents } of bundles) {
+    const fullMarkers = contents.match(/ɵɵdefine\w+\s*\(/g) || [];
+    if (fullMarkers.length > 0) {
+      errors.push(
+        `Package ${pkgName} fesm2022 bundle ${name} contains ${fullMarkers.length} full-Ivy definition marker(s) (ɵɵdefine*); published libraries must use partial Ivy.`,
+      );
+    }
   }
 
   return errors;
@@ -130,8 +136,9 @@ export function validateDistPackage(pkgName, distDir, expectedVersion) {
     throw new Error(`Built package ${pkgName} has no fesm2022 .mjs bundles to validate.`);
   }
 
-  const ivyErrors = bundles.flatMap((bundle) =>
-    validateIvyBundle(pkgName, readFileSync(resolve(fesmDir, bundle), 'utf8')),
+  const ivyErrors = validateIvyBundles(
+    pkgName,
+    bundles.map((name) => ({ name, contents: readFileSync(resolve(fesmDir, name), 'utf8') })),
   );
   if (ivyErrors.length > 0) {
     throw new Error(`Built package ${pkgName} failed Ivy compilation validation:\n- ${ivyErrors.join('\n- ')}`);

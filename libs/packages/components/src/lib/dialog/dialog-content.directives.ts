@@ -1,4 +1,5 @@
 import { Directive, Input, OnChanges, OnInit, Optional, SimpleChanges, ElementRef, Inject } from '@angular/core';
+import type { SdsDialogRef } from './dialog-ref';
 import { SDS_DIALOG_REF, SDS_DIALOG_REGISTRY, SdsDialogRefLike, SdsDialogRegistry } from './dialog-tokens';
 
 /** Counter used to generate unique IDs for dialog elements. */
@@ -28,19 +29,24 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
   @Input('sdsDialogClose') _sdsDialogClose: any;
 
   constructor(
-    @Optional() @Inject(SDS_DIALOG_REF) public dialogRef: SdsDialogRefLike<unknown>,
+    @Optional() @Inject(SDS_DIALOG_REF) private _dialogRef: SdsDialogRefLike<unknown>,
     private _elementRef: ElementRef<HTMLElement>,
     @Inject(SDS_DIALOG_REGISTRY) private _dialog: SdsDialogRegistry,
   ) {}
 
+  /** Reference to the containing dialog. */
+  get dialogRef(): SdsDialogRef<any> {
+    return this._dialogRef as SdsDialogRef<any>;
+  }
+
   ngOnInit() {
-    if (!this.dialogRef) {
+    if (!this._dialogRef) {
       // When this directive is included in a dialog via TemplateRef (rather than being
       // in a Component), the DialogRef isn't available via injection because embedded
       // views cannot be given a custom injector. Instead, we look up the DialogRef by
       // ID. This must occur in `onInit`, as the ID binding for the dialog container won't
       // be resolved at constructor time.
-      this.dialogRef = getClosestDialog(this._elementRef, this._dialog.openDialogs)!;
+      this._dialogRef = getClosestDialog(this._elementRef, this._dialog.openDialogs)!;
     }
   }
 
@@ -131,12 +137,15 @@ export class SdsDialogActionsDirective {}
  * @param element Element relative to which to look for a dialog.
  * @param openDialogs References to the currently-open dialogs.
  */
-function getClosestDialog(element: ElementRef<HTMLElement>, openDialogs: SdsDialogRefLike<unknown>[]) {
+function getClosestDialog(
+  element: ElementRef<HTMLElement>,
+  openDialogs: SdsDialogRefLike<unknown>[],
+): SdsDialogRef<any> | null {
   let parent: HTMLElement | null = element.nativeElement.parentElement;
 
   while (parent && !parent.classList.contains('sds-dialog__container')) {
     parent = parent.parentElement;
   }
 
-  return parent ? openDialogs.find((dialog) => dialog.id === parent!.id) : null;
+  return (parent ? openDialogs.find((dialog) => dialog.id === parent!.id) : null) as SdsDialogRef<any> | null;
 }
