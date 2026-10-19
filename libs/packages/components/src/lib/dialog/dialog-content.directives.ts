@@ -39,6 +39,10 @@ export class SdsDialogCloseDirective implements OnInit, OnChanges {
     return this._dialogRef as SdsDialogRef<any>;
   }
 
+  set dialogRef(dialogRef: SdsDialogRef<any>) {
+    this._dialogRef = dialogRef;
+  }
+
   ngOnInit() {
     if (!this._dialogRef) {
       // When this directive is included in a dialog via TemplateRef (rather than being

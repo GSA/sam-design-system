@@ -31,6 +31,7 @@ import { SpyLocation } from '@angular/common/testing';
 import { Directionality } from '@angular/cdk/bidi';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { SdsDialogContainerComponent } from './dialog-container.component';
+import { SdsDialogCloseDirective } from './dialog-content.directives';
 import { OverlayContainer, ScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
@@ -1180,6 +1181,16 @@ describe('SdsDialog', () => {
       }));
 
       runContentElementTests();
+
+      it('should use a dialog reference assigned to the close directive', () => {
+        const assignedDialogRef = { close: vi.fn() } as unknown as SdsDialogRef<any>;
+        const contentElementDialog = dialogRef.componentInstance as ContentElementDialog;
+
+        contentElementDialog.closeDirective.dialogRef = assignedDialogRef;
+        contentElementDialog.closeDirective.dialogRef.close();
+
+        expect(assignedDialogRef.close).toHaveBeenCalledWith();
+      });
     });
 
     describe('inside template portal', () => {
@@ -1537,7 +1548,9 @@ class PizzaMsg {
   `,
   standalone: false,
 })
-class ContentElementDialog {}
+class ContentElementDialog {
+  @ViewChild(SdsDialogCloseDirective) closeDirective: SdsDialogCloseDirective;
+}
 
 @Component({
   template: `
