@@ -152,33 +152,33 @@ test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
 });
 
-test('root and all three libraries maintain lockstep 21.0.0 versioning', () => {
-  assert.equal(rootPackageJson.version, '21.0.0', 'root package.json version must be 21.0.0');
+test('root and all three libraries maintain lockstep 21.0.2 versioning', () => {
+  assert.equal(rootPackageJson.version, '21.0.2', 'root package.json version must be 21.0.2');
 
   for (const [lib, manifestPath] of Object.entries(LIB_MANIFESTS)) {
     const manifest = readJson(manifestPath);
-    assert.equal(manifest.version, '21.0.0', `expected ${lib} manifest version to be 21.0.0, got ${manifest.version}`);
+    assert.equal(manifest.version, '21.0.2', `expected ${lib} manifest version to be 21.0.2, got ${manifest.version}`);
   }
 });
 
-test('internal @gsa-sam peer ranges point at the lockstep 21.0.0 version', () => {
+test('internal @gsa-sam peer ranges point at the lockstep 21.0.2 version', () => {
   const samMaterialExtensionsManifest = readJson(LIB_MANIFESTS['sam-material-extensions']);
   assert.equal(
     samMaterialExtensionsManifest.peerDependencies['@gsa-sam/components'],
-    '^21.0.0',
-    'sam-material-extensions must peer @gsa-sam/components at ^21.0.0',
+    '^21.0.2',
+    'sam-material-extensions must peer @gsa-sam/components at ^21.0.2',
   );
 
   const samFormlyManifest = readJson(LIB_MANIFESTS['sam-formly']);
   assert.equal(
     samFormlyManifest.peerDependencies['@gsa-sam/components'],
-    '^21.0.0',
-    'sam-formly must peer @gsa-sam/components at ^21.0.0',
+    '^21.0.2',
+    'sam-formly must peer @gsa-sam/components at ^21.0.2',
   );
   assert.equal(
     samFormlyManifest.peerDependencies['@gsa-sam/sam-material-extensions'],
-    '^21.0.0',
-    'sam-formly must peer @gsa-sam/sam-material-extensions at ^21.0.0',
+    '^21.0.2',
+    'sam-formly must peer @gsa-sam/sam-material-extensions at ^21.0.2',
   );
 });
 
