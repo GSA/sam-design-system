@@ -12,7 +12,7 @@ import {
 import { FocusableOption, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SDS_MENU_TOKEN, SdsMenuInterface } from './menu.component';
-import { SdsMenuHeaderComponent } from './menu-header.component';
+import { SDS_MENU_HEADER } from './menu-header.token';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -49,7 +49,7 @@ export class SdsMenuItemComponent implements FocusableOption, OnDestroy {
     private _focusMonitor: FocusMonitor,
     @Inject(SDS_MENU_TOKEN)
     private _parentMenu: SdsMenuInterface<SdsMenuItemComponent>,
-    @Optional() private _parentMenuHeader: SdsMenuHeaderComponent,
+    @Optional() @Inject(SDS_MENU_HEADER) private _parentMenuHeader: boolean,
   ) {
     // Start listening to focus changes
     _focusMonitor.monitor(this._elementRef, false);

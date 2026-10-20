@@ -1,7 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Optional } from '@angular/core';
 import {
   NgxBootstrapIconsModule,
   x,
@@ -17,6 +17,8 @@ import {
   SdsDialogService,
 } from './dialog';
 import { SdsDialogContainerComponent } from './dialog-container.component';
+import { SdsDialogRef } from './dialog-ref';
+import { SDS_DIALOG_REF, SDS_DIALOG_REGISTRY } from './dialog-tokens';
 import { IconModule, alertError } from '@gsa-sam/ngx-uswds-icons';
 
 import {
@@ -59,6 +61,16 @@ import {
     SdsDialogActionsDirective,
     SdsDialogContentDirective,
   ],
-  providers: [SdsDialogService, SDS_DIALOG_SCROLL_STRATEGY_PROVIDER, SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER],
+  providers: [
+    SdsDialogService,
+    {
+      provide: SDS_DIALOG_REF,
+      useFactory: (dialogRef: SdsDialogRef<unknown> | null) => dialogRef,
+      deps: [[new Optional(), SdsDialogRef]],
+    },
+    { provide: SDS_DIALOG_REGISTRY, useExisting: SdsDialogService },
+    SDS_DIALOG_SCROLL_STRATEGY_PROVIDER,
+    SDS_SLIDE_OUT_SCROLL_STRATEGY_PROVIDER,
+  ],
 })
 export class SdsDialogModule {}

@@ -31,6 +31,7 @@ import { SpyLocation } from '@angular/common/testing';
 import { Directionality } from '@angular/cdk/bidi';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { SdsDialogContainerComponent } from './dialog-container.component';
+import { SdsDialogCloseDirective, SdsDialogTitleDirective } from './dialog-content.directives';
 import { OverlayContainer, ScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
@@ -190,6 +191,29 @@ describe('SdsDialog', () => {
 
     let dialogContainerElement = overlayContainerElement.querySelector('sds-dialog-container')!;
     expect(dialogContainerElement.getAttribute('aria-describedby')).toBe('description-element');
+  });
+
+  it('should render the default close button and close its dialog when clicked', fakeAsync(() => {
+    dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    const closeButton = overlayContainerElement.querySelector(
+      'button.close-btn[aria-label="Close Modal"]',
+    ) as HTMLButtonElement;
+    expect(closeButton).toBeTruthy();
+
+    closeButton.click();
+    viewContainerFixture.detectChanges();
+    flush();
+
+    expect(overlayContainerElement.querySelector('sds-dialog-container')).toBeNull();
+  }));
+
+  it('should hide the default close button when displayCloseBtn is false', () => {
+    dialog.open(PizzaMsg, { displayCloseBtn: false, viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    expect(overlayContainerElement.querySelector('button.close-btn[aria-label="Close Modal"]')).toBeNull();
   });
 
   it('should close a dialog and get back a result', fakeAsync(() => {
@@ -1157,6 +1181,16 @@ describe('SdsDialog', () => {
       }));
 
       runContentElementTests();
+
+      it('should use a dialog reference assigned to the close directive', () => {
+        const assignedDialogRef = { close: vi.fn() } as unknown as SdsDialogRef<any>;
+        const contentElementDialog = dialogRef.componentInstance as ContentElementDialog;
+
+        contentElementDialog.closeDirective.dialogRef = assignedDialogRef;
+        contentElementDialog.closeDirective.dialogRef.close();
+
+        expect(assignedDialogRef.close).toHaveBeenCalledWith();
+      });
     });
 
     describe('inside template portal', () => {
@@ -1254,6 +1288,50 @@ describe('SdsDialog', () => {
       expect(container.hasAttribute('aria-labelledby')).toBe(false);
     }));
   });
+});
+
+describe('SdsDialog content directives with a conventionally provided SdsDialogRef', () => {
+  let close: ReturnType<typeof vi.fn>;
+  let container: { _ariaLabelledBy: string | null };
+  let fixture: ComponentFixture<DialogContentWithMockedRef>;
+
+  beforeEach(() => {
+    close = vi.fn();
+    container = { _ariaLabelledBy: null };
+
+    TestBed.configureTestingModule({
+      imports: [SdsDialogModule],
+      declarations: [DialogContentWithMockedRef],
+      providers: [
+        {
+          provide: SdsDialogRef,
+          useValue: { close, id: 'mock-dialog', _containerInstance: container },
+        },
+      ],
+    });
+    TestBed.overrideModule(SdsDialogModule, {
+      remove: { imports: [IconModule, NgxBootstrapIconsModule] },
+      add: { declarations: [UsaIconStubComponent], exports: [UsaIconStubComponent] },
+    });
+
+    fixture = TestBed.createComponent(DialogContentWithMockedRef);
+    fixture.detectChanges();
+  });
+
+  it('closes using a SdsDialogRef mock provided by its class token', () => {
+    fixture.nativeElement.querySelector('button').click();
+
+    expect(close).toHaveBeenCalledWith('result');
+  });
+
+  it('sets the title on a SdsDialogRef mock provided by its class token', fakeAsync(() => {
+    flushMicrotasks();
+
+    const title = fixture.debugElement
+      .query(By.directive(SdsDialogTitleDirective))
+      .injector.get(SdsDialogTitleDirective);
+    expect(container._ariaLabelledBy).toBe(title.id);
+  }));
 });
 
 describe('SdsDialog with a parent SdsDialog', () => {
@@ -1502,6 +1580,13 @@ class PizzaMsg {
 }
 
 @Component({
+  template: `<h1 sds-dialog-title>Title</h1>
+    <button [sds-dialog-close]="'result'">Close</button>`,
+  standalone: false,
+})
+class DialogContentWithMockedRef {}
+
+@Component({
   template: `
     <h1 sds-dialog-title>This is the title</h1>
     <sds-dialog-content>Lorem ipsum dolor sit amet.</sds-dialog-content>
@@ -1514,7 +1599,9 @@ class PizzaMsg {
   `,
   standalone: false,
 })
-class ContentElementDialog {}
+class ContentElementDialog {
+  @ViewChild(SdsDialogCloseDirective) closeDirective: SdsDialogCloseDirective;
+}
 
 @Component({
   template: `
