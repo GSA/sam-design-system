@@ -31,7 +31,7 @@ import { SpyLocation } from '@angular/common/testing';
 import { Directionality } from '@angular/cdk/bidi';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { SdsDialogContainerComponent } from './dialog-container.component';
-import { SdsDialogCloseDirective } from './dialog-content.directives';
+import { SdsDialogCloseDirective, SdsDialogTitleDirective } from './dialog-content.directives';
 import { OverlayContainer, ScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
@@ -1290,6 +1290,50 @@ describe('SdsDialog', () => {
   });
 });
 
+describe('SdsDialog content directives with a conventionally provided SdsDialogRef', () => {
+  let close: ReturnType<typeof vi.fn>;
+  let container: { _ariaLabelledBy: string | null };
+  let fixture: ComponentFixture<DialogContentWithMockedRef>;
+
+  beforeEach(() => {
+    close = vi.fn();
+    container = { _ariaLabelledBy: null };
+
+    TestBed.configureTestingModule({
+      imports: [SdsDialogModule],
+      declarations: [DialogContentWithMockedRef],
+      providers: [
+        {
+          provide: SdsDialogRef,
+          useValue: { close, id: 'mock-dialog', _containerInstance: container },
+        },
+      ],
+    });
+    TestBed.overrideModule(SdsDialogModule, {
+      remove: { imports: [IconModule, NgxBootstrapIconsModule] },
+      add: { declarations: [UsaIconStubComponent], exports: [UsaIconStubComponent] },
+    });
+
+    fixture = TestBed.createComponent(DialogContentWithMockedRef);
+    fixture.detectChanges();
+  });
+
+  it('closes using a SdsDialogRef mock provided by its class token', () => {
+    fixture.nativeElement.querySelector('button').click();
+
+    expect(close).toHaveBeenCalledWith('result');
+  });
+
+  it('sets the title on a SdsDialogRef mock provided by its class token', fakeAsync(() => {
+    flushMicrotasks();
+
+    const title = fixture.debugElement
+      .query(By.directive(SdsDialogTitleDirective))
+      .injector.get(SdsDialogTitleDirective);
+    expect(container._ariaLabelledBy).toBe(title.id);
+  }));
+});
+
 describe('SdsDialog with a parent SdsDialog', () => {
   let parentDialog: SdsDialogService;
   let childDialog: SdsDialogService;
@@ -1534,6 +1578,13 @@ class PizzaMsg {
     public directionality: Directionality,
   ) {}
 }
+
+@Component({
+  template: `<h1 sds-dialog-title>Title</h1>
+    <button [sds-dialog-close]="'result'">Close</button>`,
+  standalone: false,
+})
+class DialogContentWithMockedRef {}
 
 @Component({
   template: `
