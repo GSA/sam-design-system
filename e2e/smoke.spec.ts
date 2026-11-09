@@ -4,6 +4,7 @@ for (const initialPreview of ['ready', 'not yet booted']) {
   test(`demo Storybook build boots and renders without console errors (initial preview ${initialPreview})`, async ({
     page,
   }) => {
+    test.setTimeout(90_000);
     let stubbedPreviewLoads = 0;
     if (initialPreview === 'not yet booted') {
       // Model a slow initial preview without depending on machine speed or sleeps.
@@ -41,7 +42,12 @@ for (const initialPreview of ['ready', 'not yet booted']) {
     // Storybook's preview iframe, proving the Angular app content boots.
     await page.goto('/?path=/story/components-actions-menu--model-trigger');
     const preview = page.frameLocator('#storybook-preview-iframe');
-    await expect(preview.getByRole('button', { name: 'Open Default Actions Menu' }).first()).toBeVisible();
+    // Cold Angular preview boot (main bundle download + parse + story chunks) takes
+    // >5s on GitHub's Ubuntu runners (trace from run 42703709331), so give the boot
+    // assertion an explicit budget instead of the 5s UI-interaction default.
+    await expect(preview.getByRole('button', { name: 'Open Default Actions Menu' }).first()).toBeVisible({
+      timeout: 30_000,
+    });
     // Once a story is selected the manager must expose its skip link.
     await expect(page.getByRole('link', { name: 'Skip to sidebar' })).toBeVisible();
 
