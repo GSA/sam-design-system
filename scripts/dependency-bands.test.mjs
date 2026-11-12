@@ -148,6 +148,19 @@ test('@gsa-sam/ngx-uswds and ngx-uswds-icons are pinned to ^21.0.0 in root deps 
   assert.equal(samMaterialExtensionsManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
 });
 
+test('CKEditor and its Angular integration upgrade together in root dependencies and components peers', () => {
+  const componentsManifest = readJson(LIB_MANIFESTS.components);
+  const lockfile = readJson('package-lock.json');
+  for (const [name, version] of Object.entries({
+    ckeditor5: '48.5.3',
+    '@ckeditor/ckeditor5-angular': '11.2.0',
+  })) {
+    assert.equal(rootPackageJson.dependencies[name], version);
+    assert.equal(componentsManifest.peerDependencies[name], `^${version}`);
+    assert.equal(lockfile.packages[`node_modules/${name}`].version, version);
+  }
+});
+
 test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
 });
