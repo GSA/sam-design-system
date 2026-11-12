@@ -1,38 +1,37 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 
-import { Toast, ToastrService, ToastPackage } from 'ngx-toastr';
+import { Toast } from 'ngx-toastr';
 
 @Component({
   selector: 'sds-toast',
+  // ngx-toastr v20 supplies the enter/exit classes and duration on the host;
+  // custom components must supply their own fade styles.
   styles: [
     `
       :host {
         position: relative;
       }
+      :host.toast-in {
+        animation: toast-fade var(--animation-duration) var(--animation-easing);
+      }
+      :host.toast-out {
+        animation: toast-fade var(--animation-duration) var(--animation-easing) reverse forwards;
+      }
+      @keyframes toast-fade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
     `,
   ],
   templateUrl: './toast-single.component.html',
-  animations: [
-    trigger('flyInOut', [
-      state('inactive', style({ opacity: 0 })),
-      state('active', style({ opacity: 1 })),
-      state('removed', style({ opacity: 0 })),
-      transition('inactive => active', animate('{{ easeTime }}ms {{ easing }}')),
-      transition('active => removed', animate('{{ easeTime }}ms {{ easing }}')),
-    ]),
-  ],
   preserveWhitespaces: false,
   standalone: false,
 })
 export class SdsToastComponent extends Toast {
-  constructor(
-    protected toastrService: ToastrService,
-    public toastPackage: ToastPackage,
-  ) {
-    super(toastrService, toastPackage);
-  }
-
   action(event: Event) {
     event.stopPropagation();
     this.toastPackage.triggerAction();
