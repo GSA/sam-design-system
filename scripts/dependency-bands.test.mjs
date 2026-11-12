@@ -161,6 +161,10 @@ test('ngx-toastr root, lockfile, and component peers require the v20 signal API'
   assert.match(lockfile.packages['node_modules/ngx-toastr'].resolved, /^https:\/\/registry\.npmjs\.org\//);
 });
 
+test('components rxjs peer matches the ngx-toastr 20 minimum', () => {
+  assert.equal(readJson(LIB_MANIFESTS.components).peerDependencies.rxjs, '^7.8.2');
+});
+
 test('root and all three libraries maintain lockstep 21.0.2 versioning', () => {
   assert.equal(rootPackageJson.version, '21.0.2', 'root package.json version must be 21.0.2');
 

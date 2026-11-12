@@ -27,6 +27,6 @@
     "dompurify": "^3.4.1",
     "ngx-bootstrap-icons": "^1.7.2",
     "ngx-toastr": ">=20.0.5 <21.0.0",
-    "rxjs": "^7.5.0"
+    "rxjs": "^7.8.2"
   }
 }

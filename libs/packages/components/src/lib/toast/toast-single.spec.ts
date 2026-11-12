@@ -121,12 +121,20 @@ describe('Component: SdsToastComponent', () => {
       fixture.detectChanges();
       expect(component.state()).toBe('active');
       expect(fixture.nativeElement.style.display).not.toBe('none');
+      // This jsdom fixture does not expose animate.enter as a class or attribute;
+      // the inherited animation style bindings are observable on the rendered host.
+      expect(fixture.nativeElement.style.getPropertyValue('--animation-duration')).toBe(
+        `${component.params.easeTime}ms`,
+      );
+      expect(fixture.nativeElement.style.getPropertyValue('--animation-easing')).toBe(component.params.easing);
       expect(fixture.nativeElement.classList.contains('custom-toast')).toBe(true);
       expect(fixture.nativeElement.classList.contains('sds-toast--success')).toBe(true);
       expect(fixture.nativeElement.querySelector('[role="alert"]').getAttribute('aria-live')).toBe('assertive');
       expect(fixture.nativeElement.querySelector('.usa-sr-only').textContent).toBe('Success');
       component.remove();
-      vi.advanceTimersByTime(Number(component.params.easeTime));
+      vi.advanceTimersByTime(Number(component.params.easeTime) - 1);
+      expect(remove).not.toHaveBeenCalled();
+      vi.advanceTimersByTime(1);
       expect(remove).toHaveBeenCalledWith(toastPackageMock.toastId);
     } finally {
       vi.useRealTimers();

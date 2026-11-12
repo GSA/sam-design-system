@@ -17,6 +17,12 @@ import { Toast } from 'ngx-toastr';
       :host.toast-out {
         animation: toast-fade var(--animation-duration) var(--animation-easing) reverse forwards;
       }
+      @media (prefers-reduced-motion: reduce) {
+        :host.toast-in,
+        :host.toast-out {
+          animation: none;
+        }
+      }
       @keyframes toast-fade {
         from {
           opacity: 0;
