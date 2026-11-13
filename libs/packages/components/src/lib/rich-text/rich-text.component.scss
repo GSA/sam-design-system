@@ -1,5 +1,5 @@
-// @import 'ckeditor5/ckeditor5.css';
-// @import '../../../../../../node_modules/ckeditor5/dist/ckeditor5.css';
+// Vendored copy of node_modules/ckeditor5/dist/ckeditor5.css (keep in sync with the ckeditor5 version).
+// Applied globally: SdsRichTextComponent uses ViewEncapsulation.None.
 
 /**
  * @license Copyright (c) 2003-2026, CKSource Holding sp. z o.o. All rights reserved.
@@ -8463,27 +8463,7 @@ div.ck.ck-balloon-panel.ck-mention-balloon {
   display: initial;
 }
 
-/*# sourceMappingURL=ckeditor5.css.map */
-@media print {
-  body {
-    margin: 0 !important;
-  }
-}
-
-.main-container {
-  font-family: 'Lato';
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ck-content {
-  // font-family: 'Lato';
+sds-rich-text .ck-content {
   line-height: 1.6;
   word-break: break-word;
-}
-
-.editor-container_classic-editor .editor-container__editor {
-  min-width: 795px;
-  max-width: 795px;
 }
