@@ -13,7 +13,7 @@ describe('SdsDatePipe', () => {
     const hours = todayDate.getHours();
     const min = todayDate.getMinutes();
     expect(pipe.transform(today).replace(/ /g, ' ')).toBe(
-      `${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`,
+      `${hours % 12 || 12}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`,
     );
   });
   it('should display the time when date displayed is today (date string)', () => {
@@ -23,7 +23,7 @@ describe('SdsDatePipe', () => {
     const hours = todayDate.getHours();
     const min = todayDate.getMinutes();
     expect(pipe.transform(today).replace(/ /g, ' ')).toBe(
-      `${hours > 12 ? hours - 12 : hours}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`,
+      `${hours % 12 || 12}:${min < 10 ? `0${min}` : min} ${hours >= 12 ? 'PM' : 'AM'}`,
     );
   });
 
