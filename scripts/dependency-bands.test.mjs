@@ -132,16 +132,16 @@ test('each library peerDependencies pins its Angular peers to >=21.0.0 <22.0.0',
   }
 });
 
-test('@gsa-sam/ngx-uswds and ngx-uswds-icons are pinned to ^21.0.0 in root deps and lib peers', () => {
-  assert.equal(rootPackageJson.dependencies['@gsa-sam/ngx-uswds'], '^21.0.0');
+test('@gsa-sam/ngx-uswds is pinned to ^21.0.1 and ngx-uswds-icons to ^21.0.0 in root deps and lib peers', () => {
+  assert.equal(rootPackageJson.dependencies['@gsa-sam/ngx-uswds'], '^21.0.1');
   assert.equal(rootPackageJson.dependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
 
   const componentsManifest = readJson(LIB_MANIFESTS.components);
-  assert.equal(componentsManifest.peerDependencies['@gsa-sam/ngx-uswds'], '^21.0.0');
+  assert.equal(componentsManifest.peerDependencies['@gsa-sam/ngx-uswds'], '^21.0.1');
   assert.equal(componentsManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
 
   const samFormlyManifest = readJson(LIB_MANIFESTS['sam-formly']);
-  assert.equal(samFormlyManifest.peerDependencies['@gsa-sam/ngx-uswds'], '^21.0.0');
+  assert.equal(samFormlyManifest.peerDependencies['@gsa-sam/ngx-uswds'], '^21.0.1');
   assert.equal(samFormlyManifest.peerDependencies['@gsa-sam/ngx-uswds-icons'], '^21.0.0');
 
   const samMaterialExtensionsManifest = readJson(LIB_MANIFESTS['sam-material-extensions']);
@@ -163,6 +163,19 @@ test('CKEditor and its Angular integration upgrade together in root dependencies
 
 test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
+});
+
+test('ngx-toastr root, lockfile, and component peers require the v20 signal API', () => {
+  assert.equal(rootPackageJson.dependencies['ngx-toastr'], '^20.0.5');
+  assert.equal(readJson(LIB_MANIFESTS.components).peerDependencies['ngx-toastr'], '>=20.0.5 <21.0.0');
+  const lockfile = readJson('package-lock.json');
+  assert.equal(lockfile.packages[''].dependencies['ngx-toastr'], '^20.0.5');
+  assert.equal(lockfile.packages['node_modules/ngx-toastr'].version, '20.0.5');
+  assert.match(lockfile.packages['node_modules/ngx-toastr'].resolved, /^https:\/\/registry\.npmjs\.org\//);
+});
+
+test('components rxjs peer matches the ngx-toastr 20 minimum', () => {
+  assert.equal(readJson(LIB_MANIFESTS.components).peerDependencies.rxjs, '^7.8.2');
 });
 
 test('root and all three libraries maintain lockstep 21.0.2 versioning', () => {
