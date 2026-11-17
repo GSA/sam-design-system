@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ChangeEvent, CKEditorComponent, BlurEvent } from '@ckeditor/ckeditor5-angular';
 import {
@@ -23,6 +23,9 @@ import {
   selector: 'sds-rich-text',
   templateUrl: './rich-text.component.html',
   styleUrl: './rich-text.component.scss',
+  // CKEditor builds its toolbar/editable DOM at runtime (and attaches panels to <body>),
+  // so emulated encapsulation would scope its stylesheet away from every element it styles.
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
