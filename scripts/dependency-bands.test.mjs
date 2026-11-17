@@ -152,6 +152,19 @@ test('@gsa-sam/sam-styles is pinned to ^3.1.1 in root dependencies', () => {
   assert.equal(rootPackageJson.dependencies['@gsa-sam/sam-styles'], '^3.1.1');
 });
 
+test('ngx-toastr root, lockfile, and component peers require the v20 signal API', () => {
+  assert.equal(rootPackageJson.dependencies['ngx-toastr'], '^20.0.5');
+  assert.equal(readJson(LIB_MANIFESTS.components).peerDependencies['ngx-toastr'], '>=20.0.5 <21.0.0');
+  const lockfile = readJson('package-lock.json');
+  assert.equal(lockfile.packages[''].dependencies['ngx-toastr'], '^20.0.5');
+  assert.equal(lockfile.packages['node_modules/ngx-toastr'].version, '20.0.5');
+  assert.match(lockfile.packages['node_modules/ngx-toastr'].resolved, /^https:\/\/registry\.npmjs\.org\//);
+});
+
+test('components rxjs peer matches the ngx-toastr 20 minimum', () => {
+  assert.equal(readJson(LIB_MANIFESTS.components).peerDependencies.rxjs, '^7.8.2');
+});
+
 test('root and all three libraries maintain lockstep 21.0.2 versioning', () => {
   assert.equal(rootPackageJson.version, '21.0.2', 'root package.json version must be 21.0.2');
 
