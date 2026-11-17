@@ -56,6 +56,8 @@ test('dependabot.yml is present and matches the team standard', () => {
     { name: 'angular-eslint', versions: ['>= 22.0.0'] },
     { name: 'ng-packagr', versions: ['>= 22.0.0'] },
     { name: 'ngx-markdown', versions: ['>= 22.0.0'] },
+    // ngx-markdown 21 requires marked 17.x (see dependency-bands.test.mjs).
+    { name: 'marked', versions: ['>= 18.0.0'] },
     { name: 'typescript', versions: ['>= 6.0.0'] },
   ];
 
