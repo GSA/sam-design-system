@@ -23,6 +23,10 @@ updates:
         versions: ['>= 22.0.0']
       - dependency-name: 'ngx-markdown'
         versions: ['>= 22.0.0']
+      # ngx-markdown 21 requires marked 17.x (see scripts/dependency-bands.test.mjs);
+      # lift this together with the ngx-markdown 22 upgrade.
+      - dependency-name: 'marked'
+        versions: ['>= 18.0.0']
       - dependency-name: 'typescript'
         versions: ['>= 6.0.0']
     groups:
