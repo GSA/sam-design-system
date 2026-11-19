@@ -29,6 +29,10 @@ updates:
         versions: ['>= 18.0.0']
       - dependency-name: 'typescript'
         versions: ['>= 6.0.0']
+      # @gsa-sam/sam-formly peers @ngx-formly/core at exactly 7.1.0; lift this
+      # with a coordinated Formly major upgrade.
+      - dependency-name: '@ngx-formly/*'
+        versions: ['>= 8.0.0']
     groups:
       minor:
         patterns:
