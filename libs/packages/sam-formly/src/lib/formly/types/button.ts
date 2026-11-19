@@ -7,6 +7,7 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFormBuilder } from
   template: `
     <button
       *ngIf="!hideButton && !additionalField"
+      type="button"
       class="usa-button"
       [ngClass]="props.btnClass"
       (click)="onClick($event)"
