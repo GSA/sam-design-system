@@ -59,6 +59,8 @@ test('dependabot.yml is present and matches the team standard', () => {
     // ngx-markdown 21 requires marked 17.x (see dependency-bands.test.mjs).
     { name: 'marked', versions: ['>= 18.0.0'] },
     { name: 'typescript', versions: ['>= 6.0.0'] },
+    // sam-formly peers @ngx-formly/core at exactly 7.1.0 (lift with a Formly major upgrade).
+    { name: '@ngx-formly/*', versions: ['>= 8.0.0'] },
   ];
 
   for (const { name, versions } of EXPECTED_IGNORES) {
